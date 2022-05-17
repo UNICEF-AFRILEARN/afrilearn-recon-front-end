@@ -14,3 +14,8 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.test-class {
+  background-color: blueviolet;
+  color: brown;
+}
