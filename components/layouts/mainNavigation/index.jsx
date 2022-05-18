@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Navbar, Container, Nav } from "react-bootstrap";
 import Link from "next/link";
 import styles from "./mainNavigation.module.css";
@@ -13,7 +14,7 @@ const Navigation = () => {
       style={{ backgroundColor: "#FDFDFD !important" }}
     >
       <Container>
-        <Navbar.Brand><Link passHref href="/">LOGO</Link></Navbar.Brand>
+        <Navbar.Brand><Link passHref href="/"><img src="https://myafrilearn.com/static/media/logonew.4424f4df.png" alt='logo' className="brand-logo"/></Link></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
