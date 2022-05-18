@@ -1,0 +1,21 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.left-content-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    gap: 25px;
+    width: 30%;
+}
+
+.btn-container {
+    margin-top: 10px;
+}
+.btn-container button{
+    margin: 10px;
+}
