@@ -93,6 +93,7 @@ a {
 .brand-logo {
     width: 150px;
 }
+
 @media screen and (max-width: 768px) {
   .mobileOnly {
     display: block !important;
