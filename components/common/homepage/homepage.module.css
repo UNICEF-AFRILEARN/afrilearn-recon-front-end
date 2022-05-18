@@ -399,3 +399,11 @@ text-decoration: none;
     padding: 0 0 50px;
     left: 0;
 }
+.btnJoinForFree{
+    /* margin-top: 25px; */
+    border: none;
+    background-color: #00D9B6;
+    color: white !important;
+    padding: 15px 18px !important;
+    border-radius: 39px;
+}
