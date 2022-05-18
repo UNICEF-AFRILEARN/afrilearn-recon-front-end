@@ -1,0 +1,63 @@
+.afrInputWrapper {
+  position: relative;
+  display: inline-block;
+}
+.afrInput {
+  border: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 0px 4px 0px;
+  border-bottom: 1px solid #000000;
+  box-sizing: border-box;
+  background-color: #fff;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  width: 100%;
+}
+
+.afrInput:focus {
+  outline: none;
+}
+.afrInput::placeholder {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #000000;
+}
+.afrInputWrapper span {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.afrInputTitle {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 20px;
+  color: #858585;
+}
+.fullWidth {
+  width: 100%;
+}
+.large {
+  padding: 15px 30px;
+}
+.rounded {
+  border-radius: 20px;
+  border: 1px solid #000000;
+  padding: 10px;
+}
+.secondary {
+  background-color: #000000;
+  color: #ffffff;
+}
+.small {
+  padding: 6px 10px;
+}

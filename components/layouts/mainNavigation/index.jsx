@@ -1,0 +1,41 @@
+import { Navbar, Container, Nav } from "react-bootstrap";
+import Link from "next/link";
+import styles from "./mainNavigation.module.css";
+import AppButton from "../../widgets/buttons/AppButton";
+
+const Navigation = () => {
+  return (
+    <Navbar
+      bg="light"
+      expand="lg"
+      fixed="top"
+      collapseOnSelect
+      style={{ backgroundColor: "#FDFDFD !important" }}
+    >
+      <Container>
+        <Navbar.Brand><Link passHref href="/">LOGO</Link></Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Link passHref href="/login">
+              <AppButton title="LOG IN" className={styles.loginButton} />
+            </Link>
+            <Link passHref href="/register">
+              <AppButton title="SIGN UP" secondary />
+            </Link>
+
+            {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+              <NavDropdown.Item href="/">Action</NavDropdown.Item>
+              <NavDropdown.Item href="/">Another action</NavDropdown.Item>
+              <NavDropdown.Item href="/">Something</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="/">Separated link</NavDropdown.Item>
+            </NavDropdown> */}
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
+};
+
+export default Navigation;

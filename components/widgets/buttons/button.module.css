@@ -1,0 +1,57 @@
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes softBounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.afrBtn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  background-color: #fff;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+}
+.afrBtn:focus {
+  animation: softBounce 1s ease;
+}
+
+.fullWidth {
+  width: 100%;
+}
+.large {
+  padding: 15px 30px;
+}
+.rounded {
+  border-radius: 100px;
+}
+.secondary {
+  background-color: #000000;
+  color: #ffffff;
+}
+.small {
+  padding: 6px 10px;
+}
