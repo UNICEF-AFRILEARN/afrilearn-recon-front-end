@@ -2,7 +2,6 @@ nav {
     display: flex;
     justify-content: space-between;
     padding-left: 5%;
-    padding-right: 5%;
 }
 
 .left-content-container {
@@ -14,8 +13,14 @@ nav {
 }
 
 .btn-container {
-    margin-top: 10px;
+    width: 60%;
+    align-items: center;
+    padding-left: 10px;
 }
 .btn-container button{
+    width: 35%;
+    padding: 8px;
     margin: 10px;
+    border-radius: 15px;
+    text-transform: uppercase;
 }
