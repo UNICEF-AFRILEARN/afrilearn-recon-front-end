@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import styles from './homepage.module.css';
+
 import Image from 'next/image';
 import WhyAfrilearn from './extra/whyAfrilearn';
 import ExploreAfrilearn from './extra/exploreAfrilearn';
@@ -9,14 +10,14 @@ const HomePage = () => {
     <>
       <div className="container">
         <div id="homepageFirstSection" className="row">
-          <div className="col-md-6">
+          <div className="col-md-4" id="homepageFirstSectionText">
             <h1 className={styles.mainheading}>Get ahead with Afrilearn!</h1>
             <p className={styles.underHeadingP}> We provide every Primary and Secondary School Student
               freedom to learn complete curriculum-relevant subjects
               and topics anytime, anywhere.
             </p>
             <div className={`row ${styles.afterSubHeading}`}>
-              <div className="col-md-4">
+              <div className="col-md-6">
                 <span className={styles.joinForFree}><Link passHref href='/'>JOIN FOR FREE</Link></span>
               </div>
               <div className="col-md-6">
@@ -45,8 +46,8 @@ const HomePage = () => {
 
 const GameIntro = () => {
   const data = {
-    title: "Games experience\nwith rewards.",
-    description: ["Learn and play within Afrilearn platform"],
+    title: "Gamified experience with rewards.",
+    description: ["Fun practice to ace JSSCE, WASSCE, UTME, GCE, NECO and more in one sitting"],
     imageURL: '/assets/img/common/homepage/school.png'
 
   }
@@ -68,7 +69,7 @@ const GameIntro = () => {
           </section>
         </div>
         <div className={`col-md-6 ${styles.profileImagePosition}`}>
-          <Image alt={"design image"} src={data?.imageURL} width={434} height={371} className={styles.profileImage} />
+          <Image alt={"design image"} src={data?.imageURL} width={634} height={400} className={styles.profileImage} />
         </div>
       </section>
     </div>

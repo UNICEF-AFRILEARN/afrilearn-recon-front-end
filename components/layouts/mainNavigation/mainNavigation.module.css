@@ -5,13 +5,7 @@
   margin-right: 20px;
   /* background: white; */
 }
-.signUpButton {
-  /* border: solid 1px black;
-    background-color: black;
-    color: white !important; */
-  /* padding: 7px 16px !important; */
-  /* border-radius: 39px;   */
-}
+
 .loginButton a,
 .signUpButton a,
 .loginButton a:hover,
