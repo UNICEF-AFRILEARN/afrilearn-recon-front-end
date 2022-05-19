@@ -55,21 +55,21 @@ const GameIntro = () => {
     <div id="landingpage-games" className="row" style={{ margin: '93px' }}>
 
       <section className={`row ${styles.profiles}`}>
-        <div className="col-md-6">
+        <div className="col-md-4">
           <h3 className={styles.profilesh3}>{data?.title}<br className="desktopOnly" />{data?.titlePart2}</h3>
           {data?.description.map((item) => {
-            return <p key={item}><span className={styles.bulletText}>{item}</span></p>
+            return <p key={item}><span className={styles.bulletTextt}>{item}</span></p>
           })}
           <section className={`row`}>
             <div className={`row ${styles.afterSubHeading}`}>
-              <div className="col-md-4">
+              <div className="col-md-6">
                 <span className={styles.joinForGames}><Link passHref href='/'>JOIN FOR FREE</Link></span>
               </div>
             </div>
           </section>
         </div>
         <div className={`col-md-6 ${styles.profileImagePosition}`}>
-          <Image alt={"design image"} src={data?.imageURL} width={634} height={400} className={styles.profileImage} />
+          <Image alt={"design image"} src={data?.imageURL} width={700} height={400} className={styles.profileImage} />
         </div>
       </section>
     </div>
