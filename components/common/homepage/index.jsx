@@ -52,7 +52,7 @@ const GameIntro = () => {
 
   }
   return (<>
-    <div id="landingpage-games" className="row" style={{ margin: '93px' }}>
+    <div className={`row ${styles.landingpageg}`} >
 
       <section className={`row ${styles.profiles}`}>
         <div className="col-md-4">
