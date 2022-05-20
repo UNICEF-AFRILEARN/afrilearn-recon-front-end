@@ -15,7 +15,7 @@ const HomePage = () => {
               Access free, world-class Primary and Secondary Education (Ages 6-18) for Best Grades and Success in life.
             </p>
             <div className={`row ${styles.afterSubHeading}`}>
-              <div className="col-md-4">
+              <div className={`col-md-5 ${styles.afterSubHeading_button}`}>
                 <span className={styles.joinForFree}>
                   <Link passHref href="/">
                     JOIN FOR FREE
