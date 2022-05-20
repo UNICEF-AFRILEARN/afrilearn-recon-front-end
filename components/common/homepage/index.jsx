@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import styles from './homepage.module.css';
+
 import Image from 'next/image';
 import WhyAfrilearn from './extra/whyAfrilearn';
 import ExploreAfrilearn from './extra/exploreAfrilearn';
@@ -9,14 +10,14 @@ const HomePage = () => {
     <>
       <div className="container">
         <div id="homepageFirstSection" className="row">
-          <div className="col-md-6">
+          <div className="col-md-4" id="homepageFirstSectionText">
             <h1 className={styles.mainheading}>Get ahead with Afrilearn!</h1>
             <p className={styles.underHeadingP}> We provide every Primary and Secondary School Student
               freedom to learn complete curriculum-relevant subjects
               and topics anytime, anywhere.
             </p>
             <div className={`row ${styles.afterSubHeading}`}>
-              <div className="col-md-4">
+              <div className="col-md-6">
                 <span className={styles.joinForFree}><Link passHref href='/'>JOIN FOR FREE</Link></span>
               </div>
               <div className="col-md-6">
@@ -45,30 +46,30 @@ const HomePage = () => {
 
 const GameIntro = () => {
   const data = {
-    title: "Games experience\nwith rewards.",
-    description: ["Learn and play within Afrilearn platform"],
+    title: "Gamified experience with rewards.",
+    description: ["Fun practice to ace JSSCE, WASSCE, UTME, GCE, NECO and more in one sitting"],
     imageURL: '/assets/img/common/homepage/school.png'
 
   }
   return (<>
-    <div id="landingpage-games" className="row" style={{ margin: '93px' }}>
+    <div className={`row ${styles.landingpageg}`} >
 
       <section className={`row ${styles.profiles}`}>
-        <div className="col-md-6">
-          <h3 className={styles.profilesh3}>{data?.title}<br className="desktopOnly" />{data?.titlePart2}</h3>
+        <div className="col-md-4">
+          <h3 className={styles.profileshh3}>{data?.title}<br className="desktopOnly" />{data?.titlePart2}</h3>
           {data?.description.map((item) => {
-            return <p key={item}><span className={styles.bulletText}>{item}</span></p>
+            return <p key={item}><span className={styles.bulletTextt}>{item}</span></p>
           })}
           <section className={`row`}>
             <div className={`row ${styles.afterSubHeading}`}>
-              <div className="col-md-4">
+              <div className="col-md-6">
                 <span className={styles.joinForGames}><Link passHref href='/'>JOIN FOR FREE</Link></span>
               </div>
             </div>
           </section>
         </div>
         <div className={`col-md-6 ${styles.profileImagePosition}`}>
-          <Image alt={"design image"} src={data?.imageURL} width={434} height={371} className={styles.profileImage} />
+          <Image alt={"design image"} src={data?.imageURL} width={700} height={400} className={styles.profileImage} />
         </div>
       </section>
     </div>
