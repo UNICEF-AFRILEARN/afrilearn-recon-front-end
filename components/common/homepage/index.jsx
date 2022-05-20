@@ -56,7 +56,7 @@ const GameIntro = () => {
 
       <section className={`row ${styles.profiles}`}>
         <div className="col-md-4">
-          <h3 className={styles.profilesh3}>{data?.title}<br className="desktopOnly" />{data?.titlePart2}</h3>
+          <h3 className={styles.profileshh3}>{data?.title}<br className="desktopOnly" />{data?.titlePart2}</h3>
           {data?.description.map((item) => {
             return <p key={item}><span className={styles.bulletTextt}>{item}</span></p>
           })}

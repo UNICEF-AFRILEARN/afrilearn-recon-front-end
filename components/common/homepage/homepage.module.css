@@ -83,7 +83,7 @@
   padding-right: 0px;
   margin-bottom: 54px;
 }
-.profilesh3 {
+.profileshh3 {
   font-family: "heading";
   width: 550px;
   line-height: 60px;
@@ -99,19 +99,15 @@ margin-top: 7%;
 margin-bottom: 7%;
 }
 @media screen and (max-width: 500px) {
-    .profilesh3{
+    .profileshh3{
         font-size:25px;  
     }
     .bulletTextt{
         font-size:12px; 
         font-weight:600;
     }
-    .landingpageg{
-      margin-left: 15%;
-      
-    }
- 
 }
+
 .exploreAfrilearnh3 {
   margin-bottom: 5px !important;
 }
