@@ -2,21 +2,24 @@
   font-family: heading;
   font-size: 65px;
   margin-top: 80px;
+  color: #29465b;
 }
 .underHeadingP {
   margin-top: 30px;
   padding-right: 83px;
+  color: #333333;
 }
 .afterSubHeading {
   margin-top: 40px;
 }
 .joinForFree {
   border: solid 1px black;
-  background-color: black;
+  background-color: #00d9b6;
   color: white !important;
   padding: 10px 20px !important;
   border-radius: 39px;
 }
+
 .joinForGames {
   border: solid 1px #00d9b6;
   background-color: #00d9b6;
@@ -33,6 +36,27 @@
   margin-right: 20px;
   background: white;
 }
+
+@media screen and (max-width: 1199px) {
+  .afterSubHeading_button {
+    width: 250px !important;
+    margin-bottom: 25px;
+  }
+  .afterSubHeading_button2 {
+    width: 350px !important;
+  }
+
+  .afterSubHeading {
+    display: block;
+    margin-top: 22px;
+    height: 90px;
+  }
+
+  .mainheading {
+    font-size: 40px;
+  }
+}
+
 .experienceAfrilearnImg {
   top: 2px !important;
   left: -7px !important;
@@ -93,19 +117,19 @@
   color: #29465b;
   margin-bottom: 4%;
 }
-.landingpageg{
-margin-left: 5% ;
-margin-top: 7%;
-margin-bottom: 7%;
+.landingpageg {
+  margin-left: 5%;
+  margin-top: 7%;
+  margin-bottom: 7%;
 }
 @media screen and (max-width: 500px) {
-    .profileshh3{
-        font-size:25px;  
-    }
-    .bulletTextt{
-        font-size:12px; 
-        font-weight:600;
-    }
+  .profileshh3 {
+    font-size: 25px;
+  }
+  .bulletTextt {
+    font-size: 12px;
+    font-weight: 600;
+  }
 }
 
 .exploreAfrilearnh3 {
@@ -434,11 +458,11 @@ margin-bottom: 7%;
   padding: 15px 18px !important;
   border-radius: 39px;
 }
-.btnJoinForFree{
-    /* margin-top: 25px; */
-    border: none;
-    background-color: #00D9B6;
-    color: white !important;
-    padding: 15px 18px !important;
-    border-radius: 39px;
+.btnJoinForFree {
+  /* margin-top: 25px; */
+  border: none;
+  background-color: #00d9b6;
+  color: white !important;
+  padding: 15px 18px !important;
+  border-radius: 39px;
 }
