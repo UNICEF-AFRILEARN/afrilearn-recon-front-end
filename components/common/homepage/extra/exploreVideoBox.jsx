@@ -7,7 +7,6 @@ import styles from "./../homepage.module.css";
 const ExploreVideoBox = ({ data }) => {
   const [show, setShow] = useState(false);
   const toggleModal = () => setShow(!show);
-  console.log(data.thumbnailUrl);
   return (
     <>
       <div className="col-md-3 relative" onClick={toggleModal}>

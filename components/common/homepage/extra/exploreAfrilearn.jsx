@@ -12,7 +12,6 @@ const ExploreAfrilearn = () => {
   const handleNavigation = (section, e) => {
     e.preventDefault();
     setSelectedOption(section);
-    console.log(e, section);
   };
 
   const data = [
