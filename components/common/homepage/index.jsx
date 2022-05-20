@@ -9,7 +9,7 @@ const HomePage = () => {
     <>
       <div className="container">
         <div id="homepageFirstSection" className="row">
-          <div className="col-md-6">
+          <div className="col-md-4" id="homepageFirstSectionText">
             <h1 className={styles.mainheading}>Get ahead with Afrilearn!</h1>
             <p className={styles.underHeadingP}>
               Access free, world-class Primary and Secondary Education (Ages 6-18) for Best Grades and Success in life.
@@ -69,53 +69,35 @@ const HomePage = () => {
 
 const GameIntro = () => {
   const data = {
-    title: "Games experience\nwith rewards.",
-    description: ["Learn and play within Afrilearn platform"],
-    imageURL: "/assets/img/common/homepage/school.png",
-  };
-  return (
-    <>
-      <div id="landingpage-games" className="row" style={{ margin: "93px" }}>
-        <section className={`row ${styles.profiles}`}>
-          <div className="col-md-6">
-            <h3 className={styles.profilesh3}>
-              {data?.title}
-              <br className="desktopOnly" />
-              {data?.titlePart2}
-            </h3>
-            {data?.description.map((item) => {
-              return (
-                <p key={item}>
-                  <span className={styles.bulletText}>{item}</span>
-                </p>
-              );
-            })}
-            <section className={`row`}>
-              <div className={`row ${styles.afterSubHeading}`}>
-                <div className="col-md-4">
-                  <span className={styles.joinForGames}>
-                    <Link passHref href="/">
-                      JOIN FOR FREE
-                    </Link>
-                  </span>
-                </div>
+    title: "Gamified experience with rewards.",
+    description: ["Fun practice to ace JSSCE, WASSCE, UTME, GCE, NECO and more in one sitting"],
+    imageURL: '/assets/img/common/homepage/school.png'
+
+  }
+  return (<>
+    <div className={`row ${styles.landingpageg}`} >
+
+      <section className={`row ${styles.profiles}`}>
+        <div className="col-md-4">
+          <h3 className={styles.profileshh3}>{data?.title}<br className="desktopOnly" />{data?.titlePart2}</h3>
+          {data?.description.map((item) => {
+            return <p key={item}><span className={styles.bulletTextt}>{item}</span></p>
+          })}
+          <section className={`row`}>
+            <div className={`row ${styles.afterSubHeading}`}>
+              <div className="col-md-6">
+                <span className={styles.joinForGames}><Link passHref href='/'>JOIN FOR FREE</Link></span>
               </div>
-            </section>
-          </div>
-          <div className={`col-md-6 ${styles.profileImagePosition}`}>
-            <Image
-              alt={"design image"}
-              src={data?.imageURL}
-              width={434}
-              height={371}
-              className={styles.profileImage}
-            />
-          </div>
-        </section>
-      </div>
-    </>
-  );
-};
+            </div>
+          </section>
+        </div>
+        <div className={`col-md-6 ${styles.profileImagePosition}`}>
+          <Image alt={"design image"} src={data?.imageURL} width={700} height={400} className={styles.profileImage} />
+        </div>
+      </section>
+    </div>
+  </>)
+}
 const CrossPlatform = () => {
   const data = {
     title: "Learn on any device.",

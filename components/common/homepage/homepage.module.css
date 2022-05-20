@@ -2,20 +2,17 @@
   font-family: heading;
   font-size: 65px;
   margin-top: 80px;
-  color: #29465b;
 }
 .underHeadingP {
   margin-top: 30px;
   padding-right: 83px;
-  color: #333333;
 }
 .afterSubHeading {
   margin-top: 40px;
 }
-
 .joinForFree {
   border: solid 1px black;
-  background: #00d9b6;
+  background-color: black;
   color: white !important;
   padding: 10px 20px !important;
   border-radius: 39px;
@@ -31,45 +28,10 @@
 }
 .experienceAfrilearn {
   border: solid 1px black;
-  padding: 10px 20px ;
+  padding: 10px 20px !important;
   border-radius: 39px;
   margin-right: 20px;
   background: white;
-}
-@media screen and (max-width: 1199px) {
- .joinForFree{
-   padding: 2px 9px !important;
-       font-size: small;
- }
-  .experienceAfrilearn {
-    padding: 2px 9px;
-    margin-right: -7px;
-        font-size: small;
-    
-  }
-  .mainheading {
-    font-family: heading;
-    font-size: 45px;}
-}
-@media screen and (max-width: 450px) {
- .joinForFree{
-   padding: 2px 9px !important;
- }
-  .experienceAfrilearn {
-    padding: 2px 9px;
-    margin-right: -7px;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .row > * {
-    flex-shrink: 1;
-    width: fit-content !important;
-    max-width: fit-content;
-  }
-  .afterSubHeading {
-    padding-bottom: 15px;
-  }
 }
 .experienceAfrilearnImg {
   top: 2px !important;
@@ -115,21 +77,46 @@
   margin-top: 60px;
   margin-bottom: 80px;
 }
-.profilesh3,
 .exploreAfrilearnh3 {
   font-family: "heading";
   font-size: 39px;
   padding-right: 0px;
   margin-bottom: 54px;
 }
+.profileshh3 {
+  font-family: "heading";
+  width: 550px;
+  line-height: 60px;
+  font-size: 48px;
+  font-weight: 500;
+  text-align: left;
+  color: #29465b;
+  margin-bottom: 4%;
+}
+.landingpageg{
+margin-left: 5% ;
+margin-top: 7%;
+margin-bottom: 7%;
+}
+@media screen and (max-width: 500px) {
+    .profileshh3{
+        font-size:25px;  
+    }
+    .bulletTextt{
+        font-size:12px; 
+        font-weight:600;
+    }
+}
+
 .exploreAfrilearnh3 {
   margin-bottom: 5px !important;
 }
-.bulletText {
-  display: inline-block;
-  position: relative;
-  top: -7px;
-  left: 11px;
+.bulletTextt {
+  color: #29465b;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: left;
+  margin-top: 5%;
 }
 .mobileDownloadSection {
   margin-top: 39px;
@@ -150,6 +137,7 @@
   padding: 0;
   list-style: none;
 }
+
 .exploreAfrilearn ul li {
   display: inline-block;
   padding: 7px 16px;
@@ -445,4 +433,12 @@
   color: white !important;
   padding: 15px 18px !important;
   border-radius: 39px;
+}
+.btnJoinForFree{
+    /* margin-top: 25px; */
+    border: none;
+    background-color: #00D9B6;
+    color: white !important;
+    padding: 15px 18px !important;
+    border-radius: 39px;
 }
