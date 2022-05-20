@@ -1,21 +1,31 @@
-import { useState } from 'react';
-import { Modal, Button } from 'react-bootstrap'
-import Image from 'next/image';
-import { toProperCase, cutString } from '../../../../utils/helper';
-import styles from './../homepage.module.css';
+import { useState } from "react";
+import { Modal, Button } from "react-bootstrap";
+import Image from "next/image";
+import { toProperCase, cutString } from "../../../../utils/helper";
+import styles from "./../homepage.module.css";
 
 const ExploreVideoBox = ({ data }) => {
   const [show, setShow] = useState(false);
   const toggleModal = () => setShow(!show);
- 
+  console.log(data.thumbnailUrl);
   return (
     <>
       <div className="col-md-3 relative" onClick={toggleModal}>
-        <Image alt={"afrilearn marketing video"} src={data?.thumbnailUrl} layout='fill' />
+        <Image
+          alt={"afrilearn marketing video"}
+          src={data?.thumbnailUrl}
+          width={303}
+          height={150}
+        />
         <span>
           {data?.subject}
           <hr />
-          <small>{data?.class} || {data && data.title ? toProperCase(cutString(data.title, 20)) : null}</small>
+          <small>
+            {data?.class} ||{" "}
+            {data && data.title
+              ? toProperCase(cutString(data.title, 20))
+              : null}
+          </small>
         </span>
       </div>
       <Modal
@@ -25,22 +35,25 @@ const ExploreVideoBox = ({ data }) => {
         keyboard={false}
         className={styles.trendingModalClass}
       >
-        <Modal.Header closeButton>
-          <Modal.Title>Modal title</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          I will not close if you click outside me. Don not even try to press
-          escape key.
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={toggleModal}>
+        {/* <div className={styles.videoPlaying}> */}
+          <video
+            src={data?.videoUrl}
+            width="800px"
+            height="auto"
+            controls
+            autoPlay
+          />
+          <Button
+            variant="secondary"
+            onClick={toggleModal}
+            className={styles.backgroundColor}
+          >
             Close
           </Button>
-          <Button variant="primary">Understood</Button>
-        </Modal.Footer>
+        {/* </div> */}
       </Modal>
     </>
-  )
-}
+  );
+};
 
-export default ExploreVideoBox
+export default ExploreVideoBox;

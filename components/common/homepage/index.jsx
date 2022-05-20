@@ -4,6 +4,15 @@ import Image from "next/image";
 import WhyAfrilearn from "./extra/whyAfrilearn";
 import ExploreAfrilearn from "./extra/exploreAfrilearn";
 
+// {/* <video
+//         src={data?.videoUrl}
+//         width="400px"
+//         height="400px"
+//         controls
+//         className={styles.videoPlaying}
+//       /> */}
+
+
 const HomePage = () => {
   return (
     <>

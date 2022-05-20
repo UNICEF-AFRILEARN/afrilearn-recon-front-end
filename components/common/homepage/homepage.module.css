@@ -93,19 +93,19 @@
   color: #29465b;
   margin-bottom: 4%;
 }
-.landingpageg{
-margin-left: 5% ;
-margin-top: 7%;
-margin-bottom: 7%;
+.landingpageg {
+  margin-left: 5%;
+  margin-top: 7%;
+  margin-bottom: 7%;
 }
 @media screen and (max-width: 500px) {
-    .profileshh3{
-        font-size:25px;  
-    }
-    .bulletTextt{
-        font-size:12px; 
-        font-weight:600;
-    }
+  .profileshh3 {
+    font-size: 25px;
+  }
+  .bulletTextt {
+    font-size: 12px;
+    font-weight: 600;
+  }
 }
 
 .exploreAfrilearnh3 {
@@ -129,7 +129,7 @@ margin-bottom: 7%;
 }
 .exploreAfrilearn {
   padding: 70px 117px;
-  background-color: black;
+  background-color: #29465b;
   color: white;
 }
 .exploreAfrilearn ul {
@@ -146,6 +146,14 @@ margin-bottom: 7%;
   margin-top: 6px;
   color: white;
 }
+.exploreAfrilearnActive:hover{
+  cursor:pointer
+}
+
+.exploreAfrilearnNotActive:hover{
+  cursor:pointer
+}
+
 .exploreAfrilearnActive {
   background: white !important;
   color: black !important;
@@ -157,11 +165,16 @@ margin-bottom: 7%;
   margin-top: 50px;
 }
 .explorePart2 img {
-  width: 100%;
+  width: 300px;
   height: 200px;
   object-fit: cover;
   border-radius: 5px;
   opacity: 0.6;
+}
+
+.backgroundColor {
+  background-color: red;
+  width: 800px;
 }
 .explorePart2 img:hover {
   cursor: pointer;
@@ -179,6 +192,10 @@ margin-bottom: 7%;
   margin: auto;
   border: solid 1px white;
 }
+.modal-content {
+  background-color: rgba(0, 0, 0, .1) !important;
+}
+
 .trendingModalClass .modal-content {
   padding: 0px;
   background-color: white;
@@ -235,13 +252,15 @@ margin-bottom: 7%;
 .trendingModalClass .modal-body {
   padding: 0px;
 }
+
 .afterExplore {
-  margin-top: 110px;
+  margin-top: 90px;
 }
+
 .afterExplore span {
   display: block;
   text-align: center;
-  background: #191919;
+  background: #365469;
   padding: 23px 10px;
   border-radius: 5px;
 }
@@ -434,11 +453,11 @@ margin-bottom: 7%;
   padding: 15px 18px !important;
   border-radius: 39px;
 }
-.btnJoinForFree{
-    /* margin-top: 25px; */
-    border: none;
-    background-color: #00D9B6;
-    color: white !important;
-    padding: 15px 18px !important;
-    border-radius: 39px;
+.btnJoinForFree {
+  /* margin-top: 25px; */
+  border: none;
+  background-color: #00d9b6;
+  color: white !important;
+  padding: 15px 18px !important;
+  border-radius: 39px;
 }
