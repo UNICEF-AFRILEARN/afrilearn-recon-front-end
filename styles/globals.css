@@ -103,7 +103,9 @@ a {
   color: #A6A6A6;
 
 }
-
+.parnet-frag-color {
+  
+}
 @media screen and (max-width: 768px) {
   .mobileOnly {
     display: block !important;

@@ -1,3 +1,4 @@
+import React, { useState, useRef} from 'react';
 import Link from "next/link";
 import styles from "./homepage.module.css";
 import Slider from "react-slick";
@@ -333,6 +334,8 @@ const QuickJoin = () => {
     </>
   );
 };
+
+
 const Partners = () => {
   const data = {
     title: "Key Supporters",
@@ -375,38 +378,51 @@ const Partners = () => {
     ],
   };
 
+  const customeSlider = useRef();
+
   const settings = {
-    dots: true,
     infinite: true,
-    slidesToShow: 3,
+    slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
-    speed: 2000,
-    autoplaySpeed: 2000,
-    cssEase: "linear"
+    speed: 1000,
+    autoplaySpeed: 1000,
+    cssEase: "linear",
+    initialSlide: 0,
+    arrows: false,
+
+
   };
 
   return (
+    
     <>
+
       <div id="landingpage-partners" className={`row ${styles.partners}`}>
         <h2>{data.title}</h2>
           <section className="parnet-frag-color">
+          <Slider  {...settings} ref={customeSlider} >
             {data.partners.map((partner, i) => {
+        
               return (
-                <div key={i} className={styles.box}>
-                  <Slider {...settings}>
-                  <Image
-                    alt={"design image"}
-                    className={styles.partnerLogo}
-                    src={partner.logoURL}
-                    layout={"fill"}
-                  />
-                </Slider>
-                </div>
+
+                
+                  <div key={i}className={styles.box}  >
+                      <Image
+                        alt={"design image"}
+                        className={styles.partnerLogo}
+                        src={partner.logoURL}
+                        layout={"fill"}
+                      />
+                  </div>
+               
               );
             })}
+            </Slider>
           </section>
+     
       </div>
+     
     </>
   );
 };
