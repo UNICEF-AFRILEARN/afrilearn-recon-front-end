@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from "./homepage.module.css";
+import Slider from "react-slick";
 import Image from "next/image";
 import WhyAfrilearn from "./extra/whyAfrilearn";
 import ExploreAfrilearn from "./extra/exploreAfrilearn";
@@ -373,24 +374,38 @@ const Partners = () => {
       },
     ],
   };
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    speed: 2000,
+    autoplaySpeed: 2000,
+    cssEase: "linear"
+  };
+
   return (
     <>
       <div id="landingpage-partners" className={`row ${styles.partners}`}>
         <h2>{data.title}</h2>
-        <section>
-          {data.partners.map((partner, i) => {
-            return (
-              <div key={i} className={styles.box}>
-                <Image
-                  alt={"design image"}
-                  className={styles.partnerLogo}
-                  src={partner.logoURL}
-                  layout={"fill"}
-                />
-              </div>
-            );
-          })}
-        </section>
+          <section className="parnet-frag-color">
+            {data.partners.map((partner, i) => {
+              return (
+                <div key={i} className={styles.box}>
+                  <Slider {...settings}>
+                  <Image
+                    alt={"design image"}
+                    className={styles.partnerLogo}
+                    src={partner.logoURL}
+                    layout={"fill"}
+                  />
+                </Slider>
+                </div>
+              );
+            })}
+          </section>
       </div>
     </>
   );
