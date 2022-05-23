@@ -47,8 +47,8 @@ const HomePage = () => {
               src={
                 "/assets/img/common/homepage/73984-girl-studying-on-laptop (1).gif"
               }
-              width={563}
-              height={563}
+              width={550}
+              height={500}
             />
           </div>
         </div>
