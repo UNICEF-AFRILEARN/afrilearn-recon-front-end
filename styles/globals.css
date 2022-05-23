@@ -94,6 +94,16 @@ a {
     width: 150px;
 }
 
+.our-story-frag {
+  margin-right: 150px;
+  margin-top: 10px;
+  font-weight: 400;
+  size: 20px;
+  line-height: 26.2px;
+  color: #A6A6A6;
+
+}
+
 @media screen and (max-width: 768px) {
   .mobileOnly {
     display: block !important;

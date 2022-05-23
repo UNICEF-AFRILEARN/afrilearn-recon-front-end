@@ -17,7 +17,11 @@ const Navigation = () => {
         <Navbar.Brand><Link passHref href="/"><img src="https://myafrilearn.com/static/media/logonew.4424f4df.png" alt='logo' className="brand-logo"/></Link></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
+
           <Nav className="me-auto">
+          <div className="our-story-frag">
+            Our Story
+          </div>
             <Link passHref href="/login">
               <AppButton title="LOG IN" className={styles.loginButton} />
             </Link>
