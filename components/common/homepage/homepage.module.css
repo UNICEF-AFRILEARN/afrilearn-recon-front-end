@@ -56,14 +56,13 @@
 }
 .secondSectionul li {
   display: inline-block;
-  /* background-color: red; */
   margin-right: 10px;
   padding: 17px 27px;
-  color: #a6a6a6;
 }
+
 .secondSectionul span {
   display: inline-block;
-  border-left: solid 3px black;
+  border-left: solid 3px #00D9B6 ;
   height: 21px;
   position: relative;
   top: 6px;
@@ -71,7 +70,7 @@
 }
 .activeOption {
   background: #f4f5f7;
-  color: black !important;
+  color: #00D9B6 !important;
 }
 .profiles {
   margin-top: 60px;
