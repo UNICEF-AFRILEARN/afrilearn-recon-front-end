@@ -1,0 +1,97 @@
+.commentPage {
+  padding: 15px;
+  width: 1180px;
+  height: 550px;
+  margin: auto;
+  position: relative;
+}
+
+.commentwrapper {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 10% 90%;
+  align-self: center;
+}
+
+.commentCont > .h3 {
+  margin-bottom: 0;
+  margin-top: 20px;
+  font-weight: 700;
+font-size: 18px;
+}
+
+.commentCont > .p {
+  color: #969bab;
+  font-weight: 500;
+font-size: 14px;
+font-feature-settings: 'salt' on, 'liga' off;
+color: #969BAB;
+}
+
+.commentImg {
+  color: #969bab;
+}
+
+.list1 {
+  width: 350px;
+  /* height: 300px; */
+  left: 59px;
+  top: 107px;
+  position: absolute;
+  display: grid;
+  align-content: center;
+}
+.list2 {
+  position: absolute;
+  width: 445px;
+  /* height: 268px; */
+  left: 0;
+  top: 302px;
+  display: grid;
+  align-content: center;
+}
+.list3 {
+  display: grid;
+  align-content: center;
+  position: absolute;
+  width: 445px;
+  height: 268px;
+  left: 429px;
+  top: 4px;
+}
+.list4 {
+  display: grid;
+  align-content: center;
+  position: absolute;
+  width: 350px;
+  height: 204px;
+  left: 455px;
+  top: 209px;
+}
+.list5 {
+  position: absolute;
+  width: 350px;
+  height: 204px;
+  left: 455px;
+  top: 372px;
+  display: grid;
+  align-content: center;
+}
+.list6 {
+  position: absolute;
+  width: 350px;
+  height: 204px;
+  left: 830px;
+  top: 51px;
+  display: grid;
+  align-content: center;
+}
+.list7 {
+  position: absolute;
+  width: 350px;
+  height: 300px;
+  left: 800px;
+  top:  208px;
+  display: grid;
+  align-content: center;
+}

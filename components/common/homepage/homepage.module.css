@@ -366,7 +366,7 @@
 .testimonials .heroText {
   position: absolute;
   font-family: "heading";
-  /* width: 555px; */
+  width: 555px;
   padding-top: 15px;
   left: 134px;
   font-style: normal;

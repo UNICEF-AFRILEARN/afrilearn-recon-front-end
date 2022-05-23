@@ -3,6 +3,7 @@ import styles from "./homepage.module.css";
 import Image from "next/image";
 import WhyAfrilearn from "./extra/whyAfrilearn";
 import ExploreAfrilearn from "./extra/exploreAfrilearn";
+import CommentPage from "./extra/commentPage";
 
 // {/* <video
 //         src={data?.videoUrl}
@@ -12,7 +13,6 @@ import ExploreAfrilearn from "./extra/exploreAfrilearn";
 //         className={styles.videoPlaying}
 //       /> */}
 
-
 const HomePage = () => {
   return (
     <>
@@ -21,7 +21,8 @@ const HomePage = () => {
           <div className="col-md-6" id="homepageFirstSectionText">
             <h1 className={styles.mainheading}>Get ahead with Afrilearn!</h1>
             <p className={styles.underHeadingP}>
-              Access free, world-class Primary and Secondary Education (Ages 6-18) for Best Grades and Success in life.
+              Access free, world-class Primary and Secondary Education (Ages
+              6-18) for Best Grades and Success in life.
             </p>
             <div className={`row ${styles.afterSubHeading}`}>
               <div className={`col-md-4 ${styles.afterSubHeading_button}`}>
@@ -79,75 +80,123 @@ const HomePage = () => {
 const GameIntro = () => {
   const data = {
     title: "Gamified experience with rewards.",
-    description: ["Fun practice to ace JSSCE, WASSCE, UTME, GCE, NECO and more in one sitting"],
-    imageURL: '/assets/img/common/homepage/school.png'
-
-  }
-  return (<>
-    <div className={`row ${styles.landingpageg}`} >
-
-      <section className={`row ${styles.profiles}`}>
-        <div className="col-md-4">
-          <h3 className={styles.profileshh3}>{data?.title}<br className="desktopOnly" />{data?.titlePart2}</h3>
-          {data?.description.map((item) => {
-            return <p key={item}><span className={styles.bulletTextt}>{item}</span></p>
-          })}
-          <section className={`row`}>
-            <div className={`row ${styles.afterSubHeading}`}>
-              <div className="col-md-6">
-                <span className={styles.joinForGames}><Link passHref href='/'>JOIN FOR FREE</Link></span>
+    description: [
+      "Fun practice to ace JSSCE, WASSCE, UTME, GCE, NECO and more in one sitting",
+    ],
+    imageURL: "/assets/img/common/homepage/school.png",
+  };
+  return (
+    <>
+      <div className={`row ${styles.landingpageg}`}>
+        <section className={`row ${styles.profiles}`}>
+          <div className="col-md-4">
+            <h3 className={styles.profileshh3}>
+              {data?.title}
+              <br className="desktopOnly" />
+              {data?.titlePart2}
+            </h3>
+            {data?.description.map((item) => {
+              return (
+                <p key={item}>
+                  <span className={styles.bulletTextt}>{item}</span>
+                </p>
+              );
+            })}
+            <section className={`row`}>
+              <div className={`row ${styles.afterSubHeading}`}>
+                <div className="col-md-6">
+                  <span className={styles.joinForGames}>
+                    <Link passHref href="/">
+                      JOIN FOR FREE
+                    </Link>
+                  </span>
+                </div>
               </div>
-            </div>
-          </section>
-        </div>
-        <div className={`col-md-6 ${styles.profileImagePosition}`}>
-          <Image alt={"design image"} src={data?.imageURL} width={700} height={400} className={styles.profileImage} />
-        </div>
-      </section>
-    </div>
-  </>)
-}
+            </section>
+          </div>
+          <div className={`col-md-6 ${styles.profileImagePosition}`}>
+            <Image
+              alt={"design image"}
+              src={data?.imageURL}
+              width={700}
+              height={400}
+              className={styles.profileImage}
+            />
+          </div>
+        </section>
+      </div>
+    </>
+  );
+};
 const CrossPlatform = () => {
   const data = {
     title: "Learn on any device.",
     description: ["Anywhere, everywhere. Cancel anytime."],
-    imageURLs: ['/assets/img/common/homepage/learn.jpeg'],
-  
-  }
-  return (<>
-    <div  className={`row ${styles.crossPlatform}`}>
-
-      <section className={`row ${styles.profiles}`}>
-        <div className={`col-md-6 ${styles.sectionImageContainer}`}>
-          <Image alt={"design image"} src={data?.imageURLs[0]} width={'754px'} height={'618px'}  />
-        </div>
-        <div className={`col-md-6 ${styles.crossPlatformTextPosition}`}>
-          <h3>{data?.title}<br className="desktopOnly" />{data?.titlePart2}</h3>
-          {data?.description.map((item) => {
-            return <p key={item}><span className={styles.bulletTexttt}>{item}</span></p>
-          })}
-          <section className={`row ${styles.mobileDownloadSection}`}>
-            <div className="mobileOnlyy">
-              <div className='col-md-4 m-2'  >
-              <Link passHref href="https://play.google.com/store/apps/details?id=com.afrilearn">
-                <Image alt={"design image"} src='/assets/img/common/homepage/Google Play Badge.png'  width={"241.28px"} height={"71.49px"} />
-              </Link>
+    imageURLs: ["/assets/img/common/homepage/learn.jpeg"],
+  };
+  return (
+    <>
+      <div className={`row ${styles.crossPlatform}`}>
+        <section className={`row ${styles.profiles}`}>
+          <div className={`col-md-6 ${styles.sectionImageContainer}`}>
+            <Image
+              alt={"design image"}
+              src={data?.imageURLs[0]}
+              width={"754px"}
+              height={"618px"}
+            />
+          </div>
+          <div className={`col-md-6 ${styles.crossPlatformTextPosition}`}>
+            <h3>
+              {data?.title}
+              <br className="desktopOnly" />
+              {data?.titlePart2}
+            </h3>
+            {data?.description.map((item) => {
+              return (
+                <p key={item}>
+                  <span className={styles.bulletTexttt}>{item}</span>
+                </p>
+              );
+            })}
+            <section className={`row ${styles.mobileDownloadSection}`}>
+              <div className="mobileOnlyy">
+                <div className="col-md-4 m-2">
+                  <Link
+                    passHref
+                    href="https://play.google.com/store/apps/details?id=com.afrilearn"
+                  >
+                    <Image
+                      alt={"design image"}
+                      src="/assets/img/common/homepage/Google Play Badge.png"
+                      width={"241.28px"}
+                      height={"71.49px"}
+                    />
+                  </Link>
+                </div>
+                <div className="col-md-4 m-2">
+                  <Link
+                    passHref
+                    href="https://apps.apple.com/ng/app/afrilearn/id1587978653"
+                  >
+                    <Image
+                      alt={"design image"}
+                      src="/assets/img/common/homepage/App Store Badge.png"
+                      width={"241.28px"}
+                      height={"71.49px"}
+                    />
+                  </Link>
+                </div>
+                {/* </div> */}
+                {/* <div className="col-sm-4"> */}
               </div>
-    <div className='col-md-4 m-2' >
-    <Link passHref href="https://apps.apple.com/ng/app/afrilearn/id1587978653">
-                <Image alt={"design image"} src='/assets/img/common/homepage/App Store Badge.png' width={"241.28px"} height={"71.49px"} />
-              </Link>
-    </div>
-            {/* </div> */}
-            {/* <div className="col-sm-4"> */}
-              
-            </div>
-          </section>
-        </div>
-      </section>
-    </div>
-  </>)
-}
+            </section>
+          </div>
+        </section>
+      </div>
+    </>
+  );
+};
 const Testimonials = () => {
   const data = {
     title: "What people are saying about Afrilearn?",
@@ -187,16 +236,7 @@ const Testimonials = () => {
           </section>
         </section>
 
-        <div className={`row`}>
-          <div className={`col-lg-12 ${styles.preview}`}>
-            <Image
-              alt={"design image"}
-              src={data?.imageURLs[1]}
-              width="445px"
-              height="268px"
-            />
-          </div>
-        </div>
+        <CommentPage />
       </div>
     </>
   );
