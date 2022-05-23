@@ -425,6 +425,7 @@
   padding: 45px 0 140px;
 }
 .quickJoin h2 {
+  color: #29465B;
   font-family: "heading";
   font-size: 40px;
   margin-top: 50px;
@@ -432,12 +433,14 @@
 }
 .quickJoin h6 {
   text-align: center;
+ color: #333333;
   margin-bottom: 93px;
 }
 
 .quickJoin .container {
   cursor: pointer;
   position: absolute;
+  width: 791.11px;;
 }
 
 .quickJoin section {
