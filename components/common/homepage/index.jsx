@@ -59,6 +59,7 @@ const HomePage = () => {
       <ExploreAfrilearn />
       <GameIntro />
       <CrossPlatform />
+      <JoinLeague />
       <Testimonials />
       <Faq />
       <QuickJoin />
@@ -169,6 +170,14 @@ const CrossPlatform = () => {
     </>
   );
 };
+
+const JoinLeague = () => {
+    return (
+      <h1>Join league of world-class learners</h1>
+    )
+}
+
+
 const Testimonials = () => {
   const data = {
     title: "What people are saying about Afrilearn?",
@@ -222,6 +231,7 @@ const Testimonials = () => {
     </>
   );
 };
+
 const Faq = () => {
   const data = {
     title: "Frequently asked questions",
@@ -390,8 +400,6 @@ const Partners = () => {
     cssEase: "linear",
     initialSlide: 0,
     arrows: false,
-
-
   };
 
   return (
