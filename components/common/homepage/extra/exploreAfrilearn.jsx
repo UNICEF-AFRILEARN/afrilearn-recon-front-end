@@ -70,7 +70,7 @@ const ExploreAfrilearn = () => {
     <div className={`container-fluid ${styles.exploreAfrilearn}`}>
       <section className="row">
         <div className="col-md-6">
-          <h3 className={styles.exploreAfrilearnh3}>Explore Africlasses</h3>
+          <h3 className={styles.exploreAfrilearnh3}>Explore genius content</h3>
         </div>
         <div className="col-md-6">
           <ul>
