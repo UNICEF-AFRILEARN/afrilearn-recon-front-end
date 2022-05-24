@@ -181,7 +181,7 @@ const JoinLeague = () => {
       title: "Afrilearn Free",
       button: "JOIN FOR FREE",
       details: [
-        "50,000+ Official Past Questions& Solutions", 
+        "50,000+ Official Past Questions & Solutions", 
         "5000+ Curriculum-Relevant Class Notes2",
         "3000+ Curriculum-Relevant Video Lessons",
         "Gamified competitions with weekly cash prizes",
@@ -234,7 +234,7 @@ const JoinLeague = () => {
           example.map((examp) => {
            return (
              <>
-            <div className=" text-center p-3  " >
+            <div className="card text-center p-4" >
               <div className="card-title">
                 <h4>{examp.title}</h4>
                 <p>{examp.added}</p>
