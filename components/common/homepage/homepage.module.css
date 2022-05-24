@@ -391,6 +391,42 @@ margin-bottom: 7%;
   text-align: center;
 }
 
+.cardstylling {
+  margin-top: 45px;
+  display: grid;
+  grid-template-columns: repeat(3, 30%);
+  gap: 10px;
+  border: none;
+  justify-content: center;
+}
+
+
+
+.cardstylling ul {
+  text-align: start;
+  margin-top: 5px;
+  list-style-type: none;
+}
+
+.cardstylling ul li{
+  text-align: start;
+  margin-top: 30px;
+}
+
+.cardstylling ul li span {
+  margin-right: 10px;
+}
+
+.cardstylling button {
+  background: #00D9B6;
+  border-radius: 30px;
+  width: 261px;
+  padding: 9px;
+  color: #FFFFFF;
+  border: none;
+
+}
+
 .partners .box {
   display: inline-block;
   position: relative;
@@ -440,4 +476,16 @@ margin-bottom: 7%;
     color: white !important;
     padding: 15px 18px !important;
     border-radius: 39px;
+}
+
+@media screen and (max-width: 768px) {
+  .cardstylling {
+    margin-top: 45px;
+    display: grid;
+    grid-template-columns: repeat(1, 88%);
+    gap: 10px;
+    border: none;
+    justify-content: center;
+  }
+
 }

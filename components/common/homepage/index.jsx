@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import Image from "next/image";
 import WhyAfrilearn from "./extra/whyAfrilearn";
 import ExploreAfrilearn from "./extra/exploreAfrilearn";
+import { BsCheck2All } from 'react-icons/bs';
 
 const HomePage = () => {
   return (
@@ -172,8 +173,88 @@ const CrossPlatform = () => {
 };
 
 const JoinLeague = () => {
+
+  const example= [
+    {
+      id: 1,
+      added: "Everything in free:",
+      title: "Afrilearn Free",
+      button: "JOIN FOR FREE",
+      details: [
+        "50,000+ Official Past Questions& Solutions", 
+        "5000+ Curriculum-Relevant Class Notes2",
+        "3000+ Curriculum-Relevant Video Lessons",
+        "Gamified competitions with weekly cash prizes",
+        "Discover your strength with insightful analytics",
+        "Boost your confidence with personalised learning",
+        "Achieve best grades, university admission, and success in life."
+      ]
+    },
+    {
+      id: 2,
+      added: "Everything in free plus:",
+      title: "Afrilearn Pro",
+      button: "START FREE TRIAL",
+      details: [
+        "Unlimited Video Lessons", 
+        "Online Homework Help",
+        "Solutions Review with personalized lesson to practice your mistakes.",
+        "Coding Classes (Including HTML, CSS and JavaScript)",
+        "Languages Classes (Including Yoruba, Ibo etc)",
+        "Access to live tutors",
+        "Students & teachers chat room",
+        "No Ads"
+      ]
+    },
+    {
+      id: 3,
+      added: "Everything in Pro plus:",
+      title: "Afrilearn Enterprise",
+      button: "REQUEST A DEMO",
+      details: [
+        "Transform your students’ lives with world-class supplementary education", 
+        "Multiply students’ enrollment and stand out from the competition",
+        "Access ready lesson notes to accelerate your students’ learning",
+        "Conduct seamless examinations with instant results for your students.",
+        "Access powerful data insights to advance academic excellence",
+        "Cut back Faculty workload to save time and resources",
+        "Minimize the time spent creating, administering, and grading exams",
+        "Earn more while delivering your school’s mandate",
+      ]
+    }
+    
+  ]
+
     return (
-      <h1>Join league of world-class learners</h1>
+      <>
+      <div  className={`row ${styles.faq}`}>
+        <h2>Join league of world-class learners</h2>
+        <div className={styles.cardstylling} >
+        {
+          example.map((examp) => {
+           return (
+             <>
+            <div className=" text-center p-3  " >
+              <div className="card-title">
+                <h4>{examp.title}</h4>
+                <p>{examp.added}</p>
+              </div>
+                <div className="card-body text-dark" id={examp.id} >
+                  <ul >
+                    {examp.details.map((arrFour, i) =>
+                      <li key={i}><span>{<BsCheck2All color='#00D9B6'/>}</span>{arrFour}</li>)}
+                  </ul>
+                </div>
+                <button>{examp.button}</button>
+            </div>
+        </>
+           )
+          })
+        }
+        </div>
+        
+        </div>
+        </>
     )
 }
 
