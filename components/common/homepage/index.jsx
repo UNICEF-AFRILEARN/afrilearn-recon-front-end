@@ -340,7 +340,7 @@ const Footer = () => {
     </div>
 
       <section className={`row ${styles.last}`}>
-        <div className='col-md-4'>
+        <div className={`col-md-4 ${styles.lastttt}`}>
           <p>© 2019 Afrilearn. All rights reserved</p>
         </div>
         <div className={`col-md-2 ${styles.lastt}` }>
@@ -350,23 +350,23 @@ const Footer = () => {
         <li><Link passHref href="/"> Terms of Service</Link></li>
         </div>    
         <div className='col-md-2 '>
-          <div className={`row ${styles.lastttt}` }>
-<div className='col-md-2'> <Link passHref href="https://web.facebook.com/myAfrilearn">
+          <div className={styles.lastttt}>
+<div className='col-md-2 m-2 m-2'> <Link passHref href="https://web.facebook.com/myAfrilearn">
   <Image alt={"design image"} src='/assets/img/common/homepage/Facebook.svg' width={"22.8px"} height={"22.8px"} />
               </Link>
               </div>
-          <div className='col-md-2'>  <Link passHref href="https://www.instagram.com/accounts/login/?next=/afrilearn/">
+          <div className='col-md-2 m-2'>  <Link passHref href="https://www.instagram.com/accounts/login/?next=/afrilearn/">
           <Image alt={"design image"} src={data?.imageURL[1]}  width="22.8px" height="22.8px" />
               </Link>
           </div>
-       <div className='col-md-2'> <Link passHref href="https://twitter.com/Afrilearn">
+       <div className='col-md-2 m-2'> <Link passHref href="https://twitter.com/Afrilearn">
        <Image alt={"design image"} src={data?.imageURL[2]}  width="22.8px" height="22.8px" />
               </Link>
        </div>
-          <div className='col-md-2'><Link passHref href="https://www.linkedin.com/company/afrilearn/">
+          <div className='col-md-2 m-2'><Link passHref href="https://www.linkedin.com/company/afrilearn/">
           <Image alt={"design image"} src='/assets/img/common/homepage/linkedln.png' width={"22.8px"} height={"22.8px"} />
               </Link></div>
-              <div className='col-md-2'><Link passHref href="https://www.youtube.com/channel/UC_BnnokJom1DWipMl0oSxWA">
+              <div className='col-md-2 m-2'><Link passHref href="https://www.youtube.com/channel/UC_BnnokJom1DWipMl0oSxWA">
           <Image alt={"design image"} src='/assets/img/common/homepage/Youtube.svg' width={"22.8px"} height={"22.8px"} />
               </Link></div>
 </div>
