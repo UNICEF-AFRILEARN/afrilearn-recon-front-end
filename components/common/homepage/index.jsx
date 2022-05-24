@@ -306,7 +306,7 @@ const Footer = () => {
 
   return (<>
 <div id="landingpage-footer" className={`row ${styles.footer}`}>
-     <div className='col-md-4' >
+     <div className={`col-md-3 ${styles.footerimage}`}>
      <Image alt={"design image"} src='/assets/img/common/homepage/whitelogo.png' width={"220px"} height={"80px"} />
     </div>
     <div className={`col-md-2 ${styles.footerText}`}>
@@ -329,7 +329,7 @@ const Footer = () => {
         <li><Link passHref href="https://myafrilearn.com/partnership">Paternership </Link></li>
       </ul>
     </div>
-    <div className={`col-md-2 ${styles.footerText}`}>
+    <div className={`col-md-3 ${styles.footerText}`}>
       <h3>Contact</h3>
       <ul>
         <li>hello@myafrilearn.com</li>
@@ -341,7 +341,7 @@ const Footer = () => {
       </div>
       <div >
       <section className={`row ${styles.last}`}>
-        <div className={`col-md-4 ${styles.lastttt}`}>
+        <div className={`col-md-3 ${styles.lastttt}`}>
           <p>© 2019 Afrilearn. All rights reserved</p>
         </div>
         <div className={`col-md-2 ${styles.lastt}` }>

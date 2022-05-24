@@ -474,16 +474,16 @@
 
 .footer {
   background: #0b0d17;
-  margin-top: 50px;
-  padding-left: 5%;
-  padding-right: 10%;
-  padding-bottom: 10%;
+  margin-top: 70px;
+  padding-left: 2%;
+  /* padding-right: 2%; */
+  padding-bottom: 3%;
   padding-top: 5%;
   position: relative;
 }
 
 .footerText {
-  margin-left: 5%;
+  margin-left: 2%;
 }
 .footerText li {
   color: #eeeff4;
@@ -503,22 +503,12 @@
   color: #eeeff4;
   margin-left: 30px;
   padding-bottom: 30px;
+
 }
-.footer h1 {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 36px;
-  line-height: 47px;
-  color: #ffffff;
-  font-size: 56px;
-  font-weight: 600;
-  line-height: 57px;
-  text-align: left;
-}
+
 .last {
   background: black;
   bottom: 0px;
-  padding-left: 5%;
   color: #eeeff4;
   padding-bottom: 2%;
   padding-bottom: 2%;
@@ -529,15 +519,15 @@
   list-style: none;
 }
 .last .lastt {
-  padding-left: 3%;
+  margin-left: 50px;
 }
 .last .lasttt {
-  /* padding-left: 7%; */
-  margin-right: 10%;
+  margin-left: 50px;
 }
 .last .lastttt {
   display: flex !important;
   flex-direction: row !important;
+  margin-left: 20px;
 }
 
 .footer .last li {
