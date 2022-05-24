@@ -232,7 +232,19 @@ const Testimonials = () => {
   );
 };
 
+const Answers = ({checkAns}) => {
+ 
+
+  return (
+    <>  
+       {/* {checkAns("FAQ #1")? <h1>Answer</h1>: <h1>Second</h1>} */}
+    </>
+   
+  )
+}
+
 const Faq = () => {
+
   const data = {
     title: "Frequently asked questions",
     questions: [
@@ -244,6 +256,24 @@ const Faq = () => {
     imageURL: ["/assets/img/common/homepage/faq.svg"],
   };
 
+ const checkAns = (i) => {
+    switch (i) {
+      case "FAQ #1":
+        return <h2>hi</h2>;
+      case "FAQ #2":
+        return <h2>Hello</h2>;
+        break;
+      case "FAQ #3":
+        return <h2>yo</h2>;
+        break;
+      case "FAQ #4":
+        return <h2>sup</h2>;
+      default:
+        break;
+    }
+ }
+
+
   return (
     <>
       <div
@@ -252,12 +282,13 @@ const Faq = () => {
         style={{ margin: "93px" }}
       >
         <h2>{data.title}</h2>
+        
         <section>
           {data.questions.map((faq, i) => {
             return (
               <div
                 key={i}
-                onClick={(e) => console.log(`FAQ #${i + 1}: ${faq}`, e)}
+                onClick={(e) => checkAns(`FAQ #${i + 1}`)}
                 className={styles.faqHover}
                 style={{ position: "relative" }}
               >
@@ -273,14 +304,18 @@ const Faq = () => {
                   }}
                 >
                   {faq}
+                 
                 </span>
+                
                 <Image
                   alt={"design image"}
                   src={data?.imageURL[0]}
                   width="500px"
                   height="60px"
                 />
+                <Answers />
               </div>
+           
             );
           })}
         </section>
@@ -288,6 +323,8 @@ const Faq = () => {
     </>
   );
 };
+
+
 const QuickJoin = () => {
   const data = {
     title: "Ready for success?",
