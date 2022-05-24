@@ -326,6 +326,7 @@ const Answers = ({checkAns}) => {
 
 const Faq = () => {
 
+  const [currentModal, openModal] = useState(null);
   const data = {
     title: "Frequently asked questions",
     questions: [
@@ -369,7 +370,7 @@ const Faq = () => {
             return (
               <div
                 key={i}
-                onClick={(e) => checkAns(`FAQ #${i + 1}`)}
+                onClick={(e) => openModal(`FAQ #${i + 1}`)}
                 className={styles.faqHover}
                 style={{ position: "relative" }}
               >
@@ -383,8 +384,11 @@ const Faq = () => {
                     lineHeight: "25px",
                     color: "#000000",
                   }}
+                  
                 >
                   {faq}
+                  
+
                  
                 </span>
                 
@@ -394,7 +398,17 @@ const Faq = () => {
                   width="500px"
                   height="60px"
                 />
-                <Answers />
+               {currentModal === 'FAQ #1' ? 
+                      <h1>Hi</h1>
+                    : null}
+
+                    {currentModal === 'FAQ #2' ?
+                      <h1> Yo</h1>
+                    : null}
+
+                    {currentModal === 'FAQ #3' ?
+                      <h1>sup</h1>
+                    : null}
               </div>
            
             );
