@@ -1,3 +1,5 @@
+
+
 .mainheading {
   font-family: heading;
   font-size: 65px;
@@ -148,20 +150,25 @@
     display: inline-flex !important;
     margin-bottom: hidden;
   }
-  
+
   .footer {
    width: 200%;
+   bottom: 0;
   }
-  .footer .last .lastttt {
+   .last .lastttt {
     display: flex !important;
     flex-direction: row !important;
     margin-top: 5%;
   }
-  .footer .last .lastt {
+   .last .lastt {
     margin-top: 5%;
   }
-  .footer .last {
-    margin-top: 5%;
+   .last {
+    width: 200%;
+    top: 0;
+  }
+  .footer .last{
+    margin: 0;
   }
 }
 
@@ -473,6 +480,7 @@
   padding-right: 10%;
   padding-bottom: 10%;
   padding-top: 5%;
+  position:relative;
 }
 
 .footerText {
@@ -508,8 +516,7 @@
   line-height: 57px;
   text-align: left;
 }
-.footer .last {
-  position: absolute;
+ .last {
   background: black;
   bottom: 0px;
   padding-left: 5%;
@@ -519,16 +526,17 @@
   padding-top: 2%;
   left: 0;
 }
-.footer .last .lastt {
-  padding-left: 3%;
-  
-  
+.last li{
+  list-style: none;
 }
-.footer .last .lasttt {
+ .last .lastt {
+  padding-left: 3%;
+}
+.last .lasttt {
   /* padding-left: 7%; */
   margin-right: 10%;
 }
-.footer .last .lastttt {
+.last .lastttt {
   display: flex !important;
   flex-direction: row !important;
 }

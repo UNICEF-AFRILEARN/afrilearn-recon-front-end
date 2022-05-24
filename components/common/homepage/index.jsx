@@ -338,7 +338,8 @@ const Footer = () => {
         <li>6 Gbemisola Street, Allen Avenue, Ikeja, Lagos, Nigeria.</li>
       </ul>
     </div>
-
+      </div>
+      <div >
       <section className={`row ${styles.last}`}>
         <div className={`col-md-4 ${styles.lastttt}`}>
           <p>© 2019 Afrilearn. All rights reserved</p>
@@ -373,6 +374,7 @@ const Footer = () => {
 </div>
       </section>
       </div>
+     
   </>)
 }
 
