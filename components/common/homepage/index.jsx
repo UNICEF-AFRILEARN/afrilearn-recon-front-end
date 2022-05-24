@@ -307,7 +307,7 @@ const Footer = () => {
   return (<>
 <div id="landingpage-footer" className={`row ${styles.footer}`}>
      <div className='col-md-4' >
-     <Image alt={"design image"} src='/assets/img/common/homepage/whitelogo.png' width={"240px"} height={"90px"} />
+     <Image alt={"design image"} src='/assets/img/common/homepage/whitelogo.png' width={"220px"} height={"80px"} />
     </div>
     <div className={`col-md-2 ${styles.footerText}`}>
       <h3>Quicklinks</h3>
