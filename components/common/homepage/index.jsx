@@ -306,7 +306,7 @@ const Footer = () => {
 
   return (<>
 <div id="landingpage-footer" className={`row ${styles.footer}`}>
-     <div className={`col-md-3 ${styles.footerimage}`}>
+     <div className={`col-md-3 ${styles.footerlogo}`}>
      <Image alt={"design image"} src='/assets/img/common/homepage/whitelogo.png' width={"220px"} height={"80px"} />
     </div>
     <div className={`col-md-2 ${styles.footerText}`}>
@@ -341,13 +341,13 @@ const Footer = () => {
       </div>
       <div >
       <section className={`row ${styles.last}`}>
-        <div className={`col-md-3 ${styles.lastttt}`}>
+        <div className={`col-md-3 ${styles.lasttt}`}>
           <p>© 2019 Afrilearn. All rights reserved</p>
         </div>
         <div className={`col-md-2 ${styles.lastt}` }>
         <li><Link passHref href="">Privacy Policy </Link></li>
         </div>
-        <div className={`col-md-2 ${styles.lasttt}` }>
+        <div className={`col-md-2 ${styles.lastt}` }>
         <li><Link passHref href="/"> Terms of Service</Link></li>
         </div>    
         <div className='col-md-2 '>
