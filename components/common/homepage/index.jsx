@@ -307,7 +307,7 @@ const Footer = () => {
   return (<>
 <div id="landingpage-footer" className={`row ${styles.footer}`}>
      <div className='col-md-4' >
-       <h1>LOGO</h1>
+     <Image alt={"design image"} src='/assets/img/common/homepage/whitelogo.png' width={"240px"} height={"90px"} />
     </div>
     <div className={`col-md-2 ${styles.footerText}`}>
       <h3>Quicklinks</h3>
@@ -352,7 +352,7 @@ const Footer = () => {
         <div className='col-md-2 '>
           <div className={`row ${styles.lastttt}` }>
 <div className='col-md-2'> <Link passHref href="https://web.facebook.com/myAfrilearn">
-  <Image alt={"design image"} src={data?.imageURL[4]}  width="22.8px" height="22.8px" />
+  <Image alt={"design image"} src='/assets/img/common/homepage/Facebook.svg' width={"22.8px"} height={"22.8px"} />
               </Link>
               </div>
           <div className='col-md-2'>  <Link passHref href="https://www.instagram.com/accounts/login/?next=/afrilearn/">
@@ -364,10 +364,10 @@ const Footer = () => {
               </Link>
        </div>
           <div className='col-md-2'><Link passHref href="https://www.linkedin.com/company/afrilearn/">
-          <Image alt={"design image"} src={data?.imageURL[1]}  width="22.8px" height="22.8px" />
+          <Image alt={"design image"} src='/assets/img/common/homepage/linkedln.png' width={"22.8px"} height={"22.8px"} />
               </Link></div>
               <div className='col-md-2'><Link passHref href="https://www.youtube.com/channel/UC_BnnokJom1DWipMl0oSxWA">
-          <Image alt={"design image"} src={data?.imageURL[4]}  width="22.8px" height="22.8px" />
+          <Image alt={"design image"} src='/assets/img/common/homepage/Youtube.svg' width={"22.8px"} height={"22.8px"} />
               </Link></div>
 </div>
 </div>
