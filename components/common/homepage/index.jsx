@@ -4,25 +4,34 @@ import Image from "next/image";
 import WhyAfrilearn from "./extra/whyAfrilearn";
 import ExploreAfrilearn from "./extra/exploreAfrilearn";
 
+// {/* <video
+//         src={data?.videoUrl}
+//         width="400px"
+//         height="400px"
+//         controls
+//         className={styles.videoPlaying}
+//       /> */}
+
+
 const HomePage = () => {
   return (
     <>
       <div className="container">
         <div id="homepageFirstSection" className="row">
-          <div className="col-md-4" id="homepageFirstSectionText">
+          <div className="col-md-6" id="homepageFirstSectionText">
             <h1 className={styles.mainheading}>Get ahead with Afrilearn!</h1>
             <p className={styles.underHeadingP}>
               Access free, world-class Primary and Secondary Education (Ages 6-18) for Best Grades and Success in life.
             </p>
             <div className={`row ${styles.afterSubHeading}`}>
-              <div className={`col-md-5 ${styles.afterSubHeading_button}`}>
+              <div className={`col-md-4 ${styles.afterSubHeading_button}`}>
                 <span className={styles.joinForFree}>
                   <Link passHref href="/">
                     JOIN FOR FREE
                   </Link>
                 </span>
               </div>
-              <div className="col-md-6">
+              <div className={`col-md-6 ${styles.afterSubHeading_button2}`}>
                 <span className={styles.experienceAfrilearn}>
                   <Image
                     alt={"design image"}
@@ -47,8 +56,8 @@ const HomePage = () => {
               src={
                 "/assets/img/common/homepage/73984-girl-studying-on-laptop (1).gif"
               }
-              width={563}
-              height={563}
+              width={550}
+              height={500}
             />
           </div>
         </div>
