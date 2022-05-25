@@ -4,28 +4,62 @@ import Image from 'next/image';
 import WhyAfrilearn from './extra/whyAfrilearn';
 import ExploreAfrilearn from './extra/exploreAfrilearn';
 
+// {/* <video
+//         src={data?.videoUrl}
+//         width="400px"
+//         height="400px"
+//         controls
+//         className={styles.videoPlaying}
+//       /> */}
+
+
 const HomePage = () => {
   return (
     <>
       <div className="container">
         <div id="homepageFirstSection" className="row">
-          <div className="col-md-4" id="homepageFirstSectionText">
+          <div className="col-md-6" id="homepageFirstSectionText">
             <h1 className={styles.mainheading}>Get ahead with Afrilearn!</h1>
             <p className={styles.underHeadingP}> We provide every Primary and Secondary School Student
               freedom to learn complete curriculum-relevant subjects
               and topics anytime, anywhere.
             </p>
             <div className={`row ${styles.afterSubHeading}`}>
-              <div className="col-md-6">
-                <span className={styles.joinForFree}><Link passHref href='/'>JOIN FOR FREE</Link></span>
+              <div className={`col-md-4 ${styles.afterSubHeading_button}`}>
+                <span className={styles.joinForFree}>
+                  <Link passHref href="/">
+                    JOIN FOR FREE
+                  </Link>
+                </span>
               </div>
-              <div className="col-md-6">
-                <span className={styles.experienceAfrilearn}><Image alt={"design image"} className={styles.experienceAfrilearnImg} src={'/assets/img/common/homepage/play-button-arrowhead 10.png'} width={15} height={15} /><Link passHref href='/'>Experience Afrilearn</Link></span>
+              <div className={`col-md-6 ${styles.afterSubHeading_button2}`}>
+                <span className={styles.experienceAfrilearn}>
+                  <Image
+                    alt={"design image"}
+                    className={styles.experienceAfrilearnImg}
+                    src={
+                      "/assets/img/common/homepage/play-button-arrowhead 10.png"
+                    }
+                    width={15}
+                    height={15}
+                  />
+                  <Link passHref href="/">
+                    Experience Afrilearn
+                  </Link>
+                </span>
               </div>
             </div>
           </div>
           <div className="col-md-6 center">
-            <Image alt={"design image"} className={`centerImage ${styles.experienceAfrilearnImg}`} src={'/assets/img/common/homepage/73984-girl-studying-on-laptop (1).gif'} width={563} height={563} />
+            <Image
+              alt={"design image"}
+              className={`centerImage ${styles.experienceAfrilearnImg}`}
+              src={
+                "/assets/img/common/homepage/73984-girl-studying-on-laptop (1).gif"
+              }
+              width={550}
+              height={500}
+            />
           </div>
         </div>
       </div>
