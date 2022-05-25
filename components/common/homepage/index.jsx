@@ -338,22 +338,22 @@ const Faq = () => {
     imageURL: ["/assets/img/common/homepage/faq.svg"],
   };
 
- const checkAns = (i) => {
-    switch (i) {
-      case "FAQ #1":
-        return <h2>hi</h2>;
-      case "FAQ #2":
-        return <h2>Hello</h2>;
-        break;
-      case "FAQ #3":
-        return <h2>yo</h2>;
-        break;
-      case "FAQ #4":
-        return <h2>sup</h2>;
-      default:
-        break;
-    }
- }
+//  const checkAns = (i) => {
+//     switch (i) {
+//       case "FAQ #1":
+//         return <h2>hi</h2>;
+//       case "FAQ #2":
+//         return <h2>Hello</h2>;
+//         break;
+//       case "FAQ #3":
+//         return <h2>yo</h2>;
+//         break;
+//       case "FAQ #4":
+//         return <h2>sup</h2>;
+//       default:
+//         break;
+//     }
+//  }
 
 
   return (
