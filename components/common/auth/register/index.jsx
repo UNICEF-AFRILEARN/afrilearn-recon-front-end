@@ -29,12 +29,12 @@ const Register = (props) => {
 
   return (
     <>
-      <div className={styles.floatImg1}><Image alt={"design image"} src={'/assets/img/common/login/HalfCircleBlack.png'} width={86} height={200} /></div>
+      <div className={styles.floatImg1}><Image alt={"design image"} src={'/assets/img/common/login/HalfCircleBlack.png'} width={86} height={200} color="#00D9B6"/></div>
       <div className={styles.floatImg2}><Image alt={"design image"} src={'/assets/img/common/login/HalfCircleWhite.png'} width={150} height={90} /></div>
       <div className={styles.floatImg3}><Image alt={"design image"} src={'/assets/img/common/login/HalfCircleWhite.png'} width={150} height={90} /></div>
       <div className="container-fluid">
-        <div className="row">
-          <div className="col-xs-0 col-md-1 col-lg-1">  </div>
+        <div className="row card-container-form">
+          {/* <div className="col-xs-0 col-md-1 col-lg-1">  </div> */}
           <div className="col-xs-12 col-md-10 col-lg-10" >
             <span className={styles.card}>
               <h5 className="center">CREATE AN ACCOUNT</h5>
