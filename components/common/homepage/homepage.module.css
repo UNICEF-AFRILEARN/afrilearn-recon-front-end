@@ -168,9 +168,35 @@
   }
   .crossPlatform .sectionImageContainer {
     margin-top: 0;
-    padding-left: 80px;
+    padding-left: 90px;
     display: inline-flex !important;
     margin-bottom: hidden;
+  }
+
+  .footer {
+    width: 200%;
+    bottom: 0;
+  }
+  
+  .last .lastttt {
+    display: flex !important;
+    flex-direction: row !important;
+    margin-top: 5%;
+    padding-left: 2%;
+  }
+  .last .lastt {
+    margin-top: 5%;
+    padding-left: 2%;
+  }
+  .last .lasttt {
+   
+    padding-left: 2%;
+  }
+.footerlogo{
+  margin-left: 5%;
+}
+  .last {
+    width: 200%;
   }
 }
 
@@ -600,18 +626,68 @@ padding: 15px;
 
 .footer {
   background: #0b0d17;
-  margin-top: 50px;
-  padding: 236px;
+  margin-top: 70px;
+  padding-left: 5%;
+  /* padding-right: 2%; */
+  padding-bottom: 3%;
+  padding-top: 5%;
   position: relative;
 }
 
-.footer .last {
-  position: absolute;
+.footerText {
+  margin-left: 2%;
+}
+.footerText li {
+  color: #eeeff4;
+  text-decoration: none;
+  list-style-type: none;
+  height: 46px;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.footerText h3 {
+  font-size: 24px;
+  font-weight: 50;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #eeeff4;
+  margin-left: 30px;
+  padding-bottom: 30px;
+
+}
+
+.last {
   background: black;
-  padding: 0;
   bottom: 0px;
-  padding: 0 0 50px;
-  left: 0;
+  color: #eeeff4;
+  padding-bottom: 2%;
+  padding-bottom: 2%;
+  padding-top: 2%;
+  padding-left:5% ;
+ 
+}
+.last li {
+  list-style: none;
+}
+.last .lastt {
+  margin-left: 35px;
+}
+.last .lasttt {
+  margin-left: 20px;
+}
+.last .lastttt {
+  display: flex !important;
+  flex-direction: row !important;
+  margin-left: 20px;
+}
+
+.footer .last li {
+  color: #eeeff4;
+  list-style-type: none;
+  font-size: 16px;
+  font-weight: 400;
 }
 .btnJoinForFree {
   /* margin-top: 25px; */

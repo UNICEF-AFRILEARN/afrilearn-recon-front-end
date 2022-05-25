@@ -16,8 +16,7 @@
   font-size: 48px !important;
   line-height: 63px !important;
   /* identical to box height */
-
-  color: #000000;
+ color: #000000;
 }
 .primaryText {
   font-family: "content";
@@ -28,19 +27,14 @@
   color: #000000;
 }
 .subHeading {
-  /* sub headings (profile) */
-
   font-family: "subHeading";
   font-style: normal;
   font-weight: bold !important;
   font-size: 30px !important;
   line-height: 39px !important;
-
   color: #000000;
 }
 .nav {
-  /* nav bar txt */
-
   font-family: Spoof;
   font-style: normal;
   font-weight: bold !important;
