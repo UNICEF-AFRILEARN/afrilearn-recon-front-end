@@ -34,7 +34,7 @@ const Register = (props) => {
       <div className={styles.floatImg3}><Image alt={"design image"} src={'/assets/img/common/login/HalfCircleWhite.png'} width={150} height={90} /></div>
       <div className="container-fluid">
         <div className="row ">
-          {/* <div className="col-xs-0 col-md-1 col-lg-1">  </div> */}
+          <div className={styles.logoregisterform}> <Image alt={"logo image"} src={'/assets/img/logo.PNG'} width={200} height={50}/> </div>
           <div className='card-container-form' >
             <span className={styles.card}>
               <h5 className="center">CREATE AN ACCOUNT</h5>
