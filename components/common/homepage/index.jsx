@@ -118,7 +118,8 @@ const CrossPlatform = () => {
     imageURLs: ['/assets/img/common/homepage/learn.jpeg'],
   
   }
-  return (<>
+  return (
+  <>
     <div  className={`row ${styles.crossPlatform}`}>
 
       <section className={`row ${styles.profiles}`}>
@@ -137,10 +138,11 @@ const CrossPlatform = () => {
                 <Image alt={"design image"} src='/assets/img/common/homepage/Google Play Badge.png'  width={"241.28px"} height={"71.49px"} />
               </Link>
               </div>
-            </section>
           </div>
         </section>
       </div>
+    </section>
+    </div>
     </>
   );
 };
