@@ -289,17 +289,6 @@ const Testimonials = () => {
   );
 };
 
-const Answers = ({checkAns}) => {
- 
-
-  return (
-    <>  
-       {/* {checkAns("FAQ #1")? <h1>Answer</h1>: <h1>Second</h1>} */}
-    </>
-   
-  )
-}
-
 const Faq = () => {
 
   const [currentModal, openModal] = useState(null);
@@ -348,22 +337,6 @@ const Faq = () => {
 
   ]
 
-//  const checkAns = (i) => {
-//     switch (i) {
-//       case "FAQ #1":
-//         return <h2>hi</h2>;
-//       case "FAQ #2":
-//         return <h2>Hello</h2>;
-//         break;
-//       case "FAQ #3":
-//         return <h2>yo</h2>;
-//         break;
-//       case "FAQ #4":
-//         return <h2>sup</h2>;
-//       default:
-//         break;
-//     }
-//  }
 
 const handleToggle = (id) => {
 

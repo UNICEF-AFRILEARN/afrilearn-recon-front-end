@@ -161,19 +161,6 @@ a {
   .navbar-expand-lg .navbar-nav {
       justify-content: flex-end;
       width: 100%;
-  } 
-
-  /* .accordion-body-com {
-    background-color: #FAFAFA !important;
-    width: 150% !important;
-    border: none !important;
-    margin-top: 15px;
-  } */
-  /* .accordion-button {
-    width: 205% !important;
-    background-color: #FAFAFA !important;
-    padding: 1.7rem 1.25rem !important;
-    border: none !important;
-  } */
+  }
   
 }

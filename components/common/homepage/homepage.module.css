@@ -585,10 +585,13 @@
 
   .faq section {
     margin-top: 30px;
-    /* display: grid; */
     place-content: center;
     margin-left: 1px;
     width: 70vw;
+  }
+
+  .partners .partnerLogo {
+    padding: 1px !important;
   }
 
 }
