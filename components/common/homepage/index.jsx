@@ -7,25 +7,34 @@ import WhyAfrilearn from "./extra/whyAfrilearn";
 import ExploreAfrilearn from "./extra/exploreAfrilearn";
 import { BsCheck2All } from 'react-icons/bs';
 
+// {/* <video
+//         src={data?.videoUrl}
+//         width="400px"
+//         height="400px"
+//         controls
+//         className={styles.videoPlaying}
+//       /> */}
+
+
 const HomePage = () => {
   return (
     <>
       <div className="container">
         <div id="homepageFirstSection" className="row">
-          <div className="col-md-4" id="homepageFirstSectionText">
+          <div className="col-md-6" id="homepageFirstSectionText">
             <h1 className={styles.mainheading}>Get ahead with Afrilearn!</h1>
             <p className={styles.underHeadingP}>
               Access free, world-class Primary and Secondary Education (Ages 6-18) for Best Grades and Success in life.
             </p>
             <div className={`row ${styles.afterSubHeading}`}>
-              <div className={`col-md-5 ${styles.afterSubHeading_button}`}>
+              <div className={`col-md-4 ${styles.afterSubHeading_button}`}>
                 <span className={styles.joinForFree}>
                   <Link passHref href="/">
                     JOIN FOR FREE
                   </Link>
                 </span>
               </div>
-              <div className="col-md-6">
+              <div className={`col-md-6 ${styles.afterSubHeading_button2}`}>
                 <span className={styles.experienceAfrilearn}>
                   <Image
                     alt={"design image"}
@@ -50,8 +59,8 @@ const HomePage = () => {
               src={
                 "/assets/img/common/homepage/73984-girl-studying-on-laptop (1).gif"
               }
-              width={563}
-              height={563}
+              width={550}
+              height={500}
             />
           </div>
         </div>
@@ -106,63 +115,27 @@ const CrossPlatform = () => {
   const data = {
     title: "Learn on any device.",
     description: ["Anywhere, everywhere. Cancel anytime."],
-    imageURLs: ["/assets/img/common/homepage/cross-platform.svg"],
-  };
-  return (
-    <>
-      <div
-        id="landingpage-crossplatform"
-        className={`row ${styles.crossPlatform}`}
-        style={{ margin: "93px", display: "block" }}
-      >
-        <section className={`row ${styles.profiles}`}>
-          <div className={`col-md-6 ${styles.sectionImageContainer}`}>
-            <Image
-              alt={"design image"}
-              src={data?.imageURLs[0]}
-              width={"504.4px"}
-              height={"375.01px"}
-            />
-          </div>
-          <div className={`col-md-6 ${styles.crossPlatformTextPosition}`}>
-            <h3>
-              {data?.title}
-              <br className="desktopOnly" />
-              {data?.titlePart2}
-            </h3>
-            {data?.description.map((item) => {
-              return (
-                <p key={item}>
-                  <span className={styles.bulletText}>{item}</span>
-                </p>
-              );
-            })}
-            <section className={`row ${styles.mobileDownloadSection}`}>
-              <div className="col-md-4">
-                <Link
-                  passHref
-                  href="https://play.google.com/store/apps/details?id=com.afrilearn"
-                >
-                  <Image
-                    alt={"design image"}
-                    src="/assets/img/common/homepage/Google Play Badge.png"
-                    width={150}
-                    height={45}
-                  />
-                </Link>
-              </div>
-              <div className="col-md-4">
-                <Link
-                  passHref
-                  href="https://apps.apple.com/ng/app/afrilearn/id1587978653"
-                >
-                  <Image
-                    alt={"design image"}
-                    src="/assets/img/common/homepage/App Store Badge.png"
-                    width={150}
-                    height={45}
-                  />
-                </Link>
+    imageURLs: ['/assets/img/common/homepage/learn.jpeg'],
+  
+  }
+  return (<>
+    <div  className={`row ${styles.crossPlatform}`}>
+
+      <section className={`row ${styles.profiles}`}>
+        <div className={`col-md-6 ${styles.sectionImageContainer}`}>
+          <Image alt={"design image"} src={data?.imageURLs[0]} width={'754px'} height={'618px'}  />
+        </div>
+        <div className={`col-md-6 ${styles.crossPlatformTextPosition}`}>
+          <h3>{data?.title}<br className="desktopOnly" />{data?.titlePart2}</h3>
+          {data?.description.map((item) => {
+            return <p key={item}><span className={styles.bulletTexttt}>{item}</span></p>
+          })}
+          <section className={`row ${styles.mobileDownloadSection}`}>
+            <div className="mobileOnlyy">
+              <div className='col-md-4 m-2'  >
+              <Link passHref href="https://play.google.com/store/apps/details?id=com.afrilearn">
+                <Image alt={"design image"} src='/assets/img/common/homepage/Google Play Badge.png'  width={"241.28px"} height={"71.49px"} />
+              </Link>
               </div>
             </section>
           </div>

@@ -93,6 +93,10 @@ a {
 .brand-logo {
     width: 150px;
 }
+.mobileOnlyy {
+  display: flex !important;
+  flex-direction: row !important
+}
 
 .our-story-frag {
   margin-right: 150px;
@@ -121,7 +125,11 @@ a {
   .mobileOnly {
     display: block !important;
   }
- 
+  .mobileOnlyy {
+    display: flex !important;
+    flex-direction: row !important;
+  }
+  
   .desktopOnly {
     display: none !important;
   }
