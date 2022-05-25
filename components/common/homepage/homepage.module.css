@@ -80,14 +80,13 @@
 }
 .secondSectionul li {
   display: inline-block;
-  /* background-color: red; */
   margin-right: 10px;
   padding: 17px 27px;
-  color: #a6a6a6;
 }
+
 .secondSectionul span {
   display: inline-block;
-  border-left: solid 3px black;
+  border-left: solid 3px #00D9B6 ;
   height: 21px;
   position: relative;
   top: 6px;
@@ -95,7 +94,7 @@
 }
 .activeOption {
   background: #f4f5f7;
-  color: black !important;
+  color: #00D9B6 !important;
 }
 .profiles {
   margin-top: 60px;
@@ -505,6 +504,44 @@
   text-align: center;
 }
 
+.cardstylling {
+  margin-top: 45px;
+  display: grid;
+  grid-template-columns: repeat(3, 30%);
+  grid-template-rows: repeat(1, 1fr);;
+  gap: 15px;
+  border: none;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+
+
+.cardstylling ul {
+  margin-top: 5px;
+  list-style-type: none;
+}
+
+.cardstylling ul li{
+  text-align: start;
+  margin-top: 30px;
+}
+
+.cardstylling ul li span {
+  margin-right: 10px;
+}
+
+.cardstylling button {
+  background: #00D9B6;
+  border-radius: 30px;
+  width: 261px;
+  padding: 9px;
+  color: #FFFFFF;
+  border: none;
+  margin-left: 50px;
+
+}
+
 .partners .box {
   display: inline-block;
   position: relative;
@@ -604,4 +641,20 @@
   color: white !important;
   padding: 15px 18px !important;
   border-radius: 39px;
+}
+
+@media screen and (max-width: 768px) {
+  .cardstylling {
+    margin-top: 45px;
+    display: grid;
+    grid-template-columns: repeat(1, 88%);
+    gap: 10px;
+    border: none;
+    justify-content: center;
+  }
+
+  .cardstylling button {
+    margin-left: 22px;
+  }
+
 }

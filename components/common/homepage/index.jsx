@@ -1,10 +1,13 @@
-
+/* eslint-disable @next/next/no-html-link-for-pages */
+import React, { useState, useRef} from 'react';
 import Link from "next/link";
 import styles from "./homepage.module.css";
+import Slider from "react-slick";
 import Image from "next/image";
 import WhyAfrilearn from "./extra/whyAfrilearn";
 import ExploreAfrilearn from "./extra/exploreAfrilearn";
-import CommentPage from "./extra/commentPage";
+import { BsCheck2All } from 'react-icons/bs';
+// import CommentPage from "./extra/commentPage";
 
 
 // {/* <video
@@ -72,6 +75,7 @@ const HomePage = () => {
       <ExploreAfrilearn />
       <GameIntro />
       <CrossPlatform />
+      <JoinLeague />
       <Testimonials />
       <Faq />
       <QuickJoin />
@@ -173,47 +177,102 @@ const CrossPlatform = () => {
                     />
                   </Link>
                 </div>
-                {/* </div> */}
-                {/* <div className="col-sm-4"> */}
-//=======
-//    imageURLs: ['/assets/img/common/homepage/learn.jpeg'], 
-//  }
-//
-//  return (<>
-//    <div  className={`row ${styles.crossPlatform}`}>
-//
-//      <section className={`row ${styles.profiles}`}>
-//        <div className={`col-md-6 ${styles.sectionImageContainer}`}>
-//          <Image alt={"design image"} src={data?.imageURLs[0]} width={'754px'} height={'618px'}  />
-//        </div>
-//        <div className={`col-md-6 ${styles.crossPlatformTextPosition}`}>
-//         <h3>{data?.title}<br className="desktopOnly" />{data?.titlePart2}</h3>
-//          {data?.description.map((item) => {
-//            return <p key={item}><span className={styles.bulletTexttt}>{item}</span></p>
-//          })}
-//          <section className={`row ${styles.mobileDownloadSection}`}>
-//            <div className="mobileOnlyy">
-//              <div className='col-md-4 m-2'  >
-//              <Link passHref href="https://play.google.com/store/apps/details?id=com.afrilearn">
-//                <Image alt={"design image"} src='/assets/img/common/homepage/Google Play Badge.png'  width={"241.28px"} height={"71.49px"} />
-//              </Link>
-//>>>>>>> dev
+               </div> 
+    </section>
+    </div>
+    </section>
+    </div>
+    </>
+  );
+};
+
+const JoinLeague = () => {
+
+  const example= [
+    {
+      id: 1,
+      added: "Everything in free:",
+      title: "Afrilearn Free",
+      button: "JOIN FOR FREE",
+      details: [
+        "50,000+ Official Past Questions & Solutions", 
+        "5000+ Curriculum-Relevant Class Notes2",
+        "3000+ Curriculum-Relevant Video Lessons",
+        "Gamified competitions with weekly cash prizes",
+        "Discover your strength with insightful analytics",
+        "Boost your confidence with personalised learning",
+        "Achieve best grades, university admission, and success in life."
+      ]
+    },
+    {
+      id: 2,
+      added: "Everything in free plus:",
+      title: "Afrilearn Pro",
+      button: "START FREE TRIAL",
+      details: [
+        "Unlimited Video Lessons", 
+        "Online Homework Help",
+        "Solutions Review with personalized lesson to practice your mistakes.",
+        "Coding Classes (Including HTML, CSS and JavaScript)",
+        "Languages Classes (Including Yoruba, Ibo etc)",
+        "Access to live tutors",
+        "Students & teachers chat room",
+        "No Ads"
+      ]
+    },
+    {
+      id: 3,
+      added: "Everything in Pro plus:",
+      title: "Afrilearn Enterprise",
+      button: "REQUEST A DEMO",
+      details: [
+        "Transform your students’ lives with world-class supplementary education", 
+        "Multiply students’ enrollment and stand out from the competition",
+        "Access ready lesson notes to accelerate your students’ learning",
+        "Conduct seamless examinations with instant results for your students.",
+        "Access powerful data insights to advance academic excellence",
+        "Cut back Faculty workload to save time and resources",
+        "Minimize the time spent creating, administering, and grading exams",
+        "Earn more while delivering your school’s mandate",
+      ]
+    }
+    
+  ]
+
+    return (
+      <>
+      <div  className={`row ${styles.faq}`}>
+        <h2>Join league of world-class learners</h2>
+        <div className={styles.cardstylling} >
+        {
+          example.map((examp) => {
+           return (
+             <>
+            <div className="card text-center p-4" >
+              <div className="card-title">
+                <h4>{examp.title}</h4>
+                <p>{examp.added}</p>
               </div>
-    <div className='col-md-4 m-2' >
-    <Link passHref href="https://apps.apple.com/ng/app/afrilearn/id1587978653">
-                <Image alt={"design image"} src='/assets/img/common/homepage/App Store Badge.png' width={"241.28px"} height={"71.49px"} />
-              </Link>
-    </div>
-            {/* </div> */}
-            {/* <div className="col-sm-4"> */}
-              
+                <div className="card-body text-dark" id={examp.id} >
+                  <ul >
+                    {examp.details.map((arrFour, i) =>
+                      <li key={i}><span>{<BsCheck2All color='#00D9B6'/>}</span>{arrFour}</li>)}
+                  </ul>
+                </div>
+                <button>{examp.button}</button>
             </div>
-          </section>
+        </>
+           )
+          })
+        }
         </div>
-      </section>
-    </div>
-  </>)
+        
+        </div>
+        </>
+    )
 }
+
+
 const Testimonials = () => {
   const data = {
     title: "What people are saying about Afrilearn?",
@@ -252,13 +311,15 @@ const Testimonials = () => {
             </div>
           </section>
         </section>
-        <CommentPage />
+        {/* <CommentPage /> */}
 
       </div>
     </>
   );
 };
 const Faq = () => {
+
+  const [currentModal, openModal] = useState(null);
   const data = {
     title: "Frequently asked questions",
     questions: [
@@ -449,25 +510,50 @@ const Partners = () => {
       },
     ],
   };
+
+  const customeSlider = useRef();
+
+  const settings = {
+    infinite: true,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    autoplay: true,
+    speed: 1000,
+    autoplaySpeed: 1000,
+    cssEase: "linear",
+    initialSlide: 0,
+    arrows: false,
+  };
+
   return (
+    
     <>
+
       <div id="landingpage-partners" className={`row ${styles.partners}`}>
         <h2>{data.title}</h2>
-        <section>
-          {data.partners.map((partner, i) => {
-            return (
-              <div key={i} className={styles.box}>
-                <Image
-                  alt={"design image"}
-                  className={styles.partnerLogo}
-                  src={partner.logoURL}
-                  layout={"fill"}
-                />
-              </div>
-            );
-          })}
-        </section>
+          <section className="parnet-frag-color">
+          <Slider  {...settings} ref={customeSlider} >
+            {data.partners.map((partner, i) => {
+        
+              return (
+
+                
+                  <div key={i}className={styles.box}  >
+                      <Image
+                        alt={"design image"}
+                        className={styles.partnerLogo}
+                        src={partner.logoURL}
+                        layout={"fill"}
+                      />
+                  </div>
+               
+              );
+            })}
+            </Slider>
+          </section>
+     
       </div>
+     
     </>
   );
 };

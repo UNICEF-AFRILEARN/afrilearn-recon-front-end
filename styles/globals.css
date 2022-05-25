@@ -122,6 +122,29 @@ a {
   margin-bottom: 40px;
 }
 
+.our-story-frag {
+  margin-right: 150px;
+  margin-top: 10px;
+  font-weight: 400;
+  size: 20px;
+  line-height: 26.2px;
+  color: #A6A6A6;
+
+}
+.text-card {
+  background-color: blue;
+  border: solid 1px yellow;
+  display: flex;
+}
+
+.text-card ul {
+  margin: 20px;
+}
+
+.testLi {
+  background-color: rgb(198, 226, 43);
+}
+
 @media screen and (max-width: 768px) {
   .mobileOnly {
     display: block !important;

@@ -21,7 +21,7 @@ const Quiz: FC = () => {
      <Image src={'/assets/img/common/Quiz/animation_500_kvum0mlt 1.png'} width={400} height={400} />  
      </div>
      
-     <P SubjectName={"Basic Technology"} name={"Rawan"} > </P>
+     {/* <P SubjectName={"Basic Technology"} name={"Rawan"} > </P> */}
         <Button  className={styles.button} > GET STARTED </Button>
       </div>
         
