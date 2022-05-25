@@ -313,42 +313,6 @@ const QuickJoin = () => {
       <div id="landingpage-quickJoin" className={`row ${styles.quickJoin}`}>
         <h2>{data.title}</h2>
         <h6>{data.description}</h6>
-        {/* <section>
-          {/* <div
-            onClick={(e) => console.log(`Quick join to class:`, e.target)}
-            className={styles.container}
-          >
-            <span
-              style={{
-                position: "absolute",
-                zIndex: 1,
-                top: "20%",
-                left: "25%",
-                fontSize: "18px",
-                lineHeight: "25px",
-                color: "#000000",
-              }}
-            >
-              {"Select class"}
-            </span>
-            <div className={styles.quickJoinDropDown}>
-              <Image
-                alt={"design image"}
-                src={data?.imageURL[0]}
-                className={styles.classes}
-                width="500px"
-                height="50px"
-              />
-              <Image
-                alt={"design image"}
-                src={data?.imageURL[1]}
-                className={styles.joinButton}
-                width="400px"
-                height="48px"
-              />
-            </div>
-          </div> }
-        </section> */}
         <section>
           <div className={`row ${styles.courseSelectSection}`}>
             <div className="col-md-12">
