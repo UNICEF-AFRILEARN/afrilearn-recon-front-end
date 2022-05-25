@@ -330,6 +330,9 @@ const Faq = () => {
 //     }
 //  }
 
+const handleToggle = (id) => {
+  console.log(id)
+}
 
   return (
     <>
@@ -345,11 +348,12 @@ const Faq = () => {
             return (
               <div
                 key={i}
-                onClick={(e) => openModal(`FAQ #${i + 1}`)}
+                onClick={(e) => handleToggle(`FAQ #${i + 1}`)}
                 className={styles.faqHover}
                 style={{ position: "relative" }}
               >
                 <span
+                 key={i}
                   style={{
                     position: "absolute",
                     zIndex: 1,
@@ -375,14 +379,6 @@ const Faq = () => {
                 />
                {currentModal === 'FAQ #1' ? 
                       <h1>Hi</h1>
-                    : null}
-
-                    {currentModal === 'FAQ #2' ?
-                      <h1> Yo</h1>
-                    : null}
-
-                    {currentModal === 'FAQ #3' ?
-                      <h1>sup</h1>
                     : null}
               </div>
            
