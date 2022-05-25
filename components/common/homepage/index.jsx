@@ -235,7 +235,6 @@ const Testimonials = () => {
             </div>
           </section>
         </section>
-
         <CommentPage />
       </div>
     </>
