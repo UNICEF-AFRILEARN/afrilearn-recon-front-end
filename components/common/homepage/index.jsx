@@ -6,6 +6,7 @@ import Image from "next/image";
 import WhyAfrilearn from "./extra/whyAfrilearn";
 import ExploreAfrilearn from "./extra/exploreAfrilearn";
 import { BsCheck2All } from 'react-icons/bs';
+import { Accordion } from 'react-bootstrap';
 
 // {/* <video
 //         src={data?.videoUrl}
@@ -302,6 +303,7 @@ const Answers = ({checkAns}) => {
 const Faq = () => {
 
   const [currentModal, openModal] = useState(null);
+  const [answerId, setAnswerId ] = useState(null)
   const data = {
     title: "Frequently asked questions",
     questions: [
@@ -312,6 +314,39 @@ const Faq = () => {
     ],
     imageURL: ["/assets/img/common/homepage/faq.svg"],
   };
+
+  const answer = {
+    answers: [
+      "Subscription includes unlimited access to all video lessons", 
+      "audio lessons, class notes, practice quizzes, live classes",
+      "and more, covering all subjects and topics, in your chosen",
+      "class. Brace yourself for a profoundly life-changing  experience."
+    ],
+  }
+
+  const faqQuestions = [
+    {
+      id: 1,
+      faq: "What is Afrilearn?",
+      answ:  "Subscription includes unlimited access to all video lessons", 
+    },
+    {
+      id: 2,
+      faq: "What is included in Afrilearn subscription?",
+      answ:  "audio lessons, class notes, practice quizzes, live classes",
+    },
+    {
+      id: 3,
+      faq:  "How do I cancel?",
+      answ: "and more, covering all subjects and topics, in your chosen",
+    },
+    {
+      id: 4,
+      faq:  "Where can I watch?",
+      answ:  "Subscription includes unlimited access to all video lessons", 
+    },
+
+  ]
 
 //  const checkAns = (i) => {
 //     switch (i) {
@@ -331,7 +366,9 @@ const Faq = () => {
 //  }
 
 const handleToggle = (id) => {
+
   console.log(id)
+    openModal(!currentModal)
 }
 
   return (
@@ -339,12 +376,29 @@ const handleToggle = (id) => {
       <div
         id="landingpage-faq"
         className={`row ${styles.faq}`}
-        style={{ margin: "93px" }}
+        style={{ margin: "25px" }}
       >
         <h2>{data.title}</h2>
         
         <section>
-          {data.questions.map((faq, i) => {
+             {
+               faqQuestions.map((faq, i) => {
+                 return (
+                  <Accordion key={i} >
+                  <Accordion.Item eventKey={i}>
+                    <Accordion.Header>{faq.faq}</Accordion.Header>
+                     
+                          <Accordion.Body key={i} className='border-0 accordion-body-com'>
+                              {faq.answ}
+                        </Accordion.Body>
+                    
+                  </Accordion.Item>
+
+                </Accordion>
+                 )
+               })
+             }
+          {/* {faqQuestions.map((faq, i) => {
             return (
               <div
                 key={i}
@@ -365,10 +419,8 @@ const handleToggle = (id) => {
                   }}
                   
                 >
-                  {faq}
+                  {faq.faq}
                   
-
-                 
                 </span>
                 
                 <Image
@@ -377,13 +429,16 @@ const handleToggle = (id) => {
                   width="500px"
                   height="60px"
                 />
-               {currentModal === 'FAQ #1' ? 
-                      <h1>Hi</h1>
-                    : null}
+                <div>
+                  {currentModal && faq.answ}
+                </div>
               </div>
-           
+
+              
+             
             );
-          })}
+          
+          })} */}
         </section>
       </div>
     </>
