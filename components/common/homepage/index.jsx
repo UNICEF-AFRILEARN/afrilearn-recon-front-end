@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 import React, { useState, useRef} from 'react';
 import Link from "next/link";
 import styles from "./homepage.module.css";
@@ -6,7 +7,7 @@ import Image from "next/image";
 import WhyAfrilearn from "./extra/whyAfrilearn";
 import ExploreAfrilearn from "./extra/exploreAfrilearn";
 import { BsCheck2All } from 'react-icons/bs';
-import CommentPage from "./extra/commentPage";
+// import CommentPage from "./extra/commentPage";
 
 
 // {/* <video
@@ -310,7 +311,7 @@ const Testimonials = () => {
             </div>
           </section>
         </section>
-        <CommentPage />
+        {/* <CommentPage /> */}
 
       </div>
     </>
