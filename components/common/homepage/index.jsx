@@ -7,12 +7,7 @@ import Image from "next/image";
 import WhyAfrilearn from "./extra/whyAfrilearn";
 import ExploreAfrilearn from "./extra/exploreAfrilearn";
 import { BsCheck2All } from 'react-icons/bs';
-<<<<<<< HEAD
 import { Accordion } from 'react-bootstrap';
-=======
-// import CommentPage from "./extra/commentPage";
-
->>>>>>> dev
 
 // {/* <video
 //         src={data?.videoUrl}
@@ -125,7 +120,6 @@ const CrossPlatform = () => {
   const data = {
     title: "Learn on any device.",
     description: ["Anywhere, everywhere. Cancel anytime."],
-//  <<<<<<< whatPeoplePage-feature
     imageURLs: ["/assets/img/common/homepage/learn.jpeg"],
   };
   return (
