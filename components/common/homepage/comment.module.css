@@ -15,7 +15,7 @@
   display: grid;
   grid-template-columns: 10% 90%;
   align-self: center;
-  padding: 0 32px;
+  padding: 20px 32px;
   box-sizing: border-box;
 }
 
@@ -52,7 +52,7 @@
   width: 445px;
   /* height: 268px; */
   left: 0;
-  top: 302px;
+  top: 352px;
   display: grid;
   align-content: center;
 }
@@ -72,14 +72,14 @@
   width: 350px;
   height: 204px;
   left: 460px;
-  top: 209px;
+  top: 249px;
 }
 .list5 {
   position: absolute;
   width: 350px;
   height: 204px;
   left: 455px;
-  top: 372px;
+  top: 452px;
   display: grid;
   align-content: center;
 }
@@ -97,7 +97,7 @@
   width: 350px;
   height: 300px;
   left: 820px;
-  top: 208px;
+  top: 228px;
   display: grid;
   align-content: center;
 }
