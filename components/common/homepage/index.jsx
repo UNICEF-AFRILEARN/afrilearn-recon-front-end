@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import styles from "./homepage.module.css";
 import Image from "next/image";
@@ -20,6 +21,7 @@ const HomePage = () => {
         <div id="homepageFirstSection" className="row">
           <div className="col-md-6" id="homepageFirstSectionText">
             <h1 className={styles.mainheading}>Get ahead with Afrilearn!</h1>
+
             <p className={styles.underHeadingP}>
               Access free, world-class Primary and Secondary Education (Ages
               6-18) for Best Grades and Success in life.
@@ -74,8 +76,8 @@ const HomePage = () => {
 
       <Footer />
     </>
-  );
-};
+  )
+}
 
 const GameIntro = () => {
   const data = {
@@ -132,6 +134,7 @@ const CrossPlatform = () => {
   const data = {
     title: "Learn on any device.",
     description: ["Anywhere, everywhere. Cancel anytime."],
+
     imageURLs: ["/assets/img/common/homepage/learn.jpeg"],
   };
   return (
@@ -200,47 +203,32 @@ const CrossPlatform = () => {
 const Testimonials = () => {
   const data = {
     title: "What people are saying about Afrilearn?",
-    description: [
-      "Our greatest advertisement are the\ntestimonials of successful learners!",
-    ],
-    imageURLs: [
-      "/assets/img/common/homepage/quoto-mark.svg",
-      "/assets/img/common/homepage/group.svg",
-    ],
-  };
-  return (
-    <>
-      <div
-        id="landingpage-testimonials"
-        className={`row ${styles.testimonials}`}
-        style={{ margin: "93px" }}
-      >
-        <section className={styles.container}>
-          <div
-            className={`col-xl-6 col-lg-7 col-md-8 col-sm-9 ${styles.heroText}`}
-          >
-            <h1>{`${data.title}`}</h1>
-          </div>
-          {/* <div className='col-lg-7 '></div> */}
-          <p>{`${data.description.at(0)}`}</p>
-          <section className={`row`}>
-            <div className={`col-md-12`}>
-              <Image
-                alt={"design image"}
-                className={styles.mark}
-                src={data?.imageURLs[0]}
-                width={"142.37px"}
-                height={"120px"}
-              />
-            </div>
-          </section>
-        </section>
+    description: ["Our greatest advertisement are the\ntestimonials of successful learners!"],
+    imageURLs: ['/assets/img/common/homepage/quoto-mark.svg',
+      '/assets/img/common/homepage/group.svg'
+    ]
 
+  }
+  return (<>
+    <div id="landingpage-testimonials" className={`row ${styles.testimonials}`} style={{ margin: '93px' }}>
+      <section className={styles.container}>
+        <div className={`col-xl-6 col-lg-7 col-md-8 col-sm-9 ${styles.heroText}`}>
+          <h1>{`${data.title}`}</h1>
+        </div>
+        {/* <div className='col-lg-7 '></div> */}
+        <p>{`${data.description.at(0)}`}</p>
+        <section className={`row`}>
+          <div className={`col-md-12`}>
+            <Image alt={"design image"} className={styles.mark} src={data?.imageURLs[0]} width={'142.37px'} height={'120px'} />
+          </div>
+        </section>
+      </section>
         <CommentPage />
       </div>
-    </>
-  );
-};
+    </div>
+
+  </>)
+}
 const Faq = () => {
   const data = {
     title: "Frequently asked questions",
@@ -248,65 +236,55 @@ const Faq = () => {
       "What is Afrilearn?",
       "What is included in Afrilearn subscription?",
       "How do I cancel?",
-      "Where can I watch?",
+      "Where can I watch?"
     ],
-    imageURL: ["/assets/img/common/homepage/faq.svg"],
-  };
+    imageURL: ['/assets/img/common/homepage/faq.svg']
+  }
 
-  return (
-    <>
-      <div
-        id="landingpage-faq"
-        className={`row ${styles.faq}`}
-        style={{ margin: "93px" }}
-      >
-        <h2>{data.title}</h2>
-        <section>
-          {data.questions.map((faq, i) => {
-            return (
-              <div
-                key={i}
-                onClick={(e) => console.log(`FAQ #${i + 1}: ${faq}`, e)}
-                className={styles.faqHover}
-                style={{ position: "relative" }}
-              >
-                <span
-                  style={{
-                    position: "absolute",
-                    zIndex: 1,
-                    top: "25%",
-                    left: "10px",
-                    fontSize: "18px",
-                    lineHeight: "25px",
-                    color: "#000000",
-                  }}
-                >
-                  {faq}
-                </span>
-                <Image
-                  alt={"design image"}
-                  src={data?.imageURL[0]}
-                  width="500px"
-                  height="60px"
-                />
-              </div>
-            );
-          })}
-        </section>
-      </div>
-    </>
-  );
-};
+  return (<>
+    <div id="landingpage-faq" className={`row ${styles.faq}`} style={{ margin: '93px' }}>
+      <h2>{data.title}</h2>
+      <section>
+        {data.questions.map((faq, i) => {
+
+          return (
+            <div
+              key={i}
+              onClick={(e) => console.log(`FAQ #${i + 1}: ${faq}`, e)}
+              className={styles.faqHover}
+              style={{ position: 'relative' }}
+            >
+
+              <span style={{
+                position: 'absolute',
+                zIndex: 1,
+                top: '25%',
+                left: '10px',
+                fontSize: '18px',
+                lineHeight: '25px',
+                color: '#000000',
+              }}>
+                {faq}
+              </span>
+              <Image alt={"design image"} src={data?.imageURL[0]} width="500px" height="60px" />
+            </div>
+        )
+        })}
+
+      </section>
+    </div>
+  </>)
+}
 const QuickJoin = () => {
   const data = {
     title: "Ready for success?",
-    description: ["Join the league of high-flying learners"],
-    courses: ["1", "2", "3"],
-    imageURL: [
-      "/assets/img/common/homepage/quick-join-classes.svg",
-      "/assets/img/common/homepage/quick-join-button.svg",
+    description: [
+      "Join the league of high-flying learners",
     ],
-  };
+    courses: ["1", "2", "3"],
+    imageURL: ['/assets/img/common/homepage/quick-join-classes.svg',
+      '/assets/img/common/homepage/quick-join-button.svg']
+  }
 
   return (
     <>
@@ -384,84 +362,156 @@ const QuickJoin = () => {
               </div>
             </div>
           </div>
-        </section>
-      </div>
-    </>
-  );
-};
+        </div>
+      </section>
+    </div>
+  </>)
+}
 const Partners = () => {
   const data = {
     title: "Key Supporters",
     partners: [
       {
         position: 0,
-        logoURL: "/assets/img/common/partners/1.svg",
-        name: "",
+        logoURL: '/assets/img/common/partners/1.svg',
+        name: '',
       },
       {
         position: 0,
-        logoURL: "/assets/img/common/partners/2.svg",
-        name: "",
+        logoURL: '/assets/img/common/partners/2.svg',
+        name: '',
       },
       {
         position: 0,
-        logoURL: "/assets/img/common/partners/3.svg",
-        name: "",
+        logoURL: '/assets/img/common/partners/3.svg',
+        name: '',
       },
       {
         position: 0,
-        logoURL: "/assets/img/common/partners/4.svg",
-        name: "",
+        logoURL: '/assets/img/common/partners/4.svg',
+        name: '',
       },
       {
         position: 0,
-        logoURL: "/assets/img/common/partners/5.svg",
-        name: "",
+        logoURL: '/assets/img/common/partners/5.svg',
+        name: '',
       },
       {
         position: 0,
-        logoURL: "/assets/img/common/partners/6.svg",
-        name: "",
+        logoURL: '/assets/img/common/partners/6.svg',
+        name: '',
       },
       {
         position: 0,
-        logoURL: "/assets/img/common/partners/7.svg",
-        name: "",
-      },
+        logoURL: '/assets/img/common/partners/7.svg',
+        name: '',
+      }
     ],
-  };
-  return (
-    <>
-      <div id="landingpage-partners" className={`row ${styles.partners}`}>
-        <h2>{data.title}</h2>
-        <section>
-          {data.partners.map((partner, i) => {
-            return (
+
+  }
+  return (<>
+    <div id="landingpage-partners" className={`row ${styles.partners}`}>
+      <h2>{data.title}</h2>
+      <section>
+        {data.partners.map((partner, i) => {
+
+          return (
               <div key={i} className={styles.box}>
-                <Image
-                  alt={"design image"}
-                  className={styles.partnerLogo}
-                  src={partner.logoURL}
-                  layout={"fill"}
-                />
+                <Image alt={"design image"} className={styles.partnerLogo} src={partner.logoURL} layout={'fill'} />
               </div>
-            );
-          })}
-        </section>
-      </div>
-    </>
-  );
-};
+          )
+        })}
+      </section>
+    </div>
+
+  </>)
+}
 const Footer = () => {
-  return (
-    <>
-      <div id="landingpage-footer" className={`row ${styles.footer}`}>
-        <section></section>
+  const data ={
+    imageURL: ['/assets/img/common/homepage/facebook.svg',
+      '/assets/img/common/homepage/instagram.svg',
+      '/assets/img/common/homepage/twitter.svg',
+      '/assets/img/common/homepage/inkedlin.svg',
+      '/assets/img/common/homepage/youtube.svg']
+  }
 
-        <section className={styles.last}></section>
+  
+  const currentYear = new Date().getFullYear();
+  
+
+  return (<>
+<div id="landingpage-footer" className={`row ${styles.footer}`}>
+     <div className={`col-md-3 ${styles.footerlogo}`}>
+     <Image alt={"design image"} src='/assets/img/common/homepage/whitelogo.png' width={"220px"} height={"80px"} />
+    </div>
+    <div className={`col-md-2 ${styles.footerText}`}>
+      <h3>Quicklinks</h3>
+      <ul>
+        <li><Link passHref href="http://blog.myafrilearn.com/">Blog</Link></li>
+        <li><Link passHref href="https://web.facebook.com/myAfrilearn">Media</Link></li>
+        <li><Link passHref href="https://myafrilearn.com/join-the-team">Teach on Afrilearn</Link></li>
+        <li><Link passHref href="https://play.google.com/store/apps/details?id=com.afrilearn">Download App</Link></li>
+      </ul>
+    </div>
+    <div className={`col-md-2 ${styles.footerText}`}>
+      <h3>Company</h3>
+      <ul>
+        <li><Link passHref href="https://myafrilearn.com/about">About</Link></li>
+        <li><Link passHref href="https://myafrilearn.com/impact-stories">Impact Stories</Link></li>
+        <li><Link passHref href="https://myafrilearn.com/about#team">Team</Link></li>
+        <li><Link passHref href="https://myafrilearn.com/faculty">Faculty </Link></li>
+        <li><Link passHref href="https://myafrilearn.com/join-the-team">Career </Link></li>
+        <li><Link passHref href="https://myafrilearn.com/partnership">Paternership </Link></li>
+      </ul>
+    </div>
+    <div className={`col-md-3 ${styles.footerText}`}>
+      <h3>Contact</h3>
+      <ul>
+        <li>hello@myafrilearn.com</li>
+        <li>+ 234 802 785 5262</li>
+        <li>+234 805 154 4949</li>
+        <li>6 Gbemisola Street, Allen Avenue, Ikeja, Lagos, Nigeria.</li>
+      </ul>
+    </div>
       </div>
-    </>
-  );
-};
+      <div >
+      <section className={`row ${styles.last}`}>
+        <div className={`col-md-3 ${styles.lasttt}`}>
+        <p> &copy; {currentYear}  Afrilearn. All rights reserved</p>
+      {/* <p>© 2021 Afrilearn. All rights reserved</p> */}
+        </div>
+        <div className={`col-md-2 ${styles.lastt}` }>
+        <li><Link passHref href="">Privacy Policy </Link></li>
+        </div>
+        <div className={`col-md-2 ${styles.lastt}` }>
+        <li><Link passHref href="/"> Terms of Service</Link></li>
+        </div>    
+        <div className='col-md-2 '>
+          <div className={styles.lastttt}>
+<div className='col-md-2 m-2 m-2'> <Link passHref href="https://web.facebook.com/myAfrilearn">
+  <Image alt={"design image"} src='/assets/img/common/homepage/Facebook.svg' width={"22.8px"} height={"22.8px"} />
+              </Link>
+              </div>
+          <div className='col-md-2 m-2'>  <Link passHref href="https://www.instagram.com/accounts/login/?next=/afrilearn/">
+          <Image alt={"design image"} src={data?.imageURL[1]}  width="22.8px" height="22.8px" />
+              </Link>
+          </div>
+       <div className='col-md-2 m-2'> <Link passHref href="https://twitter.com/Afrilearn">
+       <Image alt={"design image"} src={data?.imageURL[2]}  width="22.8px" height="22.8px" />
+              </Link>
+       </div>
+          <div className='col-md-2 m-2'><Link passHref href="https://www.linkedin.com/company/afrilearn/">
+          <Image alt={"design image"} src='/assets/img/common/homepage/linkedln.png' width={"22.8px"} height={"22.8px"} />
+              </Link></div>
+              <div className='col-md-2 m-2'><Link passHref href="https://www.youtube.com/channel/UC_BnnokJom1DWipMl0oSxWA">
+          <Image alt={"design image"} src='/assets/img/common/homepage/Youtube.svg' width={"22.8px"} height={"22.8px"} />
+              </Link></div>
+</div>
+</div>
+      </section>
+      </div>
+     
+  </>)
+}
 
-export default HomePage;
+export default HomePage
