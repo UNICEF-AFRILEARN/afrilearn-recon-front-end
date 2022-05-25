@@ -78,9 +78,9 @@ const CrossPlatform = () => {
   const data = {
     title: "Learn on any device.",
     description: ["Anywhere, everywhere. Cancel anytime."],
-    imageURLs: ['/assets/img/common/homepage/learn.jpeg'],
-  
+    imageURLs: ['/assets/img/common/homepage/learn.jpeg'], 
   }
+
   return (<>
     <div  className={`row ${styles.crossPlatform}`}>
 
@@ -304,6 +304,10 @@ const Footer = () => {
       '/assets/img/common/homepage/youtube.svg']
   }
 
+  
+  const currentYear = new Date().getFullYear();
+  
+
   return (<>
 <div id="landingpage-footer" className={`row ${styles.footer}`}>
      <div className={`col-md-3 ${styles.footerlogo}`}>
@@ -342,7 +346,8 @@ const Footer = () => {
       <div >
       <section className={`row ${styles.last}`}>
         <div className={`col-md-3 ${styles.lasttt}`}>
-          <p>© 2019 Afrilearn. All rights reserved</p>
+        <p> &copy; {currentYear}  Afrilearn. All rights reserved</p>
+      {/* <p>© 2021 Afrilearn. All rights reserved</p> */}
         </div>
         <div className={`col-md-2 ${styles.lastt}` }>
         <li><Link passHref href="">Privacy Policy </Link></li>
