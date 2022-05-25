@@ -313,8 +313,8 @@ const QuickJoin = () => {
       <div id="landingpage-quickJoin" className={`row ${styles.quickJoin}`}>
         <h2>{data.title}</h2>
         <h6>{data.description}</h6>
-        <section>
-          <div
+        {/* <section>
+          {/* <div
             onClick={(e) => console.log(`Quick join to class:`, e.target)}
             className={styles.container}
           >
@@ -343,9 +343,81 @@ const QuickJoin = () => {
                 alt={"design image"}
                 src={data?.imageURL[1]}
                 className={styles.joinButton}
-                width="200px"
+                width="400px"
                 height="48px"
               />
+            </div>
+          </div> }
+        </section> */}
+        <section>
+          <div className={`row ${styles.courseSelectSection}`}>
+            <div className="col-md-12">
+              <div className="row">
+                <div className={`col-8 ${styles.paddingRightOff}`}>
+                  <ul>
+                          <div className={`relative ${styles.myDrop}`}>
+                      <div className={styles.myDropCont}>
+                        <input
+                          className={styles.myPlaceholder}
+                          href="/"
+                          placeholder="Select a Class"
+                        />
+                        <span className={styles.inputImage}>
+                          <Image
+                            alt={"design image"}
+                            src="/assets/img/common/homepage/inputVector.png"
+                            width={17}
+                            height={12}
+                          />
+                        </span>
+                      </div>
+                      <ul className={styles.courseSelectSectionDropDown}>
+                        <li>
+                          <Link href="/">JSS One</Link>
+                        </li>
+                        <li>
+                          <Link href="/">JSS Two</Link>
+                        </li>
+                        <li>
+                          <Link href="/">JSS Three</Link>
+                        </li>
+                        <li>
+                          <Link href="/">SSS One</Link>
+                        </li>
+                        <li>
+                          <Link href="/">SSS Two</Link>
+                        </li>
+                        <li>
+                          <Link href="/">SSS Three</Link>
+                        </li>
+                        <li>
+                          <Link href="/">Primary One</Link>
+                        </li>
+                        <li>
+                          <Link href="/">Primary Two</Link>
+                        </li>
+                        <li>
+                          <Link href="/">Primary Three</Link>
+                        </li>
+                        <li>
+                          <Link href="/">Primary Four</Link>
+                        </li>
+                        <li>
+                          <Link href="/">Primary Five</Link>
+                        </li>
+                        <li>
+                          <Link href="/">Primary Six</Link>
+                        </li>
+                      </ul>
+                    </div>
+                  </ul>
+                </div>
+                <div className={`col-4 ${styles.paddingLeftOff}`}>
+                  <a href="/register">
+                    <input type="submit" value="JOIN FOR FREE" />
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </section>
