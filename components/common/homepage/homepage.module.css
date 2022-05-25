@@ -13,7 +13,7 @@
   margin-top: 40px;
 }
 .joinForFree {
-  border: solid 1px black;
+  /* border: solid 1px black; */
   background-color: #00d9b6;
   color: white !important;
   padding: 10px 20px !important;
@@ -392,7 +392,7 @@
 .testimonials .heroText {
   position: absolute;
   font-family: "heading";
-  /* width: 555px; */
+  width: 555px;
   padding-top: 15px;
   left: 134px;
   font-style: normal;
@@ -449,16 +449,18 @@
 .quickJoin {
   background: #f5f5f5;
   padding: 45px 0 140px;
+  height: 700px;
 }
 .quickJoin h2 {
   font-family: "heading";
   font-size: 40px;
   margin-top: 50px;
   text-align: center;
+  color: #29465b;
 }
 .quickJoin h6 {
   text-align: center;
-  margin-bottom: 93px;
+  margin-bottom: 343px;
 }
 
 .quickJoin .container {
@@ -482,6 +484,104 @@
 .quickJoin .joinButton {
   left: -90px !important;
 }
+
+
+.courseSelectSection {
+    margin-top: -485px;
+}
+
+.paddingRightOff {
+  padding-right: 0 !important;
+}
+
+.paddingRightOff ul li {
+  list-style: none;
+}
+
+.myDropCont {
+  position: relative;
+  /* z-index: 3; */
+  cursor: pointer;
+
+}
+.myPlaceholder {
+  background: #fff !important;
+  /* width: 100%; */
+  display: block;
+  padding: 15px 28px;
+  color: #787878 !important;
+  border-radius: 5px 0 0 5px;
+  margin-top: 12px;
+  width: 501.11px;
+  height: 90.9px;
+  border-radius: 45.0005px 0 0 45.0005px;
+  font-size: 20px !important;
+  border: none;
+}
+
+
+
+.inputImage {
+  position: absolute;
+  top: 38px;
+  right: 15px;
+}
+
+.courseSelectSectionDropDown {
+  background: #fff;
+  color: #787878 !important;
+  border-radius: 0 0 5px 5px;
+  margin-top: -5px;
+  width: 501.11px !important;
+  position: absolute;
+  cursor: pointer;
+
+  /* display: none; */
+  padding-top: 30px;
+  top: 60px;
+  display: none;
+}
+
+.myDropCont:hover ~ .courseSelectSectionDropDown{
+  display: block;
+  cursor: pointer;
+
+}
+/* .courseSelectSectionDropDown li {
+padding: 15px;
+} */
+
+.paddingRightOff ul li {
+    /* list-style: none; */
+    padding-bottom: 7px;
+
+}
+
+.paddingRightOff ul li:hover {
+    /* list-style: none; */
+    /* padding-bottom: 7px; */
+    background-color:#00d9b6 ;
+    
+}
+
+.paddingLeftOff {
+  padding-left: 0 !important;
+}
+
+.paddingLeftOff input[type="submit"] {
+  color: #fff;
+  font-size: 17px;
+  width: 100%;
+  padding: 14.4px 13px;
+  border: none;
+  margin-top: 12px;
+  height: 53px;
+  width: 247.5px;
+  height: 90.9px;
+  background: #00d9b6;
+  border-radius: 0px 45.0005px 45.0005px 0px;
+}
+
 .partners {
   margin: 50px;
   position: relative;
