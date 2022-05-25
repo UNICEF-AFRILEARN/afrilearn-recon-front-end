@@ -222,7 +222,7 @@ const Testimonials = () => {
             <h1>{`${data.title}`}</h1>
           </div>
           {/* <div className='col-lg-7 '></div> */}
-          <p>{`${data.description.at(0)}`}</p>
+          <p>{data.description[0]}</p>
           <section className={`row`}>
             <div className={`col-md-12`}>
               <Image
@@ -319,9 +319,10 @@ const QuickJoin = () => {
               <div className="row">
                 <div className={`col-8 ${styles.paddingRightOff}`}>
                   <ul>
-                          <div className={`relative ${styles.myDrop}`}>
+                    <div className={`relative ${styles.myDrop}`}>
                       <div className={styles.myDropCont}>
                         <input
+                          disabled
                           className={styles.myPlaceholder}
                           href="/"
                           placeholder="Select a Class"
