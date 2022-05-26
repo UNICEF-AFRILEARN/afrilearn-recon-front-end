@@ -168,7 +168,7 @@ a {
     height: 120vh;
     position: absolute;
     right: 10px;
-    z-index: 99;
+    z-index: 1;
     padding-left: 20%;
     text-align: center !important;
     margin-right: 1px;
@@ -182,6 +182,4 @@ a {
       width: 100%;
   }
 
-
-  
 }
