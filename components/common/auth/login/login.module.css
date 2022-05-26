@@ -1,46 +1,90 @@
-.floatImg2{
-    right: 0px !important;
-    position: absolute !important;
-    top: 90px;
+.floatImg2 {
+  right: 0px !important;
+  position: absolute !important;
+  /* color: #00d9b6; */
+  top: 150px;
 }
-.floatImg1{
-    left: 0px !important;
-    position: absolute !important;
-    top: 90px;
+.floatImg1 {
+  left: 0px !important;
+  position: absolute !important;
+  top: 150px;
+  height: 181px;
+  width: 86px;
+  background: #00d9b6;
+  border-radius: 0 100px 100px 0;
 }
-.floatImg3{
-    left: 25% !important;
-    position: absolute !important;
-    top: 39%;
+
+/* .floatImg13 {
+  background: #00d9b6;
+} */
+
+.floatImg3 {
+  left: 25% !important;
+  position: absolute !important;
+  top: 360px;
 }
 .card {
-    display: block;
-    padding: 30px;
-    margin-top: 60px;
-    box-shadow: 0 0.5pt 10pt rgb(0 0 0 / 10%);
-    border-radius: 5px;
-    z-index: 9;
-    position: relative;
-    background: white;
+  width: 491px;
+  height: 610px;
+  display: block;
+  padding: 30px;
+  margin: auto;
+  box-shadow: 0 0.5pt 10pt rgb(0 0 0 / 10%);
+  border-radius: 5px;
+  z-index: 9;
+  position: relative;
+  background: white;
 }
+
+@media screen and (max-width: 520px) {
+  .card {
+    width: 391px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .card {
+    width: 291px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .card {
+    width: 200px;
+    margin: 0 auto;
+  }
+  .card h5 {
+      font-size: 15px;
+  }
+  .pushDown14{
+      display: none;
+  }
+}
+
 .card h5 {
-    font-family: 'subHeading';
-    margin-bottom: 20px;
+  font-family: "subHeading";
+  margin-bottom: 20px;
 }
-.pushDown{
-    margin-bottom: 30px;    
+.pushDown {
+  margin-bottom: 30px;
 }
-.pushDown1{
-    margin-top: 37px;
+.pushDown1 {
+  margin-top: 37px;
 }
 .socialText {
-    display: inline-block;
-    vertical-align: top;
-    margin-left: 3px;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 3px;
 }
 .afterSocialText {
-   margin-top: 20px;
+  margin-top: 20px;
 }
 .socialSection {
-    margin-top: -21px;
+  margin-top: -21px;
+}
+.pushDown13 {
+  background: #00d9b6;
+  border: 0;
 }
