@@ -459,6 +459,25 @@
 .quickJoin .joinButton {
   left: -90px !important;
 }
+
+.quickJoinSec{
+  position: relative;
+}
+
+.subMenu
+{
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.nav:hover ~ .subMenu
+{
+    display: block;
+    /* background-color: blue; */
+}
+
 .partners {
   margin: 50px;
   position: relative;

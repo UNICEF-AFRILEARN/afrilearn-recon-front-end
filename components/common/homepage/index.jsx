@@ -313,43 +313,83 @@ const QuickJoin = () => {
       <div id="landingpage-quickJoin" className={`row ${styles.quickJoin}`}>
         <h2>{data.title}</h2>
         <h6>{data.description}</h6>
-        <section>
-          <div
-            onClick={(e) => console.log(`Quick join to class:`, e.target)}
-            className={styles.container}
-          >
-            <span
-              style={{
-                position: "absolute",
-                zIndex: 1,
-                top: "20%",
-                left: "25%",
-                fontSize: "18px",
-                lineHeight: "25px",
-                color: "#000000",
-              }}
-            >
-              {"Select class"}
-            </span>
-            <div className={styles.quickJoinDropDown}>
-              <Image
-                alt={"design image"}
-                src={data?.imageURL[0]}
-                className={styles.classes}
-                width="700px"
-                height="7=0px"
-              />
-              <Link passHref href="/" className={styles.joinButton}>
-                <Image
-                  alt={"design image"}
-                  src={data?.imageURL[1]}
-                  width="300px"
-                  height="70px"
-                  className={styles.joinButton}
-                />
-              </Link>
-            </div>
+        <section className={styles.quickJoinSec}>
+          {/* <div>
+            <ul className={styles.nav}>
+              <li className={styles.topMenu}>
+                <a href="#">Home</a>
+              </li>
+              <li className={styles.subMenu}>
+                <ul id="home">
+                  <li>
+                    <a href="#">Hello</a>
+                  </li>
+                  <li>
+                    <a href="#">World</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div> */}
+
+          <div className={styles.nav}>
+            <ul>
+              <li className="relative">
+                <Link href="/">Select a Class</Link>
+              </li>
+            </ul>
           </div>
+          <ul className={styles.subMenu}>
+            <li>
+              <Link href="/">JSS One</Link>
+            </li>
+            <li>
+              <Link href="/">JSS Two</Link>
+            </li>
+            <li>
+              <Link href="/">JSS Three</Link>
+            </li>
+            <li>
+              <Link href="/">SSS One</Link>
+            </li>
+            <li>
+              <Link href="/">SSS Two</Link>
+            </li>
+            <li>
+              <Link href="/">SSS Three</Link>
+            </li>
+            <li>
+              <Link href="/">Primary One</Link>
+            </li>
+            <li>
+              <Link href="/">Primary Two</Link>
+            </li>
+            <li>
+              <Link href="/">Primary Three</Link>
+            </li>
+            <li>
+              <Link href="/">Primary Four</Link>
+            </li>
+            <li>
+              <Link href="/">Primary Five</Link>
+            </li>
+            <li>
+              <Link href="/">Primary Six</Link>
+            </li>
+          </ul>
+
+          <button className="col-2">Submit</button>
+          {/* <Link passHref href="/" className={styles.joinButton}>
+            <Image
+              alt={"design image"}
+              src={data?.imageURL[1]}
+              width="300px"
+              height="70px"
+              className={styles.joinButton}
+            />
+          </Link> */}
+          {/* </div> */}
+          {/* </div> */}
         </section>
       </div>
     </>
