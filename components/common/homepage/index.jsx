@@ -384,57 +384,7 @@ const QuickJoin = () => {
               </div>
             </div>
           </div>
-          <ul className={styles.subMenu}>
-            <li>
-              <Link href="/">JSS One</Link>
-            </li>
-            <li>
-              <Link href="/">JSS Two</Link>
-            </li>
-            <li>
-              <Link href="/">JSS Three</Link>
-            </li>
-            <li>
-              <Link href="/">SSS One</Link>
-            </li>
-            <li>
-              <Link href="/">SSS Two</Link>
-            </li>
-            <li>
-              <Link href="/">SSS Three</Link>
-            </li>
-            <li>
-              <Link href="/">Primary One</Link>
-            </li>
-            <li>
-              <Link href="/">Primary Two</Link>
-            </li>
-            <li>
-              <Link href="/">Primary Three</Link>
-            </li>
-            <li>
-              <Link href="/">Primary Four</Link>
-            </li>
-            <li>
-              <Link href="/">Primary Five</Link>
-            </li>
-            <li>
-              <Link href="/">Primary Six</Link>
-            </li>
-          </ul>
-
-          <button className="col-2">Submit</button>
-          {/* <Link passHref href="/" className={styles.joinButton}>
-            <Image
-              alt={"design image"}
-              src={data?.imageURL[1]}
-              width="300px"
-              height="70px"
-              className={styles.joinButton}
-            />
-          </Link> */}
-          {/* </div> */}
-          {/* </div> */}
+        
         </section>
       </div>
     </>
