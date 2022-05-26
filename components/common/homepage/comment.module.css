@@ -35,7 +35,8 @@
 }
 
 .commentImg {
-  color: #969bab;
+      opacity: 0.3 !important;
+
 }
 
 .list1 {
