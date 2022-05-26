@@ -130,7 +130,15 @@ a {
     display: flex !important;
     flex-direction: row !important;
   }
-
+  .floatImg2 {
+    visibility: hidden !important;
+  }
+  .floatImg1 {
+    visibility: hidden !important;
+  }
+  .floatImg3 {
+    visibility: hidden !important;
+  }
   .desktopOnly {
     display: none !important;
   }
