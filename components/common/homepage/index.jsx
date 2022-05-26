@@ -336,16 +336,18 @@ const QuickJoin = () => {
                 alt={"design image"}
                 src={data?.imageURL[0]}
                 className={styles.classes}
-                width="500px"
-                height="50px"
+                width="700px"
+                height="7=0px"
               />
-              <Image
-                alt={"design image"}
-                src={data?.imageURL[1]}
-                className={styles.joinButton}
-                width="200px"
-                height="48px"
-              />
+              <Link passHref href="/" className={styles.joinButton}>
+                <Image
+                  alt={"design image"}
+                  src={data?.imageURL[1]}
+                  width="300px"
+                  height="70px"
+                  className={styles.joinButton}
+                />
+              </Link>
             </div>
           </div>
         </section>
