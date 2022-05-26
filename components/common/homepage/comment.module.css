@@ -6,36 +6,43 @@
   position: relative;
 }
 
+.commentwrapper:hover {
+  border: 1px solid #000000;
+}
+
 .commentwrapper {
-  padding: 20px;
+  box-shadow: 0px 10px 20px rgba(41, 41, 42, 0.07);
   display: grid;
   grid-template-columns: 10% 90%;
   align-self: center;
+  padding: 20px 32px;
+  box-sizing: border-box;
 }
 
 .commentCont > .h3 {
   margin-bottom: 0;
   margin-top: 20px;
   font-weight: 700;
-font-size: 18px;
+  font-size: 18px;
 }
 
 .commentCont > .p {
   color: #969bab;
   font-weight: 500;
-font-size: 14px;
-font-feature-settings: 'salt' on, 'liga' off;
-color: #969BAB;
+  font-size: 14px;
+  font-feature-settings: "salt" on, "liga" off;
+  color: #969bab;
 }
 
 .commentImg {
-  color: #969bab;
+      opacity: 0.3 !important;
+
 }
 
 .list1 {
   width: 350px;
   /* height: 300px; */
-  left: 59px;
+  left: 34px;
   top: 107px;
   position: absolute;
   display: grid;
@@ -46,7 +53,7 @@ color: #969BAB;
   width: 445px;
   /* height: 268px; */
   left: 0;
-  top: 302px;
+  top: 352px;
   display: grid;
   align-content: center;
 }
@@ -56,7 +63,7 @@ color: #969BAB;
   position: absolute;
   width: 445px;
   height: 268px;
-  left: 429px;
+  left: 389px;
   top: 4px;
 }
 .list4 {
@@ -65,15 +72,15 @@ color: #969BAB;
   position: absolute;
   width: 350px;
   height: 204px;
-  left: 455px;
-  top: 209px;
+  left: 460px;
+  top: 249px;
 }
 .list5 {
   position: absolute;
   width: 350px;
   height: 204px;
   left: 455px;
-  top: 372px;
+  top: 452px;
   display: grid;
   align-content: center;
 }
@@ -81,8 +88,8 @@ color: #969BAB;
   position: absolute;
   width: 350px;
   height: 204px;
-  left: 830px;
-  top: 51px;
+  left: 840px;
+  top: 61px;
   display: grid;
   align-content: center;
 }
@@ -90,8 +97,8 @@ color: #969BAB;
   position: absolute;
   width: 350px;
   height: 300px;
-  left: 800px;
-  top:  208px;
+  left: 820px;
+  top: 228px;
   display: grid;
   align-content: center;
 }

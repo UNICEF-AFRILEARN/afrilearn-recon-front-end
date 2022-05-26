@@ -222,7 +222,7 @@ const Testimonials = () => {
             <h1>{`${data.title}`}</h1>
           </div>
           {/* <div className='col-lg-7 '></div> */}
-          <p>{`${data.description.at(0)}`}</p>
+          <p>{data.description[0]}</p>
           <section className={`row`}>
             <div className={`col-md-12`}>
               <Image
@@ -235,7 +235,6 @@ const Testimonials = () => {
             </div>
           </section>
         </section>
-
         <CommentPage />
       </div>
     </>
@@ -313,31 +312,77 @@ const QuickJoin = () => {
       <div id="landingpage-quickJoin" className={`row ${styles.quickJoin}`}>
         <h2>{data.title}</h2>
         <h6>{data.description}</h6>
-        <section className={styles.quickJoinSec}>
-          {/* <div>
-            <ul className={styles.nav}>
-              <li className={styles.topMenu}>
-                <a href="#">Home</a>
-              </li>
-              <li className={styles.subMenu}>
-                <ul id="home">
-                  <li>
-                    <a href="#">Hello</a>
-                  </li>
-                  <li>
-                    <a href="#">World</a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div> */}
-
-          <div className={styles.nav}>
-            <ul>
-              <li className="relative">
-                <Link href="/">Select a Class</Link>
-              </li>
-            </ul>
+        <section>
+          <div className={`row ${styles.courseSelectSection}`}>
+            <div className="col-md-12">
+              <div className="row">
+                <div className={`col-8 ${styles.paddingRightOff}`}>
+                  <ul className={styles.myDropped}>
+                    <div className={`relative ${styles.myDrop}`}>
+                      <div className={styles.myDropCont}>
+                        <input
+                          disabled
+                          className={styles.myPlaceholder}
+                          href="/"
+                          placeholder="Select a Class"
+                        />
+                        <span className={styles.inputImage}>
+                          <Image
+                            alt={"design image"}
+                            src="/assets/img/common/homepage/inputVector.png"
+                            width={17}
+                            height={12}
+                          />
+                        </span>
+                      </div>
+                    </div>
+                    <ul className={styles.courseSelectSectionDropDown}>
+                      <li>
+                        <Link href="/">JSS One</Link>
+                      </li>
+                      <li>
+                        <Link href="/">JSS Two</Link>
+                      </li>
+                      <li>
+                        <Link href="/">JSS Three</Link>
+                      </li>
+                      <li>
+                        <Link href="/">SSS One</Link>
+                      </li>
+                      <li>
+                        <Link href="/">SSS Two</Link>
+                      </li>
+                      <li>
+                        <Link href="/">SSS Three</Link>
+                      </li>
+                      <li>
+                        <Link href="/">Primary One</Link>
+                      </li>
+                      <li>
+                        <Link href="/">Primary Two</Link>
+                      </li>
+                      <li>
+                        <Link href="/">Primary Three</Link>
+                      </li>
+                      <li>
+                        <Link href="/">Primary Four</Link>
+                      </li>
+                      <li>
+                        <Link href="/">Primary Five</Link>
+                      </li>
+                      <li>
+                        <Link href="/">Primary Six</Link>
+                      </li>
+                    </ul>
+                  </ul>
+                </div>
+                <div className={`col-4 ${styles.paddingLeftOff}`}>
+                  <Link href="/register">
+                    <input type="submit" value="JOIN FOR FREE" />
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
           <ul className={styles.subMenu}>
             <li>
