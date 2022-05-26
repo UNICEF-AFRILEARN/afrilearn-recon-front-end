@@ -36,6 +36,7 @@ const Register = (props) => {
     //   data?.isError ? console.log("Fields Errors:\n", data?.fieldsErrors) : console.log(data?.registerUser) 
     //   return data
     // })
+    //Modal is displayed here after successful or failed registration....
     setShow(true);
   }
 
@@ -48,9 +49,9 @@ const Register = (props) => {
       <div className="container-fluid">
       <Modal show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal</Modal.Title>
+          <Modal.Title className='modal-title-style'>Registration Successful</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Modal body content</Modal.Body>
+        <Modal.Body className='modal-body-style'>Your Afrilearn account has been created successfully</Modal.Body>
       </Modal>
         <div className="row ">
           <div className={styles.logoregisterform}> <Image alt={"logo image"} src={'/assets/img/logo.PNG'} width={200} height={50}/> </div>

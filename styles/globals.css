@@ -116,6 +116,16 @@ a {
   background-color: rgb(198, 226, 43);
 }
 
+.modal-title-style {
+  color: #009442;
+  font-size: 15px !important;
+}
+
+.modal-body-style {
+  font-size: 15px !important;
+  color: #54595E99;
+}
+
 @media screen and (max-width: 768px) {
   .mobileOnly {
     display: block !important;
