@@ -47,7 +47,7 @@ const Register = (props) => {
       <div className={styles.floatImg2}><Image alt={"design image"} src={'/assets/img/common/login/HalfCircleWhite.png'} width={150} height={90} /></div>
       <div className={styles.floatImg3}><Image alt={"design image"} src={'/assets/img/common/login/HalfCircleWhite.png'} width={150} height={90} /></div>
       <div className="container-fluid">
-      <Modal show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
+      <Modal show={show}  onHide={() => setShow(false)}>
         <Modal.Header closeButton>
           <Modal.Title className='modal-title-style'>Registration Successful</Modal.Title>
         </Modal.Header>
