@@ -50,9 +50,7 @@ a {
   color: inherit !important;
   text-decoration: none !important;
 }
-* {
-  box-sizing: border-box;
-}
+
 .centerImage {
   margin: auto;
   display: block;
@@ -92,6 +90,7 @@ a {
 
 .brand-logo {
     width: 150px;
+    cursor: pointer;
 }
 .mobileOnlyy {
   display: flex !important;
@@ -126,24 +125,6 @@ a {
   color: #54595E99;
 }
 
-@media screen and (max-width: 768px) {
-  .mobileOnly {
-    display: block !important;
-  }
-  .mobileOnlyy {
-    display: flex !important;
-    flex-direction: row !important;
-  }
-  
-  .desktopOnly {
-    display: none !important;
-  }
-
-  .mobilePadOff {
-    padding: 0px !important;
-  }
-}
-
 .accordion-item {
   border: none !important;
 }
@@ -163,10 +144,44 @@ a {
 }
 
 
+@media screen and (max-width: 768px) {
+  .mobileOnly {
+    display: block !important;
+  }
+  .mobileOnlyy {
+    display: flex !important;
+    flex-direction: row !important;
+  }
+  
+  .desktopOnly {
+    display: none !important;
+  }
+
+  .mobilePadOff {
+    padding: 0px !important;
+  }
+
+  .navbar-nav {
+    background-color: #E5E5E5;
+    display: block !important;
+    width: 100% !important;
+    height: 120vh;
+    position: absolute;
+    right: 10px;
+    z-index: 99;
+    padding-left: 20%;
+    text-align: center !important;
+    margin-right: 1px;
+  }
+}
+
+
 @media (min-width: 992px){
   .navbar-expand-lg .navbar-nav {
       justify-content: flex-end;
       width: 100%;
   }
+
+
   
 }
