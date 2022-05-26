@@ -16,18 +16,17 @@
   font-weight: normal;
   font-style: normal;
 }
-.bg-light{
+.bg-light {
   padding: 23px 20px !important;
-
 }
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: content !important
+  font-family: content !important;
 }
-ul li{
+ul li {
   text-decoration: none;
 }
 .loginButton {
@@ -36,7 +35,7 @@ ul li{
   border-radius: 39px;
   margin-right: 20px;
 }
-.relative{
+.relative {
   position: relative;
 }
 .signUpButton {
@@ -44,9 +43,12 @@ ul li{
   background-color: black;
   color: white !important;
   padding: 7px 16px !important;
-  border-radius: 39px;  
+  border-radius: 39px;
 }
-.loginButton a, .signUpButton a, .loginButton a:hover, .signUpButton a:hover{
+.loginButton a,
+.signUpButton a,
+.loginButton a:hover,
+.signUpButton a:hover {
   color: inherit;
   text-decoration: none;
 }
@@ -95,11 +97,30 @@ a {
 }
 
 .brand-logo {
-    width: 150px;
+  width: 150px;
 }
 .mobileOnlyy {
   display: flex !important;
-  flex-direction: row !important
+  flex-direction: row !important;
+}
+.centerr {
+  text-align: center;
+  height: 31px;
+  font-weight: 600;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 31px;
+  margin-bottom: 40px;
+  color: #000000;
+}
+.centerrr {
+  text-align: center;
+  height: 48px;
+  width: 400px;
+  left: 46px;
+  top: 96px;
+  font-weight: 400;
+  margin-bottom: 40px;
 }
 
 @media screen and (max-width: 768px) {
@@ -110,7 +131,7 @@ a {
     display: flex !important;
     flex-direction: row !important;
   }
-  
+
   .desktopOnly {
     display: none !important;
   }
@@ -120,11 +141,9 @@ a {
   }
 }
 
-
-@media (min-width: 992px){
+@media (min-width: 992px) {
   .navbar-expand-lg .navbar-nav {
-      justify-content: flex-end;
-      width: 100%;
-  } 
-  
+    justify-content: flex-end;
+    width: 100%;
+  }
 }
