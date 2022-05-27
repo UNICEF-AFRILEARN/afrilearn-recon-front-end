@@ -3,7 +3,7 @@ import styles from "./homepage.module.css";
 import Image from "next/image";
 import WhyAfrilearn from "./extra/whyAfrilearn";
 import ExploreAfrilearn from "./extra/exploreAfrilearn";
-import CommentPage from "./extra/commentPage";
+// import CommentPage from "./extra/commentPage";
 
 // {/* <video
 //         src={data?.videoUrl}
@@ -235,7 +235,7 @@ const Testimonials = () => {
             </div>
           </section>
         </section>
-        <CommentPage />
+        {/* <CommentPage /> */}
       </div>
     </>
   );
