@@ -13,7 +13,7 @@
   margin-top: 40px;
 }
 .joinForFree {
-  border: solid 1px black;
+  /* border: solid 1px black; */
   background-color: #00d9b6;
   color: white !important;
   padding: 10px 20px !important;
@@ -168,6 +168,12 @@
     display: inline-flex !important;
     margin-top: -10px !important;
   }
+
+  /* .footer {
+    width: 200%;
+    bottom: 0;
+  } */
+
   .last .lastttt {
     display: flex !important;
     flex-direction: row !important;
@@ -179,12 +185,11 @@
     padding-left: 2%;
   }
   .last .lasttt {
-   
     padding-left: 2%;
   }
-.footerlogo{
-  margin-left: 5%;
-}
+  .footerlogo {
+    margin-left: 5%;
+  }
   .last {
     width: 200%;
     padding-left: 25px !important;
@@ -414,6 +419,31 @@
   color: #333333;
 }
 
+@media screen and (max-width: 480px) {
+  .testimonials p {
+    font-size: 12px;
+  }
+  .heroText h1 {
+    font-size: 20px;
+    margin: 0;
+    width: 100%;
+  }
+
+  .homepage .mark {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+ .testimonials p {
+    position: absolute;
+    top: 29px;
+    left: 5px;
+    width: 200px;
+  }
+}
+
 .testimonials .preview {
   margin-top: 93px;
   display: grid;
@@ -444,6 +474,7 @@
   padding: 45px 0 140px;
 }
 .quickJoin h2 {
+  color: #29465B;
   font-family: "heading";
   font-size: 40px;
   margin-top: 50px;
@@ -457,6 +488,7 @@
 .quickJoin .container {
   cursor: pointer;
   position: absolute;
+  width: 791.11px;;
 }
 
 .quickJoin section {
@@ -472,9 +504,159 @@
   display: flex;
   left: -75px;
 }
-.quickJoin .joinButton {
+/* .quickJoin .joinButton {
   left: -90px !important;
+} */
+
+.courseSelectSection {
+  margin-top: -485px;
 }
+
+.paddingRightOff {
+  padding-right: 0 !important;
+}
+
+.paddingRightOff ul li {
+  list-style: none;
+}
+
+.myDropped {
+  cursor: pointer;
+}
+
+.myDropCont {
+  position: relative;
+  /* z-index: 3; */
+  cursor: pointer;
+}
+.myPlaceholder {
+  background: #fff !important;
+  /* width: 100%; */
+  display: block;
+  padding: 15px 28px;
+  color: #787878 !important;
+  border-radius: 5px 0 0 5px;
+  margin-top: 12px;
+  width: 501.11px;
+  height: 90.9px;
+  border-radius: 45.0005px 0 0 45.0005px;
+  font-size: 20px !important;
+  border: none;
+}
+
+.paddingRightOff {
+  position: relative;
+}
+.inputImage {
+  position: absolute;
+  top: 38px;
+  right: 15px;
+}
+
+.courseSelectSectionDropDown {
+  background: #fff;
+  color: #787878 !important;
+  border-radius: 0 0 5px 5px;
+  margin-top: -5px;
+  width: 501.11px !important;
+  position: absolute;
+  cursor: pointer;
+
+  display: none;
+  padding-top: 30px;
+  top: 80px;
+  /* display: block; */
+}
+
+.myDropped:hover .courseSelectSectionDropDown {
+  display: block;
+  cursor: pointer;
+}
+
+/* .courseSelectSectionDropDown li {
+padding: 15px;
+} */
+
+.paddingRightOff ul li {
+  padding-bottom: 7px;
+}
+
+.paddingRightOff ul li:hover {
+  background-color: #00d9b6;
+}
+
+.paddingLeftOff {
+  padding-left: 0 !important;
+}
+
+.paddingLeftOff input[type="submit"] {
+  color: #fff;
+  font-size: 17px;
+  /* width: 100%; */
+  padding: 14.4px 13px;
+  border: none;
+  margin-top: 12px;
+  height: 53px;
+  width: 247.5px;
+  height: 90.9px;
+  background: #00d9b6;
+  border-radius: 0px 45.0005px 45.0005px 0px;
+  z-index: 3;
+}
+
+@media screen and (max-width: 760px) {
+  .myPlaceholder {
+    height: 53px;
+    width: 247px;
+  }
+  .paddingLeftOff input[type="submit"] {
+    height: 53px;
+    width: 147px;
+  }
+  .inputImage {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .myPlaceholder {
+    height: 33px;
+    width: 197px;
+  }
+  .paddingLeftOff input[type="submit"] {
+    height: 33px;
+    width: 97px;
+
+    font-size: 10px !important;
+  }
+  .myPlaceholder {
+    font-size: 10px !important;
+  }
+}
+
+@media screen and (max-width: 353px) {
+  .myPlaceholder {
+    display: none;
+  }
+  .courseSelectSection {
+    position: relative;
+  }
+
+  .quickJoin {
+    height: 400px;
+  }
+  .paddingLeftOff input[type="submit"] {
+    height: 33px;
+    width: 90px;
+    position: absolute;
+    font-size: 10px !important;
+    display: block;
+    border-radius: 40%;
+    top: 0px;
+    left: 0px;
+  }
+}
+
 .partners {
   margin: 50px;
   position: relative;
@@ -583,7 +765,6 @@
   color: #eeeff4;
   margin-left: 30px;
   padding-bottom: 30px;
-
 }
 .last {
   background: black;
