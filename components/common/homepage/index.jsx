@@ -9,13 +9,6 @@ import ExploreAfrilearn from "./extra/exploreAfrilearn";
 import { BsCheck2All } from 'react-icons/bs';
 import { Accordion } from 'react-bootstrap';
 
-// {/* <video
-//         src={data?.videoUrl}
-//         width="400px"
-//         height="400px"
-//         controls
-//         className={styles.videoPlaying}
-//       /> */}
 
 
 const HomePage = () => {
@@ -89,13 +82,11 @@ const GameIntro = () => {
   const data = {
     title: "Gamified experience with rewards.",
     description: ["Fun practice to ace JSSCE, WASSCE, UTME, GCE, NECO and more in one sitting"],
-    imageURL: '/assets/img/common/homepage/school.png'
-
+    imageURL: '/assets/img/common/homepage/school.png' 
   }
   return (<>
     <div className={`row ${styles.landingpageg}`} >
-
-      <section className={`row ${styles.profiles}`}>
+   <section className={`row ${styles.profiles}`}>
         <div className="col-md-4">
           <h3 className={styles.profileshh3}>{data?.title}<br className="desktopOnly" />{data?.titlePart2}</h3>
           {data?.description.map((item) => {
@@ -110,7 +101,7 @@ const GameIntro = () => {
           </section>
         </div>
         <div className={`col-md-6 ${styles.profileImagePosition}`}>
-          <Image alt={"design image"} src={data?.imageURL} width={700} height={400} className={styles.profileImage} />
+          <Image alt={"design image"} src={data?.imageURL} width={600} height={400} className={styles.profileImage} />
         </div>
       </section>
     </div>
@@ -627,15 +618,90 @@ const Partners = () => {
   );
 };
 const Footer = () => {
-  return (
-    <>
-      <div id="landingpage-footer" className={`row ${styles.footer}`}>
-        <section></section>
+  const data ={
+    imageURL: ['/assets/img/common/homepage/facebook.svg',
+      '/assets/img/common/homepage/instagram.svg',
+      '/assets/img/common/homepage/twitter.svg',
+      '/assets/img/common/homepage/inkedlin.svg',
+      '/assets/img/common/homepage/youtube.svg']
+  }
+  const currentYear = new Date().getFullYear();
 
-        <section className={styles.last}></section>
+  return (<>
+<div id="landingpage-footer" className={`row ${styles.footer}`}>
+     <div className={`col-md-3 ${styles.footerlogo}`}>
+     <Image alt={"design image"} src='/assets/img/common/homepage/whitelogo.png' width={"220px"} height={"80px"} />
+    </div>
+    <div className={`col-md-2 ${styles.footerText}`}>
+      <h3>Quicklinks</h3>
+      <ul>
+        <li><Link passHref href="http://blog.myafrilearn.com/">Blog</Link></li>
+        <li><Link passHref href="https://web.facebook.com/myAfrilearn">Media</Link></li>
+        <li><Link passHref href="https://myafrilearn.com/join-the-team">Teach on Afrilearn</Link></li>
+        <li><Link passHref href="https://play.google.com/store/apps/details?id=com.afrilearn">Download App</Link></li>
+      </ul>
+    </div>
+    <div className={`col-md-2 ${styles.footerText}`}>
+      <h3>Company</h3>
+      <ul>
+        <li><Link passHref href="https://myafrilearn.com/about">About</Link></li>
+        <li><Link passHref href="https://myafrilearn.com/impact-stories">Impact Stories</Link></li>
+        <li><Link passHref href="https://myafrilearn.com/about#team">Team</Link></li>
+        <li><Link passHref href="https://myafrilearn.com/faculty">Faculty </Link></li>
+        <li><Link passHref href="https://myafrilearn.com/join-the-team">Career </Link></li>
+        <li><Link passHref href="https://myafrilearn.com/partnership">Paternership </Link></li>
+      </ul>
+    </div>
+    <div className={`col-md-3 ${styles.footerText}`}>
+      <h3>Contact</h3>
+      <ul>
+        <li>hello@myafrilearn.com</li>
+        <li>+ 234 802 785 5262</li>
+        <li>+234 805 154 4949</li>
+        <li>6 Gbemisola Street, Allen Avenue, Ikeja, Lagos, Nigeria.</li>
+      </ul>
+    </div>
       </div>
+      <div >
+      <section className={`row ${styles.last}`}>
+        <div className={`col-md-3 ${styles.lasttt}`}>
+        <p> &copy; {currentYear}  Afrilearn. All rights reserved</p>
+        </div>
+        <div className={`col-md-2 ${styles.lastt}` }>
+        <li><Link passHref href="">Privacy Policy </Link></li>
+        </div>
+        <div className={`col-md-2 ${styles.lastt}` }>
+        <li><Link passHref href="/"> Terms of Service</Link></li>
+        </div>    
+        <div className='col-md-2 '>
+          <div className={styles.lastttt}>
+<div className='col-md-2 m-2 m-2'> <Link passHref href="https://web.facebook.com/myAfrilearn">
+  <Image alt={"design image"} src='/assets/img/common/homepage/Facebook.svg' width={"22.8px"} height={"22.8px"} />
+              </Link>
+              </div>
+          <div className='col-md-2 m-2'>  <Link passHref href="https://www.instagram.com/accounts/login/?next=/afrilearn/">
+          <Image alt={"design image"} src={data?.imageURL[1]}  width="22.8px" height="22.8px" />
+              </Link>
+          </div>
+       <div className='col-md-2 m-2'> <Link passHref href="https://twitter.com/Afrilearn">
+       <Image alt={"design image"} src={data?.imageURL[2]}  width="22.8px" height="22.8px" />
+              </Link>
+       </div>
+          <div className='col-md-2 m-2'><Link passHref href="https://www.linkedin.com/company/afrilearn/">
+          <Image alt={"design image"} src='/assets/img/common/homepage/linkedln.png' width={"22.8px"} height={"22.8px"} />
+              </Link></div>
+              <div className='col-md-2 m-2'><Link passHref href="https://www.youtube.com/channel/UC_BnnokJom1DWipMl0oSxWA">
+          <Image alt={"design image"} src='/assets/img/common/homepage/Youtube.svg' width={"22.8px"} height={"22.8px"} />
+              </Link></div>
+</div>
+</div>
+      </section>
+     
+       </div>
+     
     </>
   );
-};
+};   
+
 
 export default HomePage;
