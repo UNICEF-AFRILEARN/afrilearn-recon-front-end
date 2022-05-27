@@ -10,10 +10,9 @@ const Login = () => {
     <div className={styles.floatImg1}><Image alt={"design image"} src={'/assets/img/common/login/HalfCircleBlackk.png'} width={86} height={200}/></div>
     <div className={styles.floatImg2}><Image alt={"design image"} src={'/assets/img/common/login/HalfCircleWhite.png'} width={150} height={90}/></div>
     <div className={styles.floatImg3}><Image alt={"design image"} src={'/assets/img/common/login/HalfCircleWhite.png'} width={150} height={90}/></div>
-    {/* <div className="container-fluid" {`container-fluid ${styles.buttonContainer}`}> */}
       <div className='center' >
         <div className={`col-md-4 ${styles.resetContainer}`}>
-          <div className="row"  >
+          <div className=""  >
             <h2 className="centerr">RESET PASSWORD</h2>
             <p className='centerrr'>Type your email address to send instructions to reset your password to your inbox</p>
             <form>
@@ -29,7 +28,6 @@ const Login = () => {
         <div >  
         <p className={`center ${styles.afterSocialText}`}>Back to <Link passHref href='/login'><b>Log In</b></Link></p> </div>
       </div>      
-    {/* </div>       */}
     </div>
   )
 }

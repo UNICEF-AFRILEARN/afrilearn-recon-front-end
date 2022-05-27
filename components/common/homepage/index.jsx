@@ -4,13 +4,6 @@ import Image from 'next/image';
 import WhyAfrilearn from './extra/whyAfrilearn';
 import ExploreAfrilearn from './extra/exploreAfrilearn';
 
-// {/* <video
-//         src={data?.videoUrl}
-//         width="400px"
-//         height="400px"
-//         controls
-//         className={styles.videoPlaying}
-//       /> */}
 
 
 const HomePage = () => {
@@ -81,13 +74,11 @@ const GameIntro = () => {
   const data = {
     title: "Gamified experience with rewards.",
     description: ["Fun practice to ace JSSCE, WASSCE, UTME, GCE, NECO and more in one sitting"],
-    imageURL: '/assets/img/common/homepage/school.png'
-
+    imageURL: '/assets/img/common/homepage/school.png' 
   }
   return (<>
     <div className={`row ${styles.landingpageg}`} >
-
-      <section className={`row ${styles.profiles}`}>
+   <section className={`row ${styles.profiles}`}>
         <div className="col-md-4">
           <h3 className={styles.profileshh3}>{data?.title}<br className="desktopOnly" />{data?.titlePart2}</h3>
           {data?.description.map((item) => {
@@ -102,7 +93,7 @@ const GameIntro = () => {
           </section>
         </div>
         <div className={`col-md-6 ${styles.profileImagePosition}`}>
-          <Image alt={"design image"} src={data?.imageURL} width={700} height={400} className={styles.profileImage} />
+          <Image alt={"design image"} src={data?.imageURL} width={600} height={400} className={styles.profileImage} />
         </div>
       </section>
     </div>
@@ -337,11 +328,7 @@ const Footer = () => {
       '/assets/img/common/homepage/inkedlin.svg',
       '/assets/img/common/homepage/youtube.svg']
   }
-
-  
   const currentYear = new Date().getFullYear();
-  
-
   return (<>
 <div id="landingpage-footer" className={`row ${styles.footer}`}>
      <div className={`col-md-3 ${styles.footerlogo}`}>
@@ -381,7 +368,6 @@ const Footer = () => {
       <section className={`row ${styles.last}`}>
         <div className={`col-md-3 ${styles.lasttt}`}>
         <p> &copy; {currentYear}  Afrilearn. All rights reserved</p>
-      {/* <p>© 2021 Afrilearn. All rights reserved</p> */}
         </div>
         <div className={`col-md-2 ${styles.lastt}` }>
         <li><Link passHref href="">Privacy Policy </Link></li>
