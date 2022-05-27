@@ -170,6 +170,7 @@
   }
   .crossPlatform .sectionImageContainer {
     display: inline-flex !important;
+    margin-top: -74px !important;
   }
   .last .lastttt {
     display: flex !important;
