@@ -127,14 +127,12 @@
   color: #333333;
   font-size: 18px;
   font-weight: 600;
-  text-align: left;
   margin-top: 5%;
 }
 .bulletTextt {
   color: #29465b;
   font-size: 18px;
   font-weight: 600;
-  text-align: left;
   margin-top: 5%;
 }
 
@@ -155,12 +153,16 @@
     font-size: 17px;
     font-weight: 600;
     padding-left: 5%;
+ 
   }
   .crossPlatform .crossPlatformTextPosition h3 {
     font-size: 25px;
     font-weight: 500;
     width: 310px;
     padding-left: 5%;
+  }
+  .crossPlatform .crossPlatformTextPosition {
+    margin-top: 12px !important;
   }
   .mobileOnlyy {
     display: flex !important;
@@ -374,7 +376,7 @@
 }
 
 .crossPlatform .crossPlatformTextPosition {
-  margin-top: 120px;
+  margin-top: 170px;
   padding-left: 18px;
 }
 
