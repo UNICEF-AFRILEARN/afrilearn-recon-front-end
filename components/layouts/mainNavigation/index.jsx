@@ -17,13 +17,19 @@ const Navigation = () => {
         <Navbar.Brand><Link passHref href="/"><img src="https://myafrilearn.com/static/media/logonew.4424f4df.png" alt='logo' className="brand-logo"/></Link></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
+
           <Nav className="me-auto">
-            <Link passHref href="/login">
-              <AppButton title="LOG IN" className={styles.loginButton} />
-            </Link>
-            <Link passHref href="/register">
-              <AppButton title="SIGN UP" secondary />
-            </Link>
+          <div className="our-story-frag">
+          Our Story 
+          </div>
+            {/* <span className="close-mobile-nav">x</span> */}
+              
+                  <Link passHref href="/login" className="btn-log-in-mobile">
+                  <AppButton title="LOG IN" className={styles.loginButton} />
+                </Link>
+                <Link passHref href="/register" className="btn-log-in-mobile">
+                  <AppButton title="SIGN UP" secondary />
+                </Link>
 
             {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="/">Action</NavDropdown.Item>

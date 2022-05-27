@@ -47,8 +47,8 @@ const handleShow = () => setShow(true);
         <div className="container">
          
       
-             <P className={"Senior Sceondary School One"} numperOfVideo={"116 Video Lessons"} numberofstudent={"13,000 Registered Students"}>
-             </P>
+             {/* <P className={"Senior Sceondary School One"} numperOfVideo={"116 Video Lessons"} numberofstudent={"13,000 Registered Students"}>
+             </P> */}
              <Note></Note>
              <Video></Video>
              
