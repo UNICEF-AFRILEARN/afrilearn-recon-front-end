@@ -1,7 +1,6 @@
 .floatImg2 {
   right: 0px !important;
   position: absolute !important;
-  /* color: #00d9b6; */
   top: 150px;
 }
 .floatImg1 {
@@ -13,10 +12,6 @@
   background: #00d9b6;
   border-radius: 0 100px 100px 0;
 }
-
-/* .floatImg13 {
-  background: #00d9b6;
-} */
 
 .floatImg3 {
   left: 25% !important;
