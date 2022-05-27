@@ -510,7 +510,7 @@ const QuickJoin = () => {
       <div id="landingpage-quickJoin" className={`row ${styles.quickJoin}`}>
         <h2>{data.title}</h2>
         <h6>{data.description}</h6>
-        <section>
+        <section className={styles.quickJoinSec}>
           <div className={`row ${styles.courseSelectSection}`}>
             <div className="col-md-12">
               <div className="row">

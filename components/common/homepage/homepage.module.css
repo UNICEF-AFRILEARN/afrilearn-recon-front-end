@@ -86,7 +86,7 @@
 
 .secondSectionul span {
   display: inline-block;
-  border-left: solid 3px #00D9B6 ;
+  border-left: solid 3px #00d9b6;
   height: 21px;
   position: relative;
   top: 6px;
@@ -94,7 +94,7 @@
 }
 .activeOption {
   background: #f4f5f7;
-  color: #00D9B6 !important;
+  color: #00d9b6 !important;
 }
 .profiles {
   margin-top: 60px;
@@ -149,7 +149,6 @@
     font-size: 17px;
     font-weight: 600;
     padding-left: 5%;
- 
   }
   .crossPlatform .crossPlatformTextPosition h3 {
     font-size: 25px;
@@ -195,7 +194,7 @@
     padding-left: 25px !important;
   }
   .footerText h3 {
-  margin-left: 27px !important;
+    margin-left: 27px !important;
   }
 }
 
@@ -372,7 +371,7 @@
 }
 .crossPlatform .sectionImageContainer {
   margin-top: 0;
- padding: 5%;
+  padding: 5%;
   display: inline-flex !important;
   margin-bottom: 5px;
 }
@@ -436,7 +435,7 @@
 }
 
 @media screen and (max-width: 480px) {
- .testimonials p {
+  .testimonials p {
     position: absolute;
     top: 29px;
     left: 5px;
@@ -471,10 +470,11 @@
 
 .quickJoin {
   background: #f5f5f5;
-  padding: 45px 0 140px;
+  padding: 45px 0 0px;
+  /* height: 500px; */
 }
 .quickJoin h2 {
-  color: #29465B;
+  color: #29465b;
   font-family: "heading";
   font-size: 40px;
   margin-top: 50px;
@@ -487,14 +487,19 @@
 
 .quickJoin .container {
   cursor: pointer;
-  position: absolute;
-  width: 791.11px;;
+  /* position: absolute; */
+  width: 791.11px;
+}
+
+.quickJoinSec{
+align-items: flex-start;
+height: 410px;
 }
 
 .quickJoin section {
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
 }
 .quickJoin .classes {
   left: 190px !important;
@@ -509,7 +514,9 @@
 } */
 
 .courseSelectSection {
-  margin-top: -485px;
+  /* margin-top: -485px; */
+  /* position: absolute;
+  top:50px; */
 }
 
 .paddingRightOff {
@@ -684,21 +691,19 @@ padding: 15px;
   margin-top: 45px;
   display: grid;
   grid-template-columns: repeat(3, 30%);
-  grid-template-rows: repeat(1, 1fr);;
+  grid-template-rows: repeat(1, 1fr);
   gap: 15px;
   border: none;
   justify-content: center;
   border-radius: 10px;
 }
 
-
-
 .cardstylling ul {
   margin-top: 5px;
   list-style-type: none;
 }
 
-.cardstylling ul li{
+.cardstylling ul li {
   text-align: start;
   margin-top: 30px;
 }
@@ -708,14 +713,13 @@ padding: 15px;
 }
 
 .cardstylling button {
-  background: #00D9B6;
+  background: #00d9b6;
   border-radius: 30px;
   width: 261px;
   padding: 9px;
-  color: #FFFFFF;
+  color: #ffffff;
   border: none;
   margin-left: 50px;
-
 }
 
 .partners .box {
@@ -746,7 +750,6 @@ padding: 15px;
   padding-top: 5%;
   position: relative;
 }
-
 
 .footerText li {
   color: #eeeff4;
@@ -836,5 +839,4 @@ padding: 15px;
   .partners .partnerLogo {
     padding: 1px !important;
   }
-
 }
