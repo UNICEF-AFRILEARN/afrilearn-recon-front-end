@@ -57,10 +57,6 @@ a {
   color: inherit !important;
   text-decoration: none !important;
 }
-* {
-  box-sizing: border-box;
-  
-}
 .centerImage {
   margin: auto;
   display: block;
@@ -99,7 +95,8 @@ a {
 }
 
 .brand-logo {
-  width: 150px;
+    width: 150px;
+    cursor: pointer;
 }
 .mobileOnlyy {
   display: flex !important;
@@ -131,11 +128,6 @@ a {
   color: #A6A6A6;
 
 }
-.text-card {
-  background-color: blue;
-  border: solid 1px yellow;
-  display: flex;
-}
 
 .text-card ul {
   margin: 20px;
@@ -145,12 +137,68 @@ a {
   background-color: rgb(198, 226, 43);
 }
 
-  * {
-    box-sizing: border-box;
-    /* margin-left: 0px !important; */
+.modal-title-style {
+  color: #009442;
+  font-size: 15px !important;
+}
 
+.modal-body-style {
+  font-size: 15px !important;
+  color: #54595E99;
+}
+
+.accordion-item {
+  border: none !important;
+}
+
+.accordion-button {
+  width: 125% !important;
+  background-color: #FAFAFA !important;
+  padding: 1.7rem 1.25rem !important;
+  border: none !important;
+}
+
+.accordion-body-com {
+  background-color: #FAFAFA !important;
+  width: 125% !important;
+  border: none !important;
+  margin-top: 15px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .mobileOnly {
+    display: block !important;
   }
-   
+  .mobileOnlyy {
+    display: flex !important;
+    flex-direction: row !important;
+  }
+  
+  .desktopOnly {
+    display: none !important;
+  }
+
+  .mobilePadOff {
+    padding: 0px !important;
+  }
+
+  .navbar-nav {
+    background-color: #E5E5E5;
+    display: block !important;
+    width: 100% !important;
+    height: 120vh;
+    position: absolute;
+    right: 10px;
+    z-index: 1;
+    padding-left: 20%;
+    text-align: center !important;
+    margin-right: 1px;
+  }
+}
+
+
+@media (min-width: 992px){
   .resetContainer {
     height: 475px;
     width: 300px;
@@ -234,3 +282,5 @@ a {
     }
     
   }
+
+}

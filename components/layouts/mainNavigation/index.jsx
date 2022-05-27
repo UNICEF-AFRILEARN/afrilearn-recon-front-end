@@ -20,14 +20,16 @@ const Navigation = () => {
 
           <Nav className="me-auto">
           <div className="our-story-frag">
-            Our Story
+          Our Story 
           </div>
-            <Link passHref href="/login">
-              <AppButton title="LOG IN" className={styles.loginButton} />
-            </Link>
-            <Link passHref href="/register">
-              <AppButton title="SIGN UP" secondary />
-            </Link>
+            {/* <span className="close-mobile-nav">x</span> */}
+              
+                  <Link passHref href="/login" className="btn-log-in-mobile">
+                  <AppButton title="LOG IN" className={styles.loginButton} />
+                </Link>
+                <Link passHref href="/register" className="btn-log-in-mobile">
+                  <AppButton title="SIGN UP" secondary />
+                </Link>
 
             {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="/">Action</NavDropdown.Item>

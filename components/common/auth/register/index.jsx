@@ -1,13 +1,25 @@
+import React, {useState} from 'react';
 import Link from 'next/link';
 import styles from './register.module.css';
 import Image from 'next/image';
 import TextInput from '../../../widgets/appTextInput';
 import AppButton from "../../../widgets/buttons/AppButton";
 import Selectitem from '../../../widgets/appSelect/appSelect';
+import ReactModal from 'react-modal'
+import { Button, Modal } from 'react-bootstrap';
 
 import {API} from '../../../../pages/api/client-side/fetcher';
 
 const Register = (props) => {
+  // const values = [true, 'sm-down', 'md-down', 'lg-down', 'xl-down', 'xxl-down'];
+  const [fullscreen, setFullscreen] = useState(true);
+  const [show, setShow] = useState(false);
+
+  function handleShow(breakpoint) {
+    setFullscreen(breakpoint);
+    setShow(true);
+  }
+
   const profile = {}
   const platformContext = props.platformContext
 
@@ -18,24 +30,32 @@ const Register = (props) => {
   }
 
   const handleRegisterRequest = (e) => {
-    e.preventDefault()
-    API.registerUser(profile).then((data) => {
-      console.log('Registeration completed', !data?.isError)
-      data?.isError ? console.log("Fields Errors:\n", data?.fieldsErrors) : console.log(data?.registerUser) 
-      return data
-    })
-
+    // e.preventDefault()
+    // API.registerUser(profile).then((data) => {
+    //   console.log('Registeration completed', !data?.isError)
+    //   data?.isError ? console.log("Fields Errors:\n", data?.fieldsErrors) : console.log(data?.registerUser) 
+    //   return data
+    // })
+    //Modal is displayed here after successful or failed registration....
+    setShow(true);
   }
 
   return (
+
     <>
-      <div className={styles.floatImg1}><Image alt={"design image"} src={'/assets/img/common/login/HalfCircleBlack.png'} width={86} height={200} color="#00D9B6"/></div>
+      <div className={styles.floatImg1}><Image alt={"design image"} src={'/assets/img/common/login/HalfCircleBlack.svg'} width={86} height={200}/></div>
       <div className={styles.floatImg2}><Image alt={"design image"} src={'/assets/img/common/login/HalfCircleWhite.png'} width={150} height={90} /></div>
       <div className={styles.floatImg3}><Image alt={"design image"} src={'/assets/img/common/login/HalfCircleWhite.png'} width={150} height={90} /></div>
       <div className="container-fluid">
-        <div className="row card-container-form">
-          {/* <div className="col-xs-0 col-md-1 col-lg-1">  </div> */}
-          <div className="col-xs-12 col-md-10 col-lg-10" >
+      <Modal show={show}  onHide={() => setShow(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title className='modal-title-style'>Registration Successful</Modal.Title>
+        </Modal.Header>
+        <Modal.Body className='modal-body-style'>Your Afrilearn account has been created successfully</Modal.Body>
+      </Modal>
+        <div className="row ">
+          <div className={styles.logoregisterform}> <Image alt={"logo image"} src={'/assets/img/logo.PNG'} width={200} height={50}/> </div>
+          <div className='card-container-form' >
             <span className={styles.card}>
               <h5 className="center">CREATE AN ACCOUNT</h5>
               <form>
@@ -72,5 +92,35 @@ const Register = (props) => {
     </>
   )
 }
+
+function RegisterModal() {
+  const values = [true, 'sm-down', 'md-down', 'lg-down', 'xl-down', 'xxl-down'];
+  const [fullscreen, setFullscreen] = useState(true);
+  const [show, setShow] = useState(false);
+
+  function handleShow(breakpoint) {
+    setFullscreen(breakpoint);
+    setShow(true);
+  }
+
+  return (
+    <>
+      {values.map((v, idx) => (
+        <Button key={idx} className="me-2 mb-2" onClick={() => handleShow(v)}>
+          Full screen
+          {typeof v === 'string' && `below ${v.split('-')[0]}`}
+        </Button>
+      ))}
+      <Modal show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Modal body content</Modal.Body>
+      </Modal>
+    </>
+  );
+}
+
+
 
 export default Register
