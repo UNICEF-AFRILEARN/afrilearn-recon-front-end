@@ -12,7 +12,8 @@ const Register = () => {
         <title>Create Account | Myafrilearn.com</title>
         <meta name="description" content="Afrilearn is on a mission to provide affordable, world-class education for Africans, anywhere." />
       </Head>
-      {platformContext ? <RegisterComponent platformContext={platformContext.data} /> : <big>Loading...</big>}
+      {/* {platformContext ? <RegisterComponent platformContext={platformContext.data} /> : <big>Loading...</big>} */}
+      <RegisterComponent />
     </>
   )
 }
