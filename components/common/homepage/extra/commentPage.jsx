@@ -11,7 +11,7 @@ const commentPage = () => {
             <Image
               alt={"design image"}
               className={styles.commentImg}
-              src={"/assets/img/common/homepage/comment.png"}
+              src={"/assets/img/common/homepage/Comment.png"}
               width={15}
               height={15}
             />
@@ -30,7 +30,7 @@ const commentPage = () => {
             <Image
               alt={"design image"}
               className={styles.commentImg}
-              src={"/assets/img/common/homepage/comment.png"}
+              src={"/assets/img/common/homepage/Comment.png"}
               width={15}
               height={15}
             />
@@ -49,7 +49,7 @@ const commentPage = () => {
             <Image
               alt={"design image"}
               className={styles.commentImg}
-              src={"/assets/img/common/homepage/comment.png"}
+              src={"/assets/img/common/homepage/Comment.png"}
               width={15}
               height={15}
             />
@@ -68,7 +68,7 @@ const commentPage = () => {
             <Image
               alt={"design image"}
               className={styles.commentImg}
-              src={"/assets/img/common/homepage/comment.png"}
+              src={"/assets/img/common/homepage/Comment.png"}
               width={15}
               height={15}
             />
@@ -87,7 +87,7 @@ const commentPage = () => {
             <Image
               alt={"design image"}
               className={styles.commentImg}
-              src={"/assets/img/common/homepage/comment.png"}
+              src={"/assets/img/common/homepage/Comment.png"}
               width={15}
               height={15}
             />
@@ -105,7 +105,7 @@ const commentPage = () => {
             <Image
               alt={"design image"}
               className={styles.commentImg}
-              src={"/assets/img/common/homepage/comment.png"}
+              src={"/assets/img/common/homepage/Comment.png"}
               width={15}
               height={15}
             />
@@ -123,7 +123,7 @@ const commentPage = () => {
             <Image
               alt={"design image"}
               className={styles.commentImg}
-              src={"/assets/img/common/homepage/comment.png"}
+              src={"/assets/img/common/homepage/Comment.png"}
               width={15}
               height={15}
             />

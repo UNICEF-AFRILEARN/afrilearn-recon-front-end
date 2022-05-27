@@ -307,6 +307,63 @@ const QuickJoin = () => {
     ],
   };
 
+  const classData = [
+    {
+      classNames: "JSS One",
+      classRef: "/",
+    },
+    {
+      classNames: "JSS Two",
+      classRef: "/",
+    },
+    {
+      classNames: "JSS Three",
+      classRef: "/",
+    },
+    {
+      classNames: "SSS One",
+      classRef: "/",
+    },
+    {
+      classNames: "SSS Two",
+      classRef: "/",
+    },
+    {
+      classNames: "SSS Three",
+      classRef: "/",
+    },
+    {
+      classNames: "Primary One",
+      classRef: "/",
+    },
+    {
+      classNames: "Primary Two",
+      classRef: "/",
+    },
+    {
+      classNames: "Primary Three",
+      classRef: "/",
+    },
+    {
+      classNames: "Primary Four",
+      classRef: "/",
+    },
+    {
+      classNames: "Primary Five",
+      classRef: "/",
+    },
+    {
+      classNames: "Primary Six",
+      classRef: "/",
+    },
+  ];
+  // console.log(classData[0]);
+
+  // for (let i = 0; i < classData.length; i++) {
+  //   const element = classData[i];
+  //   console.log(element);
+  // }
+
   return (
     <>
       <div id="landingpage-quickJoin" className={`row ${styles.quickJoin}`}>
@@ -337,42 +394,11 @@ const QuickJoin = () => {
                       </div>
                     </div>
                     <ul className={styles.courseSelectSectionDropDown}>
-                      <li>
-                        <Link href="/">JSS One</Link>
-                      </li>
-                      <li>
-                        <Link href="/">JSS Two</Link>
-                      </li>
-                      <li>
-                        <Link href="/">JSS Three</Link>
-                      </li>
-                      <li>
-                        <Link href="/">SSS One</Link>
-                      </li>
-                      <li>
-                        <Link href="/">SSS Two</Link>
-                      </li>
-                      <li>
-                        <Link href="/">SSS Three</Link>
-                      </li>
-                      <li>
-                        <Link href="/">Primary One</Link>
-                      </li>
-                      <li>
-                        <Link href="/">Primary Two</Link>
-                      </li>
-                      <li>
-                        <Link href="/">Primary Three</Link>
-                      </li>
-                      <li>
-                        <Link href="/">Primary Four</Link>
-                      </li>
-                      <li>
-                        <Link href="/">Primary Five</Link>
-                      </li>
-                      <li>
-                        <Link href="/">Primary Six</Link>
-                      </li>
+                      {classData.map((e, i) => (
+                        <li key={i}>
+                          <Link href={e.classRef}>{e.classNames}</Link>
+                        </li>
+                      ))}
                     </ul>
                   </ul>
                 </div>
@@ -384,7 +410,6 @@ const QuickJoin = () => {
               </div>
             </div>
           </div>
-        
         </section>
       </div>
     </>
