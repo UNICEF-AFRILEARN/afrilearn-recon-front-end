@@ -668,6 +668,9 @@ padding: 15px;
   margin: 50px;
   position: relative;
 }
+
+
+
 .partners section {
   margin: 0px 0 50px;
   overflow: auto;
@@ -735,6 +738,7 @@ padding: 15px;
   margin: 0px 10px 0;
   top: 50%;
   text-decoration: none;
+
 }
 
 .partners .partnerLogo {
@@ -815,6 +819,11 @@ padding: 15px;
     gap: 10px;
     border: none;
     justify-content: center;
+  }
+
+  .partners {
+    margin: 5px;
+    position: relative;
   }
 
   .cardstylling button {
