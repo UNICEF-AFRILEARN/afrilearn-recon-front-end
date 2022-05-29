@@ -48,7 +48,7 @@ const WhyAfrilearn = () => {
   ]
 
   return (
-    <div id="homepageSecondSection" className="row" style={{margin: '93px'}}>
+    <div id="homepageSecondSection" className="row why-afrilear-works-segment" style={{margin: '93px'}}>
       <h2 className={styles.homepageSecondSectionh2}>Why Afrilearn works</h2>
       <ul className={styles.secondSectionul}>
         {navigationData.map((item => {

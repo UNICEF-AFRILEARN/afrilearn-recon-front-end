@@ -168,6 +168,9 @@ a {
   margin-top: 15px;
 }
 
+.accordion-item {
+  border: none !important;
+}
 
 @media screen and (max-width: 768px) {
   .mobileOnly {
@@ -200,6 +203,8 @@ a {
   }
 }
 
+
+
   @media screen and (max-width: 768px) {
     .mobileOnly {
       display: block !important;
@@ -216,11 +221,15 @@ a {
     .mobilePadOff {
       padding: 0px !important;
     }
+
+    .why-afrilear-works-segment {
+      width: 70vw;
+      margin: 5px;
+      padding-left: 10px;
+    }
   }
   
-  .accordion-item {
-    border: none !important;
-  }
+ 
   
   .accordion-button {
     width: 125% !important;
@@ -240,6 +249,8 @@ a {
   padding-top: 20px;
    text-align: center;
  }
+
+
   
   @media (min-width: 992px){
     .navbar-expand-lg .navbar-nav {

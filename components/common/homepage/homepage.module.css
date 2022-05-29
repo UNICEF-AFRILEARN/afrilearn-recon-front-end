@@ -806,14 +806,6 @@ padding: 15px;
   padding: 15px 18px !important;
   border-radius: 39px;
 }
-.btnJoinForFree {
-  /* margin-top: 25px; */
-  border: none;
-  background-color: #00d9b6;
-  color: white !important;
-  padding: 15px 18px !important;
-  border-radius: 39px;
-}
 
 @media screen and (max-width: 768px) {
   .cardstylling {
@@ -828,6 +820,7 @@ padding: 15px;
   .cardstylling button {
     margin-left: 22px;
   }
+
 
   .faq section {
     margin-top: 30px;
