@@ -11,7 +11,6 @@ import { Button, Modal } from 'react-bootstrap';
 import {API} from '../../../../pages/api/client-side/fetcher';
 
 const Register = (props) => {
-  // const values = [true, 'sm-down', 'md-down', 'lg-down', 'xl-down', 'xxl-down'];
   const [fullscreen, setFullscreen] = useState(true);
   const [show, setShow] = useState(false);
 

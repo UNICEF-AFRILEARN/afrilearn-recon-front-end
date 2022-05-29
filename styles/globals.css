@@ -237,7 +237,7 @@ a {
   }
   
   .card-container-form {
-    display: flex;
+    /* display: flex; */
   }
   
   @media (min-width: 992px){
