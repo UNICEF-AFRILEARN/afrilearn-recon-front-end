@@ -236,9 +236,10 @@ a {
     margin-top: 15px;
   }
   
-  .card-container-form {
-    /* display: flex; */
-  }
+ .logo-login-seg {
+  padding-top: 20px;
+   text-align: center;
+ }
   
   @media (min-width: 992px){
     .navbar-expand-lg .navbar-nav {
