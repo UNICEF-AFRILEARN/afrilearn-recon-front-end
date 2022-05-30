@@ -229,6 +229,29 @@ a {
       padding-left: 10px;
       margin-right: 10px;
     }
+
+    .explore-added-class-currection {
+      padding: 40px 50px !important;
+    }
+
+    .add-class-for-the-header h3{
+      width: 80vw !important;
+      font-size: 20px !important;
+      margin-top: 15px !important;
+    }
+
+    .ul-class-added-corrected ul{
+      display: flex !important;
+      margin-top: 10px !important;
+    }
+
+    .class-li-corrected {
+      margin-right: 2px !important;
+      padding: 7px 25px !important;
+      display: flex !important;
+      flex-direction: row;
+      align-items: center;
+    }
   }
   
  

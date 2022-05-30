@@ -67,12 +67,12 @@ const ExploreAfrilearn = () => {
   };
 
   return (
-    <div className={`container-fluid ${styles.exploreAfrilearn}`}>
+    <div className={`container-fluid explore-added-class-currection ${styles.exploreAfrilearn}`}>
       <section className="row">
-        <div className="col-md-6">
+        <div className="col-md-6 add-class-for-the-header">
           <h3 className={styles.exploreAfrilearnh3}>Explore genius content</h3>
         </div>
-        <div className="col-md-6">
+        <div className="col-md-6 ul-class-added-corrected">
           <ul>
             <li
               onClick={(e) => handleNavigation(1, e)}
@@ -80,17 +80,17 @@ const ExploreAfrilearn = () => {
                 selectedOption === 1
                   ? styles.exploreAfrilearnActive
                   : styles.exploreAfrilearnNotActive
-              }`}
+              } class-li-corrected`}
             >
               {<span href="/">TRENDING</span>}
             </li>
             <li
               onClick={(e) => handleNavigation(2, e)}
-              className={`${
+              className={` ${
                 selectedOption === 2
                   ? styles.exploreAfrilearnActive
                   : styles.exploreAfrilearnNotActive
-              }`}
+              } class-li-corrected`}
             >
               {<span href="/">JUST ADDED</span>}
             </li>
