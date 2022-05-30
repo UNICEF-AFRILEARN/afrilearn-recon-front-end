@@ -263,6 +263,15 @@ a {
       font-size: 0.7rem !important;
     }
 
+    .mobile-responsiveness {
+      padding-right: 25px !important;
+      margin-right: 15px !important;
+    }
+
+    .font-conrreted {
+      margin-right: 10px !important;
+    }
+
     .video-corrected-responsive {
       margin-top: 20px !important;
     }
