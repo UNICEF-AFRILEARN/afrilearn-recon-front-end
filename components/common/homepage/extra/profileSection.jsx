@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const ProfileSection = ({data}) => {
    return (     
-      <section className={`row ${styles.profiles}`}>
+      <section className={`row other-style-added ${styles.profiles} `}>
         <div className="col-md-6">
           <h3 className={styles.profilesh3}>{data?.title}<br className="desktopOnly"/>{data?.titlePart2}</h3>
           {data?.description.map((item)=>{

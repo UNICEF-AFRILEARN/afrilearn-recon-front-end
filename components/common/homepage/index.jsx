@@ -390,48 +390,6 @@ const handleToggle = (id) => {
                  )
                })
              }
-          {/* {faqQuestions.map((faq, i) => {
-            return (
-              <div
-                key={i}
-                onClick={(e) => handleToggle(`FAQ #${i + 1}`)}
-                onClick={(e) => console.log(`FAQ #${i + 1}: ${faq}`, e)}
-                className={styles.faqHover}
-                style={{ position: "relative" }}
-              >
-                <span
-                 key={i}
-                  style={{
-                    position: "absolute",
-                    zIndex: 1,
-                    top: "25%",
-                    left: "10px",
-                    fontSize: "18px",
-                    lineHeight: "25px",
-                    color: "#000000",
-                  }}
-                >
-                  {faq.faq}
-                  
-                  {faq}
-                </span>
-                <Image
-                  alt={"design image"}
-                  src={data?.imageURL[0]}
-                  width="500px"
-                  height="60px"
-                />
-                <div>
-                  {currentModal && faq.answ}
-                </div>
-              </div>
-
-              
-             
-              </div>
-            );
-          
-          })} */}
         </section>
       </div>
     </>
@@ -498,12 +456,6 @@ const QuickJoin = () => {
       classRef: "/",
     },
   ];
-  // console.log(classData[0]);
-
-  // for (let i = 0; i < classData.length; i++) {
-  //   const element = classData[i];
-  //   console.log(element);
-  // }
 
   return (
     <>

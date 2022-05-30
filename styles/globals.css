@@ -221,11 +221,13 @@ a {
     .mobilePadOff {
       padding: 0px !important;
     }
+   
 
     .why-afrilear-works-segment {
-      width: 70vw;
-      margin: 5px;
+      width: 100vw !important;
+      margin: 20px !important;
       padding-left: 10px;
+      margin-right: 10px;
     }
   }
   
