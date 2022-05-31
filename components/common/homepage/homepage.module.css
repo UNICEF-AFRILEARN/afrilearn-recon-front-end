@@ -61,6 +61,17 @@
   top: 2px !important;
   left: -7px !important;
 }
+
+@media screen and (max-width: 978px) {
+  .experienceAfrilearnImg {
+    top: 167px !important;
+  }
+  /* .imageTag {
+    position: absolute;
+    top: -16px;
+    right: 17px;
+  } */
+}
 .joinForFree:hover,
 .experienceAfrilearn:hover {
   cursor: pointer;
@@ -349,6 +360,14 @@
   margin-bottom: 0;
   margin-top: 4px;
 }
+
+/* @media screen and (max-width: 374px) {
+  .testimonials p {
+    margin-top: 0 !important;
+    left: -53px;
+  } */
+/* } */
+
 .crossPlatform section {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -412,14 +431,21 @@
   color: #333333;
 }
 
+@media screen and (max-width: 621px) {
+  .testimonials {
+    margin-top: 93px;
+  }
+}
 @media screen and (max-width: 480px) {
   .testimonials p {
-    font-size: 12px;
+    font-size: 15px;
+    left: 75px;
+    top: -47px;
   }
   .heroText h1 {
     font-size: 20px;
     margin: 0;
-    width: 100%;
+    width: 277px;
   }
 
   .homepage .mark {
@@ -428,12 +454,21 @@
   }
 }
 
-@media screen and (max-width: 480px) {
-  .testimonials p {
+@media screen and (max-width: 380px) {
+  .testimonials {
+    margin: 15px !important;
+    position: relative;
+  }
+
+  .homepage .mark {
+    width: 15px !important;
+    height: 15px !important;
+  }
+
+  .heroTextHone {
     position: absolute;
-    top: 29px;
-    left: 5px;
-    width: 200px;
+    left: -50px;
+    top: 28px;
   }
 }
 
@@ -448,6 +483,7 @@
   font-size: 40px;
   /* margin-top: 50px; */
   text-align: center;
+  color: #29465b;
 }
 
 .faq section {
@@ -485,9 +521,9 @@
   width: 791.11px;
 }
 
-.quickJoinSec{
-align-items: flex-start;
-height: 410px;
+.quickJoinSec {
+  align-items: flex-start;
+  height: 410px;
 }
 
 .quickJoin section {
@@ -649,6 +685,7 @@ height: 410px;
 .partners {
   margin: 50px;
   position: relative;
+  color: #29465b;
 }
 
 

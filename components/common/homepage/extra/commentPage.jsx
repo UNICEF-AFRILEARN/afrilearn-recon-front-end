@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const commentPage = () => {
   return (
-    <div className={styles.commentPage}>
+    <div className={`row ${styles.commentPage}`}>
       <div className={`${styles.list1} ${styles.list}`}>
         <div className={styles.commentwrapper}>
           <div className={styles.comment}>
