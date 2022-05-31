@@ -279,34 +279,33 @@ const Testimonials = () => {
     <>
       <div className="row">
         <div
-        id="landingpage-testimonials"
-        className={`row ${styles.testimonials}`}
-        style={{ margin: "93px" }}
-      >
-        <section className={styles.container}>
-          <div
-            className={`col-xl-6 col-lg-7 col-md-8 col-sm-9 ${styles.heroText}`}
-          >
-            <h1>{`${data.title}`}</h1>
-          </div>
-          {/* <div className='col-lg-7 '></div> */}
-        <p>{data.description[0]}</p>
-          <section className={`row`}>
-            <div className={`col-md-12`}>
-              <Image
-                alt={"design image"}
-                className={styles.mark}
-                src={data?.imageURLs[0]}
-                width={"142.37px"}
-                height={"120px"}
-              />
+          id="landingpage-testimonials"
+          className={`row ${styles.testimonials}`}
+          style={{ margin: "93px" }}
+        >
+          <section className={styles.container}>
+            <div
+              className={`col-xl-6 col-lg-7 col-md-8 col-sm-9 ${styles.heroText}`}
+            >
+              <h1 className={styles.heroTextHone}>{`${data.title}`}</h1>
             </div>
-          </section> 
-          </section> 
-      </div>
+            {/* <div className='col-lg-7 '></div> */}
+            <p>{data.description[0]}</p>
+            <section className={`row`}>
+              <div className={`col-md-12`}>
+                <Image
+                  alt={"design image"}
+                  className={styles.mark}
+                  src={data?.imageURLs[0]}
+                  width={"70%"}
+                  height={"70%"}
+                />
+              </div>
+            </section>
+          </section>
+        </div>
         <CommentPage />
-      {/* </section> */}
-
+        {/* </section> */}
       </div>
     </>
   );
