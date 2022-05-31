@@ -576,14 +576,14 @@ const Partners = () => {
             {data.partners.map((partner, i) => {
         
               return (
-
                 
-                  <div key={i}className={styles.box}  >
+                  <div key={i}className={`${styles.box} image-box-corrected`} >
                       <Image
                         alt={"design image"}
                         className={styles.partnerLogo}
                         src={partner.logoURL}
                         layout={"fill"}
+                      
                       />
                   </div>
                
