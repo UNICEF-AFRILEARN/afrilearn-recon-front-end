@@ -176,9 +176,9 @@ a {
   background-color: #00D9B6;
   text-align: center;
   /* margin-right: 5%; */
-  width: 30%;
+  width: 100%;
   border-radius: 25px;
-  padding: 3% 3%;
+  padding: 3px 0.52px !important;
   color:#FFFFFF;
   ;
 }
@@ -192,6 +192,11 @@ a {
 
 .button-setions {
   display: flex !important;
+  justify-content: center;
+  /* flex-direction: row !important; */
+  /* width: 80vw !important; */
+  /* background-color: rgb(255, 0, 21); */
+  
 }
 
 .play-store-class {
@@ -222,6 +227,12 @@ a {
 
   .mobilePadOff {
     padding: 0px !important;
+  }
+
+
+  .join-btn-wrapper {
+    width: 90% !important;
+    padding: 8px 3px !important;
   }
 
   .navbar-nav {
@@ -313,8 +324,8 @@ a {
 
     .button-setions {
       /* background-color: #009442; */
-      width: 70vw !important;
-      justify-content: center;
+      /* width: 80vw !important; */
+      /* justify-content: center; */
     }
 
     .play-store-class {
@@ -327,8 +338,8 @@ a {
 
     .button-setions {
       /* background-color: #009442; */
-      width: 70vw !important;
-      justify-content: center;
+      /* width: 70vw !important;
+      justify-content: center; */
     }
   }
   

@@ -718,11 +718,11 @@ padding: 15px;
 .cardstylling button {
   background: #00d9b6;
   border-radius: 30px;
-  width: 261px;
+  width: 85%;
   padding: 9px;
   color: #ffffff;
   border: none;
-  margin-left: 50px;
+  margin-left: 5%;
 }
 
 .partners .box {
@@ -827,7 +827,8 @@ padding: 15px;
   }
 
   .cardstylling button {
-    margin-left: 22px;
+    margin-left: 15%;
+    width: 60%;
   }
 
 

@@ -232,7 +232,7 @@ const JoinLeague = () => {
 
     return (
       <>
-      <div  className={`row ${styles.faq}`}>
+      <div  className={`${styles.faq}`}>
         <h2>Join league of world-class learners</h2>
         <div className={styles.cardstylling} >
         {
