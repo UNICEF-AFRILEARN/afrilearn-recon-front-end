@@ -212,6 +212,10 @@ a {
 
 }
 
+.inner-btn-nav-bar {
+  display: flex;
+}
+
 @media screen and (max-width: 768px) {
   .mobileOnly {
     display: block !important;
@@ -322,15 +326,20 @@ a {
       margin-top: 20px !important;
     }
 
-    .button-setions {
-      /* background-color: #009442; */
-      /* width: 80vw !important; */
-      /* justify-content: center; */
+    .play-store-class {
+      display: flex;
     }
 
-    .play-store-class {
-      /* background-color: aqua; */
+    .me-auto {
+      padding-left: 20% !important;
+    }
+
+    .inner-btn-nav-bar {
+      margin-top: 55px;
       display: flex;
+    }
+    .our-story-frag {
+      margin-top: 40px;
     }
   }
 
