@@ -277,7 +277,8 @@ const Testimonials = () => {
   };
   return (
     <>
-      <div
+      <div className="row">
+        <div
         id="landingpage-testimonials"
         className={`row ${styles.testimonials}`}
         style={{ margin: "93px" }}
@@ -289,7 +290,7 @@ const Testimonials = () => {
             <h1>{`${data.title}`}</h1>
           </div>
           {/* <div className='col-lg-7 '></div> */}
-          <p>{data.description[0]}</p>
+        <p>{data.description[0]}</p>
           <section className={`row`}>
             <div className={`col-md-12`}>
               <Image
@@ -300,9 +301,11 @@ const Testimonials = () => {
                 height={"120px"}
               />
             </div>
-          </section>
-        </section>
+          </section> 
+          </section> 
+      </div>
         <CommentPage />
+      {/* </section> */}
 
       </div>
     </>
