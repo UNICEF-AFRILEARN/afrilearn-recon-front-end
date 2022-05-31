@@ -89,7 +89,7 @@ const GameIntro = () => {
   return (<>
     <div className={`row ${styles.landingpageg} mobile-responsiveness`} >
    <section className={`row ${styles.profiles}`}>
-        <div className="col-md-4">
+        <div className= {`col-md-4 ${styles.landingpagegText}`}>
           <h3 className={`${styles.profileshh3} font-conrreted`}>{data?.title}<br className="desktopOnly " />{data?.titlePart2}</h3>
           {data?.description.map((item) => {
             return <p key={item}><span className={styles.bulletTextt}>{item}</span></p>
@@ -113,7 +113,7 @@ const CrossPlatform = () => {
   const data = {
     title: "Learn on any device.",
     description: ["Anywhere, everywhere. Cancel anytime."],
-    imageURLs: ["/assets/img/common/homepage/learn.jpeg"],
+    imageURLs: ["/assets/img/common/homepage/learn.png"],
   };
   return (
     <>

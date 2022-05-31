@@ -108,7 +108,7 @@
 }
 .profileshh3 {
   font-family: "heading";
-  width: 550px;
+  width: 120%;
   font-size: 48px;
   font-weight: 500;
   color: #29465b;
@@ -167,12 +167,6 @@
     display: inline-flex !important;
     margin-top: -10px !important;
   }
-
-  /* .footer {
-    width: 200%;
-    bottom: 0;
-  } */
-
   .last .lastttt {
     display: flex !important;
     flex-direction: row !important;
@@ -361,7 +355,7 @@
 }
 .crossPlatform h3 {
   font-family: "heading";
-  width: 550px;
+  width: 120%;
   line-height: 63px;
   font-size: 48px;
   font-weight: 500;
@@ -499,7 +493,6 @@ height: 410px;
 .quickJoin section {
   display: flex;
   justify-content: center;
-  /* align-items: center; */
 }
 .quickJoin .classes {
   left: 190px !important;
@@ -508,15 +501,6 @@ height: 410px;
   position: relative;
   display: flex;
   left: -75px;
-}
-/* .quickJoin .joinButton {
-  left: -90px !important;
-} */
-
-.courseSelectSection {
-  /* margin-top: -485px; */
-  /* position: absolute;
-  top:50px; */
 }
 
 .paddingRightOff {
@@ -533,7 +517,6 @@ height: 410px;
 
 .myDropCont {
   position: relative;
-  /* z-index: 3; */
   cursor: pointer;
 }
 .myPlaceholder {
@@ -579,10 +562,6 @@ height: 410px;
   display: block;
   cursor: pointer;
 }
-
-/* .courseSelectSectionDropDown li {
-padding: 15px;
-} */
 
 .paddingRightOff ul li {
   padding-bottom: 7px;
@@ -638,6 +617,9 @@ padding: 15px;
   }
   .myPlaceholder {
     font-size: 10px !important;
+  }
+  .bulletTexttt {
+    padding-left: 2%;
   }
 }
 
@@ -840,5 +822,11 @@ padding: 15px;
 
   .partners .partnerLogo {
     padding: 1px !important;
+  }
+  .crossPlatform .crossPlatformTextPosition {
+    margin-bottom: 100px;
+  }
+  .profileImagePosition {
+    margin-right: 30px;
   }
 }
