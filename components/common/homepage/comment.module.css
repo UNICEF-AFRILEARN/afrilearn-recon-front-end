@@ -1,8 +1,8 @@
 .commentPage {
   padding: 15px;
   width: 1180px;
-  height: 550px;
-  margin: 0 auto;
+  height: 600px;
+  margin: 10px;
   position: relative;
 }
 
@@ -35,8 +35,7 @@
 }
 
 .commentImg {
-      opacity: 0.3 !important;
-
+  opacity: 0.3 !important;
 }
 
 .list1 {
@@ -101,4 +100,53 @@
   top: 228px;
   display: grid;
   align-content: center;
+}
+
+@media screen and (max-width: 1148px) {
+  .commentPage {
+    height: 900px;
+    width: 760px;
+    margin: auto;
+  }
+  .list6 {
+    left: 429px;
+    top: 618px;
+  }
+  .list7 {
+    left: 90px;
+    top: 528px;
+  }
+}
+
+@media screen and (max-width: 788px) {
+  .commentPage {
+    height: 1550px;
+    width: 445px;
+    margin: auto;
+  }
+  .list7 {
+    left: 42px;
+    top: 528px;
+  }
+
+  .list3 {
+    left: 0px;
+    top: 751px;
+  }
+  .list4 {
+    left: 35px;
+    top: 1005px;
+  }
+  .list5 {
+        left: 27px;
+    top: 1192px;
+  }
+  .list6 {
+    left: 36px;
+    top: 1337px;
+  }
+}
+
+@media screen and (max-width: 330px) {
+  
 }
