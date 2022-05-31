@@ -232,7 +232,7 @@ const JoinLeague = () => {
 
     return (
       <>
-      <div  className={`row ${styles.faq}`}>
+      <div  className={`${styles.faq}`}>
         <h2>Join league of world-class learners</h2>
         <div className={styles.cardstylling} >
         {
@@ -576,14 +576,14 @@ const Partners = () => {
             {data.partners.map((partner, i) => {
         
               return (
-
                 
-                  <div key={i}className={styles.box}  >
+                  <div key={i}className={`${styles.box} image-box-corrected`} >
                       <Image
                         alt={"design image"}
                         className={styles.partnerLogo}
                         src={partner.logoURL}
                         layout={"fill"}
+                      
                       />
                   </div>
                
