@@ -119,7 +119,7 @@
 }
 .profileshh3 {
   font-family: "heading";
-  width: 550px;
+  width: 120%;
   font-size: 48px;
   font-weight: 500;
   color: #29465b;
@@ -178,12 +178,6 @@
     display: inline-flex !important;
     margin-top: -10px !important;
   }
-
-  /* .footer {
-    width: 200%;
-    bottom: 0;
-  } */
-
   .last .lastttt {
     display: flex !important;
     flex-direction: row !important;
@@ -380,7 +374,7 @@
 }
 .crossPlatform h3 {
   font-family: "heading";
-  width: 550px;
+  width: 120%;
   line-height: 63px;
   font-size: 48px;
   font-weight: 500;
@@ -535,7 +529,6 @@
 .quickJoin section {
   display: flex;
   justify-content: center;
-  /* align-items: center; */
 }
 .quickJoin .classes {
   left: 190px !important;
@@ -545,15 +538,6 @@
   display: flex;
   left: -75px;
 }
-/* .quickJoin .joinButton {
-  left: -90px !important;
-} */
-
-/* .courseSelectSection {
-  /* margin-top: -485px; */
-/* position: absolute;
-  top:50px; 
-} */
 
 .paddingRightOff {
   padding-right: 0 !important;
@@ -569,7 +553,6 @@
 
 .myDropCont {
   position: relative;
-  /* z-index: 3; */
   cursor: pointer;
 }
 .myPlaceholder {
@@ -615,10 +598,6 @@
   display: block;
   cursor: pointer;
 }
-
-/* .courseSelectSectionDropDown li {
-padding: 15px;
-} */
 
 .paddingRightOff ul li {
   padding-bottom: 7px;
@@ -675,6 +654,9 @@ padding: 15px;
   .myPlaceholder {
     font-size: 10px !important;
   }
+  .bulletTexttt {
+    padding-left: 2%;
+  }
 }
 
 @media screen and (max-width: 353px) {
@@ -705,6 +687,9 @@ padding: 15px;
   position: relative;
   color: #29465b;
 }
+
+
+
 .partners section {
   margin: 0px 0 50px;
   overflow: auto;
@@ -752,11 +737,11 @@ padding: 15px;
 .cardstylling button {
   background: #00d9b6;
   border-radius: 30px;
-  width: 261px;
+  width: 85%;
   padding: 9px;
   color: #ffffff;
   border: none;
-  margin-left: 50px;
+  margin-left: 5%;
 }
 
 .partners .box {
@@ -772,6 +757,7 @@ padding: 15px;
   margin: 0px 10px 0;
   top: 50%;
   text-decoration: none;
+
 }
 
 .partners .partnerLogo {
@@ -843,14 +829,6 @@ padding: 15px;
   padding: 15px 18px !important;
   border-radius: 39px;
 }
-.btnJoinForFree {
-  /* margin-top: 25px; */
-  border: none;
-  background-color: #00d9b6;
-  color: white !important;
-  padding: 15px 18px !important;
-  border-radius: 39px;
-}
 
 @media screen and (max-width: 768px) {
   .cardstylling {
@@ -862,9 +840,16 @@ padding: 15px;
     justify-content: center;
   }
 
-  .cardstylling button {
-    margin-left: 22px;
+  .partners {
+    margin: 5px;
+    position: relative;
   }
+
+  .cardstylling button {
+    margin-left: 15%;
+    width: 60%;
+  }
+
 
   .faq section {
     margin-top: 30px;
@@ -875,5 +860,11 @@ padding: 15px;
 
   .partners .partnerLogo {
     padding: 1px !important;
+  }
+  .crossPlatform .crossPlatformTextPosition {
+    margin-bottom: 100px;
+  }
+  .profileImagePosition {
+    margin-right: 30px;
   }
 }

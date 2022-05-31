@@ -24,13 +24,16 @@ const Navigation = () => {
           </div>
             {/* <span className="close-mobile-nav">x</span> */}
               
-                  <Link passHref href="/login" className="btn-log-in-mobile">
+              <div className="inner-btn-nav-bar">
+              <Link passHref href="/login" className="btn-log-in-mobile">
                   <AppButton title="LOG IN" className={styles.loginButton} />
                 </Link>
                 <Link passHref href="/register" className="btn-log-in-mobile">
                   <AppButton title="SIGN UP" secondary />
                 </Link>
 
+              </div>
+               
             {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="/">Action</NavDropdown.Item>
               <NavDropdown.Item href="/">Another action</NavDropdown.Item>

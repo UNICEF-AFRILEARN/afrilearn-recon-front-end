@@ -9,7 +9,7 @@ const ExploreVideoBox = ({ data }) => {
   const toggleModal = () => setShow(!show);
   return (
     <>
-      <div className="col-md-3 relative" onClick={toggleModal}>
+      <div className="col-md-3 relative video-corrected-responsive" onClick={toggleModal}>
         <Image
           alt={"afrilearn marketing video"}
           src={data?.thumbnailUrl}

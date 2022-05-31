@@ -48,9 +48,9 @@ const WhyAfrilearn = () => {
   ]
 
   return (
-    <div id="homepageSecondSection" className="row" style={{margin: '93px'}}>
+    <div id="homepageSecondSection" className="row why-afrilear-works-segment" style={{margin: '93px'}}>
       <h2 className={styles.homepageSecondSectionh2}>Why Afrilearn works</h2>
-      <ul className={styles.secondSectionul}>
+      <ul className={`${styles.secondSectionul} sub-menu-items-corrected`}>
         {navigationData.map((item => {
           return <li key={item.id} className={`${selectedOption === item.id ? styles.activeOption : ''}`}>{selectedOption === item.id ? <span></span> : ''}
           

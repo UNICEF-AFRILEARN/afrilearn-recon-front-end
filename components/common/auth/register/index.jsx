@@ -11,7 +11,6 @@ import { Button, Modal } from 'react-bootstrap';
 import {API} from '../../../../pages/api/client-side/fetcher';
 
 const Register = (props) => {
-  // const values = [true, 'sm-down', 'md-down', 'lg-down', 'xl-down', 'xxl-down'];
   const [fullscreen, setFullscreen] = useState(true);
   const [show, setShow] = useState(false);
 
@@ -54,7 +53,7 @@ const Register = (props) => {
         <Modal.Body className='modal-body-style'>Your Afrilearn account has been created successfully</Modal.Body>
       </Modal>
         <div className="row ">
-          <div className={styles.logoregisterform}> <Image alt={"logo image"} src={'/assets/img/logo.PNG'} width={200} height={50}/> </div>
+          {/* <div className={styles.logoregisterform}> <Image alt={"logo image"} src={'/assets/img/logo.PNG'} width={200} height={50}/> </div> */}
           <div className='card-container-form' >
             <span className={styles.card}>
               <h5 className="center">CREATE AN ACCOUNT</h5>

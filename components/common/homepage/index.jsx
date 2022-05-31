@@ -87,10 +87,10 @@ const GameIntro = () => {
     imageURL: '/assets/img/common/homepage/school.png' 
   }
   return (<>
-    <div className={`row ${styles.landingpageg}`} >
+    <div className={`row ${styles.landingpageg} mobile-responsiveness`} >
    <section className={`row ${styles.profiles}`}>
-        <div className="col-md-4">
-          <h3 className={styles.profileshh3}>{data?.title}<br className="desktopOnly" />{data?.titlePart2}</h3>
+        <div className= {`col-md-4 ${styles.landingpagegText}`}>
+          <h3 className={`${styles.profileshh3} font-conrreted`}>{data?.title}<br className="desktopOnly " />{data?.titlePart2}</h3>
           {data?.description.map((item) => {
             return <p key={item}><span className={styles.bulletTextt}>{item}</span></p>
           })}
@@ -113,7 +113,7 @@ const CrossPlatform = () => {
   const data = {
     title: "Learn on any device.",
     description: ["Anywhere, everywhere. Cancel anytime."],
-    imageURLs: ["/assets/img/common/homepage/learn.jpeg"],
+    imageURLs: ["/assets/img/common/homepage/learn.png"],
   };
   return (
     <>
@@ -232,7 +232,7 @@ const JoinLeague = () => {
 
     return (
       <>
-      <div  className={`row ${styles.faq}`}>
+      <div  className={`${styles.faq}`}>
         <h2>Join league of world-class learners</h2>
         <div className={styles.cardstylling} >
         {
@@ -392,48 +392,6 @@ const handleToggle = (id) => {
                  )
                })
              }
-          {/* {faqQuestions.map((faq, i) => {
-            return (
-              <div
-                key={i}
-                onClick={(e) => handleToggle(`FAQ #${i + 1}`)}
-                onClick={(e) => console.log(`FAQ #${i + 1}: ${faq}`, e)}
-                className={styles.faqHover}
-                style={{ position: "relative" }}
-              >
-                <span
-                 key={i}
-                  style={{
-                    position: "absolute",
-                    zIndex: 1,
-                    top: "25%",
-                    left: "10px",
-                    fontSize: "18px",
-                    lineHeight: "25px",
-                    color: "#000000",
-                  }}
-                >
-                  {faq.faq}
-                  
-                  {faq}
-                </span>
-                <Image
-                  alt={"design image"}
-                  src={data?.imageURL[0]}
-                  width="500px"
-                  height="60px"
-                />
-                <div>
-                  {currentModal && faq.answ}
-                </div>
-              </div>
-
-              
-             
-              </div>
-            );
-          
-          })} */}
         </section>
       </div>
     </>
@@ -500,12 +458,6 @@ const QuickJoin = () => {
       classRef: "/",
     },
   ];
-  // console.log(classData[0]);
-
-  // for (let i = 0; i < classData.length; i++) {
-  //   const element = classData[i];
-  //   console.log(element);
-  // }
 
   return (
     <>
@@ -626,14 +578,14 @@ const Partners = () => {
             {data.partners.map((partner, i) => {
         
               return (
-
                 
-                  <div key={i}className={styles.box}  >
+                  <div key={i}className={`${styles.box} image-box-corrected`} >
                       <Image
                         alt={"design image"}
                         className={styles.partnerLogo}
                         src={partner.logoURL}
                         layout={"fill"}
+                      
                       />
                   </div>
                
