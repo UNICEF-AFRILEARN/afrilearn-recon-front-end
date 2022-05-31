@@ -397,6 +397,7 @@
   color: #29465b;
 }
 
+
 .testimonials .mark {
   position: absolute !important;
   left: 0px !important;
@@ -434,12 +435,9 @@
   }
 }
 
-@media screen and (max-width: 480px) {
-  .testimonials p {
-    position: absolute;
-    top: 29px;
-    left: 5px;
-    width: 200px;
+@media screen and (max-width: 380px) {
+  .testimonials {
+    margin: 15px;
   }
 }
 
@@ -454,6 +452,7 @@
   font-size: 40px;
   /* margin-top: 50px; */
   text-align: center;
+  color: #29465b;
 }
 
 .faq section {
@@ -513,11 +512,11 @@ height: 410px;
   left: -90px !important;
 } */
 
-.courseSelectSection {
+/* .courseSelectSection {
   /* margin-top: -485px; */
   /* position: absolute;
-  top:50px; */
-}
+  top:50px; 
+} */
 
 .paddingRightOff {
   padding-right: 0 !important;
@@ -667,6 +666,8 @@ padding: 15px;
 .partners {
   margin: 50px;
   position: relative;
+  color:#29465B;
+;
 }
 .partners section {
   margin: 0px 0 50px;
