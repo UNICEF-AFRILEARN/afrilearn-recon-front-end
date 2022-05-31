@@ -172,10 +172,21 @@ a {
   border: none !important;
 }
 
+.join-btn-wrapper {
+  background-color: #00D9B6;
+  text-align: center;
+  /* margin-right: 5%; */
+  width: 30%;
+  border-radius: 25px;
+  padding: 3% 3%;
+  color:#FFFFFF;
+  ;
+}
+
 .btn-class-corrected {
   /* padding: 0.10rem .5rem  !important; */
   /* text-align: start !important; */
-  font-size: 15px;
+  /* font-size: 15px; */
   margin-right: 1rem;
 }
 
@@ -188,11 +199,12 @@ a {
 }
 
 .class-play-store {
-  margin-right: 15px;
+  margin-left: 1rem;
 }
 
 .play-store-class Link{
   margin-right: 1rem;
+
 }
 
 @media screen and (max-width: 768px) {
@@ -300,13 +312,13 @@ a {
     }
 
     .button-setions {
-      background-color: #009442;
+      /* background-color: #009442; */
       width: 70vw !important;
       justify-content: center;
     }
 
     .play-store-class {
-      background-color: aqua;
+      /* background-color: aqua; */
       display: flex;
     }
   }
@@ -314,7 +326,7 @@ a {
   @media screen and (max-width: 962px) {
 
     .button-setions {
-      background-color: #009442;
+      /* background-color: #009442; */
       width: 70vw !important;
       justify-content: center;
     }
