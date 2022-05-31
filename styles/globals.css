@@ -172,6 +172,29 @@ a {
   border: none !important;
 }
 
+.btn-class-corrected {
+  /* padding: 0.10rem .5rem  !important; */
+  /* text-align: start !important; */
+  font-size: 15px;
+  margin-right: 1rem;
+}
+
+.button-setions {
+  display: flex !important;
+}
+
+.play-store-class {
+  display: flex;
+}
+
+.class-play-store {
+  margin-right: 15px;
+}
+
+.play-store-class Link{
+  margin-right: 1rem;
+}
+
 @media screen and (max-width: 768px) {
   .mobileOnly {
     display: block !important;
@@ -254,10 +277,10 @@ a {
     }
 
     .sub-menu-items-corrected {
-      display: flex !important;
-      align-items: center;
-      
+      align-items: center !important;
     }
+
+
     .sub-menu-items-corrected li {
       padding: 1px 5px !important;
       font-size: 0.7rem !important;
@@ -274,6 +297,26 @@ a {
 
     .video-corrected-responsive {
       margin-top: 20px !important;
+    }
+
+    .button-setions {
+      background-color: #009442;
+      width: 70vw !important;
+      justify-content: center;
+    }
+
+    .play-store-class {
+      background-color: aqua;
+      display: flex;
+    }
+  }
+
+  @media screen and (max-width: 962px) {
+
+    .button-setions {
+      background-color: #009442;
+      width: 70vw !important;
+      justify-content: center;
     }
   }
   
