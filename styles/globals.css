@@ -22,6 +22,7 @@
 
 html,
 body {
+  overflow-x: hidden;
   padding: 0;
   margin: 0;
   font-family: content !important;
@@ -107,7 +108,7 @@ a {
   font-size: 20px;
   font-weight: 700;
   line-height: 31px;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
   text-align: center;
   align-items: center;
   color: #000000;
@@ -339,19 +340,7 @@ a {
     .our-story-frag {
       margin-top: 40px;
     }
-  }
-
-  @media screen and (max-width: 962px) {
-
-    .button-setions {
-      /* background-color: #009442; */
-      /* width: 70vw !important;
-      justify-content: center; */
-    }
-  }
-  
- 
-  
+  }  
   .accordion-button {
     width: 125% !important;
     background-color: #FAFAFA !important;
