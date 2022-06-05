@@ -28,7 +28,7 @@ const AppTextInput = ({
          ${className}
       `}
         onBlur={() => setFocused(false)}
-        onChange={(e) => onChange(e.target.value)}
+        // onChange={(e) => onChange(e.target.value)}
         onFocus={() => setFocused(true)}
         placeholder={placeholder}
         type={defaultType}
