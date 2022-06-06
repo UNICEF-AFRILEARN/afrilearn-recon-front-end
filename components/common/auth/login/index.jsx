@@ -1,31 +1,63 @@
 import { Form } from "react-bootstrap";
+import { useRouter } from "next/router";
 import Link from "next/link";
 import styles from "./login.module.css";
 import Image from "next/image";
 import TextInput from "../../../widgets/appTextInput";
 import AppButton from "../../../widgets/buttons/AppButton";
-import { API } from "../../../../pages/api/client-side/fetcher";
+import React, { useState } from "react";
+// import { API } from "../../../../pages/api/client-side/fetcher";
 
 const Login = () => {
-  const userInfo = {};
-  const handleChange = (key, value) => (userInfo[key] = value);
-  const startLogin = () => {
-    API.loginDefault(userInfo).then(
-      ({ error, status, fieldsErrors, user, token }) => {
-        status === "success" || 200
-          ? console.log(
-              `Login status\n ${status}\n`,
-              `User Profile\n ${JSON.stringify(user, null, 2)}\n`,
-              `Token\n ${token}`,
-            )
-          : console.log(
-              `Login status\n ${status}\n`,
-              `Error Message\n ${error}\n`,
-              `Fields Errors\n ${fieldsErrors}`,
-            );
-      },
-    );
+  // const dispatch = useDispatch();
+  const loginDetails = [
+    {
+      id: "1",
+      userName: "Kiyoonewton",
+      email: "kiyoonewton41@gmail.com",
+      password: "1234",
+    },
+  ];
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const router = useRouter();
+  
+  const signIn = (e) => {
+    e.preventDefault();
+    // console.log(email, password);
+    // const log = loginDetails[0];
+    // if (email === log.email && password === log.password) {
+      router.push("/dashboard/student");
+      // dispatch(getUsername(log.userName));
+    // }
   };
+
+  // const register = (e) => {
+  //   e.preventDefault();
+  //   alert(
+  //     "you can only use 'kiyoonewton41@gmail.com' as email and '1234' as password "
+  //   );
+
+  // const userInfo = {};
+  // const handleChange = (key, value) => (userInfo[key] = value);
+  // const startLogin = () => {
+  //   API.loginDefault(userInfo).then(
+  //     ({ error, status, fieldsErrors, user, token }) => {
+  //       status === "success" || 200
+  //         ? console.log(
+  //             `Login status\n ${status}\n`,
+  //             `User Profile\n ${JSON.stringify(user, null, 2)}\n`,
+  //             `Token\n ${token}`,
+  //           )
+  //         : console.log(
+  //             `Login status\n ${status}\n`,
+  //             `Error Message\n ${error}\n`,
+  //             `Fields Errors\n ${fieldsErrors}`,
+  //           );
+  //     },
+  //   );
+  // };
   return (
     <>
       <div className={styles.floatImg1}>
@@ -55,26 +87,38 @@ const Login = () => {
       </div>
       <div className="container-fluid">
         <div className="row">
-        <div className="logo-login-seg"> <Image alt={"logo image"} src={'/assets/img/logo.PNG'} width={200} height={50}/> </div>
+          <div className="logo-login-seg">
+            {" "}
+            <Image
+              alt={"logo image"}
+              src={"/assets/img/logo.PNG"}
+              width={200}
+              height={50}
+            />{" "}
+          </div>
           <div className="col-xs-0 col-md-1 col-lg-3"> </div>
           <div className="col-xs-12 col-md-10 col-lg-6">
             <span className={styles.card}>
-              <h5 className={`center `}>LOG IN</h5>
+              <h5 className={`center `} onClick={signIn}>
+                LOG IN
+              </h5>
               <form>
                 <TextInput
                   type="text"
-                  onChange={(e) => {
-                    handleChange("email", e);
-                  }}
+                  value={email}
+                  onChange={(e) =>
+                    setEmail(e.target.value )
+                  }
                   title="Email"
                   placeholder="Email"
                   className={styles.pushDown}
                 />
                 <TextInput
                   type="password"
-                  onChange={(e) => {
-                    handleChange("password", e);
-                  }}
+                  onChange={(e) =>
+                    setPassword(e.target.value )
+                  }
+                  value={password}
                   title="Password"
                   placeholder="Password"
                 />
@@ -96,7 +140,7 @@ const Login = () => {
                   <Link passHref href="#">
                     <AppButton
                       title="LOGIN"
-                      onClick={startLogin}
+                      onClick={signIn}
                       secondary
                       className={styles.pushDown13}
                     />
