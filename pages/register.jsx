@@ -1,10 +1,14 @@
-import Head from 'next/head'
-import RegisterComponent from '../components/common/auth/register'
-import { API } from './api/client-side/fetcher'
+
+import Head from 'next/head';
+import RegisterComponent from '../components/common/auth/register';
+import { API } from './api/client-side/fetcher';
+
+
 
 const Register = () => {
 
   const { platformContext } = API.PlatformContext()
+
 
   return (
     <>

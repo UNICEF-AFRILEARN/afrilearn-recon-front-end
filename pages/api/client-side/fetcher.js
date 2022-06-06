@@ -1,5 +1,5 @@
 import useSWR from "swr"
-export const API_BASE = 'https://afrilearn-api-v2.s1.sa/api/v2'
+export const API_BASE = 'https://afrilearn-backend-01.herokuapp.com/api/v1/'
 
 export const API = {
 

@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 import styles from './register.module.css';
 import Image from 'next/image';
@@ -9,8 +10,13 @@ import ReactModal from 'react-modal'
 import { Button, Modal } from 'react-bootstrap';
 
 import {API} from '../../../../pages/api/client-side/fetcher';
+import { getRoles } from '../../../../redux/thunk/authApi'
 
 const Register = (props) => {
+  const collectedRole = useSelector((state) => state.auth)
+
+  console.log("From register UI", collectedRole)
+  const dispatch = useDispatch()
   const [fullscreen, setFullscreen] = useState(true);
   const [show, setShow] = useState(false);
 
@@ -25,19 +31,23 @@ const Register = (props) => {
   const handleChanges = (key, value) => {
 
     profile[key] = value
-    // console.log('User Signup Profile\n', profile)
+    console.log('User Signup Profile\n', profile)
   }
 
   const handleRegisterRequest = (e) => {
-    // e.preventDefault()
-    // API.registerUser(profile).then((data) => {
-    //   console.log('Registeration completed', !data?.isError)
-    //   data?.isError ? console.log("Fields Errors:\n", data?.fieldsErrors) : console.log(data?.registerUser) 
-    //   return data
-    // })
-    //Modal is displayed here after successful or failed registration....
+    e.preventDefault()
+    API.registerUser(profile).then((data) => {
+      console.log('Registeration completed', !data?.isError)
+      data?.isError ? console.log("Fields Errors:\n", data?.fieldsErrors) : console.log(data?.registerUser) 
+      return data
+    })
+    // Modal is displayed here after successful or failed registration....
     setShow(true);
   }
+
+  useEffect(() => {
+    dispatch(getRoles());
+ }, []);
 
   return (
 
@@ -58,14 +68,72 @@ const Register = (props) => {
             <span className={styles.card}>
               <h5 className="center">CREATE AN ACCOUNT</h5>
               <form>
-                <Selectitem data={platformContext?.roles} onChange={(value) => handleChanges('role', value)} placeholder='Select a Role' className={styles.pushDown} />
-                <Selectitem data={platformContext?.courses} onChange={(value) => handleChanges('class', value)} placeholder='Select Class' className={styles.pushDown} />
-                <TextInput name={'fullName'} type='text' onChange={(value) => handleChanges('fullName', value)} title='Full Name' placeholder='Full Name' className={styles.pushDown} />
-                <TextInput name={'phone'} type='text' onChange={(value) => handleChanges('phone', value)} title='Phone Number' placeholder='Phone Number' className={styles.pushDown} />
-                <TextInput name={'email'} type='text' onChange={(value) => handleChanges('email', value)} title='Email' placeholder='Email' className={styles.pushDown} />
-                <TextInput name={'password'} type='password' onChange={(value) => handleChanges('password', value)} title='Password' placeholder='Password' />
-                <TextInput name={'confirmPassword'} type='password' onChange={(value) => handleChanges('confirmPassword', value)} title='Confirm Password' placeholder='Confirm Password' />
-                <TextInput name={'referralCode'} type='text' onChange={(value) => handleChanges('referralCode', value)} title='Referral Code' placeholder='Referral Code (optional)' className={`${styles.pushDown} ${styles.pushUp}`} />
+                <Selectitem
+                  data={platformContext?.roles}
+                  onChange={(value) => handleChanges('role', value)} 
+                  placeholder='Select a Role' 
+                  className={styles.pushDown} 
+                  />
+
+                <Selectitem 
+                data={platformContext?.courses} 
+                onChange={(value) => handleChanges('class', value)} 
+                placeholder='Select Class'
+                className={styles.pushDown} 
+                />
+
+                <TextInput 
+                name={'fullName'} 
+                type='text' 
+                onChange={(value) => handleChanges('fullName', value)} 
+                title='Full Name' 
+                placeholder='Full Name' 
+                className={styles.pushDown} 
+                />
+
+                <TextInput 
+                name={'phone'} 
+                type='text' 
+                onChange={(value) => handleChanges('phone', value)} 
+                title='Phone Number' 
+                placeholder='Phone Number' 
+                className={styles.pushDown} 
+                />
+
+                <TextInput 
+                name={'email'} 
+                type='text' 
+                onChange={(value) => handleChanges('email', value)}
+                title='Email'
+                placeholder='Email'
+                className={styles.pushDown}
+                />
+
+                <TextInput 
+                name={'password'} 
+                type='password' 
+                onChange={(value) => handleChanges('password', value)} 
+                title='Password'
+                placeholder='Password'
+                />
+
+                <TextInput 
+                name={'confirmPassword'} 
+                type='password' 
+                onChange={(value) => handleChanges('confirmPassword', value)} 
+                title='Confirm Password' 
+                placeholder='Confirm Password' 
+                />
+
+                <TextInput 
+                name={'referralCode'} 
+                type='text' 
+                onChange={(value) => handleChanges('referralCode', value)} 
+                title='Referral Code' 
+                placeholder='Referral Code (optional)' 
+                className={`${styles.pushDown} ${styles.pushUp}`} 
+                />
+
                 <p>By signing up, you agree to our <Link passHref href='/'><b>Terms and Privacy Policy</b></Link></p>
                 <div className={`row ${styles.pushDown1}`}>
                   <Link passHref href="#">
