@@ -1,11 +1,16 @@
-import styles from './student.module.css';
-import SubHeading from './extra/subHeading';
-import Image from 'next/image';
+import styles from "./student.module.css";
+import SubHeading from "./extra/subHeading";
+import PastQuestion from "./extra/pastQuestion";
+import TopInClass from "./extra/topInClass";
+import Image from "next/image";
 
 const Dashboard = () => {
   return (
-    <>   
-      <div id="dashboardFirstSection" className={`container-fluid relative ${styles.dashboardFirstSection}`}>
+    <>
+      <div
+        id="dashboardFirstSection"
+        className={`container-fluid relative ${styles.dashboardFirstSection}`}
+      >
         <div className="row">
           <div className="col-md-12">
             <h1>PRIMARY-ONE</h1>
@@ -32,19 +37,26 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      <SubHeading title='My Subjects'/>
-      <div className='container'>
-          <div className='row'>
-              <div className='col-md-2'>
-                <span>
-                  <Image alt={"design image"} src={'/assets/img/features/dashboard/student/Plant Growing.png'} width={70} height={70}/>
-                  <p>Agricultural Science</p>
-                </span>
-              </div>
+      <SubHeading title="My Subjects" />
+      <div className="container">
+        <div className="row">
+          <div className="col-md-2">
+            <span>
+              <Image
+                alt={"design image"}
+                src={"/assets/img/features/dashboard/student/Plant Growing.png"}
+                width={70}
+                height={70}
+              />
+              <p>Agricultural Science</p>
+            </span>
           </div>
+        </div>
       </div>
+      <PastQuestion />
+      <TopInClass />
     </>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;
