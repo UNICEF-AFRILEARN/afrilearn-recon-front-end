@@ -1,12 +1,17 @@
-import styles from './student.module.css';
-import SubHeading from './extra/subHeading';
-import Image from 'next/image';
+import styles from "./student.module.css";
+import SubHeading from "./extra/subHeading";
+import PastQuestion from "./extra/pastQuestion";
+import TopInClass from "./extra/topInClass";
+import Image from "next/image";
 import Link from "next/link";
 
 const Dashboard = () => {
   return (
-    <>   
-      <div id="dashboardFirstSection" className={`container-fluid relative ${styles.dashboardFirstSection}`}>
+    <>
+      <div
+        id="dashboardFirstSection"
+        className={`container-fluid relative ${styles.dashboardFirstSection}`}
+      >
         <div className="row">
           <div className="col-md-12">
             <h1>PRIMARY-ONE</h1>
@@ -34,6 +39,8 @@ const Dashboard = () => {
         </div>
       </div>
       <MySubjects />
+      <PastQuestion />
+      <TopInClass />
       <GetSolution />
       </>  
           );
@@ -156,4 +163,5 @@ const Dashboard = () => {
         
 
 
-export default Dashboard
+
+export default Dashboard;
