@@ -1,37 +1,40 @@
 .dashboardFirstSection {
-    background-image: radial-gradient(rgba(0,0,0,.17),rgba(0,0,0,.99)),url('./../../../../public/assets/img/features/dashboard/student/dashboard.png');
-    background-repeat: no-repeat;
-    background-position: 50%;
-    background-attachment: fixed;
-    background-size: cover;
-    color: #fff;
-    height: 105vh;
-    padding-top: 100px;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.17), rgba(0, 0, 0, 0.99)),
+    url("./../../../../public/assets/img/features/dashboard/student/dashboard.png");
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-attachment: fixed;
+  background-size: cover;
+  color: #fff;
+  height: 105vh;
+  padding-top: 100px;
 }
 .dashboardFirstSection h1 {
-    font-family: 'heading';
-    text-align: center;
-    font-size: 125px;
-    margin-top: 50px;
-    margin-bottom: 90px;
-    text-transform: uppercase;
+  font-family: "heading";
+  text-align: center;
+  font-size: 125px;
+  margin-top: 50px;
+  margin-bottom: 90px;
+  text-transform: uppercase;
 }
 .push2 {
-    padding: 16px 90px;
+  padding: 16px 90px;
 }
-.push3{
-    font-size: 14px;
-    position: absolute;
-    bottom: 10px;
+.push3 {
+  font-size: 14px;
+  position: absolute;
+  bottom: 10px;
 }
 .subHeadingTitle {
-    padding: 40px 100px;
-    font-family: 'subHeading';
+  padding: 40px 100px;
+  font-family: "subHeading";
 }
 .subjectBox {
-    display: block;
-    text-align: center;
-    background: #F1F2F4;
-    border-radius: 20px;
-    padding: 34px 20px;
+  display: block;
+  text-align: center;
+  background: #f1f2f4;
+  border-radius: 20px;
+  padding: 34px 20px;
 }
+
+
