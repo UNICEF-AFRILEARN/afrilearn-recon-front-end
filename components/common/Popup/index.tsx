@@ -9,10 +9,6 @@ import { Button } from "react-bootstrap";
 import Note from "./NotePopup";
 import Video from "./VideoPoupup";
 import P from "./pragraph"
-//import Image from 'react-bootstrap/Image';
-//import SubHeading from '././extra/subHeading';
-
-
 
 
  export default function Model()  {
