@@ -5,11 +5,15 @@ import { toProperCase, cutString } from "../../../../utils/helper";
 import styles from "./../homepage.module.css";
 
 const ExploreVideoBox = ({ data }) => {
+  console.log(data);
   const [show, setShow] = useState(false);
   const toggleModal = () => setShow(!show);
   return (
     <>
-      <div className="col-md-3 relative video-corrected-responsive" onClick={toggleModal}>
+      <div
+        className="col-md-3 relative video-corrected-responsive"
+        onClick={toggleModal}
+      >
         <Image
           alt={"afrilearn marketing video"}
           src={data?.thumbnailUrl}
@@ -35,20 +39,20 @@ const ExploreVideoBox = ({ data }) => {
         className={styles.trendingModalClass}
       >
         {/* <div className={styles.videoPlaying}> */}
-          <video
-            src={data?.videoUrl}
-            width="800px"
-            height="auto"
-            controls
-            autoPlay
-          />
-          <Button
-            variant="secondary"
-            onClick={toggleModal}
-            className={styles.backgroundColor}
-          >
-            Close
-          </Button>
+        <video
+          src={data?.videoUrl}
+          width="800px"
+          height="auto"
+          controls
+          autoPlay
+        />
+        <Button
+          variant="secondary"
+          onClick={toggleModal}
+          className={styles.backgroundColor}
+        >
+          Close
+        </Button>
         {/* </div> */}
       </Modal>
     </>
