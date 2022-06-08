@@ -33,8 +33,15 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      <SubHeading title='My Subjects'/>
-      <div className='container'>
+      <MySubjects />
+      <GetSolution />
+      </>  
+          );
+        };
+      const MySubjects = () => {
+        return ( <>
+          <SubHeading title='My Subjects'/>
+        <div className='container'>
               <div className= {`row ${styles.mySubjecttt}`}>
                 <div className={`col-md-2 ${styles.mySubjectt}`}>
                   <Image alt={"design image"} src={'/assets/img/features/dashboard/student/Plant Growing.png'} width={70} height={70}/>
@@ -110,7 +117,13 @@ const Dashboard = () => {
                 </div>
               </div> 
           </div>
-          <div className='container'>
+        </>
+          );
+        };
+        const GetSolution = () => {
+          return (
+            <>  
+              <div className='container'>
             <div className='row'>
               <div className={`col-md-6 ${styles.mySolutionBox}`}>
                 <div className='row'>
@@ -136,8 +149,11 @@ const Dashboard = () => {
             </div>
             
           </div>
-    </>
-  )
-}
+             </>
+          );
+        };
+      
+        
+
 
 export default Dashboard
