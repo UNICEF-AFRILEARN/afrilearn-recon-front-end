@@ -17,8 +17,9 @@ const Subjects = () => {
         <button className="modalButton" onClick={() => {setOpenModal(true)}}  >
         <Image alt={"design image"} src={'/assets/img/features/dashboard/student/Plant Growing.png'} width={70} height={70}/>
                   <p>Agricultural Science</p>
+                  { openModal && <SubjectModal />}
         </button>
-        { openModal && <SubjectModal />}
+      
       </div>
       <div className={`col-md-2 ${styles.mySubjectt}`}>
           <button>
