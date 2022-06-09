@@ -1,8 +1,14 @@
+.overallcomp {
+    margin-left: 90px;
+    font-family: Spoof;
+    font-weight: 900;
+    color: #29465B;
+}
 .parentcontainer {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 10%;
+    margin-left: 5%;
     width: 80vw;
     padding-bottom: 20px;
 }
@@ -29,6 +35,7 @@
     margin-left: 10px;
     text-align: center;
     margin-top: 15px;
+    margin-right: 20px;
 }
 
 .bardetails h5{

@@ -55,7 +55,12 @@ const  data = {
 
 
     return (
-     <div className={styles.parentcontainer}>
+        <>
+            <div className={styles.overallcomp}>
+                <h1>Performance Summary</h1>
+            </div>
+         <div className={styles.parentcontainer}>
+        
          <div className={styles.chartcard}>
             <Doughnut data={data} width={300} height={300} options={options} />
          </div>
@@ -78,6 +83,7 @@ const  data = {
          </div>
          
      </div>
+     </>
     )
   }
 
