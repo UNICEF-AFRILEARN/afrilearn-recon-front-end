@@ -142,6 +142,16 @@ const Dashboard = () => {
         </section>
       </div>
       <GetSolution />
+      <section className={styles.join}>
+        <SubHeading title="Classroom" />
+        <button className={styles.joinClass}>JOIN A CLASSROOM</button>
+        <div className={styles.classComment}>
+          <div className={styles.classCommentRight}></div>
+          <div className={styles.classCommentleft}>
+            You have not joined any classroom
+          </div>
+        </div>
+      </section>
     </>
   );
 };
