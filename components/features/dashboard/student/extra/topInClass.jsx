@@ -1,8 +1,6 @@
 import Image from "next/image";
-import SubHeading from "./subHeading";
 import styles from "./../../student/topInClass.module.css";
 import { useState } from "react";
-import { toProperCase, cutString } from "./../../../../../utils/helper";
 import { Modal, Button } from "react-bootstrap";
 
 const topInClass = ({ data }) => {
@@ -15,16 +13,15 @@ const topInClass = ({ data }) => {
     <>
       {/* <SubHeading title={`Top in ${title.class}`} /> */}
       <div className={styles.cont}>
-       
-        <div className={styles.contList} >
+        <div className={styles.contList}>
           <Image
             alt={"afrilearn marketing video"}
-            src={data.thumbnailUrl}
+            src={data?.thumbnailUrl}
             width={240}
             height={160}
             className={styles.rectBox}
           />
-          <div className={styles.rect} >
+          <div className={styles.rect}>
             <Image
               alt={"afrilearn marketing video"}
               src={`/assets/img/features/dashboard/student/Rectangle 7862.png`}
@@ -42,12 +39,11 @@ const topInClass = ({ data }) => {
             />
           </div>
           <div className={styles.play_text}>
-            <h6>{data.subject}</h6>
-            <p>{data.title}</p>
+            <h6>{data?.subject}</h6>
+            <p>{data?.title}</p>
           </div>
         </div>
 
-       
         <Modal
           show={show}
           onHide={toggleModal}
@@ -56,7 +52,7 @@ const topInClass = ({ data }) => {
           className={styles.trendingModalClass}
         >
           <video
-            src={data.videoUrl}
+            src={data?.videoUrl}
             width="800px"
             height="auto"
             controls
@@ -70,7 +66,7 @@ const topInClass = ({ data }) => {
             Close
           </Button>
         </Modal>
-      </div> 
+      </div>
     </>
   );
 };
