@@ -1,12 +1,12 @@
 import Image from "next/image";
 import SubHeading from "./subHeading";
 import styles from "./../../student/student.module.css";
-// import SubjectModal from "./extra/subjectModal";
+
 
 const Subjects = () => {
   return (
     <>
-
+   
      <div className='container'>
               <div className= {`row ${styles.mySubjecttt}`}>
       <div className={`col-md-6 ${styles.mySubjectt}`}>
@@ -122,7 +122,16 @@ const Subjects = () => {
                 </div>
                     </div>
                 </div>
+              <SubjectModal />
     </>
   );
 };
+const SubjectModal =() => {
+  return (
+    <> 
+
+    </>
+    );
+  };
+
 export default Subjects;
