@@ -17,7 +17,6 @@ const Register = (props) => {
   const [fullscreen, setFullscreen] = useState(true);
   const [show, setShow] = useState(false);
   const rolesCollected = useSelector((state) => state.auth)
-  // console,log("",rolesCollected)
   const dispatch = useDispatch()
   
   function handleShow(breakpoint) {
@@ -25,19 +24,21 @@ const Register = (props) => {
     setShow(true);
   }
   
-  const profile = {}
-  const platformContext = rolesCollected.roles.data.roles;
+  // const profile = {}
+  const rolesContext = rolesCollected.roles.data.roles;
   const courseContext = rolesCollected.roles.data.courses;
   console.log("courses from the UI ==>", courseContext);
 
-  const handleChanges = (key, value) => {
-
-    profile[key] = value
+  const handleChanges = (value) => {
+      console.log(value)
+    // profile[key] = value
     // console.log('User Signup Profile\n', profile)
   }
 
   const handleRegisterRequest = (e) => {
-    // e.preventDefault()
+    e.preventDefault()
+    console.log(e)
+
     // API.registerUser(profile).then((data) => {
     //   console.log('Registeration completed', !data?.isError)
     //   data?.isError ? console.log("Fields Errors:\n", data?.fieldsErrors) : console.log(data?.registerUser) 
@@ -70,8 +71,8 @@ const Register = (props) => {
           <div className='card-container-form' >
             <span className={styles.card}>
               <h5 className="center">CREATE AN ACCOUNT</h5>
-              <form>
-                <Selectitem data={platformContext} onChange={(value) => handleChanges('role', value)} placeholder='Select a Role' className={styles.pushDown} />
+              <form onSubmit={handleRegisterRequest}>
+                <Selectitem data={rolesContext} onChange={(value) => handleChanges('role', value)} placeholder='Select a Role' className={styles.pushDown} />
                 <Selectitem data={courseContext} onChange={(value) => handleChanges('class', value)} placeholder='Select Class' className={styles.pushDown} />
                 <TextInput name={'fullName'} type='text' onChange={(value) => handleChanges('fullName', value)} title='Full Name' placeholder='Full Name' className={styles.pushDown} />
                 <TextInput name={'phone'} type='text' onChange={(value) => handleChanges('phone', value)} title='Phone Number' placeholder='Phone Number' className={styles.pushDown} />
@@ -82,7 +83,7 @@ const Register = (props) => {
                 <p>By signing up, you agree to our <Link passHref href='/'><b>Terms and Privacy Policy</b></Link></p>
                 <div className={`row ${styles.pushDown1}`}>
                   <Link passHref href="#">
-                    <AppButton title="LOGIN" secondary onClick={(e) => handleRegisterRequest(e)} />
+                    <AppButton title="LOGIN" secondary type='submit' />
                   </Link>
                 </div>
                 <div className={`row ${styles.pushDown1}`}>
