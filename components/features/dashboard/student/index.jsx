@@ -4,6 +4,7 @@ import PastQuestion from "./extra/pastQuestion";
 import TopInClass from "./extra/topInClass";
 import Image from "next/image";
 import Link from "next/link";
+import PerfomanceSumm from "./extra/perfomanceSumm";
 
 const Dashboard = () => {
   return (
@@ -41,6 +42,7 @@ const Dashboard = () => {
       <MySubjects />
       <PastQuestion />
       <TopInClass />
+      <PerfomanceSumm />
       <GetSolution />
       </>  
           );
@@ -143,14 +145,14 @@ const Dashboard = () => {
               </div>
         <div className={`col-md-5 ${styles.mySolutionBox2}`}>
           <div className={`row ${styles.mySolutionBox22}`}>
-<div className={` ${styles.mySolutionBoxCoin}`}> 
-<Image alt={"design image"} src={'/assets/img/features/dashboard/student/Group.png'} width={"20.36 px"} height={"20.36 px"}/> 100
-</div>
-<div className={` ${styles.mySolutionBoxSword}`}> 
-<p>Battle with others to win</p>
-</div>
-<div className={` ${styles.mySolutionBoxWord}`}><p>J1 Combat</p> <Image alt={"design image"} src={'/assets/img/features/dashboard/student/sword.png'} width={"31.13px"} height={"31.13px px"}/></div>
-<div className={` ${styles.mySolutionBoxMin}`}><p>08 Days 01:58:27 minutes</p></div>
+              <div className={` ${styles.mySolutionBoxCoin}`}> 
+              <Image alt={"design image"} src={'/assets/img/features/dashboard/student/Group.png'} width={"20.36 px"} height={"20.36 px"}/> 100
+              </div>
+              <div className={` ${styles.mySolutionBoxSword}`}> 
+              <p>Battle with others to win</p>
+              </div>
+              <div className={` ${styles.mySolutionBoxWord}`}><p>J1 Combat</p> <Image alt={"design image"} src={'/assets/img/features/dashboard/student/sword.png'} width={"31.13px"} height={"31.13px px"}/></div>
+              <div className={` ${styles.mySolutionBoxMin}`}><p>08 Days 01:58:27 minutes</p></div>
           </div>
               </div>
             </div>
