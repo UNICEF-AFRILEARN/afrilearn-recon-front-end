@@ -66,7 +66,7 @@ const topInClass = () => {
           width={303}
           height={150}
         /> */}
-        <span>
+        {/* <span>
           {data?.subject}
           <hr />
           <small>
@@ -75,7 +75,7 @@ const topInClass = () => {
               ? toProperCase(cutString(data.title, 20))
               : null}
           </small>
-        </span>
+        </span> */}
       </div>
     </div>
   );
