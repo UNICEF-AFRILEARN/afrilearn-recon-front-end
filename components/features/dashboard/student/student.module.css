@@ -36,18 +36,23 @@
   border-radius: 20px;
   padding: 34px 20px;
 }
-.mySubjectt {
+.mySubjectt{
+height: 250px;
+  width: 200px;
+  margin: 10px;
+}
+.mySubjectt button{
   background: #f1f2f4;
-  height: 261px;
-  width: 182px;
-  padding: 15px;
-  padding-top: 55px;
+  height: 100%;
+  width: 100%;
   text-align: center;
   border-radius: 30px;
-  margin: 15px;
+  border: none;
 }
 .mySubjectt :hover {
   background-color: #ffffff !important;
+  border: 1px solid #f1f2f4 ;
+box-shadow: 0 0.5pt 10pt rgb(0 0 0 / 10%);
 }
 .mySubjecttt {
   margin-bottom: 2%;

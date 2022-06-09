@@ -4,6 +4,7 @@ import PastQuestion from "./extra/pastQuestion";
 import TopInClass from "./extra/topInClass";
 import Image from "next/image";
 import Link from "next/link";
+import Subjects from "./extra/subjects";
 
 const Dashboard = () => {
   return (
@@ -38,95 +39,14 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      <MySubjects />
+      <Subjects/>
       <PastQuestion />
       <TopInClass />
       <GetSolution />
       </>  
           );
         };
-      const MySubjects = () => {
-        return ( <>
-          <SubHeading title='My Subjects'/>
-        <div className='container'>
-              <div className= {`row ${styles.mySubjecttt}`}>
-                <div className={`col-md-2 ${styles.mySubjectt}`}>
-                  <Image alt={"design image"} src={'/assets/img/features/dashboard/student/Plant Growing.png'} width={70} height={70}/>
-                  <p>Agricultural Science</p>
-                </div>
-                <div className={`col-md-2 ${styles.mySubjectt}`}>
-                  <Image alt={"design image"} src={'/assets/img/features/dashboard/student/Research Virus.png'} width={70} height={70}/>
-                  <p>Biology</p>
-                </div>
-                <div className={`col-md-2 ${styles.mySubjectt}`}>
-                  <Image alt={"design image"} src={'/assets/img/features/dashboard/student/Business.png'} width={70} height={70}/>
-                  <p>Chemistry</p>
-                </div>
-                <div className={`col-md-2 ${styles.mySubjectt}`}>
-                  <Image alt={"design image"} src={'/assets/img/features/dashboard/student/Bible.png'} width={70} height={70}/>
-                  <p>Christian religion</p>
-                </div>
-                <div className={`col-md-2 ${styles.mySubjectt}`}>
-                  <Image alt={"design image"} src={'/assets/img/features/dashboard/student/Product.png'} width={70} height={70}/>
-                  <p>Commerce</p>
-                </div>
-                <div className={`col-md-2 ${styles.mySubjectt}`}>
-                  <Image alt={"design image"} src={'/assets/img/features/dashboard/student/Computerr.png'} width={70} height={70}/>
-                  <p>Computer Science</p>
-                </div>
-              </div>
-              <div className={`row ${styles.mySubjecttt}`}>
-                <div className={`col-md-2 ${styles.mySubjectt}`}>
-                  <Image alt={"design image"} src={'/assets/img/features/dashboard/student/_Group_.png'} width={70} height={70}/>
-                  <p>Civic Education</p>
-                </div>
-                <div className={`col-md-2 ${styles.mySubjectt}`}>
-                  <Image alt={"design image"} src={'/assets/img/features/dashboard/student/Marketing Data.png'} width={70} height={70}/>
-                  <p>Data Science</p>
-                </div>
-                <div className={`col-md-2 ${styles.mySubjectt}`}>
-                  <Image alt={"design image"} src={'/assets/img/features/dashboard/student/Consumer Economic.png'} width={70} height={70}/>
-                  <p>CEconomic</p>
-                </div>
-                <div className={`col-md-2 ${styles.mySubjectt}`}>
-                  <Image alt={"design image"} src={'/assets/img/features/dashboard/student/Alphabetic Blocks.png'} width={70} height={70}/>
-                  <p>English Language</p>
-                </div>
-                <div className={`col-md-2 ${styles.mySubjectt}`}>
-                  <Image alt={"design image"} src={'/assets/img/features/dashboard/student/accounting.png'} width={70} height={70}/>
-                  <p>Financial accounting</p>
-                </div>
-                <div className={`col-md-2 ${styles.mySubjectt}`}>
-                  <Image alt={"design image"} src={'/assets/img/features/dashboard/student/Table Globe.png'} width={70} height={70}/>
-                  <p>Geography</p>
-                </div>
-              </div> 
-              <div className={`row ${styles.mySubjecttt}`}>
-                <div className={`col-md-2 ${styles.mySubjectt}`}>
-                  <Image alt={"design image"} src={'/assets/img/features/dashboard/student/Government Building.png'} width={70} height={70}/>
-                  <p>Government</p>
-                </div>
-                <div className={`col-md-2 ${styles.mySubjectt}`}>
-                  <Image alt={"design image"} src={'/assets/img/features/dashboard/student/Bookk.png'} width={70} height={70}/>
-                  <p>Literature in English</p>
-                </div>
-                <div className={`col-md-2 ${styles.mySubjectt}`}>
-                  <Image alt={"design image"} src={'/assets/img/features/dashboard/student/calculator 8.png'} width={70} height={70}/>
-                  <p>Mathematics</p>
-                </div>
-                <div className={`col-md-2 ${styles.mySubjectt}`}>
-                  <Image alt={"design image"} src={'/assets/img/features/dashboard/student/Einstein Formula.png'} width={70} height={70}/>
-                  <p>English Language</p>
-                </div>
-                <div className={`col-md-2 ${styles.mySubjectt}`}>
-                  <Image alt={"design image"} src={'/assets/img/features/dashboard/student/accounting.png'} width={70} height={70}/>
-                  <p>Financial accounting</p>
-                </div>
-              </div> 
-          </div>
-        </>
-          );
-        };
+    
         const GetSolution = () => {
           return (
             <>  
@@ -160,8 +80,4 @@ const Dashboard = () => {
           );
         };
       
-        
-
-
-
 export default Dashboard;
