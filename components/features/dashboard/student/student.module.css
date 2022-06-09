@@ -36,6 +36,14 @@
   border-radius: 20px;
   padding: 34px 20px;
 }
+
+.contai {
+  width: 1300px;
+  /* background-color: gray; */
+  /* height: 500px; */
+  margin: auto;
+}
+
 .mySubjectt {
   background: #f1f2f4;
   height: 261px;
@@ -53,7 +61,7 @@
   margin-bottom: 2%;
 }
 .mySolutionBox {
-  background: linear-gradient(90.02deg, #33334f 0.02%, #171738 113.01%) ;
+  background: linear-gradient(90.02deg, #33334f 0.02%, #171738 113.01%);
   border-radius: 17.1661px;
   color: #ffffff;
   padding-top: 2%;
@@ -67,33 +75,33 @@
   padding-bottom: 60px;
   padding-top: 30px;
 }
-.LinkBox2{
- background: url('/assets/img/features/dashboard/student/Getsolution.png') ; 
+.LinkBox2 {
+  background: url("/assets/img/features/dashboard/student/Getsolution.png");
   background-repeat: no-repeat;
   height: 220px;
 }
 .mySolutionBox2 {
-  background: url('/assets/img/features/dashboard/student/Backgroundd.png') ; 
+  background: url("/assets/img/features/dashboard/student/Backgroundd.png");
   background-repeat: no-repeat;
   color: #ffffff;
   padding: 2%;
   height: 272px;
-width: 606.26513671875px;
-border-radius: 16.385547637939453px;
+  width: 606.26513671875px;
+  border-radius: 16.385547637939453px;
 
   border-radius: 17.1661px;
 }
 .mySolutionBoxWord {
- display: flex;
- flex-direction:row;
+  display: flex;
+  flex-direction: row;
 }
 .mySolutionBoxWord p {
-font-size: 25px;
-font-weight: 700;
-width:149.11px;
-height:31.13px;
- }
- .mySolutionBoxCoin {
+  font-size: 25px;
+  font-weight: 700;
+  width: 149.11px;
+  height: 31.13px;
+}
+.mySolutionBoxCoin {
   background-color: #3e3e3e;
   width: 95.04px;
   margin-bottom: 15%;
@@ -101,20 +109,49 @@ height:31.13px;
   text-align: right !important;
 }
 .mySolutionBoxMin {
-font-size: 18px;
-font-weight: 500;
-line-height: 23px;
-text-align: right !important;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 23px;
+  text-align: right !important;
 }
-.LinkBoxxs{
+.LinkBoxxs {
   background-color: #fff;
   color: black;
   text-align: center;
   border-radius: 100px;
-cursor: pointer;
-font-size: 20px;
-font-weight: 700;
-padding-top: 10px;
-height: 57.41360855102539px;
-width: 298.55078125px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 700;
+  padding-top: 10px;
+  height: 57.41360855102539px;
+  width: 298.55078125px;
+}
+
+.join {
+  position: relative;
+}
+
+.joinClass {
+  position: absolute;
+  top: 48px;
+  right: 135px;
+  font-size: 12px;
+  background: #f5f5f5;
+  border: 2px solid #333333;
+  border-radius: 6px;
+  color: #333333;
+}
+
+.classComment {
+  display: flex;
+  gap: 15px;
+  margin-left: 100px;
+  align-content: center;
+  margin-bottom: 70px;
+}
+.classCommentRight {
+  background: url("/assets/img/features/dashboard/student/Ellipse.png");
+  height: 14px;
+  width: 14px;
+  align-self: center;
 }

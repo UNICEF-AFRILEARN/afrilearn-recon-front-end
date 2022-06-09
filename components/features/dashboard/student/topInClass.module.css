@@ -1,0 +1,47 @@
+.cont {
+    width: 250px;
+  /* display: flex; */
+  height: 250px;
+  /* background-color: gray; */
+  /* flex-wrap: wrap; */
+  /* justify-content: center; */
+  /* gap: 10px; */
+  margin: auto;
+}
+.contList {
+  position: relative;
+}
+
+.topInClass {
+  width: 1000px;
+}
+.rectBox {
+  color: rgba(0, 0, 0, 0.4);
+  border-radius: 7px;
+}
+
+.rect {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.play_pause {
+  position: absolute;
+  top: 66px;
+  left: 105px;
+}
+
+.play_text {
+  width: 240px;
+  padding: 5px;
+}
+
+.play_text h6 {
+  font-size: 14px;
+}
+
+.play_text p {
+  color: #a6a6a6;
+  font-size: 12px;
+}
