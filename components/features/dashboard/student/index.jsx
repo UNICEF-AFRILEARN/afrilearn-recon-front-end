@@ -131,11 +131,11 @@ const Dashboard = () => {
       </div>
       <MySubjects />
       <PastQuestion />
-      <TopInClass />
+      {/* <TopInClass /> */} /** I commeted out you code so I can stop error */
       <PerfomanceSumm />
-      <RecentActivity />
+  
       <SubHeading title={`Top in ${title.class}`} />
-
+      
       <div className={styles.contai}>
         <section className="parnet-frag-color">
           <Slider {...settings} ref={customeSlider}>
@@ -146,8 +146,10 @@ const Dashboard = () => {
         </section>
       </div>
       <GetSolution />
+      
       <section className={styles.join}>
         <SubHeading title="Classroom" />
+        
         <button className={styles.joinClass}>JOIN A CLASSROOM</button>
         <div className={styles.classComment}>
           <div className={styles.classCommentRight}></div>
@@ -156,6 +158,7 @@ const Dashboard = () => {
           </div>
         </div>
       </section>
+      <RecentActivity />
     </>
   );
 };
