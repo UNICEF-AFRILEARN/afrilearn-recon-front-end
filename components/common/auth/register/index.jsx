@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 import styles from './register.module.css';
 import Image from 'next/image';
@@ -8,19 +9,26 @@ import Selectitem from '../../../widgets/appSelect/appSelect';
 import ReactModal from 'react-modal'
 import { Button, Modal } from 'react-bootstrap';
 
+import { fetchRoles } from "../../../../store/actions/auth";
+
 import {API} from '../../../../pages/api/client-side/fetcher';
 
 const Register = (props) => {
   const [fullscreen, setFullscreen] = useState(true);
   const [show, setShow] = useState(false);
-
+  const rolesCollected = useSelector((state) => state.auth)
+  // console,log("",rolesCollected)
+  const dispatch = useDispatch()
+  
   function handleShow(breakpoint) {
     setFullscreen(breakpoint);
     setShow(true);
   }
-
+  
   const profile = {}
-  const platformContext = props.platformContext
+  const platformContext = rolesCollected.roles.data.roles;
+  const courseContext = rolesCollected.roles.data.courses;
+  console.log("courses from the UI ==>", courseContext);
 
   const handleChanges = (key, value) => {
 
@@ -38,6 +46,11 @@ const Register = (props) => {
     //Modal is displayed here after successful or failed registration....
     setShow(true);
   }
+
+
+  useEffect(() => {
+    dispatch(fetchRoles())
+  }, [])
 
   return (
 
@@ -58,8 +71,8 @@ const Register = (props) => {
             <span className={styles.card}>
               <h5 className="center">CREATE AN ACCOUNT</h5>
               <form>
-                <Selectitem data={platformContext?.roles} onChange={(value) => handleChanges('role', value)} placeholder='Select a Role' className={styles.pushDown} />
-                <Selectitem data={platformContext?.courses} onChange={(value) => handleChanges('class', value)} placeholder='Select Class' className={styles.pushDown} />
+                <Selectitem data={platformContext} onChange={(value) => handleChanges('role', value)} placeholder='Select a Role' className={styles.pushDown} />
+                <Selectitem data={courseContext} onChange={(value) => handleChanges('class', value)} placeholder='Select Class' className={styles.pushDown} />
                 <TextInput name={'fullName'} type='text' onChange={(value) => handleChanges('fullName', value)} title='Full Name' placeholder='Full Name' className={styles.pushDown} />
                 <TextInput name={'phone'} type='text' onChange={(value) => handleChanges('phone', value)} title='Phone Number' placeholder='Phone Number' className={styles.pushDown} />
                 <TextInput name={'email'} type='text' onChange={(value) => handleChanges('email', value)} title='Email' placeholder='Email' className={styles.pushDown} />

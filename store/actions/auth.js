@@ -1,13 +1,15 @@
 import * as types from "../types";
+import axios from 'axios';
 
 export const getRolesSuccess = (payload) => ({
     type: types.GET_ROLES_SUCCESS,
     payload,
   });
 
-  export const fetchBooks = () => (dispatch) => {
+  export const fetchRoles = () => (dispatch) => {
 
-    axios.get('https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/ZFiVXR8MDsWp5znsZ8Qa/books').then((res) => {
+    axios.get('https://afrilearn-backend-01.herokuapp.com/api/v1/auth/roles').then((res) => {
+      console.log("Data from API call ==>", res)
       dispatch(getRolesSuccess(res.data));
     }).catch((err) => {
       const erroMesage = err.message;
