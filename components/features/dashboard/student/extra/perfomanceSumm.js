@@ -1,58 +1,83 @@
 import React from 'react';
+import styles from "../extra/chart.module.css";
+
 import {
     Chart as ChartJs,
-    BarElement,
-    CategoryScale,
-    LinearScale
-} from 'chart.js';
-
-import { Bar } from "react-chartjs-2"
-
-ChartJs.register(
+    ArcElement,
     CategoryScale,
     LinearScale,
-    BarElement
+    Tooltip,
+    Legend
+} from 'chart.js';
+
+import { Doughnut } from "react-chartjs-2"
+
+ChartJs.register(
+    ArcElement,
+    CategoryScale,
+    LinearScale,
+    Tooltip,
+    Legend
 )
 
 
 const PerfomanceSumm = () => {
 
 const  data = {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: ['Red', 'Blue', 'Yellow', 'Green'],
         datasets: [{
             label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
+            data: [12, 19, 3, 5, 2],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+                '#A2DBB1',
+                '#A6A6A6',
+                '#EDB68B',
+                '#B0C4DA',
             ],
             borderColor: [
                 'rgba(255, 99, 132, 1)',
                 'rgba(54, 162, 235, 1)',
                 'rgba(255, 206, 86, 1)',
                 'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+                
             ],
             borderWidth: 1
         }]
     }
 
     const options = {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
+       maintainAspectRatio: false,
+       legend: {
+        display: false,
+        
+    }
     }
 
 
     return (
-     <Bar data={data} width={400} options={options} />
+     <div className={styles.parentcontainer}>
+         <div className={styles.chartcard}>
+            <Doughnut data={data} width={300} height={300} options={options} />
+         </div>
+         <div className={styles.bardetails}>
+            <h5 className={styles.colorone}>Excelling In</h5>
+            <h5 className={styles.colortwo}>Average In</h5>
+            <h5 className={styles.colorthree}>Below Average In</h5>
+            <h5 className={styles.colorfour}>No rating</h5>
+         </div>
+         <div>
+            <div className={styles.topmath}><p>Mathematics</p><p>Civic Education</p><p>Computer Science</p><p>Basic Science</p>
+            </div>
+            <div className={styles.topmath}><p>Mathematics</p><p>Civic Education</p><p>Computer Science</p><p>Basic Science</p>
+            </div>
+            <div className={styles.topmath}><p>Mathematics</p><p>Civic Education</p><p>Computer Science</p><p>Basic Science</p>
+            </div>
+            <div className={styles.topmath}><p>Mathematics</p><p>Civic Education</p><p>Computer Science</p><p>Basic Science</p>
+            </div>
+           
+         </div>
+         
+     </div>
     )
   }
 
