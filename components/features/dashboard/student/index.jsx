@@ -7,6 +7,7 @@ import Slider from "react-slick";
 import { useRef } from "react";
 import Link from "next/link";
 import PerfomanceSumm from "./extra/perfomanceSumm";
+import RecentActivity from "./extra/recentActivity";
 
 const Dashboard = () => {
   const title = { class: "SSS One" };
@@ -132,7 +133,7 @@ const Dashboard = () => {
       <PastQuestion />
       <TopInClass />
       <PerfomanceSumm />
-
+      <RecentActivity />
       <SubHeading title={`Top in ${title.class}`} />
 
       <div className={styles.contai}>

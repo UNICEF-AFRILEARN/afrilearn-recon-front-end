@@ -19,7 +19,7 @@ const topInClass = ({ data }) => {
         <div className={styles.contList} >
           <Image
             alt={"afrilearn marketing video"}
-            src={data.thumbnailUrl}
+            src={data?.thumbnailUrl}
             width={240}
             height={160}
             className={styles.rectBox}
@@ -42,8 +42,8 @@ const topInClass = ({ data }) => {
             />
           </div>
           <div className={styles.play_text}>
-            <h6>{data.subject}</h6>
-            <p>{data.title}</p>
+            <h6>{data?.subject}</h6>
+            <p>{data?.title}</p>
           </div>
         </div>
 
@@ -56,7 +56,7 @@ const topInClass = ({ data }) => {
           className={styles.trendingModalClass}
         >
           <video
-            src={data.videoUrl}
+            src={data?.videoUrl}
             width="800px"
             height="auto"
             controls
