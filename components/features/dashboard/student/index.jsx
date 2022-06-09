@@ -2,6 +2,7 @@ import styles from "./student.module.css";
 import SubHeading from "./extra/subHeading";
 import PastQuestion from "./extra/pastQuestion";
 import TopInClass from "./extra/topInClass";
+import Recommendation from "./extra/recommendation";
 import Image from "next/image";
 import Slider from "react-slick";
 import { useRef } from "react";
@@ -9,6 +10,37 @@ import Link from "next/link";
 
 const Dashboard = () => {
   const title = { class: "SSS One" };
+
+  const recommendationDatas = [
+    {
+      _id: "6012d2b2cfe09249249f8a0e",
+      subject: "Civic Education",
+      class: "JSS One",
+      title: "Adverbial Phrase and Adjectival Clause",
+      thumbnailUrl:
+        "https://afrilearn-media.s3.eu-west-3.amazonaws.com/jss-one/civic-education/third-term/national-unity/thumbnail/national-unity.jpeg",
+      videoUrl: "Adverbial Phrase and Adjectival Clause",
+    },
+    {
+      _id: "6012d9fecfe09249249f9358",
+      subjectRecommended: "Data Science",
+      subject: "Literature in English",
+      class: "SSS One",
+      title: "Environmental Health and Science",
+      thumbnailUrl: "/assets/img/features/dashboard/student/Bookk.png",
+    },
+    {
+      _id: "6012d9fecfe09249249f9358",
+      subject: "Literature in English",
+      class: "SSS One",
+      title: "Environmental Health and Science",
+      thumbnailUrl:
+        "https://afrilearn-media.s3.eu-west-3.amazonaws.com/sss-one/literature-in-english/third-term/thumbnail/figures-of-speech.jpeg",
+      videoUrl:
+        "https://afrilearn-media.s3.eu-west-3.amazonaws.com/sss-one/literature-in-english/third-term/figures-of-speech-ii/video-lessons/1622635953448Figures+Of+Speech+_+Antithesis+_+Afrilearn.mp4",
+    },
+  ];
+
   const datas = [
     {
       _id: "6012d2b2cfe09249249f8a0e",
@@ -141,6 +173,7 @@ const Dashboard = () => {
           </Slider>
         </section>
       </div>
+
       <GetSolution />
       <section className={styles.join}>
         <SubHeading title="Classroom" />
@@ -152,6 +185,20 @@ const Dashboard = () => {
           </div>
         </div>
       </section>
+
+      {recommendationDatas !== 0 && (
+        <>
+          <SubHeading title="Recommended For You" />
+
+          <div className={styles.contai}>
+            <section className="parnet-frag-color">
+              {recommendationDatas.map((recData) => (
+                <Recommendation data={recData} />
+              ))}
+            </section>
+          </div>
+        </>
+      )}
     </>
   );
 };
