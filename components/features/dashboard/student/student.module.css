@@ -45,17 +45,22 @@
 }
 
 .mySubjectt {
+  height: 250px;
+  width: 200px;
+  margin: 10px;
+}
+.mySubjectt button {
   background: #f1f2f4;
-  height: 261px;
-  width: 182px;
-  padding: 15px;
-  padding-top: 55px;
+  height: 100%;
+  width: 100%;
   text-align: center;
   border-radius: 30px;
-  margin: 15px;
+  border: none;
 }
 .mySubjectt :hover {
   background-color: #ffffff !important;
+  border: 1px solid #f1f2f4;
+  box-shadow: 0 0.5pt 10pt rgb(0 0 0 / 10%);
 }
 .mySubjecttt {
   margin-bottom: 2%;
@@ -126,7 +131,74 @@
   height: 57.41360855102539px;
   width: 298.55078125px;
 }
+/* ---------------modal-styling----------------- */
 
+.modalHero {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.17), rgba(0, 0, 0, 0.99)),
+    url("./../../../../public/assets/img/features/dashboard/student/dashboard.png");
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: cover;
+  color: #fff;
+  height: 180%;
+  padding-top: 10%;
+  padding-bottom: 2%;
+  margin-bottom: 3%;
+}
+.modalHero h1 {
+  font-size: 50px;
+  text-align: center;
+  font-weight: 700;
+  padding-bottom: 5%;
+}
+.modalHero h5 {
+  font-size: 20.52px;
+  font-weight: 700;
+  padding-left: 7%;
+  width: 270.52px;
+}
+.modalHero p {
+  font-size: 15px;
+  padding-left: 7%;
+}
+.modalHero h6 {
+  font-size: 15px;
+  color: #00d9b6;
+  padding-left: 7%;
+}
+.modalSecond {
+  margin-bottom: 3%;
+}
+.modalSecond h6 {
+  color: #29465b;
+  font-weight: 600;
+  font-size: 17px;
+}
+.modalSecond p {
+  font-size: 14px;
+}
+.modalSecondFirst p {
+  line-height: 180%;
+}
+.modalThird {
+  background: #f1f2f4;
+  border-radius: 15px;
+
+  padding: 2%;
+  margin-bottom: 3%;
+}
+.modalThird h6 {
+  background: #00d9b6;
+  border-radius: 100px;
+  color: #ffffff;
+  height: 35px;
+  width: 96px;
+  border-radius: 100px;
+  text-align: center;
+  padding-top: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
 .join {
   position: relative;
 }
