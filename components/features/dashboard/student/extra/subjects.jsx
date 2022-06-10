@@ -9,7 +9,7 @@ import { Modal } from "react-bootstrap";
 const Subjects = () => {
   const [show, setShow] = useState(false);
   const toggleModal = () => setShow(!show);
-
+ 
   return (
     <>
    <SubHeading  title="My Subject" />
