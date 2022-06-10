@@ -1,0 +1,34 @@
+
+.heroheader {
+}
+
+.videoheropage {
+    background-image: url("../public/assets/img/classroomheroimg.svg");
+        background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 10% 20%;
+    min-width: 100%;
+    height: 50vh;
+    color: #FFFFFF;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.subheadings {
+    position: absolute;
+    text-align:start;
+    top: 230px;
+    left: 65px;
+
+}
+
+.heroheader {
+    position: absolute;
+    text-align:start;
+    top: 297px;
+    right: 90px;
+    background-color: blue;
+    width: 70vw;
+    padding: 9px;
+}
+
