@@ -6,8 +6,6 @@ import {useState} from "react"
 const Subjects = () => {
   const [openModal, setOpenModal] = useState(false);
 
-
-
   return (
     <>
    <SubHeading  title="My Subject" />
@@ -129,13 +127,13 @@ const Subjects = () => {
                 </div>
                     </div>
                 </div>
-              
+                <SubjectModal /> 
     </>
   );
 };
 const SubjectModal =() => {
   const data = {
-    subject: ["SSS-ONE"],
+    class: "SSS-ONE",
     title: "Basic Technology",
     description:"Basic Technology is a very important subject in todays curriculum for students especially at the junior secondary  level as knowledge impacted prepares them for the various experiences at the senior level not withstanding their carrier paths.",
     class:"Senior Sceondary School One",
@@ -147,7 +145,7 @@ const SubjectModal =() => {
     <> 
 <div className="container" >
   <div className={`row ${styles.modalHero}`}>
-  {data?.subject.map((item) => { return <h1 key={item}>{item}</h1> })}
+  {data?.class.map((item) => { return <h1 key={item}>{item}</h1> })}
     <div className="modalSec">
   <h5 className="">{data?.title}</h5>
 <p>Explore the fun in learning</p>
