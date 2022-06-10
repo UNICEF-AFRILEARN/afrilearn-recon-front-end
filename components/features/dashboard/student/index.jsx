@@ -9,6 +9,7 @@ import { useRef } from "react";
 import Link from "next/link";
 import Subjects from "./extra/subjects";
 import PerfomanceSumm from "./extra/perfomanceSumm";
+import RecentActivity from "./extra/recentActivity";
 
 const Dashboard = () => {
   const title = { class: "SSS One" };
@@ -177,6 +178,7 @@ const Dashboard = () => {
       <GetSolution />
       <section className={styles.join}>
         <SubHeading title="Classroom" />
+
         <button className={styles.joinClass}>JOIN A CLASSROOM</button>
         <div className={styles.classComment}>
           <div className={styles.classCommentRight}></div>
@@ -199,9 +201,11 @@ const Dashboard = () => {
           </div>
         </>
       )}
+      <RecentActivity />
     </>
   );
 };
+
 const GetSolution = () => {
   return (
     <>
