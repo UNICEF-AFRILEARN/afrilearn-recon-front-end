@@ -1,8 +1,8 @@
 import Image from "next/image";
 import SubHeading from "./subHeading";
 import styles from "./../../student/student.module.css";
-import {useState} from "react"
-
+import {useState} from "react";
+import { Modal } from "react-bootstrap";
 const Subjects = () => {
   const [openModal, setOpenModal] = useState(false);
 
@@ -15,7 +15,7 @@ const Subjects = () => {
         <button className="modalButton" onClick={() => {setOpenModal(true)}}  >
         <Image alt={"design image"} src={'/assets/img/features/dashboard/student/Plant Growing.png'} width={70} height={70}/>
                   <p>Agricultural Science</p>
-                  { openModal && <SubjectModal />}
+                  {/* { openModal && <SubjectModal />} */}
         </button>
       
       </div>
@@ -127,6 +127,7 @@ const Subjects = () => {
                 </div>
                     </div>
                 </div>
+                
                 <SubjectModal /> 
     </>
   );
