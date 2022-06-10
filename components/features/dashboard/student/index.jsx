@@ -166,9 +166,6 @@ const Dashboard = () => {
       <PastQuestion />
       {/* <TopInClass /> */} /** I commeted out you code so I can stop error */
       <PerfomanceSumm />
-  
-      {/* <TopInClass /> */}
-      <PerfomanceSumm />
       <GetSolution />
         <section className={styles.join}>
         <SubHeading title="Classroom" />

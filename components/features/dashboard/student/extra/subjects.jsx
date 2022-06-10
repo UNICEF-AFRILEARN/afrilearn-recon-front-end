@@ -7,6 +7,7 @@ import { Modal } from "react-bootstrap";
 
 
 const Subjects = () => {
+  // const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const toggleModal = () => setShow(!show);
 
@@ -182,7 +183,7 @@ const SubjectModal =() => {
   <h4>Class Notes</h4>
   <p>Learn with curriculum specific class notes and practice quizess</p>
 </div>
-<div className="col-md-3"> <Link passHref href='/'><h6>FREE</h6></Link></div>
+<div className="col-md-3"> <Link href='/'><h6>FREE</h6></Link></div>
 </div>
 <div className={`row ${styles.modalThird}`}>
 <div className="col-md-2">
@@ -192,7 +193,7 @@ const SubjectModal =() => {
   <h4>Video Lessons</h4>
   <p>Learn with animated video lessons and practice quizes</p>
 </div>
-<div className="col-md-3"> <Link passHref href='/'><h6>SUBSCRIBE</h6></Link></div>
+<div className="col-md-3"> <Link href='/videoLesson' ><h6>SUBSCRIBE</h6></Link></div>
 </div>
 </div>
 
