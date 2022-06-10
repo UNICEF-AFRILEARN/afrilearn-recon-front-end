@@ -36,12 +36,12 @@
   border-radius: 20px;
   padding: 34px 20px;
 }
-.mySubjectt{
-height: 250px;
+.mySubjectt {
+  height: 250px;
   width: 200px;
   margin: 10px;
 }
-.mySubjectt button{
+.mySubjectt button {
   background: #f1f2f4;
   height: 100%;
   width: 100%;
@@ -51,14 +51,14 @@ height: 250px;
 }
 .mySubjectt :hover {
   background-color: #ffffff !important;
-  border: 1px solid #f1f2f4 ;
-box-shadow: 0 0.5pt 10pt rgb(0 0 0 / 10%);
+  border: 1px solid #f1f2f4;
+  box-shadow: 0 0.5pt 10pt rgb(0 0 0 / 10%);
 }
 .mySubjecttt {
   margin-bottom: 2%;
 }
 .mySolutionBox {
-  background: linear-gradient(90.02deg, #33334f 0.02%, #171738 113.01%) ;
+  background: linear-gradient(90.02deg, #33334f 0.02%, #171738 113.01%);
   border-radius: 17.1661px;
   color: #ffffff;
   padding-top: 2%;
@@ -72,33 +72,33 @@ box-shadow: 0 0.5pt 10pt rgb(0 0 0 / 10%);
   padding-bottom: 60px;
   padding-top: 30px;
 }
-.LinkBox2{
- background: url('/assets/img/features/dashboard/student/Getsolution.png') ; 
+.LinkBox2 {
+  background: url("/assets/img/features/dashboard/student/Getsolution.png");
   background-repeat: no-repeat;
   height: 220px;
 }
 .mySolutionBox2 {
-  background: url('/assets/img/features/dashboard/student/Backgroundd.png') ; 
+  background: url("/assets/img/features/dashboard/student/Backgroundd.png");
   background-repeat: no-repeat;
   color: #ffffff;
   padding: 2%;
   height: 272px;
-width: 606.26513671875px;
-border-radius: 16.385547637939453px;
+  width: 606.26513671875px;
+  border-radius: 16.385547637939453px;
 
   border-radius: 17.1661px;
 }
 .mySolutionBoxWord {
- display: flex;
- flex-direction:row;
+  display: flex;
+  flex-direction: row;
 }
 .mySolutionBoxWord p {
-font-size: 25px;
-font-weight: 700;
-width:149.11px;
-height:31.13px;
- }
- .mySolutionBoxCoin {
+  font-size: 25px;
+  font-weight: 700;
+  width: 149.11px;
+  height: 31.13px;
+}
+.mySolutionBoxCoin {
   background-color: #3e3e3e;
   width: 95.04px;
   margin-bottom: 15%;
@@ -106,83 +106,88 @@ height:31.13px;
   text-align: right !important;
 }
 .mySolutionBoxMin {
-font-size: 18px;
-font-weight: 500;
-line-height: 23px;
-text-align: right !important;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 23px;
+  text-align: right !important;
 }
-.LinkBoxxs{
+.LinkBoxxs {
   background-color: #fff;
   color: black;
   text-align: center;
   border-radius: 100px;
-cursor: pointer;
-font-size: 20px;
-font-weight: 700;
-padding-top: 10px;
-height: 57.41360855102539px;
-width: 298.55078125px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 700;
+  padding-top: 10px;
+  height: 57.41360855102539px;
+  width: 298.55078125px;
 }
 /* ---------------modal-styling----------------- */
-.modalHero{
+
+.modalHero {
   background-image: radial-gradient(rgba(0, 0, 0, 0.17), rgba(0, 0, 0, 0.99)),
-  url("./../../../../public/assets/img/features/dashboard/student/dashboard.png");
-background-repeat: no-repeat;
-background-position: 50%;
-background-size: cover;
-color: #fff;
-height: 80%;
-width: 80%;
-padding-top: 10%;
-padding-bottom: 2%;
-margin-bottom: 3%;
+    url("./../../../../public/assets/img/features/dashboard/student/dashboard.png");
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: cover;
+  color: #fff;
+  height: 180%;
+  padding-top: 10%;
+  padding-bottom: 2%;
+  margin-bottom: 3%;
 }
-.modalHero h1{
-  font-size: 113.03px;
+.modalHero h1 {
+  font-size: 50px;
   text-align: center;
   font-weight: 700;
   padding-bottom: 5%;
 }
-.modalHero h5{  
-  font-size:20.52px;
+.modalHero h5 {
+  font-size: 20.52px;
   font-weight: 700;
   padding-left: 7%;
-  width :270.52px
+  width: 270.52px;
 }
-.modalHero p{  
-  font-size:15px;
+.modalHero p {
+  font-size: 15px;
   padding-left: 7%;
 }
-.modalHero h6{  
-  font-size:15px;
-  color:#00D9B6;
+.modalHero h6 {
+  font-size: 15px;
+  color: #00d9b6;
   padding-left: 7%;
 }
-.modalSecond{
+.modalSecond {
   margin-bottom: 3%;
-  width:80%
-  }
-.modalSecond h6{
-  color:#29465B;
-  font-weight: 500;
-  font-size: 21px;
-  }
-.modalThird{
-  background: #F1F2F4;
-  border-radius: 15px;
-  width: 80%;
- padding: 2%;
- margin-bottom:3% ;
 }
-.modalThird h6{
-  background: #00D9B6;
+.modalSecond h6 {
+  color: #29465b;
+  font-weight: 600;
+  font-size: 17px;
+}
+.modalSecond p {
+  font-size: 14px;
+}
+.modalSecondFirst p {
+  line-height: 180%;
+}
+.modalThird {
+  background: #f1f2f4;
+  border-radius: 15px;
+
+  padding: 2%;
+  margin-bottom: 3%;
+}
+.modalThird h6 {
+  background: #00d9b6;
   border-radius: 100px;
   color: #ffffff;
   height: 35px;
-width: 96px;
-left: 862px;
-top: 795px;
-border-radius: 100px;
-text-align: center;
-padding-top: 10px;
+  width: 96px;
+  border-radius: 100px;
+  text-align: center;
+  padding-top: 10px;
+  margin-right: 10px;
+  cursor: pointer;
 }
