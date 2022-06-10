@@ -36,6 +36,14 @@
   border-radius: 20px;
   padding: 34px 20px;
 }
+
+.contai {
+  width: 1300px;
+  /* background-color: gray; */
+  /* height: 500px; */
+  margin: auto;
+}
+
 .mySubjectt {
   height: 250px;
   width: 200px;
@@ -190,4 +198,32 @@
   padding-top: 10px;
   margin-right: 10px;
   cursor: pointer;
+}
+.join {
+  position: relative;
+}
+
+.joinClass {
+  position: absolute;
+  top: 48px;
+  right: 135px;
+  font-size: 12px;
+  background: #f5f5f5;
+  border: 2px solid #333333;
+  border-radius: 6px;
+  color: #333333;
+}
+
+.classComment {
+  display: flex;
+  gap: 15px;
+  margin-left: 100px;
+  align-content: center;
+  margin-bottom: 70px;
+}
+.classCommentRight {
+  background: url("/assets/img/features/dashboard/student/Ellipse.png");
+  height: 14px;
+  width: 14px;
+  align-self: center;
 }

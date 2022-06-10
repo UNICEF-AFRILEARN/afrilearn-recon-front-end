@@ -1,39 +1,59 @@
 .container {
-  width: 1000px;
-  height: 152px;
+  width: 1250px;
+  /* height: 152px; */
   margin: auto;
-  display: flex;
-  flex-wrap: wrap;
+  justify-content: center;
   margin-bottom: 30px;
   column-gap: 20px;
+  /* display: flex; */
+  /* padding-bottom:10px ; */
+  /* flex-wrap: wrap; */
 }
 
+/* .cointainer ~ div {
+  padding-bottom: 15px;
+} */
+
 .containerList1 {
-  width: 320px;
+  width: 380px;
   height: 152px;
   background: #340067;
   box-shadow: inset 10.7637px 10.7637px 10.7637px rgba(0, 0, 0, 0.41),
     inset -10.7637px -10.7637px 10.7637px #56119a;
   border-radius: 29.3311px;
-  padding: 5px;
+  /* padding: 5px; */
+  /* margin-bottom: 10px; */
+  /* margin: 0 10px; */
+  border: 10px solid white;
 }
 .containerList2 {
-  width: 320px;
+  width: 300px;
   height: 152px;
   background: #118330;
   box-shadow: inset 10.7637px 10.7637px 10.7637px rgba(0, 0, 0, 0.41),
     inset -10.7637px -10.7637px 10.7637px #328f4c;
   border-radius: 29.3311px;
   padding: 5px;
+  /* margin-bottom: 10px; */
+  /* margin: 0 10px; */
+  border: 10px solid white;
+
+
+
 }
 .containerList3 {
-  width: 320px;
+  width: 300px;
   height: 152px;
   background: #009442;
   box-shadow: inset 10.7637px 10.7637px 10.7637px rgba(0, 0, 0, 0.41),
     inset -10.7637px -10.7637px 10.7637px #328f4c;
   border-radius: 29.3311px;
-  padding: 5px;
+  /* padding: 5px; */
+  /* margin-bottom: 10px; */
+  /* margin: 0 10px; */
+
+  border: 10px solid white;
+
 }
 
 .cointainerListLeft1 {

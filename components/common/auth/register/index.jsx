@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 import styles from './register.module.css';
 import Image from 'next/image';
@@ -8,28 +9,36 @@ import Selectitem from '../../../widgets/appSelect/appSelect';
 import ReactModal from 'react-modal'
 import { Button, Modal } from 'react-bootstrap';
 
+import { fetchRoles } from "../../../../store/actions/auth";
+
 import {API} from '../../../../pages/api/client-side/fetcher';
 
 const Register = (props) => {
   const [fullscreen, setFullscreen] = useState(true);
   const [show, setShow] = useState(false);
-
+  const rolesCollected = useSelector((state) => state.auth)
+  const dispatch = useDispatch()
+  
   function handleShow(breakpoint) {
     setFullscreen(breakpoint);
     setShow(true);
   }
+  
+  // const profile = {}
+  const rolesContext = rolesCollected.roles.data.roles;
+  const courseContext = rolesCollected.roles.data.courses;
+  console.log("courses from the UI ==>", courseContext);
 
-  const profile = {}
-  const platformContext = props.platformContext
-
-  const handleChanges = (key, value) => {
-
-    profile[key] = value
+  const handleChanges = (value) => {
+      console.log(value)
+    // profile[key] = value
     // console.log('User Signup Profile\n', profile)
   }
 
   const handleRegisterRequest = (e) => {
-    // e.preventDefault()
+    e.preventDefault()
+    console.log(e)
+
     // API.registerUser(profile).then((data) => {
     //   console.log('Registeration completed', !data?.isError)
     //   data?.isError ? console.log("Fields Errors:\n", data?.fieldsErrors) : console.log(data?.registerUser) 
@@ -38,6 +47,11 @@ const Register = (props) => {
     //Modal is displayed here after successful or failed registration....
     setShow(true);
   }
+
+
+  useEffect(() => {
+    dispatch(fetchRoles())
+  }, [])
 
   return (
 
@@ -57,9 +71,9 @@ const Register = (props) => {
           <div className='card-container-form' >
             <span className={styles.card}>
               <h5 className="center">CREATE AN ACCOUNT</h5>
-              <form>
-                <Selectitem data={platformContext?.roles} onChange={(value) => handleChanges('role', value)} placeholder='Select a Role' className={styles.pushDown} />
-                <Selectitem data={platformContext?.courses} onChange={(value) => handleChanges('class', value)} placeholder='Select Class' className={styles.pushDown} />
+              <form onSubmit={handleRegisterRequest}>
+                <Selectitem data={rolesContext} onChange={(value) => handleChanges('role', value)} placeholder='Select a Role' className={styles.pushDown} />
+                <Selectitem data={courseContext} onChange={(value) => handleChanges('class', value)} placeholder='Select Class' className={styles.pushDown} />
                 <TextInput name={'fullName'} type='text' onChange={(value) => handleChanges('fullName', value)} title='Full Name' placeholder='Full Name' className={styles.pushDown} />
                 <TextInput name={'phone'} type='text' onChange={(value) => handleChanges('phone', value)} title='Phone Number' placeholder='Phone Number' className={styles.pushDown} />
                 <TextInput name={'email'} type='text' onChange={(value) => handleChanges('email', value)} title='Email' placeholder='Email' className={styles.pushDown} />
@@ -69,7 +83,7 @@ const Register = (props) => {
                 <p>By signing up, you agree to our <Link passHref href='/'><b>Terms and Privacy Policy</b></Link></p>
                 <div className={`row ${styles.pushDown1}`}>
                   <Link passHref href="#">
-                    <AppButton title="LOGIN" secondary onClick={(e) => handleRegisterRequest(e)} />
+                    <AppButton title="LOGIN" secondary type='submit' />
                   </Link>
                 </div>
                 <div className={`row ${styles.pushDown1}`}>
