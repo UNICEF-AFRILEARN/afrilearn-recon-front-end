@@ -7,6 +7,7 @@ import Image from "next/image";
 import Slider from "react-slick";
 import { useRef } from "react";
 import Link from "next/link";
+import Subjects from "./extra/subjects";
 import PerfomanceSumm from "./extra/perfomanceSumm";
 
 const Dashboard = () => {
@@ -160,11 +161,12 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      <MySubjects />
+      <Subjects/>
       <PastQuestion />
-      <TopInClass />
+      {/* <TopInClass /> */}
       <PerfomanceSumm />
-
+      <GetSolution />
+{/* 
       <SubHeading title={`Top in ${title.class}`} />
 
       <div className={styles.contai}>
@@ -175,9 +177,12 @@ const Dashboard = () => {
             ))}
           </Slider>
         </section>
-      </div>
+      </div> */}
+      </>  
+          );
+        };
+    
 
-      <GetSolution />
       <section className={styles.join}>
         <SubHeading title="Classroom" />
         <button className={styles.joinClass}>JOIN A CLASSROOM</button>
@@ -189,198 +194,20 @@ const Dashboard = () => {
         </div>
       </section>
 
-      {recommendationDatas !== 0 && (
-        <>
-          <SubHeading title="Recommended For You" />
+      // {recommendationDatas !== 0 && (
+      //   <>
+      //     <SubHeading title="Recommended For You" />
 
-          <div className={styles.contai}>
-            <section className="parnet-frag-color">
-              {recommendationDatas.map((recData) => (
-                <Recommendation data={recData} />
-              ))}
-            </section>
-          </div>
-        </>
-      )}
-    </>
-  );
-};
-const MySubjects = () => {
-  return (
-    <>
-      <SubHeading title="My Subjects" />
-      <div className="container">
-        <div className={`row ${styles.mySubjecttt}`}>
-          <div className={`col-md-2 ${styles.mySubjectt}`}>
-            <Image
-              alt={"design image"}
-              src={"/assets/img/features/dashboard/student/Plant Growing.png"}
-              width={70}
-              height={70}
-            />
-            <p>Agricultural Science</p>
-          </div>
-          <div className={`col-md-2 ${styles.mySubjectt}`}>
-            <Image
-              alt={"design image"}
-              src={"/assets/img/features/dashboard/student/Research Virus.png"}
-              width={70}
-              height={70}
-            />
-            <p>Biology</p>
-          </div>
-          <div className={`col-md-2 ${styles.mySubjectt}`}>
-            <Image
-              alt={"design image"}
-              src={"/assets/img/features/dashboard/student/Business.png"}
-              width={70}
-              height={70}
-            />
-            <p>Chemistry</p>
-          </div>
-          <div className={`col-md-2 ${styles.mySubjectt}`}>
-            <Image
-              alt={"design image"}
-              src={"/assets/img/features/dashboard/student/Bible.png"}
-              width={70}
-              height={70}
-            />
-            <p>Christian religion</p>
-          </div>
-          <div className={`col-md-2 ${styles.mySubjectt}`}>
-            <Image
-              alt={"design image"}
-              src={"/assets/img/features/dashboard/student/Product.png"}
-              width={70}
-              height={70}
-            />
-            <p>Commerce</p>
-          </div>
-          <div className={`col-md-2 ${styles.mySubjectt}`}>
-            <Image
-              alt={"design image"}
-              src={"/assets/img/features/dashboard/student/Computerr.png"}
-              width={70}
-              height={70}
-            />
-            <p>Computer Science</p>
-          </div>
-        </div>
-        <div className={`row ${styles.mySubjecttt}`}>
-          <div className={`col-md-2 ${styles.mySubjectt}`}>
-            <Image
-              alt={"design image"}
-              src={"/assets/img/features/dashboard/student/_Group_.png"}
-              width={70}
-              height={70}
-            />
-            <p>Civic Education</p>
-          </div>
-          <div className={`col-md-2 ${styles.mySubjectt}`}>
-            <Image
-              alt={"design image"}
-              src={"/assets/img/features/dashboard/student/Marketing Data.png"}
-              width={70}
-              height={70}
-            />
-            <p>Data Science</p>
-          </div>
-          <div className={`col-md-2 ${styles.mySubjectt}`}>
-            <Image
-              alt={"design image"}
-              src={
-                "/assets/img/features/dashboard/student/Consumer Economic.png"
-              }
-              width={70}
-              height={70}
-            />
-            <p>CEconomic</p>
-          </div>
-          <div className={`col-md-2 ${styles.mySubjectt}`}>
-            <Image
-              alt={"design image"}
-              src={
-                "/assets/img/features/dashboard/student/Alphabetic Blocks.png"
-              }
-              width={70}
-              height={70}
-            />
-            <p>English Language</p>
-          </div>
-          <div className={`col-md-2 ${styles.mySubjectt}`}>
-            <Image
-              alt={"design image"}
-              src={"/assets/img/features/dashboard/student/accounting.png"}
-              width={70}
-              height={70}
-            />
-            <p>Financial accounting</p>
-          </div>
-          <div className={`col-md-2 ${styles.mySubjectt}`}>
-            <Image
-              alt={"design image"}
-              src={"/assets/img/features/dashboard/student/Table Globe.png"}
-              width={70}
-              height={70}
-            />
-            <p>Geography</p>
-          </div>
-        </div>
-        <div className={`row ${styles.mySubjecttt}`}>
-          <div className={`col-md-2 ${styles.mySubjectt}`}>
-            <Image
-              alt={"design image"}
-              src={
-                "/assets/img/features/dashboard/student/Government Building.png"
-              }
-              width={70}
-              height={70}
-            />
-            <p>Government</p>
-          </div>
-          <div className={`col-md-2 ${styles.mySubjectt}`}>
-            <Image
-              alt={"design image"}
-              src={"/assets/img/features/dashboard/student/Bookk.png"}
-              width={70}
-              height={70}
-            />
-            <p>Literature in English</p>
-          </div>
-          <div className={`col-md-2 ${styles.mySubjectt}`}>
-            <Image
-              alt={"design image"}
-              src={"/assets/img/features/dashboard/student/calculator 8.png"}
-              width={70}
-              height={70}
-            />
-            <p>Mathematics</p>
-          </div>
-          <div className={`col-md-2 ${styles.mySubjectt}`}>
-            <Image
-              alt={"design image"}
-              src={
-                "/assets/img/features/dashboard/student/Einstein Formula.png"
-              }
-              width={70}
-              height={70}
-            />
-            <p>English Language</p>
-          </div>
-          <div className={`col-md-2 ${styles.mySubjectt}`}>
-            <Image
-              alt={"design image"}
-              src={"/assets/img/features/dashboard/student/accounting.png"}
-              width={70}
-              height={70}
-            />
-            <p>Financial accounting</p>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-};
+      //     <div className={styles.contai}>
+      //       <section className="parnet-frag-color">
+      //         {recommendationDatas.map((recData) => (
+      //           <Recommendation data={recData} />
+      //         ))}
+      //       </section>
+      //     </div>
+      //   </>
+      // )}
+ 
 const GetSolution = () => {
   return (
     <>
@@ -410,34 +237,6 @@ const GetSolution = () => {
               </div>
               <div className={` ${styles.mySolutionBoxWord}`}><p>J1 Combat</p> <Image alt={"design image"} src={'/assets/img/features/dashboard/student/sword.png'} width={"31.13px"} height={"31.13px px"}/></div>
               <div className={` ${styles.mySolutionBoxMin}`}><p>08 Days 01:58:27 minutes</p></div>
-            </div>
-          </div>
-          <div className={`col-md-5 ${styles.mySolutionBox2}`}>
-            <div className={`row ${styles.mySolutionBox22}`}>
-              <div className={` ${styles.mySolutionBoxCoin}`}>
-                <Image
-                  alt={"design image"}
-                  src={"/assets/img/features/dashboard/student/Group.png"}
-                  width={"20.36 px"}
-                  height={"20.36 px"}
-                />{" "}
-                100
-              </div>
-              <div className={` ${styles.mySolutionBoxSword}`}>
-                <p>Battle with others to win</p>
-              </div>
-              <div className={` ${styles.mySolutionBoxWord}`}>
-                <p>J1 Combat</p>{" "}
-                <Image
-                  alt={"design image"}
-                  src={"/assets/img/features/dashboard/student/sword.png"}
-                  width={"31.13px"}
-                  height={"31.13px px"}
-                />
-              </div>
-              <div className={` ${styles.mySolutionBoxMin}`}>
-                <p>08 Days 01:58:27 minutes</p>
-              </div>
             </div>
           </div>
         </div>

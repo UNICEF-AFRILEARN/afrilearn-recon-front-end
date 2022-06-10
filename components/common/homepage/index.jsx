@@ -7,9 +7,9 @@ import Image from "next/image";
 import WhyAfrilearn from "./extra/whyAfrilearn";
 import ExploreAfrilearn from "./extra/exploreAfrilearn";
 import CommentPage from "./extra/commentPage";
+import { BsCheck2All } from 'react-icons/bs';
+import { Accordion } from 'react-bootstrap';
 
-import { BsCheck2All } from "react-icons/bs";
-import { Accordion } from "react-bootstrap";
 
 const HomePage = () => {
   return (
