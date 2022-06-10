@@ -668,23 +668,19 @@ const Footer = () => {
             </li>
             <li>
               <Link passHref href="https://myafrilearn.com/about#team">
-                Team
-              </Link>
+                Team</Link>
             </li>
             <li>
               <Link passHref href="https://myafrilearn.com/faculty">
-                Faculty{" "}
-              </Link>
+                Faculty</Link>
             </li>
             <li>
               <Link passHref href="https://myafrilearn.com/join-the-team">
-                Career{" "}
-              </Link>
+                Career</Link>
             </li>
             <li>
               <Link passHref href="https://myafrilearn.com/partnership">
-                Paternership{" "}
-              </Link>
+                Paternership</Link>
             </li>
           </ul>
         </div>
@@ -706,22 +702,18 @@ const Footer = () => {
           <div className={`col-md-2 ${styles.lastt}`}>
             <li>
               <Link passHref href="">
-                Privacy Policy{" "}
-              </Link>
+                Privacy Policy</Link>
             </li>
           </div>
           <div className={`col-md-2 ${styles.lastt}`}>
             <li>
               <Link passHref href="/">
-                {" "}
-                Terms of Service
-              </Link>
+                Terms of Service</Link>
             </li>
           </div>
           <div className="col-md-2 ">
             <div className={styles.lastttt}>
               <div className="col-md-2 m-2 m-2">
-                {" "}
                 <Link passHref href="https://web.facebook.com/myAfrilearn">
                   <Image
                     alt={"design image"}
@@ -732,11 +724,7 @@ const Footer = () => {
                 </Link>
               </div>
               <div className="col-md-2 m-2">
-                {" "}
-                <Link
-                  passHref
-                  href="https://www.instagram.com/accounts/login/?next=/afrilearn/"
-                >
+              <Link passHref href="https://www.instagram.com/accounts/login/?next=/afrilearn/">
                   <Image
                     alt={"design image"}
                     src={data?.imageURL[1]}
@@ -746,7 +734,6 @@ const Footer = () => {
                 </Link>
               </div>
               <div className="col-md-2 m-2">
-                {" "}
                 <Link passHref href="https://twitter.com/Afrilearn">
                   <Image
                     alt={"design image"}
