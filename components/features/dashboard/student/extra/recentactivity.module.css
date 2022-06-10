@@ -21,3 +21,11 @@
     margin-top: 20px;
     font-size: 20px;
 }
+
+.recenttitle {
+    padding-left: 10%;
+    font-size: 30px;
+    font-weight: 700;
+    font-family: "subHeading";
+    color: #29465B;
+}
