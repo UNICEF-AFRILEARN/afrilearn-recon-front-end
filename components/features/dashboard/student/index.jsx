@@ -9,6 +9,7 @@ import { useRef } from "react";
 import Link from "next/link";
 import Subjects from "./extra/subjects";
 import PerfomanceSumm from "./extra/perfomanceSumm";
+import RecentActivity from "./extra/recentActivity";
 
 const Dashboard = () => {
   const title = { class: "SSS One" };
@@ -163,28 +164,15 @@ const Dashboard = () => {
       </div>
       <Subjects/>
       <PastQuestion />
+      {/* <TopInClass /> */} /** I commeted out you code so I can stop error */
+      <PerfomanceSumm />
+  
       {/* <TopInClass /> */}
       <PerfomanceSumm />
       <GetSolution />
-{/* 
-      <SubHeading title={`Top in ${title.class}`} />
-
-      <div className={styles.contai}>
-        <section className="parnet-frag-color">
-          <Slider {...settings} ref={customeSlider}>
-            {datas.map((data) => (
-              <TopInClass data={data} />
-            ))}
-          </Slider>
-        </section>
-      </div> */}
-      </>  
-          );
-        };
-    
-
-      <section className={styles.join}>
+        <section className={styles.join}>
         <SubHeading title="Classroom" />
+        
         <button className={styles.joinClass}>JOIN A CLASSROOM</button>
         <div className={styles.classComment}>
           <div className={styles.classCommentRight}></div>
@@ -193,20 +181,13 @@ const Dashboard = () => {
           </div>
         </div>
       </section>
+      <RecentActivity />
+      </>  
+          );
+        };
+    
 
-      // {recommendationDatas !== 0 && (
-      //   <>
-      //     <SubHeading title="Recommended For You" />
-
-      //     <div className={styles.contai}>
-      //       <section className="parnet-frag-color">
-      //         {recommendationDatas.map((recData) => (
-      //           <Recommendation data={recData} />
-      //         ))}
-      //       </section>
-      //     </div>
-      //   </>
-      // )}
+    
  
 const GetSolution = () => {
   return (
