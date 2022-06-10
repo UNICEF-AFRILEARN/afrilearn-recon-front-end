@@ -1,5 +1,5 @@
 .cont {
-    width: 250px;
+  width: 240px;
   /* display: flex; */
   height: 250px;
   /* background-color: gray; */
@@ -13,7 +13,7 @@
 }
 
 .topInClass {
-  width: 1000px;
+  width: 1250px;
 }
 .rectBox {
   color: rgba(0, 0, 0, 0.4);
@@ -44,4 +44,38 @@
 .play_text p {
   color: #a6a6a6;
   font-size: 12px;
+}
+
+.contRec {
+  display: grid;
+  margin-bottom: 25px;
+  grid-template-columns: 21% 79%;
+}
+
+.play_textRecFirstp {
+  color: #a6a6a6;
+  margin: 0;
+}
+
+.buttonStyle {
+  border: 0.956522px solid #333333;
+  border-radius: 95.6522px;
+  display: flex;
+  align-content: center;
+  padding:  3px 7px;
+  column-gap: 5px;
+}
+
+.play_textRec h6 {
+  margin-top: 15px;
+}
+
+.contListRead{
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 240px;
+  height: 160px;
+  border-radius: 7px;
+display: grid;
+justify-content: center;
+align-content: center;
 }
