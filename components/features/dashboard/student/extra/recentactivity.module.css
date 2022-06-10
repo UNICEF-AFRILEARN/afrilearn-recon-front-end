@@ -1,0 +1,23 @@
+.parentcontainer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.imagecontainer {
+    width: 15%;
+}
+
+.quizcontainer h3 {
+    font-size: 20px;
+}
+
+.subjectcontainer h4{
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.datecontainer h3 {
+    margin-top: 20px;
+    font-size: 20px;
+}
