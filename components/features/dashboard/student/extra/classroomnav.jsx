@@ -1,9 +1,18 @@
-import React from 'react'
+import React from 'react';
+import styles from "../../../../../styles/classroom.module.css";
 
 const Classroomnav = () => {
   return (
     <div>
-        <h1>classroomnav</h1>
+        <nav className={styles.navbar}>
+          <ul>
+            <li>Announcements</li>
+            <li>Materials</li>
+            <li>Classwork</li>
+            <li>People</li>
+            <li>Class Performance</li>
+          </ul>
+        </nav>
     </div>
   )
 }

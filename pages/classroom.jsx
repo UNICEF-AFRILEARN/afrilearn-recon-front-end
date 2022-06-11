@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import  styles  from "../styles/videolesson.module.css"
+import  styles  from "../styles/classroom.module.css"
 import Classroomnav from '../components/features/dashboard/student/extra/classroomnav';
 
 const Classroom = () => {

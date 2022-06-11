@@ -27,8 +27,26 @@
     text-align:start;
     top: 297px;
     right: 90px;
-    background-color: blue;
+    background: #FFFFFF;
     width: 70vw;
     padding: 9px;
+    border-radius: 10px;
 }
 
+
+.navbar ul{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: #A6A6A6;
+    padding-top: 30px;
+
+}
+
+.navbar ul li {
+    list-style-type: none;
+}
+
+.navbar ul li:active {
+    color: #00D9B6;
+}
