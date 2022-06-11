@@ -1,0 +1,39 @@
+.mainwrapper {
+    display: flex;
+    padding: 15px;
+}
+
+.detailscard {
+    background-color:#FAFAFA;
+    text-align: center;
+    /* width: 25%; */
+    padding: 25px;
+    margin-bottom: 10px;
+    font-size: 20px;
+
+}
+
+.upcomingcard {
+    background-color:#FAFAFA;
+    /* width: 25%; */
+    padding: 20px;
+}
+
+.innerdate {
+    display: flex;
+    justify-content: space-evenly;
+    text-align: start;
+}
+
+.firstmessage {
+    display: flex;
+    background-color: #FAFAFA;
+    width: 70vw;
+
+    
+}
+
+.firstmessage p {
+    padding-top: 15px;
+    margin-left: 25px;
+}
