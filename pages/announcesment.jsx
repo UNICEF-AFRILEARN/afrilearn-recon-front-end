@@ -38,15 +38,105 @@ const Announcesment = () => {
            <p>Announcements from teacher</p>
             </div>
 
-            <div className={styles.firstmessage}>
+            <div className={styles.seconmessage}>
+            <div className={styles.innermessage}>
+              <Image
+                src="/assets/img/messageavatar.svg"
+                alt="teacher"
+                width={50}
+                height={50}
+              />
+            <div className={styles.teachertitle}><p>Announcements from teacher</p><span>06 Sept 2020</span></div>
+            </div>
+
+           <div className={styles.teacherarticle}>
+             <p>Huloo! 
+               <br />
+               
+                Well done to those that were able to complete the video lessons for this week. <br/><br />
+
+                Cheers!</p>
+           </div>
+
+          </div>
+          <div className={styles.seconmessage}>
+            <div className={styles.innermessage}>
+              <Image
+                src="/assets/img/messageavatar.svg"
+                alt="teacher"
+                width={50}
+                height={50}
+              />
+            <div className={styles.teachertitle}><p>Announcements from teacher</p><span>06 Sept 2020</span></div>
+            </div>
+
+           <div className={styles.teacherarticle}>
+             <p>Huloo! 
+               <br />
+               
+                Well done to those that were able to complete the video lessons for this week. <br/><br />
+
+                Cheers!</p>
+           </div>
+           <div className={styles.commentmessage}>
+             
+             {/* <p>1 class comment</p> */}
+              <div className={styles.commentimagecont}>
+              <Image
+                src="/assets/img/messageavatar.svg"
+                alt="teacher"
+                width={50}
+                height={50}
+              />
+             
+            <div className={styles.teachertitle}>
+              <p>Mr Abraham O.(Teacher) </p><span>Course to be read for second week will be shared soon</span>
+            </div>
+              </div>
+              <div className={styles.dividerclass}>
+                <div className={styles.addclasscomment}>
+                <span>Add class comment</span>
+                <Image
+                  src="/assets/img/arrow.svg"
+                  alt="teacher"
+                  width={20}
+                  height={20}
+                />
+              </div>
+              </div>
+            </div>
+          </div>
+          <div className={styles.posttage}>
             <Image
-              src="/assets/img/messageavatar.svg"
+              src="/assets/img/annouceimg.svg"
               alt="teacher"
               width={50}
               height={50}
             />
-           <p>Announcements from teacher</p>
+           <div className={styles.teachertitle}><p>Mr Abraham O.(Teacher)  posted a new study link: Hello everyone, here is the ...</p><span>06 Sept 2020</span></div>
             </div>
+          <div className={styles.seconmessage}>
+            <div className={styles.innermessage}>
+              <Image
+                src="/assets/img/messageavatar.svg"
+                alt="teacher"
+                width={50}
+                height={50}
+              />
+            <div className={styles.teachertitle}><p>Announcements from teacher</p><span>06 Sept 2020</span></div>
+            </div>
+
+           <div className={styles.teacherarticle}>
+             <p>Huloo! 
+               <br />
+               
+                Well done to those that were able to complete the video lessons for this week. <br/><br />
+
+                Cheers!</p>
+           </div>
+
+          </div>
+
         </div>
     </div>
   )

@@ -2,7 +2,8 @@ import Link from 'next/link';
 import React from 'react';
 import styles from "../../../../../styles/classroom.module.css";
 
-const Classroomnav = () => {
+const Classroomnav = ({props}) => {
+  console.log(props)
   return (
     <div>
         <nav className={styles.navbar}>

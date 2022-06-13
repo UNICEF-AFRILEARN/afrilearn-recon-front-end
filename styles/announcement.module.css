@@ -1,12 +1,12 @@
 .mainwrapper {
     display: flex;
+    justify-content: space-evenly;
     padding: 15px;
 }
 
 .detailscard {
     background-color:#FAFAFA;
     text-align: center;
-    /* width: 25%; */
     padding: 25px;
     margin-bottom: 10px;
     font-size: 20px;
@@ -15,7 +15,6 @@
 
 .upcomingcard {
     background-color:#FAFAFA;
-    /* width: 25%; */
     padding: 20px;
 }
 
@@ -26,14 +25,90 @@
 }
 
 .firstmessage {
+    border-radius: 7px;
     display: flex;
     background-color: #FAFAFA;
-    width: 70vw;
+    padding: 10px;
+}
 
-    
+.posttage {
+    border-radius: 7px;
+    display: flex;
+    background-color: #FAFAFA;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid rgba(51, 51, 51, 0.23);;
+
+}
+.innermessage {
+    margin-top: 10px;
+    display: flex;
+    background-color: #FAFAFA;
+}
+.commentmessage {
+    border-top: 1px solid rgba(51, 51, 51, 0.23);
+    border-bottom: 1px solid rgba(51, 51, 51, 0.23);
+    display: flex;
+    flex-direction: column;
+    padding-top: 5px;
+    padding-bottom: 65px;
+}
+
+.commentimagecont {
+    display: flex;
+}
+.teachertitle {
+    display: flex;
+    flex-direction: column;
+    background-color: #FAFAFA;
+}
+
+.addclasscomment {
+    display: flex;
+    justify-content: space-around;
+    width: 55%;
+    border: 1px solid rgba(51, 51, 51, 0.23);
+    border-radius: 20px;
+    padding: 3px;
+    margin-top: 15px;
+    position: absolute;
+    left: 25%;
+    color: rgba(166, 166, 166, 0.51);
+
+}
+
+.dividerclass {
+    position: relative;
+    border-top: 1px solid rgba(51, 51, 51, 0.23);
+    margin-top: 20px;
+}
+
+.teachertitle p {
+    padding-top: 15px;
+    margin-left: 25px;
+}
+
+.teachertitle span {
+    padding-top: 0.1px;
+    margin-left: 25px;
+}
+.seconmessage {
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    background-color: #FAFAFA;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid rgba(51, 51, 51, 0.23);
+
 }
 
 .firstmessage p {
-    padding-top: 15px;
+    padding-top: 20px;
     margin-left: 25px;
+}
+
+.teacherarticle {
+    padding: 15px;
+    background-color: #FAFAFA;
 }
