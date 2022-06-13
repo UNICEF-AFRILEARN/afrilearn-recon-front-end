@@ -29,17 +29,25 @@
     right: 90px;
     background: #FFFFFF;
     width: 70vw;
-    padding: 9px;
+    /* padding: 9px; */
     border-radius: 10px;
 }
 
+.navbar {
+    padding: 9px;
+    border-radius: 10px;
+    background: #FFFFFF;
+    box-shadow: 0px 8px 15px lightgrey;
+}
 
 .navbar ul{
+    background: #FFFFFF;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     color: #A6A6A6;
     padding-top: 30px;
+    
 
 }
 
@@ -49,4 +57,8 @@
 
 .navbar ul li:active {
     color: #00D9B6;
+}
+
+.maincontainer {
+    height: 100vh;
 }

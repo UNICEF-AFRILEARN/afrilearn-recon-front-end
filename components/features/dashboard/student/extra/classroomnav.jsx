@@ -5,7 +5,7 @@ import styles from "../../../../../styles/classroom.module.css";
 const Classroomnav = ({props}) => {
   console.log(props)
   return (
-    <div>
+    <div className={styles.maincontainer}>
         <nav className={styles.navbar}>
           <ul>
             <Link href="/announcesment"><li>Announcements</li></Link>
