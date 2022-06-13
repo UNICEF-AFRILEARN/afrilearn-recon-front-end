@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import styles from "../styles/announcement.module.css";
+import styles from "../../../../../styles/announcement.module.css";
 
 const Announcesment = () => {
   return (

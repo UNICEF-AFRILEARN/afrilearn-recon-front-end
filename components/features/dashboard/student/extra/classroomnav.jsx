@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 import styles from "../../../../../styles/classroom.module.css";
+import Announcesment from './announcesment';
 
 const Classroomnav = ({props}) => {
   console.log(props)
@@ -8,7 +9,7 @@ const Classroomnav = ({props}) => {
     <div className={styles.maincontainer}>
         <nav className={styles.navbar}>
           <ul>
-            <Link href="/announcesment"><li>Announcements</li></Link>
+            <li>Announcements</li>
             
             <li>Materials</li>
             <li>Classwork</li>
@@ -16,6 +17,8 @@ const Classroomnav = ({props}) => {
             <li>Class Performance</li>
           </ul>
         </nav>
+
+        <Announcesment />
     </div>
   )
 }
