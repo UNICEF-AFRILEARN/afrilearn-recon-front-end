@@ -6,9 +6,22 @@
   background-attachment: fixed;
   background-size: cover;
   color: #fff;
-  height: 105vh;
+  /* width: 1450px; */
+  height: 637px;
   padding-top: 100px;
+  margin: 0;
+  border-radius: 5px 5px 0 0;
 }
+
+.myModal,
+.modalSecond1,
+.modal-content {
+  /* width: 100% !important; Occupy the 90% of the screen width */
+  /* max-width: 50vw; */
+  border-radius: 13px ;
+}
+
+/* .modal-content {border-radius: 40px;} */
 .dashboardFirstSection h1 {
   font-family: "heading";
   text-align: center;
@@ -20,6 +33,15 @@
 .push2 {
   padding: 16px 90px;
 }
+
+.push2e {
+  background: url("./../../../../public/assets/img/features/dashboard/student/crownTheme.png");
+  background-repeat: no-repeat;
+  width: 277px;
+  height: 50px;
+  margin-left: 80px;
+}
+
 .push3 {
   font-size: 14px;
   position: absolute;
@@ -42,6 +64,10 @@
   /* background-color: gray; */
   /* height: 500px; */
   margin: auto;
+}
+
+.modalHeroPage {
+  width: 80%;
 }
 
 .mySubjectt {
@@ -192,12 +218,14 @@
   border-radius: 100px;
   color: #ffffff;
   height: 35px;
-  width: 96px;
+  width: fit-content;
   border-radius: 100px;
   text-align: center;
-  padding-top: 10px;
-  margin-right: 10px;
+  /* padding-top: 10px; */
+  /* margin-right: 10px; */
   cursor: pointer;
+  padding: 10px 15px 0;
+  /* border: 5px; */
 }
 .join {
   position: relative;
