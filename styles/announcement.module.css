@@ -10,12 +10,78 @@
     padding: 25px;
     margin-bottom: 10px;
     font-size: 20px;
+    position:relative;
+    padding-bottom: 70px;
+    border-radius: 20px;
+}
+.detailscard p {
+    color: #333333;
+    font-size: 15px;
+    line-height: 26.2px;
 
+
+}
+
+.detailscard h2 {
+    color: #29465B;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 35px;
+
+}
+.detailscard h3 {
+    background: #E6FBF8;
+    position: absolute;
+    left: 35%;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 26px;
+    padding: 2px 25px;
+    color: #00D9B6;
+
+}
+
+.subtitle {
+    padding-left: 35px;
+    color: #00D9B6 !important;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px !important;
+    line-height: 16px !important;
+}
+
+.subtitleview {
+    position:relative;
+    color: #00D9B6 !important;
+    left:65%;
+    text-decoration:underline;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px !important;
+    line-height: 24px !important;
 }
 
 .upcomingcard {
     background-color:#FAFAFA;
     padding: 20px;
+    border-radius: 20px;
+}
+
+.upcomingcard h2 {
+    color: #29465B;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 39px;
+}
+
+.upcomingcard p {
+    color: #333333;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
 }
 
 .innerdate {
@@ -24,11 +90,26 @@
     text-align: start;
 }
 
+.innerdate p {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.innerdate span {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+}
+
 .firstmessage {
     border-radius: 7px;
     display: flex;
     background-color: #FAFAFA;
     padding: 10px;
+    margin-top: 15px;
 }
 
 .posttage {
@@ -52,6 +133,7 @@
     flex-direction: column;
     padding-top: 5px;
     padding-bottom: 65px;
+    
 }
 
 .commentimagecont {

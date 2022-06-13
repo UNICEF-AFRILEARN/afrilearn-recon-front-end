@@ -11,7 +11,7 @@ const Announcesment = () => {
               src="/assets/img/crown.svg"
               alt="teacher"
               width={200}
-              height={200}
+              height={50}
             />
             </div>
             <div className={styles.detailscard}>
@@ -22,9 +22,13 @@ const Announcesment = () => {
             <div className={styles.upcomingcard}>
             <h2>Upcoming</h2>
             <p>Mr Abraham O.(Teacher)  posted a new ...</p>
-                <div className={styles.innerdate}><p>Posted:</p><span>03 Sept 2020</span></div>
-                <div className={styles.innerdate}><p>Due Date:</p><span>06 Sept 2020</span></div>
-         
+                <div className={styles.innerdate}>
+                  <p>Posted:</p><span>03 Sept 2020</span></div>
+                <div className={styles.innerdate}><p>Due Date:</p>
+                <span>06 Sept 2020</span>
+                </div>
+                <p className={styles.subtitle}>Agricultural Science</p>
+                <p className={styles.subtitleview}>View All</p>
             </div>
         </div>
         <div className={styles.messagescontainer}>
