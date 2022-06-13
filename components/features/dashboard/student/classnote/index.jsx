@@ -77,6 +77,9 @@ const ClassNoteVideoHeader = () => {
   return (
     <div className={styles.headerTop}>
       <div className={styles.headerTopLeft}>Class Notes</div>
+      <div className="uhiuh"></div>
+      <div className="uhiuh"></div>
+      <div className="uhiuh"></div>
       <div className={styles.headerTopRight}></div>
     </div>
   );
