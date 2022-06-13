@@ -2,6 +2,10 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import styles from "../../../../../styles/classroom.module.css";
 import Announcesment from './announcesment';
+import Material from './Material';
+import Classwork from './Classwork';
+import People from './People';
+import ClassPerfomance from './ClassPerfomance';
 
 const Classroomnav = () => {
   const [toggleState, setToggleState] = useState(1);
@@ -35,8 +39,21 @@ const Classroomnav = () => {
             >Class Performance</li>
           </ul>
         </nav>
-
-        <Announcesment />
+        <div className={toggleState === 1 ? styles.activecontent : styles.content}>
+        <Announcesment  />
+        </div>
+        <div className={toggleState === 2 ? styles.activecontent : styles.content}>
+        <Material  />
+        </div>
+        <div className={toggleState === 3 ? styles.activecontent : styles.content}>
+        <Classwork  />
+        </div>
+        <div className={toggleState === 4 ? styles.activecontent : styles.content}>
+        <People  />
+        </div>
+        <div className={toggleState === 5 ? styles.activecontent : styles.content}>
+        <ClassPerfomance  />
+        </div>
     </div>
   )
 }

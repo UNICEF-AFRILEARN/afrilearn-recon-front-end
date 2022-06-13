@@ -50,6 +50,14 @@
 
 }
 
+.content {
+    display: none;
+}
+
+.activecontent {
+    display: block;
+}
+
 .navbar ul li {
     list-style-type: none;
 }
