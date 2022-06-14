@@ -112,8 +112,8 @@ const GameIntro = () => {
             <section className={`row`}>
               <div className={`row ${styles.afterSubHeading}`}>
                 <div className="col-md-6">
-                  <button className={styles.joinForGames} onClick={signIn}>
-                    <Link passHref href=" ">
+                  <button className={styles.joinForGames} >
+                    <Link passHref href=" /quiz">
                       JOIN FOR FREE
                     </Link>
                   </button>
