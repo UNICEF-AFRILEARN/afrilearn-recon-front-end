@@ -19,8 +19,63 @@ const People = () => {
               <span>Mr Abraham O.</span>
             </div>
             <div className={styles.peoplecounter}>
-          <h4>Classmates</h4> <span>46 people</span>
+              <h4>Classmates</h4> <span>46 people</span>
         </div>
+
+        <div className={styles.classmate}>
+            <Image
+                src="/assets/img/messageavatar.svg"
+                alt="teacher"
+                width={30}
+                height={30}
+              />
+              <span>Mr Abraham O.</span>
+            </div>
+            <div className={styles.classmate}>
+            <Image
+                src="/assets/img/messageavatar.svg"
+                alt="teacher"
+                width={30}
+                height={30}
+              />
+              <span>Mr Abraham O.</span>
+            </div>
+            <div className={styles.classmate}>
+            <Image
+                src="/assets/img/messageavatar.svg"
+                alt="teacher"
+                width={30}
+                height={30}
+              />
+              <span>Mr Abraham O.</span>
+            </div>
+            <div className={styles.classmate}>
+            <Image
+                src="/assets/img/messageavatar.svg"
+                alt="teacher"
+                width={30}
+                height={30}
+              />
+              <span>Mr Abraham O.</span>
+            </div>
+            <div className={styles.classmate}>
+            <Image
+                src="/assets/img/messageavatar.svg"
+                alt="teacher"
+                width={30}
+                height={30}
+              />
+              <span>Mr Abraham O.</span>
+            </div>
+            <div className={styles.classmate}>
+            <Image
+                src="/assets/img/messageavatar.svg"
+                alt="teacher"
+                width={30}
+                height={30}
+              />
+              <span>Mr Abraham O.</span>
+            </div>
         </div>
         
     </div>
