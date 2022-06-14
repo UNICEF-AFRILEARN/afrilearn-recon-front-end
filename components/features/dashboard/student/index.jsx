@@ -11,6 +11,7 @@ import Subjects from "./extra/subjects";
 import GetSolution from "./extra/getSolution";
 import PerfomanceSumm from "./extra/perfomanceSumm";
 import RecentActivity from "./extra/recentActivity";
+import Q from "./extra/recentActivity";
 
 const Dashboard = () => {
   const title = { class: "SSS One" };
@@ -158,7 +159,7 @@ const Dashboard = () => {
             <a href="#performance">Performance Summary</a> &nbsp;|&nbsp;{" "}
             <a href="#classroom">Classroom</a> &nbsp;|&nbsp;{" "}
             <a href="#favourite">My Favourite</a> &nbsp;|&nbsp;{" "}
-            <a href="#recommendations">Recommendations</a>
+            <a href="#recommendations">Recommendations</a>&nbsp;|&nbsp;{" "}
             &nbsp;|&nbsp; <a href="#recentActivities">Recent Activities</a>
           </div>
         </div>

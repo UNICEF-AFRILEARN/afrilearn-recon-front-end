@@ -145,6 +145,7 @@
   padding-bottom: 2%;
   margin-bottom: 3%;
 }
+
 .modalHero h1 {
   font-size: 50px;
   text-align: center;
@@ -226,4 +227,9 @@
   height: 14px;
   width: 14px;
   align-self: center;
+}
+
+.modalContainer{
+  border: 2px solid red;
+  padding: 7px;
 }

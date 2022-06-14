@@ -154,7 +154,7 @@ const SubjectModal =() => {
 
   return (
     <> 
-<div className="container-fluid" >
+<div className={`container ${styles.modalHeroo}`} >
   <div className={`row ${styles.modalHero}`}>
   <h1>{data?.subject}</h1>
     <div className="modalSec">
