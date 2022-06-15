@@ -385,5 +385,81 @@ a {
     
   }
   
-
-
+/* -----------------------quiz-styling------------ */
+#quizSection{
+  box-shadow: 0 0.5pt 10pt rgb(0 0 0 / 10%);
+  margin-left: auto;
+  margin-right: auto;
+  width:60%;
+  margin-bottom: 5%;
+  padding: 5%;
+  height: 100%;
+  color:  #333333;
+}
+.quizz{
+  align-items: center;
+  text-align: center;
+}
+.quizzTopic{
+  text-align: center;
+  font-weight: 800;
+  color: #29465B;
+}
+.quizImage{
+  background: url("/assets/img/common/quiz/animation.png");
+  width: 500px;
+  height: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.quizHelllo{
+  margin-left: 5%;
+  font-weight: 500;
+  font-size: 18px;
+}
+.quizSubject{
+margin-left: 5%;
+}
+#quizInstruction{
+  margin-left: 3% !important;
+  margin-top: 2%;
+  margin-bottom: 5%;
+}
+.quizGoodluck{
+  margin-left: 30%;
+  margin-bottom: 5%;
+}
+.buttonSection{
+  text-align: center;
+  
+}
+.buttonSection button{
+  height: 58px;
+width: 423px;
+border: none;
+border-radius: 100px;
+margin-left: 10%;
+margin-top: 5%;
+background: #00D9B6;
+color: #FFFFFF;
+}
+.instructionSubject{
+  color :#00D9B6;
+  margin-left: 15%;
+  background-color: #E6FBF8;
+  border-radius: 100px;
+  font-size: 16px;
+  font-weight: 400;
+}
+ .image2{
+  margin-left: 15% !important;
+  margin-top: 30%;
+  margin-right: 0 !important;
+ }
+ .image3{
+margin-left: 10%;
+ }
+ .quizContainer{
+  display: flex;
+  flex-direction: row;
+ }

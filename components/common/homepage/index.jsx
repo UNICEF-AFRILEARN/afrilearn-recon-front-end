@@ -9,6 +9,7 @@ import ExploreAfrilearn from "./extra/exploreAfrilearn";
 import CommentPage from "./extra/commentPage";
 import { BsCheck2All } from 'react-icons/bs';
 import { Accordion } from 'react-bootstrap';
+import { useRouter } from "next/router";
 
 
 const HomePage = () => {
@@ -78,6 +79,12 @@ const HomePage = () => {
 };
 
 const GameIntro = () => {
+  const signIn = (e) => {
+    
+    e.preventDefault();
+    router.push("/dashboard/quiz");
+  }
+  const router = useRouter();
   const data = {
     title: "Gamified experience with rewards.",
     description: [
@@ -105,11 +112,11 @@ const GameIntro = () => {
             <section className={`row`}>
               <div className={`row ${styles.afterSubHeading}`}>
                 <div className="col-md-6">
-                  <span className={styles.joinForGames}>
-                    <Link passHref href="/">
+                  <button className={styles.joinForGames} >
+                    <Link passHref href=" /quiz">
                       JOIN FOR FREE
                     </Link>
-                  </span>
+                  </button>
                 </div>
               </div>
             </section>
