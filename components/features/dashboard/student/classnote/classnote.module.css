@@ -255,19 +255,24 @@
   align-self: center;
 }
 
-.accordButtonLeftSide1{
+.accordButtonLeftSide1 {
   font-size: 12px;
 }
-.accordButtonLeftSide2{
+.accordButtonLeftSide2 {
   font-size: 15px;
-  color: #00D9B6;;
+  color: #00d9b6;
 }
-.accordButtonLeftExtr{
+.accordButtonLeftExtr {
   border: 1.20556px solid #333333;
-margin: auto;
- border-radius: 120.556px;}
+  padding: auto;
+  border-radius: 120.556px;
+}
 
- .lovedtext{
-   color: #00d9b6;
-   font-size:20px ;
- }
+.lovedtext {
+  color: #00d9b6;
+  font-size: 20px;
+}
+
+.highlightText:hover {
+  color: #00d9b6;
+}

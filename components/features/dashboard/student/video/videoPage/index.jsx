@@ -220,18 +220,16 @@ const VideoPage = () => {
               </div>
             </Col>
           </Row>
-          <Row>
+          <Row className="pt-5">
             <Col sm={5} className="">
-              <Row
-                className={`w-100 ${styles.accordButtonLeftExtr}`}
-              >
-                <Col sm={1} className="mx-0 mt-2">
-                  <Row className={styles.accordButtonLeft1}></Row>
+              <Row className={` ${styles.accordButtonLeftExtr}`}>
+                <Col sm={2} className="mt-3">
+                  <Row className={`mx-4 ${styles.accordButtonLeft1}`}></Row>
                 </Col>
                 <Col sm={1} className="mt-2">
                   <div className={styles.accordButtonLeft2}></div>
                 </Col>
-                <Col sm={8} className="p-0">
+                <Col sm={9} className="">
                   <div className={styles.accordButtonLeftSide1}>Back to</div>
                   <div className={styles.accordButtonLeftSide2}>
                     Subject Page
@@ -239,17 +237,27 @@ const VideoPage = () => {
                 </Col>
               </Row>
             </Col>
+
             <Col sm={2}>
               <div className={`${styles.accordButtonLeftExtr2}`}>
                 {iconData[0].text} of {iconData.length}
               </div>
             </Col>
             <Col sm={5}>
-              <div
-                className={`${styles.accordButtonLeft} ${styles.accordButtonLeftExtr}`}
-              >
-                See More
-              </div>
+              <Row className={` ${styles.accordButtonLeftExtr}`}>
+                <Col sm={9} className="">
+                  {/* <p className={`pl-5 ${styles.accordButtonLeftSide1}`}>Back to</p>
+                  <p className={styles.accordButtonLeftSide2}>
+                    Subject Page
+                  </p> */}
+                </Col>
+                <Col sm={1} className="mt-2">
+                  <div className={styles.accordButtonLeft2}></div>
+                </Col>
+                <Col sm={2} className="mt-3">
+                  <Row className={`mx-1 ${styles.accordButtonLeft1}`}></Row>
+                </Col>
+              </Row>
             </Col>
           </Row>
         </Col>

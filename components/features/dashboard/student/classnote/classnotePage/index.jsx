@@ -9,9 +9,10 @@ const ClassnotePage = () => {
   const stuData = [{ subject: "Geometrical Construction: Angles" }];
 
   const text = [
-    {
-      topic: "Geometrical Construction:  Angles",
-      texts: `"Construction" in Geometry means to draw shapes, angles or lines accurately. These constructions use only compass,straightedge (i.e. ruler) and a pencil.straightedge. This is the "pure" form of geometric construction: no numbers involved! 
+    [
+      {
+        topic: "Geometrical Construction:  Angles",
+        texts: `"Construction" in Geometry means to draw shapes, angles or lines accurately. These constructions use only compass,straightedge (i.e. ruler) and a pencil.straightedge. This is the "pure" form of geometric construction: no numbers involved! 
     
     "Construction" in Geometry means to draw shapes, angles or lines accurately. These constructions use only compass,straightedge (i.e. ruler) and a pencil.straightedge. This is the "pure" form of geometric construction: no numbers involved!
     
@@ -22,10 +23,10 @@ const ClassnotePage = () => {
     "Construction" in Geometry means to draw shapes, angles or lines accurately. These constructions use only compass,straightedge (i.e. ruler) and a pencil.straightedge. This is the "pure" form of geometric construction: no numbers involved!
     
     "Construction" in Geometry means to draw shapes, angles or lines accurately. These constructions use only compass,straightedge (i.e. ruler) and a pencil.straightedge. This is the "pure" form of geometric construction: no numbers involved!`,
-    },
-    {
-      topic: "Degrees",
-      texts: `And it is useful to know how to do 30°, 45° and 60° angles. We can use the angle bisector method (above) to create other angles such as 15°, etc.
+      },
+      {
+        topic: "Degrees",
+        texts: `And it is useful to know how to do 30°, 45° and 60° angles. We can use the angle bisector method (above) to create other angles such as 15°, etc.
     
     And it is useful to know how to do 30°, 45° and 60° angles. We can use the angle bisector method (above) to create other angles such as 15°, etc.
     
@@ -36,7 +37,37 @@ const ClassnotePage = () => {
     And it is useful to know how to do 30°, 45° and 60° angles. We can use the angle bisector method (above) to create other angles such as 15°, etc.
     
     And it is useful to know how to do 30°, 45° and 60° angles. We can use the angle bisector method (above) to create other angles such as 15°, etc.`,
-    },
+      },
+    ],
+    [
+      {
+        term: "First Term",
+        topics: [
+          "Geometrical Construction (1):  Lines",
+          "Geometrical Construction (2):  Angles",
+          "Properties of Materials (1): Wood and Metals",
+          "Properties of Materials (2): Ceramics, Plastics, and Rubber",
+        ],
+      },
+      {
+        term: "Second Term",
+        topics: [
+          "Geometrical Construction (1):  Lines",
+          "Geometrical Construction (2):  Angles",
+          "Properties of Materials (1): Wood and Metals",
+          "Properties of Materials (2): Ceramics, Plastics, and Rubber",
+        ],
+      },
+      {
+        term: "Third Term",
+        topics: [
+          "Geometrical Construction (1):  Lines",
+          "Geometrical Construction (2):  Angles",
+          "Properties of Materials (1): Wood and Metals",
+          "Properties of Materials (2): Ceramics, Plastics, and Rubber",
+        ],
+      },
+    ],
   ];
   return (
     <Container fluid className="p-0">
@@ -52,7 +83,7 @@ const ClassnotePage = () => {
           </Row>
         </Col>
       </Row>
-      <Row>
+      <Row className="px-5">
         <Col sm={7}>
           <Row className="p-5">
             <Col sm={5}>
@@ -104,7 +135,7 @@ const ClassnotePage = () => {
             </Col>
           </Row>
           <Row>
-            {text.map((text, i) => (
+            {text[0].map((text, i) => (
               <>
                 <div
                   key={i}
@@ -121,39 +152,26 @@ const ClassnotePage = () => {
         <Col>
           <Row className="pt-5 ml-5 mt-5"></Row>
           <Row className="pt-4 ml-5 mt-4"></Row>
-          
+
           <Row className="mr-5 pt-5 mt-5">
             <div>
-<Col></Col>
-            <Accordion className="w-75">
-              <Accordion.Item eventKey="0">
-                <Accordion.Header>Accordion Item #1</Accordion.Header>
-                <Accordion.Body>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum.
-                </Accordion.Body>
-              </Accordion.Item>
-              <Accordion.Item eventKey="1">
-                <Accordion.Header>Accordion Item #2</Accordion.Header>
-                <Accordion.Body>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum.
-                </Accordion.Body>
-              </Accordion.Item>
-            </Accordion>
-          </div>
+              <Col className="ml-5 w-100 mx-auto">
+                <h4>Subject Syllabus</h4>
+                <div className="border-bottom p-3  ml-5"></div>
+              </Col>
+              {text[1].map((title, i) => (
+                
+                  <Accordion key={i} className="w-75 pt-4">
+                    <Accordion.Item eventKey={i}>
+                      <Accordion.Header>{title.term}</Accordion.Header>
+                      <Accordion.Body>
+                      {title.topics.map((topic, i)=>(<div key={i}v className={`pb-3 text-normal ${styles2.highlightText}`}>{topic}</div>))}
+                      </Accordion.Body>
+                    </Accordion.Item>
+                  </Accordion>
+                
+              ))}
+            </div>
           </Row>
         </Col>
       </Row>
