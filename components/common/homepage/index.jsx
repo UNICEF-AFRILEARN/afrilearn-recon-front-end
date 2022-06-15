@@ -72,7 +72,7 @@ const HomePage = () => {
       <QuickJoin />
       <Partners />
 
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
