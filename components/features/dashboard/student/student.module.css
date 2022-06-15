@@ -171,6 +171,7 @@
   padding-bottom: 2%;
   margin-bottom: 3%;
 }
+
 .modalHero h1 {
   font-size: 50px;
   text-align: center;
@@ -263,5 +264,8 @@ line-height: 75px;
 text-align: center;
 margin: 80px auto !important;
 text-transform: capitalize !important;
-
+}
+.modalContainer{
+  border: 2px solid red;
+  padding: 7px;
 }

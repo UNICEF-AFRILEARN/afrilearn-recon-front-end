@@ -11,6 +11,7 @@ import Subjects from "./extra/subjects";
 import GetSolution from "./extra/getSolution";
 import PerfomanceSumm from "./extra/perfomanceSumm";
 import RecentActivity from "./extra/recentActivity";
+import Q from "./extra/recentActivity";
 import StudentHeropage from "./studentHeropage";
 
 const Dashboard = () => {
@@ -153,7 +154,8 @@ const TopInClasses = ({ classData }) => {
   };
   return (
     <>
-      <SubHeading title={`Top in ${classData[0].class}`} />
+      {/* <SubHeading title={`Top in ${title.class}`} />
+      <SubHeading title={`Top in ${classData[0].class}`} /> */}
       <div className={styles.contai}>
         <section className="parnet-frag-color">
           <Slider {...settings} ref={customeSlider}>
@@ -163,6 +165,7 @@ const TopInClasses = ({ classData }) => {
           </Slider>
         </section>
       </div>
+      
       ;
     </>
   );
