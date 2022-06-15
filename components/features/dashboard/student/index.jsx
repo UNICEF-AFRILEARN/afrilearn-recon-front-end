@@ -11,11 +11,8 @@ import Subjects from "./extra/subjects";
 import GetSolution from "./extra/getSolution";
 import PerfomanceSumm from "./extra/perfomanceSumm";
 import RecentActivity from "./extra/recentActivity";
-<<<<<<< HEAD
 import Q from "./extra/recentActivity";
-=======
 import StudentHeropage from "./studentHeropage";
->>>>>>> 0d1cfb056567ed2ea3c3ce13d1463ff029bd3dd3
 
 const Dashboard = () => {
 
@@ -157,43 +154,8 @@ const TopInClasses = ({ classData }) => {
   };
   return (
     <>
-<<<<<<< HEAD
-      <div
-        id="dashboardFirstSection"
-        className={`container-fluid relative ${styles.dashboardFirstSection}`}
-      >
-        <div className="row">
-          <div className="col-md-12">
-            <h1>PRIMARY-ONE</h1>
-          </div>
-        </div>
-        <div className={`row ${styles.push2}`}>
-          <div className="col-md-12">
-            <h2>Welcome Emmanuel!</h2>
-            <p>Explore the fun in learning💃</p>
-          </div>
-        </div>
-        <div className={`row ${styles.push2}`}></div>
-        <div className={`row ${styles.push2} ${styles.push3}`}>
-          <div className="col-md-12">
-            <a href="#subjects">My Subjects</a> &nbsp;|&nbsp;{" "}
-            <a href="#pastQuestions">Past Questions</a> &nbsp;|&nbsp;{" "}
-            <a href="#resumePlaying">Resume Watching</a> &nbsp;|&nbsp;{" "}
-            <a href="#topTen">Top Ten Video</a> &nbsp;|&nbsp;{" "}
-            <a href="#performance">Performance Summary</a> &nbsp;|&nbsp;{" "}
-            <a href="#classroom">Classroom</a> &nbsp;|&nbsp;{" "}
-            <a href="#favourite">My Favourite</a> &nbsp;|&nbsp;{" "}
-            <a href="#recommendations">Recommendations</a>&nbsp;|&nbsp;{" "}
-            &nbsp;|&nbsp; <a href="#recentActivities">Recent Activities</a>
-          </div>
-        </div>
-      </div>
-      <Subjects />
-      <PastQuestion />
-      <SubHeading title={`Top in ${title.class}`} />
-=======
-      <SubHeading title={`Top in ${classData[0].class}`} />
->>>>>>> 0d1cfb056567ed2ea3c3ce13d1463ff029bd3dd3
+      {/* <SubHeading title={`Top in ${title.class}`} />
+      <SubHeading title={`Top in ${classData[0].class}`} /> */}
       <div className={styles.contai}>
         <section className="parnet-frag-color">
           <Slider {...settings} ref={customeSlider}>
@@ -203,6 +165,7 @@ const TopInClasses = ({ classData }) => {
           </Slider>
         </section>
       </div>
+      
       ;
     </>
   );
