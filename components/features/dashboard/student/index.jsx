@@ -165,6 +165,7 @@ const TopInClasses = ({ classData }) => {
           </Slider>
         </section>
       </div>
+      
       ;
     </>
   );
