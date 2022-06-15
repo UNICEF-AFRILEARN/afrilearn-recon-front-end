@@ -49,7 +49,7 @@ const ClassNoteVideo = ({ classData }) => {
           <Accordion.Body className={styles.accordLeft}>
             {classData[0].map((data, i) => (
               <div key={i} className={styles.accordButtonLeft}>
-                <Link href="/dashboard/student">
+                <Link href="/dashboard/student/classnote/classnotePage">
                   <div className={styles.buttonStyle}>
                     <div className={styles.buttonStyleImage}>
                       <Image

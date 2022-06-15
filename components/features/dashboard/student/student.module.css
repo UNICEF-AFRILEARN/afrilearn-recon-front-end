@@ -255,3 +255,13 @@
   width: 14px;
   align-self: center;
 }
+
+.fontSize{
+font-weight: 700;
+font-size: 72px !important;
+line-height: 75px;
+text-align: center;
+margin: 80px auto !important;
+text-transform: capitalize !important;
+
+}
