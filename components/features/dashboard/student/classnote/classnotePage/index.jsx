@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Accordion, Col, Container, Row } from "react-bootstrap";
 import styles1 from "../../../student/student.module.css";
 import styles2 from "../../classnote/classnote.module.css";
 
@@ -40,7 +40,7 @@ const ClassnotePage = () => {
   ];
   return (
     <Container fluid className="p-0">
-      <Row >
+      <Row>
         <Col
           id="dashboardFirstSection"
           className={`relative ${styles1.dashboardFirstSection}`}
@@ -111,7 +111,7 @@ const ClassnotePage = () => {
                   className=" mt-5  mb-3
             px-5"
                 >
-                  <h3 className="font-weight-bold" >{text.topic}</h3>
+                  <h3 className="font-weight-bold">{text.topic}</h3>
                 </div>
                 <div className="mx-5">{text.texts}</div>
               </>
@@ -119,9 +119,36 @@ const ClassnotePage = () => {
           </Row>
         </Col>
         <Col>
-              <Row className="pb-5">
-
-              </Row>
+          <Row className="pt-5 ml-5 mt-5">
+            <Accordion>
+              <Accordion.Item eventKey="0">
+                <Accordion.Header>Accordion Item #1</Accordion.Header>
+                <Accordion.Body>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
+                </Accordion.Body>
+              </Accordion.Item>
+              <Accordion.Item eventKey="1">
+                <Accordion.Header>Accordion Item #2</Accordion.Header>
+                <Accordion.Body>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
+                </Accordion.Body>
+              </Accordion.Item>
+            </Accordion>
+          </Row>
         </Col>
       </Row>
     </Container>
