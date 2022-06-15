@@ -112,15 +112,20 @@ const ClassnotePage = () => {
             px-5"
                 >
                   <h3 className="font-weight-bold">{text.topic}</h3>
+                  <p className="text-justify">{text.texts}</p>
                 </div>
-                <div className="mx-5">{text.texts}</div>
               </>
             ))}
           </Row>
         </Col>
         <Col>
-          <Row className="pt-5 ml-5 mt-5">
-            <Accordion>
+          <Row className="pt-5 ml-5 mt-5"></Row>
+          <Row className="pt-4 ml-5 mt-4"></Row>
+          
+          <Row className="mr-5 pt-5 mt-5">
+            <div>
+<Col></Col>
+            <Accordion className="w-75">
               <Accordion.Item eventKey="0">
                 <Accordion.Header>Accordion Item #1</Accordion.Header>
                 <Accordion.Body>
@@ -148,6 +153,7 @@ const ClassnotePage = () => {
                 </Accordion.Body>
               </Accordion.Item>
             </Accordion>
+          </div>
           </Row>
         </Col>
       </Row>
