@@ -4,9 +4,17 @@ import React from "react";
 import { Accordion, Col, Container, Row } from "react-bootstrap";
 import styles1 from "../../../student/student.module.css";
 import styles2 from "../../classnote/classnote.module.css";
+import { Comment, NextPrevPage } from "../../video/videoPage";
 
 const ClassnotePage = () => {
   const stuData = [{ subject: "Geometrical Construction: Angles" }];
+
+  const iconData = [
+    {
+      icon: "arrowhead",
+      text: "Lesson 1",
+    },
+  ];
 
   const text = [
     [
@@ -148,32 +156,48 @@ const ClassnotePage = () => {
               </>
             ))}
           </Row>
+          <Row>
+            <NextPrevPage data={iconData}/>
+          </Row>
         </Col>
         <Col>
           <Row className="pt-5 ml-5 mt-5"></Row>
           <Row className="pt-4 ml-5 mt-4"></Row>
 
-          <Row className="mr-5 pt-5 mt-5">
+          <Row className="mr-5 pt-5 mt-5 bg-light rounded">
             <div>
               <Col className="ml-5 w-100 mx-auto">
                 <h4>Subject Syllabus</h4>
                 <div className="border-bottom p-3  ml-5"></div>
               </Col>
               {text[1].map((title, i) => (
-                
-                  <Accordion key={i} className="w-75 pt-4">
-                    <Accordion.Item eventKey={i}>
-                      <Accordion.Header>{title.term}</Accordion.Header>
-                      <Accordion.Body>
-                      {title.topics.map((topic, i)=>(<div key={i}v className={`pb-3 text-normal ${styles2.highlightText}`}>{topic}</div>))}
-                      </Accordion.Body>
-                    </Accordion.Item>
-                  </Accordion>
-                
+                <Accordion key={i} className="w-75 pt-2 bg-light">
+                  <Accordion.Item eventKey={i}>
+                    <Accordion.Header>{title.term}</Accordion.Header>
+                    <Accordion.Body className="bg-light">
+                      {title.topics.map((topic, i) => (
+                        <div
+                          key={i}
+                          v
+                          className={`pb-0 text-normal bg-light ${styles2.highlightText}`}
+                        >
+                          {topic}
+                        </div>
+                      ))}
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Accordion>
               ))}
             </div>
           </Row>
         </Col>
+
+      </Row>
+      <Row className="border-top mt-2">
+        <Col className="px-5 mt-3">
+          <Comment />
+        </Col>
+        <Col className="px-5 mt-3"></Col>
       </Row>
     </Container>
   );
