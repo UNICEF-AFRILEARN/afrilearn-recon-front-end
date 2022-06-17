@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from '../../../../../styles/performance.module.css';
+import BarChartSect from './BarChartSect';
 import PieChartSection from './PieChartSection';
 
 const ClassPerfomance = () => {
@@ -12,11 +13,10 @@ const ClassPerfomance = () => {
               <h3>JSS 1</h3>
           </div>
           <div className={styles.progresswrapper}>
-              <h1>Progress</h1>
+             <BarChartSect />
           </div>
       </div>
       <div className={styles.piewrapper}>
-        <h1>het</h1>
         <PieChartSection />
       </div>
     </div>
