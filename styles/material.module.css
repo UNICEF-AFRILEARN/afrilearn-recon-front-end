@@ -54,3 +54,18 @@
     list-style-type: none;
     margin-top: 20px;
 }
+.activetab {
+    color: #00D9B6;
+}
+
+.tabs {
+    color: #A6A6A6;
+}
+
+.content {
+    display: none;
+}
+
+.activecontent {
+    display: block;
+}

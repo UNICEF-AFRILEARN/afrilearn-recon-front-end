@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import styles from '../../../../../styles/performance.module.css';
 
 const ClassPerfomance = () => {
   return (
