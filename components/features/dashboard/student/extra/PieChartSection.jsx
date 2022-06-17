@@ -32,15 +32,16 @@ const PieChartSection = () => {
             dataKey="users"
             isAnimationActive={false}
             data={data}
-            cx={200}
-            cy={200}
-            outerRadius={80}
+            cx="50%"
+            cy="50%"
+            innerRadius={60}
+            outerRadius={100}
             fill="#8884d8"
             label
           />
           <Tooltip />
         </PieChart>
-        <BarChart
+        {/* <BarChart
           width={500}
           height={300}
           data={data}
@@ -62,7 +63,7 @@ const PieChartSection = () => {
           <Legend />
           <CartesianGrid strokeDasharray="3 3" />
           <Bar dataKey="users" fill="#8884d8" background={{ fill: "#eee" }} />
-        </BarChart>
+        </BarChart> */}
       </div>
     </div>
     </div>  
