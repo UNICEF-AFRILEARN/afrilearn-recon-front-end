@@ -463,3 +463,11 @@ margin-left: 10%;
   display: flex;
   flex-direction: row;
  }
+ .showQuiz{
+  display:block
+ }
+ .hideQuiz{
+  display: none;
+ }
+ /* -----------------quizpage----------------- */
+ 

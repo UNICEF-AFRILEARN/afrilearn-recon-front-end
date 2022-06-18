@@ -1,5 +1,6 @@
 import QuizInstruction from "./extra/quizInstruction";
-// import styles from quiz.css
+// import QuizPage from "./extra/quizPage";
+
 
 
 const Quiz = () => {

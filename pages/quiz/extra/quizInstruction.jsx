@@ -1,8 +1,15 @@
 import Image from "next/image";
-
-// import styles from qui
+import { useState } from "react";
+import QuizPage from "./quizPage";
 
 const QuizInstruction = () => {
+
+  const [ toggleQuiz, setToggleQuiz ] =  useState ('/quiz')
+  const quizPage= (url)=> {
+    console.log(url)
+      setToggleQuiz(url)
+  }
+  
   const quizData = {
     heading: "Quiz:",
     topic: "Geometrical Construction (2):  Angles",
@@ -14,7 +21,7 @@ const QuizInstruction = () => {
 
   return (
     <>
-      <div className="quizContainer">
+      <div className={ toggleQuiz === "/quiz" ? "quizContainer " : "hideQuiz"}>
         <div className="Image1" id="">
           <Image
             alt={"design image"}
@@ -23,7 +30,7 @@ const QuizInstruction = () => {
             height={200}
           />
         </div>
-        <div className="image2"  id="">
+      <div className= "image2"  id="">
           <Image
             alt={"design image"}
             src={"/assets/img/common/login/HalfCircleWhite.png"}
@@ -50,8 +57,8 @@ const QuizInstruction = () => {
             src={"/assets/img/common/quiz/goodluck.png"}
             width={35}
             height={31}
-          /></div>
-        <div className="buttonSection"><button>GET STARTED</button></div>  
+          /></div> 
+          <div className="buttonSection"><button onClick ={ () => quizPage("/quizPage")}>GET STARTED</button></div>      
    </div>
         <div className="image3">
           <Image
@@ -62,6 +69,9 @@ const QuizInstruction = () => {
           />
         </div>
       </div>
+      <div className={ toggleQuiz === "/quizPage" ? "showQuiz": "hideQuiz"}><QuizPage/>   
+      </div>
+      <QuizPage/>
     </>
   );
 };
