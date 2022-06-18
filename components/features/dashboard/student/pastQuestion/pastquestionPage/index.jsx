@@ -22,7 +22,7 @@ const PastQuestion = () => {
             alt={"design image"}
             src={"/assets/img/common/login/HalfCircleBlackk.png"}
             width={86}
-            height={200}
+            height={100}
           />
         </div>
         <div className="image2" id="">
@@ -92,9 +92,6 @@ const PastQuestion = () => {
               <Col className="px-2">
                 At the end of your exam practice, you can tap on review to view
                 correct answers and solutions.
-                {/* Your results won’t be displayed
-                without your permission. To begin your exam practice, simply tap
-                the START button. */}
               </Col>
             </Row>
           </Row>
@@ -114,12 +111,12 @@ const PastQuestion = () => {
               </Col>
             </Row>
           </Row>
-          <Row className="mt-5 px-auto">
-              <Col className="text-center" style={{ color: "#00D9B6" }}>
+          <Row className="mt-3 ps-5">
+              <Col className="" style={{ color: "#00D9B6" }}>
                 You’ve got this, and we wish you the very best!
               </Col>
           </Row>
-          <div className="buttonSection p-n5">
+          <div className="buttonSection pt-4">
             <button>GET STARTED</button>
           </div>
         </div>
