@@ -154,8 +154,8 @@ const TopInClasses = ({ classData }) => {
   };
   return (
     <>
-      {/* <SubHeading title={`Top in ${title.class}`} />
-      <SubHeading title={`Top in ${classData[0].class}`} /> */}
+      {/* <SubHeading title={`Top in ${title.class}`} /> */}
+      <SubHeading title={`Top in ${classData[0].class}`} />
       <div className={styles.contai}>
         <section className="parnet-frag-color">
           <Slider {...settings} ref={customeSlider}>

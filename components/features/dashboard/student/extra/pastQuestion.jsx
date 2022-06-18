@@ -3,6 +3,7 @@ import SubHeading from "./subHeading";
 import styles from "./../../student/pastQuetion.module.css";
 import { useRef } from "react";
 import Slider from "react-slick";
+import Link from "next/link";
 
 const pastQuestion = () => {
   const features = [
@@ -64,63 +65,50 @@ const pastQuestion = () => {
     <div>
       <SubHeading title="Past Questions" />
 
-      {/* <Slider {...settings} ref={customeSlider}>
-        {data.partners.map((partner, i) => {
-          return (
-            <div key={i} className={`${styles.box} image-box-corrected`}>
-              <Image
-                alt={"design image"}
-                className={styles.partnerLogo}
-                src={partner.logoURL}
-                layout={"fill"}
-              />
-            </div>
-          );
-        })}
-      </Slider> */}
-
       <div className={styles.container}>
-      <section className="parnet-frag-color">
-        <Slider {...settings} ref={customeSlider}>
-          {features.map((feature, i) => (
-            <div
-              key={i}
-              className={`${
-                feature.className === 1
-                  ? styles.containerList1
-                  : feature.className === 2
-                  ? styles.containerList2
-                  : styles.containerList3
-              }`}
-            >
-              <div
-                className={`${
-                  feature.className === 1
-                    ? styles.cointainerListLeft1
-                    : feature.className === 2
-                    ? styles.cointainerListLeft2
-                    : styles.cointainerListLeft3
-                }`}
-              >
-                <Image
-                  alt={"logo image"}
-                  src={`/assets/img/features/dashboard/student/${feature.logo}.png`}
-                  width="100%"
-                  height="100%"
-                />
-                <div className={styles.cointainerListRight}>
-                  <div className={styles.cointainerListLeftTop}>
-                    {feature.title}
-                  </div>
-                  <div className={styles.cointainerListLeftBottom}>
-                    {features[0].text}
+        <section className="parnet-frag-color">
+          <Slider {...settings} ref={customeSlider}>
+            {features.map((feature, i) => (
+              <Link passHref href="/dashboard/student/pastQuestion">
+                <div
+                  key={i}
+                  className={`${
+                    feature.className === 1
+                      ? styles.containerList1
+                      : feature.className === 2
+                      ? styles.containerList2
+                      : styles.containerList3
+                  }`}
+                >
+                  <div
+                    className={`${
+                      feature.className === 1
+                        ? styles.cointainerListLeft1
+                        : feature.className === 2
+                        ? styles.cointainerListLeft2
+                        : styles.cointainerListLeft3
+                    }`}
+                  >
+                    <Image
+                      alt={"logo image"}
+                      src={`/assets/img/features/dashboard/student/${feature.logo}.png`}
+                      width="100%"
+                      height="100%"
+                    />
+                    <div className={styles.cointainerListRight}>
+                      <div className={styles.cointainerListLeftTop}>
+                        {feature.title}
+                      </div>
+                      <div className={styles.cointainerListLeftBottom}>
+                        {features[0].text}
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          ))}
-        </Slider>
-      </section>
+              </Link>
+            ))}
+          </Slider>
+        </section>
       </div>
     </div>
   );

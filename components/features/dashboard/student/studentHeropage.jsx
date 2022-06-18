@@ -67,7 +67,7 @@ export const StudentPage = ({ stuData }) => {
             <h1>{stuData[0].class}</h1>
           </div>
         </div>
-        {/* <div className={`row ${styles.push2}`}>
+         <div className={`row ${styles.push2}`}>
           <div className="col-md-12">
             {stuData[0].firstName && (
               <h2>{greetings(stuData[0].firstName)}</h2>
@@ -86,7 +86,7 @@ export const StudentPage = ({ stuData }) => {
                 </Link>
               ))}
           </div>
-        </div> */}
+        </div> 
       </div>
     </>
   );
