@@ -9,6 +9,7 @@ import ExploreAfrilearn from "./extra/exploreAfrilearn";
 import CommentPage from "./extra/commentPage";
 import { BsCheck2All } from 'react-icons/bs';
 import { Accordion } from 'react-bootstrap';
+import { useRouter } from "next/router";
 
 
 const HomePage = () => {
@@ -78,6 +79,12 @@ const HomePage = () => {
 };
 
 const GameIntro = () => {
+  const signIn = (e) => {
+    
+    e.preventDefault();
+    router.push("/dashboard/quiz");
+  }
+  const router = useRouter();
   const data = {
     title: "Gamified experience with rewards.",
     description: [
@@ -105,11 +112,11 @@ const GameIntro = () => {
             <section className={`row`}>
               <div className={`row ${styles.afterSubHeading}`}>
                 <div className="col-md-6">
-                  <span className={styles.joinForGames}>
-                    <Link passHref href="/">
+                  <button className={styles.joinForGames} >
+                    <Link passHref href=" /quiz">
                       JOIN FOR FREE
                     </Link>
-                  </span>
+                  </button>
                 </div>
               </div>
             </section>
@@ -668,23 +675,19 @@ const Footer = () => {
             </li>
             <li>
               <Link passHref href="https://myafrilearn.com/about#team">
-                Team
-              </Link>
+                Team</Link>
             </li>
             <li>
               <Link passHref href="https://myafrilearn.com/faculty">
-                Faculty{" "}
-              </Link>
+                Faculty</Link>
             </li>
             <li>
               <Link passHref href="https://myafrilearn.com/join-the-team">
-                Career{" "}
-              </Link>
+                Career</Link>
             </li>
             <li>
               <Link passHref href="https://myafrilearn.com/partnership">
-                Paternership{" "}
-              </Link>
+                Paternership</Link>
             </li>
           </ul>
         </div>
@@ -706,22 +709,18 @@ const Footer = () => {
           <div className={`col-md-2 ${styles.lastt}`}>
             <li>
               <Link passHref href="">
-                Privacy Policy{" "}
-              </Link>
+                Privacy Policy</Link>
             </li>
           </div>
           <div className={`col-md-2 ${styles.lastt}`}>
             <li>
               <Link passHref href="/">
-                {" "}
-                Terms of Service
-              </Link>
+                Terms of Service</Link>
             </li>
           </div>
           <div className="col-md-2 ">
             <div className={styles.lastttt}>
               <div className="col-md-2 m-2 m-2">
-                {" "}
                 <Link passHref href="https://web.facebook.com/myAfrilearn">
                   <Image
                     alt={"design image"}
@@ -732,11 +731,7 @@ const Footer = () => {
                 </Link>
               </div>
               <div className="col-md-2 m-2">
-                {" "}
-                <Link
-                  passHref
-                  href="https://www.instagram.com/accounts/login/?next=/afrilearn/"
-                >
+              <Link passHref href="https://www.instagram.com/accounts/login/?next=/afrilearn/">
                   <Image
                     alt={"design image"}
                     src={data?.imageURL[1]}
@@ -746,7 +741,6 @@ const Footer = () => {
                 </Link>
               </div>
               <div className="col-md-2 m-2">
-                {" "}
                 <Link passHref href="https://twitter.com/Afrilearn">
                   <Image
                     alt={"design image"}

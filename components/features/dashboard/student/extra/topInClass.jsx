@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 
 const topInClass = ({ data }) => {
-  console.log(data);
+  // console.log(data.thumbnailUrl);
 
   const [show, setShow] = useState(false);
   const toggleModal = () => setShow(!show);
