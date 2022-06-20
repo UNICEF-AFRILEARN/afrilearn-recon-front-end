@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import QuizPage from "./quizPage";
+import QuizResult from "./quizResult";
 
 const QuizInstruction = () => {
 
@@ -16,7 +17,7 @@ const QuizInstruction = () => {
     name: "Feyikemi",
     subject: "Basic technology",
     instruction:
-      "You are about to that a 10 question quiz to test how much you understand Geametrical Construction(2): Angles. ",
+      "You are about to that a 10 question quiz to test how much you understand  ",
   };
 
   return (
@@ -50,7 +51,7 @@ const QuizInstruction = () => {
           </div>
           <div className="row" id ="quizInstruction">
             <div className="col-md-3" id="instruction1"> Instructions:</div>
-            <div className="col-md-9" id="instruction2">{quizData.instruction}</div>
+            <div className="col-md-9" id="instruction2">{quizData.instruction} {quizData.subject}</div>
           </div>
           <div className="quizGoodluck">No pressure! Take your time to answer the questions. Goodluck! <Image
             alt={"design image"}
@@ -72,6 +73,7 @@ const QuizInstruction = () => {
       <div className={ toggleQuiz === "/quizPage" ? "showQuiz": "hideQuiz"}><QuizPage/>   
       </div>
       <QuizPage/>
+      <QuizResult/>
     </>
   );
 };
