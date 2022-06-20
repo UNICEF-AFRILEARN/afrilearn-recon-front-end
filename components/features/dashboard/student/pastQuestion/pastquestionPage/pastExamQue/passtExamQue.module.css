@@ -1,0 +1,42 @@
+.lineSeperator {
+  background-image: url("/assets/img/features/dashboard/student/Line 85.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 1px;
+  height: 80%;
+  margin-right: 10px;
+}
+.pastExamButton {
+  background-image: url("/assets/img/features/dashboard/student/Group 2173.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 204px;
+  height: 48px;
+  /* margin-right: 10px; */
+}
+
+.pastExamRec {
+  background-image: url("/assets/img/features/dashboard/student/Voice.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 20px;
+  height: 30px;
+  /* margin-right: 10px; */
+}
+
+.pastExamFlag {
+  background-image: url("/assets/img/features/dashboard/student/flag 1.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 20px;
+  height: 30px;
+  /* margin-right: 10px; */
+}
+
+.pastSkip{
+   background-image: url("/assets/img/features/dashboard/student/Frame 3.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 20px;
+  height: 30px; 
+}

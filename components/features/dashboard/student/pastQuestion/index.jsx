@@ -110,7 +110,7 @@ const PastQuestion = () => {
                     borderRadius: "9.72141px",
                   }}
                   key={i}
-                  className="mx-4 mt-3 mb-3"
+                  className={`mx-4 mt-3 mb-3 ${styles1.modalBodyButton}`}
                   variant=""
                 >
                   {year.year}

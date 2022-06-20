@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Col, Row } from "react-bootstrap";
 import pastQuestion from "../../extra/pastQuestion";
 import styles from "./pastQuestion.module.css";
@@ -112,12 +113,14 @@ const PastQuestion = () => {
             </Row>
           </Row>
           <Row className="mt-3 ps-5">
-              <Col className="" style={{ color: "#00D9B6" }}>
-                You’ve got this, and we wish you the very best!
-              </Col>
+            <Col className="" style={{ color: "#00D9B6" }}>
+              You’ve got this, and we wish you the very best!
+            </Col>
           </Row>
           <div className="buttonSection pt-4">
-            <button>GET STARTED</button>
+            <Link passHref href="/dashboard/student/pastQuestion/pastQuestionPage/pastExamQue">
+              <button>GET STARTED</button>
+            </Link>
           </div>
         </div>
         <div className="image3">
