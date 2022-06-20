@@ -22,7 +22,7 @@
 
 html,
 body {
-  overflow-x: hidden;
+  /* overflow-x: hidden; I commented out this overflow for the save of all*/
   padding: 0;
   margin: 0;
   font-family: content !important;

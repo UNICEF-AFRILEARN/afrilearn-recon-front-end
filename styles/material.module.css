@@ -1,0 +1,71 @@
+.classworkwrapper {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 15px;
+    margin-top: 25px;
+}
+
+.innersubject {
+    display: flex;
+    justify-content: space-between;
+    position:relative;
+    margin-top: 25px;
+}
+
+.innersubject p{
+    padding-left: 10px;
+}
+
+.innersubject span {
+    margin-right: 20px;
+}
+.subjectdetails {
+    display: flex;
+    flex-direction: column;
+    padding-left: 5%;
+    background-color: #FAFAFA;
+    margin-left: 4%;
+    width: 70vw;
+
+}
+
+.subjectdetails span {
+    padding-left: 10%;
+}
+.subjectwrapper {
+    width: 70vw;
+    margin-left: 4%;
+    border-bottom: 1px solid rgba(51, 51, 51, 0.23);
+    background-color: #FAFAFA;
+    padding: 10px;
+    padding-top: 25px;
+    padding-left: 55px;
+    padding-bottom: 15px;
+    font-size: 15px;
+    line-height: 29px;
+    color: #29465B;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    
+
+}
+
+.sidenavbar ul li {
+    list-style-type: none;
+    margin-top: 20px;
+}
+.activetab {
+    color: #00D9B6;
+}
+
+.tabs {
+    color: #A6A6A6;
+}
+
+.content {
+    display: none;
+}
+
+.activecontent {
+    display: block;
+}
