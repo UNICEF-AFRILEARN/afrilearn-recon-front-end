@@ -33,9 +33,18 @@ const Navigation = () => {
               {isLoggedIn && 
               <div className={styles.loggedindash}>
                 <ul>
+                <Link passHref href="/dashboard/student" >
                   <li>Dashboard</li>
-                  <li>subscribe</li>
-                  <li>Performance Analysis</li>
+                </Link>
+                <Link passHref href="/login" >
+                    <li>subscribe</li>
+                </Link>
+                <Link passHref href="/dashboard/performance"  >
+                    <li>Performance Analysis</li>
+                </Link>
+                  
+                  
+                  
                 </ul>
               </div>
               }
