@@ -21,7 +21,9 @@ const Performance = () => {
             />
               </div>
         </div>
-       <ClassPerfomance />
+       <div className={styles.paddingbody}>
+          <ClassPerfomance />
+       </div>
     </div>
   )
 }

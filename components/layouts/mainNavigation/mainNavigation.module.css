@@ -41,3 +41,8 @@
 .loggedindash ul li {
   list-style-type: none;
 }
+
+.navicons{
+  display:flex;ify-content: space-evenly;
+  gap: 20px;
+}

@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { Navbar, Container, Nav } from "react-bootstrap";
 import Link from "next/link";
+import { BsSearch, BsBell } from 'react-icons/bs';
+import { AiOutlineSafetyCertificate } from 'react-icons/ai';
 import styles from "./mainNavigation.module.css";
 import AppButton from "../../widgets/buttons/AppButton";
 
@@ -33,6 +35,7 @@ const Navigation = () => {
               {isLoggedIn && 
               <div className={styles.loggedindash}>
                 <ul>
+            
                 <Link passHref href="/dashboard/student" >
                   <li>Dashboard</li>
                 </Link>
@@ -42,9 +45,12 @@ const Navigation = () => {
                 <Link passHref href="/dashboard/performance"  >
                     <li>Performance Analysis</li>
                 </Link>
-                  
-                  
-                  
+                <div className={styles.navicons}>
+                  <span><BsSearch /></span>
+                  <span><BsBell /></span>
+                  <span><AiOutlineSafetyCertificate /></span>
+                </div>
+
                 </ul>
               </div>
               }
@@ -59,11 +65,11 @@ const Navigation = () => {
 
               </div>}
               {isLoggedIn && <div className="inner-btn-nav-bar">
-              <Link passHref href="/login" className="btn-log-in-mobile">
+              {/* <Link passHref href="/login" className="btn-log-in-mobile">
                   <AppButton title="Log out" className={styles.loginButton} />
-              </Link>
+              </Link> */}
               <Link passHref href="/register" className="btn-log-in-mobile">
-                  < BsPersonCircle />
+                  < BsPersonCircle size={30}/>
               </Link>
 
               </div>}
