@@ -79,12 +79,7 @@ const HomePage = () => {
 };
 
 const GameIntro = () => {
-  const signIn = (e) => {
-    
-    e.preventDefault();
-    router.push("/dashboard/quiz");
-  }
-  const router = useRouter();
+
   const data = {
     title: "Gamified experience with rewards.",
     description: [
