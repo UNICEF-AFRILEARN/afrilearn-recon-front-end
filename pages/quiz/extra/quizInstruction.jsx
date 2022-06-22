@@ -1,16 +1,11 @@
 import Image from "next/image";
-import { useState } from "react";
-import QuizPage from "./quizPage";
-import QuizResult from "./quizResult";
+import { useRouter } from 'next/router'
+
 
 const QuizInstruction = () => {
 
-  const [ toggleQuiz, setToggleQuiz ] =  useState ('/quiz')
-  const quizPage= (url)=> {
-    console.log(url)
-      setToggleQuiz(url)
-  }
-  
+  const router = useRouter()
+
   const quizData = {
     heading: "Quiz:",
     topic: "Geometrical Construction (2):  Angles",
@@ -22,7 +17,7 @@ const QuizInstruction = () => {
 
   return (
     <>
-      <div className={ toggleQuiz === "/quiz" ? "quizContainer " : "hideQuiz"}>
+        <div className="quizContainer">
         <div className="Image1" id="">
           <Image
             alt={"design image"}
@@ -59,7 +54,7 @@ const QuizInstruction = () => {
             width={35}
             height={31}
           /></div> 
-          <div className="buttonSection"><button onClick ={ () => quizPage("/quizPage")}>GET STARTED</button></div>      
+          <div className="buttonSection"><button onClick={() => router.push('quiz/extra/quizPage')}>GET STARTED</button></div>      
    </div>
         <div className="image3">
           <Image
@@ -70,10 +65,6 @@ const QuizInstruction = () => {
           />
         </div>
       </div>
-      <div className={ toggleQuiz === "/quizPage" ? "showQuiz": "hideQuiz"}><QuizPage/>   
-      </div>
-      <QuizPage/>
-      <QuizResult/>
     </>
   );
 };

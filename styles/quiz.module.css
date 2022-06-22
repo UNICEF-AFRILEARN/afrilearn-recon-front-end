@@ -1,21 +1,24 @@
 .containerQuiz {
   padding: 0 5% 0 5%;
-  /* height: 800px; */
   margin-bottom: 30px;
+  margin-top:7% !important;
 }
 
 .FirstQuizDiv {
- height: 600px;
+ height: 650px;
  padding-left: 10%;
-  border-right: 1px solid #e2e3e7;
 }
-.FirstQuizDiv .leftDiv {
+ .leftDivv {
   padding-bottom: 15%;
   color: #A8A8A8;
 }
 .QuizquestionDiv {
-  margin-left: 5%;
-  /* margin-right: 0 !important; */
+ padding-left: 5%;
+  border-left: 1px solid #e2e3e7;
+}
+.QuizNumberSection{
+  width:40%;
+  margin-left: 28%;
 }
 .QuizNumberSubject h4{
   padding-bottom: 4%;
@@ -49,7 +52,7 @@ text-align: center;
 background: #EDB68B;
 box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.1);
 border-radius: 10px;
-  margin-left: 80px;
+  margin-left: 55px;
   padding-top: 8px;
   color: #fff;
   margin-bottom: 35px;
@@ -63,6 +66,7 @@ width: 40px;
 margin: 5%;
 text-align: center;
 font-weight: 700;
+
 }
 .quizOption button{
   height: 59px;
@@ -77,6 +81,7 @@ padding: 3%;
 .options{
   margin: 5% 0 8% 0 ;
 }
+
 .quizSubmit button{
   background-color:  #00D9B6;
   border-radius: 100px;
@@ -90,10 +95,10 @@ padding: 3%;
   background-color: #fff;
   border-radius: 100px;
   color: #FFCC66;
-  width:120px;
+  width:90px;
   height:35px ;
   border: 1px solid #FFCC66;
-  margin-left: 50px;
+  margin-left: 20px;
 }
 .flagquiz{
   background: url("/assets/img/common/quiz/flag 1.svg");
@@ -106,12 +111,12 @@ margin-right: 20px;
 color: #A4B0BE !important;
 }
 .micquiz{
-  background: url("/assets/img/common/quiz/micc.png");
+  background: url("/assets/img/common/quiz/VOICE.svg");
   background-repeat:no-repeat ;
-width:50px;
-height: 50px;
+width:40px;
+height: 40px;
 cursor: pointer;
-margin-left: 25px;
+margin-left: 35px;
 }
 .attempts{
   margin-top: 25px;
@@ -155,15 +160,146 @@ background: #FFCF35;
 /* --------------------result--------------- */
 .resultQuiz{
   margin-bottom:25px;
+  padding-left:5%;
+  border-left: 1px solid #e2e3e7;
+}
+.QuizreviewContainer{
+  margin-top: 7%;
 }
 .resultMatric h6{
   height: 31px;
 width: 94px;
-font-size: 24px;
+font-size: 20px;
 font-weight: 700;
 line-height: 31px;
 color : #333333;
+padding-bottom: 5%;
 }
 .resultMatric{
   margin-bottom: 5%;
+}
+
+.quizReview{
+  text-decoration: underline;
+  margin-top: 1%;
+  font-size: 18px;
+  color: #333333;
+}
+.retakeQuiz{
+ margin-left: 150px;
+ margin-top: 40px;
+}
+.heading h4{
+  padding-bottom: 4%;
+  color: #29465b;
+  width:70%;
+  font-weight: 700;
+
+}
+.heading p {
+width: 700px;
+margin-bottom: 5%;
+}
+.quizResultt{
+  margin-left:1 5%;
+}
+.grade{
+  display: flex;
+flex-direction: row;
+}
+.buttonSection{
+  margin-top: 5%;
+}
+.quizReview{
+  margin-left: 25%;
+  margin-left: 30%;
+  color: #333333
+}
+.retakeQuiz{
+  margin-left: 30%;
+  color: #333333
+}
+.quizText p{
+ font-weight:600 ;
+ color: #333333
+}
+/* -------------------review------------------- */
+.correctionButton3 {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+.correctionButton3 button{
+ background-color: #00D9B6;
+
+}
+.correctionButton1{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+.correctionButton2{
+  display: flex;
+  flex-direction: row;
+
+}
+.QuizreviewContainer{
+
+}
+.correctionButton1 button{
+  background-color: #FF4939;
+}
+.correctionButton2 button{
+background:
+#FFCF35;  
+}
+.prevSection{
+  display: flex;
+  flex-direction: row;
+  font-weight: 600;
+  margin-bottom: 5%;
+}
+.Nextbutton button{
+  height: 35px;
+width: 120px;
+border-radius: 100px;
+background-color: #fff;
+font-weight: 600;
+}
+.PrevLink button{
+  border: none;
+  font-weight: 600;
+  background-color: #fff;
+  border-bottom: 2px solid black ;
+  margin-top: 5px;
+}
+.trailSection{
+   font-size:13px;
+   font-weight: 500;
+   color:  #706D6D;
+   display: flex;
+   flex-direction: row;
+}
+.trailLink{
+  text-decoration: underline;
+  margin-right: 3px;
+  font-weight: 600;
+}
+.solutionButton {
+  background: url(/_next/static/media/crownTheme.69b97f37.png);
+  background-repeat: no-repeat;
+  width: 277px;
+  height: 50px;
+  margin-top: 5%;
+}
+.solutionSection h4{
+  height: 39px;
+width: 128px;
+left: 377px;
+top: 1252px;
+font-weight: 700;
+}
+.recommendation h4{
+  margin-top: 20px;
+  font-weight: 700;
 }

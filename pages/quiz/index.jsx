@@ -1,4 +1,14 @@
 import QuizInstruction from "./extra/quizInstruction";
+import QuizPage from "./extra/quizPage";
+import QuizResult from "./extra/quizResult";
+import QuizReview from "./extra/quizReview";
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 // import QuizPage from "./extra/quizPage";
 
 
@@ -6,7 +16,27 @@ import QuizInstruction from "./extra/quizInstruction";
 const Quiz = () => {
     return (
         <>
-<QuizInstruction/>
+        <QuizInstruction/>
+        {/* <Router>
+        <Switch>
+          <Route path="/quizinstruction">
+          <QuizInstruction/>
+          </Route>
+          <Route path="/quizPage">
+          <QuizPage/>
+          </Route>
+          <Route path="quizResult">
+          <QuizResult/>
+          </Route>
+          <Route path="quizReview">
+          <QuizReview/>  
+          </Route>
+        </Switch>
+        </Router> */}
+
+
+
+
 </>
         )
 }

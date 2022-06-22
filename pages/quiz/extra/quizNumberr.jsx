@@ -43,11 +43,6 @@ const QuizNumber = () => {
         <div className={`col-md-3 ${styles.Quiznumber}`}>27</div> 
         <div className={`col-md-3 ${styles.Quiznumber}`}>28</div> 
         </div>
-        <div className={styles.attempts}>
-          <div className= {styles.attempts3}><button></button><p> Pending</p></div>
-          <div className={styles.attempts1}><button></button> Attempted</div>
-          <div className={styles.attempts2}><button></button>Skipped</div>
-        </div>
       </div>
       </>
     )
