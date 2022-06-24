@@ -15,6 +15,7 @@ import {API} from '../../../../pages/api/client-side/fetcher';
 
 const Register = (props) => {
   const [fullscreen, setFullscreen] = useState(true);
+  const [userData, setUserdata] = useState({})
   const [show, setShow] = useState(false);
   const rolesCollected = useSelector((state) => state.auth)
   const dispatch = useDispatch()
@@ -23,14 +24,16 @@ const Register = (props) => {
     setFullscreen(breakpoint);
     setShow(true);
   }
+
+
   
   // const profile = {}
-  const rolesContext = rolesCollected.roles.data.roles;
-  const courseContext = rolesCollected.roles.data.courses;
+  const rolesContext = rolesCollected?.roles?.data.roles;
+  const courseContext = rolesCollected?.roles?.data.courses;
   console.log("courses from the UI ==>", courseContext);
 
   const handleChanges = (value) => {
-      console.log(value)
+      // console.log(value)
     // profile[key] = value
     // console.log('User Signup Profile\n', profile)
   }

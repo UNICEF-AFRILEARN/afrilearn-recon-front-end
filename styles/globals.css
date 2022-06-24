@@ -22,9 +22,10 @@
 
 html,
 body {
-  overflow-x: hidden;
+  /* overflow-x: hidden; I commented out this overflow for the save of all*/
   padding: 0;
   margin: 0;
+  overflow-x: hidden;
   font-family: content !important;
 }
 ul li {
@@ -473,7 +474,7 @@ margin-left: 10%;
 
 }
 
-list-payment {
+.list-payment {
   list-style-image: ur('aa.png');
 }
 
@@ -519,5 +520,17 @@ padding: 10px;
   border-radius: 10px;
   margin: 50px;
   width: flex;
+}
 
+ .showQuiz{
+  display:block
+ }
+ .hideQuiz{
+  display: none;
+ }
+ /* -----------------quizpage----------------- */
+ #counter{
+  background: #EDB68B;
+  box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
