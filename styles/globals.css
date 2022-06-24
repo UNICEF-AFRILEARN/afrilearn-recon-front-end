@@ -25,6 +25,7 @@ body {
   /* overflow-x: hidden; I commented out this overflow for the save of all*/
   padding: 0;
   margin: 0;
+  overflow-x: hidden;
   font-family: content !important;
 }
 ul li {
