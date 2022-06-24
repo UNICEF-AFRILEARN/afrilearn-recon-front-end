@@ -24,7 +24,7 @@ amount : "400"
       <div className="row">
       <div className= {`col-md-2 ${styles.buyCoin}`}>
         <div> <h5>Wallet Balance:</h5></div>
-        <div className={` ${styles.amountCoin2}`}> <Image alt={"design image"}  src={"/assets/img/features/dashboard/student/Group.png"} width={"30px"}  height={"32px"}/> {coinData?.amount} Coins</div>
+        <div className={` ${styles.amountCoin2}`}> <Image alt={"design image"}  src={"/assets/img/features/dashboard/student/Group.png"} width={"30px"}  height={"25px"}/> {coinData?.amount} Coins</div>
         <div><button>BUY MORE COINS</button></div>
       </div>
       <div className={`col-md-8 ${styles.buycoinInput}`}>
@@ -32,7 +32,7 @@ amount : "400"
         <div><h4>100 Africoins = 100</h4></div>
         <form className={`row ${styles.coinForm}`}>
   <label for="first">You pay:  </label>
-  <input type="text" id="first" name="first"  className={styles.coinInput} placeholder=" Enter amount in Naira"/>
+  <input type="text" id="first" name="first"  className={styles.coinInput2} placeholder=" Enter amount in Naira"/>
   <label for="last">You get:</label>
   <input type="text" id="last" name="last" className={styles.coinInput} placeholder="Equivalent africoin you get" />
   <button type="submit" className={styles.coinInputbutton}>BUY AFRICOIN</button>
