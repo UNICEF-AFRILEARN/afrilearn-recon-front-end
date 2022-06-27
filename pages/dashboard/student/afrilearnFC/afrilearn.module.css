@@ -1,0 +1,8 @@
+.swordForFC{
+    background-image: url("/assets/img/features/dashboard/student/Sword.png");
+  height: 128px;
+  width: 128px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: contain;
+}

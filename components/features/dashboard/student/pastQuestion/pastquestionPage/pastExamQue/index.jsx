@@ -138,9 +138,9 @@ const ExamQuestion = () => {
               </Row>
             </Col>
           </Row>
-          <Row className="pt-3 pb-3">
+          <Row className="pt-3 pb-3 px-5">
             <Col className={styles.pastExamButton}></Col>
-            <Col className={styles.pastExamRec}></Col>
+            <Col className={`mx-5 ${styles.pastExamRec}`}></Col>
             <Col className={styles.pastExamFlag}></Col>
             <Col></Col>
             <Col className={styles.pastSkip}></Col>

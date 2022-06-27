@@ -20,6 +20,11 @@
     url("./../../../../public/assets/img/features/dashboard/student/student.png");
   height: 60vh;
 }
+.dashboardFirstSection2 {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.17), rgba(0, 0, 0, 0.99)),
+    url("./../../../../public/assets/img/features/dashboard/student/student.png");
+  height: 280px;
+}
 
 .myModal,
 .modalSecond1,
@@ -230,11 +235,8 @@
   width: fit-content;
   border-radius: 100px;
   text-align: center;
-  /* padding-top: 10px; */
-  /* margin-right: 10px; */
   cursor: pointer;
   padding: 10px 15px 0;
-  /* border: 5px; */
 }
 .join {
   position: relative;
