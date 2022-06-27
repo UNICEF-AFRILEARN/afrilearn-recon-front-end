@@ -4,6 +4,7 @@ import Image from 'next/image';
 import  styles  from "../../../styles/classroom.module.css"
 // import  styles  from "../../styles/classroom.module.css"
 import ClassPerfomance from '../../../components/features/dashboard/student/extra/ClassPerfomance';
+import SubjectChart from '../../../components/features/dashboard/student/extra/SubjectChart';
 
 
 
@@ -23,6 +24,7 @@ const Performance = () => {
         </div>
        <div className={styles.paddingbody}>
           <ClassPerfomance />
+          <SubjectChart />
        </div>
     </div>
   )

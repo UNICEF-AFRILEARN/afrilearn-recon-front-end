@@ -29,6 +29,7 @@
    width: 60vw;
    padding: 5px;
 
+
 }
 
 .loggedindash ul{
@@ -40,9 +41,11 @@
 
 .loggedindash ul li {
   list-style-type: none;
+  cursor: pointer;
 }
 
 .navicons{
-  display:flex;ify-content: space-evenly;
+  display:flex;
+  justify-content: space-evenly;
   gap: 20px;
 }
