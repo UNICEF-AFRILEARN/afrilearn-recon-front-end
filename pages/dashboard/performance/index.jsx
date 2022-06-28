@@ -19,9 +19,12 @@ const Performance = () => {
               alt="teacher"
               width={200}
               height={200}
-            />
+              />
               </div>
         </div>
+            <div className={styles.titlehoder}>
+                <h1>Performance Analysis</h1>
+            </div>
        <div className={styles.paddingbody}>
           <ClassPerfomance />
           <SubjectChart />
