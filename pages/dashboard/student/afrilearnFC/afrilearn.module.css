@@ -1,8 +1,54 @@
-.swordForFC{
-    background-image: url("/assets/img/features/dashboard/student/Sword.png");
+.swordForFC {
+  background-image: url("/assets/img/features/dashboard/student/Sword.png");
   height: 128px;
   width: 128px;
   background-repeat: no-repeat;
   background-position: 50%;
   background-size: contain;
+}
+
+.afrilearnFCAvatar1 {
+  background-image: url("/assets/img/features/dashboard/student/Head.png");
+  height: 66px;
+  width: 66px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: contain;
+  background-color: #84bb29;
+  border-radius: 1600px;
+  margin: auto;
+}
+
+.afrilearnFCAvatar2 {
+  background-image: url("/assets/img/features/dashboard/student/Ellipse 88.png");
+  height: 66px;
+  width: 66px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: contain;
+  position: absolute;
+  right: "10px" !important;
+}
+
+.afrilearnFCAvatar3 {
+  background-image: url("/assets/img/features/dashboard/student/Ellipse ooo.png");
+  height: 66px;
+  width: 66px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: contain;
+  color: rgba(0, 0, 0, 0.4);
+  z-index: 3;
+}
+.afrilearnFCAvatar4 {
+  height: 66px;
+  width: 66px;
+  background-color: rgba(0, 0, 0, 0.4);
+  margin: auto;
+  border-radius: 1600px;
+  padding: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
 }
