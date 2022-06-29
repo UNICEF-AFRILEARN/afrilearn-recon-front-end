@@ -3,6 +3,7 @@ import React from 'react';
 import styles from '../../../../styles/search.module.css';
 
 import { BsHash, BsEmojiSmile } from 'react-icons/bs';
+import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 
 const CenterCard = () => {
   return (
@@ -30,6 +31,17 @@ const CenterCard = () => {
               />
             </div>
             <span>Post</span>
+        </div>
+        <div className={styles.innercardwrapper}>
+            <div className={styles.cardonerwrapper}>
+                <span>Class <MdOutlineKeyboardArrowDown /></span>
+            </div>
+            <div className={styles.cardtworwrapper}>
+                <span>Subject <MdOutlineKeyboardArrowDown /></span>
+            </div>
+            <div className={styles.cardthreerwrapper}>
+                <span>Topic <MdOutlineKeyboardArrowDown /></span>
+            </div>
         </div>
     </div>
   )
