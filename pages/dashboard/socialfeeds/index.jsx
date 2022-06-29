@@ -1,9 +1,14 @@
-import React from 'react'
+import React from 'react';
+import SearchBar from './common/serchBar';
+
+import styles from '../../../styles/search.module.css';
 
 const SocialFeeds = () => {
   return (
-    <div>
-        <h1>Social Feeds</h1>
+    <div className={styles.socialfeedwrapper}>
+        <div >
+            <SearchBar />
+        </div>
     </div>
   )
 }
