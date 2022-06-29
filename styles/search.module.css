@@ -31,7 +31,7 @@
 }
 
 .contentwrapper {
-    margin-top: 30px;
+    margin-top: 50px;
     display: flex;
     justify-content: space-evenly;
 }
@@ -157,5 +157,93 @@
 
 .feedcardwrapper {
     background-color: #FAFAFA;
+    padding: 0 10px;
+    
+    
+}
+
+.innerfeedonewrapper, .innerfeedtwowrapper {
+    border-bottom:#A8A8A8 solid 1px;
 
 }
+
+.innerfeedonewrapper  {
+    padding-top: 15px;
+}
+
+.innerfeedonewrapper h4 {
+    padding-left: 10px;
+    font-size: 20px;
+    line-height: 30px;
+    color: #00D9B6;
+}
+.innerfeedonewrapper h4::before {
+    content: "|";
+    margin-right: 12px;
+}
+.innerfeedthreewrapper {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    padding-bottom: 10px;
+}
+.innerfeedthreewrapper ul li,
+.innerfeedtwowrapper ul li, 
+.innerfeedonewrapper ul li{
+    list-style-type: none;
+
+}
+
+.innerfeedthreewrapper ul li,
+.innerfeedtwowrapper ul li {
+    margin-top: 15px;
+}
+
+.shieltitlewrapper {
+    margin-top: 50px;
+    background-color:#FAFAFA;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom:#A8A8A8 solid 1px;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 10px;
+    padding: 10px 0;
+}
+
+.shieltitlewrapper h3 {
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.profilecardwrapper {
+    background-color:#FAFAFA;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 10px;
+
+}
+
+.avatarwrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.inneravatarwrapper {
+    background-color:#FAFAFA;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.followerwrapper {
+    background-color:#FAFAFA;
+    margin-top: 25px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 10px;
+}
+.followerinnerwrapper h5, .followinginnerwrapper h5 {
+    font-size: 15px;
+}
+
