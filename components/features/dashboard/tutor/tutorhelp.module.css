@@ -1,0 +1,39 @@
+.tutorhelpContainer {
+  margin: 10% 5% 5% 10%;
+}
+.helpIntro{
+    color: #333333;
+    background: #FAFAFA;
+    border-radius: 10px;
+    padding: 5% 5% 5% 5%;
+    height: 70%;
+}
+.helpIntro h4 {
+  width: 163px;
+  font-weight: 600;
+  margin-bottom: 13%;
+}
+.helpIntro h5 {
+  font-size: 18px;
+  margin-bottom: 5%;
+  font-weight: 600;
+}
+.helpIntro p {
+  font-size: 15px;
+  margin-bottom: 10%;
+}
+.linkTutor {
+margin-top: 10%;
+text-decoration:underline ;
+color: #00D9B6;
+font-weight: 600;
+}
+.helpForm{
+    padding-left: 5%;
+}
+.input1{
+    height: 63px;
+width: 533px;
+border-radius: 5px;
+margin-bottom: 30%;
+}
