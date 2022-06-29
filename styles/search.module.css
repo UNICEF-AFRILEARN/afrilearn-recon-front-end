@@ -6,12 +6,13 @@
 .searchwrapper {
     border: solid 1px black;
     display: flex;
-    width: 40%;
+    width: 43%;
     border-radius: 20px;
     align-items: center;
     margin: 0 auto;
-    /* padding: 2px 0; */
     gap: 20px;
+    color: #A8A8A8;
+
 }
 
 .searchicon {
@@ -24,7 +25,68 @@
     color: #fff;
 }
 
-.innercontent {
-   align-items: center;
+.contentwrapper {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
 
+.middlecontentwrapper {
+    width: 45%;
+    background-color:#FAFAFA;
+    height: 60vh;
+
+}
+
+.maintitlewrapper {
+    background-color:#FAFAFA;
+    width: 100%;
+    padding: 10px 28px;
+    border-bottom: #A8A8A8 solid 1px;
+}
+
+.centercardwrapper {
+    margin: 10px 15px;
+    padding: 10px 25px;
+    border: solid 1px #A8A8A8;
+    border-radius: 5px;
+}
+
+.cardimagewrapper {
+    display: flex;
+    text-align: start;
+    gap: 5px;
+}
+
+.conversationline {
+    border-bottom: solid 1px #A8A8A8;
+    width: 90%;
+    padding-top: 8px;
+}
+
+.conversationline span {
+    text-align: center;
+    font-size: 10px;
+    
+}
+
+.iconswrapper {
+   display: flex;
+   gap: 10px;
+   padding-top: 5px;
+}
+
+.socialiconswrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    padding-left: 25px;
+    margin-top: 5px;
+}
+
+.socialiconswrapper span {
+    background-color: #00D9B6;
+    padding: 0 20px;
+    border-radius: 20px;
 }
