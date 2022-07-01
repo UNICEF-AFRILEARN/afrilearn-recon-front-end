@@ -33,6 +33,35 @@ const Navigation = () => {
               </div>}
 
               {isLoggedIn && 
+              <div className={styles.parentloggedindash}>
+                <ul>
+            
+                <Link passHref href="/dashboard/student" >
+                  <li>Dashboard</li>
+                </Link>
+                <Link passHref href="/login" >
+                    <li>Add My Child</li>
+                </Link>
+                <Link passHref href="/login" >
+                    <li>Subscribe</li>
+                </Link>
+                <Link passHref href="/dashboard/performance"  >
+                    <li>My Children</li>
+                </Link>
+                <div className={styles.navicons}>
+                  <span><BsSearch /></span>
+                  <span><BsBell /></span>
+                  <span><AiOutlineSafetyCertificate /></span>
+                </div>
+              
+                </ul>
+                <Link passHref href="/register" className="btn-log-in-mobile">
+                  < BsPersonCircle size={30}/>
+              </Link>
+              </div>
+              }
+
+              {!isLoggedIn && 
               <div className={styles.loggedindash}>
                 <ul>
             
@@ -50,7 +79,7 @@ const Navigation = () => {
                   <span><BsBell /></span>
                   <span><AiOutlineSafetyCertificate /></span>
                 </div>
-
+                  
                 </ul>
               </div>
               }
