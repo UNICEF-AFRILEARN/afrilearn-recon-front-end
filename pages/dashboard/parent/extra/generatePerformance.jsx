@@ -2,6 +2,8 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
+import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
+
 import styles from '../../../../styles/parentdashboard.module.css'
 
 const GeneratePerformance = () => {
@@ -14,14 +16,16 @@ const GeneratePerformance = () => {
 
         <div className={styles.innerformwrapper}>
             <Form>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Group className={`${styles.arrowparentwrapper} mb-3`} controlId="formBasicEmail">
                     <Form.Label>Student</Form.Label>
                     <Form.Control type="email" placeholder="Select child" />
+                    <span className={styles.arrowdownwrapper}><MdOutlineKeyboardArrowDown /></span>
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Group className={`${styles.arrowparentwrapper} mb-3`} controlId="formBasicPassword">
                     <Form.Label>Class</Form.Label>
                     <Form.Control type="password" placeholder="Select Class" />
+                    <span className={styles.arrowdownwrapper}><MdOutlineKeyboardArrowDown /></span>
                 </Form.Group>
             <Button variant="primary" type="submit">
             GENERATE PERFORMANCE

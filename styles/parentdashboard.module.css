@@ -67,4 +67,13 @@
     width: 45%;
     margin:  0 auto;
 }
+.arrowparentwrapper {
+    position: relative;
+}
+
+.arrowdownwrapper {
+    position: absolute;
+    right : 10px;
+    top: 40px;
+}
 
