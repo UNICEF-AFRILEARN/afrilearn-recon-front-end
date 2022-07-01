@@ -1,4 +1,8 @@
 .parentcomponentwrapper {
+    
+}
+
+.innerparentwrapper {
     position: relative;
     height: 90vh;
 }
@@ -12,9 +16,15 @@
     display: flex;
     justify-content: space-between;
     position: absolute;
-    bottom: 70px;
+    bottom: 60px;
     left: 90px;
     gap: 30px;
+}
+
+.proaddwrapper {
+    position: absolute;
+    right: 130px;
+    bottom: 10px;
 }
 
 .counterwrapper {
@@ -27,17 +37,34 @@
     width: 65vw;
     padding: 15px 0;
     border-radius: 5px;
+    box-shadow: 3px 15px #FAFAFA;
 }
 
 .childrencounterwrapper, .classesncounterwrapper{
     text-align: center;
 }
-.childrencounterwrapper h5, .classesncounterwrapper h5 {
+.childrencounterwrapper h4, .classesncounterwrapper h4 {
     font-weight: 400;
     font-size: 20px;
     line-height: 33px;
 }
 .childrencounterwrapper h5, .classesncounterwrapper h5 {
     color: #A8A8A8;
-
 }
+
+.parentmaingeneratewrapper {
+    background-color: #FAFAFA;
+    width: 82%;
+    align-items: center;
+    margin: 0 auto;
+    padding: 25px 0;
+}
+.innerheadingperfomwrapper {
+    width: 45%;
+    margin:  0 auto;
+}
+.innerformwrapper {
+    width: 45%;
+    margin:  0 auto;
+}
+
