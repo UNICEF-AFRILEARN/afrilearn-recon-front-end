@@ -14,9 +14,7 @@
   }
 .paymentfirstContainer {
   background-color: #fafafa;
-  padding-bottom: 5%;
-  padding-top: 5%;
-  padding-left: 5%;
+  padding: 5% 0 5% 5%;
   height: 60%;
 }
 .divPoint {
