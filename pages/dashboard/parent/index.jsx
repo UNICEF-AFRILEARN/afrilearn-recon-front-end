@@ -1,6 +1,7 @@
 import React from 'react';
 
 import styles from '../../../styles/parentdashboard.module.css';
+import ClassContent from './extra/classContent';
 import GeneratePerformance from './extra/generatePerformance';
 import ParentHeader from './extra/header';
 import Middlebar from './extra/middlebar';
@@ -16,6 +17,7 @@ const Parent = () => {
                 <Proaddvert />
            </div>
             <GeneratePerformance />
+            <ClassContent />
     </div>
   )
 }
