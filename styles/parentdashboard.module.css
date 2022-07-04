@@ -174,3 +174,11 @@
 .contentinnernavwrapper ul li {
     list-style-type: none;
 }
+
+.parentchildformwrapper {
+    padding: 40px 0;
+    width: 50%;
+    background-color: #FAFAFA;
+    ;
+    margin: 0 auto;
+}
