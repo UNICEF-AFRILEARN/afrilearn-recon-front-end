@@ -115,9 +115,10 @@
 
 .innercontentwrapper {
     background-color: #A8A8A8;
-    width: 45%;
+    height: 50%;
+    margin-top: 30px;
     padding: 20px;
-    height: 20%;
+
 }
 
 .innercontentwrapper ul {
@@ -135,4 +136,17 @@
 }
 
 
+.cardcontentwrapper {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    height: 30%;
+}
 
+.contenthidewrapper {
+    display: none;
+}
+
+.contentshow {
+    display: block;
+}

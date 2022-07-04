@@ -5,6 +5,7 @@ import Classcontentcard from './classcontentcard';
 import { dataContentNav } from './classcontentmainData';
 
 const Classcontentmain = () => {
+ 
   return (
     <div className={styles.contentmainwrapper}>
         <div className={styles.contentinnernavwrapper}>
@@ -12,7 +13,7 @@ const Classcontentmain = () => {
                {dataContentNav && dataContentNav.map((navData) => <li key={navData.id}>{navData.name}</li>) }
             </ul>    
         </div>
-
+        <Classcontentcard />
     </div>
   )
 }
