@@ -3,9 +3,18 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 import styles from '../../../../styles/parentdashboard.module.css';
+import ParentHeader from '../extra/header';
+import Middlebar from '../extra/middlebar';
+import Proaddvert from '../extra/proaddvert';
 
 const Addmychild = () => {
   return (
+    <div className={styles.parentcomponentwrapper}>
+    <div className={styles.innerparentwrapper}>
+         <ParentHeader />
+         <Middlebar />
+         <Proaddvert />
+    </div>
     <div className={styles.parentchildformwrapper}>
          <div className={styles.innerformwrapper}>
             <h3>Add My Child</h3>
@@ -25,6 +34,7 @@ const Addmychild = () => {
             </Form>
          </div>   
     </div>
+  </div>
   )
 }
 

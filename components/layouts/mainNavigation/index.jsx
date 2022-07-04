@@ -36,13 +36,13 @@ const Navigation = () => {
               <div className={styles.parentloggedindash}>
                 <ul>
             
-                <Link passHref href="/dashboard/student" >
+                <Link passHref href="/dashboard/parent" >
                   <li>Dashboard</li>
                 </Link>
-                <Link passHref href="/login" >
+                <Link passHref href="/dashboard/parent/addchild" >
                     <li>Add My Child</li>
                 </Link>
-                <Link passHref href="/login" >
+                <Link passHref href="/dashboard/parent/payment" >
                     <li>Subscribe</li>
                 </Link>
                 <Link passHref href="/dashboard/performance"  >
