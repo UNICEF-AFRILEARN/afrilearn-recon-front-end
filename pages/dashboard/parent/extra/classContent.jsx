@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { BiChevronDown } from 'react-icons/bi';
 import styles from '../../../../styles/parentdashboard.module.css';
 import Classcontentmain from './classcontentmain';
 
@@ -11,8 +12,8 @@ const ClassContent = () => {
           <div className={styles.labelwrapper}>
             <ul>
               <li>Filter by class</li>
-              <li>JSS 1</li>
-              <li>Class note</li>
+              <li>JSS 1 <BiChevronDown /> </li>
+              <li>Class note <BiChevronDown /> </li>
             </ul>
           </div>
         </div>
