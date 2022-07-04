@@ -52,3 +52,81 @@
   justify-content: center;
   color: white;
 }
+.labelInput {
+  background-image: url("/assets/img/features/dashboard/student/Upload.png");
+  height: 13px;
+  width: 13px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: contain;
+  position: absolute;
+  top: 25px;
+  padding-left: 34px;
+}
+
+.afrilearnRocket {
+  background-image: url("/assets/img/features/dashboard/student/Group 2352.png");
+  height: 126px;
+  width: 129px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: contain;
+}
+.afrilearnRocket1 {
+  background-image: url("/assets/img/features/dashboard/student/Group 2351.png");
+  height: 126px;
+  width: 129px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: contain;
+}
+.afrilearnRocket2 {
+  background-image: url("/assets/img/features/dashboard/student/Group 2350.png");
+  height: 126px;
+  width: 129px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: contain;
+}
+.afrilearnRocket3 {
+  background-image: url("/assets/img/features/dashboard/student/Group 2443.png");
+  height: 58px;
+  width: 423px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: contain;
+}
+
+.trophyBadge {
+  background-image: url("/assets/img/features/dashboard/student/badge 1.png");
+  height: 58px;
+  width: 223px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: contain;
+}
+
+.scoreAvatar {
+  background-image: url("/assets/img/features/dashboard/student/Ellipse 100.png");
+  height: 100px;
+  width: 100px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: contain;
+}
+.scoreAvatarY {
+  background-image: url("/assets/img/features/dashboard/student/GroupBadgeY.png");
+  height: 40px;
+  width: 40px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: contain;
+}
+.scoreAvatarGray {
+  background-image: url("/assets/img/features/dashboard/student/GroupBadgeGray.png");
+  height: 40px;
+  width: 40px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: contain;
+}
