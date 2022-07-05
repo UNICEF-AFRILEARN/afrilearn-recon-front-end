@@ -1,7 +1,7 @@
 import Image from "next/image";
+import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import styles from "./afrilearn.module.css";
-import Link from "next/link"
 
 const InputReward = () => {
   return (
@@ -81,34 +81,33 @@ const InputReward = () => {
                 <div className={styles.labelInput}></div>
               </div>
             </Row>
-            <Link passHref href="loading">
-              <Row
-                className="mt-5  mx-auto "
-                style={{ cursor: "pointer", width: "293px" }}
+            <Row
+              className="mt-5  mx-auto "
+              onClick={() => setModalShow(true)}
+              style={{ cursor: "pointer", width: "293px" }}
+            >
+              <Col
+                className=" text-center"
+                style={{
+                  background: "#00D9B6",
+                  borderRadius: "100px",
+                  height: "48px",
+                }}
               >
-                <Col
-                  className=" text-center"
+                <p
                   style={{
-                    background: "#00D9B6",
-                    borderRadius: "100px",
+                    color: "white",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    margin: "auto",
                     height: "48px",
                   }}
                 >
-                  <p
-                    style={{
-                      color: "white",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      margin: "auto",
-                      height: "48px",
-                    }}
-                  >
-                    START COMBAT NOW
-                  </p>
-                </Col>
-              </Row>
-            </Link>
+                  START COMBAT NOW
+                </p>
+              </Col>
+            </Row>
             <Row className="mt-5 w-25 mx-auto pb-5">
               <Col className=" text-center">
                 <u style={{ color: "grey" }}>SKIP THIS</u>
@@ -122,4 +121,3 @@ const InputReward = () => {
 };
 
 export default InputReward;
-
