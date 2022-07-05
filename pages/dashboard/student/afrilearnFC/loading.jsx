@@ -1,6 +1,27 @@
+import { useEffect, useState } from "react";
 import { Container, Row } from "react-bootstrap";
+import { useRouter } from "next/router";
+// import { setInterval } from "timers/promises";
+// import { clearInterval } from "timers";
 
+let counter = 0;
 const loading = () => {
+  const [timer, setfirstTimer] = useState(3);
+  const router = useRouter();
+
+  useEffect(() => {
+    const timerfunc = setInterval(() => {
+      setfirstTimer((timer) => timer - 1);
+      console.log(timer);
+    }, 1000);
+    if (timer === 0) {
+      router.push("afrilearnChallenge")
+      clearInterval(timerfunc)};
+    return () => {
+      clearInterval(timerfunc);
+    };
+  }, [timer]);
+
   return (
     <Container
       fluid
@@ -41,7 +62,7 @@ const loading = () => {
             fontSize: "120px",
           }}
         >
-          3
+          {timer}
         </p>
       </Row>
     </Container>
