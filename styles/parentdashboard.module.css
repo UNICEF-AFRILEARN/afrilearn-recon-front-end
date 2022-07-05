@@ -206,7 +206,11 @@
     color: red;
 }
 
-
+.tablewrapper {
+    background-color: #FAFAFA;
+    margin: 30px;
+    padding: 40px;
+}
 
 .rightlinkswrapper {
     display: flex;

@@ -6,6 +6,7 @@ import { FaLink } from 'react-icons/fa';
 
 import styles from '../../../../styles/parentdashboard.module.css';
 import ParentHeader from '../extra/header';
+import Childtable from '../extra/childtable';
 
 const Chidren = () => {
   return (
@@ -22,6 +23,7 @@ const Chidren = () => {
                 <span><FaLink /></span> <p className={styles.linkinchildwrapper}> Link Existing Account</p>
                 </div>
             </div>
+            <Childtable />
     </div>
   )
 }
