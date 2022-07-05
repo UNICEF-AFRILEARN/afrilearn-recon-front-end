@@ -130,3 +130,18 @@
   background-position: 50%;
   background-size: contain;
 }
+.scoreAvatarBrown {
+  background-image: url("/assets/img/features/dashboard/student/brownVector.png");
+  height: 40px;
+  width: 40px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: contain;
+}
+
+.scoreeffect1:hover p,
+.scoreeffect2:hover p,
+.scoreeffect3:hover p {
+  color: #00d9b6;
+  cursor: pointer;
+}
