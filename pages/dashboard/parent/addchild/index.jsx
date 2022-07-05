@@ -29,7 +29,7 @@ const Addmychild = () => {
                     <Form.Control type="password" placeholder="Confirm Password"  className="my-3" />
             </Form.Group>
             <Button variant="primary" type="submit">
-                GENERATE PERFORMANCE
+                Add my Child
             </Button>
             </Form>
          </div>   

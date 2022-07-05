@@ -182,3 +182,20 @@
     ;
     margin: 0 auto;
 }
+
+.linkwrapper {
+    display: flex;
+    justify-content: space-around;
+}
+
+.leftlinkswrapper {
+    display: flex;
+    justify-content: space-around;
+}
+
+.leftlinkswrapper p {
+    margin: 0 20px;
+}
+.childrenheaderwrapper {
+    margin-bottom: 50px;
+}
