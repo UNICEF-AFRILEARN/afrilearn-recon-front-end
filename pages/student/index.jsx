@@ -37,7 +37,7 @@ const student = () => {
      <br></br>
 
 
-     <input type="submit" value="REGESTER" />
+     <input type="submit" value="REGESTER" class="regesterStudent" />
 
 
     </form>
