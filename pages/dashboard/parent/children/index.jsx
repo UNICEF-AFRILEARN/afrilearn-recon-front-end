@@ -15,11 +15,11 @@ const Chidren = () => {
            </div>
             <div className={styles.linkwrapper}>
                 <div className={styles.leftlinkswrapper}>
-                    <p> <span><BiUnlink /></span> Unlink account</p>
-                    <p> <span><RiDeleteBin6Line /></span> Delete</p>
+                <span><BiUnlink /></span> <p className={styles.unlinkwrapper}>  Unlink account</p>
+                    <span><RiDeleteBin6Line color='red'/></span><p className={styles.deletewrapper}> Delete</p>
                 </div>
                 <div className={styles.rightlinkswrapper}>
-                    <p> <span><FaLink /></span> Link Existing Account</p>
+                <span><FaLink /></span> <p className={styles.linkinchildwrapper}> Link Existing Account</p>
                 </div>
             </div>
     </div>
