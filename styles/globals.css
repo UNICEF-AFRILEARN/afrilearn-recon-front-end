@@ -22,10 +22,9 @@
 
 html,
 body {
-  /* overflow-x: hidden; I commented out this overflow for the save of all*/
+  overflow-x: hidden;
   padding: 0;
   margin: 0;
-  overflow-x: hidden;
   font-family: content !important;
 }
 ul li {
@@ -535,3 +534,4 @@ padding: 10px;
   background-position-x: 98%;
   background-position-y: 50%;
 }
+

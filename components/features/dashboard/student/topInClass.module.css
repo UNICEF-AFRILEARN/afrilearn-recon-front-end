@@ -32,6 +32,11 @@
   left: 105px;
 }
 
+.play_paus2 {
+  position: absolute;
+  top: 49px;
+  left: 65px;
+}
 .play_text {
   width: 240px;
   padding: 5px;

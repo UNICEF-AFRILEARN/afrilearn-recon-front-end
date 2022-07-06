@@ -15,7 +15,7 @@
 } */
 
 .containerList1 {
-  width: 380px;
+  width: 400px;
   height: 152px;
   background: #340067;
   box-shadow: inset 10.7637px 10.7637px 10.7637px rgba(0, 0, 0, 0.41),
@@ -27,7 +27,7 @@
   border: 10px solid white;
 }
 .containerList2 {
-  width: 300px;
+  width: 400px;
   height: 152px;
   background: #118330;
   box-shadow: inset 10.7637px 10.7637px 10.7637px rgba(0, 0, 0, 0.41),
@@ -42,7 +42,7 @@
 
 }
 .containerList3 {
-  width: 300px;
+  width: 400px;
   height: 152px;
   background: #009442;
   box-shadow: inset 10.7637px 10.7637px 10.7637px rgba(0, 0, 0, 0.41),
