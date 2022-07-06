@@ -1,0 +1,45 @@
+.performancemainwrapper {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 15px;
+    margin-top: 25px;
+}
+
+.studentnamewrapper {
+    background-color:#FAFAFA;
+    text-align: center;
+    width: 60%;
+    padding: 25px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    position:relative;
+    padding-bottom: 70px;
+    border-radius: 20px;
+}
+.studentnamewrapper p {
+    color: #333333;
+    font-size: 15px;
+    line-height: 26.2px;
+}
+
+.studentnamewrapper h2 {
+    color: #29465B;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 35px;
+}
+.studentnamewrapper h3 {
+    background: #E6FBF8;
+    position: absolute;
+    left: 35%;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 26px;
+    padding: 2px 25px;
+    color: #00D9B6;
+}
+
+.piewrapper {
+
+}

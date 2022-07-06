@@ -9,7 +9,7 @@ import { useRef } from "react";
 import Link from "next/link";
 import Subjects from "./extra/subjects";
 import GetSolution from "./extra/getSolution";
-import PerfomanceSumm from "./extra/perfomanceSumm";
+import PerfomanceSumm from "./extra/PerfomanceSumm";
 import RecentActivity from "./extra/recentActivity";
 import Q from "./extra/recentActivity";
 import StudentHeropage from "./studentHeropage";
