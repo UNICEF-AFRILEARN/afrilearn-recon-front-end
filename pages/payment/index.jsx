@@ -3,6 +3,7 @@ import styles from "../../styles/payment.module.css"
 
 const payment = () => {
 
+
   return (
 
     <div className={`row ${styles.paymentContainer}`}>
