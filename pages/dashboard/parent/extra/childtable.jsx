@@ -11,14 +11,14 @@ const Childtable = () => {
     const data = [
         {
             id: 1,
-            studetName: "Johnson Adewunigbe",
+            studentName: "Johnson Adewunigbe",
             studentClass: "JSS1 , JSS2",
             studentEmail: "johnsonA@gmail.com",
         },
 
         {
             id: 2,
-            studetName: "Olatunbosun Adewunigbe",
+            studentName: "Olatunbosun Adewunigbe",
             studentClass: "SSS 3",
             studentEmail: "olatunbosunA@gmail.com",
         },
@@ -27,9 +27,10 @@ const Childtable = () => {
 
 
     const [showModal, setShowModal] = useState(false);
+    const [studentId, setStudentId] = useState(null)
 
     const showChildDetails = (id) => {
-        console.log(id)
+        setStudentId(id)
         setShowModal(!showModal)
     }
   return (
@@ -49,7 +50,7 @@ const Childtable = () => {
         <tr key={student.id}>
               <>
                 <td><MdOutlineCheckBoxOutlineBlank /></td>
-                <td onClick={() => showChildDetails(student.id)}>{student.studetName}</td>
+                <td onClick={(() => showChildDetails(student.id))}>{student.studentName}</td>
                 <td>{student.studentClass}</td>
                 <td>{student.studentEmail}</td>
               </>
@@ -57,7 +58,9 @@ const Childtable = () => {
           )}
       </tbody>
     </Table>
-    { showModal && <ChildModal show={showModal} showChildDetails={showChildDetails} data={data} />}
+      <div className={styles.modalwrapperouter}>
+      { showModal && <ChildModal show={showModal} showChildDetails={showChildDetails} data={data} studentId={studentId}/>}
+      </div>      
     </div>
   )
 }

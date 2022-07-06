@@ -224,3 +224,20 @@
 .childrenheaderwrapper {
     margin-bottom: 50px;
 }
+
+.modaltitle {
+    width: 100%;
+}
+
+.modaltitle h5 {
+    cursor: pointer;
+}
+
+.modalwrapperouter {
+    margin-top: 40px;
+}
+
+.modalbodywrapper {
+    display: flex;
+    flex-direction: column;
+}
