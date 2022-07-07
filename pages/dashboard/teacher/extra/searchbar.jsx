@@ -1,8 +1,13 @@
 import React from 'react'
+import styles from '../../../../styles/teacher.module.css';
+
+import { BsSearch } from 'react-icons/bs';
 
 const Searchbar = () => {
   return (
-    <div>Searchbar</div>
+    <div className={styles.teachersearchwrapper}>
+        <span><BsSearch /></span> Search friends by name
+    </div>
   )
 }
 
