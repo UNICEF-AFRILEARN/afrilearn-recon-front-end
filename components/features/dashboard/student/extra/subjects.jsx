@@ -16,13 +16,12 @@ import StudentPageTwo from "./../studentHeroPageTwo";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Subjects = () => {
-  // const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const toggleModal = () => setShow(!show);
  
   return (
     <>
-      <SubHeading title="My Subject" />
+     
       <div className="container">
         <div className={`row ${styles.mySubjecttt}`}>
           <div className={`col-md-6 ${styles.mySubjectt}`}>
@@ -380,50 +379,7 @@ export const StudentHeropageBase = () => {
   };
 
   return (
-    <> 
-<div className="container-fluid" >
-  <div className={`row ${styles.modalHero}`}>
-  <h1>{data?.subject}</h1>
-    <div className="modalSec">
-  <h5 className="">{data?.title}</h5>
-<p>Explore the fun in learning</p>
-<h6><Image alt={"design image"} src={'/assets/img/features/dashboard/student/crown.png'} width={"23.04 px"} height={"18.48px"}/>Activate Afrilearn Pro</h6>
-          </div>
-  </div>
-<div className={`row ${styles.modalSecond}`}>
-<div className={`col-md-8 ${styles.modalSecondFirst}`}>
-<h6 className="">{data?.title}</h6>
-  <p>{data?.description}</p>
-</div>
-<div className="col-md-4">
-   <p>Class : <span>{data?.class}</span></p>
-   <p>Lessons : <span>{data?.lessons}</span></p>
-   <p>Students : <span>{data?.students}</span></p>
-</div>
-</div>
-<div className={`row ${styles.modalThird}`}>
-<div className="col-md-2">
-<Image alt={"design image"} src={'/assets/img/features/dashboard/student/user 3.png'} width={"72.4px"} height={"72.4px"}/>
-</div>
-<div className="col-md-7">
-  <h4>Class Notes</h4>
-  <p>Learn with curriculum specific class notes and practice quizess</p>
-</div>
-<div className="col-md-3"> <Link href='/'><h6>FREE</h6></Link></div>
-</div>
-<div className={`row ${styles.modalThird}`}>
-<div className="col-md-2">
-<Image alt={"design image"} src={'/assets/img/features/dashboard/student/GroupVideo.png'} width={"72.4px"} height={"72.4px"}/>
-</div>
-<div className="col-md-7">
-  <h4>Video Lessons</h4>
-  <p>Learn with animated video lessons and practice quizes</p>
-</div>
-<div className="col-md-3"> <Link href='/videoLesson' ><h6>SUBSCRIBE</h6></Link></div>
-</div>
-</div>
-
-    {/* <>
+    <>
       <div className={`row ${styles.modalSecond}`}>
         <div className={`col-md-8 ${styles.modalSecondFirst}`}>
           <h6 className="">{data?.title}</h6>
@@ -440,7 +396,7 @@ export const StudentHeropageBase = () => {
             Students : <span>{data?.students}</span>
           </p>
         </div>
-      </div> */}
+      </div>
     </>
   );
 };

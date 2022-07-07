@@ -1,0 +1,56 @@
+.videoheropage {
+    background: url("../../../../public/assets/img/classroomheroimg.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 30vh;
+    color: #ffffff;
+  }
+  .heading{
+    padding: 8% 0 0 5%;
+    font-family: "subHeading";
+}
+.heading1{
+  color: #00D9B6;
+  font-weight: 600;
+  margin-top: 3%;
+}
+.input{
+  height: 61px;
+width: 75%;
+border-radius: 5.6px;
+margin-top: 8%;
+border: none;
+border: 1px solid #333333
+}
+
+.addstudentContainer{
+  background-color: #FAFAFA;
+  margin: 5% 25% 5% 25%;
+  padding: 5% 5% 5% 7%;
+}
+.schoolselect{
+  height: 61px;
+  width: 75%;
+  border-radius: 5.6px;
+  margin-top: 8%;
+  border: none;
+  border: 1px solid #333333;
+  background-image: url("../../../../public/assets/img/downarrow.svg");
+  background-repeat: no-repeat;
+  background-position-y: 50%;
+  background-position-x: 98%;
+  appearance: none;
+  margin-top: 5%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  color: #7e7b7b;
+}
+.studentButton{
+  height: 58px;
+width: 75%;
+border: none;
+color: #ffffff;
+border-radius: 100px;
+margin-top: 8%;
+background-color: #00D9B6;
+}

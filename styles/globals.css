@@ -22,10 +22,9 @@
 
 html,
 body {
-  /* overflow-x: hidden; I commented out this overflow for the save of all*/
+  overflow-x: hidden;
   padding: 0;
   margin: 0;
-  overflow-x: hidden;
   font-family: content !important;
 }
 ul li {
@@ -536,9 +535,12 @@ padding: 10px;
   background-position-y: 50%;
 }
 
+<<<<<<< HEAD
 .btn-primary {
   background-color: #00D9B6 !important;
   border: none !important;
   border-radius: 100px !important;
   width: 100% !important
 }
+=======
+>>>>>>> dev
