@@ -77,10 +77,13 @@
     font-size: 20px;
 }
 
+.examstitlewrapper p {
+    font-size: 15px;
+}
 
 .lastcolon {
     display: flex;
-    gap: 40px;
+    gap: 30px;
 }
 
 .lastcolon h5 {
@@ -90,4 +93,8 @@
     font-weight: 500;
     padding: 10px;
     border-radius: 20px;
+}
+
+.otherwrapper h5 {
+    font-size: 15px;
 }

@@ -10,14 +10,12 @@ const Examsholder = () => {
                 <h3>English Examination 1</h3>
                 <p>Published: 2nd September, 2021</p>
             </div>
+         
             <div className={styles.otherwrapper}>
                 <h5>Submission: 32</h5>
             </div>
             <div className={styles.otherwrapper}>
-                <h5>Submission: 32</h5>
-            </div>
-            <div className={styles.otherwrapper}>
-                <h5>Submission: 32</h5>
+                <h5>Objective</h5>
             </div>
             <div className={styles.lastcolon}>
                 <h5>VIEW SUBMISSIONS</h5>
@@ -27,17 +25,14 @@ const Examsholder = () => {
         </div>
         <div className={styles.examsmainholder}>
             <div className={styles.examstitlewrapper}>
-                <h3>Agric Exam 2</h3>
+                <h3>Mathematics First Term JSS1</h3>
                 <p>Published: 2nd September, 2021</p>
             </div>
             <div className={styles.otherwrapper}>
                 <h5>Submission: 32</h5>
             </div>
             <div className={styles.otherwrapper}>
-                <h5>Submission: 32</h5>
-            </div>
-            <div className={styles.otherwrapper}>
-                <h5>Submission: 32</h5>
+                <h5>Objective&Theory</h5>
             </div>
             <div className={styles.lastcolon}>
                 <h5>VIEW SUBMISSIONS</h5>
@@ -53,10 +48,7 @@ const Examsholder = () => {
                 <h5>Submission: 32</h5>
             </div>
             <div className={styles.otherwrapper}>
-                <h5>Submission: 32</h5>
-            </div>
-            <div className={styles.otherwrapper}>
-                <h5>Submission: 32</h5>
+                <h5>Objective&Theory</h5>
             </div>
             <div className={styles.lastcolon}>
                 <h5>VIEW SUBMISSIONS</h5>
@@ -72,10 +64,7 @@ const Examsholder = () => {
                 <h5>Submission: 32</h5>
             </div>
             <div className={styles.otherwrapper}>
-                <h5>Submission: 32</h5>
-            </div>
-            <div className={styles.otherwrapper}>
-                <h5>Submission: 32</h5>
+                <h5>Objective</h5>
             </div>
             <div className={styles.lastcolon}>
                 <h5>VIEW SUBMISSIONS</h5>
