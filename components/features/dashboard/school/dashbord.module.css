@@ -1,0 +1,49 @@
+.videoheropage {
+  background: url("../../../../public/assets/img/classroomheroimg.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* height: 30vh; */
+  color: #ffffff;
+}
+.avatarCoin {
+  background-image: url("../../../../public/assets/img/school/person_2\ 1.svg");
+  width: 20%;
+  height: 40vh;
+  background-repeat: no-repeat;
+  margin-top: 60% !important;
+  border: 2px solid red;
+}
+.heading{
+    padding-top: 40px ;
+    font-family: "subHeading";
+}
+.heading2{
+    padding: 40px 0px 0px 0px ;
+    margin-left: 150px;
+    font-family: "subHeading";
+}
+.headingSelect{
+    margin-top: 40px ; 
+    background-color: #00D9B6;
+    width: 212px;
+    height: 55px;
+    padding: 5px 20px 5px 5px;
+    color:#ffffff;
+    border: none;
+    margin-right: 40% !important;
+    border-radius: 12px;
+}
+
+.headingImage{
+    background: url(/_next/static/media/crownTheme.69b97f37.png);
+    background-repeat: no-repeat;
+    margin-top: 40px; 
+   margin-left: 50% ;
+    border-radius: 12px;
+}
+.subHero{
+    margin: 2% 8% 2% 10%;
+}
+.headingOption{
+    background-color: #00D9B6 !important;
+}
