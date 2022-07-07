@@ -27,7 +27,7 @@ const Examsholder = () => {
         </div>
         <div className={styles.examsmainholder}>
             <div className={styles.examstitlewrapper}>
-                <h3>English Examination 1</h3>
+                <h3>Agric Exam 2</h3>
                 <p>Published: 2nd September, 2021</p>
             </div>
             <div className={styles.otherwrapper}>
@@ -46,7 +46,7 @@ const Examsholder = () => {
         </div>
         <div className={styles.examsmainholder}>
             <div className={styles.examstitlewrapper}>
-                <h3>English Examination 1</h3>
+                <h3>Mathematics First Term JSS1 </h3>
                 <p>Published: 2nd September, 2021</p>
             </div>
             <div className={styles.otherwrapper}>
@@ -65,7 +65,7 @@ const Examsholder = () => {
         </div>
         <div className={styles.examsmainholder}>
             <div className={styles.examstitlewrapper}>
-                <h3>English Examination 1</h3>
+                <h3>Basic science mock exam</h3>
                 <p>Published: 2nd September, 2021</p>
             </div>
             <div className={styles.otherwrapper}>

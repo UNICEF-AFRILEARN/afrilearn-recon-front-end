@@ -73,6 +73,11 @@
     padding: 30px 0;
 }
 
+.examstitlewrapper h3 {
+    font-size: 20px;
+}
+
+
 .lastcolon {
     display: flex;
     gap: 40px;
