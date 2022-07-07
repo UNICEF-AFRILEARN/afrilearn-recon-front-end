@@ -87,15 +87,6 @@ const Login = () => {
       </div>
       <div className="container-fluid">
         <div className="row">
-          <div className="logo-login-seg">
-            {" "}
-            <Image
-              alt={"logo image"}
-              src={"/assets/img/logo.PNG"}
-              width={200}
-              height={50}
-            />{" "}
-          </div>
           <div className="col-xs-0 col-md-1 col-lg-3"> </div>
           <div className="col-xs-12 col-md-10 col-lg-6">
             <span className={styles.card}>
