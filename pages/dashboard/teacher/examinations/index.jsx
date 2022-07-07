@@ -4,6 +4,7 @@ import styles from '../../../../styles/teacher.module.css';
 import Examsholder from '../extra/examsholder';
 import Middletab from '../extra/middletab';
 import Searchbar from '../extra/searchbar';
+import Setupxamssidebar from '../extra/setupxamssidebar';
 
 const Examinations = () => {
   return (
@@ -14,6 +15,7 @@ const Examinations = () => {
         <Middletab />
         <Searchbar />
         <Examsholder />
+        <Setupxamssidebar />
     </div>
   )
 }

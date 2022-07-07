@@ -23,6 +23,7 @@
     font-size: 15px;
     color: #00D9B6;
     border-bottom: 1px solid #00D9B6;
+    cursor: pointer;
 }
 
 .crosswrapper {
@@ -97,4 +98,9 @@
 
 .otherwrapper h5 {
     font-size: 15px;
+}
+
+.setexammainwrapper {
+    display: flex;
+    justify-content: space-evenly;
 }
