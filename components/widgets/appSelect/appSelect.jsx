@@ -1,7 +1,7 @@
 import styles from "./appSelect.module.css";
 
 const AppSelect = ({
-  data,
+  rolesContext,
   fullWidth = true,
   onChange,
   placeholder,
@@ -20,7 +20,7 @@ const AppSelect = ({
       placeholder={placeholder}
     >
       <option value="">{placeholder}</option>
-      {data?.map((item, index) => (
+      {rolesContext?.map((item, index) => (
         <option value={item.id} key={index}>
           {item.name}
         </option>

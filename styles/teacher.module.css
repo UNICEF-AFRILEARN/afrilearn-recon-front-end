@@ -1,0 +1,43 @@
+.examinationwrapper {
+    margin-top: 10%;
+}
+
+.middletabwrapper {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 60px;
+}
+
+.leftsidetabwrapper {
+    display: flex;
+    width: 30%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.leftsidetabwrapper h2 {
+    font-size: 20px;
+}
+
+.leftsidetabwrapper h4 {
+    font-size: 15px;
+    color: #00D9B6;
+    border-bottom: 1px solid #00D9B6;
+}
+
+.crosswrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.leftsidetabwrapper span{
+ margin-right: 10px;
+ margin-bottom: 8px;
+}
+
+.righttabwrapper h4{
+    color: #C4C4C4;
+    border-bottom: 1px solid #C4C4C4;
+    font-size: 15px;
+}
