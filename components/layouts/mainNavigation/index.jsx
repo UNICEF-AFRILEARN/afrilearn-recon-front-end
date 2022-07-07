@@ -32,7 +32,7 @@ const Navigation = () => {
                 Our Story 
               </div>}
 
-              {isLoggedIn && 
+              {!isLoggedIn && 
               <div className={styles.parentloggedindash}>
                 <ul>
             
@@ -115,7 +115,7 @@ const Navigation = () => {
               </div>
               }
                 
-              {!isLoggedIn && <div className="inner-btn-nav-bar">
+              {isLoggedIn && <div className="inner-btn-nav-bar">
               <Link passHref href="/login" className="btn-log-in-mobile">
                   <AppButton title="LOG IN" className={styles.loginButton} />
               </Link>
@@ -124,7 +124,7 @@ const Navigation = () => {
               </Link>
 
               </div>}
-              {isLoggedIn && <div className="inner-btn-nav-bar">
+              {!isLoggedIn && <div className="inner-btn-nav-bar">
               {/* <Link passHref href="/login" className="btn-log-in-mobile">
                   <AppButton title="Log out" className={styles.loginButton} />
               </Link> */}
