@@ -21,7 +21,7 @@ const Subjects = () => {
  
   return (
     <>
-      <SubHeading title="My Subject" />
+     
       <div className="container">
         <div className={`row ${styles.mySubjecttt}`}>
           <div className={`col-md-6 ${styles.mySubjectt}`}>
