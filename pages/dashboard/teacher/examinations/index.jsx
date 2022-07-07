@@ -1,6 +1,7 @@
 import React from 'react';
 
 import styles from '../../../../styles/teacher.module.css';
+import Examsholder from '../extra/examsholder';
 import Middletab from '../extra/middletab';
 import Searchbar from '../extra/searchbar';
 
@@ -12,6 +13,7 @@ const Examinations = () => {
         </div>
         <Middletab />
         <Searchbar />
+        <Examsholder />
     </div>
   )
 }
