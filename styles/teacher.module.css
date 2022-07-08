@@ -26,6 +26,10 @@
     cursor: pointer;
 }
 
+.leftsidetabwrapper span {
+    cursor: pointer;
+}
+
 .crosswrapper {
     display: flex;
     align-items: center;
@@ -103,4 +107,25 @@
 .setexammainwrapper {
     display: flex;
     justify-content: space-evenly;
+    margin: 30px;
+    padding: 20px 0;
+}
+
+.leftsideboxwrapper {
+    background-color: #FAFAFA;
+    padding: 20px;
+    width: 25%;
+}
+
+.leftsideboxwrapper h4 {
+    font-size: 20px;
+}
+
+.leftsideboxwrapper ul li {
+    list-style-type: none;
+}
+
+.mainboxwrapper {
+    width: 40%;
+    padding: 30px;
 }

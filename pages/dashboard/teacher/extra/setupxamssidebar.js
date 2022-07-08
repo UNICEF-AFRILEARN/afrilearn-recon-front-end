@@ -16,32 +16,28 @@ const Setupxamssidebar = () => {
         </div>
         <div className={styles.mainboxwrapper}>
         <Form>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" />
-                <Form.Text className="text-muted">
-                </Form.Text>
+            <Form.Group className="mb-4" controlId="formBasicEmail">
+                <Form.Label>Exam Title*</Form.Label>
+                <Form.Control type="text" placeholder="Math Mockup" />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" />
-                <Form.Text className="text-muted">
-                </Form.Text>
+            <Form.Group className="mb-4" controlId="formBasicEmail">
+                <Form.Label>Subject*</Form.Label>
+                <Form.Control type="text" placeholder="Objective" />
+       
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" />
-                <Form.Text className="text-muted">
-                </Form.Text>
+            <Form.Group className="mb-4" controlId="formBasicEmail">
+                <Form.Label>Question Type*</Form.Label>
+                <Form.Control type="email" placeholder="Objective" />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" />
-                <Form.Text className="text-muted">
-                </Form.Text>
+            <Form.Group className="mb-4" controlId="formBasicEmail">
+                <Form.Label>Duration*</Form.Label>
+                <Form.Control type="email" placeholder="Set exam duration" />
             </Form.Group>
-            
-            <Button variant="primary" type="submit">
+            <Form.Group className="mb-4" controlId="formBasicEmail">
+                <Form.Label>Exam Instruction</Form.Label>
+            <Form.Control as="textarea" rows="3" name="address" />
+            </Form.Group>
+            <Button variant="primary" type="submit" className={styles.formsubmitbtn}>
                 Submit
             </Button>
     </Form>

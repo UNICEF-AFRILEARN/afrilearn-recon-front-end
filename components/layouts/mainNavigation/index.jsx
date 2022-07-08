@@ -77,7 +77,7 @@ const Navigation = () => {
                     <li>Classwork</li>
                 </Link>
                 
-                <Link passHref href="/dashboard/teacher/examination"  >
+                <Link passHref href="/dashboard/teacher/examinations"  >
                     <li>Examination</li>
                 </Link>
                 <div className={styles.navicons}>
