@@ -1,0 +1,31 @@
+.moreIcon {
+  background-image: url("/assets/img/features/dashboard/student/Group2121.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 7px;
+  height: 25px;
+}
+
+.styleEdit {
+  background-image: url("/assets/img/features/dashboard/teacher/Edit Square.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 21px;
+  height: 21px;
+}
+
+.styleDelete {
+  background-image: url("/assets/img/features/dashboard/teacher/Delete.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 21px;
+  height: 21px;
+}
+
+.displayNone{
+    display:none;
+}
+
+.displayMore:hover .displayNone{
+  display: block;
+}
