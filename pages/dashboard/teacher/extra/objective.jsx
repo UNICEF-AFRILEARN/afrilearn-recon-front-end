@@ -14,6 +14,13 @@ const Objectives = () => {
                 <li><span><BsFillCircleFill /></span>Set Ups</li>
                 <li><span><BsCircle /></span>Examination Questions</li>
             </ul>
+            <div className={styles.bottombtnwrapper}>
+                <h4>Generate questions</h4>
+                <div className={styles.btnmainwrapper}>
+                    <h4>PROCEED</h4>
+                    <h5>PREVIEW</h5>
+                </div>
+            </div>
         </div>
         <div className={styles.examsetupwrapper}>
             <div className={styles.xamssetpheader}>
