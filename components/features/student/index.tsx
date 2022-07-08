@@ -29,8 +29,8 @@ const Dashboard: FC = () => {
             <a href="#performance">Performance Summary</a> &nbsp;|&nbsp;{" "}
             <a href="#classroom">Classroom</a> &nbsp;|&nbsp;{" "}
             <a href="#favourite">My Favourite</a> &nbsp;|&nbsp;{" "}
-            <a href="#recommendations">Recommendations</a>
-            &nbsp;|&nbsp; <a href="#recentActivities">Recent Activities</a>
+            <a href="#recommendations">Recommendations</a> &nbsp;|&nbsp; 
+            <a href="#recentActivities">Recent Activities</a>
           </div>
         </div>
       </div>

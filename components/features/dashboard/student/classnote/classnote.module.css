@@ -10,6 +10,10 @@
   margin: 50px 100px;
 }
 
+.accordHead:focus{
+  border:none;
+}
+
 .accordance {
   background-image: url("/assets/img/features/dashboard/student/button2.png");
   background-repeat: no-repeat;

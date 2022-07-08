@@ -125,8 +125,6 @@ const ClassNoteVideo = () => {
         </Accordion.Item>
       </Accordion>
     </section>
-    // );
-    // })}
   );
 };
 
