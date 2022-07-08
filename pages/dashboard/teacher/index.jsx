@@ -8,7 +8,7 @@ const Teacher = () => {
   return (
     <>
       <Head>
-        <title>{classes.class} | Myafrilearn.com</title>
+        <title>Teacher's Section | Myafrilearn.com</title>
         <meta
           name="description"
           content="Afrilearn is on a mission to provide affordable, world-class education for Africans, anywhere."
