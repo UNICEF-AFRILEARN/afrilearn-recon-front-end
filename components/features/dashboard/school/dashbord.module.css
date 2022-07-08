@@ -2,16 +2,40 @@
   background: url("../../../../public/assets/img/classroomheroimg.svg");
   background-repeat: no-repeat;
   background-size: cover;
-  /* height: 30vh; */
   color: #ffffff;
+  height: 30vh;
+  position: relative;
 }
 .avatarCoin {
   background-image: url("../../../../public/assets/img/school/person_2\ 1.svg");
-  width: 20%;
-  height: 40vh;
   background-repeat: no-repeat;
-  margin-top: 60% !important;
   border: 2px solid red;
+}
+.heroInputs {
+    box-shadow: 0px 0px 30px 5px rgba(184, 181, 181, 0.15);
+    height: 20vh;
+    padding: 2% 0 0 2%;
+    margin-left: 10%;
+    background-color: #ffffff;
+}
+.heroinputsection{
+    position: absolute;
+   top: 270px;
+    width: 80%;
+    margin:0 auto ;
+    right:10%
+}
+.heroInputs h4{
+    font-weight: 700;
+}
+.heroInputs h5{
+    margin-right: 5%;
+
+}
+.inputdetails{
+    display: flex;
+    flex-direction: row !important;
+    margin-top: 3%;
 }
 .heading{
     padding-top: 40px ;
@@ -42,7 +66,7 @@
     border-radius: 12px;
 }
 .subHero{
-    margin: 2% 8% 2% 10%;
+    margin: 8% 8% 2% 10%;
 }
 .headingOption{
     background-color: #00D9B6 !important;
