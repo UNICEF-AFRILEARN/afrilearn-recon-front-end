@@ -3,6 +3,7 @@ import styles from '../../../../styles/teacher.module.css';
 import { BsFillCircleFill, BsCircle } from 'react-icons/bs';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { BiNote } from 'react-icons/bi';
+import Questionpanel from './questionpanel';
 
 const Objectives = () => {
   return (
@@ -36,6 +37,7 @@ const Objectives = () => {
                     </ul>    
                 </div>
             </div>
+                <Questionpanel />
 
         </div>
         
