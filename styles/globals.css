@@ -534,3 +534,99 @@ padding: 10px;
   box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 }
+
+ /* -----------------get trail ----------------- */
+
+.get-trial {
+  display: flex;
+  position: relative;
+  width: 1440px;
+  height: 1076px;
+  background: #FFFFFF;
+  position: absolute;
+  font-family: 'Spoof';
+  font-style: normal;
+}
+.get-trial > div {
+  margin: 1px;
+  font-size: 30px;
+  
+
+}
+
+ .get-trial-messege h2 {
+  width: 396px;
+  height: 44px;
+  left: 82px;
+  top: 75px;
+  font-weight: 700;
+  font-size: 37px;
+  line-height: 48px;
+  color: #29465B;
+  
+
+}
+
+.get-trial-messege h4{
+  left: 124px;
+  top: 158px;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 39px;
+  color: #333333;
+
+
+}
+
+.get-trial p{
+
+  color: #29465B;
+  font-size: 18px;
+
+}
+
+.get-trial ul{
+
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 26px;
+  color: #333333;
+  left: 112px;
+
+}
+
+.get-trial-pic{
+
+  background-image: url('Premium.png');
+  background-repeat:no-repeat;
+  background-size: cover;
+ background-position: 50px , 50px;
+  width:750px;
+ height:1075px;
+}
+
+
+.get-trial-list-check {
+  list-style-image: url('Union.png');
+}
+
+.get-trial button {
+  background: #00D9B6;
+  border-radius: 100px;
+  width: 361px;
+  height: 58px;
+  left: 74px;
+  top: 977px;
+  color:#FFFFFF;
+  border-color: #FFFFFF;
+  font-family: 'Spoof';
+
+}
+
+.get-trial-messege{
+
+
+  padding-left:5%;
+
+}
+
