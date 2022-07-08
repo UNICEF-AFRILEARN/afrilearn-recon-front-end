@@ -1,16 +1,29 @@
-.dashboardFirstSection {
-  background-image: radial-gradient(rgba(0, 0, 0, 0.17), rgba(0, 0, 0, 0.99)),
-    url("./../../../../public/assets/img/features/dashboard/student/dashboard.png");
+.dashboardFirstSection,
+.dashboardFirstSection1 {
   background-repeat: no-repeat;
   background-position: 50%;
   background-attachment: fixed;
   background-size: cover;
   color: #fff;
-  /* width: 1450px; */
-  height: 637px;
   padding-top: 100px;
   margin: 0;
   border-radius: 5px 5px 0 0;
+}
+
+.dashboardFirstSection {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.17), rgba(0, 0, 0, 0.99)),
+    url("./../../../../public/assets/img/features/dashboard/student/dashboard.png");
+  height: 637px;
+}
+.dashboardFirstSection1 {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.17), rgba(0, 0, 0, 0.99)),
+    url("./../../../../public/assets/img/features/dashboard/student/student.png");
+  height: 60vh;
+}
+.dashboardFirstSection2 {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.17), rgba(0, 0, 0, 0.99)),
+    url("./../../../../public/assets/img/features/dashboard/student/student.png");
+  height: 280px;
 }
 
 .myModal,
@@ -18,7 +31,7 @@
 .modal-content {
   /* width: 100% !important; Occupy the 90% of the screen width */
   /* max-width: 50vw; */
-  border-radius: 13px ;
+  border-radius: 13px;
 }
 
 /* .modal-content {border-radius: 40px;} */
@@ -85,8 +98,8 @@
 }
 .mySubjectt :hover {
   background-color: #ffffff !important;
-  border: 1px solid #f1f2f4;
-  box-shadow: 0 0.5pt 10pt rgb(0 0 0 / 10%);
+  /* border: 1px solid #f1f2f4; */
+  box-shadow: 0 0.5pt 20pt rgb(0 0 0 / 10%);
 }
 .mySubjecttt {
   margin-bottom: 2%;
@@ -222,11 +235,8 @@
   width: fit-content;
   border-radius: 100px;
   text-align: center;
-  /* padding-top: 10px; */
-  /* margin-right: 10px; */
   cursor: pointer;
   padding: 10px 15px 0;
-  /* border: 5px; */
 }
 .join {
   position: relative;
@@ -257,7 +267,29 @@
   align-self: center;
 }
 
-.modalContainer{
+.fontSize {
+  font-weight: 700;
+  font-size: 72px !important;
+  line-height: 75px;
+  text-align: center;
+  margin: 80px auto !important;
+  text-transform: capitalize !important;
+}
+.modalContainer {
   border: 2px solid red;
   padding: 7px;
+}
+
+.pastQuestionh1 {
+  font-weight: 700;
+  font-size: 72px;
+  line-height: 94px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.modalBodyButton:hover {
+  border: 1px solid #00d9b6;
+  box-shadow: 0px 0.648094px 4.53666px rgba(0, 0, 0, 0.15);
+  border-radius: 9.72141px;
 }

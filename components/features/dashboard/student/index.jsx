@@ -9,7 +9,7 @@ import { useRef } from "react";
 import Link from "next/link";
 import Subjects from "./extra/subjects";
 import GetSolution from "./extra/getSolution";
-import PerfomanceSumm from "./extra/perfomanceSumm";
+import PerfomanceSumm from "./extra/PerfomanceSumm";
 import RecentActivity from "./extra/recentActivity";
 import Q from "./extra/recentActivity";
 import StudentHeropage from "./studentHeropage";
@@ -124,7 +124,10 @@ const Dashboard = () => {
   return (
     <>
       <StudentHeropage />
+      <div>
+      <SubHeading title="My Subject" />
       <Subjects />
+      </div>
       <PastQuestion />
       <TopInClasses classData={datas} />
       <PerfomanceSumm />
@@ -154,8 +157,7 @@ const TopInClasses = ({ classData }) => {
   };
   return (
     <>
-      {/* <SubHeading title={`Top in ${title.class}`} />
-      <SubHeading title={`Top in ${classData[0].class}`} /> */}
+      <SubHeading title={`Top in ${classData[0].class}`} />
       <div className={styles.contai}>
         <section className="parnet-frag-color">
           <Slider {...settings} ref={customeSlider}>

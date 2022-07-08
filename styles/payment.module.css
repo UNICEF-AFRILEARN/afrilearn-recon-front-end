@@ -1,0 +1,96 @@
+.paymentContainer {
+  margin-top: 7%;
+  padding-left: 10%;
+}
+.paymentContainer  h4{
+    font-weight: 600;
+  color: #29465b;
+  margin-bottom: 5%;
+  }
+  .paymentContainer  h5{
+    font-weight: 600;
+  color: #29465b;
+  margin-bottom: 5%;
+  }
+.paymentfirstContainer {
+  background-color: #fafafa;
+  padding: 5% 0 5% 5%;
+  height: 60%;
+}
+.divPoint {
+  height: 21px;
+  width: 21px;
+  margin: 1.5rem;
+  border-radius: 130px;
+  background-color: #29465b;
+}
+
+.paymentfirstContainer p {
+  height: 24px;
+  margin: 6%;
+  font-weight: 500;
+  color: #333333;
+  font-size: 16px;
+}
+
+.paymentSelect {
+  height: 50px;
+  width: 90%;
+  border-radius: 7px;
+  margin: 5% 0 15% 0;
+  font-weight: 600;
+  font-size: 18px;
+  background: url("../public/assets/img/downarrow.svg");
+  background-repeat: no-repeat;
+  background-position-y: 50%;
+  background-position-x: 98%;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-left: 10%;
+  color: #333333;
+}
+.durationPayment button{
+border: none;
+box-shadow: 0px 0px 30px 5px rgba(184, 181, 181, 0.15);
+background-color: white;
+padding: 20%;
+}
+.durationBold{
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+.paymentdurationButtons{
+    margin-bottom: 15%;
+    margin-top: 13%;
+}
+.paymentSecondContainer{
+    padding-top: 5%;
+    padding-left: 5%;
+}
+.paymenttypeButton button{
+border-radius: 100px;
+width: 80%;
+height: 50px;
+margin-bottom: 5%;
+background: url("../public/assets/img/forwardarrow1.png");
+background-color: #00D9B6;
+background-repeat: no-repeat;
+border: none;
+background-position-y: 50%;
+  background-position-x: 90%;
+  color: #fff;
+}
+.paymenttypeButton2 button{
+    border-radius: 100px;
+    width: 80%;
+    height: 50px;
+    margin-bottom: 5%;
+    background: url("../public/assets/img/forwardarrow2.png");
+    background-color: #fff;
+    background-repeat: no-repeat;
+    border: 1px solid #00D9B6;
+    background-position-y: 50%;
+      background-position-x: 90%;
+      color: #00D9B6;
+    }

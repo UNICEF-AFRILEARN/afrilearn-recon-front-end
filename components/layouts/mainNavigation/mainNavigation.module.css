@@ -2,7 +2,7 @@
   /* border: solid 1px black;
     padding: 7px 16px !important;
     border-radius: 39px; */
-  margin-right: 20px;
+  margin-right: 5px;
   /* background: white; */
 }
 
@@ -17,4 +17,42 @@
   margin-top: 86px;
 }
 
+.main-navbar-with-login {
+  display: flex;
+  background-color: brown;
+  flex-direction: column;
+}
+.loggedindash {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 60vw;
+   padding: 5px;
+}
 
+.parentloggedindash{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+  padding: 5px;
+}
+
+
+.loggedindash ul, .parentloggedindash ul{
+  display: flex;
+  justify-content: space-evenly;
+  gap: 80px;
+  margin-right: 60px;
+}
+
+.loggedindash ul li, .parentloggedindash ul li {
+  list-style-type: none;
+  cursor: pointer;
+}
+
+.navicons{
+  display:flex;
+  justify-content: space-evenly;
+  gap: 20px;
+}

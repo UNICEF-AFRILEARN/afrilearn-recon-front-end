@@ -105,7 +105,7 @@ const ClassNoteVideo = () => {
             <div className={styles.accordRightDiv}>
               {classData[0][1].map((data, i) => (
                 <div key={i} className={styles.accordButtonLeft}>
-                  <Link href="/dashboard/student">
+                  <Link href="/dashboard/student/video/videoPage">
                     <div className={styles.buttonStyle}>
                       <div className={styles.buttonStyleImage}>
                         <Image

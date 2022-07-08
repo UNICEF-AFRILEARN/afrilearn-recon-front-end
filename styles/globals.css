@@ -22,10 +22,9 @@
 
 html,
 body {
-  /* overflow-x: hidden; I commented out this overflow for the save of all*/
+  overflow-x: hidden;
   padding: 0;
   margin: 0;
-  overflow-x: hidden;
   font-family: content !important;
 }
 ul li {
@@ -465,6 +464,27 @@ margin-left: 10%;
   flex-direction: row;
  }
 
+.button4 {
+
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  border-radius: 6.30204px;
+
+}
+ .showQuiz{
+  display:block
+ }
+ .hideQuiz{
+  display: none;
+ }
+ /* -----------------parent----------------- */
+.paymentLest{
+
+  background: #FAFAFA;
+  border-radius: 10px;
+ padding: auto;
+ margin: 10px;
+}
 .parentPayment{
   display: flex;
   margin: 10px;
@@ -478,21 +498,6 @@ margin-left: 10%;
   list-style-image: ur('aa.png');
 }
 
-.button4 {
-
-  background: #FFFFFF;
-  border: 1px solid #000000;
-  border-radius: 6.30204px;
-
-}
-
-.paymentLest{
-
-  background: #FAFAFA;
-  border-radius: 10px;
- padding: auto;
- margin: 10px;
-}
 
 .buttonPayment1 {
   background: #00D9B6;
@@ -520,6 +525,14 @@ padding: 10px;
   border-radius: 10px;
   margin: 50px;
   width: flex;
+}
+.paymentSelect select{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 98%;
+  background-position-y: 50%;
 }
 
  .showQuiz{
@@ -630,3 +643,9 @@ padding: 10px;
 
 }
 
+.btn-primary {
+  background-color: #00D9B6 !important;
+  border: none !important;
+  border-radius: 100px !important;
+  width: 100% !important
+}

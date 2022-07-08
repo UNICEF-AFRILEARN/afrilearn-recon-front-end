@@ -1,9 +1,10 @@
 import React from 'react'
 
 const payment = () => {
+
   return (
+
     <div className="parentPayment">
-   
    <div className='paymentLest' >
    <p><strong>Unlock Unlimited Access!</strong></p>
    <ul type="none">
@@ -13,11 +14,8 @@ const payment = () => {
   <li className="list-payment">Gain Mastery with Storytelling</li>
   <li className="list-payment">Learn on Any Device, Anytime, Anywhere</li>
   <li className="list-payment">Achieve Academic Excellence + More </li>
-
 </ul>
-
    </div>
-
 
    <div className="paymentlist">
    <form >

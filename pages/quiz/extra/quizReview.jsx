@@ -61,7 +61,6 @@ const QuizSolution= () => {
  <div className={` ${styles.trailSection}`}>
   <div className={styles.trailLink}><Link passHref href="" >Get 15-day Afrilearn Pro free trial. </Link></div>
    <div className=""> Cancel any time. We'll remind you 3 days before your trial ends.</div>
-  
  </div>
  <div className={styles.solutionButton}></div>
 </div>
