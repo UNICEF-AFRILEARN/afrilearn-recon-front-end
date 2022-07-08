@@ -154,9 +154,17 @@
 }
 
 .xamssetpheader h4 {
-    color: #00D9B6;
     font-weight: 500;
     font-size: 15px;
+    
+}
+
+.clikeditemssetup {
+    color: #00D9B6;
+}
+
+.unclikeditemssetup {
+    color: black;
 }
 
 .xamssetpheader h5 {
@@ -178,9 +186,20 @@
     border-radius: 5px;
     background-color: #FAFAFA;
 }
+.innerclasslistwrapperonly {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 10px;
+    align-items: center;
+    border-radius: 5px;
+    background-color: #FAFAFA;
+    width: 100%;
+    margin-bottom: 20px;
+}
 .innernumberwrapper {
     width: 30%;
 }
+
 .innernumberwrapper ul {
     display: flex;
     justify-content: space-between;
@@ -274,6 +293,7 @@
     font-weight: 400;
     font-size: 12px;
     padding-left: 35px;
+    cursor: pointer;
 }
 
 .btnmainwrapper {
@@ -309,4 +329,13 @@
 
 .addtheorywrapper span {
     margin-right: 10px;
+}
+
+.generateformwrapper {
+    width: 50%;
+    margin: 0 auto;
+}
+.generatetitle {
+    width: 50%;
+    margin: 0 auto;
 }

@@ -5,9 +5,10 @@ import { RiDeleteBin6Line } from 'react-icons/ri';
 import { BiNote } from 'react-icons/bi';
 import Questionpanel from './questionpanel';
 import Theory from './theory';
+import Generatequestions from './generatequestions';
 
 const Objectives = () => {
-    const [showObjQuestions, setShowObjQuestions] = useState(null)
+    const [showObjQuestions, setShowObjQuestions] = useState(1)
 
     const showObjpanel = (id) => {
         setShowObjQuestions(id)
@@ -21,7 +22,7 @@ const Objectives = () => {
                 <li><span><BsCircle /></span>Examination Questions</li>
             </ul>
             <div className={styles.bottombtnwrapper}>
-                <h4>Generate questions</h4>
+                <h4 onClick={() => showObjpanel(3)}>Generate questions</h4>
                 <div className={styles.btnmainwrapper}>
                     <h4>PROCEED</h4>
                     <h5>PREVIEW</h5>
@@ -30,28 +31,33 @@ const Objectives = () => {
         </div>
         <div className={styles.examsetupwrapper}>
             <div className={styles.xamssetpheader}>
-            <h4 onClick={() => showObjpanel(1)}>Objective</h4>
-            <h5 onClick={() => showObjpanel(2)}>Theory</h5>
+            <h4 onClick={() => showObjpanel(1)} className={showObjQuestions === 1? `${styles.clikeditemssetup}` : `${styles.unclikeditemssetup}`}>Objective</h4>
+            <h5 onClick={() => showObjpanel(2)} className={showObjQuestions === 2? `${styles.clikeditemssetup}` : `${styles.unclikeditemssetup}`}>Theory</h5>
             </div>
             <div className={styles.classlistwrapper}>
-                <div className={styles.innerclasslistwrapper}>
-                <h5>Question 2</h5>
-                <div className={styles.iconswrapper}>
-                    <span><BiNote /> </span>
-                    <span><RiDeleteBin6Line color='#FF5E5E' />  </span>  
-                </div>
-                </div>
-                <div className={styles.innernumberwrapper}>
-                    <ul>
-                        <li>1</li>
-                        <li>2</li>
-                        <li>3</li>
-                        <li>4</li>
-                    </ul>    
-                </div>
+                {showObjQuestions === 1 | showObjQuestions === 2 && 
+                    <div className={showObjQuestions === 1? `${styles.innerclasslistwrapper}` : `${styles.innerclasslistwrapperonly}`}>
+                    <h5>Question 2</h5>
+                    <div className={styles.iconswrapper}>
+                        <span><BiNote /> </span>
+                        <span><RiDeleteBin6Line color='#FF5E5E' />  </span>  
+                    </div>
+                    </div>
+                }
+                {showObjQuestions === 1 &&
+                    <div className={styles.innernumberwrapper}>
+                        <ul>
+                            <li>1</li>
+                            <li>2</li>
+                            <li>3</li>
+                            <li>4</li>
+                        </ul>    
+                    </div>
+                }
             </div>
                { showObjQuestions === 1 &&  <Questionpanel />}
                 {showObjQuestions === 2 && <Theory /> }
+                {showObjQuestions === 3 &&<Generatequestions />}
         </div>
         
     </div>
