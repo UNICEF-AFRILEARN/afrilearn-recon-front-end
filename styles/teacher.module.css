@@ -111,26 +111,91 @@
     padding: 20px 0;
 }
 
-.leftsideboxwrapper {
+.leftsideboxwrapper, .objleftsideboxwrapper {
     background-color: #FAFAFA;
     padding: 20px;
     width: 25%;
 }
 
-.leftsideboxwrapper h4 {
+.leftsideboxwrapper h4, .objleftsideboxwrapper h4 {
     font-size: 20px;
 }
 
-.leftsideboxwrapper ul li {
+.leftsideboxwrapper ul li, .objleftsideboxwrapper ul li {
     list-style-type: none;
     margin-top: 25px;
     font-size: 15px;
     color: #A8A8A8;
 }
-.leftsideboxwrapper ul li span{
+.leftsideboxwrapper ul li span, .objleftsideboxwrapper ul li span{
     margin-right: 10px;
 }
 .mainboxwrapper {
     width: 40%;
     padding: 30px;
+}
+
+.objectivemainwrapper {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.examsetupwrapper {
+    width: 60%;
+}
+.xamssetpheader {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid #E3E3E3;
+    padding: 0 40px;
+}
+
+.xamssetpheader h4 {
+    color: #00D9B6;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.xamssetpheader h5 {
+    font-weight: 500;
+    font-size: 15px;
+}
+.classlistwrapper {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.innerclasslistwrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 65%;
+    padding: 0 10px;
+    align-items: center;
+    border-radius: 5px;
+    background-color: #FAFAFA;
+}
+.innernumberwrapper {
+    width: 30%;
+}
+.innernumberwrapper ul {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.iconswrapper {
+    width: 10%;
+    display: flex;
+    justify-content: space-around;
+}
+.iconswrapper span {
+    gap: 70px;
+}
+.innernumberwrapper ul li {
+    list-style-type: none;
+    padding: 0 10px;
+    border-radius: 5px;
+    border: #E3E3E3 solid 1px;
 }
