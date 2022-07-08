@@ -6,6 +6,7 @@ import { BiNote } from 'react-icons/bi';
 import Questionpanel from './questionpanel';
 import Theory from './theory';
 import Generatequestions from './generatequestions';
+import Submitquestions from './submitquestions';
 
 const Objectives = () => {
     const [showObjQuestions, setShowObjQuestions] = useState(1)
@@ -24,7 +25,7 @@ const Objectives = () => {
             <div className={styles.bottombtnwrapper}>
                 <h4 onClick={() => showObjpanel(3)}>Generate questions</h4>
                 <div className={styles.btnmainwrapper}>
-                    <h4>PROCEED</h4>
+                    <h4 onClick={() => showObjpanel(4)}>PROCEED</h4>
                     <h5>PREVIEW</h5>
                 </div>
             </div>
@@ -57,7 +58,8 @@ const Objectives = () => {
             </div>
                { showObjQuestions === 1 &&  <Questionpanel />}
                 {showObjQuestions === 2 && <Theory /> }
-                {showObjQuestions === 3 &&<Generatequestions />}
+                {showObjQuestions === 3 && <Generatequestions />}
+                { showObjQuestions === 4 && <Submitquestions />}
         </div>
         
     </div>
