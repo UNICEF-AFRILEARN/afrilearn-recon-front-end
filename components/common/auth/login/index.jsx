@@ -10,14 +10,6 @@ import React, { useState } from "react";
 
 const Login = () => {
   // const dispatch = useDispatch();
-  const loginDetails = [
-    {
-      id: "1",
-      userName: "Kiyoonewton",
-      email: "kiyoonewton41@gmail.com",
-      password: "1234",
-    },
-  ];
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,39 +17,10 @@ const Login = () => {
   
   const signIn = (e) => {
     e.preventDefault();
-    // console.log(email, password);
-    // const log = loginDetails[0];
-    // if (email === log.email && password === log.password) {
+
       router.push("/dashboard/student");
-      // dispatch(getUsername(log.userName));
-    // }
   };
 
-  // const register = (e) => {
-  //   e.preventDefault();
-  //   alert(
-  //     "you can only use 'kiyoonewton41@gmail.com' as email and '1234' as password "
-  //   );
-
-  // const userInfo = {};
-  // const handleChange = (key, value) => (userInfo[key] = value);
-  // const startLogin = () => {
-  //   API.loginDefault(userInfo).then(
-  //     ({ error, status, fieldsErrors, user, token }) => {
-  //       status === "success" || 200
-  //         ? console.log(
-  //             `Login status\n ${status}\n`,
-  //             `User Profile\n ${JSON.stringify(user, null, 2)}\n`,
-  //             `Token\n ${token}`,
-  //           )
-  //         : console.log(
-  //             `Login status\n ${status}\n`,
-  //             `Error Message\n ${error}\n`,
-  //             `Fields Errors\n ${fieldsErrors}`,
-  //           );
-  //     },
-  //   );
-  // };
   return (
     <>
       <div className={styles.floatImg1}>

@@ -9,7 +9,7 @@ import Selectitem from '../../../widgets/appSelect/appSelect';
 import ReactModal from 'react-modal'
 import { Button, Modal } from 'react-bootstrap';
 
-import { fetchRoles } from "../../../../store/actions/auth";
+import { fetchRoles } from "../../../../redux/actions/auth";
 
 import {API} from '../../../../pages/api/client-side/fetcher';
 
