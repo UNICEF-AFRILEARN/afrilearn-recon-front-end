@@ -20,6 +20,8 @@ const Register = (props) => {
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [referralCode, setReferralCode] = useState('');
 
 
 
@@ -52,6 +54,8 @@ const Register = (props) => {
     console.log(phone)
     console.log(email)
     console.log(password)
+    console.log(confirmPassword)
+    console.log(referralCode)
 
   }
 
@@ -145,8 +149,21 @@ const Register = (props) => {
                   title='Password' 
                   placeholder='Password' 
                 />
-                <TextInput name={'confirmPassword'} type='password' onChange={(value) => handleChanges('confirmPassword', value)} title='Confirm Password' placeholder='Confirm Password' />
-                <TextInput name={'referralCode'} type='text' onChange={(value) => handleChanges('referralCode', value)} title='Referral Code' placeholder='Referral Code (optional)' className={`${styles.pushDown} ${styles.pushUp}`} />
+                <input 
+                  name={'confirmPassword'} 
+                  type='password'
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)} title='Confirm Password' 
+                  placeholder='Confirm Password' 
+                />
+                <input 
+                  name={'referralCode'}
+                  value={referralCode}
+                  type='text' 
+                  onChange={(e) => setReferralCode(e.target.value)} title='Referral Code' 
+                  placeholder='Referral Code (optional)' 
+                  className={`${styles.pushDown} ${styles.pushUp}`} 
+                />
                 <p>By signing up, you agree to our <Link passHref href='/'><b>Terms and Privacy Policy</b></Link></p>
                 <div className={`row ${styles.pushDown1}`}>
                     <AppButton title="LOGIN" secondary type='submit' />
