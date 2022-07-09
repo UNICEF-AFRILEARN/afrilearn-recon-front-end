@@ -70,7 +70,7 @@ export const StudentPage = ({ stuData }) => {
       >
         <div className="row">
           <div className="col-md-12">
-            <h1>{user.user?.enrolledCourses[0].courseId.name}</h1>
+            <h1 className="text-capitalize">{user.user?.enrolledCourses[0].courseId.name}</h1>
           </div>
         </div>
          <div className={`row ${styles.push2}`}>
