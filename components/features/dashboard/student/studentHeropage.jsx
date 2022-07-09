@@ -76,7 +76,7 @@ export const StudentPage = ({ stuData }) => {
          <div className={`row ${styles.push2}`}>
           <div className="col-md-12">
             {
-              <h2>{greetings(user.user.fullName)}</h2>}
+              <h2>{greetings(user.user?.fullName)}</h2>}
             {stuData[0].subject && <h2>{stuData[0].subject}</h2>}
             <p>Explore the fun in learning💃</p>
           </div>
