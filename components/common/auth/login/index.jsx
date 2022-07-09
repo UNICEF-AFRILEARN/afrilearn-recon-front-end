@@ -23,15 +23,6 @@ const Login = () => {
 
   return (
     <>
-      <div className={styles.floatImg1}>
-        {/* <Image
-          alt={"design image"}
-          src={"/assets/img/common/login/HalfCircleBlack.png"}
-          width={86}
-          height={200}
-          className={styles.floatImg13}
-        /> */}
-      </div>
       <div className={styles.floatImg2}>
         <Image
           alt={"design image"}
