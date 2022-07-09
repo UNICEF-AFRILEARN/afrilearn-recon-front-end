@@ -4,7 +4,6 @@ import axios from "axios";
 
 export const loginUserStart = () => ({
     type: types.LOGIN_USER_START,
-    payload
 });
 
 export const loginUserSuccess = (token) => ({
@@ -32,8 +31,8 @@ export const loginInitiate = (email, password) => {
           password,
         })
         .then((res) => {
-          console.log("login response", res);
-          dispatch(loginUserSuccess(res.data.token))
+          console.log("login response", res.data.data);
+          dispatch(loginUserSuccess(res.data.data))
         })
         .catch((err) => dispatch(loginUserFail(err.res.data.message)))
   }

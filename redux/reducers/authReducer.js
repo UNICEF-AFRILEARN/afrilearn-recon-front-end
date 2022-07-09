@@ -68,6 +68,22 @@ const initialState = {
 
 const authReducer = (state = initialState, {type, payload}) => {
     switch (type) {
+        case types.LOGIN_USER_START:
+            return {
+                ...state,
+            }
+        
+        case types.LOGIN_USER_SUCCESS:
+            return {
+                ...state,
+                user: payload
+            }
+
+        case types.LOGIN_USER_FAIL:
+            return {
+                ...state,
+                error: payload
+            }
         case types.GET_ROLES_SUCCESS:
             return {
                 ...state,

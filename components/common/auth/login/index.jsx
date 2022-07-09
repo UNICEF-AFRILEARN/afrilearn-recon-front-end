@@ -1,25 +1,38 @@
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
 import { Form } from "react-bootstrap";
 import { useRouter } from "next/router";
+import { useNavigate } from "react-router-dom";
 import Link from "next/link";
 import styles from "./login.module.css";
 import Image from "next/image";
 import TextInput from "../../../widgets/appTextInput";
 import AppButton from "../../../widgets/buttons/AppButton";
-import React, { useState } from "react";
-// import { API } from "../../../../pages/api/client-side/fetcher";
+import { loginInitiate } from "../../../../redux/actions/auth";
 
 const Login = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const { user } = useSelector(state => state.auth)
 
+  // console.log("This is user role id =>", user.user.role)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
-  
+
+  // console.log(email)
   const signIn = (e) => {
     e.preventDefault();
+    dispatch(loginInitiate(email, password))
+    console.log(email, password)
 
-      router.push("/dashboard/student");
   };
+
+  useEffect(() => {
+    if(user.user?.role === '5fd08fba50964811309722d5'){
+      router.push("/dashboard/student");
+    }
+  }, [user])
+  
 
   return (
     <>
@@ -44,26 +57,24 @@ const Login = () => {
           <div className="col-xs-0 col-md-1 col-lg-3"> </div>
           <div className="col-xs-12 col-md-10 col-lg-6">
             <span className={styles.card}>
-              <h5 className={`center `} onClick={signIn}>
+              <h5 className={`center `} >
                 LOG IN
               </h5>
-              <form>
-                <TextInput
+              <Form onSubmit={signIn}>
+                <input
                   type="text"
                   value={email}
-                  onChange={(e) =>
-                    setEmail(e.target.value )
-                  }
+                  name='email'
+                  onChange={(e) => setEmail(e.target.value)}
                   title="Email"
                   placeholder="Email"
                   className={styles.pushDown}
                 />
-                <TextInput
+                <input
                   type="password"
-                  onChange={(e) =>
-                    setPassword(e.target.value )
-                  }
+                  onChange={(e) => setPassword(e.target.value)}
                   value={password}
+                  name='password'
                   title="Password"
                   placeholder="Password"
                 />
@@ -82,14 +93,12 @@ const Login = () => {
                   </div>
                 </div>
                 <div className={`row ${styles.pushDown1}`}>
-                  <Link passHref href="#">
                     <AppButton
                       title="LOGIN"
-                      onClick={signIn}
+                      type='submit'
                       secondary
                       className={styles.pushDown13}
                     />
-                  </Link>
                 </div>
                 <div className={`row ${styles.pushDown1}`}>
                   <p className={`center ${styles.socialSection}`}>
@@ -118,7 +127,7 @@ const Login = () => {
                     </span>
                   </div>
                 </div>
-              </form>
+              </Form>
             </span>
             <p className={`center ${styles.afterSocialText}`}>
               New to Afrilearn?{" "}
