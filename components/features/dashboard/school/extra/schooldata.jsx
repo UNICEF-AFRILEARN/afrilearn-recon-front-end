@@ -54,9 +54,7 @@ const Schooldata = () => {
                 <div className={`col-md-3 ${styles.schoolgroup}`}></div>
             </div>
             </div>
-           
             </div>
-            <div>
             <div className={` row ${styles.studentsection}`}> 
                 <div className={`col-md-2 ${styles.teacherHeading}`}><h4>Classmates</h4></div>
                 <div className={`col-md-4 ${styles.numberoffteacher}`}>{classmates?.numberofclassmates} Pupils</div>
@@ -77,8 +75,6 @@ const Schooldata = () => {
                 <div className={`col-md-3 ${styles.teacherdata}`}>{classmates?.studentEmail}</div>
                 <div className={`col-md-3 ${styles.schoolgroup}`}></div>
             </div>
-            </div>
-           
             </div>
             </div>
            
