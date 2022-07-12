@@ -1,91 +1,127 @@
 .videoheropage {
-    background: url("../../../../public/assets/img/classroomheroimg.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: #ffffff;
-    height: 30vh;
-    position: relative;
-  }
-  .avatarCoin {
-    background-image: url("../../../../public/assets/img/school/person_2\ 1.svg");
-    background-repeat: no-repeat;
-    border: 2px solid red;
-  }
-  .heroInputs {
-    box-shadow: 0px 0px 30px 5px rgba(184, 181, 181, 0.15);
-    height: 20vh;
-    padding: 2% 0 0 2%;
-    margin-left: 10%;
-    background-color: #ffffff;
+  background: url("../../../../public/assets/img/classroomheroimg.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #ffffff;
+  height: 30vh;
+  position: relative;
 }
-.heroinputsection{
-    position: absolute;
-   top: 270px;
-    width: 80%;
-    margin:0 auto ;
-    right:10%
+.avatarCoin {
+  background-image: url("../../../../public/assets/img/school/person_2\ 1.svg");
+  background-repeat: no-repeat;
+  border: 2px solid red;
+  /* margin-left: 15%; */
+  
 }
-.heroInputs h4{
-    font-weight: 700;
+.heroInputs {
+  box-shadow: 0px 0px 30px 5px rgba(184, 181, 181, 0.15);
+  height: 20vh;
+  padding: 2% 0 0 5%;
+  margin-left: 10%;
+  width: 65%;
+  background-color: #ffffff;
 }
-.heroInputs h5{
-    margin-right: 5%;
-
+.heroinputsection {
+  position: absolute;
+  top: 270px;
+  width: 80%;
+  margin: 0 auto;
+  right: 10%;
 }
-.inputdetails{
-    display: flex;
-    flex-direction: row !important;
-    margin-top: 3%;
+.heroInputs h4 {
+  font-weight: 700;
+}
+.heroInputs h5 {
+  margin-right: 5%;
+}
+.inputdetails {
+  display: flex;
+  flex-direction: row !important;
+  margin-top: 3%;
 }
 .studentProfileInfo {
-    background-color: white;
-    width: 100%;
-    height: 148px;
-    box-shadow: 0px 30px 40px rgba(212, 217, 232, 0.5);
-    border-radius: 10px;
-    align-content: center;
-    margin: auto;
-  }
-  
-  .studentProfileCrownTheme {
-    background: url("/assets/img/features/dashboard/student/crownTheme.png");
-    height: 50px;
-    width: 277px;
-    background-repeat: no-repeat;
-    background-position: 50%;
-    background-size: contain;
-  }
-  
-  .studentProfilePenIcon {
-    background: url("/assets/img/features/dashboard/student/Edit.png");
-    height: 18px;
-    width: 18px;
-    background-repeat: no-repeat;
-    background-position: 50%;
-    background-size: contain;
-  }
-  
-  .studentProfileCoinIcon {
-    background: url("/assets/img/features/dashboard/student/Group 2417.png");
-    height: 38px;
-    width: 43px;
-    background-repeat: no-repeat;
-    background-position: 50%;
-    background-size: contain;
-    border: 0;
-    margin: auto;
-  }
-  
-  .stateComponent {
-    background: url("/assets/img/features/dashboard/student/Location.png");
-    height: 24px;
-    width: 24px;
-    background-repeat: no-repeat;
-    background-position: 50%;
-    background-size: contain;
-    border: 0;
-    margin: auto;
-  }
-  .input1{
-padding-left: 5%;
-  }
+  background-color: white;
+  width: 100%;
+  height: 148px;
+  box-shadow: 0px 30px 40px rgba(212, 217, 232, 0.5);
+  border-radius: 10px;
+  align-content: center;
+  margin: auto;
+}
+
+.input1 {
+  padding-left: 5%;
+}
+.input2 {
+  margin-left: 5%;
+  color:#00D9B6;
+  border-bottom: 1px solid #00D9B6;
+}
+.Image {
+  background: url("../../../../public/assets/img/crown.svg");
+  height: 50px;
+  background-repeat: no-repeat;
+  margin-left: 29%;
+  width: 45%;
+}
+.personalSection {
+  margin: 10% 5% 0% 30%;
+  border-bottom: 1px solid #d4cece;
+font-weight: 700;
+padding-bottom: 1%;
+width: 50%;
+}
+.personalSection h5{
+font-weight: 600;
+}
+.dataSection{
+  margin-left: 30%;
+  margin-top: 3%;
+}
+.value{
+  font-weight: 600;
+}
+.datavalues{
+  margin-top: 3%;
+}
+.status{
+  margin-top: 3%;
+  font-weight: 600;
+  font-size: 24px;
+  border-bottom: 1px solid #d4cece;
+  font-weight: 700;
+  padding-bottom: 1%;
+  width: 75%;
+  display: flex;
+  flex-direction: row !important;
+}
+.referral{
+  margin-top: 3%;
+  font-weight: 600;
+  font-size: 24px;
+  width: 75% !important;
+  border-bottom: 1px solid #d4cece;
+  margin-bottom: 3%;
+}
+.refferalwords{
+  color:#A6A6A6;
+}
+.role{
+  margin-left: 60%;
+}
+.rolevalue{
+  font-weight: 600;
+  margin-left: 5%;
+}
+.mainstatus{
+  margin-left: 50%;
+}
+.valuebutton{
+  margin-left: 30%;
+  border:none;
+  height: 40px;
+width: 189px;
+border-radius: 20px;
+background-color: #00D9B6;
+color:#ffffff
+}
