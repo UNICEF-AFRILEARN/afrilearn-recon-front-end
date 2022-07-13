@@ -2,6 +2,7 @@ import styles from "../../school/profile.module.css";
 import Image from "next/image";
 import Link from "next/link";
 
+
 const Schoolprofile = () => {
     const schoolprofile  ={
         name: "Larin Comprehensive School",
@@ -69,9 +70,11 @@ const schooldata ={
             <div className={`row ${styles.referral}`}>Referral</div>
             <div className={styles.refferalwords}>Copy and share your referral code with friends and stand a chance to have access to free study materials</div>
         </div>
-     <div className="">
-        <div></div>
-        <div></div>
+     <div className={styles.profilelink}>
+            <input  placeholder="blzdblugzblujhbluybgfdliu"  className={styles.copylink} />
+            <button className={styles.linkbutton}>
+              COPY LINK
+            </button>
      </div>
      </div>
      
