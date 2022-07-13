@@ -32,14 +32,74 @@ const Navigation = () => {
                 Our Story 
               </div>}
 
-              {isLoggedIn && 
+              {!isLoggedIn && 
+              <div className={styles.parentloggedindash}>
+                <ul>
+            
+                <Link passHref href="/dashboard/parent" >
+                  <li>Dashboard</li>
+                </Link>
+                <Link passHref href="/dashboard/parent/addchild" >
+                    <li>Add My Child</li>
+                </Link>
+                <Link passHref href="/payment" >
+                    <li>Subscribe</li>
+                </Link>
+                <Link passHref href="/dashboard/parent/children"  >
+                    <li>My Children</li>
+                </Link>
+                <div className={styles.navicons}>
+                  <span><BsSearch /></span>
+                  <span><BsBell /></span>
+                  <span><AiOutlineSafetyCertificate /></span>
+                </div>
+              
+                </ul>
+                <Link passHref href="/register" className="btn-log-in-mobile">
+                  < BsPersonCircle size={30}/>
+              </Link>
+              </div>
+              }
+              {!isLoggedIn && 
+              <div className={styles.parentloggedindash}>
+                <ul>
+            
+                <Link passHref href="/dashboard/teacher" >
+                  <li>Dashboard</li>
+                </Link>
+                <Link passHref href="/payment" >
+                    <li>Subscribe</li>
+                </Link>
+                <Link passHref href="/dashboard/teacher/mystudents" >
+                    <li>My Students</li>
+                </Link>
+                <Link passHref href="/dashboard/teacher/classwork"  >
+                    <li>Classwork</li>
+                </Link>
+                
+                <Link passHref href="/dashboard/teacher/examination"  >
+                    <li>Examination</li>
+                </Link>
+                <div className={styles.navicons}>
+                  <span><BsSearch /></span>
+                  <span><BsBell /></span>
+                  <span><AiOutlineSafetyCertificate /></span>
+                </div>
+              
+                </ul>
+                <Link passHref href="/register" className="btn-log-in-mobile">
+                  < BsPersonCircle size={30}/>
+              </Link>
+              </div>
+              }
+              {!isLoggedIn && 
               <div className={styles.loggedindash}>
                 <ul>
             
                 <Link passHref href="/dashboard/student" >
                   <li>Dashboard</li>
                 </Link>
-                <Link passHref href="/login" >
+                <Link passHref href="/payment" >
                     <li>subscribe</li>
                 </Link>
                 <Link passHref href="/dashboard/performance"  >
@@ -50,12 +110,12 @@ const Navigation = () => {
                   <span><BsBell /></span>
                   <span><AiOutlineSafetyCertificate /></span>
                 </div>
-
+                  
                 </ul>
               </div>
               }
                 
-              {!isLoggedIn && <div className="inner-btn-nav-bar">
+              {isLoggedIn && <div className="inner-btn-nav-bar">
               <Link passHref href="/login" className="btn-log-in-mobile">
                   <AppButton title="LOG IN" className={styles.loginButton} />
               </Link>
@@ -64,7 +124,7 @@ const Navigation = () => {
               </Link>
 
               </div>}
-              {isLoggedIn && <div className="inner-btn-nav-bar">
+              {!isLoggedIn && <div className="inner-btn-nav-bar">
               {/* <Link passHref href="/login" className="btn-log-in-mobile">
                   <AppButton title="Log out" className={styles.loginButton} />
               </Link> */}
