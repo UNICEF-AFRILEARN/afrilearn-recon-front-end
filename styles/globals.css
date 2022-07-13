@@ -535,3 +535,9 @@ padding: 10px;
   background-position-y: 50%;
 }
 
+.btn-primary {
+  background-color: #00D9B6 !important;
+  border: none !important;
+  border-radius: 100px !important;
+  width: 100% !important
+}
