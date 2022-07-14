@@ -12,10 +12,7 @@ const Schooldasboard = () => {
     <div>
         <Schoolheropage/>
         <Schoolsubject/>
-        <div>
-            <h3 className={styles.heading2}>Past  Questions</h3> 
         <PastQuestion/> 
-        </div> 
        
     </div>
     </>
