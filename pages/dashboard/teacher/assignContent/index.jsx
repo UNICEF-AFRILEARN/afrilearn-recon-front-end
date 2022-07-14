@@ -1,5 +1,12 @@
 import Image from "next/image";
-import { Accordion, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
+import {
+  Accordion,
+  Col,
+  Container,
+  Form,
+  InputGroup,
+  Row,
+} from "react-bootstrap";
 import { Heropage } from "../../../../components/features/dashboard/teacher";
 import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
@@ -10,18 +17,11 @@ const AssignContent = () => {
   const [modalShow, setModalShow] = useState(false);
   return (
     <div>
-      <Heropage />
+      <HeroPageDetailed
+        datas={{ textH3: "Assign Study Content", textP: "Basic Technology" }}
+      />
+
       <Container>
-        <Row>
-          <Col style={{ marginTop: "-90px", zIndex: "2" }}>
-            <Row>
-              <h3 className="text-light">Assign Study Content</h3>
-            </Row>
-            <Row>
-              <p className="text-light">Basic Technology</p>
-            </Row>
-          </Col>
-        </Row>
         <Row className="mt-5">
           <Col
             className="mt-5"
@@ -133,6 +133,24 @@ const AssignContent = () => {
 
 export default AssignContent;
 
+export function HeroPageDetailed({datas}) {
+  console.log(datas.textH3);
+  return (
+    <>
+      <Heropage />
+      <Row className="ms-5 ps-5">
+        <Col style={{ marginTop: "-90px", zIndex: "2" }}>
+          <Row>
+            <h3 className="text-light">{datas.textH3}</h3>
+          </Row>
+          <Row>
+            <p className="text-light">{datas.textP}</p>
+          </Row>
+        </Col>
+      </Row>
+    </>
+  );
+}
 function MyVerticallyCenteredModal(props) {
   return (
     <Modal
@@ -219,15 +237,9 @@ const ClassNoteVideo = () => {
   console.log(classData[0][1]);
   return (
     <section>
-      <Accordion
-        className={styles.accord}
-      >
-        <Accordion.Item
-          eventKey={0}
-        >
-          <Accordion.Header
-            className={styles.accordHead}
-          >
+      <Accordion className={styles.accord}>
+        <Accordion.Item eventKey={0}>
+          <Accordion.Header className={styles.accordHead}>
             <span className={styles.accordance}></span> Geometrical Construction
             (1): Lines
           </Accordion.Header>
@@ -256,4 +268,3 @@ const ClassNoteVideo = () => {
     </section>
   );
 };
-
