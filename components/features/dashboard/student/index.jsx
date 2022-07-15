@@ -124,10 +124,8 @@ const Dashboard = () => {
   return (
     <>
       <StudentHeropage />
-      <div>
       <SubHeading title="My Subject" />
       <Subjects />
-      </div>
       <PastQuestion />
       <TopInClasses classData={datas} />
       <PerfomanceSumm />

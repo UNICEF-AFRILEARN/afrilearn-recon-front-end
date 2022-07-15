@@ -12,6 +12,7 @@ const Dashboard = () => {
   return (
     <div>
       <Heropage />
+      <HeropageWelcome />
       <div className="mt-5 pt-4">
         <Col>
           <Row
@@ -38,7 +39,7 @@ const Dashboard = () => {
 
 export default Dashboard;
 
-export const Heropage = () => {
+export const HeropageWelcome = () => {
   const teacher = {
     lastName: "Abraham",
     firstName: "Johnson",
@@ -46,10 +47,6 @@ export const Heropage = () => {
   };
   return (
     <>
-      <div
-        className={`container-fluid relative ${styles1.dashboardFirstSection3}`}
-        style={{ position: "relative" }}
-      ></div>
       <Row
         style={{
           position: "absolute",
@@ -138,6 +135,16 @@ export const Heropage = () => {
     </>
   );
 };
+export const Heropage = () => {
+  return (
+    <>
+      <div
+        className={`container-fluid relative ${styles1.dashboardFirstSection3}`}
+        style={{ position: "relative" }}
+      ></div>
+    </>
+  );
+};
 
 export const TeacherAnnouncement = () => {
   const monthNames = [
@@ -186,7 +193,6 @@ export const TeacherAnnouncement = () => {
     setTextInput({ teachTask: teachTask });
   };
 
-  console.log(textInput.teachTask);
   return (
     <Container>
       <Col

@@ -1,9 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 // import Video from "..";
 import styles from "../../classnote/classnote.module.css";
+import styles1 from "../../../../../../pages/dashboard/teacher/teacher.module.css";
 import styles2 from "../../topInClass.module.css";
 
 const VideoPage = () => {
@@ -28,7 +29,9 @@ const VideoPage = () => {
 
   const [visibility, setVisibility] = useState("Show");
 
-  // const lenReply = comments.reply.length;
+  const [show, setShow] = useState(false);
+  const target = useRef(null);
+
   return (
     <Container fluid>
       <Row>
@@ -63,7 +66,7 @@ const VideoPage = () => {
                 </Link>
               </div>
             </Col>
-            <Col>
+            <Col >
               <div className={styles.document}></div>
               <div className={styles.documentBottom}>Class Note</div>
             </Col>
@@ -75,8 +78,44 @@ const VideoPage = () => {
               <div className={styles.love}></div>
               <div className={styles.loveBottom}>I Love This</div>
             </Col>
-            <Col>
-              <div className={styles.moreIcon}></div>
+            <Col md={1}>
+              <div className={`m-auto ${styles1.moreIcon}`}>
+                <div
+                  style={{
+                    width: "200px",
+                    background: "#FFFFFF",
+                    boxShadow: "0px 1px 7px rgba(0, 0, 0, 0.1)",
+                    borderRadius: "10px",
+                    position: "absolute",
+                  }}
+                  className={styles1.displayNone}
+                >
+                  <Col className={`p-3 ps-3 `}>
+                    <Link passHref href="/dashboard/teacher/assignContent">
+                      <Row className="ps-3 pb-2">
+                        <Col className={`m-auto ${styles.highlightText}`}>
+                          Assign Content
+                        </Col>
+                      </Row>
+                    </Link>
+                    <Row className="ps-3 pb-2">
+                      <Col className={`m-auto ${styles.highlightText}`}>
+                        Community
+                      </Col>
+                    </Row>
+                    <Row className="ps-3 pb-2">
+                      <Col className={`m-auto ${styles.highlightText}`}>
+                        Bookmark
+                      </Col>
+                    </Row>
+                    <Row className="ps-3 pb-2">
+                      <Col className={`m-auto ${styles.highlightText}`}>
+                        Share
+                      </Col>
+                    </Row>
+                  </Col>
+                </div>
+              </div>
               <div className={styles.moreIconBottom}>More</div>
             </Col>
           </Row>
@@ -286,7 +325,6 @@ export const Comment = () => {
       </Row>
       <Row>
         <Col xs={3} md={2}>
-          {/* <div className={styles.commentAvatarRight}> */}
           <div className={styles.commentAvatarLSide}>
             <Image
               alt={"afrilearn marketing video"}
@@ -295,7 +333,6 @@ export const Comment = () => {
               height={45}
             />
           </div>
-          {/* </div> */}
         </Col>
         <Col xs={12} md={10} className={styles.commentAvatarRSide}>
           <div className={styles.commentAvatartop}>
@@ -402,10 +439,6 @@ export const NextPrevPage = ({ data }) => {
         <Col sm={5}>
           <Row className={` ${styles.accordButtonLeftExtr}`}>
             <Col sm={9} className="">
-              {/* <p className={`pl-5 ${styles.accordButtonLeftSide1}`}>Back to</p>
-                  <p className={styles.accordButtonLeftSide2}>
-                    Subject Page
-                  </p> */}
             </Col>
             <Col sm={1} className="mt-2">
               <div className={styles.accordButtonLeft2}></div>
