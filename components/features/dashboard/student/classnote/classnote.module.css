@@ -10,6 +10,10 @@
   margin: 50px 100px;
 }
 
+.accordHead:focus{
+  border:none;
+}
+
 .accordance {
   background-image: url("/assets/img/features/dashboard/student/button2.png");
   background-repeat: no-repeat;
@@ -34,12 +38,12 @@
   background-image: url("/assets/img/features/dashboard/student/Document.png");
 }
 
+
 .moreIcon {
   background-image: url("/assets/img/features/dashboard/student/Group2121.png");
   width: 7px;
   height: 25px;
 }
-
 .love {
   background-image: url("/assets/img/features/dashboard/student/Heart.png");
 }

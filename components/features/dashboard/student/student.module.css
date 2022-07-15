@@ -25,6 +25,11 @@
     url("./../../../../public/assets/img/features/dashboard/student/student.png");
   height: 280px;
 }
+.dashboardFirstSection3 {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.17), rgba(0, 0, 0, 0.99)),
+    url("./../../../../public/assets/img/features/dashboard/teacher/classroom-2787754_1920 1.png");
+  height: 280px;
+}
 
 .myModal,
 .modalSecond1,

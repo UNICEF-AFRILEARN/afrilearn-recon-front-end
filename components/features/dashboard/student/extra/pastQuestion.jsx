@@ -5,7 +5,7 @@ import { useRef } from "react";
 import Slider from "react-slick";
 import Link from "next/link";
 
-const pastQuestion = () => {
+const PastQuestion = () => {
   const features = [
     {
       logo: "WAEC",
@@ -114,4 +114,4 @@ const pastQuestion = () => {
   );
 };
 
-export default pastQuestion;
+export default PastQuestion;
