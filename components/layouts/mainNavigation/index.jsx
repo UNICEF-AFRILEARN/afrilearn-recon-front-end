@@ -12,7 +12,7 @@ import { BsPersonCircle } from 'react-icons/bs';
 
 const Navigation = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [userRole, setUserRole] = useState(null);
+  const [userRole, setUserRole] = useState("not_login");
   const { user } = useSelector(state => state.auth)
 
   
@@ -38,7 +38,7 @@ const Navigation = () => {
 
           <Nav className="me-auto">
             {/* <div className='main-navbar-with-login'> */}
-            {userRole === '1' &&
+            {userRole === "not_login" &&
               <div className="our-story-frag">
                 Our Story 
               </div>}

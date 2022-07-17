@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import Link from "next/link";
 import styles from "./student.module.css";
+import { fetchCourseInitiate } from "../../../../redux/actions/courses";
 
 // import SubHeading from "./extra/subHeading";
 
@@ -58,10 +59,20 @@ export default studentHeropage;
 
 export const StudentPage = ({ stuData }) => {
   const { user }  = useSelector(state => state.auth);
+  const courses = useSelector(state => state.Mycourses);
+  const dispatch = useDispatch();
+
+  console.log("Courses from UI =>>>", courses)
   console.log("From student dashboard", user.user?.enrolledCourses[0].courseId.name)
   const greetings = (firstName) => {
     return `Welcome ${firstName}!`;
   };
+
+useEffect(() => {
+  dispatch(fetchCourseInitiate())
+}, [fetchCourseInitiate])
+
+
   return (
     <>
       <div
