@@ -14,16 +14,14 @@ const Login = () => {
   const dispatch = useDispatch();
   const { user } = useSelector(state => state.auth)
 
-  // console.log("This is user role id =>", user.user.role)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
 
-  // console.log(email)
+
   const signIn = (e) => {
     e.preventDefault();
     dispatch(loginInitiate(email, password))
-    console.log(email, password)
 
   };
 
