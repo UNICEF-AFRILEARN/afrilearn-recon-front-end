@@ -27,7 +27,7 @@ const HomePage = () => {
             <div className={`row ${styles.afterSubHeading}`}>
               <div className={`col-md-4 ${styles.afterSubHeading_button}`}>
                 <span className={styles.joinForFree}>
-                  <Link passHref href="/">
+                  <Link passHref href="/register">
                     JOIN FOR FREE
                   </Link>
                 </span>
@@ -113,7 +113,7 @@ const GameIntro = () => {
               <div className={`row ${styles.afterSubHeading}`}>
                 <div className="col-md-6">
                   <button className={styles.joinForGames} >
-                    <Link passHref href=" /quiz">
+                    <Link passHref href=" /register">
                       JOIN FOR FREE
                     </Link>
                   </button>

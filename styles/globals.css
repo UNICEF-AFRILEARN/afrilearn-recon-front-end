@@ -610,7 +610,7 @@ padding: 10px;
 
 .get-trial-pic{
 
-  /* background-image: url('Premium.png'); */
+  background-image: url("/assets/img/Premium.png");
   background-repeat:no-repeat;
   background-size: cover;
  background-position: 50px , 50px;
@@ -620,7 +620,7 @@ padding: 10px;
 
 
 .get-trial-list-check {
-  /* list-style-image: url('Union.png'); */
+  list-style-image: url('/assets/img/Union.png');
 }
 
 .get-trial button {
