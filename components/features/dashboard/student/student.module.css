@@ -298,3 +298,19 @@
   box-shadow: 0px 0.648094px 4.53666px rgba(0, 0, 0, 0.15);
   border-radius: 9.72141px;
 }
+  padding: 7px;
+}
+
+.pastQuestionh1 {
+  font-weight: 700;
+  font-size: 72px;
+  line-height: 94px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.modalBodyButton:hover {
+  border: 1px solid #00d9b6;
+  box-shadow: 0px 0.648094px 4.53666px rgba(0, 0, 0, 0.15);
+  border-radius: 9.72141px;
+}

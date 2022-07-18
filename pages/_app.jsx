@@ -4,7 +4,7 @@ import '../styles/globals.css'
 import Layout from '../components/layouts'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { wrapper, store } from "../store/store";
+import { wrapper, store } from "../redux/store";
 import { Provider } from "react-redux";
 
 function MyApp({ Component, pageProps } ) {

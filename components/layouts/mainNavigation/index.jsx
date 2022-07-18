@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
 import { Navbar, Container, Nav } from "react-bootstrap";
 import Link from "next/link";
 import { BsSearch, BsBell } from 'react-icons/bs';
@@ -11,6 +12,15 @@ import { BsPersonCircle } from 'react-icons/bs';
 
 const Navigation = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [userRole, setUserRole] = useState("not_login");
+  const { user } = useSelector(state => state.auth)
+
+  
+  
+  useEffect(() => {
+    console.log("From main navebar", user.user?.role)
+    setUserRole(user.user?.role)
+  }, [user])
 
   return (
     <Navbar
@@ -28,11 +38,12 @@ const Navigation = () => {
 
           <Nav className="me-auto">
             {/* <div className='main-navbar-with-login'> */}
-            {!isLoggedIn && <div className="our-story-frag">
+            {userRole === "not_login" &&
+              <div className="our-story-frag">
                 Our Story 
               </div>}
 
-              {!isLoggedIn && 
+              {userRole === '1' &&
               <div className={styles.parentloggedindash}>
                 <ul>
             
@@ -60,7 +71,7 @@ const Navigation = () => {
               </Link>
               </div>
               }
-              {isLoggedIn && 
+              {userRole === '1' &&
               <div className={styles.parentloggedindash}>
                 <ul>
             
@@ -92,7 +103,7 @@ const Navigation = () => {
               </Link>
               </div>
               }
-              {!isLoggedIn && 
+              {userRole === '5fd08fba50964811309722d5' &&
               <div className={styles.loggedindash}>
                 <ul>
             
@@ -115,7 +126,8 @@ const Navigation = () => {
               </div>
               }
                 
-              {!isLoggedIn && <div className="inner-btn-nav-bar">
+              { userRole === '1' &&
+              <div className="inner-btn-nav-bar">
               <Link passHref href="/login" className="btn-log-in-mobile">
                   <AppButton title="LOG IN" className={styles.loginButton} />
               </Link>
@@ -124,7 +136,7 @@ const Navigation = () => {
               </Link>
 
               </div>}
-              {!isLoggedIn && <div className="inner-btn-nav-bar">
+              {<div className="inner-btn-nav-bar">
               {/* <Link passHref href="/login" className="btn-log-in-mobile">
                   <AppButton title="Log out" className={styles.loginButton} />
               </Link> */}
