@@ -60,7 +60,7 @@ const Navigation = () => {
               </Link>
               </div>
               }
-              {!isLoggedIn && 
+              {isLoggedIn && 
               <div className={styles.parentloggedindash}>
                 <ul>
             
@@ -77,7 +77,7 @@ const Navigation = () => {
                     <li>Classwork</li>
                 </Link>
                 
-                <Link passHref href="/dashboard/teacher/examination"  >
+                <Link passHref href="/dashboard/teacher/examinations"  >
                     <li>Examination</li>
                 </Link>
                 <div className={styles.navicons}>
@@ -115,7 +115,7 @@ const Navigation = () => {
               </div>
               }
                 
-              {isLoggedIn && <div className="inner-btn-nav-bar">
+              {!isLoggedIn && <div className="inner-btn-nav-bar">
               <Link passHref href="/login" className="btn-log-in-mobile">
                   <AppButton title="LOG IN" className={styles.loginButton} />
               </Link>

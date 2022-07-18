@@ -649,3 +649,7 @@ padding: 10px;
   border-radius: 100px !important;
   width: 100% !important
 }
+.form-check-input:checked {
+  background-color: #00D9B6 !important;
+  border-color: #00D9B6 !important;
+}
