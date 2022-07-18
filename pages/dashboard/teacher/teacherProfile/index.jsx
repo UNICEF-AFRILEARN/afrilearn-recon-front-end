@@ -1,11 +1,12 @@
-import Head from "next/head";
+import Head from 'next/head';
 import StudentProfileComponent from "../../../../components/features/dashboard/student/studentProfile";
 
-const StudentProfile = () => {
+
+const TeacherProfile = () => {
   return (
     <>
       <Head>
-        <title>Student Profile | Myafrilearn.com</title>
+        <title>Teacher Profile | Myafrilearn.com</title>
         <meta
           name="description"
           content="Afrilearn is on a mission to provide affordable, world-class education for Africans, anywhere."
@@ -14,6 +15,6 @@ const StudentProfile = () => {
       <StudentProfileComponent />
     </>
   );
-};
+}
 
-export default StudentProfile;
+export default TeacherProfile
