@@ -610,8 +610,7 @@ padding: 10px;
 
 .get-trial-pic{
 
-  background-image: url("/assets/img/Premium.png"
-  );
+  background-image: url("/assets/img/Premium.png");
   background-repeat:no-repeat;
   background-size: cover;
  background-position: 50px , 50px;
@@ -649,4 +648,8 @@ padding: 10px;
   border: none !important;
   border-radius: 100px !important;
   width: 100% !important
+}
+.form-check-input:checked {
+  background-color: #00D9B6 !important;
+  border-color: #00D9B6 !important;
 }

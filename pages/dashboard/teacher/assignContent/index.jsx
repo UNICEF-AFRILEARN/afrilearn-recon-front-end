@@ -24,7 +24,7 @@ const AssignContent = () => {
       <Container>
         <Row className="mt-5">
           <Col
-            className="mt-5"
+            className="mt-5 m-4"
             style={{
               background: "#FAFAFA",
 
@@ -34,8 +34,8 @@ const AssignContent = () => {
             <textarea
               id="w3review"
               name="assignContent"
-              rows="4"
-              cols="50"
+              rows="8"
+              cols="65"
               style={{
                 background: "#FAFAFA",
                 borderRadius: "10px",
@@ -43,9 +43,7 @@ const AssignContent = () => {
                 padding: "20px",
                 marginLeft: "100px",
                 outline: "none",
-                // position: "relative",
-                width: "708px",
-                height: "507px",
+                // width: "%",
               }}
               placeholder="Input study description"
             ></textarea>
@@ -64,14 +62,15 @@ const AssignContent = () => {
               />
             </div>
           </Col>
-          <Col className="mt-5">
-            <Row>
+          <Col md={4} className="mt-5 m-4 p-0">
+            <Row >
               <Col md={11}>
                 <h4>Attachment</h4>
               </Col>
               <Col
                 onClick={() => setModalShow(true)}
                 style={{ cursor: "pointer" }}
+                className="p-0"
               >
                 <h4>+</h4>
               </Col>
@@ -92,7 +91,7 @@ const AssignContent = () => {
                   <p className="text-secondary">Lesson 1</p>
                 </Row>
               </Col>
-              <Col className="text-secondary">x</Col>
+              <Col className="text-secondary p-0">x</Col>
             </Row>
             <Row className="mt-5">
               <Col md={11}>
@@ -133,8 +132,7 @@ const AssignContent = () => {
 
 export default AssignContent;
 
-export function HeroPageDetailed({datas}) {
-  console.log(datas.textH3);
+export function HeroPageDetailed({ datas }) {
   return (
     <>
       <Heropage />

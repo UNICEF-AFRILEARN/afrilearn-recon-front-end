@@ -1,74 +1,39 @@
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
 import { Form } from "react-bootstrap";
 import { useRouter } from "next/router";
+import { useNavigate } from "react-router-dom";
 import Link from "next/link";
 import styles from "./login.module.css";
 import Image from "next/image";
 import TextInput from "../../../widgets/appTextInput";
 import AppButton from "../../../widgets/buttons/AppButton";
-import React, { useState } from "react";
-// import { API } from "../../../../pages/api/client-side/fetcher";
+import { loginInitiate } from "../../../../redux/actions/auth";
 
 const Login = () => {
-  // const dispatch = useDispatch();
-  const loginDetails = [
-    {
-      id: "1",
-      userName: "Kiyoonewton",
-      email: "kiyoonewton41@gmail.com",
-      password: "1234",
-    },
-  ];
+  const dispatch = useDispatch();
+  const { user } = useSelector(state => state.auth)
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
-  
+
+
   const signIn = (e) => {
     e.preventDefault();
-    // console.log(email, password);
-    // const log = loginDetails[0];
-    // if (email === log.email && password === log.password) {
-      router.push("/dashboard/student");
-      // dispatch(getUsername(log.userName));
-    // }
+    dispatch(loginInitiate(email, password))
+
   };
 
-  // const register = (e) => {
-  //   e.preventDefault();
-  //   alert(
-  //     "you can only use 'kiyoonewton41@gmail.com' as email and '1234' as password "
-  //   );
+  useEffect(() => {
+    if(user.user?.role === '5fd08fba50964811309722d5'){
+      router.push("/dashboard/student");
+    }
+  }, [user])
+  
 
-  // const userInfo = {};
-  // const handleChange = (key, value) => (userInfo[key] = value);
-  // const startLogin = () => {
-  //   API.loginDefault(userInfo).then(
-  //     ({ error, status, fieldsErrors, user, token }) => {
-  //       status === "success" || 200
-  //         ? console.log(
-  //             `Login status\n ${status}\n`,
-  //             `User Profile\n ${JSON.stringify(user, null, 2)}\n`,
-  //             `Token\n ${token}`,
-  //           )
-  //         : console.log(
-  //             `Login status\n ${status}\n`,
-  //             `Error Message\n ${error}\n`,
-  //             `Fields Errors\n ${fieldsErrors}`,
-  //           );
-  //     },
-  //   );
-  // };
   return (
     <>
-      <div className={styles.floatImg1}>
-        {/* <Image
-          alt={"design image"}
-          src={"/assets/img/common/login/HalfCircleBlack.png"}
-          width={86}
-          height={200}
-          className={styles.floatImg13}
-        /> */}
-      </div>
       <div className={styles.floatImg2}>
         <Image
           alt={"design image"}
@@ -90,26 +55,24 @@ const Login = () => {
           <div className="col-xs-0 col-md-1 col-lg-3"> </div>
           <div className="col-xs-12 col-md-10 col-lg-6">
             <span className={styles.card}>
-              <h5 className={`center `} onClick={signIn}>
+              <h5 className={`center `} >
                 LOG IN
               </h5>
-              <form>
-                <TextInput
+              <Form onSubmit={signIn}>
+                <input
                   type="text"
                   value={email}
-                  onChange={(e) =>
-                    setEmail(e.target.value )
-                  }
+                  name='email'
+                  onChange={(e) => setEmail(e.target.value)}
                   title="Email"
                   placeholder="Email"
                   className={styles.pushDown}
                 />
-                <TextInput
+                <input
                   type="password"
-                  onChange={(e) =>
-                    setPassword(e.target.value )
-                  }
+                  onChange={(e) => setPassword(e.target.value)}
                   value={password}
+                  name='password'
                   title="Password"
                   placeholder="Password"
                 />
@@ -128,14 +91,12 @@ const Login = () => {
                   </div>
                 </div>
                 <div className={`row ${styles.pushDown1}`}>
-                  <Link passHref href="#">
                     <AppButton
                       title="LOGIN"
-                      onClick={signIn}
+                      type='submit'
                       secondary
                       className={styles.pushDown13}
                     />
-                  </Link>
                 </div>
                 <div className={`row ${styles.pushDown1}`}>
                   <p className={`center ${styles.socialSection}`}>
@@ -164,7 +125,7 @@ const Login = () => {
                     </span>
                   </div>
                 </div>
-              </form>
+              </Form>
             </span>
             <p className={`center ${styles.afterSocialText}`}>
               New to Afrilearn?{" "}

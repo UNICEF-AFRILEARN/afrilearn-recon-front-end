@@ -10,8 +10,8 @@
   margin: 50px 100px;
 }
 
-.accordHead:focus{
-  border:none;
+.accordHead:focus {
+  border: none;
 }
 
 .accordance {
@@ -37,7 +37,6 @@
 .document {
   background-image: url("/assets/img/features/dashboard/student/Document.png");
 }
-
 
 .moreIcon {
   background-image: url("/assets/img/features/dashboard/student/Group2121.png");
@@ -127,8 +126,6 @@
   width: fit-content;
   height: fit-content;
   margin: 7px;
-
-  /* display: flex; */
 }
 
 .accordLeft {
@@ -275,8 +272,13 @@
 .lovedtext {
   color: #00d9b6;
   font-size: 20px;
+  cursor: "pointer";
 }
 
 .highlightText:hover {
   color: #00d9b6;
+}
+
+.colSeentext {
+  cursor: "pointer";
 }

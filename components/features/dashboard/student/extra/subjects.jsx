@@ -33,7 +33,6 @@ const Subjects = () => {
                 height={70}
               />
               <p>Agricultural Science</p>
-              {/* { openModal && <SubjectModal />} */}
             </button>
           </div>
           <div className={`col-md-2 ${styles.mySubjectt}`}>
@@ -247,20 +246,10 @@ const Subjects = () => {
 
       <Modal
         size="xl"
-        // aria-labelledby="contained-modal-title-vcenter"
         centered
         show={show}
         onHide={toggleModal}
-        // rounded-0
-        // contentClassName={styles.myModal}
-        // ClassName={`rounded mb-1 ${styles.myModal}`}
-        // className="rounded  w-100 p-3"
-        // style={{ borderRadius: "10px !important" }}
       >
-        {/* <Modal.Header style={{ backgroundColor: "red" }}>
-          {/* <CloseButton variant="white" /> */}
-        {/* <Modal.Title>Modal heading</Modal.Title> */}
-        {/* </Modal.Header> */}
         <Modal.Body className={`p-0 ${styles.modalSecon}`}>
           <SubjectModal className="p-0" />
         </Modal.Body>
@@ -277,30 +266,6 @@ const Subjects = () => {
 const SubjectModal = () => {
   return (
     <>
-      {/* <div className={`container-fluid `}>
-
-      <div
-        style={{ borderRadius: "20px" }}
-        className={`row ${styles.modalHero2}`}
-      > */}
-
-      {/* <h1>{data?.subject}</h1>
-          <div className="modalSec">
-            <h5 className="">{data?.title}</h5>
-            <p>Explore the fun in learning</p>
-            <h6>
-              <Image
-                alt={"design image"}
-                src={"/assets/img/features/dashboard/student/crown.png"}
-                width={"23.04 px"}
-                height={"18.48px"}
-              />
-              Activate Afrilearn Pro
-            </h6> */}
-
-      {/* </div> */}
-      {/* </div> */}
-
       <Container fluid>
         <Row>
           <Col className="p-0">
@@ -334,7 +299,7 @@ const SubjectModal = () => {
               </div>
             </div>
           </div>
-          <div className="p-5 pt-0">
+          <div className="p-5 pt-0" style={{cursor:"pointer"}}>
             <Link passHref href="/dashboard/student/video">
               <div className={`row ${styles.modalThird}`}>
                 <div className="col-md-2">

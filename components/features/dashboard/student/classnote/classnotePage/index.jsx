@@ -1,12 +1,40 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { Accordion, Col, Container, Row } from "react-bootstrap";
+import styles from "../../../../../../pages/dashboard/teacher/teacher.module.css";
+
 import styles1 from "../../../student/student.module.css";
 import styles2 from "../../classnote/classnote.module.css";
 import { Comment, NextPrevPage } from "../../video/videoPage";
 
+import { useRouter } from "next/router";
+
 const ClassnotePage = () => {
+  const router = useRouter();
+  let clickLikes = 124;
+
+  const [like, setlike] = useState({
+    likes: clickLikes,
+    updated: false,
+  });
+  const updateLikes = () => {
+    if (!like.updated) {
+      setlike((prevState) => {
+        return {
+          likes: prevState.likes + 1,
+          updated: true,
+        };
+      });
+    } else {
+      setlike((prevState) => {
+        return {
+          likes: prevState.likes - 1,
+          updated: false,
+        };
+      });
+    }
+  };
   const stuData = [{ subject: "Geometrical Construction: Angles" }];
 
   const iconData = [
@@ -92,24 +120,26 @@ const ClassnotePage = () => {
         </Col>
       </Row>
       <Row className="px-5">
-        <Col sm={7}>
+        <Col md={6}>
           <Row className="p-5">
-            <Col sm={5}>
+            <Col
+              sm={5}
+              onClick={() => router.back()}
+              style={{ cursor: "pointer" }}
+            >
               {" "}
               <div className={styles2.accordButtonLeft}>
-                <Link href="/dashboard/student/video/videoPage">
-                  <div className={styles2.buttonStyle}>
-                    <div className={`p-1 ${styles2.buttonStyleImage}`}>
-                      <Image
-                        alt={"afrilearn marketing video"}
-                        src={`/assets/img/features/dashboard/student/Vector.png`}
-                        width={25}
-                        height={10}
-                      />
-                    </div>
-                    {"   "}Go back to lesson
+                <div className={styles2.buttonStyle}>
+                  <div className={`${styles2.buttonStyleImage}`}>
+                    <Image
+                      alt={"afrilearn marketing video"}
+                      src={`/assets/img/features/dashboard/student/Vector.png`}
+                      width={25}
+                      height={10}
+                    />
                   </div>
-                </Link>
+                  <p className="m-0">Go back to lesson</p>
+                </div>
               </div>
             </Col>
             <Col>
@@ -118,29 +148,79 @@ const ClassnotePage = () => {
                 Text to Speech
               </div>
             </Col>
-            <Col>
+            <Col style={{ cursor: "pointer" }} onClick={updateLikes}>
               <div className={styles2.love}></div>
-              <div className={`text-secondary ${styles2.loveBottom}`}>
+              <div
+                className={`text-secondary ${styles2.loveBottom}`}
+              >
                 I Love This
               </div>
             </Col>
+            <Col md={1} className="mt-2">
+              <div className={`m-auto ${styles.moreIcon}`}>
+                <div
+                  style={{
+                    width: "200px",
+                    background: "#FFFFFF",
+                    boxShadow: "0px 1px 7px rgba(0, 0, 0, 0.1)",
+                    borderRadius: "10px",
+                    position: "absolute",
+                  }}
+                  className={styles.displayNone}
+                >
+                  <Col className={`p-3 ps-3 `}>
+                    <Link passHref href="/dashboard/teacher/assignContent">
+                      <Row className="ps-3 pb-2">
+                        <Col className={`m-auto ${styles2.highlightText}`}>
+                          Assign Content
+                        </Col>
+                      </Row>
+                    </Link>
+                    <Row className="ps-3 pb-2">
+                      <Col className={`m-auto ${styles2.highlightText}`}>
+                        Community
+                      </Col>
+                    </Row>
+                    <Row className="ps-3 pb-2">
+                      <Col className={`m-auto ${styles2.highlightText}`}>
+                        Bookmark
+                      </Col>
+                    </Row>
+                    <Row className="ps-3 pb-2">
+                      <Col className={`m-auto ${styles2.highlightText}`}>
+                        Share
+                      </Col>
+                    </Row>
+                  </Col>
+                </div>
+              </div>
+              <div className={styles2.moreIconBottom} style={{ color: "gray" }}>
+                More
+              </div>
+            </Col>
           </Row>
-          <Row className="px-5" xs={4} md={8} lg={12}>
+          <Row className="px-5">
             <Col className={styles2.colSeen}>
               <div className={`pl-5 pr-5 ${styles2.seen}`}></div>
 
-              <div className="text-secondary">1240 Views</div>
+              <div className="text-secondary">{1240} Views</div>
             </Col>
             <Col className={styles2.colSeen}>
-              <div className={`pl-5 pr-5 ${styles2.loved}`}></div>
-              <div className="text-secondary">1.5k Love</div>
+              <div className={`pl-5 pr-5 text-danger ${styles2.loved}`}></div>
+              <div className="text-secondary">{like.likes}k Love</div>
             </Col>
             <Col></Col>
-            <Col sm={4} className={`text-right ${styles2.colSeentext}`}>
-              <div className={` ${styles2.lovedtext}`}>
-                <u>Go to comments</u>
-              </div>
-            </Col>
+            <Link href="#comment">
+              <Col
+                md={4}
+                className={`text-right ${styles2.colSeentext}`}
+                style={{ cursor: "pointer" }}
+              >
+                <div className={`${styles2.lovedtext}`}>
+                  <u>Go to comments</u>
+                </div>
+              </Col>
+            </Link>
           </Row>
           <Row>
             {text[0].map((text, i) => (
@@ -157,7 +237,7 @@ const ClassnotePage = () => {
             ))}
           </Row>
           <Row>
-            <NextPrevPage data={iconData}/>
+            <NextPrevPage data={iconData} />
           </Row>
         </Col>
         <Col>
@@ -191,10 +271,9 @@ const ClassnotePage = () => {
             </div>
           </Row>
         </Col>
-
       </Row>
       <Row className="border-top mt-2">
-        <Col className="px-5 mt-3">
+        <Col className="px-5 mt-3" id="comment">
           <Comment />
         </Col>
         <Col className="px-5 mt-3"></Col>

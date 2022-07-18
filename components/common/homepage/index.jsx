@@ -204,6 +204,12 @@ const CrossPlatform = () => {
 };
 
 const JoinLeague = () => {
+  const router = useRouter();
+
+  const registerUser = () => {
+      router.push('/register')
+  }
+  
   const example = [
     {
       id: 1,
@@ -277,7 +283,7 @@ const JoinLeague = () => {
                       ))}
                     </ul>
                   </div>
-                  <button>{examp.button}</button>
+                  <button onClick={registerUser}>{examp.button}</button>
                 </div>
               </>
             );

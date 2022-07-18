@@ -9,11 +9,22 @@ import Selectitem from '../../../widgets/appSelect/appSelect';
 import ReactModal from 'react-modal'
 import { Button, Modal } from 'react-bootstrap';
 
-import { fetchRoles } from "../../../../store/actions/auth";
+import { fetchRoles } from "../../../../redux/actions/auth";
 
 import {API} from '../../../../pages/api/client-side/fetcher';
 
 const Register = (props) => {
+  const [roleSelected, setRoleSelected] = useState('');
+  const [courseSelected, setCourseSelected] = useState('');
+  const [fullName, setFullName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [referralCode, setReferralCode] = useState('');
+
+
+
   const [fullscreen, setFullscreen] = useState(true);
   const [show, setShow] = useState(false);
   const rolesCollected = useSelector((state) => state.auth)
@@ -25,27 +36,27 @@ const Register = (props) => {
   }
   
   // const profile = {}
-  const rolesContext = rolesCollected.roles.data.roles;
-  const courseContext = rolesCollected.roles.data.courses;
+  const rolesContext = rolesCollected.roles.roles;
+  const courseContext = rolesCollected.roles.courses;
   console.log("courses from the UI ==>", courseContext);
 
-  const handleChanges = (value) => {
-      console.log(value)
+  // const handleChanges = (value) => {
+      // console.log("vlaue received =>", value)
     // profile[key] = value
     // console.log('User Signup Profile\n', profile)
-  }
+  // }
 
   const handleRegisterRequest = (e) => {
     e.preventDefault()
-    console.log(e)
+    console.log(roleSelected)
+    console.log(courseSelected)
+    console.log(fullName)
+    console.log(phone)
+    console.log(email)
+    console.log(password)
+    console.log(confirmPassword)
+    console.log(referralCode)
 
-    // API.registerUser(profile).then((data) => {
-    //   console.log('Registeration completed', !data?.isError)
-    //   data?.isError ? console.log("Fields Errors:\n", data?.fieldsErrors) : console.log(data?.registerUser) 
-    //   return data
-    // })
-    //Modal is displayed here after successful or failed registration....
-    setShow(true);
   }
 
 
@@ -72,19 +83,90 @@ const Register = (props) => {
             <span className={styles.card}>
               <h5 className="center">CREATE AN ACCOUNT</h5>
               <form onSubmit={handleRegisterRequest}>
-                <Selectitem data={rolesContext} onChange={(value) => handleChanges('role', value)} placeholder='Select a Role' className={styles.pushDown} />
-                <Selectitem data={courseContext} onChange={(value) => handleChanges('class', value)} placeholder='Select Class' className={styles.pushDown} />
-                <TextInput name={'fullName'} type='text' onChange={(value) => handleChanges('fullName', value)} title='Full Name' placeholder='Full Name' className={styles.pushDown} />
-                <TextInput name={'phone'} type='text' onChange={(value) => handleChanges('phone', value)} title='Phone Number' placeholder='Phone Number' className={styles.pushDown} />
-                <TextInput name={'email'} type='text' onChange={(value) => handleChanges('email', value)} title='Email' placeholder='Email' className={styles.pushDown} />
-                <TextInput name={'password'} type='password' onChange={(value) => handleChanges('password', value)} title='Password' placeholder='Password' />
-                <TextInput name={'confirmPassword'} type='password' onChange={(value) => handleChanges('confirmPassword', value)} title='Confirm Password' placeholder='Confirm Password' />
-                <TextInput name={'referralCode'} type='text' onChange={(value) => handleChanges('referralCode', value)} title='Referral Code' placeholder='Referral Code (optional)' className={`${styles.pushDown} ${styles.pushUp}`} />
+                  <select
+                    value={roleSelected}
+                    onChange={(e) => setRoleSelected(e.target.value)}
+                    className={`${styles.pushDown} form-control form-control-sm`}
+                    defaultValue={"default"}
+                    >
+                      <option value={"default"}>
+                         Select a Role
+                      </option>
+           
+                      {rolesContext && rolesContext.map((role) => 
+                      <option  
+                        placeholder='Select a Role'
+                        >{role.name}
+                      </option>
+                      )}
+                  </select>
+                  <select 
+                    onChange={(e) => setCourseSelected(e.target.value)}
+                    className={`${styles.pushDown} form-control form-control-sm`}
+                    defaultValue={"default"}
+                    >
+                      <option value={"default"}>
+                         Select a Class
+                      </option>
+                      {courseContext && courseContext.map((classes) => 
+                      <option
+                      value={classes.name}
+                      >{classes.name}</option>
+                      )}
+                  </select>
+                <input 
+                  name={'fullName'} 
+                  type='text'
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)} 
+                  title='Full Name' 
+                  placeholder='Full Name' 
+                  className={styles.pushDown} 
+                />
+                <input 
+                  name={'phone'} 
+                  type='text'
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)} 
+                  title='Phone Number' 
+                  placeholder='Phone Number' 
+                  className={styles.pushDown} 
+                />
+                <input 
+                  name={'email'} 
+                  type='text'
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)} 
+                  title='Email' 
+                  placeholder='Email' 
+                  className={styles.pushDown} 
+                />
+                <input 
+                  name={'password'} 
+                  type='password'
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)} 
+                  title='Password' 
+                  placeholder='Password' 
+                />
+                <input 
+                  name={'confirmPassword'} 
+                  type='password'
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)} title='Confirm Password' 
+                  placeholder='Confirm Password' 
+                />
+                <input 
+                  name={'referralCode'}
+                  value={referralCode}
+                  type='text' 
+                  onChange={(e) => setReferralCode(e.target.value)} title='Referral Code' 
+                  placeholder='Referral Code (optional)' 
+                  className={`${styles.pushDown} ${styles.pushUp}`} 
+                />
                 <p>By signing up, you agree to our <Link passHref href='/'><b>Terms and Privacy Policy</b></Link></p>
                 <div className={`row ${styles.pushDown1}`}>
-                  <Link passHref href="#">
                     <AppButton title="LOGIN" secondary type='submit' />
-                  </Link>
                 </div>
                 <div className={`row ${styles.pushDown1}`}>
                   <p className={`center ${styles.socialSection}`}><small>Or sign up with</small></p>
