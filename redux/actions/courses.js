@@ -26,7 +26,7 @@ export const fetchCourseInitiate = () =>  {
             dispatch(fetchCoursesSuccess(res))
         })
         .then((err) => {
-            console.log(err.data.message)
+            // console.log(err.data?.message)
         } )
     }
 
