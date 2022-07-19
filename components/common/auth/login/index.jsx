@@ -29,6 +29,18 @@ const Login = () => {
     if(user.user?.role === '5fd08fba50964811309722d5'){
       router.push("/dashboard/student");
     }
+    if(user.user?.role === '602f3ce39b146b3201c2dc1d'){
+      router.push("/dashboard/teacher");
+    }
+    if(user.user?.role === '602f3cf79b146b3201c2dc1e'){
+      router.push("/dashboard/admin");
+    }
+    if(user.user?.role === '606ed82e70f40e18e029165e'){
+      router.push("/dashboard/parent");
+    }
+    if(user.user?.role === '607ededa2712163504210684'){
+      router.push("/dashboard/school");
+    }
   }, [user])
   
 
