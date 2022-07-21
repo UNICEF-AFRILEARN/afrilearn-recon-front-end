@@ -9,7 +9,7 @@ import Selectitem from '../../../widgets/appSelect/appSelect';
 import ReactModal from 'react-modal'
 import { Button, Modal } from 'react-bootstrap';
 
-import { fetchRoles } from "../../../../redux/actions/auth";
+import { fetchRoles, registerUserInitiate } from "../../../../redux/actions/auth";
 
 import {API} from '../../../../pages/api/client-side/fetcher';
 
@@ -46,16 +46,23 @@ const Register = (props) => {
     // console.log('User Signup Profile\n', profile)
   // }
 
+  const user = {
+    fullName,
+    email,
+    password,
+    confirmPassword,
+    roleSelected,
+    courseSelected,
+    phone,
+    referralCode
+  }
+
   const handleRegisterRequest = (e) => {
     e.preventDefault()
-    console.log(roleSelected)
-    console.log(courseSelected)
-    console.log(fullName)
-    console.log(phone)
-    console.log(email)
-    console.log(password)
-    console.log(confirmPassword)
-    console.log(referralCode)
+    dispatch(registerUserInitiate(user))
+    console.log("User obj", user);
+
+
 
   }
 

@@ -22,6 +22,21 @@ export const getRolesSuccess = (payload) => ({
 });
 
 
+export const registerUserStart = () => ({
+  type: types.REGISTER_USER_START,
+
+});
+export const registerUserSuccess = (payload) => ({
+  type: types.REGISTER_USER_SUCCESS,
+  payload
+});
+
+export const registerUserFail = (error) => ({
+  type: types.REGISTER_USER_FAIL,
+  payload: error
+});
+
+
 export const loginInitiate = (email, password) => {
   return function (dispatch) {
       dispatch(loginUserStart());
@@ -51,3 +66,20 @@ export const fetchRoles = () => (dispatch) => {
       //   dispatch(fetchBookFailure(erroMesage));
     });
 };
+
+export const registerUserInitiate = (user) => (dispatch) => {
+  dispatch(registerUserStart())
+  axios
+  .post('https://afrilearn-backend-01.herokuapp.com/api/v1/auth/signup',
+  {
+    user
+  })
+  .then((res) => {
+    console.log("User object from API =>", user)
+          registerUserSuccess(res.data)
+          console.log("User registration API ==>", res.data);
+        })
+        .catch((error) => {
+          console.log("Error registration API ==>", error.message);
+        })
+}
