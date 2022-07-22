@@ -137,12 +137,12 @@ const Navigation = () => {
 
               </div>}
               {<div className="inner-btn-nav-bar">
-              {/* <Link passHref href="/login" className="btn-log-in-mobile">
-                  <AppButton title="Log out" className={styles.loginButton} />
-              </Link> */}
-              <Link passHref href="/register" className="btn-log-in-mobile">
+              <Link passHref href="/login" className="btn-log-in-mobile">
+                  <AppButton title="Log in" className={styles.loginButton} />
+              </Link> 
+              {/* <Link passHref href="/register" className="btn-log-in-mobile">
                   < BsPersonCircle size={30}/>
-              </Link>
+              </Link> */}
 
               </div>}
            {/* </div> */}

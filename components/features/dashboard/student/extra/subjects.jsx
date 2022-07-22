@@ -1,8 +1,9 @@
 import Image from "next/image";
 import SubHeading from "./subHeading";
 import styles from "./../../student/student.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+
 import {
   Modal,
   Button,
@@ -15,15 +16,42 @@ import StudentPageTwo from "./../studentHeroPageTwo";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const Subjects = () => {
+const Subjects = ({ subData }) => {
+  console.log(subData);
+
+  const SubDataJsx = () => {
+    return subData.map((dta, i) => {
+      console.log(dta.mainSubjectId.name);
+      return (
+        <div key={i} className={`col-md-6 ${styles.mySubjectt}`}>
+          <button  className="modalButton" onClick={toggleModal}>
+            <Image
+              alt={"design image"}
+              src={dta.mainSubjectId.imageUrl}
+              width={70}
+              height={70}
+            />
+            <p>{dta.mainSubjectId.name}</p>
+          </button>
+        </div>
+      );
+    });
+  };
+
   const [show, setShow] = useState(false);
   const toggleModal = () => setShow(!show);
- 
+
+  // useEffect(() => {}, [subData]);
+
   return (
     <>
-     
       <div className="container">
         <div className={`row ${styles.mySubjecttt}`}>
+            <SubDataJsx />
+          
+        </div>
+        <div>
+          {/* <div className={`row ${styles.mySubjecttt}`}>
           <div className={`col-md-6 ${styles.mySubjectt}`}>
             <button className="modalButton" onClick={toggleModal}>
               <Image
@@ -228,6 +256,7 @@ const Subjects = () => {
               <p>Further Math</p>
             </button>
           </div>
+        </div> */}
         </div>
       </div>
       {/* <Modal className="cointainer-fluid"
@@ -244,12 +273,7 @@ const Subjects = () => {
         Launch demo modal
       </Button> */}
 
-      <Modal
-        size="xl"
-        centered
-        show={show}
-        onHide={toggleModal}
-      >
+      <Modal size="xl" centered show={show} onHide={toggleModal}>
         <Modal.Body className={`p-0 ${styles.modalSecon}`}>
           <SubjectModal className="p-0" />
         </Modal.Body>
@@ -299,7 +323,7 @@ const SubjectModal = () => {
               </div>
             </div>
           </div>
-          <div className="p-5 pt-0" style={{cursor:"pointer"}}>
+          <div className="p-5 pt-0" style={{ cursor: "pointer" }}>
             <Link passHref href="/dashboard/student/video">
               <div className={`row ${styles.modalThird}`}>
                 <div className="col-md-2">
