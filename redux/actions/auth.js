@@ -49,7 +49,7 @@ export const loginInitiate = (email, password) => {
           console.log("login response", res.data.data);
           dispatch(loginUserSuccess(res.data.data))
         })
-        .catch((err) => dispatch(loginUserFail(err.res.data.message)))
+        .catch((err) => dispatch(loginUserFail(err.response.data)))
   }
 } 
 
@@ -67,19 +67,35 @@ export const fetchRoles = () => (dispatch) => {
     });
 };
 
-export const registerUserInitiate = (user) => (dispatch) => {
+export const registerUserInitiate = (
+    fullName, 
+    email, 
+    password, 
+    confirmPassword, 
+    role, 
+    course,
+    phoneNumber,
+    referral
+) => (dispatch) => {
   dispatch(registerUserStart())
   axios
   .post('https://afrilearn-backend-01.herokuapp.com/api/v1/auth/signup',
   {
-    user
+    fullName, 
+    email, 
+    password, 
+    confirmPassword, 
+    role, 
+    course,
+    phoneNumber,
+    referral
   })
   .then((res) => {
-    console.log("User object from API =>", user)
+    // console.log("User object from API =>", user)
           registerUserSuccess(res.data)
           console.log("User registration API ==>", res.data);
         })
         .catch((error) => {
-          console.log("Error registration API ==>", error.message);
+          console.log("Error registration API ==>", error);
         })
 }

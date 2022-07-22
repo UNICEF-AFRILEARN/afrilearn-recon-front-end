@@ -14,14 +14,18 @@ import { fetchRoles, registerUserInitiate } from "../../../../redux/actions/auth
 import {API} from '../../../../pages/api/client-side/fetcher';
 
 const Register = (props) => {
+  // const role = useSelector(state => state.Mycourses)
+
+  // console.log("This is role", role)
   const [roleSelected, setRoleSelected] = useState('');
-  const [courseSelected, setCourseSelected] = useState('');
+  const [role, setRole] = useState('');
+  const [course, setCourse] = useState('');
   const [fullName, setFullName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [referralCode, setReferralCode] = useState('');
+  const [referral, setReferral] = useState('');
 
 
 
@@ -38,34 +42,40 @@ const Register = (props) => {
   // const profile = {}
   const rolesContext = rolesCollected.roles.roles;
   const courseContext = rolesCollected.roles.courses;
-  console.log("courses from the UI ==>", courseContext);
+  console.log("roles from the UI ==>", rolesContext);
 
-  // const handleChanges = (value) => {
-      // console.log("vlaue received =>", value)
-    // profile[key] = value
-    // console.log('User Signup Profile\n', profile)
-  // }
-
-  const user = {
-    fullName,
-    email,
-    password,
-    confirmPassword,
-    roleSelected,
-    courseSelected,
-    phone,
-    referralCode
+  const getRoleId = () => {
+      if (roleSelected === "Student") {
+        setRole("5fd08fba50964811309722d5")
+      }else if(roleSelected === "Teacher"){
+        setRole("602f3ce39b146b3201c2dc1d")
+      }else if(roleSelected === "Parent"){
+        setRole("606ed82e70f40e18e029165e")
+      }else if(roleSelected === "School"){
+        setRole("607ededa2712163504210684")
+      }
   }
+
 
   const handleRegisterRequest = (e) => {
     e.preventDefault()
-    dispatch(registerUserInitiate(user))
-    console.log("User obj", user);
-
-
-
+    dispatch(registerUserInitiate(
+      fullName, 
+      email, 
+      password, 
+      confirmPassword, 
+      role, 
+      course,
+      phoneNumber,
+      referral
+      ))
+    console.log("User obj", role);
   }
 
+
+  useEffect(() => {
+    getRoleId();
+  }, [getRoleId])
 
   useEffect(() => {
     dispatch(fetchRoles())
@@ -108,7 +118,7 @@ const Register = (props) => {
                       )}
                   </select>
                   <select 
-                    onChange={(e) => setCourseSelected(e.target.value)}
+                    onChange={(e) => setCourse(e.target.value)}
                     className={`${styles.pushDown} form-control form-control-sm`}
                     defaultValue={"default"}
                     >
@@ -133,8 +143,8 @@ const Register = (props) => {
                 <input 
                   name={'phone'} 
                   type='text'
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)} 
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)} 
                   title='Phone Number' 
                   placeholder='Phone Number' 
                   className={styles.pushDown} 
@@ -165,9 +175,9 @@ const Register = (props) => {
                 />
                 <input 
                   name={'referralCode'}
-                  value={referralCode}
+                  value={referral}
                   type='text' 
-                  onChange={(e) => setReferralCode(e.target.value)} title='Referral Code' 
+                  onChange={(e) => setReferral(e.target.value)} title='Referral Code' 
                   placeholder='Referral Code (optional)' 
                   className={`${styles.pushDown} ${styles.pushUp}`} 
                 />
