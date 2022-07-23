@@ -13,8 +13,7 @@ import PerfomanceSumm from "./extra/PerfomanceSumm";
 import RecentActivity from "./extra/recentActivity";
 import Q from "./extra/recentActivity";
 import StudentHeropage from "./studentHeropage";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchCourseInitiate } from "../../../../redux/actions/courses";
+import { useSelector } from "react-redux";
 
 const Dashboard = () => {
   const recommendationDatas = [
@@ -124,7 +123,7 @@ const Dashboard = () => {
 
   const { user } = useSelector((state) => state.auth);
   const courses = useSelector((state) => state.Mycourses);
-  const dispatch = useDispatch();
+  
 
   const personData = {
     personClass: user.user?.enrolledCourses[0].courseId.name,
@@ -132,9 +131,9 @@ const Dashboard = () => {
   };
   const subjectData = courses.course?.data.data.courses;
 
-  useEffect(() => {
-    dispatch(fetchCourseInitiate());
-  }, [fetchCourseInitiate]);
+  // useEffect(() => {
+  //   dispatch(fetchCourseInitiate());
+  // }, [fetchCourseInitiate]);
 
   return (
     <>
@@ -143,7 +142,6 @@ const Dashboard = () => {
         <SubHeading title="My Subject" />
         {subjectData?.map((subdata) => {
           if (subdata.name === personData.personClass) {
-            // console.log(subdata.relatedSubjects);
             return <Subjects subData={subdata.relatedSubjects} />;
           }
         })}
