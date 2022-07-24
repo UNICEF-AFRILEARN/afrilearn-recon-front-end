@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import styles from "./student.module.css";
 
-
-const studentHeropage = ({data}) => {
+const studentHeropage = ({ data }) => {
   const studentdata = [
     { classData: data.personClass, firstName: data.personName },
     [
@@ -68,7 +67,7 @@ export const StudentPage = ({ stuData }) => {
         </div>
         <div className={`row ${styles.push2}`}>
           <div className="col-md-12">
-            {<h2>{greetings(stuData[0].firstName)}</h2>}
+            {stuData[0].firstName && <h2>{greetings(stuData[0].firstName)}</h2>}
             {stuData[0].subject && <h2>{stuData[0].subject}</h2>}
             <p>Explore the fun in learning💃</p>
           </div>

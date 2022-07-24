@@ -13,7 +13,8 @@ import PerfomanceSumm from "./extra/PerfomanceSumm";
 import RecentActivity from "./extra/recentActivity";
 import Q from "./extra/recentActivity";
 import StudentHeropage from "./studentHeropage";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchCourseInitiate } from "../../../../redux/actions/subject";
 
 const Dashboard = () => {
   const recommendationDatas = [
@@ -121,30 +122,27 @@ const Dashboard = () => {
     ],
   ];
 
-  const { user } = useSelector((state) => state.auth);
-  const courses = useSelector((state) => state.Mycourses);
-  
+  const user = useSelector((state) => state.auth);
+  const subject = useSelector((state) => state.MySubject);
+
+  const dispatch = useDispatch();
 
   const personData = {
-    personClass: user.user?.enrolledCourses[0].courseId.name,
-    personName: user.user?.fullName,
+    personClass: user.user.user?.enrolledCourses[0].courseId.name,
+    personName: user.user.user?.fullName,
   };
-  const subjectData = courses.course?.data.data.courses;
 
-  // useEffect(() => {
-  //   dispatch(fetchCourseInitiate());
-  // }, [fetchCourseInitiate]);
+  const personId = user.user.user?.enrolledCourses[0].courseId.id;
+  useEffect(() => {
+    dispatch(fetchCourseInitiate(personId));
+  }, [personId]);
 
   return (
     <>
       <StudentHeropage data={personData} />
       <div>
         <SubHeading title="My Subject" />
-        {subjectData?.map((subdata) => {
-          if (subdata.name === personData.personClass) {
-            return <Subjects subData={subdata.relatedSubjects} />;
-          }
-        })}
+        <Subjects subData={subject.subject.subjects} />;
       </div>
       <PastQuestion />
       <TopInClasses classData={datas} />
