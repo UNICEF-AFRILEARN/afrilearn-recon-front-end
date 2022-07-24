@@ -15,6 +15,7 @@ import {
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import { StudentPage } from "./../studentHeropage";
+import { useSelector } from "react-redux";
 
 let subj;
 const Subjects = ({ subData }) => {
@@ -67,12 +68,16 @@ const Subjects = ({ subData }) => {
   );
 };
 const SubjectModal = () => {
+  const user = useSelector((state) => state.auth);
+  const personClass = user.user.user?.enrolledCourses[0].courseId.name;
   return (
     <>
       <Container fluid>
         <Row>
           <Col className="p-0">
-            <StudentPage stuData={[{ classData: "personClass", subject: subj }]} />
+            <StudentPage
+              stuData={[{ classData: personClass, subject: subj }]}
+            />
           </Col>
           <div className="p-5">
             <StudentHeropageBase />
