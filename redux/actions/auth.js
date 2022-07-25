@@ -91,9 +91,8 @@ export const registerUserInitiate = (
     referral
   })
   .then((res) => {
-    // console.log("User object from API =>", user)
-          registerUserSuccess(res.data)
-          console.log("User registration API ==>", res.data);
+          registerUserSuccess(res.data.data)
+          console.log("User registration API ==>", res.data.data);
         })
         .catch((error) => {
           console.log("Error registration API ==>", error);

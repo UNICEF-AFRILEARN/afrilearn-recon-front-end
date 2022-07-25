@@ -76,10 +76,15 @@ const authReducer = (state = initialState, {type, payload}) => {
             }
         
         case types.LOGIN_USER_SUCCESS:
-        case types.REGISTER_USER_SUCCESS:
+            console.log("Reducer ===>", payload)
             return {
                 user: payload
             }
+        case types.REGISTER_USER_SUCCESS:
+                console.log("Reducer register ===>", payload)
+                return {
+                    user: payload
+                }
 
         case types.LOGIN_USER_FAIL:
         case types.REGISTER_USER_FAIL:

@@ -62,8 +62,8 @@ export const StudentPage = ({ stuData }) => {
   const courses = useSelector(state => state.Mycourses);
   const dispatch = useDispatch();
 
-  console.log("Courses from UI =>>>", courses)
-  console.log("From student dashboard", user.user?.enrolledCourses[0].courseId.name)
+  console.log("User from UI =>>>", user)
+  console.log("From student dashboard", user.user?.enrolledCourses[0].courseId?.name)
   const greetings = (firstName) => {
     return `Welcome ${firstName}!`;
   };

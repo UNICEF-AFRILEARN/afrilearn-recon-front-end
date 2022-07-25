@@ -12,10 +12,11 @@ import { Button, Modal } from 'react-bootstrap';
 import { fetchRoles, registerUserInitiate } from "../../../../redux/actions/auth";
 
 import {API} from '../../../../pages/api/client-side/fetcher';
+import Router, { useRouter } from 'next/router'
 
 const Register = (props) => {
+  const { user } = useSelector(state => state.auth);
   // const role = useSelector(state => state.Mycourses)
-
   // console.log("This is role", role)
   const [roleSelected, setRoleSelected] = useState('');
   const [role, setRole] = useState('');
@@ -43,6 +44,7 @@ const Register = (props) => {
   const rolesContext = rolesCollected.roles.roles;
   const courseContext = rolesCollected.roles.courses;
   console.log("roles from the UI ==>", rolesContext);
+  console.log("Registered user", courseContext)
 
   const getRoleId = () => {
       if (roleSelected === "Student") {
@@ -69,7 +71,11 @@ const Register = (props) => {
       phoneNumber,
       referral
       ))
-    console.log("User obj", role);
+
+      if(role === "5fd08fba50964811309722d5"){
+        Router.push('/dashboard/student')
+      }
+    
   }
 
 
