@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from 'react-redux';
 import Link from "next/link";
 import styles from "./student.module.css";
-import { fetchCourseInitiate } from "../../../../redux/actions/courses";
 
-// import SubHeading from "./extra/subHeading";
-
-const studentHeropage = () => {
- 
+const studentHeropage = ({ data }) => {
   const studentdata = [
-    { class: "SSS-One", firstName: "Feyikemi" },
+    { classData: data.personClass, firstName: data.personName },
     [
       {
         linkdata: "#subjects",
@@ -50,29 +45,15 @@ const studentHeropage = () => {
     ],
   ];
 
-  // const linkData =
-
   return <StudentPage stuData={studentdata} />;
 };
 
 export default studentHeropage;
 
 export const StudentPage = ({ stuData }) => {
-  const { user }  = useSelector(state => state.auth);
-  const courses = useSelector(state => state.Mycourses);
-  const dispatch = useDispatch();
-
-  console.log("Courses from UI =>>>", courses)
-  console.log("From student dashboard", user.user?.enrolledCourses[0].courseId.name)
   const greetings = (firstName) => {
     return `Welcome ${firstName}!`;
   };
-
-useEffect(() => {
-  dispatch(fetchCourseInitiate())
-}, [fetchCourseInitiate])
-
-
   return (
     <>
       <div
@@ -81,13 +62,12 @@ useEffect(() => {
       >
         <div className="row">
           <div className="col-md-12">
-            <h1 className="text-capitalize">{user.user?.enrolledCourses[0].courseId.name}</h1>
+            <h1 className="text-capitalize">{stuData[0].classData}</h1>
           </div>
         </div>
-         <div className={`row ${styles.push2}`}>
+        <div className={`row ${styles.push2}`}>
           <div className="col-md-12">
-            {
-              <h2>{greetings(user.user?.fullName)}</h2>}
+            {stuData[0].firstName && <h2>{greetings(stuData[0].firstName)}</h2>}
             {stuData[0].subject && <h2>{stuData[0].subject}</h2>}
             <p>Explore the fun in learning💃</p>
           </div>
@@ -102,7 +82,7 @@ useEffect(() => {
                 </Link>
               ))}
           </div>
-        </div> 
+        </div>
       </div>
     </>
   );

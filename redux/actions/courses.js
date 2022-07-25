@@ -21,8 +21,8 @@ export const fetchCourseInitiate = () =>  {
         axios
         .get('https://afrilearn-backend-01.herokuapp.com/api/v1/courses')
         .then((res) => {
-            console.log("Hello from courses API")
-            console.log("From Courses API =>", res)
+            // console.log("Hello from courses API")
+            // console.log("From Courses API =>", res)
             dispatch(fetchCoursesSuccess(res))
         })
         .then((err) => {
