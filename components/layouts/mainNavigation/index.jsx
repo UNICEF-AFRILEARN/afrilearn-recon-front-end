@@ -18,8 +18,8 @@ const Navigation = () => {
   
   
   useEffect(() => {
-    console.log("From main navebar", user.user?.role)
-    setUserRole(user.user?.role)
+    console.log("From main navebar", user?.user?.role)
+    setUserRole(user?.user?.role)
   }, [user])
 
   return (
