@@ -12,7 +12,7 @@ const ProfileSection = ({data}) => {
           })}        
           <section className={`${styles.mobileDownloadSection} button-setions`}>
           <div className="join-btn-wrapper">
-                <span className={` btn-class-corrected`}><Link passHref href='/'>JOIN FOR FREE</Link></span>
+                <span className={` btn-class-corrected`}><Link passHref href='/register'>JOIN FOR FREE</Link></span>
               </div>
               <div className="play-store-class">
               <div className="class-play-store">

@@ -64,7 +64,7 @@ export const loginInitiate = (email, password) => {
           console.log("login response", res.data.data);
           dispatch(loginUserSuccess(res.data.data))
         })
-        .catch((err) => dispatch(loginUserFail(err.res.data.message)))
+        // .catch((err) => dispatch(loginUserFail(err.res.data.message)))
   }
 } 
 
