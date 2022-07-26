@@ -1,4 +1,5 @@
 import {
+  useEffect,
   // MouseEvent,
   useState,
 } from "react";
@@ -65,6 +66,8 @@ const ExploreAfrilearn = () => {
       });
     }
   };
+
+
 
   return (
     <div className={`container-fluid explore-added-class-currection ${styles.exploreAfrilearn}`}>

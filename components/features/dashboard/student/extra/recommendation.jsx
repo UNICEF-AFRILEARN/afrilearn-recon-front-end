@@ -3,10 +3,42 @@ import styles from "./../../student/topInClass.module.css";
 import { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import Link from "next/link";
+import { useEffect } from "react";
+import axios from "axios";
+
 
 const recommendation = ({ data }) => {
   const [show, setShow] = useState(false);
   const toggleModal = () => setShow(!show);
+ 
+ 
+useEffect(()=>{
+
+  getData()
+ 
+  },[]) 
+ 
+ 
+ const getData=()=>{
+ axios 
+ .get(     )
+ .then((response)=>{
+  setShow(response.data); 
+ 
+ })
+ .catch((err)=>{
+   console.log("ERR:",err)
+ });
+ 
+ };
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
   return (
     <>
       {data.videoUrl !== undefined && (
