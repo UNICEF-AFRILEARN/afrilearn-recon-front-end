@@ -20,7 +20,37 @@ export const getRolesSuccess = (payload) => ({
   type: types.GET_ROLES_SUCCESS,
   payload,
 });
+// FORGOT_PASSWORD
+export const forgotPasswordstart = (params) => ({
+  type: types.FORGOTPASSWORD_USER_START,
+  payload : params
+});
+export const forgotPasswordsuccess = (payload) => ({
+  type: types.FORGOTPASSWORD_USER_SUCCESS,
+  payload,
+});
+export const forgotPasswordfail = (error) => ({
+  type: types.FORGOTPASSWORD_USER_SUCCESS,
+  payload : error,
+});
 
+// FORGOT PASSWORD
+export const sendForgotpasswordemail = (email) => {
+
+  return function (dispatch) {
+      dispatch(forgotPasswordstart());
+      axios
+        .get(`https://afrilearn-backend-01.herokuapp.com/api/v1/auth/${email}/reset_password`, {
+        })
+
+        .then((res) => {
+          console.log(" response", res.data.message);
+          dispatch(forgotPasswordsuccess (res.data.message))
+        })
+        .catch((err) => dispatch(forgotPasswordfail(err)))
+
+  }
+} 
 
 export const loginInitiate = (email, password) => {
   return function (dispatch) {
