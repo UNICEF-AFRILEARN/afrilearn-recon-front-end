@@ -124,7 +124,7 @@ export const fetchActivitiesInitiate = (token) =>  {
     return function (dispatch) {
         dispatch(fetchActivitiesStart())
         axios
-        .get('https://afrilearn-backend-01.herokuapp.com/api/v1/dashboard/recommendations',
+        .get('https://afrilearn-backend-01.herokuapp.com/api/v1/recents/activities',
         {   
             headers: {
                 "token": token,
@@ -133,8 +133,8 @@ export const fetchActivitiesInitiate = (token) =>  {
         })
         .then((res) => {
             dispatch(fetchActivitiesSuccess(res))
-            console.log("Hello from UNICEF reconmendation API after call ===>")
-            console.log("From UNICEF reconmendation API =>", res)
+            console.log("Hello from Activities API after call ===>")
+            console.log("From Activities API =>", res)
         })
         .catch((err) => {
             console.log(err)
