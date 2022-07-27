@@ -36,6 +36,17 @@ export const fetchUnicefRecoFail = (error) => ({
     type: types.FETCH_UNICEF_RECOMEND_FAIL,
     payload: error
 });
+export const fetchActivitiesStart = () => ({
+    type: types.FETCH_ACTIVITIES_START
+});
+export const fetchActivitiesSuccess = (payload) => ({
+    type: types.FETCH_ACTIVITIES_SUCCESS,
+    payload
+});
+export const fetchActivitiesFail = (error) => ({
+    type: types.FETCH_ACTIVITIES_FAIL,
+    payload: error
+});
 
 export const fetchCourseInitiate = () =>  {
     return function (dispatch) {
@@ -52,17 +63,6 @@ export const fetchCourseInitiate = () =>  {
         } )
     }
 
-    // dispatch(fetchCoursesStart)
-    // axios
-    // .get('https://afrilearn-backend-01.herokuapp.com/api/v1/courses')
-    // .then((res) => {
-    //     console.log("Hello from courses API")
-    //     console.log("From Courses API =>", res)
-    //     dispatch(fetchCoursesSuccess(res))
-    // })
-    // .then((err) => {
-    //     console.log(err.data.message)
-    // } )
 }
 
 export const fetchReconLessonInitiate = (userId, token) =>  {
@@ -111,3 +111,26 @@ export const fetchUnicefReconInitiate = (schoollevel, subject, lesson) =>  {
     }
 
 }
+export const fetchActivitiesInitiate = (token) =>  {
+    return function (dispatch) {
+        dispatch(fetchActivitiesStart())
+        axios
+        .post('https://afrilearn-backend-01.herokuapp.com/api/v1/dashboard/recommendations',
+        {   
+            headers: {
+                "token": token,
+                "Content-Type": "application/json",
+            }
+        })
+        .then((res) => {
+            dispatch(fetchActivitiesSuccess(res))
+            console.log("Hello from UNICEF reconmendation API after call ===>")
+            console.log("From UNICEF reconmendation API =>", res)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    }
+
+}
+
