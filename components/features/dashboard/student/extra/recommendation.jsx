@@ -14,7 +14,7 @@ const recommendation = ({ dataRecon }) => {
 
   return (
     <>
-      {dataRecon.recommended.videoUrls[0].videoUrl !== undefined && (
+      {dataRecon.recommended.videoUrls[0]?.videoUrl !== undefined && (
         <div className={`${styles.contList} ${styles.contRec}`}>
           <div className={`${styles.contList}`}>
             <Image
@@ -88,7 +88,7 @@ const recommendation = ({ dataRecon }) => {
         </div>
       )}
 
-      {dataRecon.recommended.videoUrls[0].videoUrl === undefined && (
+      {dataRecon.recommended.videoUrls[0]?.videoUrl === undefined && (
         <div className={`${styles.contList} ${styles.contRec}`}>
           <Link href="/dashboard/student">
             <div className={styles.contListRead}>

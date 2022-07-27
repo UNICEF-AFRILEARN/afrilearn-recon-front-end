@@ -94,14 +94,23 @@ export const fetchUnicefReconInitiate = (schoollevel, subject, lesson) =>  {
     return function (dispatch) {
         dispatch(fetchUnicefRecoStart())
         axios
-        .post('https://afrilearn-backend-01.herokuapp.com/api/v1/dashboard/recommendations',
+        .post('https://unicef-afrilearn-app.herokuapp.com/recommend',
         {   
             schoollevel,
             subject,
             lesson  
+        },
+        {
+            headers: { 
+                
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+                'Content-Type':'Authorization',
+              },
         })
         .then((res) => {
             dispatch(fetchUnicefRecoSuccess(res))
+            console.log("Hello from UNICEF reconmendation API after call ===>", schoollevel, subject, lesson)
             console.log("Hello from UNICEF reconmendation API after call ===>")
             console.log("From UNICEF reconmendation API =>", res)
         })
@@ -115,7 +124,7 @@ export const fetchActivitiesInitiate = (token) =>  {
     return function (dispatch) {
         dispatch(fetchActivitiesStart())
         axios
-        .post('https://afrilearn-backend-01.herokuapp.com/api/v1/dashboard/recommendations',
+        .get('https://afrilearn-backend-01.herokuapp.com/api/v1/dashboard/recommendations',
         {   
             headers: {
                 "token": token,

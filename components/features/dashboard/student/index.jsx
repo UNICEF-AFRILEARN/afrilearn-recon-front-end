@@ -26,13 +26,19 @@ const Dashboard = () => {
 
   console.log("user from dashboard INDEX =====>", user);
 
+
+  const schoollevel = "Primary One"
+  const subject = "Basic Technology"
+  const lesson  = "6012c173cfe09249249f7ece"
+
   const userId = "62a0bc984af2d90016b72096"
   const token = user.token
 
   useEffect(() => {
+    dispatch(fetchUnicefReconInitiate(schoollevel, subject, lesson))
     dispatch(fetchReconLessonInitiate(userId, token))
     dispatch(fetchCourseInitiate())
-  }, [fetchCourseInitiate, fetchReconLessonInitiate])
+  }, [fetchCourseInitiate, fetchReconLessonInitiate, fetchUnicefReconInitiate])
 
   console.log("unicefRecon from Dashboard index call ====>", unicefRecon)
 
