@@ -15,16 +15,16 @@ import PerfomanceSumm from "./extra/PerfomanceSumm";
 import RecentActivity from "./extra/recentActivity";
 import Q from "./extra/recentActivity";
 import StudentHeropage from "./studentHeropage";
-import { fetchCourseInitiate } from "../../../../redux/actions/courses";
-import { fetchReconLessonInitiate } from "../../../../redux/actions/courses";
+import { fetchCourseInitiate, fetchReconLessonInitiate, fetchUnicefReconInitiate} from "../../../../redux/actions/courses";
 
 
 const Dashboard = () => {
   const dispatch = useDispatch();
   const {reconLesson } = useSelector(state => state.Mycourses);
+  const {unicefRecon } = useSelector(state => state.Mycourses);
   const { user }  = useSelector(state => state.auth);
 
-  console.log("Lesson recon from dashboard INDEX =====>", reconLesson);
+  console.log("user from dashboard INDEX =====>", user);
 
   const userId = "62a0bc984af2d90016b72096"
   const token = user.token
@@ -34,7 +34,7 @@ const Dashboard = () => {
     dispatch(fetchCourseInitiate())
   }, [fetchCourseInitiate, fetchReconLessonInitiate])
 
-  console.log("Dashboard index call ====>")
+  console.log("unicefRecon from Dashboard index call ====>", unicefRecon)
 
   const recommendationDatas = [
     {

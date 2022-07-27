@@ -5,6 +5,7 @@ import * as types from '../types';
 const initialState = {
     courses: [],
     reconLesson: [],
+    unicefRecon: [],
 }
 
 const coursesReducer = (state = initialState, { type, payload} ) => {
@@ -33,6 +34,20 @@ const coursesReducer = (state = initialState, { type, payload} ) => {
                     reconLesson: payload
                 }
         case types.FETCH_RECOMEND_COURSE_FAIL:
+            return {
+                ...state,
+                error: payload
+            }
+        case types.FETCH_UNICEF_RECOMEND_START:
+                return {
+                    ...state
+                };
+        case types.FETCH_UNICEF_RECOMEND_SUCCESS:
+                return {
+                    ...state,
+                    unicefRecon: payload
+                }
+        case types.FETCH_UNICEF_RECOMEND_FAIL:
             return {
                 ...state,
                 error: payload
