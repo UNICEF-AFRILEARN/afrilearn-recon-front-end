@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Link from "next/link";
 import styles from "./student.module.css";
 import { fetchCourseInitiate } from "../../../../redux/actions/courses";
+import { fetchReconLessonInitiate } from "../../../../redux/actions/courses";
 
 // import SubHeading from "./extra/subHeading";
 
@@ -59,16 +60,27 @@ export default studentHeropage;
 
 export const StudentPage = ({ stuData }) => {
   const { user }  = useSelector(state => state.auth);
-  const courses = useSelector(state => state.Mycourses);
+  // const courses = useSelector(state => state.Mycourses);
   const dispatch = useDispatch();
+  // const {reconLesson } = useSelector(state => state.Mycourses);
 
-  console.log("User from UI =>>>", user)
-  console.log("From student dashboard", user.user?.enrolledCourses[0].courseId?.name)
+
+  console.log("User from UI =>>>", user.token)
+  // console.log("token from UI =>>>", token)
+  console.log("From student dashboard", user.user?.enrolledCourses.length > 1? user.user?.enrolledCourses[1]?.courseId?.name : user.user?.enrolledCourses[0]?.courseId?.name)
   const greetings = (firstName) => {
     return `Welcome ${firstName}!`;
   };
 
+  // console.log("Lesson from recon ==>", reconLesson);
+
+  // const userId = "62a0bc984af2d90016b72096"
+  // const token = user.token
+
+  
+
 useEffect(() => {
+  // dispatch(fetchReconLessonInitiate(userId, token))
   dispatch(fetchCourseInitiate())
 }, [fetchCourseInitiate])
 
@@ -81,7 +93,7 @@ useEffect(() => {
       >
         <div className="row">
           <div className="col-md-12">
-            <h1 className="text-capitalize">{user.user?.enrolledCourses[0].courseId.name}</h1>
+            <h1 className="text-capitalize">{user.user?.enrolledCourses.length > 1? user.user?.enrolledCourses[1]?.courseId?.name : user.user?.enrolledCourses[0]?.courseId?.name}</h1>
           </div>
         </div>
          <div className={`row ${styles.push2}`}>

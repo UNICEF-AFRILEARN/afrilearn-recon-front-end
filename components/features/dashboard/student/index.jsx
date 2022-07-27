@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
 import styles from "./student.module.css";
 import SubHeading from "./extra/subHeading";
 import PastQuestion from "./extra/pastQuestion";
@@ -13,8 +15,26 @@ import PerfomanceSumm from "./extra/PerfomanceSumm";
 import RecentActivity from "./extra/recentActivity";
 import Q from "./extra/recentActivity";
 import StudentHeropage from "./studentHeropage";
+import { fetchCourseInitiate } from "../../../../redux/actions/courses";
+import { fetchReconLessonInitiate } from "../../../../redux/actions/courses";
+
 
 const Dashboard = () => {
+  const dispatch = useDispatch();
+  const {reconLesson } = useSelector(state => state.Mycourses);
+  const { user }  = useSelector(state => state.auth);
+
+  console.log("Lesson recon from dashboard INDEX =====>", reconLesson);
+
+  const userId = "62a0bc984af2d90016b72096"
+  const token = user.token
+
+  useEffect(() => {
+    dispatch(fetchReconLessonInitiate(userId, token))
+    dispatch(fetchCourseInitiate())
+  }, [fetchCourseInitiate, fetchReconLessonInitiate])
+
+  console.log("Dashboard index call ====>")
 
   const recommendationDatas = [
     {
@@ -133,7 +153,7 @@ const Dashboard = () => {
       <PerfomanceSumm />
       <GetSolution />
       <ClassRoom />
-      <Recommended recommend={recommendationDatas}/>
+      <Recommended recommend={reconLesson?.recommendation}/>
       <RecentActivity />
     </>
   );
@@ -174,6 +194,7 @@ const TopInClasses = ({ classData }) => {
 };
 
 const Recommended = ({recommend}) => {
+  console.log("From recommendation COmponent ====>", recommend)
   return (
     <>
       {recommend !== 0 && (
@@ -182,8 +203,8 @@ const Recommended = ({recommend}) => {
 
           <div className={styles.contai}>
             <section className="parnet-frag-color">
-              {recommend.map((recData) => (
-                <Recommendation data={recData} />
+              {recommend?.map((recData) => (
+                <Recommendation dataRecon={recData} />
               ))}
             </section>
           </div>
