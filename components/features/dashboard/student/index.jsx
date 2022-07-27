@@ -15,13 +15,14 @@ import PerfomanceSumm from "./extra/PerfomanceSumm";
 import RecentActivity from "./extra/recentActivity";
 import Q from "./extra/recentActivity";
 import StudentHeropage from "./studentHeropage";
-import { fetchCourseInitiate, fetchReconLessonInitiate, fetchUnicefReconInitiate} from "../../../../redux/actions/courses";
+import { fetchCourseInitiate, fetchReconLessonInitiate, fetchUnicefReconInitiate, fetchActivitiesInitiate} from "../../../../redux/actions/courses";
 
 
 const Dashboard = () => {
   const dispatch = useDispatch();
   const {reconLesson } = useSelector(state => state.Mycourses);
   const {unicefRecon } = useSelector(state => state.Mycourses);
+  const {activities } = useSelector(state => state.Mycourses);
   const { user }  = useSelector(state => state.auth);
 
   console.log("user from dashboard INDEX =====>", user);
@@ -35,12 +36,13 @@ const Dashboard = () => {
   const token = user.token
 
   useEffect(() => {
+    dispatch(fetchActivitiesInitiate(token))
     dispatch(fetchUnicefReconInitiate(schoollevel, subject, lesson))
     dispatch(fetchReconLessonInitiate(userId, token))
     dispatch(fetchCourseInitiate())
-  }, [fetchCourseInitiate, fetchReconLessonInitiate, fetchUnicefReconInitiate])
+  }, [fetchCourseInitiate, fetchReconLessonInitiate, fetchUnicefReconInitiate,fetchActivitiesInitiate])
 
-  console.log("unicefRecon from Dashboard index call ====>", unicefRecon)
+  console.log("activities from Dashboard index call ====>", activities)
 
   const recommendationDatas = [
     {
@@ -160,7 +162,7 @@ const Dashboard = () => {
       <GetSolution />
       <ClassRoom />
       <Recommended recommend={reconLesson?.recommendation}/>
-      <RecentActivity />
+      <RecentActivity activities={activities?.recentActivities}/>
     </>
   );
 };

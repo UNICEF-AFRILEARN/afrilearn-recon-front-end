@@ -132,12 +132,12 @@ export const fetchActivitiesInitiate = (token) =>  {
             }
         })
         .then((res) => {
-            dispatch(fetchActivitiesSuccess(res))
+            dispatch(fetchActivitiesSuccess(res.data.data))
             console.log("Hello from Activities API after call ===>")
-            console.log("From Activities API =>", res)
+            console.log("From Activities API =>", res.data.data)
         })
         .catch((err) => {
-            console.log(err)
+            dispatch(fetchActivitiesFail(err))
         })
     }
 
