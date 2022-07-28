@@ -15,7 +15,7 @@ import PerfomanceSumm from "./extra/PerfomanceSumm";
 import RecentActivity from "./extra/recentActivity";
 import Q from "./extra/recentActivity";
 import StudentHeropage from "./studentHeropage";
-import { fetchCourseInitiate, fetchReconLessonInitiate, fetchUnicefReconInitiate, fetchActivitiesInitiate} from "../../../../redux/actions/courses";
+import { fetchCourseInitiate, fetchReconLessonInitiate, fetchUnicefReconInitiate, fetchActivitiesInitiate, fetchSingleLessonInitiate} from "../../../../redux/actions/courses";
 
 
 const Dashboard = () => {
@@ -35,8 +35,10 @@ const Dashboard = () => {
 
   const userId = "62a0bc984af2d90016b72096"
   const token = user.token
+  const lessonId = '6012c2a7cfe09249249f7f9c'
 
   useEffect(() => {
+    dispatch(fetchSingleLessonInitiate(lessonId))
     dispatch(fetchActivitiesInitiate(token))
     dispatch(fetchUnicefReconInitiate(schoollevel, subject, lesson))
     dispatch(fetchReconLessonInitiate(userId, token))
