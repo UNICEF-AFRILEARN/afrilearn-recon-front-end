@@ -143,6 +143,24 @@ const Register = (props) => {
                           </select>
 
                   }
+                  { role === '602f3ce39b146b3201c2dc1d' &&
+
+                      <select 
+                      onChange={(e) => setCourse(e.target.value)}
+                      className={`${styles.pushDown} form-control form-control-sm`}
+                      defaultValue={"default"}
+                      >
+                        <option value={"default"}>
+                          Select a Subject
+                        </option>
+                        {courseContext && courseContext.map((classes) => 
+                        <option
+                        value={classes.name}
+                        >{classes.name}</option>
+                        )}
+                      </select>
+
+                  }
                 <input 
                   name={'fullName'} 
                   type='text'
