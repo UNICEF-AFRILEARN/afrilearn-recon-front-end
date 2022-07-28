@@ -47,6 +47,17 @@ export const fetchActivitiesFail = (error) => ({
     type: types.FETCH_ACTIVITIES_FAIL,
     payload: error
 });
+export const fetchSingleLessonStart = () => ({
+    type: types.FETCH_SINGLE_LESSON_START
+});
+export const fetchSingleLessonSuccess = (payload) => ({
+    type: types.FETCH_SINGLE_LESSON_SUCCESS,
+    payload
+});
+export const fetchSingleLessonFail = (error) => ({
+    type: types.FETCH_SINGLE_LESSON_FAIL,
+    payload: error
+});
 
 export const fetchCourseInitiate = () =>  {
     return function (dispatch) {
@@ -60,6 +71,23 @@ export const fetchCourseInitiate = () =>  {
         })
         .catch((err) => {
             // console.log(err.data?.message)
+        } )
+    }
+
+}
+
+export const fetchSingleLessonInitiate = (lessonId) =>  {
+    return function (dispatch) {
+        dispatch(fetchSingleLessonStart())
+        axios
+        .get(`https://afrilearn-backend-01.herokuapp.com/api/v1/lessons/${lessonId}`)
+        .then((res) => {
+            console.log("Hello from single lesson API")
+            console.log("From Single lesson API =>", res.data)
+            dispatch(fetchSingleLessonSuccess(res.data))
+        })
+        .catch((err) => {
+            dispatch(fetchSingleLessonFail(err))
         } )
     }
 
