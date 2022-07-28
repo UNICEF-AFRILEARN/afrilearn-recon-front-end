@@ -34,6 +34,37 @@ export const forgotPasswordfail = (error) => ({
   payload : error,
 });
 
+// CHANGE PASSWORD
+export const changePasswordstart = (params) => ({
+  type: types.FORGOTPASSWORD_USER_START,
+  payload : params
+});
+export const changePasswordsuccess = (payload) => ({
+  type: types.FORGOTPASSWORD_USER_SUCCESS,
+  payload,
+});
+export const changePasswordfail = (error) => ({
+  type: types.FORGOTPASSWORD_USER_SUCCESS,
+  payload : error,
+});
+// CHANGE PASSWORD
+export const sendChangepasswordemail = (email, password) => {
+
+  return function (dispatch) {
+      dispatch(changePasswordstart());
+      axios
+        .post(`https://afrilearn-backend-01.herokuapp.com/api/v1/auth/change-password`, {
+          email,
+          password
+        })
+        .then((res) => {
+          console.log(" response", res.data.message);
+          dispatch(changePasswordsuccess (res.data.message))
+        })
+        .catch((err) => dispatch(changePasswordfail(err)))
+  }
+}
+
 // FORGOT PASSWORD
 export const sendForgotpasswordemail = (email) => {
 
@@ -41,6 +72,7 @@ export const sendForgotpasswordemail = (email) => {
       dispatch(forgotPasswordstart());
       axios
         .get(`https://afrilearn-backend-01.herokuapp.com/api/v1/auth/${email}/reset_password`, {
+
         })
 
         .then((res) => {
