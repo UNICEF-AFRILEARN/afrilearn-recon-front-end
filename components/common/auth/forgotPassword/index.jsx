@@ -1,7 +1,6 @@
 import Link from "next/link";
 import styles from "./forgotPassword.module.css";
 import Image from "next/image";
-import TextInput from "../../../widgets/appTextInput";
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from "next/router";
 import React, { useState} from "react";

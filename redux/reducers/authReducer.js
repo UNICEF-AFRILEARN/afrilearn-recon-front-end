@@ -100,6 +100,21 @@ const authReducer = (state = initialState, {type, payload}) => {
                     ...state,
                     formPassword: payload
                 }
+                case types.CHANGEPASSWORD_USER_START:
+                return {
+                    ...state,
+                }
+        
+            case types.CHANGEPASSWORD_USER_FAIL:
+                return {
+                    ...state,
+                    error: payload
+                }
+            case types.CHANGEPASSWORD_USER_SUCCESS:
+                return {
+                    ...state,
+                    changePassword: payload
+                }
                 default :
                 return {
                     ...state

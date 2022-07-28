@@ -1,10 +1,31 @@
 import Link from "next/link";
 import styles from "../forgotPassword/forgotPassword.module.css";
 import Image from "next/image";
-import TextInput from "../../../widgets/appTextInput";
+import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from "next/router";
+import React, { useState} from "react";
+import Modal from 'react-bootstrap/Modal';
+import { sendChangepasswordemail } from "../../../../redux/actions/auth";
 
 
 const ResetPassword = () => {
+
+  const dispatch = useDispatch();
+  const  {formConfirmPassword}  = useSelector((state) => state.auth);
+  console.log( "reset user", formConfirmPassword)
+  const [password, setPassword] = useState(" ");
+  const [email, setEmail] = useState(" ");
+  const [showresponse, setShowresponse] = useState(" ")
+  const router = useRouter();
+  const [show, setShow] = useState(false);
+  const toggleModal = () => setShow(!show);
+ 
+  const changePasword = (e) => {
+    e.preventDefault();
+     setShowresponse(formConfirmPassword)
+    dispatch(sendChangepasswordemail(email, password));
+   
+  };
 
   return (
     <>
@@ -38,25 +59,26 @@ const ResetPassword = () => {
           <p className="centerrr">
           Please input your new password below
           </p>
-          <form >
-            <TextInput
+          <form onSubmit={changePasword}>
+            <input
               className={styles.Email}
               type="email"
-              placeholder="Password"
+              placeholder="Email"
               name="email"
               title="Email"
+              onChange={(e) => setEmail(e.target.value)}
+
             />
-             <TextInput
+             <input
               className={styles.Email}
-              type="email"
+              type="password"
               placeholder="Comfirm password"
-              name="email"
-              title="Email"
+              onChange={(e) => setPassword(e.target.value)}
             />
             <div className={`row ${styles.primaryy}`} >
-              <Link passHref href=" " >
+              <button type="submit" onClick={toggleModal} >
                 RESET PASSWORD
-              </Link>
+              </button>
             </div>
           </form>
         </div>
@@ -70,16 +92,16 @@ const ResetPassword = () => {
         </div>
       </div>
       
-    {/* <Modal
-    size="sm"
+      <Modal
+    size="md"
     centered
     show={show}
     onHide={toggleModal}
     >
       <Modal.Body>
-        <p>Modal body text goes here.</p>
+      <h6>Password changed successfully</h6>
       </Modal.Body>
-    </Modal> */}
+    </Modal>
     </>
     
   );
