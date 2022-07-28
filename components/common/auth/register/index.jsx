@@ -20,12 +20,14 @@ const Register = (props) => {
   // console.log("This is role", role)
   const [roleSelected, setRoleSelected] = useState('');
   const [role, setRole] = useState('');
+  const [classCategory, setClassCategory] = useState('');
   const [course, setCourse] = useState('');
   const [fullName, setFullName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [schoolName, setSchoolName] = useState('');
   const [referral, setReferral] = useState('');
 
 
@@ -123,20 +125,24 @@ const Register = (props) => {
                       </option>
                       )}
                   </select>
-                  <select 
-                    onChange={(e) => setCourse(e.target.value)}
-                    className={`${styles.pushDown} form-control form-control-sm`}
-                    defaultValue={"default"}
-                    >
-                      <option value={"default"}>
-                         Select a Class
-                      </option>
-                      {courseContext && courseContext.map((classes) => 
-                      <option
-                      value={classes.name}
-                      >{classes.name}</option>
-                      )}
-                  </select>
+                  { role !== '606ed82e70f40e18e029165e' &&
+
+                          <select 
+                          onChange={(e) => setCourse(e.target.value)}
+                          className={`${styles.pushDown} form-control form-control-sm`}
+                          defaultValue={"default"}
+                          >
+                            <option value={"default"}>
+                              Select a Class
+                            </option>
+                            {courseContext && courseContext.map((classes) => 
+                            <option
+                            value={classes.name}
+                            >{classes.name}</option>
+                            )}
+                          </select>
+
+                  }
                 <input 
                   name={'fullName'} 
                   type='text'
@@ -146,6 +152,37 @@ const Register = (props) => {
                   placeholder='Full Name' 
                   className={styles.pushDown} 
                 />
+                  { role === '607ededa2712163504210684' &&
+                    <input 
+                    name={'schoolName'} 
+                    type='text'
+                    value={schoolName}
+                    onChange={(e) => setFullName(e.target.value)} 
+                    title='schoolName' 
+                    placeholder='School Name' 
+                    className={styles.pushDown} 
+                  />
+                  }
+                   { role === '607ededa2712163504210684' &&
+
+                      <select 
+                          onChange={(e) => setCourse(e.target.value)}
+                          className={`${styles.pushDown} form-control form-control-sm`}
+                          defaultValue={"default"}
+                          >
+                            <option value={"default"}>
+                              Select Class Category
+                            </option>
+                            <option
+                            // value={"primary"}
+                            >Primary</option>
+                            <option
+                            // value={"primary"}
+                            >Secondary</option>
+                      </select>
+
+                    }
+                  
                 <input 
                   name={'phone'} 
                   type='text'

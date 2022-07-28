@@ -5,9 +5,9 @@ export const fetchCoursesStart = () => ({
     type: types.FETCH_COURSES_START
 });
 
-export const fetchCoursesSuccess = (course) => ({
+export const fetchCoursesSuccess = (payload) => ({
     type: types.FETCH_COURSES_SUCCESS,
-    payload: course
+    payload
 })
 
 export const fetchCoursesFail = (error) => ({
@@ -70,7 +70,7 @@ export const fetchCourseInitiate = () =>  {
             dispatch(fetchCoursesSuccess(res))
         })
         .catch((err) => {
-            // console.log(err.data?.message)
+            dispatch(fetchCoursesFail(err))
         } )
     }
 
