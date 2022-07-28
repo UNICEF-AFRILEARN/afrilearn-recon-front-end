@@ -99,20 +99,12 @@ export const fetchUnicefReconInitiate = (schoollevel, subject, lesson) =>  {
             schoollevel,
             subject,
             lesson  
-        },
-        {
-            headers: { 
-                
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-                'Content-Type':'Authorization',
-              },
         })
         .then((res) => {
-            dispatch(fetchUnicefRecoSuccess(res))
+            dispatch(fetchUnicefRecoSuccess(res.data))
             console.log("Hello from UNICEF reconmendation API after call ===>", schoollevel, subject, lesson)
             console.log("Hello from UNICEF reconmendation API after call ===>")
-            console.log("From UNICEF reconmendation API =>", res)
+            console.log("From UNICEF reconmendation API =>", res.data)
         })
         .catch((err) => {
             console.log(err)

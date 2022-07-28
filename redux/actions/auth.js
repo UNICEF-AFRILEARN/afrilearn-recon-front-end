@@ -68,33 +68,67 @@ export const fetchRoles = () => (dispatch) => {
 };
 
 export const registerUserInitiate = (
-    fullName, 
-    email, 
-    password, 
-    confirmPassword, 
-    role, 
-    course,
-    phoneNumber,
-    referral
-) => (dispatch) => {
-  dispatch(registerUserStart())
-  axios
-  .post('https://afrilearn-backend-01.herokuapp.com/api/v1/auth/signup',
-  {
-    fullName, 
-    email, 
-    password, 
-    confirmPassword, 
-    role, 
-    course,
-    phoneNumber,
-    referral
-  })
-  .then((res) => {
-          registerUserSuccess(res.data.data)
-          console.log("User registration API ==>", res.data.data);
-        })
-        .catch((error) => {
-          console.log("Error registration API ==>", error);
-        })
+  fullName, 
+  email, 
+  password, 
+  confirmPassword, 
+  role, 
+  course,
+  phoneNumber,
+  referral) =>  {
+  return function (dispatch) {
+      dispatch(registerUserStart())
+      axios
+      .post('https://afrilearn-backend-01.herokuapp.com/api/v1/auth/signup',
+      {   
+        fullName, 
+        email, 
+        password, 
+        confirmPassword, 
+        role, 
+        course,
+        phoneNumber,
+        referral
+      })
+      .then((res) => {
+        registerUserSuccess(res.data.data)
+        console.log("User registration API ==>", res.data.data);
+      })
+      .catch((err) => {
+          console.log(err)
+      })
+  }
+
 }
+
+// export const registerUserInitiate = (
+//     fullName, 
+//     email, 
+//     password, 
+//     confirmPassword, 
+//     role, 
+//     course,
+//     phoneNumber,
+//     referral
+// ) => (dispatch) => {
+//   dispatch(registerUserStart())
+//   axios
+//   .post('https://afrilearn-backend-01.herokuapp.com/api/v1/auth/signup',
+//   {
+//     fullName, 
+//     email, 
+//     password, 
+//     confirmPassword, 
+//     role, 
+//     course,
+//     phoneNumber,
+//     referral
+//   })
+//   .then((res) => {
+//           registerUserSuccess(res.data.data)
+//           console.log("User registration API ==>", res.data.data);
+//         })
+//         .catch((error) => {
+//           console.log("Error registration API ==>", error);
+//         })
+// }
