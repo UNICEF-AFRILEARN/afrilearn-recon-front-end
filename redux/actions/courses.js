@@ -58,12 +58,24 @@ export const fetchSingleLessonFail = (error) => ({
     type: types.FETCH_SINGLE_LESSON_FAIL,
     payload: error
 });
+export const fetchLessonStart = () => ({
+    type: types.FETCH_LESSONS_START
+});
+export const fetchLessonSuccess = (payload) => ({
+    type: types.FETCH_LESSONS_SUCCESS,
+    payload
+});
+export const fetchLessonFail = (error) => ({
+    type: types.FETCH_LESSONS_FAIL,
+    payload: error
+});
 
 export const fetchCourseInitiate = () =>  {
     return function (dispatch) {
         dispatch(fetchCoursesStart())
         axios
-        .get('https://afrilearn-backend-01.herokuapp.com/api/v1/courses')
+        // .get('https://afrilearn-backend-01.herokuapp.com/api/v1/courses')
+        .get('http://localhost:5000/api/v1/courses')
         .then((res) => {
             console.log("Hello from courses API")
             console.log("From Courses API =>", res)
@@ -71,6 +83,24 @@ export const fetchCourseInitiate = () =>  {
         })
         .catch((err) => {
             dispatch(fetchCoursesFail(err))
+        } )
+    }
+
+}
+
+export const fetchLessonsInitiate = () =>  {
+    return function (dispatch) {
+        dispatch(fetchLessonStart())
+        axios
+        // .get('https://afrilearn-backend-01.herokuapp.com/api/v1/lessons')
+        .get('http://localhost:5000/api/v1/lessons')
+        .then((res) => {
+            console.log("Hello from Lessons API")
+            console.log("From Lessons API =>", res)
+            dispatch(fetchLessonSuccess(res))
+        })
+        .catch((err) => {
+            dispatch(fetchLessonFail(err))
         } )
     }
 
