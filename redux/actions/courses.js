@@ -96,8 +96,8 @@ export const fetchLessonsInitiate = () =>  {
         .get('http://localhost:5000/api/v1/lessons')
         .then((res) => {
             console.log("Hello from Lessons API")
-            console.log("From Lessons API =>", res)
-            dispatch(fetchLessonSuccess(res))
+            console.log("From Lessons API =>", res.data.data)
+            dispatch(fetchLessonSuccess(res.data.data))
         })
         .catch((err) => {
             dispatch(fetchLessonFail(err))

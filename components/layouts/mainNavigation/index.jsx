@@ -43,7 +43,7 @@ const Navigation = () => {
                 Our Story 
               </div>}
 
-              {userRole === '1' &&
+              {userRole === '606ed82e70f40e18e029165e' &&
               <div className={styles.parentloggedindash}>
                 <ul>
             
@@ -56,9 +56,9 @@ const Navigation = () => {
                 <Link passHref href="/payment" >
                     <li>Subscribe</li>
                 </Link>
-                <Link passHref href="/dashboard/parent/children"  >
+                {/* <Link passHref href="/dashboard/parent/children"  >
                     <li>My Children</li>
-                </Link>
+                </Link> */}
                 <div className={styles.navicons}>
                   <span><BsSearch /></span>
                   <span><BsBell /></span>

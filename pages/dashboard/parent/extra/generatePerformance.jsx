@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
@@ -7,10 +7,11 @@ import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 import styles from '../../../../styles/parentdashboard.module.css'
 
 const GeneratePerformance = () => {
+
   return (
     <div className={styles.parentmaingeneratewrapper}>
         <div className={styles.innerheadingperfomwrapper}>
-             <h2>Generate Performance</h2>
+             <h2>My Child(ren)</h2>
              <p>Select your child’s name to view his/her performance in class</p> 
         </div>
 

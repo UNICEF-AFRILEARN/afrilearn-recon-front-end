@@ -14,36 +14,41 @@ import GetSolution from "./extra/getSolution";
 import PerfomanceSumm from "./extra/PerfomanceSumm";
 import RecentActivity from "./extra/recentActivity";
 import Q from "./extra/recentActivity";
+import _ from "lodash";
 import StudentHeropage from "./studentHeropage";
-import { fetchCourseInitiate, fetchReconLessonInitiate, fetchUnicefReconInitiate, fetchActivitiesInitiate, fetchSingleLessonInitiate} from "../../../../redux/actions/courses";
+import { fetchCourseInitiate, fetchReconLessonInitiate, fetchUnicefReconInitiate, fetchActivitiesInitiate, fetchSingleLessonInitiate, fetchLessonsInitiate} from "../../../../redux/actions/courses";
 
 
 const Dashboard = () => {
   const dispatch = useDispatch();
-  const {reconLesson } = useSelector(state => state.Mycourses);
-  const {unicefRecon } = useSelector(state => state.Mycourses);
-  const {activities } = useSelector(state => state.Mycourses);
+  const {reconLesson, lessons, unicefRecon, activities } = useSelector(state => state.Mycourses);
   const { user }  = useSelector(state => state.auth);
   const {registerUser}  = useSelector(state => state.auth);
 
   console.log("Register unicefRecon from dashboard INDEX =====>", unicefRecon);
+  console.log("Register lessons from dashboard INDEX =====>", lessons);
 
 
   const schoollevel = "Primary One"
   const subject = "Basic Technology"
   const lesson  = "6012c173cfe09249249f7ece"
 
+  // const schoollevel = "JSS One"
+  // const subject = "Home Economics"
+  // const lesson  = "6012d3aacfe09249249f8b20"
+
   const userId = "62a0bc984af2d90016b72096"
   const token = user.token
   const lessonId = '6012c2a7cfe09249249f7f9c'
 
   useEffect(() => {
+    dispatch(fetchLessonsInitiate())
     dispatch(fetchSingleLessonInitiate(lessonId))
     dispatch(fetchActivitiesInitiate(token))
     dispatch(fetchUnicefReconInitiate(schoollevel, subject, lesson))
     dispatch(fetchReconLessonInitiate(userId, token))
     dispatch(fetchCourseInitiate())
-  }, [fetchCourseInitiate, fetchReconLessonInitiate, fetchUnicefReconInitiate,fetchActivitiesInitiate])
+  }, [fetchCourseInitiate, fetchReconLessonInitiate, fetchUnicefReconInitiate,fetchActivitiesInitiate, fetchLessonsInitiate])
 
   console.log("activities from Dashboard index call ====>", activities)
 
@@ -164,7 +169,7 @@ const Dashboard = () => {
       <PerfomanceSumm />
       <GetSolution />
       <ClassRoom />
-      <Recommended recommend={reconLesson?.recommendation}/>
+      <Recommended recommend={reconLesson?.recommendation} unicefRecon={unicefRecon} lessons={lessons} />
       <RecentActivity activities={activities?.recentActivities}/>
     </>
   );
@@ -204,8 +209,39 @@ const TopInClasses = ({ classData }) => {
   );
 };
 
-const Recommended = ({recommend}) => {
+const Recommended = ({recommend, unicefRecon, lessons}) => {
   console.log("From recommendation COmponent ====>", recommend)
+  console.log("unicefRecon from recommendation COmponent ====>", unicefRecon)
+  console.log("lessons From recommendation COmponent ====>", lessons)
+
+
+  const reconBucket = []
+  const finalReconLessons = []
+
+  const extractRecon = (buckets) => {
+      const unicefRecons = Object.values(buckets);
+      for (let i = 0; i < unicefRecons.length; i++) {
+        _.forEach(unicefRecons[i], (recon) => reconBucket.push(recon));
+        
+      }
+      return reconBucket
+    }
+
+    
+    const getFinalRecon = () => {
+      const myBucket = extractRecon(unicefRecon)
+      const myLessons = Object.values(lessons);
+
+      for (let i = 0; i < myLessons.length; i++) {
+          if(myLessons[i].id !== myBucket[i]){
+            return myLessons[i]
+          }
+      }
+      
+
+    }
+    console.log("Final answer", getFinalRecon())
+  // const unicefRecons = Object.values(unicefRecon);
   return (
     <>
       {recommend !== 0 && (
