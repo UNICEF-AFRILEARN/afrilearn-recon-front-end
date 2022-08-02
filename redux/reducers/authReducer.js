@@ -84,21 +84,44 @@ const authReducer = (state = initialState, {type, payload}) => {
                 ...state,
                 error: payload
             }
-        case types.GET_ROLES_SUCCESS:
-            return {
-                ...state,
-                roles: payload,
-                classes: payload,
-                students: payload,
-                teachers: payload,
-                numberOfClassNote: payload,
-                numberOfQuizQuestions: payload,
-                allUsers: payload,
-              };
-    
-        default:
-            return state;
+
+            case types.FORGOTPASSWORD_USER_START:
+                return {
+                    ...state,
+                }
+        
+            case types.FORGOTPASSWORD_USER_FAIL:
+                return {
+                    ...state,
+                    error: payload
+                }
+            case types.FORGOTPASSWORD_USER_SUCCESS:
+                return {
+                    ...state,
+                    formPassword: payload
+                }
+                case types.CHANGEPASSWORD_USER_START:
+                return {
+                    ...state,
+                }
+        
+            case types.CHANGEPASSWORD_USER_FAIL:
+                return {
+                    ...state,
+                    error: payload
+                }
+            case types.CHANGEPASSWORD_USER_SUCCESS:
+                return {
+                    ...state,
+                    changePassword: payload
+                }
+                default :
+                return {
+                    ...state
+                }
+
     }
+    
 }
 
 export default authReducer;

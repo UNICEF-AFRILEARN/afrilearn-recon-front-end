@@ -16,9 +16,15 @@ const Navigation = () => {
   const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {
+
+    console.log("From main navebar", user?.user?.role)
+    setUserRole(user?.user?.role)
+  }, [user])
+
     // console.log("From main navebar", user.user?.role);
-    setUserRole(user.user?.role);
-  }, [user]);
+  //   setUserRole(user.user?.role);
+  // }, [user]);
+
 
   return (
     <Navbar
