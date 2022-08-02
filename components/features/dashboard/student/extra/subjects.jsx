@@ -1,39 +1,48 @@
 import Image from "next/image";
-import SubHeading from "./subHeading";
 import styles from "./../../student/student.module.css";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-import {
-  Modal,
-  Button,
-  Container,
-  Row,
-  Col,
-  CloseButton,
-} from "react-bootstrap";
+import { Modal, Container, Row, Col } from "react-bootstrap";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import { StudentPage } from "./../studentHeropage";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCourseDetailsInitiate } from "../../../../../redux/actions/subject";
 
 let subj;
 const Subjects = ({ subData }) => {
+  const [subjCourId, setsubjCourId] = useState({});
+
   const [show, setShow] = useState(false);
-  const toggleModal = (data) => {
+  const toggleModal = async (data) => {
     setShow(!show);
     subj = data;
   };
-  useEffect(() => {}, [subj]);
+
+  const dispatch = useDispatch();
+
+  const dataIntro = async () => {
+    if (Object.keys(subjCourId).length !== 0) {
+      dispatch(fetchCourseDetailsInitiate(subjCourId.courseId, subjCourId.id));
+    }
+  };
+
+  useEffect(() => {
+    dataIntro();
+  }, [subjCourId]);
 
   const SubDataJsx = () => {
     return subData ? (
-      subData.map((dta, i) => {
+      subData.map((dta) => {
         return (
-          <div key={i} className={`col-md-6 ${styles.mySubjectt}`}>
+          <div key={dta.id} className={`col-md-6 ${styles.mySubjectt}`}>
             <button
               className="modalButton"
-              onClick={() => toggleModal(dta.mainSubjectId.name)}
+              onClick={() => {
+                setsubjCourId(() => ({ id: dta.id, courseId: dta.courseId }));
+                toggleModal(dta.mainSubjectId.name);
+              }}
             >
               <Image
                 alt={"design image"}
@@ -48,6 +57,65 @@ const Subjects = ({ subData }) => {
       })
     ) : (
       <div>Loading...</div>
+    );
+  };
+
+  const SubjectModal = () => {
+    return (
+      <>
+        <Container fluid id="subject">
+          <Row>
+            <div>
+              <HeaderHeropage />
+            </div>
+            <div className="p-5 pt-0 pb-1">
+              <div className={`row ${styles.modalThird}`}>
+                <div className="col-md-2">
+                  <Image
+                    alt={"design image"}
+                    src={"/assets/img/features/dashboard/student/user 3.png"}
+                    width={"72.4px"}
+                    height={"72.4px"}
+                  />
+                </div>
+                <div className="col-md-7">
+                  <h4>Class Notes</h4>
+                  <p>
+                    Learn with curriculum specific class notes and practice
+                    quizess
+                  </p>
+                </div>
+                <div className="col-md-3">
+                  {" "}
+                  <Link passHref href="/dashboard/student/classnote">
+                    <h6>FREE</h6>
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <div className="p-5 pt-0" style={{ cursor: "pointer" }}>
+              <Link passHref href="/dashboard/student/video">
+                <div className={`row ${styles.modalThird}`}>
+                  <div className="col-md-2">
+                    <Image
+                      alt={"design image"}
+                      src={
+                        "/assets/img/features/dashboard/student/GroupVideo.png"
+                      }
+                      width={"72.4px"}
+                      height={"72.4px"}
+                    />
+                  </div>
+                  <div className="col-md-7">
+                    <h4>Video Lessons</h4>
+                    <p>Learn with animated video lessons and practice quizes</p>
+                  </div>
+                </div>
+              </Link>
+            </div>
+          </Row>
+        </Container>
+      </>
     );
   };
 
@@ -67,83 +135,34 @@ const Subjects = ({ subData }) => {
     </>
   );
 };
-const SubjectModal = () => {
+
+export default Subjects;
+
+export const HeaderHeropage = () => {
   const user = useSelector((state) => state.auth);
   const personClass = user.user.user?.enrolledCourses[0].courseId.name;
   return (
     <>
-      <Container fluid>
-        <Row>
-          <Col className="p-0">
-            <StudentPage
-              stuData={[{ classData: personClass, subject: subj }]}
-            />
-          </Col>
-          <div className="p-5">
-            <StudentHeropageBase />
-          </div>
-          <div className="p-5 pt-0 pb-1">
-            <div className={`row ${styles.modalThird}`}>
-              <div className="col-md-2">
-                <Image
-                  alt={"design image"}
-                  src={"/assets/img/features/dashboard/student/user 3.png"}
-                  width={"72.4px"}
-                  height={"72.4px"}
-                />
-              </div>
-              <div className="col-md-7">
-                <h4>Class Notes</h4>
-                <p>
-                  Learn with curriculum specific class notes and practice
-                  quizess
-                </p>
-              </div>
-              <div className="col-md-3">
-                {" "}
-                <Link passHref href="/dashboard/student/classnote">
-                  <h6>FREE</h6>
-                </Link>
-              </div>
-            </div>
-          </div>
-          <div className="p-5 pt-0" style={{ cursor: "pointer" }}>
-            <Link passHref href="/dashboard/student/video">
-              <div className={`row ${styles.modalThird}`}>
-                <div className="col-md-2">
-                  <Image
-                    alt={"design image"}
-                    src={
-                      "/assets/img/features/dashboard/student/GroupVideo.png"
-                    }
-                    width={"72.4px"}
-                    height={"72.4px"}
-                  />
-                </div>
-                <div className="col-md-7">
-                  <h4>Video Lessons</h4>
-                  <p>Learn with animated video lessons and practice quizes</p>
-                </div>
-              </div>
-            </Link>
-          </div>
-        </Row>
-      </Container>
+      <Col className="p-0">
+        <StudentPage
+          stuData={[{ classData: personClass, subject: subj }]}
+          className="p-0"
+        />
+      </Col>
+      <div className="p-5">{<StudentHeropageBase />}</div>
     </>
   );
 };
-
-export default Subjects;
-
-export const StudentHeropageBase = () => {
+const StudentHeropageBase = () => {
+  const subject = useSelector((state) => state.MySubject);
+  const subjectDetails = subject.subjectDetails[0]?.subject;
   const data = {
-    subject: "SSS-ONE",
+    subject: subjectDetails?.courseId.name,
     title: subj,
-    description:
-      "Basic Technology is a very important subject in todays curriculum for students especially at the junior secondary  level as knowledge impacted prepares them for the various experiences at the senior level not withstanding their carrier paths.",
-    class: "Senior Sceondary School One",
-    lessons: "116 Video Lessons",
-    students: "13,000 Registered Students",
+    description: subjectDetails?.mainSubjectId.introText,
+    class: subjectDetails?.courseId.alias,
+    lessons: `${subject.subjectDetails[1]?.relatedLessons.length} Lessons`,
+    students: `${subject.subjectDetails[2]?.numOfUsers} Registered Students`,
   };
 
   return (
