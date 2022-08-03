@@ -17,6 +17,18 @@ export const fetchPaymentPlansFail = (error) => ({
   payload: error
 });
 
+export const verifyPaymentStart = (payload) => ({
+    type: types.PAYMENT_VERIFICATION_SUCCESS,
+    payload
+});
+export const verifyPaymentSuccess = (payload) => ({
+    type: types.PAYMENT_VERIFICATION_SUCCESS,
+    payload
+});
+export const verifyPaymentFail = (error) => ({
+    type: types.PAYMENT_VERIFICATION_FAILURE,
+    payload: error
+});
 
 export const fetchPaymentPlansInitiate = () =>  {
     return function (dispatch) {
@@ -34,4 +46,23 @@ export const fetchPaymentPlansInitiate = () =>  {
         })
     }
 
+}
+
+export const verifyPaystackPaymentInitiate = (data, token) => {
+    return function (dispatch) {
+        dispatch(verifyPaymentStart())
+        axios
+        .post("http://localhost:5000/api/v1/api/v1/payments/verify-paystack-payment",
+            {   data  },
+        {
+            headers: {
+                "token": token
+            }
+        })
+        .then((res) => {
+                console.log("API params", res.data)
+                dispatch(verifyPaymentSuccess(res.data))
+            })
+            .catch((error) => dispatch(verifyPaymentFail(error)))
+    }   
 }

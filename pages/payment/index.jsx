@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRoles } from '../../redux/actions/auth';
-import { fetchPaymentPlansInitiate } from '../../redux/actions/payment';
+import { fetchPaymentPlansInitiate, verifyPaystackPaymentInitiate } from '../../redux/actions/payment';
+import { usePaystackPayment } from 'react-paystack';
 
 import styles from "../../styles/payment.module.css"
 
@@ -10,6 +11,36 @@ const payment = () => {
   const coursesCollected = useSelector((state) => state.auth)
   const {paymentPlans} = useSelector((state) => state.myPayment)
 
+  const config = {
+    reference: new Date().getTime(),
+    email: "text@gmail.com",
+    amount: 200,
+    publicKey: "pk_live_a9c31ffce1eca1674882580da27446be439723bf",
+    channels: ["card"],
+  };
+  
+  // you can call this function anything
+  const onSuccess =  (reference) => {
+  // Implementation for whatever you want to do with reference and after success call.
+  const data = {
+    reference: reference.reference,
+    productId: paymentId,
+    courseId,
+    clientUserId: userId,
+    amount: price,
+  };
+  dispatch(verifyPaystackPaymentInitiate(data, token));
+   return console.log("payment ref", reference);
+  };
+  
+  // you can call this function anything
+  const onClose = () => {
+  // implementation for  whatever you want to do when the Paystack dialog closed.
+  console.log('closed')
+  }
+
+
+const initializePayment = usePaystackPayment(config);
 
   const courseContext = coursesCollected.roles.courses;
   const allPaymentPlans = paymentPlans.paymentPlans
@@ -58,7 +89,7 @@ const payment = () => {
    </div>
 
    <div className={`col-md-6 ${styles.paymentSecondContainer}`} >
-   <form >
+   {/* <form > */}
     <div className='row'>
       <div className={styles.paymentLabel}><label for="className "><h5>Step 1: Select Class:</h5> </label></div>
       <div  >
@@ -95,7 +126,10 @@ const payment = () => {
   </div>
  <div className='row'>
   <div className= {` col-md-6 ${styles.paymenttypeButton}`}>
-    <button >PAY WITH CARD</button>
+    <button 
+    onClick={() => {
+                initializePayment(onSuccess, onClose)
+              }}>PAY WITH CARD</button>
   </div>
     <div className={` col-md-6 ${styles.paymenttypeButton2}`}>
       <button >BANK TRANSFER</button>
@@ -104,7 +138,7 @@ const payment = () => {
  </div>
 
 </div>
-</form> 
+{/* </form>  */}
 
 
 </div>

@@ -56,7 +56,7 @@
   grid-template-columns: repeat(3, 1fr);
   margin-bottom: 40px;
   width: 100%;
-  gap: 10px;
+  gap: 15px;
 }
 .durationPayment button{
 border: none;
@@ -65,7 +65,7 @@ box-shadow: 13px 14px 14px 3px rgba(0,0,0,0.82);
 -moz-box-shadow: 13px 14px 14px 3px rgba(0,0,0,0.82);
 background-color: white;
 padding: 20%;
-border-radius: 10px;
+border-radius: 20px;
 }
 .durationBold{
     font-weight: 600;
