@@ -1,15 +1,21 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRoles } from '../../redux/actions/auth';
+import { fetchChildrenInitiate } from '../../redux/actions/parent';
 import styles from "../../styles/payment.module.css"
 
 const payment = () => {
   const dispatch = useDispatch();
   const coursesCollected = useSelector((state) => state.auth)
+  const {paymentPlans} = useSelector((state) => state.myPayment)
 
 
+  console.log("Plans from payment", paymentPlans)
   const courseContext = coursesCollected.roles.courses;
 
+  useEffect(() => {
+    dispatch(fetchChildrenInitiate())
+  }, [])
 
   useEffect(() => {
     dispatch(fetchRoles())

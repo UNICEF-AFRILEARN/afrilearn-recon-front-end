@@ -18,21 +18,16 @@ export const fetchPaymentPlansFail = (error) => ({
 });
 
 
-export const fetchPaymentPlansInitiate = (token) =>  {
+export const fetchPaymentPlansInitiate = () =>  {
     return function (dispatch) {
         dispatch(fetchPaymentPlansStart())
         axios
-        .get('https://afrilearn-backend-01.herokuapp.com/api/v1/parents/children',
-        {
-            headers: {
-                "token": token,
-                "Content-Type": "application/json",
-            }
-        })
+        .get('https://afrilearn-backend-01.herokuapp.com/api/v1/payments/plans'
+        )
         .then((res) => {
-            dispatch(fetchPaymentPlansSuccess(res.data.data))
+            dispatch(fetchPaymentPlansSuccess(res.data))
             console.log("Hello from payment API after call ===>")
-            console.log("From payment API =>", res.data.data)
+            console.log("From payment API =>", res.data)
         })
         .catch((err) => {
             dispatch(fetchPaymentPlansFail(err))
