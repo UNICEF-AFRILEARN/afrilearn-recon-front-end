@@ -5,8 +5,8 @@ import { } from 'redux-persist/lib/storage/session';
 import authReducer from "./authReducer";
 import coursesReducer from "./coursesReducer";
 import { parentReducer } from "./parentReducer";
-import { paymentReducer } from "./payment";
-import { subjectReducer } from "./subjects";
+import { paymentReducer } from "./paymentReducer";
+import { subjectReducer } from "./subjectsReducer";
 
 
 

@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRoles } from '../../redux/actions/auth';
-import { fetchChildrenInitiate } from '../../redux/actions/parent';
+import { fetchPaymentPlansInitiate } from '../../redux/actions/payment';
+
 import styles from "../../styles/payment.module.css"
 
 const payment = () => {
@@ -14,7 +15,7 @@ const payment = () => {
   const courseContext = coursesCollected.roles.courses;
 
   useEffect(() => {
-    dispatch(fetchChildrenInitiate())
+    dispatch(fetchPaymentPlansInitiate())
   }, [])
 
   useEffect(() => {
