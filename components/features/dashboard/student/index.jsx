@@ -124,7 +124,6 @@ const Dashboard = () => {
 
   const user = useSelector((state) => state.auth);
   const subject = useSelector((state) => state.MySubject);
-
   const dispatch = useDispatch();
 
   const personData = {
@@ -132,9 +131,14 @@ const Dashboard = () => {
     personName: user.user.user?.fullName,
   };
 
+
+
+  const person_id = user.user.user?.enrolledCourses[0]._id;
   const personId = user.user.user?.enrolledCourses[0].courseId.id;
+  const token = user.user.token;
   useEffect(() => {
-    dispatch(fetchCourseInitiate(personId));
+    dispatch(fetchCourseInitiate(personId, person_id, token));
+    console.log(subject);
   }, [personId]);
 
   return (
@@ -142,10 +146,14 @@ const Dashboard = () => {
       <StudentHeropage data={personData} />
       <div>
         <SubHeading title="My Subject" />
-        <Subjects subData={subject.subject.subjects} />;
+        <Subjects subData={subject.subject[0]?.subjects} />;
       </div>
       <PastQuestion />
-      <TopInClasses classData={datas} />
+      {/* subject.subject[1]?.lessons */}
+      <TopInClasses
+        classData={subject.subject[1]?.lessons}
+        classes={personData.personClass}
+      />
       <PerfomanceSumm />
       <GetSolution />
       <ClassRoom />
@@ -155,7 +163,7 @@ const Dashboard = () => {
   );
 };
 
-const TopInClasses = ({ classData }) => {
+const TopInClasses = ({ classData,classes }) => {
   const customeSlider = useRef();
 
   const settings = {
@@ -171,11 +179,11 @@ const TopInClasses = ({ classData }) => {
   };
   return (
     <>
-      <SubHeading title={`Top in ${classData[0].class}`} />
+      <SubHeading title={`Top in ${classes}`} />
       <div className={styles.contai}>
         <section className="parnet-frag-color">
           <Slider {...settings} ref={customeSlider}>
-            {classData[1].map((data) => (
+            {classData.map((data) => (
               <TopInClass data={data} />
             ))}
           </Slider>
