@@ -11,9 +11,10 @@ const payment = () => {
   const {paymentPlans} = useSelector((state) => state.myPayment)
 
 
-  console.log("Plans from payment", paymentPlans)
   const courseContext = coursesCollected.roles.courses;
-
+  const allPaymentPlans = paymentPlans.paymentPlans
+  
+  console.log("Plans from payment", allPaymentPlans)
   useEffect(() => {
     dispatch(fetchPaymentPlansInitiate())
   }, [])
@@ -81,17 +82,24 @@ const payment = () => {
 
       </div>
     </div> 
-<div className="">
   <h5>Step 3: Select Subscription Length</h5>
   <div className={`row ${styles.paymentdurationButtons}`}>
-  <div className= {` col-md-3 ${styles.durationPayment}`}> <button ><div className={styles.durationBold}>Monthly</div><div> 999</div ></button></div>
-<div className={` col-md-3 ${styles.durationPayment}`}><button ><div className={styles.durationBold}>Quaterly</div>  2,999 </button></div>
-<div className={` col-md-3 ${styles.durationPayment}`}><button > <div className={styles.durationBold}>Bi- Annual</div>  4,999 </button></div>
-<div className={` col-md-3 ${styles.durationPayment}`}><button ><div className={styles.durationBold}>Yearly </div> 9,999 </button></div>
+  <div className= {` col-md-3 ${styles.durationPayment}`}> 
+    {allPaymentPlans && allPaymentPlans.map((allPlans) =>
+        <button >
+        <div className={styles.durationBold}>{allPlans.name}</div>
+        <div>{allPlans.amount}</div >
+      </button>
+    )}
+
   </div>
  <div className='row'>
-  <div className= {` col-md-6 ${styles.paymenttypeButton}`}><button >PAY WITH CARD</button></div>
- <div className={` col-md-6 ${styles.paymenttypeButton2}`}><button >BANK TRANSFER</button></div>
+  <div className= {` col-md-6 ${styles.paymenttypeButton}`}>
+    <button >PAY WITH CARD</button>
+  </div>
+    <div className={` col-md-6 ${styles.paymenttypeButton2}`}>
+      <button >BANK TRANSFER</button>
+   </div>
 
  </div>
 
