@@ -1,8 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchRoles } from '../../redux/actions/auth';
 import styles from "../../styles/payment.module.css"
 
 const payment = () => {
+  const dispatch = useDispatch();
+  const coursesCollected = useSelector((state) => state.auth)
 
+
+  const courseContext = coursesCollected.roles.courses;
+
+
+  useEffect(() => {
+    dispatch(fetchRoles())
+  }, [])
 
   return (
 
@@ -43,12 +54,31 @@ const payment = () => {
     <div className='row'>
       <div className={styles.paymentLabel}><label for="className "><h5>Step 1: Select Class:</h5> </label></div>
       <div  >
-      <select className={styles.paymentSelect} id="className" name="classlist" form="classform">
+      {/* <select className={styles.paymentSelect} id="className" name="classlist" form="classform"> */}
+  {/* <option value="JSS1">JSS1</option>
   <option value="JSS1">JSS1</option>
   <option value="JSS1">JSS1</option>
-  <option value="JSS1">JSS1</option>
-  <option value="JSS1">JSS1</option>
-  </select>
+  <option value="JSS1">JSS1</option> */}
+  
+  {/* </select> */}
+           <select
+                className={`${styles.pushDown} form-control form-control-sm`}
+                // value={selectedCourse}
+                defaultValue={"default"}
+                // onChange={(e) => setCourseSelected(e.target.value)}
+                >
+                <option value={"default"}>
+                    Select a class
+                </option>
+    
+                {courseContext && courseContext.map((childClass) => 
+                <option 
+                placeholder='Select a Role'
+                    >{childClass.name}
+                </option>
+                )}
+            </select>
+
       </div>
     </div> 
 <div className="">
