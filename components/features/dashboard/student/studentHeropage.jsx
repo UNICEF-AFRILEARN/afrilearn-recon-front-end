@@ -59,13 +59,13 @@ const studentHeropage = () => {
 export default studentHeropage;
 
 export const StudentPage = ({ stuData }) => {
-  const { user }  = useSelector(state => state.auth);
+  const { user, registerUser}  = useSelector(state => state.auth);
   // const courses = useSelector(state => state.Mycourses);
   const dispatch = useDispatch();
   // const {reconLesson } = useSelector(state => state.Mycourses);
 
 
-  console.log("User from UI =>>>", user.token)
+  console.log("User from UI =>>>", registerUser.user)
   // console.log("token from UI =>>>", token)
   console.log("From student dashboard", user.user?.enrolledCourses.length > 1? user.user?.enrolledCourses[1]?.courseId?.name : user.user?.enrolledCourses[0]?.courseId?.name)
   const greetings = (firstName) => {
@@ -99,7 +99,7 @@ useEffect(() => {
          <div className={`row ${styles.push2}`}>
           <div className="col-md-12">
             {
-              <h2>{greetings(user.user?.fullName)}</h2>}
+              <h2>{greetings(user.user?.fullName || registerUser.user?.fullName)}</h2>}
             {stuData[0].subject && <h2>{stuData[0].subject}</h2>}
             <p>Explore the fun in learning💃</p>
           </div>

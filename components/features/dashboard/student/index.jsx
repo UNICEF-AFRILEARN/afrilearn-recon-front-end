@@ -25,8 +25,8 @@ const Dashboard = () => {
   const { user }  = useSelector(state => state.auth);
   const {registerUser}  = useSelector(state => state.auth);
 
-  console.log("Register unicefRecon from dashboard INDEX =====>", unicefRecon);
-  console.log("Register lessons from dashboard INDEX =====>", lessons);
+  console.log("Register registerUser from dashboard INDEX =====>", registerUser.user);
+  console.log("Register user from dashboard INDEX =====>", user);
 
 
   const schoollevel = "Primary One"

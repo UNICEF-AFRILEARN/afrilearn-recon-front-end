@@ -91,11 +91,11 @@ export const registerUserInitiate = (
         referral
       })
       .then((res) => {
-        registerUserSuccess(res.data.data)
+        dispatch(registerUserSuccess(res.data.data))
         console.log("User registration API ==>", res.data.data);
       })
       .catch((err) => {
-          console.log(err)
+          dispatch(registerUserFail(err))
       })
   }
 

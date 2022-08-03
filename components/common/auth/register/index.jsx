@@ -11,13 +11,13 @@ import { Button, Modal } from 'react-bootstrap';
 
 import { fetchRoles, registerUserInitiate } from "../../../../redux/actions/auth";
 
-import {API} from '../../../../pages/api/client-side/fetcher';
+// import {API} from '../../../../pages/api/client-side/fetcher';
 import Router, { useRouter } from 'next/router'
+import { fetchSubjectsInitiate } from '../../../../redux/actions/subjects';
 
 const Register = (props) => {
   const { user } = useSelector(state => state.auth);
-  // const role = useSelector(state => state.Mycourses)
-  // console.log("This is role", role)
+  const { subjects} = useSelector(state => state.mySubject);
   const [roleSelected, setRoleSelected] = useState('');
   const [role, setRole] = useState('');
   const [classCategory, setClassCategory] = useState('');
@@ -80,9 +80,13 @@ const Register = (props) => {
     
   }
 
+useEffect(() => {
+  dispatch(fetchSubjectsInitiate())
+}, [])
 
   useEffect(() => {
-    getRoleId();
+   getRoleId();
+    
   }, [getRoleId])
 
   useEffect(() => {

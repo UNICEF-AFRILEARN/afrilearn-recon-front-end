@@ -12,7 +12,7 @@ import { BsPersonCircle } from 'react-icons/bs';
 
 const Navigation = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [userRole, setUserRole] = useState("not_login");
+  const [userRole, setUserRole] = useState("1");
   const { user } = useSelector(state => state.auth)
 
   
@@ -41,7 +41,8 @@ const Navigation = () => {
             {userRole === "not_login" &&
               <div className="our-story-frag">
                 Our Story 
-              </div>}
+              </div>
+            }
 
               {userRole === '606ed82e70f40e18e029165e' &&
               <div className={styles.parentloggedindash}>
@@ -135,14 +136,16 @@ const Navigation = () => {
                   <AppButton title="SIGN UP" secondary />
               </Link>
 
-              </div>}
+              </div>
+              }
+              
               {<div className="inner-btn-nav-bar">
               {/* <Link passHref href="/login" className="btn-log-in-mobile">
                   <AppButton title="Log out" className={styles.loginButton} />
               </Link> */}
-              <Link passHref href="/register" className="btn-log-in-mobile">
+              {/* <Link passHref href="/register" className="btn-log-in-mobile">
                   < BsPersonCircle size={30}/>
-              </Link>
+              </Link> */}
 
               </div>}
            {/* </div> */}
