@@ -24,9 +24,17 @@ const Addmychild = () => {
   const [parentId, setParentId] = useState("")
   const [myChildClass, setMyChildClass] = useState("")
 
-  const user_login = useSelector(state => state.auth)
+  const user_login = useSelector(state => state.auth);
+  const {children} = useSelector(state => state.parentR);
 
   const token  = user_login.user.token;
+  const childrenCount  = children.children.length;
+  const childrenCourseCount = 0;
+  const myChildren = children.children;
+  const mappedCoursesCount = myChildren.map((children) =>  
+    children.enrolledCourses.length)
+
+    childrenCourseCount = mappedCoursesCount.reduce((a,b) => a+b, 0)
   console.log("Add child component", courseId, selectedCourse)
 
 
@@ -90,7 +98,10 @@ const Addmychild = () => {
     <div className={styles.parentcomponentwrapper}>
     <div className={styles.innerparentwrapper}>
          <ParentHeader />
-         <Middlebar />
+         <Middlebar 
+         childrenCount={childrenCount}
+         childrenCourseCount={childrenCourseCount}
+         />
          <Proaddvert />
     </div>
     <div className={styles.parentchildformwrapper}>
