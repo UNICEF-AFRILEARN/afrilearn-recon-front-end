@@ -20,11 +20,15 @@ const Subjects = ({ subData }) => {
     subj = data;
   };
 
+  // console.log();
+
   const dispatch = useDispatch();
 
   const dataIntro = async () => {
     if (Object.keys(subjCourId).length !== 0) {
-      dispatch(fetchCourseDetailsInitiate(subjCourId.courseId, subjCourId.id));
+      dispatch(
+        fetchCourseDetailsInitiate(subjCourId.courseId, subjCourId.id),
+      );
     }
   };
 
