@@ -54,13 +54,6 @@ const payment = () => {
     <div className='row'>
       <div className={styles.paymentLabel}><label for="className "><h5>Step 1: Select Class:</h5> </label></div>
       <div  >
-      {/* <select className={styles.paymentSelect} id="className" name="classlist" form="classform"> */}
-  {/* <option value="JSS1">JSS1</option>
-  <option value="JSS1">JSS1</option>
-  <option value="JSS1">JSS1</option>
-  <option value="JSS1">JSS1</option> */}
-  
-  {/* </select> */}
            <select
                 className={`${styles.pushDown} form-control form-control-sm`}
                 // value={selectedCourse}
