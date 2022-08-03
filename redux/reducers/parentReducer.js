@@ -3,7 +3,8 @@ import * as types from '../types/parent'
 const initialState = {
     loading: false,
     childData: [],
-    error: []
+    error: [],
+    children: [],
 }
 
 export const parentReducer = (state = initialState, { type, payload} ) => {
@@ -20,6 +21,23 @@ export const parentReducer = (state = initialState, { type, payload} ) => {
                 loading: false
             };
         case types.SIGN_UP_FOR_A_CHILD_FAIL:
+            return {
+                ...state,
+                error: payload,
+                loading: false
+            };
+        case types.FETCH_CHILDREN_START:
+            return {
+                ...state,
+                loading: true
+            };
+        case types.FETCH_CHILDREN_SUCCESS:
+            return {
+                ...state,
+                children: payload,
+                loading: false
+            };
+        case types.FETCH_CHILDREN_FAIL:
             return {
                 ...state,
                 error: payload,

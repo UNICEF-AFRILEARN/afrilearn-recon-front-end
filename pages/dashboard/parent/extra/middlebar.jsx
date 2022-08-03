@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import styles from '../../../../styles/parentdashboard.module.css';
 
-const Middlebar = () => {
+const Middlebar = ({childrenCount}) => {
   return (
     <div className={styles.avatarwrapper}>
         <Image
@@ -13,7 +13,7 @@ const Middlebar = () => {
         <div className={styles.counterwrapper}>
             <div className={styles.childrencounterwrapper}>
                 <h4>Number of Children </h4>
-                    <h5>02</h5>
+                    <h5>0{childrenCount}</h5>
 
             </div>
             <div className={styles.classesncounterwrapper}>
