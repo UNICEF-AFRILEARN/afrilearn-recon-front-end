@@ -7,7 +7,6 @@ import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 import styles from '../../../../styles/parentdashboard.module.css'
 
 const GeneratePerformance = ({children, courseContext}) => {
-        console.log("children", courseContext)
   return (
     <div className={styles.parentmaingeneratewrapper}>
         <div className={styles.innerheadingperfomwrapper}>

@@ -25,7 +25,6 @@ const Parent = () => {
     children.enrolledCourses.length)
 
     childrenCourseCount = mappedCoursesCount?.reduce((a,b) => a+b, 0)
-  console.log("parent dashboadt data =>", user_login)
   
   useEffect(() => {
     dispatch(fetchChildrenInitiate(token))
@@ -50,7 +49,10 @@ useEffect(() => {
             children={children.children} 
             courseContext={courseContext}
             />
-            {/* <ClassContent /> */}
+            <ClassContent
+             courseContext={courseContext}
+             children={children.children}
+            />
     </div>
   )
 }

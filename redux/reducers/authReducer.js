@@ -50,6 +50,20 @@ const authReducer = (state = initialState, {type, payload}) => {
                 numberOfQuizQuestions: payload,
                 allUsers: payload,
               };
+        case types.GOOGLE_SOCIAL_LOGIN_START:
+                return {
+                    ...state
+                }
+        case types.GOOGLE_SOCIAL_LOGIN_SUCCESS:
+                return {
+                    ...state,
+                    googleLoggedIn: payload
+                }
+        case types.GOOGLE_SOCIAL_LOGIN_FAIL:
+            return {
+                ...state,
+                error: payload
+            }
     
         default:
             return state;

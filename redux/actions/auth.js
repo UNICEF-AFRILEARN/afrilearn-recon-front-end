@@ -36,6 +36,40 @@ export const registerUserFail = (error) => ({
   payload: error
 });
 
+export const googleSocialLoginStart = () => ({
+  type: types.GOOGLE_SOCIAL_LOGIN_START,
+});
+
+export const googleSocialLoginSuccess = (payload) => ({
+type: types.GOOGLE_SOCIAL_LOGIN_SUCCESS,
+payload
+});
+
+export const googleSocialLoginFail = (error) => ({
+type: types.GOOGLE_SOCIAL_LOGIN_FAIL,
+payload: error
+});
+
+
+
+export const googleLoginInitiate = (token) => {
+  return function (dispatch) {
+      dispatch(googleSocialLoginStart())
+      axios
+      .post("http://localhost:5000/api/v1/api/v1/auth/social_login/google",
+          {   data  },
+      {
+          headers: {
+              "token": token
+          }
+      })
+      .then((res) => {
+              console.log("API Google login params", res.data)
+              dispatch(googleSocialLoginSuccess(res.data))
+          })
+          .catch((error) => dispatch(googleSocialLoginFail(error)))
+  }   
+}
 
 export const loginInitiate = (email, password) => {
   return function (dispatch) {

@@ -11,6 +11,15 @@ const payment = () => {
   const coursesCollected = useSelector((state) => state.auth)
   const {paymentPlans} = useSelector((state) => state.myPayment)
 
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // setPrice('')
+    // setDuration('')
+    // setCourse('KidsCode')
+
+}
+
   const config = {
     reference: new Date().getTime(),
     email: "text@gmail.com",
@@ -89,7 +98,7 @@ const initializePayment = usePaystackPayment(config);
    </div>
 
    <div className={`col-md-6 ${styles.paymentSecondContainer}`} >
-   {/* <form > */}
+   <form onSubmit={handleSubmit}>
     <div className='row'>
       <div className={styles.paymentLabel}><label for="className "><h5>Step 1: Select Class:</h5> </label></div>
       <div  >
@@ -138,7 +147,7 @@ const initializePayment = usePaystackPayment(config);
  </div>
 
 </div>
-{/* </form>  */}
+</form> 
 
 
 </div>
