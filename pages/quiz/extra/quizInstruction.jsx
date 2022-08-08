@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-// import styles from qui
+// import styles from quiz
 
 const QuizInstruction = () => {
   const quizData = {

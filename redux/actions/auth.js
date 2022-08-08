@@ -47,6 +47,49 @@ export const changePasswordfail = (error) => ({
   type: types.FORGOTPASSWORD_USER_SUCCESS,
   payload : error,
 });
+
+// UPDATE-PROFILE
+export const editprofileStart = (params) => ({
+  type: types.STUDENT_EDITPROFILE_START,
+  payload: params
+});
+
+export const editprofileSuccess = (payload) => ({
+  type: types.STUDENT_EDITPROFILE_SUCCESS,
+  payload,
+});
+
+export const editprofileFail = (error) => ({
+  type: types.STUDENT_EDITPROFILE_FAIL,
+  payload: error,
+});
+
+export const sendeditedprofileInitiate = (data, token) => {
+    return function (dispatch) {
+     
+  dispatch(editprofileStart());
+  axios
+    .patch(
+      `https://afrilearn-backend-01.herokuapp.com/api/v1/auth/profile-update`,
+      {data},
+      {
+        headers:{
+          'token':token
+        }
+      }
+    )
+    
+    .then((res) => {
+      console.log("data is collected", res.data)
+      dispatch(editprofileSuccess(res.data.data));
+    })
+    // .then((err) => {
+    //   console.log(err);
+    // });
+    .catch((err) => dispatch(editprofileFail(err)))
+}}
+
+
 // CHANGE PASSWORD
 export const sendChangepasswordemail = (email, password) => {
 

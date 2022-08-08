@@ -63,6 +63,7 @@ const initialState = {
     actives: [],
     blogs: [],
     faculties: [],
+    updateForm:[],
     socialCampaign: false,
 }
 
@@ -115,6 +116,22 @@ const authReducer = (state = initialState, {type, payload}) => {
                     ...state,
                     changePassword: payload
                 }
+                // UPDATE-PROFILE
+                case types.STUDENT_EDITPROFILE_START:
+                    return {
+                      ...state,
+                    };
+                  case types.STUDENT_EDITPROFILE_SUCCESS:
+                    return {
+                      ...state,
+                      updateForm: payload,
+                    };
+                  case types.STUDENT_EDITPROFILE_FAIL:
+                    return {
+                      ...state,
+                      error: payload,
+                    };
+
                 default :
                 return {
                     ...state
