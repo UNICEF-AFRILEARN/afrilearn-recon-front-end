@@ -12,7 +12,7 @@ import { BsPersonCircle } from 'react-icons/bs';
 
 const Navigation = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [userRole, setUserRole] = useState("1");
+  const [userRole, setUserRole] = useState("");
   const { user } = useSelector(state => state.auth)
 
   
@@ -127,7 +127,7 @@ const Navigation = () => {
               </div>
               }
                 
-              { userRole === '1' &&
+              { userRole !== '606ed82e70f40e18e029165e' && userRole !== '5fd08fba50964811309722d5' &&
               <div className="inner-btn-nav-bar">
               <Link passHref href="/login" className="btn-log-in-mobile">
                   <AppButton title="LOG IN" className={styles.loginButton} />
@@ -143,9 +143,10 @@ const Navigation = () => {
               {/* <Link passHref href="/login" className="btn-log-in-mobile">
                   <AppButton title="Log out" className={styles.loginButton} />
               </Link> */}
-              {/* <Link passHref href="/register" className="btn-log-in-mobile">
+              { userRole === '606ed82e70f40e18e029165e' || userRole === '5fd08fba50964811309722d5' &&
+                <Link passHref href="/register" className="btn-log-in-mobile">
                   < BsPersonCircle size={30}/>
-              </Link> */}
+              </Link>}
 
               </div>}
            {/* </div> */}

@@ -2,8 +2,11 @@ import { Col, Row } from "react-bootstrap";
 import styles1 from "../student.module.css";
 import styles from "./studentProfile.module.css";
 import Link from "next/link";
+import { useSelector } from "react-redux";
 
 const StudentProfile = () => {
+  const {user} = useSelector(state => state.auth)
+  console.log("logged-in ==> ", user )
   const coin = { amount: 345 };
   const number = "";
   return (
