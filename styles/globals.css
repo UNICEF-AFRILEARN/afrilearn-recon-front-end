@@ -545,3 +545,6 @@ padding: 10px;
   background-color: #00D9B6 !important;
   border-color: #00D9B6 !important;
 }
+.btn-log-in-mobile {
+  cursor: pointer;
+}

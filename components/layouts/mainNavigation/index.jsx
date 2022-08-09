@@ -8,6 +8,7 @@ import { AiOutlineSafetyCertificate } from 'react-icons/ai';
 import styles from "./mainNavigation.module.css";
 import AppButton from "../../widgets/buttons/AppButton";
 
+
 import { BsPersonCircle } from 'react-icons/bs';
 
 const Navigation = () => {
@@ -144,8 +145,8 @@ const Navigation = () => {
                   <AppButton title="Log out" className={styles.loginButton} />
               </Link> */}
               { userRole === '606ed82e70f40e18e029165e' || userRole === '5fd08fba50964811309722d5' &&
-                <Link passHref href="/register" className="btn-log-in-mobile">
-                  < BsPersonCircle size={30}/>
+                <Link passHref href="/dashboard/student/studentProfile" className={`${styles.avatarstyles}btn-log-in-mobile`}>
+                  < BsPersonCircle size={30} />
               </Link>}
 
               </div>}
