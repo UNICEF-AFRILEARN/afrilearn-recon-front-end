@@ -2,13 +2,21 @@ import { Col, Row } from "react-bootstrap";
 import styles1 from "../student.module.css";
 import styles from "./studentProfile.module.css";
 import Link from "next/link";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { fetchUserProfileInitiate } from "../../../../../redux/actions/dashboard";
 
 const StudentProfile = () => {
-  const {user} = useSelector(state => state.auth)
-  console.log("logged-in ==> ", user )
+  const user = useSelector(state => state.auth)
+  const dispatch = useDispatch();
+  console.log("logged-in ==> profile", user )
   const coin = { amount: 345 };
   const number = "";
+
+  useEffect(() => {
+    dispatch(fetchUserProfileInitiate())
+  }, [])
+  
   return (
     <>
       <div

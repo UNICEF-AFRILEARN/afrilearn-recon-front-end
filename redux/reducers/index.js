@@ -7,6 +7,7 @@ import coursesReducer from "./coursesReducer";
 import { parentReducer } from "./parentReducer";
 import { paymentReducer } from "./paymentReducer";
 import { subjectReducer } from "./subjectsReducer";
+import { dashboardReducer } from './dashboardReducer';
 
 
 
@@ -15,5 +16,6 @@ export default combineReducers({
   Mycourses: coursesReducer,
   parentR: parentReducer,
   mySubject: subjectReducer,
-  myPayment: paymentReducer
+  myPayment: paymentReducer,
+  dashboard: dashboardReducer,
 });
