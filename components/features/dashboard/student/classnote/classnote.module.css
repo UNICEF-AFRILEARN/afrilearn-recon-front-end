@@ -1,14 +1,15 @@
 .accord {
-  /* width: 90%; */
-  height: 80px;
-  margin: auto;
-  /* background: #a80f0f; */
+  /* height: 80px; */
+  /* margin: auto; */
   border-radius: 10px;
 }
+
 
 .classs {
   margin: 50px 100px;
 }
+
+
 
 .accordance {
   background-image: url("/assets/img/features/dashboard/student/button2.png");
@@ -39,7 +40,6 @@
   width: 7px;
   height: 25px;
 }
-
 .love {
   background-image: url("/assets/img/features/dashboard/student/Heart.png");
 }
@@ -123,8 +123,6 @@
   width: fit-content;
   height: fit-content;
   margin: 7px;
-
-  /* display: flex; */
 }
 
 .accordLeft {
@@ -271,8 +269,13 @@
 .lovedtext {
   color: #00d9b6;
   font-size: 20px;
+  cursor: "pointer";
 }
 
 .highlightText:hover {
   color: #00d9b6;
+}
+
+.colSeentext {
+  cursor: "pointer";
 }

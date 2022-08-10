@@ -5,7 +5,7 @@ const StudentProfile = () => {
   return (
     <>
       <Head>
-        <title>Profile | Myafrilearn.com</title>
+        <title>Student Profile | Myafrilearn.com</title>
         <meta
           name="description"
           content="Afrilearn is on a mission to provide affordable, world-class education for Africans, anywhere."

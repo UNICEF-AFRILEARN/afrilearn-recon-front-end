@@ -1,0 +1,72 @@
+.moreIcon {
+  background-image: url("/assets/img/features/dashboard/student/Group2121.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 7px;
+  height: 25px;
+  position: "relative"
+}
+
+.styleEdit {
+  background-image: url("/assets/img/features/dashboard/teacher/Edit Square.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 21px;
+  height: 21px;
+  cursor: pointer;
+}
+
+.styleDelete {
+  background-image: url("/assets/img/features/dashboard/teacher/Delete.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 21px;
+  height: 21px;
+  cursor: pointer;
+}
+
+.displayNone {
+  display: none;
+}
+
+.moreIcon:hover .displayNone {
+  display: block;
+  cursor: pointer;
+}
+
+.scoreeffect1:hover p,
+.scoreeffect2:hover p,
+.scoreeffect3:hover p {
+  color: #00d9b6;
+  cursor: pointer;
+}
+
+.commentAvatarMRSide {
+  background-image: url("/assets/img/features/dashboard/student/Send.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 30px;
+  height: 30px;
+  align-self: center;
+}
+
+
+.commentAvatartop {
+  display: grid;
+  grid-template-columns: 85% 15%;
+  grid-row: 50px;
+  align-content: center;
+  position:relative;
+  padding-right: 90px;
+}
+
+.commentAvatarMSide input {
+  border: 0;
+  width: 100%;
+  height: 50px;
+}
+
+.commentAvatarMRSide {
+  position: absolute;
+  right:90px;
+}

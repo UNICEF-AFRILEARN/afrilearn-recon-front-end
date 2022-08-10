@@ -1,381 +1,172 @@
 import Image from "next/image";
-import SubHeading from "./subHeading";
 import styles from "./../../student/student.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import {
-  Modal,
-  Button,
-  Container,
-  Row,
-  Col,
-  CloseButton,
-} from "react-bootstrap";
-import StudentPageTwo from "./../studentHeroPageTwo";
+
+import { Modal, Container, Row, Col } from "react-bootstrap";
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import { StudentPage } from "./../studentHeropage";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCourseDetailsInitiate } from "../../../../../redux/actions/subject";
 
-const Subjects = () => {
+let subj;
+const Subjects = ({ subData }) => {
+  const [subjCourId, setsubjCourId] = useState({});
+
   const [show, setShow] = useState(false);
-  const toggleModal = () => setShow(!show);
- 
-  return (
-    <>
-     
-      <div className="container">
-        <div className={`row ${styles.mySubjecttt}`}>
-          <div className={`col-md-6 ${styles.mySubjectt}`}>
-            <button className="modalButton" onClick={toggleModal}>
-              <Image
-                alt={"design image"}
-                src={"/assets/img/features/dashboard/student/Plant Growing.png"}
-                width={70}
-                height={70}
-              />
-              <p>Agricultural Science</p>
-              {/* { openModal && <SubjectModal />} */}
-            </button>
-          </div>
-          <div className={`col-md-2 ${styles.mySubjectt}`}>
-            <button className="modalButton" onClick={toggleModal}>
-              <Image
-                alt={"design image"}
-                src={
-                  "/assets/img/features/dashboard/student/Research Virus.png"
-                }
-                width={70}
-                height={70}
-              />
-              <p>Biology</p>
-            </button>
-          </div>
-          <div className={`col-md-2 ${styles.mySubjectt}`}>
-            <button className="modalButton" onClick={toggleModal}>
-              <Image
-                alt={"design image"}
-                src={"/assets/img/features/dashboard/student/Business.png"}
-                width={70}
-                height={70}
-              />
-              <p>Chemistry</p>
-            </button>
-          </div>
-          <div className={`col-md-2 ${styles.mySubjectt}`}>
-            <button className="modalButton" onClick={toggleModal}>
-              <Image
-                alt={"design image"}
-                src={"/assets/img/features/dashboard/student/Bible.png"}
-                width={70}
-                height={70}
-              />
-              <p>Christian religion</p>
-            </button>
-          </div>
-          <div className={`col-md-2 ${styles.mySubjectt}`}>
-            <button className="modalButton" onClick={toggleModal}>
-              <Image
-                alt={"design image"}
-                src={"/assets/img/features/dashboard/student/Product.png"}
-                width={70}
-                height={70}
-              />
-              <p>Commerce</p>
-            </button>
-          </div>
-          <div className={`col-md-2 ${styles.mySubjectt}`}>
-            <button className="modalButton" onClick={toggleModal}>
-              <Image
-                alt={"design image"}
-                src={"/assets/img/features/dashboard/student/Computerr.png"}
-                width={70}
-                height={70}
-              />
-              <p>Computer Science</p>
-            </button>
-          </div>
-        </div>
-        <div className={`row ${styles.mySubjecttt}`}>
-          <div className={`col-md-2 ${styles.mySubjectt}`}>
-            <button className="modalButton" onClick={toggleModal}>
-              <Image
-                alt={"design image"}
-                src={"/assets/img/features/dashboard/student/_Group_.png"}
-                width={70}
-                height={70}
-              />
-              <p>Civic Education</p>
-            </button>
-          </div>
-          <div className={`col-md-2 ${styles.mySubjectt}`}>
-            <button className="modalButton" onClick={toggleModal}>
-              {" "}
-              <Image
-                alt={"design image"}
-                src={
-                  "/assets/img/features/dashboard/student/Marketing Data.png"
-                }
-                width={70}
-                height={70}
-              />
-              <p>Data Science</p>
-            </button>
-          </div>
-          <div className={`col-md-2 ${styles.mySubjectt}`}>
-            <button className="modalButton" onClick={toggleModal}>
-              <Image
-                alt={"design image"}
-                src={
-                  "/assets/img/features/dashboard/student/Consumer Economic.png"
-                }
-                width={70}
-                height={70}
-              />
-              <p>Economic</p>
-            </button>
-          </div>
-          <div className={`col-md-2 ${styles.mySubjectt}`}>
-            <button className="modalButton" onClick={toggleModal}>
-              <Image
-                alt={"design image"}
-                src={
-                  "/assets/img/features/dashboard/student/Alphabetic Blocks.png"
-                }
-                width={70}
-                height={70}
-              />
-              <p>English Language</p>
-            </button>
-          </div>
-          <div className={`col-md-2 ${styles.mySubjectt}`}>
-            <button className="modalButton" onClick={toggleModal}>
-              <Image
-                alt={"design image"}
-                src={"/assets/img/features/dashboard/student/accounting.png"}
-                width={70}
-                height={70}
-              />
-              <p>Financial accounting</p>
-            </button>
-          </div>
-          <div className={`col-md-2 ${styles.mySubjectt}`}>
-            <button className="modalButton" onClick={toggleModal}>
-              <Image
-                alt={"design image"}
-                src={"/assets/img/features/dashboard/student/Table Globe.png"}
-                width={70}
-                height={70}
-              />
-              <p>Geography</p>
-            </button>
-          </div>
-        </div>
-        <div className={`row ${styles.mySubjecttt}`}>
-          <div className={`col-md-2 ${styles.mySubjectt}`}>
-            <button className="modalButton" onClick={toggleModal}>
-              <Image
-                alt={"design image"}
-                src={
-                  "/assets/img/features/dashboard/student/Government Building.png"
-                }
-                width={70}
-                height={70}
-              />
-              <p>Government</p>
-            </button>
-          </div>
-          <div className={`col-md-2 ${styles.mySubjectt}`}>
-            <button className="modalButton" onClick={toggleModal}>
-              <Image
-                alt={"design image"}
-                src={"/assets/img/features/dashboard/student/Bookk.png"}
-                width={70}
-                height={70}
-              />
-              <p>Literature in English</p>
-            </button>
-          </div>
-          <div className={`col-md-2 ${styles.mySubjectt}`}>
-            <button className="modalButton" onClick={toggleModal}>
-              <Image
-                alt={"design image"}
-                src={"/assets/img/features/dashboard/student/calculator 8.png"}
-                width={70}
-                height={70}
-              />
-              <p>Mathematics</p>
-            </button>
-          </div>
-          <div className={`col-md-2 ${styles.mySubjectt}`}>
-            <button className="modalButton" onClick={toggleModal}>
-              <Image
-                alt={"design image"}
-                src={
-                  "/assets/img/features/dashboard/student/Einstein Formula.png"
-                }
-                width={70}
-                height={70}
-              />
-              <p>Physics</p>
-            </button>
-          </div>
-          <div className={`col-md-2 ${styles.mySubjectt}`}>
-            <button className="modalButton" onClick={toggleModal}>
-              <Image
-                alt={"design image"}
-                src={"/assets/img/features/dashboard/student/Vector1.png"}
-                width={70}
-                height={70}
-              />
-              <p>Further Math</p>
-            </button>
-          </div>
-        </div>
-      </div>
-      {/* <Modal className="cointainer-fluid"
-        show={show}
-        onHide={toggleModal}
-        backdrop="static"
-        keyboard={false}
-        // className={styles.modalHeroPage}
-      >
-        <SubjectModal />
-      </Modal> */}
+  const toggleModal = async (data) => {
+    setShow(!show);
+    subj = data;
+  };
 
-      {/* <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button> */}
+  // console.log();
 
-      <Modal
-        size="xl"
-        // aria-labelledby="contained-modal-title-vcenter"
-        centered
-        show={show}
-        onHide={toggleModal}
-        // rounded-0
-        // contentClassName={styles.myModal}
-        // ClassName={`rounded mb-1 ${styles.myModal}`}
-        // className="rounded  w-100 p-3"
-        // style={{ borderRadius: "10px !important" }}
-      >
-        {/* <Modal.Header style={{ backgroundColor: "red" }}>
-          {/* <CloseButton variant="white" /> */}
-        {/* <Modal.Title>Modal heading</Modal.Title> */}
-        {/* </Modal.Header> */}
-        <Modal.Body className={`p-0 ${styles.modalSecon}`}>
-          <SubjectModal className="p-0" />
-        </Modal.Body>
-        {/* <Modal.Footer>
-          <Button variant="secondary" /*onClick={handleClose}>Close</Button>
-          <Button variant="primary" /*onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer> */}
-      </Modal>
-    </>
-  );
-};
-const SubjectModal = () => {
-  return (
-    <>
-      {/* <div className={`container-fluid `}>
+  const dispatch = useDispatch();
 
-      <div
-        style={{ borderRadius: "20px" }}
-        className={`row ${styles.modalHero2}`}
-      > */}
+  const dataIntro = async () => {
+    if (Object.keys(subjCourId).length !== 0) {
+      dispatch(
+        fetchCourseDetailsInitiate(subjCourId.courseId, subjCourId.id),
+      );
+    }
+  };
 
-      {/* <h1>{data?.subject}</h1>
-          <div className="modalSec">
-            <h5 className="">{data?.title}</h5>
-            <p>Explore the fun in learning</p>
-            <h6>
+  useEffect(() => {
+    dataIntro();
+  }, [subjCourId]);
+
+  const SubDataJsx = () => {
+    return subData ? (
+      subData.map((dta) => {
+        return (
+          <div key={dta.id} className={`col-md-6 ${styles.mySubjectt}`}>
+            <button
+              className="modalButton"
+              onClick={() => {
+                setsubjCourId(() => ({ id: dta.id, courseId: dta.courseId }));
+                toggleModal(dta.mainSubjectId.name);
+              }}
+            >
               <Image
                 alt={"design image"}
-                src={"/assets/img/features/dashboard/student/crown.png"}
-                width={"23.04 px"}
-                height={"18.48px"}
+                src={dta.mainSubjectId.imageUrl}
+                width={70}
+                height={70}
               />
-              Activate Afrilearn Pro
-            </h6> */}
-
-      {/* </div> */}
-      {/* </div> */}
-
-      <Container fluid>
-        <Row>
-          <Col className="p-0">
-            <StudentPageTwo />
-          </Col>
-          <div className="p-5">
-            <StudentHeropageBase />
+              <p>{dta.mainSubjectId.name}</p>
+            </button>
           </div>
-          <div className="p-5 pt-0 pb-1">
-            <div className={`row ${styles.modalThird}`}>
-              <div className="col-md-2">
-                <Image
-                  alt={"design image"}
-                  src={"/assets/img/features/dashboard/student/user 3.png"}
-                  width={"72.4px"}
-                  height={"72.4px"}
-                />
-              </div>
-              <div className="col-md-7">
-                <h4>Class Notes</h4>
-                <p>
-                  Learn with curriculum specific class notes and practice
-                  quizess
-                </p>
-              </div>
-              <div className="col-md-3">
-                {" "}
-                <Link passHref href="/dashboard/student/classnote">
-                  <h6>FREE</h6>
-                </Link>
-              </div>
+        );
+      })
+    ) : (
+      <div>Loading...</div>
+    );
+  };
+
+  const SubjectModal = () => {
+    return (
+      <>
+        <Container fluid id="subject">
+          <Row>
+            <div>
+              <HeaderHeropage />
             </div>
-          </div>
-          <div className="p-5 pt-0">
-            <Link passHref href="/dashboard/student/video">
+            <div className="p-5 pt-0 pb-1">
               <div className={`row ${styles.modalThird}`}>
                 <div className="col-md-2">
                   <Image
                     alt={"design image"}
-                    src={
-                      "/assets/img/features/dashboard/student/GroupVideo.png"
-                    }
+                    src={"/assets/img/features/dashboard/student/user 3.png"}
                     width={"72.4px"}
                     height={"72.4px"}
                   />
                 </div>
                 <div className="col-md-7">
-                  <h4>Video Lessons</h4>
-                  <p>Learn with animated video lessons and practice quizes</p>
+                  <h4>Class Notes</h4>
+                  <p>
+                    Learn with curriculum specific class notes and practice
+                    quizess
+                  </p>
                 </div>
-                {/* <div className="col-md-3">
+                <div className="col-md-3">
                   {" "}
-                  <h6>SUBSCRIBE</h6>
-                </div> */}
+                  <Link passHref href="/dashboard/student/classnote">
+                    <h6>FREE</h6>
+                  </Link>
+                </div>
               </div>
-            </Link>
-          </div>
-          {/* </div> */}
-        </Row>
-      </Container>
+            </div>
+            <div className="p-5 pt-0" style={{ cursor: "pointer" }}>
+              <Link passHref href="/dashboard/student/video">
+                <div className={`row ${styles.modalThird}`}>
+                  <div className="col-md-2">
+                    <Image
+                      alt={"design image"}
+                      src={
+                        "/assets/img/features/dashboard/student/GroupVideo.png"
+                      }
+                      width={"72.4px"}
+                      height={"72.4px"}
+                    />
+                  </div>
+                  <div className="col-md-7">
+                    <h4>Video Lessons</h4>
+                    <p>Learn with animated video lessons and practice quizes</p>
+                  </div>
+                </div>
+              </Link>
+            </div>
+          </Row>
+        </Container>
+      </>
+    );
+  };
+
+  return (
+    <>
+      <div className="container">
+        <div className={`row ${styles.mySubjecttt}`}>
+          <SubDataJsx />
+        </div>
+      </div>
+
+      <Modal size="xl" centered show={show} onHide={() => setShow(!show)}>
+        <Modal.Body className={`p-0 ${styles.modalSecon}`}>
+          <SubjectModal className="p-0" />
+        </Modal.Body>
+      </Modal>
     </>
   );
 };
 
 export default Subjects;
 
-export const StudentHeropageBase = () => {
+export const HeaderHeropage = () => {
+  const user = useSelector((state) => state.auth);
+  const personClass = user.user.user?.enrolledCourses[0].courseId.name;
+  return (
+    <>
+      <Col className="p-0">
+        <StudentPage
+          stuData={[{ classData: personClass, subject: subj }]}
+          className="p-0"
+        />
+      </Col>
+      <div className="p-5">{<StudentHeropageBase />}</div>
+    </>
+  );
+};
+const StudentHeropageBase = () => {
+  const subject = useSelector((state) => state.MySubject);
+  const subjectDetails = subject.subjectDetails[0]?.subject;
   const data = {
-    subject: "SSS-ONE",
-    title: "Basic Technology",
-    description:
-      "Basic Technology is a very important subject in todays curriculum for students especially at the junior secondary  level as knowledge impacted prepares them for the various experiences at the senior level not withstanding their carrier paths.",
-    class: "Senior Sceondary School One",
-    lessons: "116 Video Lessons",
-    students: "13,000 Registered Students",
+    subject: subjectDetails?.courseId.name,
+    title: subj,
+    description: subjectDetails?.mainSubjectId.introText,
+    class: subjectDetails?.courseId.alias,
+    lessons: `${subject.subjectDetails[1]?.relatedLessons.length} Lessons`,
+    students: `${subject.subjectDetails[2]?.numOfUsers} Registered Students`,
   };
 
   return (

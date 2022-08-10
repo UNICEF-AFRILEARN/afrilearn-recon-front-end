@@ -1,6 +1,4 @@
-
-import * as types from '../types';
-
+import * as types from "../types";
 
 const initialState = {
     courses: [],
@@ -101,5 +99,6 @@ const coursesReducer = (state = initialState, { type, payload} ) => {
             return state;
     }
 }
+
 
 export default coursesReducer;

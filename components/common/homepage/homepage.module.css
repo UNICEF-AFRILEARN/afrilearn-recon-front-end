@@ -762,6 +762,8 @@
 
 .footer {
   background: #0b0d17;
+  background-image: url("../../../public/assets/img/White.svg");
+  background-repeat: no-repeat;
   margin-top: 70px;
   padding-left: 5%;
   /* padding-right: 2%; */

@@ -77,8 +77,8 @@ export const fetchCourseInitiate = () =>  {
         // .get('https://afrilearn-backend-01.herokuapp.com/api/v1/courses')
         .get('http://localhost:5000/api/v1/courses')
         .then((res) => {
-            console.log("Hello from courses API")
-            console.log("From Courses API =>", res)
+            // console.log("Hello from courses API")
+            // console.log("From Courses API =>", res)
             dispatch(fetchCoursesSuccess(res))
         })
         .catch((err) => {

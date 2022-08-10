@@ -5,7 +5,6 @@ import { toProperCase, cutString } from "../../../../utils/helper";
 import styles from "./../homepage.module.css";
 
 const ExploreVideoBox = ({ data }) => {
-  console.log(data);
   const [show, setShow] = useState(false);
   const toggleModal = () => setShow(!show);
   return (

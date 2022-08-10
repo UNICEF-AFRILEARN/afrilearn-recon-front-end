@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from 'react-redux';
 import Link from "next/link";
 import styles from "./student.module.css";
+<<<<<<< HEAD
 import { fetchCourseInitiate } from "../../../../redux/actions/courses";
 import { fetchReconLessonInitiate } from "../../../../redux/actions/courses";
+=======
+>>>>>>> dev
 
-// import SubHeading from "./extra/subHeading";
-
-const studentHeropage = () => {
- 
+const studentHeropage = ({ data }) => {
   const studentdata = [
-    { class: "SSS-One", firstName: "Feyikemi" },
+    { classData: data.personClass, firstName: data.personName },
     [
       {
         linkdata: "#subjects",
@@ -51,14 +50,13 @@ const studentHeropage = () => {
     ],
   ];
 
-  // const linkData =
-
   return <StudentPage stuData={studentdata} />;
 };
 
 export default studentHeropage;
 
 export const StudentPage = ({ stuData }) => {
+<<<<<<< HEAD
   const { user, registerUser}  = useSelector(state => state.auth);
   // const courses = useSelector(state => state.Mycourses);
   const dispatch = useDispatch();
@@ -85,6 +83,11 @@ useEffect(() => {
 }, [fetchCourseInitiate])
 
 
+=======
+  const greetings = (firstName) => {
+    return `Welcome ${firstName}!`;
+  };
+>>>>>>> dev
   return (
     <>
       <div
@@ -93,13 +96,21 @@ useEffect(() => {
       >
         <div className="row">
           <div className="col-md-12">
+<<<<<<< HEAD
             <h1 className="text-capitalize">{user.user?.enrolledCourses.length > 1? user.user?.enrolledCourses[1]?.courseId?.name : user.user?.enrolledCourses[0]?.courseId?.name}</h1>
+=======
+            <h1 className="text-capitalize">{stuData[0].classData}</h1>
+>>>>>>> dev
           </div>
         </div>
-         <div className={`row ${styles.push2}`}>
+        <div className={`row ${styles.push2}`}>
           <div className="col-md-12">
+<<<<<<< HEAD
             {
               <h2>{greetings(user.user?.fullName || registerUser.user?.fullName)}</h2>}
+=======
+            {stuData[0].firstName && <h2>{greetings(stuData[0].firstName)}</h2>}
+>>>>>>> dev
             {stuData[0].subject && <h2>{stuData[0].subject}</h2>}
             <p>Explore the fun in learning💃</p>
           </div>
@@ -114,7 +125,7 @@ useEffect(() => {
                 </Link>
               ))}
           </div>
-        </div> 
+        </div>
       </div>
     </>
   );

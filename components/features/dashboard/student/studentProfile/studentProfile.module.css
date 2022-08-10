@@ -49,6 +49,14 @@
   background-position: 50%;
   background-size: contain;
 }
+.studentProfilePenIcon1 {
+  background: url("/assets/img/features/dashboard/teacher/Add User.png");
+  height: 25px;
+  width: 25px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: contain;
+}
 
 .studentProfileCoinIcon {
   background: url("/assets/img/features/dashboard/student/Group 2417.png");
@@ -63,6 +71,16 @@
 
 .stateComponent {
   background: url("/assets/img/features/dashboard/student/Location.png");
+  height: 24px;
+  width: 24px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: contain;
+  border: 0;
+  margin: auto;
+}
+.stateComponent1 {
+  background: url("/assets/img/features/dashboard/teacher/link 1.png");
   height: 24px;
   width: 24px;
   background-repeat: no-repeat;
