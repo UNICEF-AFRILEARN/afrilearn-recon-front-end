@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
@@ -7,6 +7,15 @@ import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 import styles from '../../../../styles/parentdashboard.module.css'
 
 const GeneratePerformance = ({children, courseContext}) => {
+    const [childClass, setChildClass] = useState("");
+    const previousInputValue = useRef("");
+
+
+    // useEffect(() => {
+    //     previousInputValue.current = inputValue;
+    //   }, [inputValue]);
+
+
   return (
     <div className={styles.parentmaingeneratewrapper}>
         <div className={styles.innerheadingperfomwrapper}>
@@ -31,10 +40,17 @@ const GeneratePerformance = ({children, courseContext}) => {
                         </option>
             
                         {children && children.map((childrenName) => 
-                        <option 
-                        placeholder='Select a Role'
-                            >{childrenName.fullName}
-                        </option>
+                            <>
+                             <option 
+                                placeholder='Select a Role'
+                                    >{childrenName.fullName}
+                                </option>
+
+                                <option 
+                                placeholder='Select a Role'
+                                    >{childrenName.enrolledCourses[0]?.courseId.name}
+                                </option>
+                            </>
                         )}
                     </select>
                 </Form.Group>
@@ -50,13 +66,13 @@ const GeneratePerformance = ({children, courseContext}) => {
                         // onChange={(e) => setCourseSelected(e.target.value)}
                         >
                         <option value={"default"}>
-                            Select a child
+                            Select a class
                         </option>
             
-                        {courseContext && courseContext.map((childClass) => 
+                        {children && children.map((childClass) => 
                         <option 
                         placeholder='Select a Role'
-                            >{childClass.name}
+                            >{childClass.enrolledCourses[0]?.courseId.name}
                         </option>
                         )}
                     </select>

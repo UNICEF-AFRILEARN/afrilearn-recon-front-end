@@ -13,6 +13,17 @@ export const fetchUserProfileFail = (error) => ({
     type: types.FECTH_USER_PROFILE_FAIL,
     payload: error
 });
+export const fetchUnfinishedVideoStart = () => ({
+    type: types.FECTH_UNFINISHED_VIDEO_START
+})
+export const fetchUnfinishedVideoSuccess = (payload) => ({
+    type: types.FECTH_UNFINISHED_VIDEO_SUCCESS,
+    payload
+})
+export const fetchUnfinishedVideoFail = (error) => ({
+    type: types.FECTH_UNFINISHED_VIDEO_FAIL,
+    payload: error
+});
 
 
 export const fetchUserProfileInitiate = (userId, token) => {
@@ -32,4 +43,26 @@ export const fetchUserProfileInitiate = (userId, token) => {
             })
             .catch((error) => dispatch(fetchUserProfileFail(error)))
     }   
+}
+
+
+export const fetchUnfinishedVideoInitiate = (token) =>  {
+    return function (dispatch) {
+        dispatch(fetchUnfinishedVideoStart())
+        axios
+        .get('https://afrilearn-backend-01.herokuapp.com/api/v1/dashboard/unfinishedVideos',
+        {
+            headers: {
+                "token": token
+            }
+        })
+        .then((res) => {
+            dispatch(fetchUnfinishedVideoSuccess(res.data))
+            console.log("Hello from unfinished video API ====>", res.data)
+        })
+        .catch((err) => {
+            dispatch(fetchUnfinishedVideoFail(err))
+        })
+    }
+
 }

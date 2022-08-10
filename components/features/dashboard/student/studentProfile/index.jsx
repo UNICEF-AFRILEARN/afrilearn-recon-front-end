@@ -368,7 +368,7 @@ const StudentProfile = () => {
                         color: "#333333",
                       }}
                     >
-                      {user.user.enrolledCourses[0].courseId?.name}
+                      {user.user.enrolledCourses[0]?.courseId?.name}
                     </p>
                   </Row>
                 </Col>

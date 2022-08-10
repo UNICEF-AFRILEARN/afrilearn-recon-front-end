@@ -68,7 +68,7 @@ const Navigation = () => {
                 </div>
               
                 </ul>
-                <Link passHref href="/register" className="btn-log-in-mobile">
+                <Link passHref href="/dashboard/student/studentProfile" className="btn-log-in-mobile">
                   < BsPersonCircle size={30}/>
               </Link>
               </div>
@@ -100,7 +100,7 @@ const Navigation = () => {
                 </div>
               
                 </ul>
-                <Link passHref href="/register" className="btn-log-in-mobile">
+                <Link passHref href="/dashboard/student/studentProfile" className="btn-log-in-mobile">
                   < BsPersonCircle size={30}/>
               </Link>
               </div>

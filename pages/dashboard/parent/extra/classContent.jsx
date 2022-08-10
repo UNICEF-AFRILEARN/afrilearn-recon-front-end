@@ -10,7 +10,7 @@ const ClassContent = ({courseContext, children}) => {
   const myChildren = children;
   const mappedCoursesCount = myChildren?.map((children) =>  
     children.enrolledCourses)
-    const classList = mappedCoursesCount.filter((filterClass) => filterClass.length > 0).map((mappinClass) => mappinClass[0].courseId.name)
+    const classList = mappedCoursesCount?.filter((filterClass) => filterClass.length > 0).map((mappinClass) => mappinClass[0].courseId.name)
     console.log("Children from course content =>>>>>", classList);
 
 
