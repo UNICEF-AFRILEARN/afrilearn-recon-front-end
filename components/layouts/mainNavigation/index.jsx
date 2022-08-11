@@ -72,7 +72,42 @@ const Navigation = () => {
                 <Link passHref href="/dashboard/student/studentProfile" className="btn-log-in-mobile">
                   < BsPersonCircle size={30}/>
               </Link>
+                  <div>
+                    <Link href="/">
+                    <button className={styles.btnlogout}>Log out</button>
+                    </Link>
+                  </div>
+              </div>
+              
+            }
 
+            {userRole === '602f3ce39b146b3201c2dc1d' &&
+              <div className={styles.parentloggedindash}>
+                <ul>
+                  <Link passHref href="/dashboard/teacher">
+                    <li>Dashboard</li>
+                  </Link>
+                  <Link passHref href="/dashboard/teacher">
+                    <li>Examination</li>
+                  </Link>
+                  <Link passHref href="/payment">
+                    <li>Subscribe</li>
+                </Link>
+                <div className={styles.navicons}>
+                  <span><BsSearch /></span>
+                  <span><BsBell /></span>
+                  <span><AiOutlineSafetyCertificate /></span>
+                </div>
+              
+                </ul>
+                <Link passHref href="/dashboard/student/studentProfile" className="btn-log-in-mobile">
+                  < BsPersonCircle size={30}/>
+              </Link>
+                <div>
+                    <Link href="/">
+                    <button className={styles.btnlogout}>Log out</button>
+                    </Link>
+                  </div>
               </div>
               
             }
@@ -99,10 +134,53 @@ const Navigation = () => {
                 <Link passHref href="/dashboard/student/studentProfile" className="btn-log-in-mobile">
                   < BsPersonCircle size={30}/>
               </Link>
-
+                <div>
+                    <Link href="/">
+                    <button className={styles.btnlogout}>Log out</button>
+                    </Link>
+                  </div>
               </div>
               
             }
+
+            {userRole === '607ededa2712163504210684' &&
+              <div className={styles.parentloggedindash}>
+                <ul>
+                  <Link passHref href="/school">
+                    <li>Dashboard</li>
+                  </Link>
+                  <Link passHref href="/payment">
+                    <li>Subscribe</li>
+                </Link>
+                <div className={styles.navicons}>
+                  <span><BsSearch /></span>
+                  <span><BsBell /></span>
+                  <span><AiOutlineSafetyCertificate /></span>
+                </div>
+              
+                </ul>
+                <Link passHref href="/dashboard/student/studentProfile" className="btn-log-in-mobile">
+                  < BsPersonCircle size={30}/>
+              </Link>
+                <div>
+                    <Link href="/">
+                    <button className={styles.btnlogout}>Log out</button>
+                    </Link>
+                  </div>
+              </div>
+              
+            }
+
+             { userRole !== '606ed82e70f40e18e029165e' && userRole !== '5fd08fba50964811309722d5' && userRole !== '602f3ce39b146b3201c2dc1d' && userRole !== '607ededa2712163504210684' &&
+               <div>
+                  <Link href="/login">
+                <button className={styles.btnlogin}>Login</button>
+                </Link>
+                <Link href="/register" >
+                <button className={styles.btnloginregister}>Register</button>
+                </Link>
+               </div>
+             }
           </Nav>
         </Navbar.Collapse>
     </Navbar>

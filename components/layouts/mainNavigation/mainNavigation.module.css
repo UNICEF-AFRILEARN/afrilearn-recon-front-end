@@ -56,3 +56,22 @@
   justify-content: space-evenly;
   gap: 20px;
 }
+
+.btnlogin, .btnloginregister{
+  margin-right: 10px;
+  background-color: #00d9b6;
+  color: #fff;
+  border: none;
+  padding: 5px 20px;
+  border-radius: 25px;
+}
+
+.btnlogout {
+  margin-left: 20px;
+  margin-right: 10px;
+  background-color: #00d9b6;
+  color: #fff;
+  border: none;
+  padding: 5px 20px;
+  border-radius: 25px;
+}

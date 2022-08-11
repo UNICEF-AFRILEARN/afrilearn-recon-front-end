@@ -11,9 +11,9 @@ import styles2 from "../../../../pages/dashboard/teacher/teacher.module.css";
 
 
 const Dashboard = () => {
-  const { registerUser } = useSelector((state) => state.auth);
+  const { registerUser, user } = useSelector((state) => state.auth);
 
-  console.log("registerUser ====>", registerUser.user.fullName)
+  console.log("loginUser ====>", user)
   return (
     <div>
       <Heropage />
@@ -45,7 +45,7 @@ const Dashboard = () => {
 export default Dashboard;
 
 export const HeropageWelcome = () => {
-  const { registerUser } = useSelector((state) => state.auth);
+  const { registerUser, user } = useSelector((state) => state.auth);
 
   console.log("registerUser ====>", registerUser.user)
   return (
@@ -85,7 +85,7 @@ export const HeropageWelcome = () => {
                             color: "#333333",
                           }}
                         >
-                          <h1>Welcome {registerUser.user.fullName}</h1>
+                          <h1>Welcome {registerUser.user?.fullName || user.user?.fullName}</h1>
                         </div>
                       </Col>
                       <Col
@@ -96,7 +96,7 @@ export const HeropageWelcome = () => {
                 </Row>
                 <Row className="p-4">
                   <Col md={2}>
-                    <p className="text-dark">Class code: {registerUser.user.classOwnership[0].classCode}</p>
+                    <p className="text-dark">Class code: {registerUser.user?.classOwnership[0].classCode || user.user?.classOwnership[0].classCode}</p>
                   </Col>
                   <Col>
                     <Row>

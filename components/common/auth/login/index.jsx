@@ -42,7 +42,7 @@ const Login = () => {
       router.push("/dashboard/parent");
     }
     if(user.user?.role === '607ededa2712163504210684'){
-      router.push("/dashboard/school");
+      router.push("/school");
     }
   }, [user])
   

@@ -3,7 +3,7 @@ import * as types from "../types";
 const initialState = {
     roles: [],
     classes: [],
-    user: {},
+    user: [],
     teachers: 0,
     allUsers: 0,
     registerUser: [],
