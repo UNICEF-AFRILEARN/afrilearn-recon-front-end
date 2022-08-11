@@ -3,7 +3,7 @@ import * as React from "react";
 import styles from "../../../styles/quiz.module.css";
 import Image from "next/image";
 import { useRouter } from 'next/router'
-import { PieChart, Pie, Sector, Cell, Legend, ResponsiveContainer } from 'recharts';
+// import { PieChart, Pie, Sector, Cell, Legend, ResponsiveContainer } from 'recharts';
 
 const data = [
   { name: 'Correct', value: 900 },
@@ -50,7 +50,7 @@ const QuizResult = () => {
             <h6>{resultData?.matric}</h6>
             <div className={styles.chartReview}>
             <div className="">
-            <PieChart width={500} height={200} className={styles.chart}>
+            {/* <PieChart width={500} height={200} className={styles.chart}>
           <Pie
             data={data}
             // cx="50%"
@@ -66,7 +66,7 @@ const QuizResult = () => {
             ))}
           </Pie>
           <Legend iconSize={5} align="right" layout="vertical" verticalAlign="middle"  />
-        </PieChart>
+        </PieChart> */}
             </div>
     </div>
      

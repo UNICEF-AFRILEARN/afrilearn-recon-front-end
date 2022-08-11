@@ -71,12 +71,18 @@ const Dashboard = () => {
       <StudentHeropage data={personData} />
       <div>
         <SubHeading title="My Subject" />
-        <Subjects subData={subject.subject[0]?.subjects} />;
+        <Subjects
+          subData={subject.subject[1]?.enrolledCourse.courseId.relatedSubjects}
+        />
+        ;
       </div>
-      <PastQuestion />
-      {/* subject.subject[1]?.lessons */}
+      <PastQuestion
+        subData={
+          subject.subject[1]?.enrolledCourse.courseId.relatedPastQuestions
+        }
+      />
       <TopInClasses
-        classData={subject.subject[1]?.lessons}
+        classData={subject.subject[0]?.lessons}
         classes={personData.personClass}
       />
       <PerfomanceSumm />
@@ -108,7 +114,7 @@ const TopInClasses = ({ classData,classes }) => {
       <div className={styles.contai}>
         <section className="parnet-frag-color">
           <Slider {...settings} ref={customeSlider}>
-            {classData.map((data) => (
+            {classData?.map((data) => (
               <TopInClass data={data} />
             ))}
           </Slider>

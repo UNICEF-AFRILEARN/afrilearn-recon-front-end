@@ -3,6 +3,8 @@ import * as types from "../types";
 const initialState = {
   subject: [],
   subjectDetails: [],
+  pastQuestion:[],
+  pastQuestionQue:[],
 };
 
 const subjectReducer = (state = initialState, { type, payload }) => {
@@ -20,6 +22,16 @@ const subjectReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         subjectDetails: payload,
+      };
+    case types.FETCH_PASTQUESTION_SUCCESS:
+      return {
+        ...state,
+        pastQuestion: payload,
+      };
+    case types.FETCH_PASTQUESTIONQUE_SUCCESS:
+      return {
+        ...state,
+        pastQuestionQue: payload,
       };
     case types.FETCH_SUBJECT_FAIL:
       return {
