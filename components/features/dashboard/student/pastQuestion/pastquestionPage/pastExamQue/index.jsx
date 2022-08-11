@@ -148,9 +148,7 @@ const ExamQuestion = () => {
         </Col>
         <Col sm={3}>
           <div className="row">
-            {/* <div className={`row ${styles.countDown}`}>
-              Time left : <p className={styles.minuteQuiz}> {counter} mins</p>{" "}
-            </div> */}
+            number
             <div className="row">
               <div className={`col-md-3 ${styles.Quiznumber}`}>{}</div>
             </div>
