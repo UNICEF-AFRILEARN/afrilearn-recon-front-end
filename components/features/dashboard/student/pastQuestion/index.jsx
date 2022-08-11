@@ -1,58 +1,45 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { Button, Col, Modal, Row } from "react-bootstrap";
 import styles1 from "../student.module.css";
+import { useSelector } from "react-redux";
 
 const PastQuestion = () => {
-  const data = {
-    text: "Junior WAEC",
-  };
-  const subjectData = [
-    { subject: "Agricultural Science", thumbnail: "Plant Growing" },
-    { subject: "Agricultural Science", thumbnail: "Plant Growing" },
-    { subject: "Agricultural Science", thumbnail: "Plant Growing" },
-    { subject: "Agricultural Science", thumbnail: "Plant Growing" },
-    { subject: "Agricultural Science", thumbnail: "Plant Growing" },
-    { subject: "Agricultural Science", thumbnail: "Plant Growing" },
-    { subject: "Agricultural Science", thumbnail: "Plant Growing" },
-    { subject: "Agricultural Science", thumbnail: "Plant Growing" },
-    { subject: "Agricultural Science", thumbnail: "Plant Growing" },
-    { subject: "Agricultural Science", thumbnail: "Plant Growing" },
-    { subject: "Agricultural Science", thumbnail: "Plant Growing" },
-    { subject: "Agricultural Science", thumbnail: "Plant Growing" },
-    { subject: "Agricultural Science", thumbnail: "Plant Growing" },
-    { subject: "Agricultural Science", thumbnail: "Plant Growing" },
-    { subject: "Agricultural Science", thumbnail: "Plant Growing" },
-    { subject: "Agricultural Science", thumbnail: "Plant Growing" },
-  ];
+  const router = useRouter();
+  let quary = router.query.Exam;
+  const subject = useSelector((state) => state.MySubject);
 
-  const button = [
-    { year: 2000 },
-    { year: 2001 },
-    { year: 2002 },
-    { year: 2003 },
-    { year: 2004 },
-    { year: 2005 },
-    { year: 2006 },
-    { year: 2007 },
-    { year: 2008 },
-    { year: 2009 },
-    { year: 2010 },
-    { year: 2011 },
-    { year: 2012 },
-    { year: 2013 },
-    { year: 2014 },
-    { year: 2015 },
-    { year: 2016 },
-    { year: 2017 },
-    { year: 2018 },
-    { year: 2019 },
-    { year: 2020 },
-    { year: 2021 },
-    { year: 2022 },
+  const subjectDat = subject.pastQuestion[0]?.subjects;
+
+  const year = [
+    { exam_year: 2000 },
+    { exam_year: 2001 },
+    { exam_year: 2002 },
+    { exam_year: 2003 },
+    { exam_year: 2004 },
+    { exam_year: 2005 },
+    { exam_year: 2006 },
+    { exam_year: 2007 },
+    { exam_year: 2008 },
+    { exam_year: 2009 },
+    { exam_year: 2010 },
+    { exam_year: 2011 },
+    { exam_year: 2012 },
+    { exam_year: 2013 },
+    { exam_year: 2014 },
+    { exam_year: 2015 },
+    { exam_year: 2016 },
+    { exam_year: 2017 },
+    { exam_year: 2018 },
+    { exam_year: 2019 },
+    { exam_year: 2020 },
+    { exam_year: 2021 },
+    { exam_year: 2022 },
   ];
   const [show, setShow] = useState(false);
+  const [list, setList] = useState([]);
   const toggleModal = () => setShow(!show);
   return (
     <>
@@ -62,7 +49,7 @@ const PastQuestion = () => {
       >
         <div className="row pt-5 mb-5">
           <Col>
-            <h1 className={styles1.pastQuestionh1}>{data.text}</h1>
+            <h1 className={styles1.pastQuestionh1}>{quary}</h1>
           </Col>
         </div>
         <Row className="p-2 mx-5">
@@ -73,15 +60,26 @@ const PastQuestion = () => {
         </Row>
       </div>
       <Row className="m-5 px-5">
-        {subjectData.map((subjectData, i) => (
+        {subjectDat?.map((subjectData, i) => (
           <div key={i} className={`col-md-2 ${styles1.mySubjectt}`}>
-            <button className="modalButton" onClick={toggleModal}>
-              <Image
-                alt={"design image"}
-                src={`/assets/img/features/dashboard/student/${subjectData.thumbnail}.png`}
-                width={70}
-                height={70}
-              />
+            <button
+              className="modalButton"
+              onClick={() => {
+                toggleModal();
+                setList(() => subjectData.years);
+              }}
+            >
+              <picture>
+                <source
+                  srcSet={`https:${subjectData.subject_image}`}
+                  type="image/webp"
+                />
+                <img
+                  src={`https:${subjectData.subject_image}`}
+                  alt="Landscape picture"
+                  style={{ width: "100px", heigt: "100px" }}
+                />
+              </picture>
               <p>{subjectData.subject}</p>
             </button>
           </div>
@@ -96,12 +94,15 @@ const PastQuestion = () => {
         </Modal.Title>
 
         <Modal.Body className="mx-auto">
-          <Link
-            passHref
-            href="/dashboard/student/pastQuestion/pastQuestionPage"
-          >
-            <a>
-              {button.map((year, i) => (
+          {list?.map((exam_year, i) => (
+            <Link
+              passHref
+              href={{
+                pathname: "/dashboard/student/pastQuestion/pastQuestionPage",
+                query: { Exam: exam_year.subject_id },
+              }}
+            >
+              <a>
                 <Button
                   style={{
                     width: "90px",
@@ -113,11 +114,11 @@ const PastQuestion = () => {
                   className={`mx-4 mt-3 mb-3 ${styles1.modalBodyButton}`}
                   variant=""
                 >
-                  {year.year}
+                  {exam_year.exam_year}
                 </Button>
-              ))}
-            </a>
-          </Link>
+              </a>
+            </Link>
+          ))}
         </Modal.Body>
       </Modal>
     </>

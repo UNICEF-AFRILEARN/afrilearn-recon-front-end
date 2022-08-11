@@ -13,6 +13,14 @@ export const fetchSubjectsDetailsSuccess = (subject) => ({
   type: types.FETCH_SUBJECTDETAILS_SUCCESS,
   payload: subject,
 });
+export const fetchPastQuestionSuccess = (subject) => ({
+  type: types.FETCH_PASTQUESTION_SUCCESS,
+  payload: subject,
+});
+export const fetchPastQuestionQueSuccess = (subject) => ({
+  type: types.FETCH_PASTQUESTIONQUE_SUCCESS,
+  payload: subject,
+});
 
 export const fetchSubjectsFail = (error) => ({
   type: types.FETCH_SUBJECT_FAIL,
@@ -37,58 +45,94 @@ export const fetchCoursesInitiate = (courseId) => {
 
 export const fetchCourseInitiate = (courseId, sub_Id, token) => {
   return async function (dispatch) {
-    let one = `https://afrilearn-backend-01.herokuapp.com/api/v1/courses/${courseId}/subjects`;
+    // let one = `https://afrilearn-backend-01.herokuapp.com/api/v1/courses/${courseId}/subjects`;
     let two = `https://afrilearn-backend-01.herokuapp.com/api/v1/dashboard/topTen`;
+    let three = `https://afrilearn-backend-01.herokuapp.com/api/v1/dashboard/web`;
 
     dispatch(fetchSubjectsStart());
 
-    const requestOne = await axios.get(one);
+    // const requestOne = await axios.get(one);
     const requestTwo = await axios.post(
       two,
       { enrolledCourseId: sub_Id },
-      { headers: { "Content-type": "application/json", "token": token } },
+      { headers: { "Content-type": "application/json", token: token } },
+    );
+    const requestThree = await axios.post(
+      three,
+      { enrolledCourseId: sub_Id },
+      { headers: { "Content-type": "application/json", token: token } },
     );
 
-    axios.all([requestOne, requestTwo]).then(
+    axios.all([requestTwo, requestThree]).then(
       axios.spread(async function (...responses) {
-        const responseOne = await responses[0].data.data;
-        const responseTwo = await responses[1].data.data;
+        // const responseOne = await responses[0].data.data;
+        const responseTwo = await responses[0].data.data;
+        const responseThree = await responses[1].data.data;
 
         // use/access the results
-        const response = [responseOne, responseTwo];
+        const response = [responseTwo, responseThree];
 
         dispatch(fetchSubjectsSuccess(response));
       }),
     );
     // .then((err) => {
     //   console.log(err);
-    // });
+    // });A
   };
 };
-export const fetchCourseDetailsInitiate = (courseId, subjectId, sub_Id) => {
+export const fetchPastQuestionInitiate = (id) => {
   return async function (dispatch) {
-    let one = `https://afrilearn-backend-01.herokuapp.com/api/v1/lessons/${courseId}/${subjectId}/subject-basic-details`;
-    let two = `https://afrilearn-backend-01.herokuapp.com/api/v1/lessons/${courseId}/${subjectId}/lessons`;
-    let three = `https://afrilearn-backend-01.herokuapp.com/api/v1/lessons/${courseId}/${subjectId}/subject-users`;
+    let one = `https://api.exambly.com/adminpanel/v2/getMySubjects/${id}`;
 
-    const requestOne = await axios.post(one, {});
-    const requestTwo = await axios.post(two, {});
-    const requestThree = await axios.post(three, {});
+    const requestOne = await axios.get(one, {
+      headers: {
+        "Content-type": "application/json",
+        authorization:
+          "F0c7ljTmi25e7LMIF0Wz01lZlkHX9b57DFTqUHFyWeVOlKAsKR0E5JdBOvdunpqv",
+      },
+    });
+    axios
+      .all([requestOne])
+      .then(
+        axios.spread(async function (...responses) {
+          const responseOne = await responses[0].data;
+          const response = [responseOne];
+          console.log(response);
 
-    axios.all([requestOne, requestTwo, requestThree]).then(
-      axios.spread(async function (...responses) {
-        const responseOne = await responses[0].data.data;
-        const responseTwo = await responses[1].data.data;
-        const responseThree = await responses[2].data.data;
+          dispatch(fetchPastQuestionSuccess(response));
+        }),
+      )
+      .then((error) => {
+        console.log(error);
+      });
+  };
+};
+export const fetchPastQuestionQueInitiate = (sub_id) => {
+  return async function (dispatch) {
+    let two = `https://api.exambly.com/adminpanel/v2/getQuestions/${sub_id}`;
 
-        // use/access the results
-        const response = [responseOne, responseTwo, responseThree];
+    const requestTwo = await axios.get(two, {
+      headers: {
+        "Content-type": "application/json",
+        authorization:
+          "F0c7ljTmi25e7LMIF0Wz01lZlkHX9b57DFTqUHFyWeVOlKAsKR0E5JdBOvdunpqv",
+      },
+    });
 
-        dispatch(fetchSubjectsDetailsSuccess(response));
-      }),
-    );
-    // .then((err) => {
-    //   console.log(err);
-    // });
+    axios
+      .all([requestTwo])
+      .then(
+        axios.spread(async function (...responses) {
+          const responseOne = await responses[0].data;
+          // use/access the results
+          const response = [responseOne];
+          console.log(response);
+
+          dispatch(fetchPastQuestionQueSuccess(response));
+        }),
+      )
+      .then((error) => {
+        console.log(error);
+      });
   };
 };
