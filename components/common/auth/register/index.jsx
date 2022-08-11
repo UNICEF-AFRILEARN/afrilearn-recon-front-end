@@ -84,28 +84,30 @@ console.log("Filtered ====>", allSubjects)
     if(course === 'Primary One'){
       setCourseId('5fc8cfbb81a55b4c3c19737d')
     }else if(course === 'Primary Two'){
-      setCourseId('5fc8cfbb81a55b4c3c19737d')
+      setCourseId('5fd12c70e74b15663c5f4c6e')
     }else if(course === 'Primary Three'){
-      setCourseId('5fc8cfbb81a55b4c3c19737d')
+      setCourseId('5fff5a67de0bdb47f826fea8')
     }else if(course === 'Primary Four'){
-      setCourseId('5fc8cfbb81a55b4c3c19737d')
+      setCourseId('5fff5a7ede0bdb47f826fea9')
     }else if(course === 'Primary Five'){
-      setCourseId('5fc8cfbb81a55b4c3c19737d')
+      setCourseId('5fff5aaede0bdb47f826feaa')
     }else if(course === 'Primary Six'){
-      setCourseId('5fc8cfbb81a55b4c3c19737d')
+      setCourseId('5fff5abede0bdb47f826feab')
     }else if(course === 'JSS One'){
-      setCourseId('5fc8cfbb81a55b4c3c19737d')
+      setCourseId('5fff72b3de0bdb47f826feaf')
     }else if(course === 'JSS Two'){
-      setCourseId('5fc8cfbb81a55b4c3c19737d')
+      setCourseId('5fff7329de0bdb47f826feb0')
     }else if(course === 'Jss Three'){
-      setCourseId('5fc8cfbb81a55b4c3c19737d')
+      setCourseId('5fff734ade0bdb47f826feb1')
     }else if(course === 'SSS One'){
-      setCourseId('5fc8cfbb81a55b4c3c19737d')
+      setCourseId('5fff7371de0bdb47f826feb2')
     }else if(course === 'SSS Two'){
-      setCourseId('5fc8cfbb81a55b4c3c19737d')
+      setCourseId('5fff7380de0bdb47f826feb3')
     }else if(course === 'SSS Three'){
       setCourseId('5fff7399de0bdb47f826feb4')
-  }
+  }else if(course === 'Afrilearn KidsCode'){
+    setCourseId('629dbb4c5a5f270016033712')
+}
        
   }
 sortSubjects(allSubjects, courseId)
