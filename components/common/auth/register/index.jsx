@@ -135,6 +135,8 @@ console.log("filteredSub =======>", filteredSub)
 
       if(role === "5fd08fba50964811309722d5"){
         Router.push('/dashboard/student')
+      }else if(role === '602f3ce39b146b3201c2dc1d'){
+        Router.push('/dashboard/teacher')
       }
     
   }

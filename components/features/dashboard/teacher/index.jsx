@@ -1,3 +1,5 @@
+import React, { useState, useEffect} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Image from "next/image";
 import Link from "next/link";
 import { Col, Container, Row } from "react-bootstrap";
@@ -6,9 +8,12 @@ import Subjects from "../student/extra/subjects";
 import styles1 from "../student/student.module.css";
 import styles from "../student/studentProfile/studentProfile.module.css";
 import styles2 from "../../../../pages/dashboard/teacher/teacher.module.css";
-import { useState } from "react";
+
 
 const Dashboard = () => {
+  const { registerUser } = useSelector((state) => state.auth);
+
+  console.log("registerUser ====>", registerUser.user.fullName)
   return (
     <div>
       <Heropage />
@@ -40,11 +45,9 @@ const Dashboard = () => {
 export default Dashboard;
 
 export const HeropageWelcome = () => {
-  const teacher = {
-    lastName: "Abraham",
-    firstName: "Johnson",
-    class: "JSS ONE",
-  };
+  const { registerUser } = useSelector((state) => state.auth);
+
+  console.log("registerUser ====>", registerUser.user)
   return (
     <>
       <Row
@@ -82,7 +85,7 @@ export const HeropageWelcome = () => {
                             color: "#333333",
                           }}
                         >
-                          <h1>Welcome {teacher.lastName}</h1>
+                          <h1>Welcome {registerUser.user.fullName}</h1>
                         </div>
                       </Col>
                       <Col
@@ -93,7 +96,7 @@ export const HeropageWelcome = () => {
                 </Row>
                 <Row className="p-4">
                   <Col md={2}>
-                    <p className="text-dark">{teacher.class}</p>
+                    <p className="text-dark">Class code: {registerUser.user.classOwnership[0].classCode}</p>
                   </Col>
                   <Col>
                     <Row>
@@ -108,7 +111,7 @@ export const HeropageWelcome = () => {
                   <Col md={3} className="">
                     <Link
                       passHref
-                      href="/dashboard/student/studentProfile/studentProfileEdit"
+                      href=""
                     >
                       <a>
                         <Row className="px-auto">
