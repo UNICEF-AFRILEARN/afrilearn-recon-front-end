@@ -13,7 +13,7 @@ const QuizPage = () => {
     <>
       <div className={`row ${styles.containerQuiz}`}>
 
-        <div className={`col-md-3 ${styles.FirstQuizDiv}`}>
+        <div className={`col-md-2 ${styles.FirstQuizDiv}`}>
          <div className={styles.leftDivv}><Link passHref href="/" >
            Instruction
           </Link></div> 
@@ -21,7 +21,7 @@ const QuizPage = () => {
             Dashboard
           </Link></div> 
         </div>
-        <div className={`col-md-5 ${styles.QuizquestionDiv}`}>
+        <div className={`col-md-7 ${styles.QuizquestionDiv}`}>
           <QuizQuestion/>
         </div>
         <div className={`col-md-3 ${styles.QuizquestionNumDiv}`}>

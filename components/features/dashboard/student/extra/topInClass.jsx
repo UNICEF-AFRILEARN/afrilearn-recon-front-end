@@ -6,7 +6,6 @@ const topInClass = ({ data }) => {
   const img = ["Group 2323", "Group 2324", "Group 2327", "Group 2328"];
   const randomise = () => {
     const num = Math.floor(Math.random() * 4);
-    console.log(img[num]);
     return img[num];
   };
   const [show, setShow] = useState(false);
