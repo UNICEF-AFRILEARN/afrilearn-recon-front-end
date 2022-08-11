@@ -105,13 +105,19 @@ console.log("Filtered ====>", allSubjects)
       setCourseId('5fff7380de0bdb47f826feb3')
     }else if(course === 'SSS Three'){
       setCourseId('5fff7399de0bdb47f826feb4')
-  }else if(course === 'Afrilearn KidsCode'){
-    setCourseId('629dbb4c5a5f270016033712')
-}
+    }else if(course === 'Afrilearn KidsCode'){
+      setCourseId('629dbb4c5a5f270016033712')
+    }else if(course === 'Secondary'){
+      setCourseId('605b218f8636bc00158b4ad7')
+    }else if(course === 'Primary'){
+      setCourseId('605b21868636bc00158b4ad6')
+    }
        
   }
+
+  //function to filter subjects:
 sortSubjects(allSubjects, courseId)
-console.log("filteredSub =======>", filteredSub)
+console.log("courseId =======>", courseId)
   
  
 
@@ -137,6 +143,10 @@ console.log("filteredSub =======>", filteredSub)
         Router.push('/dashboard/student')
       }else if(role === '602f3ce39b146b3201c2dc1d'){
         Router.push('/dashboard/teacher')
+      }else if(role === '606ed82e70f40e18e029165e'){
+        Router.push('/dashboard/parent')
+      }else if(role === '607ededa2712163504210684'){
+        Router.push('/school')
       }
     
   }
@@ -199,7 +209,7 @@ useEffect(() => {
                       </option>
                       )}
                   </select>
-                  { role !== '606ed82e70f40e18e029165e' &&
+                  { role !== '606ed82e70f40e18e029165e' && role !== '607ededa2712163504210684' &&
 
                           <select 
                           onChange={(e) => setCourse(e.target.value)}
@@ -232,7 +242,6 @@ useEffect(() => {
                             value={classes.mainSubjectId.name}
                             >{classes.mainSubjectId.name}</option>
                             )}
-                        {/* {console.log("filteredSub", filteredSub[0].mainSubjectId.name)} */}
                       </select>
 
                   }
@@ -250,7 +259,7 @@ useEffect(() => {
                     name={'schoolName'} 
                     type='text'
                     value={schoolName}
-                    onChange={(e) => setFullName(e.target.value)} 
+                    onChange={(e) => setSchoolName(e.target.value)} 
                     title='schoolName' 
                     placeholder='School Name' 
                     className={styles.pushDown} 
@@ -267,11 +276,12 @@ useEffect(() => {
                               Select Class Category
                             </option>
                             <option
-                            // value={"primary"}
+                            value={"Primary"}
                             >Primary</option>
                             <option
-                            // value={"primary"}
+                            value={"Secondary"}
                             >Secondary</option>
+                            
                       </select>
 
                     }
