@@ -23,9 +23,9 @@ export const fetchSubjectsInitiate = () =>  {
         axios
         .get('https://afrilearn-backend-01.herokuapp.com/api/v1/subjects')
         .then((res) => {
-            dispatch(fetchSubjectsSuccess(res.data.data))
+            dispatch(fetchSubjectsSuccess(res.data.data.subjects))
             console.log("Hello from subjects API after call ===>")
-            console.log("From subjects API =>", res.data.data)
+            console.log("From subjects API =>", res.data.data.subjects)
         })
         .catch((err) => {
             dispatch(fetchSubjectsFail(err))

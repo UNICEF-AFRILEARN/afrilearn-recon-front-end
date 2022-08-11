@@ -21,7 +21,10 @@ const Register = (props) => {
   const [roleSelected, setRoleSelected] = useState('');
   const [role, setRole] = useState('');
   const [classCategory, setClassCategory] = useState('');
+  const [subject, setSubject] = useState('');
+  const [subjectSelected, setSubjectSelected] = useState('');
   const [course, setCourse] = useState('');
+  const [courseId, setCourseId] = useState('');
   const [fullName, setFullName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [email, setEmail] = useState('');
@@ -35,6 +38,7 @@ const Register = (props) => {
   const [fullscreen, setFullscreen] = useState(true);
   const [show, setShow] = useState(false);
   const rolesCollected = useSelector((state) => state.auth)
+  const { allSubjects } = useSelector((state) => state.mySubject)
   const dispatch = useDispatch()
   
   function handleShow(breakpoint) {
@@ -45,8 +49,24 @@ const Register = (props) => {
   // const profile = {}
   const rolesContext = rolesCollected.roles.roles;
   const courseContext = rolesCollected.roles.courses;
-  console.log("roles from the UI ==>", rolesContext);
-  console.log("Registered user", courseContext)
+  // console.log("roles from the UI ==>", rolesContext);
+  // console.log("Registered user", courseContext)
+  
+  // const mySubjects = allSubjects.subjects
+  // const filteredSub = allSubjects.filter((filtSubj) => filtSubj.courseId?.id === '5fc8cfbb81a55b4c3c19737d')
+  // console.log("allSubjects from register",  filteredSub);
+
+  //Function to filter subjects objects
+let filteredSub = []
+  const sortSubjects = (subjectsObj, id) => {
+    filteredSub = subjectsObj.filter((filtSubj) => filtSubj.courseId?.id === id)
+      return filteredSub;
+  }
+
+
+
+
+console.log("Filtered ====>", allSubjects)
 
   const getRoleId = () => {
       if (roleSelected === "Student") {
@@ -60,6 +80,42 @@ const Register = (props) => {
       }
   }
 
+  const setClassId = () => {
+    if(course === 'Primary One'){
+      setCourseId('5fc8cfbb81a55b4c3c19737d')
+    }else if(course === 'Primary Two'){
+      setCourseId('5fc8cfbb81a55b4c3c19737d')
+    }else if(course === 'Primary Three'){
+      setCourseId('5fc8cfbb81a55b4c3c19737d')
+    }else if(course === 'Primary Four'){
+      setCourseId('5fc8cfbb81a55b4c3c19737d')
+    }else if(course === 'Primary Five'){
+      setCourseId('5fc8cfbb81a55b4c3c19737d')
+    }else if(course === 'Primary Six'){
+      setCourseId('5fc8cfbb81a55b4c3c19737d')
+    }else if(course === 'JSS One'){
+      setCourseId('5fc8cfbb81a55b4c3c19737d')
+    }else if(course === 'JSS Two'){
+      setCourseId('5fc8cfbb81a55b4c3c19737d')
+    }else if(course === 'Jss Three'){
+      setCourseId('5fc8cfbb81a55b4c3c19737d')
+    }else if(course === 'SSS One'){
+      setCourseId('5fc8cfbb81a55b4c3c19737d')
+    }else if(course === 'SSS Two'){
+      setCourseId('5fc8cfbb81a55b4c3c19737d')
+    }else if(course === 'SSS Three'){
+      setCourseId('5fff7399de0bdb47f826feb4')
+  }
+       
+  }
+sortSubjects(allSubjects, courseId)
+console.log("filteredSub =======>", filteredSub)
+  
+ 
+
+  const setClassSubject = () => {
+
+  }
 
   const handleRegisterRequest = (e) => {
     e.preventDefault()
@@ -80,13 +136,22 @@ const Register = (props) => {
     
   }
 
+
+  useEffect(() => {
+    setClassId()
+  },[setClassId])
+
+useEffect(() => {
+  dispatch(fetchSubjectsInitiate())
+  
+}, [])
+
 useEffect(() => {
   dispatch(fetchSubjectsInitiate())
 }, [])
 
   useEffect(() => {
    getRoleId();
-    
   }, [getRoleId])
 
   useEffect(() => {
@@ -150,18 +215,19 @@ useEffect(() => {
                   { role === '602f3ce39b146b3201c2dc1d' &&
 
                       <select 
-                      onChange={(e) => setCourse(e.target.value)}
+                      onChange={(e) => setSubjectSelected(e.target.value)}
                       className={`${styles.pushDown} form-control form-control-sm`}
                       defaultValue={"default"}
                       >
                         <option value={"default"}>
                           Select a Subject
                         </option>
-                        {courseContext && courseContext.map((classes) => 
-                        <option
-                        value={classes.name}
-                        >{classes.name}</option>
-                        )}
+                        {filteredSub && filteredSub.map((classes) => 
+                            <option
+                            value={classes.mainSubjectId.name}
+                            >{classes.mainSubjectId.name}</option>
+                            )}
+                        {/* {console.log("filteredSub", filteredSub[0].mainSubjectId.name)} */}
                       </select>
 
                   }
@@ -213,6 +279,7 @@ useEffect(() => {
                   title='Phone Number' 
                   placeholder='Phone Number' 
                   className={styles.pushDown} 
+                  
                 />
                 <input 
                   name={'email'} 
@@ -222,6 +289,7 @@ useEffect(() => {
                   title='Email' 
                   placeholder='Email' 
                   className={styles.pushDown} 
+                  
                 />
                 <input 
                   name={'password'} 
@@ -259,6 +327,7 @@ useEffect(() => {
                     <span><Image alt={"design image"} src={'/assets/img/common/login/facebook.png'} width={23} height={23} /> <span className={styles.socialText}>Facebook</span></span>
                   </div>
                 </div>
+                
               </form>
             </span>
             <p className={`center ${styles.afterSocialText}`}>Already have an account? <Link passHref href='/login'><b>Log In</b></Link></p>

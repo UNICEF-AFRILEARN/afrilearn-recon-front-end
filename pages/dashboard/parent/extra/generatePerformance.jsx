@@ -26,9 +26,6 @@ const GeneratePerformance = ({children, courseContext}) => {
         <div className={styles.innerformwrapper}>
             <Form>
                 <Form.Group className={`${styles.arrowparentwrapper} mb-3`} controlId="formBasicEmail">
-                    {/* <Form.Label>Student</Form.Label>
-                    <Form.Control type="email" placeholder="Select child" />
-                    <span className={styles.arrowdownwrapper}><MdOutlineKeyboardArrowDown /></span> */}
                     <select
                         className={`${styles.pushDown} form-control form-control-sm`}
                         // value={selectedCourse}
@@ -44,11 +41,6 @@ const GeneratePerformance = ({children, courseContext}) => {
                              <option 
                                 placeholder='Select a Role'
                                     >{childrenName.fullName}
-                                </option>
-
-                                <option 
-                                placeholder='Select a Role'
-                                    >{childrenName.enrolledCourses[0]?.courseId.name}
                                 </option>
                             </>
                         )}

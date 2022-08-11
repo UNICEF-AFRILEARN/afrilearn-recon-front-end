@@ -2,6 +2,7 @@ import * as types from '../types/subjects'
 
 const initialState = {
     loading: false,
+    allSubjects: [],
 
 }
 
@@ -15,7 +16,7 @@ export const subjectReducer = (state = initialState, { type, payload} ) => {
         case types.FECTH_SUBJECTS_SUCCESS:
             return {
                 ...state,
-                subjects: payload,
+                allSubjects: payload,
                 loading: false
             };
         case types.FECTH_SUBJECTS_FAIL:

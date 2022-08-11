@@ -19,7 +19,7 @@ const Parent = () => {
   const courseContext = coursesCollected.roles.courses;
   const token  = user_login.user.token;
   const childrenCount  = children.children?.length;
-  const childrenCourseCount = 0;
+  let childrenCourseCount = 0;
   const myChildren = children.children;
   const mappedCoursesCount = myChildren?.map((children) =>  
     children.enrolledCourses.length)
