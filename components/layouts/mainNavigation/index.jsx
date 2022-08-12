@@ -32,7 +32,6 @@ const Navigation = () => {
       collapseOnSelect
       style={{ backgroundColor: "#FDFDFD !important" }}
     >
-      {/* <Container> */}
         <Navbar.Brand>
           <Link passHref href="/">
             <img
