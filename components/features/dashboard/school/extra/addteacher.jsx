@@ -1,6 +1,11 @@
+import React, {useState, useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from "../../school/addstudent.module.css"
 
 const Addnewteacher = () => {
+    const { user, registerUser } = useSelector((state) => state.auth);
+
+    console.log("School logged in from add teacher==>",user.user?.schoolId.id)
     return (
         <>
         <div className={styles.videoheropage}> 

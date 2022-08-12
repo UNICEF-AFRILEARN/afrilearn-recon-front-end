@@ -6,6 +6,7 @@ import Link from "next/link";
 const Schoolsubject = () => {
     return (
     <>
+        
     <div>
         <div className={`row ${styles.subHero}`}>
             <div className={` col-md-2 ${styles.heading}`}> <h3>My Subjects</h3></div>
