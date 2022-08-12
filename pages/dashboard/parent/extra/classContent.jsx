@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux'
 
 import { BiChevronDown } from 'react-icons/bi';
 import styles from '../../../../styles/parentdashboard.module.css';
 import Classcontentmain from './classcontentmain';
 
-const ClassContent = () => {
+const ClassContent = ({courseContext, children}) => {
+
+  const myChildren = children;
+  const mappedCoursesCount = myChildren?.map((children) =>  
+    children.enrolledCourses)
+    const classList = mappedCoursesCount?.filter((filterClass) => filterClass.length > 0).map((mappinClass) => mappinClass[0].courseId.name)
+    console.log("Children from course content =>>>>>", myChildren);
+
+
+
   return (
     <div className={styles.classcontentwrapper}>
         <div className={styles.contentheaderwrapper}>
@@ -12,12 +22,35 @@ const ClassContent = () => {
           <div className={styles.labelwrapper}>
             <ul>
               <li>Filter by class</li>
-              <li>JSS 1 <BiChevronDown /> </li>
+              <select
+                        // className={`${styles.pushDown} form-control form-control-sm`}
+                        // value={selectedCourse}
+                        defaultValue={"default"}
+                        // onChange={(e) => setCourseSelected(e.target.value)}
+                        >
+                          <option value={"default"}>
+                              Select a child
+                          </option>
+                       { children && children.map((myChild) => 
+                           <option value={"default"}>
+                             {myChild.fullName}
+                          </option>
+                       )
+
+                       }
+            
+                        {classList && classList.map((childClass) => 
+                        <option 
+                        placeholder='Select a Role'
+                            >{childClass.name}
+                        </option>
+                        )}
+                    </select>
               <li>Class note <BiChevronDown /> </li>
             </ul>
           </div>
         </div>
-        <Classcontentmain />
+        <Classcontentmain  myChildren={myChildren}/>
     </div>
   )
 }

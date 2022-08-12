@@ -1,20 +1,25 @@
 import Image from "next/image";
 import styles from "./../../student/topInClass.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
 import Link from "next/link";
+import { useSelector } from 'react-redux';
 
-const recommendation = ({ data }) => {
+
+const recommendation = ({ dataRecon }) => {
   const [show, setShow] = useState(false);
   const toggleModal = () => setShow(!show);
+
+  console.log("From recommendation UI ===>", dataRecon)
+
   return (
     <>
-      {data.videoUrl !== undefined && (
+      {dataRecon.recommended.videoUrls[0]?.videoUrl !== undefined && (
         <div className={`${styles.contList} ${styles.contRec}`}>
           <div className={`${styles.contList}`}>
             <Image
               alt={"afrilearn marketing video"}
-              src={data.thumbnailUrl}
+              src={dataRecon.recommended.thumbnailUrl}
               width={240}
               height={160}
               className={styles.rectBox}
@@ -38,9 +43,9 @@ const recommendation = ({ data }) => {
             </div>
           </div>
           <div className={styles.play_textRec}>
-            <h6>Because you watched "{data.subject}"</h6>
+            <h6>Because you watched "{dataRecon.reason.title}"</h6>
             <p className={styles.play_textRecFirstp}>Recommended:</p>
-            <p className={styles.play_textRecsecondp}>{data.title}</p>
+            <p className={styles.play_textRecsecondp}>{dataRecon.recommended.title}</p>
             <div className={styles.buttonPlay}>
               <button className={styles.buttonStyle} onClick={toggleModal}>
                 <div className={styles.buttonStyleImage}>
@@ -54,8 +59,9 @@ const recommendation = ({ data }) => {
                 lesson 1
               </button>
             </div>
+          
           </div>
-
+        
           <Modal
             show={show}
             onHide={toggleModal}
@@ -64,11 +70,12 @@ const recommendation = ({ data }) => {
             className={styles.trendingModalClass}
           >
             <video
-              src={data.videoUrl}
+              src={dataRecon.recommended.videoUrls[0].videoUrl}
               width="800px"
               height="auto"
               controls
               autoPlay
+              
             />
             <Button
               variant="secondary"
@@ -81,26 +88,26 @@ const recommendation = ({ data }) => {
         </div>
       )}
 
-      {data.videoUrl === undefined && (
+      {dataRecon.recommended.videoUrls[0]?.videoUrl === undefined && (
         <div className={`${styles.contList} ${styles.contRec}`}>
           <Link href="/dashboard/student">
             <div className={styles.contListRead}>
               <Image
                 alt={"afrilearn marketing video"}
-                src={data.thumbnailUrl}
+                src={dataRecon.recommended.thumbnailUrl}
                 width={65}
                 height={52}
                 className={styles.rectBox}
               />
               <div className={styles.contList}>
-                <p>{data.subjectRecommended}</p>
+                <p>{dataRecon.subjectRecommended}</p>
               </div>
             </div>
           </Link>
           <div className={styles.play_textRec}>
-            <h6>Because you read "{data.subject}"</h6>
+            <h6>Because you read "{dataRecon.reason.title}"</h6>
             <p className={styles.play_textRecFirstp}>Recommended:</p>
-            <p className={styles.play_textRecsecondp}>{data.title}</p>
+            <p className={styles.play_textRecsecondp}>{dataRecon.recommended.title}</p>
             <div className={styles.buttonPlay}>
               <Link href="/dashboard/student">
                 <button className={styles.buttonStyle}>

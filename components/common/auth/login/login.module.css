@@ -73,6 +73,7 @@
   display: inline-block;
   vertical-align: top;
   margin-left: 3px;
+  cursor: pointer;
 }
 .afterSocialText {
   margin-top: 20px;

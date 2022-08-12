@@ -1,8 +1,67 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchRoles } from '../../redux/actions/auth';
+import { fetchPaymentPlansInitiate, verifyPaystackPaymentInitiate } from '../../redux/actions/payment';
+import { usePaystackPayment } from 'react-paystack';
+
 import styles from "../../styles/payment.module.css"
 
 const payment = () => {
+  const dispatch = useDispatch();
+  const coursesCollected = useSelector((state) => state.auth)
+  const {paymentPlans} = useSelector((state) => state.myPayment)
 
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // setPrice('')
+    // setDuration('')
+    // setCourse('KidsCode')
+
+}
+
+  const config = {
+    reference: new Date().getTime(),
+    email: "text@gmail.com",
+    amount: 200,
+    publicKey: "pk_live_a9c31ffce1eca1674882580da27446be439723bf",
+    channels: ["card"],
+  };
+  
+  // you can call this function anything
+  const onSuccess =  (reference) => {
+  // Implementation for whatever you want to do with reference and after success call.
+  const data = {
+    reference: reference.reference,
+    productId: paymentId,
+    courseId,
+    clientUserId: userId,
+    amount: price,
+  };
+  dispatch(verifyPaystackPaymentInitiate(data, token));
+   return console.log("payment ref", reference);
+  };
+  
+  // you can call this function anything
+  const onClose = () => {
+  // implementation for  whatever you want to do when the Paystack dialog closed.
+  console.log('closed')
+  }
+
+
+const initializePayment = usePaystackPayment(config);
+
+  const courseContext = coursesCollected.roles.courses;
+  const allPaymentPlans = paymentPlans.paymentPlans
+  
+  console.log("Plans from payment", allPaymentPlans)
+  useEffect(() => {
+    dispatch(fetchPaymentPlansInitiate())
+  }, [])
+
+  useEffect(() => {
+    dispatch(fetchRoles())
+  }, [])
 
   return (
 
@@ -39,29 +98,51 @@ const payment = () => {
    </div>
 
    <div className={`col-md-6 ${styles.paymentSecondContainer}`} >
-   <form >
+   <form onSubmit={handleSubmit}>
     <div className='row'>
       <div className={styles.paymentLabel}><label for="className "><h5>Step 1: Select Class:</h5> </label></div>
       <div  >
-      <select className={styles.paymentSelect} id="className" name="classlist" form="classform">
-  <option value="JSS1">JSS1</option>
-  <option value="JSS1">JSS1</option>
-  <option value="JSS1">JSS1</option>
-  <option value="JSS1">JSS1</option>
-  </select>
+           <select
+                className={`${styles.pushDown} form-control form-control-sm`}
+                // value={selectedCourse}
+                defaultValue={"default"}
+                // onChange={(e) => setCourseSelected(e.target.value)}
+                >
+                <option value={"default"}>
+                    Select a class
+                </option>
+    
+                {courseContext && courseContext.map((childClass) => 
+                <option 
+                placeholder='Select a Role'
+                    >{childClass.name}
+                </option>
+                )}
+            </select>
+
       </div>
     </div> 
-<div className="">
   <h5>Step 3: Select Subscription Length</h5>
   <div className={`row ${styles.paymentdurationButtons}`}>
-  <div className= {` col-md-3 ${styles.durationPayment}`}> <button ><div className={styles.durationBold}>Monthly</div><div> 999</div ></button></div>
-<div className={` col-md-3 ${styles.durationPayment}`}><button ><div className={styles.durationBold}>Quaterly</div>  2,999 </button></div>
-<div className={` col-md-3 ${styles.durationPayment}`}><button > <div className={styles.durationBold}>Bi- Annual</div>  4,999 </button></div>
-<div className={` col-md-3 ${styles.durationPayment}`}><button ><div className={styles.durationBold}>Yearly </div> 9,999 </button></div>
+  <div className= {` col-md-3 ${styles.durationPayment}`}> 
+    {allPaymentPlans && allPaymentPlans.map((allPlans) =>
+        <button >
+        <div className={styles.durationBold}>{allPlans.name}</div>
+        <div>{allPlans.amount}</div >
+      </button>
+    )}
+
   </div>
  <div className='row'>
-  <div className= {` col-md-6 ${styles.paymenttypeButton}`}><button >PAY WITH CARD</button></div>
- <div className={` col-md-6 ${styles.paymenttypeButton2}`}><button >BANK TRANSFER</button></div>
+  <div className= {` col-md-6 ${styles.paymenttypeButton}`}>
+    <button 
+    onClick={() => {
+                initializePayment(onSuccess, onClose)
+              }}>PAY WITH CARD</button>
+  </div>
+    <div className={` col-md-6 ${styles.paymenttypeButton2}`}>
+      <button >BANK TRANSFER</button>
+   </div>
 
  </div>
 

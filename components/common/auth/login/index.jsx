@@ -12,12 +12,15 @@ import { loginInitiate } from "../../../../redux/actions/auth";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const { user } = useSelector(state => state.auth)
+  const { user } = useSelector(state => state.auth);
+
+  const [errorCheck, setErrorCheck] = useState('');
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
 
+  console.log("error", user)
 
   const signIn = (e) => {
     e.preventDefault();
@@ -39,7 +42,7 @@ const Login = () => {
       router.push("/dashboard/parent");
     }
     if(user.user?.role === '607ededa2712163504210684'){
-      router.push("/dashboard/school");
+      router.push("/school");
     }
   }, [user])
   
@@ -88,6 +91,7 @@ const Login = () => {
                   title="Password"
                   placeholder="Password"
                 />
+                <h5>{errorCheck}</h5>
                 <div className={`row ${styles.pushDown1}`}>
                   <div className="col-6">
                     <Form.Check
