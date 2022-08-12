@@ -28,6 +28,19 @@ export const addNewTeacherFail = (error) => ({
     type: types.ADD_NEW_TEACHER_FAIL,
     payload: error
 });
+export const addNewStudentStart = () => ({
+    type: types.ADD_NEW_STUDENT_START
+});
+
+export const addNewStudentSuccess = (payload) => ({
+    type: types.ADD_NEW_STUDENT_SUCCESS,
+    payload
+});
+
+export const addNewStudentFail = (error) => ({
+    type: types.ADD_NEW_STUDENT_FAIL,
+    payload: error
+});
 
 export const addNewAdminInitiate = (fullName, email, password, schoolId, confirmPassword, roleDescription) =>  {
     return function (dispatch) {
@@ -52,26 +65,61 @@ export const addNewAdminInitiate = (fullName, email, password, schoolId, confirm
     }
 
 }
-export const addNewTeacherInitiate = (fullName, email, password, schoolId, confirmPassword, roleDescription) =>  {
-    return function (dispatch) {
-        dispatch(addNewTeacherStart())
-        axios
-        .post('https://afrilearn-backend-01.herokuapp.com/api/v1/schools/sign-up-for-teacher',
-        {   
-            fullName,
-            email,
-            password,
-            schoolId,
-            confirmPassword,
-            roleDescription
-        })
-        .then((res) => {
-            dispatch(addNewTeacherSuccess(res.data))
-            console.log("Add Admin from School API ===>", res.data)
-        })
-        .catch((err) => {
-            dispatch(addNewTeacherFail(err))
-        })
-    }
+    export const addNewTeacherInitiate = (course,
+        courseId, 
+        fullName, 
+        email, 
+        role, 
+        courseSelected, 
+        password,
+        confirmPassword,
+        schoolId
+        ) =>  {
+        return function (dispatch) {
+            dispatch(addNewTeacherStart())
+            axios
+            .post('https://afrilearn-backend-01.herokuapp.com/api/v1/schools/sign-up-for-teacher',
+            {   
+                course,
+                courseId, 
+                fullName, 
+                email, 
+                role, 
+                courseSelected, 
+                password,
+                confirmPassword,
+                schoolId
+            })
+            .then((res) => {
+                dispatch(addNewTeacherSuccess(res.data))
+                console.log("Add Admin from School API ===>", res.data)
+            })
+            .catch((err) => {
+                dispatch(addNewTeacherFail(err))
+            })
+        }
 
-}
+    }
+    export const addNewStudentInitiate = (fullName, email, password, schoolId, confirmPassword, roleDescription) =>  {
+        return function (dispatch) {
+            dispatch(addNewStudentStart())
+            axios
+            .post('https://afrilearn-backend-01.herokuapp.com/api/v1/schools/sign-up-for-student',
+            {   
+                fullName,
+                email,
+                password,
+                schoolId,
+                confirmPassword,
+                roleDescription
+            })
+            .then((res) => {
+                dispatch(addNewStudentSuccess(res.data))
+                console.log("Add Admin from School API ===>", res.data)
+            })
+            .catch((err) => {
+                dispatch(addNewStudentFail(err))
+            })
+        }
+
+    }

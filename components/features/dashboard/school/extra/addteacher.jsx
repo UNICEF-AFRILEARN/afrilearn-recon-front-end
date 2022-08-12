@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRoles } from "../../../../../redux/actions/auth";
+import { addNewTeacherInitiate } from '../../../../../redux/actions/school';
 import styles from "../../school/addstudent.module.css"
 
 const Addnewteacher = () => {
@@ -11,20 +12,28 @@ const Addnewteacher = () => {
     const [fullName, setfullName] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
-    // const [schoolId, setSchoolId] = useState("");
     const [role, setRole] = useState("Teacher");
     const [courseId, setCourseId] = useState("");
     const [course, setCourse] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     const [courseSelected, setCourseSelected] = useState("");
 
     const schoolId = user.user?.schoolId.id;
 
-    console.log("School logged in from add teacher==>",user.user?.schoolId.id)
-    console.log("School logged in from add teacher==>",user)
-
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(course, courseId, fullName, email, role, courseSelected, password, schoolId)
+        console.log(course, courseId, fullName, email, role, courseSelected, password, schoolId, confirmPassword)
+        dispatch(addNewTeacherInitiate(
+            course,
+            courseId, 
+            fullName, 
+            email, 
+            role, 
+            courseSelected, 
+            password,
+            confirmPassword,
+            schoolId
+            ))
     }
     const setClassId = () => {
         if(courseSelected === 'Primary One'){
@@ -121,6 +130,13 @@ const Addnewteacher = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Password"
+                />
+                <input 
+                    className={styles.input}
+                    type="password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    placeholder="Confirm Password"
                 />
                 <button className={styles.studentButton} type='submit'>SEND INVITE</button>
             </form>

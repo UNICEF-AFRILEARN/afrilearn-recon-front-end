@@ -4,6 +4,8 @@ const initialState = {
     newAdmin: [],
     loading: false,
     error: [],
+    newTeacher: [],
+    newStudent: [],
 }
 
 export const schoolReducer = (state = initialState, { type, payload} ) => {
@@ -39,6 +41,21 @@ export const schoolReducer = (state = initialState, { type, payload} ) => {
                 ...state,
                 error: payload
 
+            }
+        case types.ADD_NEW_STUDENT_START:
+            return {
+                loading: true,
+            };
+        case types.ADD_NEW_STUDENT_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                newStudent: payload
+            }
+        case types.ADD_NEW_STUDENT_FAIL:
+            return {
+                ...state,
+                error: payload
             }
     
         default:
