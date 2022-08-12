@@ -70,14 +70,22 @@ const Navigation = () => {
                 </div>
               
                 </ul>
-                <Link passHref href="/dashboard/student/studentProfile" className="btn-log-in-mobile">
-                  < BsPersonCircle size={30} className={styles.profileavatar}/>
-                  
-              </Link>
-                  <div>
-                    <Link href="/">
-                    <button className={styles.btnlogout}>Log out</button>
-                    </Link>
+                <div className={styles.avatarcontainer}>
+                         <Link passHref href="/dashboard/student/studentProfile" className="btn-log-in-mobile">
+                          <BsPersonCircle size={30} className={styles.profileavatar}/>
+                          </Link>
+                      <div className={styles.iconswrapper}>
+                      <Link passHref href="/dashboard/student/studentProfile" className="btn-log-in-mobile">
+                          <BiDownArrow size={20} className={styles.profileavatar}/>
+                          </Link>
+                          <div className={styles.linkswrapper}>
+                            <a href="#">Add New class</a>
+                            <a href="#">My Feeds</a>
+                            <a href="#">Manage Profile</a>
+                            <a href="#">Share Feedback</a>
+                            <a href="#">Log out</a>
+                          </div>
+                      </div>
                   </div>
               </div>
               
@@ -117,26 +125,8 @@ const Navigation = () => {
                             <a href="#">Share Feedback</a>
                             <a href="#">Log out</a>
                           </div>
-                          {/* <Link passHref href="/dashboard/teacher/teacherProfile" className="btn-log-in-mobile">
-                              <BiDownArrow size={20} className={styles.profilearrowdow}/>
-                          </Link> */}
                       </div>
-                    {/* <div className={styles.avatarlist}>
-                      <ul>
-                        <li>Add New class</li>
-                        <li>My Feeds</li>
-                        <li>Manage Profile</li>
-                        <li>Share Feedback</li>
-                        <li>Log out</li>
-                      </ul>
-                    </div> */}
                   </div>
-
-                {/* <div>
-                    <Link href="/">
-                    <button className={styles.btnlogout}>Log out</button>
-                    </Link>
-                  </div> */}
               </div>
               
             }
@@ -160,13 +150,22 @@ const Navigation = () => {
                 </div>
               
                 </ul>
-                <Link passHref href="/dashboard/student/studentProfile" className="btn-log-in-mobile">
-                  < BsPersonCircle size={30} className={styles.profileavatar}/>
-              </Link>
-                <div>
-                    <Link href="/">
-                    <button className={styles.btnlogout}>Log out</button>
-                    </Link>
+                <div className={styles.avatarcontainer}>
+                         <Link passHref href="/dashboard/student/studentProfile" className="btn-log-in-mobile">
+                          <BsPersonCircle size={30} className={styles.profileavatar}/>
+                          </Link>
+                      <div className={styles.iconswrapper}>
+                      <Link passHref href="/dashboard/student/studentProfile" className="btn-log-in-mobile">
+                          <BiDownArrow size={20} className={styles.profileavatar}/>
+                          </Link>
+                          <div className={styles.linkswrapper}>
+                            <a href="#">Add New class</a>
+                            <a href="#">My Feeds</a>
+                            <a href="#">Manage Profile</a>
+                            <a href="#">Share Feedback</a>
+                            <a href="#">Log out</a>
+                          </div>
+                      </div>
                   </div>
               </div>
               
@@ -188,13 +187,22 @@ const Navigation = () => {
                 </div>
               
                 </ul>
-                <Link passHref href="/dashboard/student/studentProfile" className="btn-log-in-mobile">
-                  < BsPersonCircle size={30} className={styles.profileavatar}/>
-              </Link>
-                <div>
-                    <Link href="/">
-                    <button className={styles.btnlogout}>Log out</button>
-                    </Link>
+                <div className={styles.avatarcontainer}>
+                         <Link passHref href="/school/schoolProfile" className="btn-log-in-mobile">
+                          <BsPersonCircle size={30} className={styles.profileavatar}/>
+                          </Link>
+                      <div className={styles.iconswrapper}>
+                      <Link passHref href="/school/schoolProfile" className="btn-log-in-mobile">
+                          <BiDownArrow size={20} className={styles.profileavatar}/>
+                          </Link>
+                          <div className={styles.linkswrapper}>
+                            <a href="#">Add New class</a>
+                            <a href="#">My Feeds</a>
+                            <a href="#">Manage Profile</a>
+                            <a href="#">Share Feedback</a>
+                            <a href="#">Log out</a>
+                          </div>
+                      </div>
                   </div>
               </div>
               
