@@ -21,13 +21,11 @@ const Addnewstudent = () => {
     const [courseSelected, setCourseSelected] = useState("");
 
     const schoolClasses = schoolProfile?.data.schoolClassesData
-    console.log("School logged in from add student==>",user.user?.schoolId.id)
-    console.log("schoolClasses in from add student==>",schoolClasses)
+
     const schoolId = user.user?.schoolId.id 
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log("classId", classId)
         dispatch(addNewStudentInitiate(
             courseId,
             classId,
