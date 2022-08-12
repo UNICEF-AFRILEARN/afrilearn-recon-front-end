@@ -6,6 +6,7 @@ const initialState = {
     error: [],
     newTeacher: [],
     newStudent: [],
+    schoolProfile: [],
 }
 
 export const schoolReducer = (state = initialState, { type, payload} ) => {
@@ -53,6 +54,21 @@ export const schoolReducer = (state = initialState, { type, payload} ) => {
                 newStudent: payload
             }
         case types.ADD_NEW_STUDENT_FAIL:
+            return {
+                ...state,
+                error: payload
+            }
+        case types.FETCH_SCHOOL_PROFILE_START:
+            return {
+                loading: true,
+            };
+        case types.FETCH_SCHOOL_PROFILE_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                schoolProfile: payload
+            }
+        case types.FETCH_SCHOOL_PROFILE_FAIL:
             return {
                 ...state,
                 error: payload

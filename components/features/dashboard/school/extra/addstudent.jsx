@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
  import styles from "../../school/addstudent.module.css";
  import { fetchRoles } from "../../../../../redux/actions/auth";
+import { addNewStudentInitiate } from '../../../../../redux/actions/school';
 
 const Addnewstudent = () => {
     const { user, registerUser, roles } = useSelector((state) => state.auth);
@@ -14,6 +15,7 @@ const Addnewstudent = () => {
     const [role, setRole] = useState("Student");
     const [courseId, setCourseId] = useState("");
     const [course, setCourse] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     const [courseSelected, setCourseSelected] = useState("");
 
     console.log("School logged in from add student==>",user.user?.schoolId.id)
@@ -22,7 +24,15 @@ const Addnewstudent = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(course, courseId, fullName, email, role, courseSelected, password, schoolId)
+        console.log("course", courseId)
+        dispatch(addNewStudentInitiate(
+            courseId, 
+            fullName, 
+            email, 
+            password,
+            confirmPassword,
+            schoolId
+        ))
     }
     const setClassId = () => {
         if(courseSelected === 'Primary One'){
@@ -119,6 +129,13 @@ const Addnewstudent = () => {
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    />
+                <input 
+                    className={styles.input}
+                    type="password" 
+                    placeholder="Confirm Password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                     />
             <button className={styles.studentButton} type='submit'>REGISTER</button>
             </form>

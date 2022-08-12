@@ -41,6 +41,19 @@ export const addNewStudentFail = (error) => ({
     type: types.ADD_NEW_STUDENT_FAIL,
     payload: error
 });
+export const fetchSchoolProfileStart = () => ({
+    type: types.FETCH_SCHOOL_PROFILE_START
+});
+
+export const fetchSchoolProfileSuccess = (payload) => ({
+    type: types.FETCH_SCHOOL_PROFILE_SUCCESS,
+    payload
+});
+
+export const fetchSchoolProfileFail = (error) => ({
+    type: types.FETCH_SCHOOL_PROFILE_FAIL,
+    payload: error
+});
 
 export const addNewAdminInitiate = (fullName, email, password, schoolId, confirmPassword, roleDescription) =>  {
     return function (dispatch) {
@@ -95,18 +108,24 @@ export const addNewAdminInitiate = (fullName, email, password, schoolId, confirm
         }
 
     }
-    export const addNewStudentInitiate = (fullName, email, password, schoolId, confirmPassword, roleDescription) =>  {
+    export const addNewStudentInitiate = (
+        courseId, 
+        fullName, 
+        email, 
+        password,
+        confirmPassword,
+        schoolId) =>  {
         return function (dispatch) {
             dispatch(addNewStudentStart())
             axios
             .post('https://afrilearn-backend-01.herokuapp.com/api/v1/schools/sign-up-for-student',
             {   
-                fullName,
-                email,
+                courseId, 
+                fullName, 
+                email, 
                 password,
-                schoolId,
                 confirmPassword,
-                roleDescription
+                schoolId
             })
             .then((res) => {
                 dispatch(addNewStudentSuccess(res.data))
@@ -117,4 +136,21 @@ export const addNewAdminInitiate = (fullName, email, password, schoolId, confirm
             })
         }
 
+    }
+
+    export const fetchSchoolProfileInitiate = (schoolId) =>  {
+        return function (dispatch) {
+            dispatch(fetchSchoolProfileStart())
+            axios
+            .get(`https://afrilearn-backend-01.herokuapp.com/api/v1/schools/${schoolId}`
+            )
+            .then((res) => {
+                dispatch(fetchSchoolProfileSuccess(res.data))
+                console.log("Hello from school profile API ===>", res.data)
+            })
+            .catch((err) => {
+                dispatch(fetchSchoolProfileFail(err))
+            })
+        }
+    
     }
