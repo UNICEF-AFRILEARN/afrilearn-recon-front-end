@@ -18,7 +18,7 @@ const Schoolheropage = () => {
         <div className={styles.middlelinks}>
             <Link passHref href="/school/addteacher">Add New Teacher</Link>
             <Link passHref href="/school/addnewstudent">Add New Student</Link>
-            <Link href="#">Add New Admin</Link>
+            <Link passHref href="/school/addnewadmin">Add New Admin</Link>
         </div>
     </div>
     </>
