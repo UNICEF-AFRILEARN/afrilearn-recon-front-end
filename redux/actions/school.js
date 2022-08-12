@@ -6,7 +6,7 @@ export const addNewAdminStart = () => ({
     type: types.ADD_NEW_ADMIN_START
 });
 
-export const addNewAdminSuccess = (payload) = ({
+export const addNewAdminSuccess = (payload) => ({
     type: types.ADD_NEW_ADMIN_SUCCESS,
     payload
 });
@@ -16,15 +16,18 @@ export const addNewAdminFail = (error) => ({
     payload: error
 });
 
-export const addNewAdminInitiate = (schoollevel, subject, lesson) =>  {
+export const addNewAdminInitiate = (fullName, email, password, schoolId, confirmPassword, roleDescription) =>  {
     return function (dispatch) {
         dispatch(addNewAdminStart())
         axios
-        .post('https://unicef-afrilearn-app.herokuapp.com/recommend',
+        .post('https://afrilearn-backend-01.herokuapp.com/api/v1/schools/sign-up-for-admin',
         {   
-            schoollevel,
-            subject,
-            lesson  
+            fullName,
+            email,
+            password,
+            schoolId,
+            confirmPassword,
+            roleDescription
         })
         .then((res) => {
             dispatch(addNewAdminSuccess(res.data))

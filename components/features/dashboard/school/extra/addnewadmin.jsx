@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
- import styles from "../../school/addstudent.module.css";
- import { fetchRoles } from "../../../../../redux/actions/auth";
+import styles from "../../school/addstudent.module.css";
+import { fetchRoles } from "../../../../../redux/actions/auth";
+import { addNewAdminInitiate } from '../../../../../redux/actions/school';
+
 
 const AddnewAdmin = () => {
     const { user, registerUser, roles } = useSelector((state) => state.auth);
@@ -19,7 +21,15 @@ const AddnewAdmin = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(fullName, email, password, schoolId, confirmPassword)
+        console.log(fullName, email, password, schoolId, confirmPassword, roleDescription)
+        dispatch(addNewAdminInitiate(
+          fullName,
+          email,
+          password,
+          schoolId,
+          confirmPassword,
+          roleDescription
+          ))
     }
 
     return (
