@@ -20,7 +20,7 @@ const PastQuestion = () => {
   }, [quary]);
 
   const subject = useSelector((state) => state.MySubject);
-  console.log(subject);
+  // console.log(subject);
   const subjectDat = subject.pastQuestionQue[0];
   const quizData = {
     heading: `${subjectDat.subject_details.exam_name}:`,
