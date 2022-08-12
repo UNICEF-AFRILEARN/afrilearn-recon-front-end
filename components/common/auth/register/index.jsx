@@ -49,24 +49,13 @@ const Register = (props) => {
   // const profile = {}
   const rolesContext = rolesCollected.roles.roles;
   const courseContext = rolesCollected.roles.courses;
-  // console.log("roles from the UI ==>", rolesContext);
-  // console.log("Registered user", courseContext)
-  
-  // const mySubjects = allSubjects.subjects
-  // const filteredSub = allSubjects.filter((filtSubj) => filtSubj.courseId?.id === '5fc8cfbb81a55b4c3c19737d')
-  // console.log("allSubjects from register",  filteredSub);
 
-  //Function to filter subjects objects
 let filteredSub = []
   const sortSubjects = (subjectsObj, id) => {
     filteredSub = subjectsObj.filter((filtSubj) => filtSubj.courseId?.id === id)
       return filteredSub;
   }
 
-
-
-
-console.log("Filtered ====>", allSubjects)
 
   const getRoleId = () => {
       if (roleSelected === "Student") {
@@ -117,13 +106,6 @@ console.log("Filtered ====>", allSubjects)
 
   //function to filter subjects:
 sortSubjects(allSubjects, courseId)
-console.log("courseId =======>", courseId)
-  
- 
-
-  const setClassSubject = () => {
-
-  }
 
   const handleRegisterRequest = (e) => {
     e.preventDefault()

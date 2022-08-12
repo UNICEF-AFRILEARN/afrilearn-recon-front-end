@@ -10,6 +10,7 @@ const AddnewAdmin = () => {
     const [fullName, setfullName] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const [roleDescription, setRoleDescription] = useState("");
     const [email, setEmail] = useState("");
 
     console.log("School logged in from add student==>",user.user?.schoolId.id)
@@ -35,11 +36,13 @@ const AddnewAdmin = () => {
                     type="text" 
                     placeholder="Fullname"
                     value={fullName}
+                    required
                     onChange={(e) => setfullName(e.target.value)}
-                />
+                    />
                 <input 
                     className={styles.input}
                     type="text" 
+                    required
                     placeholder="Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -47,6 +50,7 @@ const AddnewAdmin = () => {
                 <input 
                     className={styles.input}
                     type="password" 
+                    required
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -54,9 +58,18 @@ const AddnewAdmin = () => {
                 <input 
                     className={styles.input}
                     type="password" 
+                    required
                     placeholder="Confirm Password"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
+                    />
+                <input 
+                    className={styles.input}
+                    type="text" 
+                    required
+                    placeholder="Role Description e.g Vice Principal"
+                    value={roleDescription}
+                    onChange={(e) => setRoleDescription(e.target.value)}
                     />
             <button className={styles.studentButton} type='submit'>REGISTER</button>
             </form>
