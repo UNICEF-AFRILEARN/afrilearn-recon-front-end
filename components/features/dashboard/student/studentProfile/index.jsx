@@ -12,7 +12,7 @@ const StudentProfile = () => {
   const dispatch = useDispatch();
 
   const token = user.token;
-  const userId = user.user.id;
+  const userId = user.user?.id;
 
   console.log("logged-in ==> profile", userProfile)
   console.log("logged-in ==> user profile", user)
@@ -48,7 +48,7 @@ const StudentProfile = () => {
                   <Col md={7}>
                     <Row>
                       <Col md={5}>
-                        <h4 className="text-dark">{user.user.fullName}</h4>
+                        <h4 className="text-dark">{user.user?.fullName}</h4>
                       </Col>
                       <Col
                         className={`${styles.studentProfileCrownTheme}`}
@@ -60,7 +60,7 @@ const StudentProfile = () => {
                   <Col>
                     <Row>
                       <Col>
-                        <p className="text-dark">{user.user.email}</p>
+                        <p className="text-dark">{user.user?.email}</p>
                       </Col>
                       <Col>
                         <Row>
@@ -134,7 +134,7 @@ const StudentProfile = () => {
               className="pt-3"
               style={{ fontWeight: "700", fontSize: "15px", color: "#333333" }}
             >
-              <p>Coin: {user.user.afriCoins}</p>
+              <p>Coin: {user.user?.afriCoins}</p>
             </Col>
           </Row>
           <Row
@@ -198,7 +198,7 @@ const StudentProfile = () => {
                       textDecoration: "",
                     }}
                   >
-                    {user.user.phoneNumber}
+                    {user.user?.phoneNumber}
                   </span>
                 </p>
               </Row>
@@ -368,7 +368,7 @@ const StudentProfile = () => {
                         color: "#333333",
                       }}
                     >
-                      {user.user.enrolledCourses[0]?.courseId?.name}
+                      {user.user?.enrolledCourses[0]?.courseId?.name}
                     </p>
                   </Row>
                 </Col>
