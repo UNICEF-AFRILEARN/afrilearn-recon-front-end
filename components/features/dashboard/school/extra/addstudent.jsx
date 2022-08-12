@@ -6,6 +6,7 @@ import { addNewStudentInitiate } from '../../../../../redux/actions/school';
 
 const Addnewstudent = () => {
     const { user, registerUser, roles } = useSelector((state) => state.auth);
+    const { schoolProfile } = useSelector((state) => state.school);
     const dispatch = useDispatch();
 
     const [fullName, setfullName] = useState("");
@@ -15,18 +16,21 @@ const Addnewstudent = () => {
     const [role, setRole] = useState("Student");
     const [courseId, setCourseId] = useState("");
     const [course, setCourse] = useState("");
+    const [classId, setClassId] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [courseSelected, setCourseSelected] = useState("");
 
+    const schoolClasses = schoolProfile?.data.schoolClassesData
     console.log("School logged in from add student==>",user.user?.schoolId.id)
-    console.log("roles in from add student==>",roles.courses)
+    console.log("schoolClasses in from add student==>",schoolClasses)
     const schoolId = user.user?.schoolId.id 
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log("course", courseId)
+        console.log("classId", classId)
         dispatch(addNewStudentInitiate(
-            courseId, 
+            courseId,
+            classId,
             fullName, 
             email, 
             password,
@@ -34,44 +38,36 @@ const Addnewstudent = () => {
             schoolId
         ))
     }
-    const setClassId = () => {
-        if(courseSelected === 'Primary One'){
-          setCourseId('5fc8cfbb81a55b4c3c19737d')
-        }else if(courseSelected === 'Primary Two'){
-          setCourseId('5fd12c70e74b15663c5f4c6e')
-        }else if(courseSelected === 'Primary Three'){
-          setCourseId('5fff5a67de0bdb47f826fea8')
-        }else if(courseSelected === 'Primary Four'){
-          setCourseId('5fff5a7ede0bdb47f826fea9')
-        }else if(courseSelected === 'Primary Five'){
-          setCourseId('5fff5aaede0bdb47f826feaa')
-        }else if(courseSelected === 'Primary Six'){
-          setCourseId('5fff5abede0bdb47f826feab')
-        }else if(courseSelected === 'JSS One'){
-          setCourseId('5fff72b3de0bdb47f826feaf')
-        }else if(courseSelected === 'JSS Two'){
-          setCourseId('5fff7329de0bdb47f826feb0')
-        }else if(courseSelected === 'Jss Three'){
-          setCourseId('5fff734ade0bdb47f826feb1')
-        }else if(courseSelected === 'SSS One'){
-          setCourseId('5fff7371de0bdb47f826feb2')
-        }else if(courseSelected === 'SSS Two'){
-          setCourseId('5fff7380de0bdb47f826feb3')
-        }else if(courseSelected === 'SSS Three'){
-          setCourseId('5fff7399de0bdb47f826feb4')
-        }else if(courseSelected === 'Afrilearn KidsCode'){
-          setCourseId('629dbb4c5a5f270016033712')
-        }else if(courseSelected === 'Secondary'){
-          setCourseId('605b218f8636bc00158b4ad7')
-        }else if(courseSelected === 'Primary'){
-          setCourseId('605b21868636bc00158b4ad6')
-        }
-           
+
+    const setStudentClassId = () => {
+      if(courseSelected === 'JSS One-My School'){
+        setCourseId('5fc8cfbb81a55b4c3c19737d')
+        setClassId("62f6aee70e20330016bd112d")
+      }else if(courseSelected === "JSS Two-My School"){
+        setCourseId('5fff7329de0bdb47f826feb0')
+        setClassId("62f6aee70e20330016bd1132")
+      }else if(courseSelected === "JSS Three-My School"){
+        setCourseId('5fff734ade0bdb47f826feb1')
+        setClassId("62f6aee70e20330016bd1137")
+      }else if(courseSelected === 'SSS One-My School'){
+        setCourseId('5fff7371de0bdb47f826feb2')
+        setClassId("62f6aee70e20330016bd113c")
+      }else if(courseSelected === 'SSS Two-My School'){
+        setCourseId('5fff7380de0bdb47f826feb3')
+        setClassId("62f6aee80e20330016bd1141")
+      }else if(courseSelected === 'SSS Three-My School'){
+        setCourseId('5fff7399de0bdb47f826feb4')
+        setClassId("62f6aee80e20330016bd1146")
+      }else if(courseSelected === 'Afrilearn KidsCode-My School'){
+        setCourseId('629dbb4c5a5f270016033712')
+        setClassId("62f6aee80e20330016bd114b")
       }
+         
+    }
 
     useEffect(() => {
-        setClassId()
-      }, [setClassId]);
+      setStudentClassId()
+      }, [setStudentClassId]);
 
     useEffect(() => {
         dispatch(fetchRoles())
@@ -104,8 +100,8 @@ const Addnewstudent = () => {
                          Select a Class
                       </option>
                     {
-                        roles.courses && roles.courses.map((role) => 
-                        <option value={role.name}> {role.name}</option>
+                        schoolClasses && schoolClasses.map((schoolClass) => 
+                        <option value={schoolClass.className}> {schoolClass.className}</option>
                         )
                     }
                 </select>
