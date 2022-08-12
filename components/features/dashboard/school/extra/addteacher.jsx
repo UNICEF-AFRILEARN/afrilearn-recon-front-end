@@ -24,12 +24,9 @@ const Addnewteacher = () => {
         e.preventDefault()
         console.log(course, courseId, fullName, email, role, courseSelected, password, schoolId, confirmPassword)
         dispatch(addNewTeacherInitiate(
-            course,
             courseId, 
             fullName, 
             email, 
-            role, 
-            courseSelected, 
             password,
             confirmPassword,
             schoolId

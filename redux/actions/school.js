@@ -65,27 +65,22 @@ export const addNewAdminInitiate = (fullName, email, password, schoolId, confirm
     }
 
 }
-    export const addNewTeacherInitiate = (course,
-        courseId, 
-        fullName, 
-        email, 
-        role, 
-        courseSelected, 
-        password,
-        confirmPassword,
-        schoolId
-        ) =>  {
+    export const addNewTeacherInitiate = (
+            courseId, 
+            fullName, 
+            email, 
+            password,
+            confirmPassword,
+            schoolId        
+            ) =>  {
         return function (dispatch) {
             dispatch(addNewTeacherStart())
             axios
             .post('https://afrilearn-backend-01.herokuapp.com/api/v1/schools/sign-up-for-teacher',
             {   
-                course,
                 courseId, 
                 fullName, 
                 email, 
-                role, 
-                courseSelected, 
                 password,
                 confirmPassword,
                 schoolId
