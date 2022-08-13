@@ -9,8 +9,8 @@ const MiddleNavbar = () => {
   const { user, registerUser, roles } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
-  console.log("schoolProfile from middlenaV=>", schoolProfile);
-  const schoolId = user.user?.schoolId.id
+  console.log("registerUser from middlenaV=>", registerUser);
+  const schoolId = user.user?.schoolId.id || registerUser.user?.schoolId.id
   console.log("schoolId from middlenaV=>", schoolId);
 
   useEffect(() => {

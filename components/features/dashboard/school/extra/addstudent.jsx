@@ -21,11 +21,13 @@ const Addnewstudent = () => {
     const [courseSelected, setCourseSelected] = useState("");
 
     const schoolClasses = schoolProfile?.data.schoolClassesData
+    course = courseSelected.split("-")
+    const schoolId = user.user?.schoolId.id
 
-    const schoolId = user.user?.schoolId.id 
-
+    
     const handleSubmit = (e) => {
-        e.preventDefault()
+      e.preventDefault()
+      console.log("course =====>", course[0])
         dispatch(addNewStudentInitiate(
             courseId,
             classId,
@@ -38,25 +40,25 @@ const Addnewstudent = () => {
     }
 
     const setStudentClassId = () => {
-      if(courseSelected === 'JSS One-My School'){
+      if(course[0] === 'JSS One'){
         setCourseId('5fc8cfbb81a55b4c3c19737d')
         setClassId("62f6aee70e20330016bd112d")
-      }else if(courseSelected === "JSS Two-My School"){
+      }else if(course[0] === "JSS Two"){
         setCourseId('5fff7329de0bdb47f826feb0')
         setClassId("62f6aee70e20330016bd1132")
-      }else if(courseSelected === "JSS Three-My School"){
+      }else if(course[0] === "JSS Three"){
         setCourseId('5fff734ade0bdb47f826feb1')
         setClassId("62f6aee70e20330016bd1137")
-      }else if(courseSelected === 'SSS One-My School'){
+      }else if(course[0] === 'SSS One'){
         setCourseId('5fff7371de0bdb47f826feb2')
         setClassId("62f6aee70e20330016bd113c")
-      }else if(courseSelected === 'SSS Two-My School'){
+      }else if(course[0] === 'SSS Two'){
         setCourseId('5fff7380de0bdb47f826feb3')
         setClassId("62f6aee80e20330016bd1141")
-      }else if(courseSelected === 'SSS Three-My School'){
+      }else if(course[0] === 'SSS Three'){
         setCourseId('5fff7399de0bdb47f826feb4')
         setClassId("62f6aee80e20330016bd1146")
-      }else if(courseSelected === 'Afrilearn KidsCode-My School'){
+      }else if(course[0] === 'Afrilearn KidsCode'){
         setCourseId('629dbb4c5a5f270016033712')
         setClassId("62f6aee80e20330016bd114b")
       }

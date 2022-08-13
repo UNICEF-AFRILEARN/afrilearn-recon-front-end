@@ -15,12 +15,13 @@ import { BsPersonCircle } from 'react-icons/bs';
 const Navigation = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [userRole, setUserRole] = useState("");
-  const { user } = useSelector(state => state.auth)
+  const { user, registerUser } = useSelector(state => state.auth)
 
   useEffect(() => {
-
-    console.log("From main navebar", user?.user?.role)
-    setUserRole(user?.user?.role)
+    console.log("From main navebar", registerUser?.user?.role)
+    const roleId = user?.user?.role || registerUser?.user?.role
+    console.log("From roleId main navebar", roleId)
+    setUserRole(roleId)
   }, [user])
 
 
