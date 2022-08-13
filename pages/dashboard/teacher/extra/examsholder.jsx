@@ -25,9 +25,9 @@ const Examsholder = () => {
     }, []);
   return (
     <div className={styles.examsholderwrapper}>
-        <div className={styles.examsmainholder}>
            {exams.exams && exams.exams.map((exam) => 
             <>
+        <div className={styles.examsmainholder}>
             <div className={styles.examstitlewrapper}>
                 <h3>{exam.title}</h3>
                 <p>Published: {formatDate(exam.createdAt)}</p>
@@ -43,11 +43,11 @@ const Examsholder = () => {
                 <h5>VIEW SUBMISSIONS</h5>
                 <BsThreeDotsVertical />
             </div>
+        </div>
             </>
            )
 
            }
-        </div>
     </div>
   )
 }
