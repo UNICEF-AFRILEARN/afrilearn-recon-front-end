@@ -171,8 +171,12 @@ export const registerUserInitiate = (
   confirmPassword, 
   role, 
   course,
+  courseId,
   phoneNumber,
-  referral) =>  {
+  schoolName,
+  courseCategoryId,
+  referral
+  ) =>  {
   return function (dispatch) {
       dispatch(registerUserStart())
       axios
@@ -184,7 +188,10 @@ export const registerUserInitiate = (
         confirmPassword, 
         role, 
         course,
+        courseId,
         phoneNumber,
+        schoolName,
+        courseCategoryId,
         referral
       })
       .then((res) => {

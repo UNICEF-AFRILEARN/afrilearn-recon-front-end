@@ -9,7 +9,7 @@ const Schoolsubject = () => {
     const { schoolProfile } = useSelector((state) => state.school);
     
 
-    const schoolClasses = schoolProfile?.data.schoolClassesData
+    const schoolClasses = schoolProfile?.data?.schoolClassesData
     return (
     <>
         

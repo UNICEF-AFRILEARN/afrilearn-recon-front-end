@@ -21,6 +21,7 @@ const Register = (props) => {
   const [roleSelected, setRoleSelected] = useState('');
   const [role, setRole] = useState('');
   const [classCategory, setClassCategory] = useState('');
+  const [courseCategoryId, setCourseCategoryId] = useState('');
   const [subject, setSubject] = useState('');
   const [subjectSelected, setSubjectSelected] = useState('');
   const [course, setCourse] = useState('');
@@ -69,6 +70,14 @@ let filteredSub = []
       }
   }
 
+  const setCategoryId = () => {
+    if (course === "Primary") {
+      setCourseCategoryId("605b21868636bc00158b4ad6")
+    }else if(course === "Secondary"){
+      setCourseCategoryId("605b218f8636bc00158b4ad7")
+    }
+}
+
   const setClassId = () => {
     if(course === 'Primary One'){
       setCourseId('5fc8cfbb81a55b4c3c19737d')
@@ -109,6 +118,7 @@ sortSubjects(allSubjects, courseId)
 
   const handleRegisterRequest = (e) => {
     e.preventDefault()
+    console.log("courseCategoryId ===>", course, courseCategoryId)
     dispatch(registerUserInitiate(
       fullName, 
       email, 
@@ -118,6 +128,8 @@ sortSubjects(allSubjects, courseId)
       course,
       courseId,
       phoneNumber,
+      schoolName,
+      courseCategoryId,
       referral
       ))
 
@@ -133,6 +145,10 @@ sortSubjects(allSubjects, courseId)
     
   }
 
+
+  useEffect(() => {
+    setCategoryId()
+  },[setCategoryId]);
 
   useEffect(() => {
     setClassId()
