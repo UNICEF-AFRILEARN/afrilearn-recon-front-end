@@ -11,8 +11,6 @@ const Examsholder = () => {
 
     const token = user?.token;
 
-    console.log("exams ====> *******",exams.exams)
-
     //Format date to string:
     const formatDate = (string) => {
         var options = { year: 'numeric', month: 'long', day: 'numeric' };
