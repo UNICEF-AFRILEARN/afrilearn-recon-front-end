@@ -1,75 +1,52 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styles from '../../../../styles/teacher.module.css';
 import { BsThreeDotsVertical } from 'react-icons/bs';
+import { fetchExamsInitiate } from '../../../../redux/actions/exams';
 
 const Examsholder = () => {
+    const { exams } = useSelector((state) => state.myExams);
+    const { user, registerUser } = useSelector((state) => state.auth);
+    const dispatch = useDispatch();
+
+    const token = user?.token;
+
+    console.log("exams ====> *******",exams.exams)
+
+    //Format date to string:
+    const formatDate = (string) => {
+        var options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return new Date(string).toLocaleDateString([],options);
+    }
+
+
+    useEffect(() => {
+        dispatch(fetchExamsInitiate(token))
+    }, []);
   return (
     <div className={styles.examsholderwrapper}>
         <div className={styles.examsmainholder}>
+           {exams.exams && exams.exams.map((exam) => 
+            <>
             <div className={styles.examstitlewrapper}>
-                <h3>English Examination 1</h3>
-                <p>Published: 2nd September, 2021</p>
-            </div>
-         
-            <div className={styles.otherwrapper}>
-                <h5>Submission: 32</h5>
-            </div>
-            <div className={styles.otherwrapper}>
-                <h5>Objective</h5>
-            </div>
-            <div className={styles.lastcolon}>
+                <h3>{exam.title}</h3>
+                <p>Published: {formatDate(exam.createdAt)}</p>
+                </div>
+
+                <div className={styles.otherwrapper}>
+                <h5>Submission: {exam.resultsCount}</h5>
+                </div>
+                <div className={styles.otherwrapper}>
+                <h5>{exam.questionTypeId.name}</h5>
+                </div>
+                <div className={styles.lastcolon}>
                 <h5>VIEW SUBMISSIONS</h5>
                 <BsThreeDotsVertical />
             </div>
-            
-        </div>
-        <div className={styles.examsmainholder}>
-            <div className={styles.examstitlewrapper}>
-                <h3>Mathematics First Term JSS1</h3>
-                <p>Published: 2nd September, 2021</p>
-            </div>
-            <div className={styles.otherwrapper}>
-                <h5>Submission: 32</h5>
-            </div>
-            <div className={styles.otherwrapper}>
-                <h5>Objective&Theory</h5>
-            </div>
-            <div className={styles.lastcolon}>
-                <h5>VIEW SUBMISSIONS</h5>
-                <BsThreeDotsVertical />
-            </div>
-        </div>
-        <div className={styles.examsmainholder}>
-            <div className={styles.examstitlewrapper}>
-                <h3>Mathematics First Term JSS1 </h3>
-                <p>Published: 2nd September, 2021</p>
-            </div>
-            <div className={styles.otherwrapper}>
-                <h5>Submission: 32</h5>
-            </div>
-            <div className={styles.otherwrapper}>
-                <h5>Objective&Theory</h5>
-            </div>
-            <div className={styles.lastcolon}>
-                <h5>VIEW SUBMISSIONS</h5>
-                <BsThreeDotsVertical />
-            </div>
-        </div>
-        <div className={styles.examsmainholder}>
-            <div className={styles.examstitlewrapper}>
-                <h3>Basic science mock exam</h3>
-                <p>Published: 2nd September, 2021</p>
-            </div>
-            <div className={styles.otherwrapper}>
-                <h5>Submission: 32</h5>
-            </div>
-            <div className={styles.otherwrapper}>
-                <h5>Objective</h5>
-            </div>
-            <div className={styles.lastcolon}>
-                <h5>VIEW SUBMISSIONS</h5>
-                <BsThreeDotsVertical />
-            </div>
+            </>
+           )
+
+           }
         </div>
     </div>
   )

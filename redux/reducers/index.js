@@ -8,6 +8,7 @@ import { paymentReducer } from "./paymentReducer";
 import { subjectsReducer } from "./subjectsReducer";
 import { dashboardReducer } from './dashboardReducer';
 import { schoolReducer } from "./schoolReducer";
+import { examsReducer } from "./examsReducer";
 
 export default combineReducers({
   auth: authReducer,
@@ -17,5 +18,6 @@ export default combineReducers({
   myPayment: paymentReducer,
   dashboard: dashboardReducer,
   school: schoolReducer,
+  myExams: examsReducer,
 })
 

@@ -97,7 +97,7 @@ const Navigation = () => {
                   <Link passHref href="/dashboard/teacher">
                     <li>Dashboard</li>
                   </Link>
-                  <Link passHref href="/dashboard/teacher">
+                  <Link passHref href="/dashboard/teacher/examinations">
                     <li>Examination</li>
                   </Link>
                   <Link passHref href="/payment">

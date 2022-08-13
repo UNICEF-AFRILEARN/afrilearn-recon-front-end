@@ -76,7 +76,6 @@ export default Dashboard;
 export const HeropageWelcome = () => {
   const { registerUser, user } = useSelector((state) => state.auth);
 
-  console.log("registerUser ====>", registerUser.user)
   return (
     <>
       <Row
