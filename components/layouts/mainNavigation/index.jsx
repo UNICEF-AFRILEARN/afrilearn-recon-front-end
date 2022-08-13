@@ -19,7 +19,7 @@ const Navigation = () => {
 
   useEffect(() => {
     console.log("From main navebar", registerUser?.user?.role)
-    const roleId = user?.user?.role || registerUser?.user?.role
+    const roleId = user?.user?.role || registerUser?.user?.role || user?.user?.id
     console.log("From roleId main navebar", roleId)
     setUserRole(roleId)
   }, [user])

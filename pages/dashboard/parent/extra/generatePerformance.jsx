@@ -8,13 +8,24 @@ import styles from '../../../../styles/parentdashboard.module.css'
 
 const GeneratePerformance = ({children, courseContext}) => {
     const [childClass, setChildClass] = useState("");
+    const [selectedChild, setSelectedChild] = useState("");
+    const [childId, setChildId] = useState("");
     const previousInputValue = useRef("");
 
+    let filteredChildren = []
+  const sortChildren = (childrenObj, id) => {
+    filteredChildren = children?.filter((myChildId) => myChildId.fullName === selectedChild)
+      return filteredChildren
+    }
 
-    // useEffect(() => {
-    //     previousInputValue.current = inputValue;
-    //   }, [inputValue]);
 
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log("children", children)
+    }
+
+  //function to filter children:
+  sortChildren(children, "62ea39f2150f250016e7d569")
 
   return (
     <div className={styles.parentmaingeneratewrapper}>
@@ -24,13 +35,13 @@ const GeneratePerformance = ({children, courseContext}) => {
         </div>
 
         <div className={styles.innerformwrapper}>
-            <Form>
+            <Form onSubmit={handleSubmit}>
                 <Form.Group className={`${styles.arrowparentwrapper} mb-3`} controlId="formBasicEmail">
                     <select
                         className={`${styles.pushDown} form-control form-control-sm`}
-                        // value={selectedCourse}
+                        value={selectedChild}
                         defaultValue={"default"}
-                        // onChange={(e) => setCourseSelected(e.target.value)}
+                        onChange={(e) => setSelectedChild(e.target.value)}
                         >
                         <option value={"default"}>
                             Select a child
@@ -40,8 +51,9 @@ const GeneratePerformance = ({children, courseContext}) => {
                             <>
                              <option 
                                 placeholder='Select a Role'
+                                value={childrenName.fullName}
                                     >{childrenName.fullName}
-                                </option>
+                             </option>
                             </>
                         )}
                     </select>
@@ -61,7 +73,7 @@ const GeneratePerformance = ({children, courseContext}) => {
                             Select a class
                         </option>
             
-                        {children && children.map((childClass) => 
+                        {filteredChildren && filteredChildren.map((childClass) => 
                         <option 
                         placeholder='Select a Role'
                             >{childClass.enrolledCourses[0]?.courseId.name}

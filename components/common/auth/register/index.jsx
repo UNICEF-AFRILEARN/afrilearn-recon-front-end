@@ -58,57 +58,57 @@ let filteredSub = []
   }
 
 
-  const getRoleId = async () => {
+  const getRoleId =  () => {
       if (roleSelected === "Student") {
-        await setRole("5fd08fba50964811309722d5")
+         setRole("5fd08fba50964811309722d5")
       }else if(roleSelected === "Teacher"){
-        await setRole("602f3ce39b146b3201c2dc1d")
+         setRole("602f3ce39b146b3201c2dc1d")
       }else if(roleSelected === "Parent"){
-        await setRole("606ed82e70f40e18e029165e")
+         setRole("606ed82e70f40e18e029165e")
       }else if(roleSelected === "School"){
-        await setRole("607ededa2712163504210684")
+         setRole("607ededa2712163504210684")
       }
   }
 
-  const setCategoryId = async () => {
+  const setCategoryId =  () => {
     if (course === "Primary") {
-      await setCourseCategoryId("605b21868636bc00158b4ad6")
+       setCourseCategoryId("605b21868636bc00158b4ad6")
     }else if(course === "Secondary"){
-      await setCourseCategoryId("605b218f8636bc00158b4ad7")
+       setCourseCategoryId("605b218f8636bc00158b4ad7")
     }
 }
 
-  const setClassId = async () => {
+  const setClassId =  () => {
     if(course === 'Primary One'){
-      await setCourseId('5fc8cfbb81a55b4c3c19737d')
+       setCourseId('5fc8cfbb81a55b4c3c19737d')
     }else if(course === 'Primary Two'){
-      await setCourseId('5fd12c70e74b15663c5f4c6e')
+       setCourseId('5fd12c70e74b15663c5f4c6e')
     }else if(course === 'Primary Three'){
-      await setCourseId('5fff5a67de0bdb47f826fea8')
+       setCourseId('5fff5a67de0bdb47f826fea8')
     }else if(course === 'Primary Four'){
-      await setCourseId('5fff5a7ede0bdb47f826fea9')
+       setCourseId('5fff5a7ede0bdb47f826fea9')
     }else if(course === 'Primary Five'){
-      await setCourseId('5fff5aaede0bdb47f826feaa')
+       setCourseId('5fff5aaede0bdb47f826feaa')
     }else if(course === 'Primary Six'){
-      await setCourseId('5fff5abede0bdb47f826feab')
+       setCourseId('5fff5abede0bdb47f826feab')
     }else if(course === 'JSS One'){
       setCourseId('5fff72b3de0bdb47f826feaf')
     }else if(course === 'JSS Two'){
-      await setCourseId('5fff7329de0bdb47f826feb0')
+       setCourseId('5fff7329de0bdb47f826feb0')
     }else if(course === 'Jss Three'){
-      await setCourseId('5fff734ade0bdb47f826feb1')
+       setCourseId('5fff734ade0bdb47f826feb1')
     }else if(course === 'SSS One'){
-      await setCourseId('5fff7371de0bdb47f826feb2')
+       setCourseId('5fff7371de0bdb47f826feb2')
     }else if(course === 'SSS Two'){
-      await setCourseId('5fff7380de0bdb47f826feb3')
+       setCourseId('5fff7380de0bdb47f826feb3')
     }else if(course === 'SSS Three'){
-      await setCourseId('5fff7399de0bdb47f826feb4')
+       setCourseId('5fff7399de0bdb47f826feb4')
     }else if(course === 'Afrilearn KidsCode'){
-      await setCourseId('629dbb4c5a5f270016033712')
+       setCourseId('629dbb4c5a5f270016033712')
     }else if(course === 'Secondary'){
-      await setCourseId('605b218f8636bc00158b4ad7')
+       setCourseId('605b218f8636bc00158b4ad7')
     }else if(course === 'Primary'){
-      await setCourseId('605b21868636bc00158b4ad6')
+       setCourseId('605b21868636bc00158b4ad6')
     }
        
   }
@@ -116,10 +116,10 @@ let filteredSub = []
   //function to filter subjects:
 sortSubjects(allSubjects, courseId)
 
-  const handleRegisterRequest = async (e) => {
+  const handleRegisterRequest = (e) => {
     e.preventDefault()
     console.log("courseCategoryId ===>", course, courseCategoryId)
-    await dispatch(registerUserInitiate(
+     dispatch(registerUserInitiate(
       fullName, 
       email, 
       password, 
@@ -134,13 +134,13 @@ sortSubjects(allSubjects, courseId)
       ))
 
       if(role === "5fd08fba50964811309722d5" && Object.keys(registerUser).length > 0){
-        await Router.push('/dashboard/student')
+         Router.push('/dashboard/student')
       }else if(role === '602f3ce39b146b3201c2dc1d' && Object.keys(registerUser).length > 0){
-        await Router.push('/dashboard/teacher' )
+         Router.push('/dashboard/teacher' )
       }else if(role === '606ed82e70f40e18e029165e' && Object.keys(registerUser).length > 0){
-        await Router.push('/dashboard/parent')
+         Router.push('/dashboard/parent')
       }else if(role === '607ededa2712163504210684' && Object.keys(registerUser).length > 0){
-        await Router.push('/school')
+         Router.push('/school')
       }
     
   }
