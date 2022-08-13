@@ -8,12 +8,30 @@ import Subjects from "../student/extra/subjects";
 import styles1 from "../student/student.module.css";
 import styles from "../student/studentProfile/studentProfile.module.css";
 import styles2 from "../../../../pages/dashboard/teacher/teacher.module.css";
+import { fetchSubjectsInitiate } from '../../../../redux/actions/subjects';
 
 
 const Dashboard = () => {
+  const dispatch = useDispatch();
   const { registerUser, user } = useSelector((state) => state.auth);
+  const { allSubjects } = useSelector((state) => state.mySubject);
 
-  console.log("loginUser ====>", user)
+  //set up teacher subject id:
+  const teacherSubjectId = user?.user?.classOwnership[0]?.subjectIds[0]?.subjectId
+  console.log("allSubjects ====>", teacherSubjectId)
+
+  const filteredSubjects = [];
+  const filterTeacherSubjects = () => {
+    filteredSubjects = allSubjects.filter((filterSubject) => filterSubject.id === teacherSubjectId)
+    return filteredSubjects
+  }
+
+  filterTeacherSubjects();
+  console.log("filteredSubjects *****", filteredSubjects)
+
+  useEffect(() => {
+    dispatch(fetchSubjectsInitiate())
+  }, [])
   return (
     <div>
       <Heropage />

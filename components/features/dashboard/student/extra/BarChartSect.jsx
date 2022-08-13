@@ -10,7 +10,7 @@ import {
   CartesianGrid,
   Bar,
 } from "recharts";
-import styles from '../../../../../styles/chart.module.css';
+// import styles from '../../../../../styles/chart.module.css';
 
 const BarChartSect = () => {
     const data = [

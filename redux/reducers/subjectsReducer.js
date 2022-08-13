@@ -6,7 +6,7 @@ const initialState = {
 
 }
 
-export const subjectReducer = (state = initialState, { type, payload} ) => {
+export const subjectsReducer = (state = initialState, { type, payload} ) => {
     switch (type) {
         case types.FECTH_SUBJECTS_START:
             return {
