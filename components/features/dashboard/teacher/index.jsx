@@ -17,24 +17,28 @@ const Dashboard = () => {
   const { allSubjects } = useSelector((state) => state.mySubject);
 
   //set up teacher subject id:
-  // const teacherSubjectId = user?.user?.classOwnership[0]?.subjectIds[0]?.subjectId
-  // console.log("allSubjects ====>", teacherSubjectId)
-  const teacherEnrolledSubjectId = [];
+  const teacherSubjectId = user?.user?.classOwnership[0]?.subjectIds[0]?.subjectId
+
+  //set teacher's enrolled subjects
+  let teacherEnrolledSubjectId = [];
   const teacherEnrolledSubjects = () => {
     teacherEnrolledSubjectId = user?.user?.classOwnership.filter((enrolledSubjectId) => enrolledSubjectId.subjectIds
     )
     return teacherEnrolledSubjectId
   }
   teacherEnrolledSubjects();
-  console.log("teacherEnrolledSubjects *****", teacherEnrolledSubjectId)
-
-  const filteredSubjects = [];
+  
+  
+  
+  let filteredSubjects = [];
   const filterTeacherSubjects = () => {
     filteredSubjects = allSubjects.filter((filterSubject) => filterSubject.id === teacherSubjectId)
     return filteredSubjects
   }
+  
+  filterTeacherSubjects();
+  console.log("filteredSubjects *****", filteredSubjects)
 
-  // filterTeacherSubjects();
 
   useEffect(() => {
     dispatch(fetchSubjectsInitiate())
@@ -56,7 +60,7 @@ const Dashboard = () => {
           >
             My Subject
           </Row>
-          <Subjects />
+          <Subjects filteredSubjects={filteredSubjects}/>
         </Col>
         <Col>
           <PastQuestion />
