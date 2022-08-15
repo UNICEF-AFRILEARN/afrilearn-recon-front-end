@@ -139,7 +139,7 @@ export const HeropageWelcome = () => {
                   <Col md={3} className="">
                     <Link
                       passHref
-                      href=""
+                      href="/dashboard/teacher/addnewstudent"
                     >
                       <a>
                         <Row className="px-auto">

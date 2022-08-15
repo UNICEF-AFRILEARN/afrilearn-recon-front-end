@@ -24,6 +24,17 @@ export const fetchUnfinishedVideoFail = (error) => ({
     type: types.FECTH_UNFINISHED_VIDEO_FAIL,
     payload: error
 });
+export const fetchStudentPerformanceStart = () => ({
+    type: types.FETCH_STUDENT_PERFORMANCE_START
+})
+export const fetchStudentPerformanceSuccess = (payload) => ({
+    type: types.FETCH_STUDENT_PERFORMANCE_SUCCESS,
+    payload
+})
+export const fetchStudentPerformanceFail = (error) => ({
+    type: types.FETCH_STUDENT_PERFORMANCE_FAIL,
+    payload: error
+});
 
 
 export const fetchUserProfileInitiate = (userId, token) => {
@@ -65,4 +76,25 @@ export const fetchUnfinishedVideoInitiate = (token) =>  {
         })
     }
 
+}
+
+
+
+export const fetchStudentPerformanceInitiate = (userId, token) => {
+    return function (dispatch) {
+        dispatch(fetchStudentPerformanceStart())
+        axios
+        .post("https://afrilearn-backend-01.herokuapp.com/api/v1/dashboard/student-performance-summary",
+            {   userId  },
+        {
+            headers: {
+                "token": token
+            }
+        })
+        .then((res) => {
+                console.log("Dashboard API params", res.data)
+                dispatch(fetchStudentPerformanceSuccess(res.data))
+            })
+            .catch((error) => dispatch(fetchStudentPerformanceFail(error)))
+    }   
 }

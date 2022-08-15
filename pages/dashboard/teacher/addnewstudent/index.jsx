@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import Router, { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux';
+import Router, { useRouter } from 'next/router'
  import styles from "../../../../components/features/dashboard/school/addstudent.module.css";
 //  import { fetchRoles } from "../../../../../redux/actions/auth";
 // import { addNewStudentInitiate } from '../../../../../redux/actions/school';
@@ -16,28 +16,34 @@ const Addnewstudent = () => {
     // const [schoolId, setSchoolId] = useState("");
     const [role, setRole] = useState("Student");
     const [courseId, setCourseId] = useState("");
-    const [course, setCourse] = useState("");
+    let [course, setCourse] = useState("");
     const [classId, setClassId] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [courseSelected, setCourseSelected] = useState("");
 
-    const schoolClasses = schoolProfile?.data.schoolClassesData
+    const schoolClasses = schoolProfile?.data?.schoolClassesData
     course = courseSelected.split("-")
-    const schoolId = user.user?.schoolId.id
+    const schoolId = user.user?.schoolId?.id
 
     
     const handleSubmit = (e) => {
       e.preventDefault()
-      console.log("course =====>", course[0])
-        dispatch(addNewStudentInitiate(
-            courseId,
-            classId,
-            fullName, 
-            email, 
-            password,
-            confirmPassword,
-            schoolId
-        ))
+      console.log("course =====>", courseId,
+      classId,
+      fullName, 
+      email, 
+      password,
+      confirmPassword,
+      role)
+        // dispatch(addNewStudentInitiate(
+        //     courseId,
+        //     classId,
+        //     fullName, 
+        //     email, 
+        //     password,
+        //     confirmPassword,
+        //     schoolId
+        // ))
     }
 
     const setStudentClassId = () => {

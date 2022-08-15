@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Router, { useRouter } from 'next/router'
 
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 
@@ -9,23 +10,43 @@ import styles from '../../../../styles/parentdashboard.module.css'
 const GeneratePerformance = ({children, courseContext}) => {
     const [childClass, setChildClass] = useState("");
     const [selectedChild, setSelectedChild] = useState("");
+    const [selectedChildId, setSelectedChildId] = useState("");
     const [childId, setChildId] = useState("");
     const previousInputValue = useRef("");
 
     let filteredChildren = []
-  const sortChildren = (childrenObj, id) => {
-    filteredChildren = children?.filter((myChildId) => myChildId.fullName === selectedChild)
+  const sortChildren = (childrenObj) => {
+    filteredChildren = childrenObj?.filter((myChildId) => myChildId.fullName === selectedChild)
+        // setSelectedChildId(myChildId.id)
       return filteredChildren
     }
+
+    let _userId = '';
+
+    const getSelectedChildId = () => {
+        _userId = filteredChildren?.map((childId) => childId.id)
+    }
+
 
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log("children", children)
+        console.log("selectedChildId", selectedChildId)
+        Router.push({
+            pathname: `/dashboard/performance/[_id]`,
+            query: { _id: _userId[0] || "undefined" }
+        })
     }
-
-  //function to filter children:
-  sortChildren(children, "62ea39f2150f250016e7d569")
+    
+    //function to filter children:
+    useEffect(() => {
+        sortChildren(children)
+    }, [sortChildren(children)])
+    useEffect(() => {
+        getSelectedChildId()
+    }, [getSelectedChildId()])
+    
+    console.log("_userId ===", _userId[0])
 
   return (
     <div className={styles.parentmaingeneratewrapper}>
@@ -60,9 +81,6 @@ const GeneratePerformance = ({children, courseContext}) => {
                 </Form.Group>
 
                 <Form.Group className={`${styles.arrowparentwrapper} mb-3`} controlId="formBasicPassword">
-                    {/* <Form.Label>Class</Form.Label>
-                    <Form.Control type="password" placeholder="Select Class" />
-                    <span className={styles.arrowdownwrapper}><MdOutlineKeyboardArrowDown /></span> */}
                     <select
                         className={`${styles.pushDown} form-control form-control-sm`}
                         // value={selectedCourse}
@@ -82,7 +100,7 @@ const GeneratePerformance = ({children, courseContext}) => {
                     </select>
                 </Form.Group>
             <Button variant="primary" type="submit">
-            GENERATE PERFORMANCE
+                 GENERATE PERFORMANCE
             </Button>
         </Form>
         </div>

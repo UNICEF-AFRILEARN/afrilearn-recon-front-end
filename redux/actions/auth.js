@@ -137,10 +137,12 @@ export const loginInitiate = (email, password) => {
   return function (dispatch) {
       dispatch(loginUserStart());
       axios
-        .post('https://afrilearn-backend-01.herokuapp.com/api/v1/auth/login', {
+        .post('https://afrilearn-backend-01.herokuapp.com/api/v1/auth/login', 
+        {
           email,
           password,
-        })
+        }
+        )
         .then((res) => {
           console.log("login response", res.data.data);
           dispatch(loginUserSuccess(res.data.data))

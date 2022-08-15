@@ -21,7 +21,7 @@ const BarChartSect = () => {
       ];
 
   return (
-    <div className={styles.chartmainwrapper}>
+    <div >
       <div style={{ textAlign: "center" }}>
      
         <BarChart

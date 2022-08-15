@@ -4,6 +4,7 @@ import * as types from '../types/dashboard';
 const initialState = {
     userProfile: [],
     unfinishedVideos: [],
+    studentPerformance: [],
 }
 
 
@@ -38,6 +39,23 @@ export const dashboardReducer = (state = initialState, { type, payload} ) => {
                 loading: false
             };
         case types.FECTH_UNFINISHED_VIDEO_FAIL:
+            return {
+                ...state,
+                error: payload,
+                loading: false
+            };
+        case types.FETCH_STUDENT_PERFORMANCE_START:
+            return {
+                ...state,
+                loading: true
+            };
+        case types.FETCH_STUDENT_PERFORMANCE_SUCCESS:
+            return {
+                ...state,
+                studentPerformance: payload,
+                loading: false
+            };
+        case types.FETCH_STUDENT_PERFORMANCE_FAIL:
             return {
                 ...state,
                 error: payload,

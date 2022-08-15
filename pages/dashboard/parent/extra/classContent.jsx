@@ -29,20 +29,13 @@ const ClassContent = ({courseContext, children}) => {
                         // onChange={(e) => setCourseSelected(e.target.value)}
                         >
                           <option value={"default"}>
-                              Select a child
+                              Select a class
                           </option>
-                       { children && children.map((myChild) => 
-                           <option value={"default"}>
-                             {myChild.fullName}
-                          </option>
-                       )
-
-                       }
             
                         {classList && classList.map((childClass) => 
                         <option 
                         placeholder='Select a Role'
-                            >{childClass.name}
+                            >{childClass}
                         </option>
                         )}
                     </select>
