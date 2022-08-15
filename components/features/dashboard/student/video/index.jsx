@@ -1,7 +1,8 @@
 import { StudentHeropageBase } from "../extra/subjects";
 // import styles from "./video.module.css";
+import { HeaderHeropage } from "../extra/subjects";
 
-import StudentPageTwo from "./../studentHeroPageTwo";
+// import StudentPageTwo from "./../studentHeroPageTwo";
 import { Accordion } from "react-bootstrap";
 import Link from "next/link";
 import styles from "../classnote/classnote.module.css";
@@ -11,10 +12,10 @@ import styles2 from "../topInClass.module.css";
 const Video = () => {
   return (
     <>
-      <StudentPageTwo />
+      {/* <HeaderHeropage /> */}
 
       <div className={styles.classs}>
-        <StudentHeropageBase className="p-0" />
+        {/* <StudentHeropageBase className="p-0" /> */}
         <ClassNoteVideoHeader />
         <ClassNoteVideo style={{ margin: "25px" }} />
       </div>

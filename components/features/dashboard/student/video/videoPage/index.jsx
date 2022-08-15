@@ -416,35 +416,37 @@ export const NextPrevPage = ({ data }) => {
   return (
     <>
       <Row className="pt-5">
-        <Col sm={5} className="">
+        <Col md={4} className="">
           <Row className={` ${styles.accordButtonLeftExtr}`}>
-            <Col sm={2} className="mt-3">
+            <Col md={2} className="mt-3">
               <Row className={`mx-4 ${styles.accordButtonLeft1}`}></Row>
             </Col>
-            <Col sm={1} className="mt-2">
+            <Col md={1} className="mt-2">
               <div className={styles.accordButtonLeft2}></div>
             </Col>
-            <Col sm={9} className="">
-              <div className={styles.accordButtonLeftSide1}>Back to</div>
-              <div className={styles.accordButtonLeftSide2}>Subject Page</div>
+            <Col md={8} className="">
+              <div className={styles.accordButtonLeftSide1}>Go to</div>
+              <div className={styles.accordButtonLeftSide2}>Prev Page</div>
             </Col>
           </Row>
         </Col>
 
-        <Col sm={2}>
+        <Col md={4}>
           <div className={`${styles.accordButtonLeftExtr2}`}>
             {data[0].text} of {data.length}
           </div>
         </Col>
-        <Col sm={5}>
+        <Col md={4}>
           <Row className={` ${styles.accordButtonLeftExtr}`}>
-            <Col sm={9} className="">
+            <Col md={8} className="">
+              <div className={styles.accordButtonLeftSide1}>Go to</div>
+              <div className={styles.accordButtonLeftSide2}>Next Page</div>
             </Col>
-            <Col sm={1} className="mt-2">
-              <div className={styles.accordButtonLeft2}></div>
+            <Col md={1} className="mt-2">
+              <div className={`mx-0 ${styles.accordButtonLeft2}`}></div>
             </Col>
-            <Col sm={2} className="mt-3">
-              <Row className={`mx-1 ${styles.accordButtonLeft1}`}></Row>
+            <Col md={2} className="" style={{padding:"0", margin:"auto"}}>
+              <div className={` ${styles.accordButtonLeft1}`}></div>
             </Col>
           </Row>
         </Col>

@@ -5,7 +5,7 @@ import TopInClass from "./extra/topInClass";
 import Recommendation from "./extra/recommendation";
 import Image from "next/image";
 import Slider from "react-slick";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Subjects from "./extra/subjects";
 import GetSolution from "./extra/getSolution";
@@ -51,15 +51,42 @@ const Dashboard = () => {
   const subject = useSelector((state) => state.MySubject);
   const dispatch = useDispatch();
 
+  const checkIf = () => {
+    let check;
+    if (
+      user.user.user?.enrolledCourses.length === 1 &&
+      user.user.user?.enrolledCourses[0].courseId
+    ) {
+      check = user.user.user?.enrolledCourses[0];
+    }
+    if (
+      user.user.user?.enrolledCourses.length === 2 &&
+      user.user.user?.enrolledCourses[0].courseId && subject.checkChange
+    ) {
+      check = user.user.user?.enrolledCourses[0];
+    }
+    if (
+      user.user.user?.enrolledCourses.length === 2 &&
+      user.user.user?.enrolledCourses[0].courseId && !subject.checkChange
+    ) {
+      check = user.user.user?.enrolledCourses[1];
+    }
+    if (
+      user.user.user?.enrolledCourses.length === 2 &&
+      !user.user.user?.enrolledCourses[0].courseId
+    ) {
+      check = user.user.user?.enrolledCourses[1];
+    }
+    return check;
+  };
+
   const personData = {
-    personClass: user.user.user?.enrolledCourses[0].courseId.name,
+    personClass: checkIf().courseId.name,
     personName: user.user.user?.fullName,
   };
 
-
-
-  const person_id = user.user.user?.enrolledCourses[0]._id;
-  const personId = user.user.user?.enrolledCourses[0].courseId.id;
+  const person_id = checkIf()._id;
+  const personId = checkIf().courseId.id;
   const token = user.user.token;
   useEffect(() => {
     dispatch(fetchCourseInitiate(personId, person_id, token));
@@ -94,7 +121,7 @@ const Dashboard = () => {
   );
 };
 
-const TopInClasses = ({ classData,classes }) => {
+const TopInClasses = ({ classData, classes }) => {
   const customeSlider = useRef();
 
   const settings = {

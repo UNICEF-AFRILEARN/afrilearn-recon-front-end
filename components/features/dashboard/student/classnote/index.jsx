@@ -35,19 +35,21 @@ export default Classnote;
 const ClassNoteVideo = ({ classData }) => {
   const subject = useSelector((state) => state.MySubject);
   const lessons = subject.subjectDetails[1]?.relatedLessons;
+  console.log(lessons);
+  console.log(subject);
   const terms = [
     "5fc8d1b20fae0a06bc22db5c",
     "600047f67cabf80f88f61735",
     "600048197cabf80f88f61736",
   ];
   const termsNumber = (number) => {
-    let lessonNum = []
+    let lessonNum = [];
     lessons?.map((lesson) => {
       if (lesson.termId === terms[number]) {
-        lessonNum.push(lesson)
+        lessonNum.push(lesson);
       }
     });
-    return(lessonNum.length);
+    return lessonNum.length;
   };
   const FirstTerm = () => {
     return (
@@ -82,8 +84,17 @@ const ClassNoteVideo = ({ classData }) => {
                         {classData[0].map((data, i) => {
                           return (
                             <div key={i} className={styles.accordButtonLeft}>
-                              <Link href="/dashboard/student/classnote/classnotePage">
-                                <div className={styles.buttonStyle}>
+                              <Link
+                                href={{
+                                  pathname:
+                                    "/dashboard/student/classnote/classnotePage",
+                                  query: { Exam: i },
+                                }}
+                              >
+                                <div
+                                  className={styles.buttonStyle}
+                                  style={{ cursor: "pointer" }}
+                                >
                                   <div className={styles.buttonStyleImage}>
                                     <Image
                                       alt={"afrilearn marketing video"}
