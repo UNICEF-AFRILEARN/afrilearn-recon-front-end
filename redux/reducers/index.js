@@ -9,6 +9,8 @@ import { subjectsReducer } from "./subjectsReducer";
 import { dashboardReducer } from './dashboardReducer';
 import { schoolReducer } from "./schoolReducer";
 import { examsReducer } from "./examsReducer";
+import { studentClassReducer } from "./studentClass";
+import { courseReducer } from "./courseReducer";
 
 export default combineReducers({
   auth: authReducer,
@@ -19,5 +21,7 @@ export default combineReducers({
   dashboard: dashboardReducer,
   school: schoolReducer,
   myExams: examsReducer,
+  studentClass: studentClassReducer,
+  course: courseReducer
 })
 
