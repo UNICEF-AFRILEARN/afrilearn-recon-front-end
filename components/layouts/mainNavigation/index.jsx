@@ -4,26 +4,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import Link from "next/link";
 import { BsSearch, BsBell } from "react-icons/bs";
+import { BiDownArrow } from 'react-icons/bi';
 import { AiOutlineSafetyCertificate } from "react-icons/ai";
 import styles from "./mainNavigation.module.css";
 import AppButton from "../../widgets/buttons/AppButton";
 
-import { BsPersonCircle } from "react-icons/bs";
+
+import { BsPersonCircle } from 'react-icons/bs';
 
 const Navigation = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [userRole, setUserRole] = useState("not_login");
-  const { user } = useSelector((state) => state.auth);
+  const [userRole, setUserRole] = useState("");
+  const { user } = useSelector(state => state.auth)
 
   useEffect(() => {
 
     console.log("From main navebar", user?.user?.role)
     setUserRole(user?.user?.role)
   }, [user])
-
-    // console.log("From main navebar", user.user?.role);
-  //   setUserRole(user.user?.role);
-  // }, [user]);
 
 
   return (
@@ -34,7 +32,6 @@ const Navigation = () => {
       collapseOnSelect
       style={{ backgroundColor: "#FDFDFD !important" }}
     >
-      <Container>
         <Navbar.Brand>
           <Link passHref href="/">
             <img
@@ -48,29 +45,92 @@ const Navigation = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             {/* <div className='main-navbar-with-login'> */}
-            {userRole === "not_login" ||
-              (userRole === undefined && (
-                <div className="inner-btn-nav-bar">
-                  <div className="our-story-frag">Our Story</div>
-                  <div className="inner-btn-nav-bar">
-                    <Link passHref href="/login" className="btn-log-in-mobile">
-                      <AppButton
-                        title="LOG IN"
-                        className={styles.loginButton}
-                      />
-                    </Link>
-                    <Link
-                      passHref
-                      href="/register"
-                      className="btn-log-in-mobile"
-                    >
-                      <AppButton title="SIGN UP" secondary />
-                    </Link>
-                  </div>
+            {userRole === "not_login" &&
+              <div className="our-story-frag">
+                Our Story 
+              </div>
+            }
+             {userRole === '5fd08fba50964811309722d5' &&
+              <div className={styles.parentloggedindash}>
+                <ul>
+                  <Link passHref href="/dashboard/student">
+                    <li>Dashboard</li>
+                  </Link>
+                  <Link passHref href="/dashboard/student">
+                    <li>Performance Analysis</li>
+                  </Link>
+                  <Link passHref href="/payment">
+                    <li>Subscribe</li>
+                </Link>
+                <div className={styles.navicons}>
+                  <span><BsSearch /></span>
+                  <span><BsBell /></span>
+                  <span><AiOutlineSafetyCertificate /></span>
                 </div>
-              ))}
+              
+                </ul>
+                <div className={styles.avatarcontainer}>
+                         <Link passHref href="/dashboard/student/studentProfile" className="btn-log-in-mobile">
+                          <BsPersonCircle size={30} className={styles.profileavatar}/>
+                          </Link>
+                      <div className={styles.iconswrapper}>
+                      <Link passHref href="/dashboard/student/studentProfile" className="btn-log-in-mobile">
+                          <BiDownArrow size={20} className={styles.profileavatar}/>
+                          </Link>
+                          <div className={styles.linkswrapper}>
+                            <a href="#">Add New class</a>
+                            <a href="#">My Feeds</a>
+                            <a href="#">Manage Profile</a>
+                            <a href="#">Share Feedback</a>
+                            <a href="#">Log out</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              
+            }
 
-            {userRole === "1" && (
+            {userRole === '602f3ce39b146b3201c2dc1d' &&
+              <div className={styles.parentloggedindash}>
+                <ul>
+                  <Link passHref href="/dashboard/teacher">
+                    <li>Dashboard</li>
+                  </Link>
+                  <Link passHref href="/dashboard/teacher">
+                    <li>Examination</li>
+                  </Link>
+                  <Link passHref href="/payment">
+                    <li>Subscribe</li>
+                </Link>
+                <div className={styles.navicons}>
+                  <span><BsSearch /></span>
+                  <span><BsBell /></span>
+                  <span><AiOutlineSafetyCertificate /></span>
+                </div>
+              
+                </ul>
+                  <div className={styles.avatarcontainer}>
+                         <Link passHref href="/dashboard/teacher/teacherProfile" className="btn-log-in-mobile">
+                          <BsPersonCircle size={30} className={styles.profileavatar}/>
+                          </Link>
+                      <div className={styles.iconswrapper}>
+                      <Link passHref href="/dashboard/teacher/teacherProfile" className="btn-log-in-mobile">
+                          <BiDownArrow size={20} className={styles.profileavatar}/>
+                          </Link>
+                          <div className={styles.linkswrapper}>
+                            <a href="#">Add New class</a>
+                            <a href="#">My Feeds</a>
+                            <a href="#">Manage Profile</a>
+                            <a href="#">Share Feedback</a>
+                            <a href="#">Log out</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              
+            }
+
+            {userRole === '606ed82e70f40e18e029165e' &&
               <div className={styles.parentloggedindash}>
                 <ul>
                   <Link passHref href="/dashboard/parent">
@@ -81,105 +141,85 @@ const Navigation = () => {
                   </Link>
                   <Link passHref href="/payment">
                     <li>Subscribe</li>
-                  </Link>
-                  <Link passHref href="/dashboard/parent/children">
-                    <li>My Children</li>
-                  </Link>
-                  <div className={styles.navicons}>
-                    <span>
-                      <BsSearch />
-                    </span>
-                    <span>
-                      <BsBell />
-                    </span>
-                    <span>
-                      <AiOutlineSafetyCertificate />
-                    </span>
-                  </div>
-                </ul>
-                <Link passHref href="/register" className="btn-log-in-mobile">
-                  <BsPersonCircle size={30} />
                 </Link>
+                <div className={styles.navicons}>
+                  <span><BsSearch /></span>
+                  <span><BsBell /></span>
+                  <span><AiOutlineSafetyCertificate /></span>
+                </div>
+              
+                </ul>
+                <div className={styles.avatarcontainer}>
+                         <Link passHref href="/dashboard/student/studentProfile" className="btn-log-in-mobile">
+                          <BsPersonCircle size={30} className={styles.profileavatar}/>
+                          </Link>
+                      <div className={styles.iconswrapper}>
+                      <Link passHref href="/dashboard/student/studentProfile" className="btn-log-in-mobile">
+                          <BiDownArrow size={20} className={styles.profileavatar}/>
+                          </Link>
+                          <div className={styles.linkswrapper}>
+                            <a href="#">Add New class</a>
+                            <a href="#">My Feeds</a>
+                            <a href="#">Manage Profile</a>
+                            <a href="#">Share Feedback</a>
+                            <a href="#">Log out</a>
+                          </div>
+                      </div>
+                  </div>
               </div>
-            )}
-            {userRole === "1" && (
+              
+            }
+
+            {userRole === '607ededa2712163504210684' &&
               <div className={styles.parentloggedindash}>
                 <ul>
-                  <Link passHref href="/dashboard/teacher">
+                  <Link passHref href="/school">
                     <li>Dashboard</li>
                   </Link>
                   <Link passHref href="/payment">
                     <li>Subscribe</li>
-                  </Link>
-                  <Link passHref href="/dashboard/teacher/mystudents">
-                    <li>My Students</li>
-                  </Link>
-                  <Link passHref href="/dashboard/teacher/classwork">
-                    <li>Classwork</li>
-                  </Link>
-
-                  <Link passHref href="/dashboard/teacher/examinations">
-                    <li>Examination</li>
-                  </Link>
-                  <div className={styles.navicons}>
-                    <span>
-                      <BsSearch />
-                    </span>
-                    <span>
-                      <BsBell />
-                    </span>
-                    <span>
-                      <AiOutlineSafetyCertificate />
-                    </span>
-                  </div>
+                </Link>
+                <div className={styles.navicons}>
+                  <span><BsSearch /></span>
+                  <span><BsBell /></span>
+                  <span><AiOutlineSafetyCertificate /></span>
+                </div>
+              
                 </ul>
-                <Link passHref href="/register" className="btn-log-in-mobile">
-                  <BsPersonCircle size={30} />
-                </Link>
-              </div>
-            )}
-            {userRole === "5fd08fba50964811309722d5" && (
-              <div className={styles.loggedindash}>
-                <ul>
-                  <Link passHref href="/dashboard/student">
-                    <li>Dashboard</li>
-                  </Link>
-                  <Link passHref href="/payment">
-                    <li>subscribe</li>
-                  </Link>
-                  <Link passHref href="/dashboard/performance">
-                    <li>Performance Analysis</li>
-                  </Link>
-                  <div className={styles.navicons}>
-                    <span>
-                      <BsSearch />
-                    </span>
-                    <span>
-                      <BsBell />
-                    </span>
-                    <span>
-                      <AiOutlineSafetyCertificate />
-                    </span>
+                <div className={styles.avatarcontainer}>
+                         <Link passHref href="/school/schoolProfile" className="btn-log-in-mobile">
+                          <BsPersonCircle size={30} className={styles.profileavatar}/>
+                          </Link>
+                      <div className={styles.iconswrapper}>
+                      <Link passHref href="/school/schoolProfile" className="btn-log-in-mobile">
+                          <BiDownArrow size={20} className={styles.profileavatar}/>
+                          </Link>
+                          <div className={styles.linkswrapper}>
+                            <a href="#">Add New class</a>
+                            <a href="#">My Feeds</a>
+                            <a href="#">Manage Profile</a>
+                            <a href="#">Share Feedback</a>
+                            <a href="#">Log out</a>
+                          </div>
+                      </div>
                   </div>
-                </ul>
               </div>
-            )}
+              
+            }
 
-            {userRole === "1" && (
-              <div className="inner-btn-nav-bar">
-                <Link passHref href="/login" className="btn-log-in-mobile">
-                  <AppButton title="LOG IN" className={styles.loginButton} />
+             { userRole !== '606ed82e70f40e18e029165e' && userRole !== '5fd08fba50964811309722d5' && userRole !== '602f3ce39b146b3201c2dc1d' && userRole !== '607ededa2712163504210684' &&
+               <div>
+                  <Link href="/login">
+                <button className={styles.btnlogin}>Login</button>
                 </Link>
-                <Link passHref href="/register" className="btn-log-in-mobile">
-                  <AppButton title="SIGN UP" secondary />
+                <Link href="/register" >
+                <button className={styles.btnloginregister}>Register</button>
                 </Link>
-              </div>
-            )}
+               </div>
+             }
           </Nav>
         </Navbar.Collapse>
-      </Container>
     </Navbar>
   );
-};
-
+}
 export default Navigation;

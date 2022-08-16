@@ -42,7 +42,7 @@ const topInClass = ({ data,key }) => {
         </div>
       </div>
       <div className={styles.play_text}>
-        <h6>{data?.subjectId.mainSubjectId.name}</h6>
+        <h6>{data?.subjectId?.mainSubjectId.name}</h6>
         <p>{data?.title}</p>
       </div>
     </>

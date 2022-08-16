@@ -39,11 +39,12 @@ export const fetchCoursesInitiate = (courseId) => {
         `https://afrilearn-backend-01.herokuapp.com/api/v1/courses/${courseId}/subjects`,
       )
       .then((res) => {
+        console.log(res.data.data);
         dispatch(fetchSubjectsSuccess(res.data.data));
-      });
-    // .then((err) => {
-    //   console.log(err);
-    // });
+      })
+      // .then((err) => {
+      //   console.log(err);
+      // });
   };
 };
 export const fetchCourseDetailsInitiate = (courseId, subjectId, sub_Id) => {

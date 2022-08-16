@@ -1,6 +1,18 @@
-import React from 'react'
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchRoles } from '../../../../redux/actions/auth';
 
 const payment = () => {
+  const dispatch = useDispatch();
+  const coursesCollected = useSelector((state) => state.auth)
+
+
+  const courseContext = coursesCollected.roles.courses;
+
+
+  useEffect(() => {
+    dispatch(fetchRoles())
+  }, [])
 
   return (
 
@@ -21,22 +33,24 @@ const payment = () => {
    <form >
    <label for="className "><strong>Step 1: Select Class:</strong></label>
    <br></br>
-  <select id="className" name="classlist" form="classform">
+  {/* <select id="className" name="classlist" form="classform"> */}
+  {/* <option value="JSS1">JSS1</option>
   <option value="JSS1">JSS1</option>
   <option value="JSS1">JSS1</option>
-  <option value="JSS1">JSS1</option>
-  <option value="JSS1">JSS1</option>
-  </select>
+  <option value="JSS1">JSS1</option> */}
+  
+  {/* </select> */}
+             
 
 <br></br>
 <label for="child "><strong>Step 1: Select child:</strong></label>
 <br></br>
-<select id="child" name="childlist" form="childform">
+{/* <select id="child" name="childlist" form="childform">
   <option value="JSS1">JSS1</option>
   <option value="JSS1">JSS1</option>
   <option value="JSS1">JSS1</option>
   <option value="JSS1">JSS1</option>
-</select>
+</select> */}
 
 <p>Step 3: Select Subscription Length</p>
 <button className="button button4">Montly <br></br>999 </button>

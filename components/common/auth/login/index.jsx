@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 import { Form } from "react-bootstrap";
 import { useRouter } from "next/router";
 import { useNavigate } from "react-router-dom";
@@ -9,40 +9,80 @@ import Image from "next/image";
 import TextInput from "../../../widgets/appTextInput";
 import AppButton from "../../../widgets/buttons/AppButton";
 import { loginInitiate } from "../../../../redux/actions/auth";
+import { fetchCoursesInitiate} from "../../../../redux/actions/subject";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const { user } = useSelector(state => state.auth)
+  const { user } = useSelector((state) => state.auth);
+
+  const [errorCheck, setErrorCheck] = useState("");
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
 
-
+  console.log("error", user);
+const checkIf = () => {
+  let check;
+  for (let i = 0; i < user.user?.enrolledCourses.length; i++) {
+    if (user.user?.enrolledCourses[i].courseId) {
+      check = user.user?.enrolledCourses[i];
+      id = i;
+    }
+  }
+  return check;
+};
   const signIn = (e) => {
     e.preventDefault();
-    dispatch(loginInitiate(email, password))
-
+    dispatch(loginInitiate(email, password));
   };
-
-  useEffect(() => {
-    if(user.user?.role === '5fd08fba50964811309722d5'){
-      router.push("/dashboard/student");
-    }
-    if(user.user?.role === '602f3ce39b146b3201c2dc1d'){
-      router.push("/dashboard/teacher");
-    }
-    if(user.user?.role === '602f3cf79b146b3201c2dc1e'){
-      router.push("/dashboard/admin");
-    }
-    if(user.user?.role === '606ed82e70f40e18e029165e'){
-      router.push("/dashboard/parent");
-    }
-    if(user.user?.role === '607ededa2712163504210684'){
-      router.push("/dashboard/school");
-    }
-  }, [user])
+  let id;
+  // A call for the subjects in the dashboard to make the call fast
   
+
+  // const [enrolledCourses, setEnrolledCourses] = useState(checkIf());
+  
+  // const person_id = enrolledCourses?._id;
+  // const personId = enrolledCourses?.courseId.id;
+  // const userId = user.user?._id; /*"62a0bc984af2d90016b72096"*/
+  const token = user?.token;
+  //
+  useEffect(() => {
+    const enrolledCourses = checkIf()
+   
+    const personId = enrolledCourses?.courseId.id;
+    if (user.user?.role === "5fd08fba50964811309722d5") {
+      router.push({
+        pathname: "/dashboard/student",
+        query: { id: id },
+      });
+    }
+    if (user.user?.role === "602f3ce39b146b3201c2dc1d") {
+      router.push({
+        pathname: "/dashboard/teacher",
+        query: { id: id },
+      });
+    }
+    if (user.user?.role === "602f3cf79b146b3201c2dc1e") {
+      router.push({
+        pathname: "/dashboard/admin",
+        query: { id: id },
+      });
+    }
+    if (user.user?.role === "606ed82e70f40e18e029165e") {
+      router.push({
+        pathname: "/dashboard/parent",
+        query: { id: id },
+      });
+    }
+    if (user.user?.role === "607ededa2712163504210684") {
+      router.push({
+        pathname: "school",
+        query: { id: id },
+      });
+    }
+    dispatch(fetchCoursesInitiate(personId));
+  }, [user]);
 
   return (
     <>
@@ -67,14 +107,12 @@ const Login = () => {
           <div className="col-xs-0 col-md-1 col-lg-3"> </div>
           <div className="col-xs-12 col-md-10 col-lg-6">
             <span className={styles.card}>
-              <h5 className={`center `} >
-                LOG IN
-              </h5>
+              <h5 className={`center `}>LOG IN</h5>
               <Form onSubmit={signIn}>
                 <input
                   type="text"
                   value={email}
-                  name='email'
+                  name="email"
                   onChange={(e) => setEmail(e.target.value)}
                   title="Email"
                   placeholder="Email"
@@ -84,10 +122,11 @@ const Login = () => {
                   type="password"
                   onChange={(e) => setPassword(e.target.value)}
                   value={password}
-                  name='password'
+                  name="password"
                   title="Password"
                   placeholder="Password"
                 />
+                <h5>{errorCheck}</h5>
                 <div className={`row ${styles.pushDown1}`}>
                   <div className="col-6">
                     <Form.Check
@@ -103,12 +142,12 @@ const Login = () => {
                   </div>
                 </div>
                 <div className={`row ${styles.pushDown1}`}>
-                    <AppButton
-                      title="LOGIN"
-                      type='submit'
-                      secondary
-                      className={styles.pushDown13}
-                    />
+                  <AppButton
+                    title="LOGIN"
+                    type="submit"
+                    secondary
+                    className={styles.pushDown13}
+                  />
                 </div>
                 <div className={`row ${styles.pushDown1}`}>
                   <p className={`center ${styles.socialSection}`}>

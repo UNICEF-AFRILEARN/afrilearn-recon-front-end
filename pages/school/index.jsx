@@ -1,4 +1,4 @@
-import Schooldasboard from "../../components/features/dashboard/school";
+import Schooldasboard from "../../components/features/dashboard/school/";
 
 const School = () => {
     return (

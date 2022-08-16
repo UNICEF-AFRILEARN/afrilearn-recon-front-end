@@ -3,8 +3,8 @@ import Image from 'next/image';
 import styles from '../extra/recentactivity.module.css';
 
 
-const RecentActivity = () => {
-
+const RecentActivity = ({activities}) => {
+console.log("activities from activities UI ====>", activities)
   return (
     <div>
           <div className={styles.recenttitle}>

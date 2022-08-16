@@ -4,8 +4,8 @@ import styles from '../../../../styles/parentdashboard.module.css';
 import Classcontentcard from './classcontentcard';
 import { dataContentNav } from './classcontentmainData';
 
-const Classcontentmain = () => {
- 
+const Classcontentmain = ({myChildren}) => {
+ console.log("myChildren from course content main =>", myChildren)
   return (
     <div className={styles.contentmainwrapper}>
         <div className={styles.contentinnernavwrapper}>

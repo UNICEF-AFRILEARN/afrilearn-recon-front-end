@@ -8,7 +8,7 @@ const initialState = {
   pastQuestionQue:[],
 };
 
-const subjectReducer = (state = initialState, { type, payload }) => {
+const subjectCourseReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case types.FETCH_SUBJECT_START:
       return {
@@ -49,4 +49,4 @@ const subjectReducer = (state = initialState, { type, payload }) => {
   }
 };
 
-export default subjectReducer;
+export default subjectCourseReducer;
