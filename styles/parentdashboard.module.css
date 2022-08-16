@@ -136,6 +136,9 @@
     cursor: pointer;
 }
 
+.closeModal {
+    cursor: pointer;
+}
 
 .cardcontentwrapper {
     display: flex;

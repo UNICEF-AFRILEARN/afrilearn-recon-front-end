@@ -8,9 +8,14 @@ import {
 
 
 import styles from '../../../../styles/parentdashboard.module.css';
+import VideoDetailPage from '../videolesson';
 
 
 const Classcontentcard = ({contentId, course_sorted}) => {
+  const [open, setOpen] = useState(false);
+  const handleClose = () => setOpen(false);
+  const handleOpen = () => setOpen(true);
+  const [videoUrls, setVideoUrls] = useState("")
   const [selectedItem, setSelectedItem] = useState(null);
   const [firstTermId, setFirstTermId] = useState('5fc8d1b20fae0a06bc22db5c')
   const [secondTermId, setSecondTermId] = useState('600047f67cabf80f88f61735')
@@ -67,7 +72,15 @@ console.log("first_term", first_term)
 console.log("second_term", second_term)
 console.log("third_term", third_term)
   // show_term_courses(show_course_sorted)
-      
+  
+  const closeModal = () => {
+    setVideoUrls("")
+  }
+
+  const playVideo =(url) => {
+    setVideoUrls(url)
+    console.log(url)
+  }
   const toggleItem = (id) => {
     if(selectedItem === id){
       return setSelectedItem(null)
@@ -91,7 +104,9 @@ console.log("third_term", third_term)
                     <ul>
                           <li>Class note</li>
                           <li>Practice quiz</li>
-                          <li>Video link</li>
+                          <li onClick={() => playVideo(`${first_term_course.videoUrls[0]?.videoUrl}`)}>Video link</li>
+                          {/* <video controls src={}  /> */}
+                          {/* () => playVideo(`${first_term_course.videoUrls[0]?.videoUrl}`) */}
                     </ul>
                </div> 
                 )
@@ -130,7 +145,8 @@ console.log("third_term", third_term)
                     <ul>
                           <li>Class note</li>
                           <li>Practice quiz</li>
-                          <li>Video link</li>
+                          <li>Watch video</li>
+                          
                     </ul>
                </div> 
                 )
@@ -138,6 +154,14 @@ console.log("third_term", third_term)
                 }
           </div>  
       </div>
+      {videoUrls &&
+        <VideoDetailPage 
+        handleOpen={handleOpen} 
+        videoUrls={videoUrls}
+        handleClose={handleClose}
+        closeModal={closeModal}
+        />
+      }
     </div>
   )
 }
