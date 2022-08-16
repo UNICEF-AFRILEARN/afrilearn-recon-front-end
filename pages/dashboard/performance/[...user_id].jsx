@@ -18,13 +18,13 @@ const Performance = () => {
   const userId = router.query.user_id
   const courseId = router.query.course_id
 
-  let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjJlNzc1OGUxN2ZlNTYwMDE2YjI5Yjc0Iiwicm9sZSI6IjYwNmVkODJlNzBmNDBlMThlMDI5MTY1ZSIsImZ1bGxOYW1lIjoiSm9obiBkb2UifSwiaWF0IjoxNjYwNTczMzE4LCJleHAiOjE2NjMxNjUzMTh9.dUEWWMoI56TJHovHX-NmaXtc-YJSg36KEYIzfzkvqNk"
+  let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjJmNGFkOGM5OWJjNjgwMDE2NjE2NTFkIiwicm9sZSI6IjYwMmYzY2UzOWIxNDZiMzIwMWMyZGMxZCIsImZ1bGxOYW1lIjoiSm9obiBkb2UifSwiaWF0IjoxNjYwNjc5MDQ5LCJleHAiOjE2NjMyNzEwNDl9.t_ROAm1r1UQuSeCp8RfG2FUCv3PrZqoRc0pgcZfBb1k'
 
 
   console.log("studentPerformance =====>", studentPerformance)
 
   useEffect(() => {
-    dispatch(fetchStudentPerformanceInitiate(userId, token))
+    dispatch(fetchStudentPerformanceInitiate(userId, token, courseId))
   }, [fetchStudentPerformanceInitiate])
   
   return (

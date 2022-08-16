@@ -23,19 +23,24 @@ const GeneratePerformance = ({children, courseContext}) => {
     }
 
     let _userId = '';
+    let _courseId = '';
 
+    //filter to get child's Ids
     const getSelectedChildId = () => {
         _userId = filteredChildren?.map((childId) => childId.id)
     }
-
+    //filter to get course Ids
+    const getSelectedCourseId = () => {
+        _courseId = filteredChildren?.map((childCourseId) => childCourseId.enrolledCourses[0]?.courseId.id)
+    }
 
     
     const handleSubmit = (e) => {
-        console.log("courseId ====>{======}", courseId)
+        // console.log("courseId ====>{======}", courseId)
         e.preventDefault()
         Router.push({
             pathname: `/dashboard/performance/[_id]`,
-            query: { _id: _userId[0], course_id:2000000 || "undefined" }
+            query: { _id: _userId[0], course_id:_courseId || "undefined" }
         })
     }
     
@@ -46,6 +51,9 @@ const GeneratePerformance = ({children, courseContext}) => {
     useEffect(() => {
         getSelectedChildId()
     }, [getSelectedChildId()])
+    useEffect(() => {
+        getSelectedCourseId()
+    }, [getSelectedCourseId()])
     
 
   return (
@@ -95,7 +103,6 @@ const GeneratePerformance = ({children, courseContext}) => {
                         {filteredChildren && filteredChildren.map((childClass) => 
                         <option 
                         placeholder='Select a Role'
-                            // onChange={(e) => setCourseId(childClass.enrolledCourses[0]?.courseId.id) }
                             >{childClass.enrolledCourses[0]?.courseId.name}
                         </option>
                         )}
