@@ -102,7 +102,7 @@ const ClassContent = ({courseContext, children}) => {
             </ul>
           </div>
         </div>
-        <Classcontentmain  myChildren={myChildren}/>
+        <Classcontentmain  myChildren={myChildren} course={course}/>
     </div>
   )
 }

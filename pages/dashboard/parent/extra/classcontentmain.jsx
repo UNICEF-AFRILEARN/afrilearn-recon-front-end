@@ -6,20 +6,18 @@ import Classcontentcard from './classcontentcard';
 import { dataContentNav } from './classcontentmainData';
 
 
-const Classcontentmain = ({myChildren}) => {
+const Classcontentmain = ({myChildren, course}) => {
   const dispatch = useDispatch();
-  const { classSubjects } = useSelector((state) => state.studentClass);
 
+  let course_sorted = course?.course?.relatedSubjects
 
-  useEffect(() => {
-    dispatch(fetchStudentClassSubjectInitiate())
-  }, fetchStudentClassSubjectInitiate)
- console.log("classSubjects from course content main =>", classSubjects)
+  course_sorted?.map((course_sorted) => console.log("course_sorted ==>", course_sorted.mainSubjectId.name))
+ console.log("course from course content main =>", course_sorted)
   return (
     <div className={styles.contentmainwrapper}>
         <div className={styles.contentinnernavwrapper}>
             <ul>
-               {dataContentNav && dataContentNav.map((navData) => <li key={navData.id}>{navData.name}</li>) }
+               {course_sorted && course_sorted?.map((course_sorted) => <li key={course_sorted.mainSubjectId.name}>{course_sorted.mainSubjectId.name}</li>) }
             </ul>    
         </div>
         <Classcontentcard />
