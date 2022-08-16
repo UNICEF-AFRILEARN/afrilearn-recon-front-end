@@ -16,6 +16,7 @@ const Performance = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const userId = router.query.user_id
+  const courseId = router.query.course_id
 
   let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjJlNzc1OGUxN2ZlNTYwMDE2YjI5Yjc0Iiwicm9sZSI6IjYwNmVkODJlNzBmNDBlMThlMDI5MTY1ZSIsImZ1bGxOYW1lIjoiSm9obiBkb2UifSwiaWF0IjoxNjYwNTczMzE4LCJleHAiOjE2NjMxNjUzMTh9.dUEWWMoI56TJHovHX-NmaXtc-YJSg36KEYIzfzkvqNk"
 
@@ -41,6 +42,7 @@ const Performance = () => {
         </div>
             <div className={styles.titlehoder}>
                 <h1>Performance Analysis: userid {userId}</h1>
+                <h1>Performance Analysis: courseId {courseId}</h1>
             </div>
        <div className={styles.paddingbody}>
           <ClassPerfomance />

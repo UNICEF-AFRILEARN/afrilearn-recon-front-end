@@ -11,6 +11,7 @@ const GeneratePerformance = ({children, courseContext}) => {
     const [childClass, setChildClass] = useState("");
     const [selectedChild, setSelectedChild] = useState("");
     const [selectedChildId, setSelectedChildId] = useState("");
+    const [courseId, setCourseId] = useState("");
     const [childId, setChildId] = useState("");
     const previousInputValue = useRef("");
 
@@ -28,13 +29,13 @@ const GeneratePerformance = ({children, courseContext}) => {
     }
 
 
-
+    
     const handleSubmit = (e) => {
+        console.log("courseId ====>{======}", courseId)
         e.preventDefault()
-        console.log("selectedChildId", selectedChildId)
         Router.push({
             pathname: `/dashboard/performance/[_id]`,
-            query: { _id: _userId[0] || "undefined" }
+            query: { _id: _userId[0], course_id:2000000 || "undefined" }
         })
     }
     
@@ -94,6 +95,7 @@ const GeneratePerformance = ({children, courseContext}) => {
                         {filteredChildren && filteredChildren.map((childClass) => 
                         <option 
                         placeholder='Select a Role'
+                            // onChange={(e) => setCourseId(childClass.enrolledCourses[0]?.courseId.id) }
                             >{childClass.enrolledCourses[0]?.courseId.name}
                         </option>
                         )}
