@@ -64,6 +64,82 @@ export const editprofileFail = (error) => ({
   payload: error,
 });
 
+// UPDATECLASS
+export const editclassStart = (params) => ({
+  type: types.STUDENT_ADDCLASS_START,
+  payload: params
+});
+
+export const editclassSuccess = (payload) => ({
+  type: types.STUDENT_ADDCLASS_SUCCESS,
+  payload,
+});
+
+export const editclassFail = (error) => ({
+  type: types.STUDENT_ADDCLASS_FAIL,
+  payload: error,
+});
+ // RESTPASSWORD
+export const resetpasswordStart = (params) => ({
+  type: types.STUDENT_ADDCLASS_START,
+  payload: params
+});
+
+export const resetpasswordSuccess = (payload) => ({
+  type: types.STUDENT_ADDCLASS_SUCCESS,
+  payload,
+});
+
+export const resetpasswordFail = (error) => ({
+  type: types.STUDENT_ADDCLASS_FAIL,
+  payload: error,
+});
+
+// RESETPASSWORD
+export const resendpasswordEmail = (email, password) => {
+
+  return function (dispatch) {
+      dispatch(resetpasswordStart());
+      axios
+        .post(`https://afrilearn-backend-01.herokuapp.com/api/v1/auth/change_password`, {
+          email,
+          password,
+          token : "token"
+        })
+        .then((res) => {
+          console.log(" response", res.data.message);
+          dispatch(resetpasswordSuccess (res.data.message))
+        })
+        .catch((err) => dispatch(resetpasswordFail(err)))
+  }
+}
+// UPDATECLASS
+export const addclassInitiate = (data, token) => {
+  return function (dispatch) {
+   
+dispatch( editclassStart());
+axios
+  .patch(
+    `https://afrilearn-backend-01.herokuapp.com/api/v1/auth/profile-update`,
+    {data},
+    {
+      headers:{
+        'token':token
+      }
+    }
+  )
+  
+  .then((res) => {
+    console.log("data is collected", res.data)
+    dispatch( editclassSuccess(res.data.data));
+  })
+  // .then((err) => {
+  //   console.log(err);
+  // });
+  .catch((err) => dispatch( editclassFail(err)))
+}}
+
+// Updateprofile
 export const sendeditedprofileInitiate = (data, token) => {
     return function (dispatch) {
      

@@ -1,5 +1,24 @@
-import { useState } from "react";
 import { Col, Container, Modal, Row } from "react-bootstrap";
+import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from "next/router";
+import React, { useState} from "react";
+import Modal from 'react-bootstrap/Modal';
+import { resendpasswordEmail } from "../../../../redux/actions/auth";
+
+  const dispatch = useDispatch();
+  const  {formConfirmPassword}  = useSelector((state) => state.auth);
+  console.log( "reset user", formConfirmPassword)
+  const [password, setPassword] = useState(" ");
+  const [email, setEmail] = useState(" ");
+  const [confirmemail, setComfirmemail] = useState("")
+  const router = useRouter();
+ 
+  const changePasword = (e) => {
+    e.preventDefault();
+     setShowresponse(formConfirmPassword)
+    dispatch(resendpasswordEmail(email, password));
+   
+  };
 
 const SecurityProfile = () => {
   const [modalShow, setModalShow] = useState(false);
@@ -26,7 +45,9 @@ const SecurityProfile = () => {
                   border: "1px solid #29465B",
                   borderRadius: "5px",
                 }}
+                onChange={(e) => setPassword(e.target.value)}
               />
+
             </Col>
           </Row>
         </Col>
@@ -35,8 +56,8 @@ const SecurityProfile = () => {
         className="d-flex justify-content-center pt-3 cursor-pointer"
         onClick={() => setModalShow(true)}
       >
-        <u className="text-end" style={{ color: "#00D9B6", cursor: "pointer" }}>
-          Change Password
+        <u className="text-end" style={{ color: "#00D9B6", cursor: "pointer" }}  onChange={(e) => setPassword(e.target.value)}>
+          Change Passwordd
         </u>
       </Row>
       <MyVerticallyCenteredModal
@@ -49,7 +70,8 @@ const SecurityProfile = () => {
 
 function MyVerticallyCenteredModal(props) {
   return (
-    <Modal
+    <form onSubmit={changePasword}>
+      <Modal
       {...props}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
@@ -76,6 +98,7 @@ function MyVerticallyCenteredModal(props) {
               border: "1px solid #29465B",
               borderRadius: "5px",
             }}
+            onChange={(e) => setoldPassword(e.target.value)}
           />
         </Col>
       </Row>
@@ -95,6 +118,7 @@ function MyVerticallyCenteredModal(props) {
               border: "1px solid #29465B",
               borderRadius: "5px",
             }}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </Col>
       </Row>
@@ -114,10 +138,35 @@ function MyVerticallyCenteredModal(props) {
               border: "1px solid #29465B",
               borderRadius: "5px",
             }}
+            onChange={(e) => setComfirmemail(e.target.value)}
+            
           />
         </Col>
       </Row>
+      <Row>
+      <Col>
+        <button
+            className="mx-auto mt-4"
+              style={{
+                marginLeft: "auto",
+                textAlign: "center",
+                color: "white",
+                background: "#00D9B6",
+                border:"1px solid white",
+                borderRadius: "100px",
+                width: "223px",
+                height: "53px",
+              }}
+              type="submit"
+
+            >
+              SAVE CHANGES
+            </button>
+          </Col>
+      </Row>
     </Modal>
+    </form>
+    
   );
 }
 

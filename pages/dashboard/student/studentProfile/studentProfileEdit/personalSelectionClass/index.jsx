@@ -1,26 +1,23 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
-import {
-  Col,
-  Dropdown,
-  DropdownButton,
-  Form,
-  InputGroup,
-  Row,
-} from "react-bootstrap";
+import {Col,  Dropdown, DropdownButton, Form, InputGroup, Row,} from "react-bootstrap";
 import styles from "../studentProfileEdit.module.css";
 import SelectionSection from "../selectionSection";
+import { useDispatch, useSelector } from 'react-redux';
+import { addclassInitiate } from "../../../../../../redux/actions/auth";
 import PersonalClassSubmit from "../personalClassSubmit";
 
 const PersonalSelectionClass = () => {
   const [placehold, setPlacehold] = useState("");
   const [buttonPush, setButtonPush] = useState("on");
   const [valued, setValued] = useState("");
-
-  // {
-  //   <PersonalClassSubmit data={placehold} />;
-  // }
+  const data={
+    name:"Mike",
+    email:"micheaol80@gmail.com"
+  }
+  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjJhMGJjOTg0YWYyZDkwMDE2YjcyMDk2Iiwicm9sZSI6IjVmZDA4ZmJhNTA5NjQ4MTEzMDk3MjJkNSIsImZ1bGxOYW1lIjoiTWljaGFlbCBPbGFkZWxlIn0sImlhdCI6MTY1OTYxNDI2NiwiZXhwIjoxNjYyMjA2MjY2fQ.x0H_plJQuRadJ1E_C4KNiM8JwK8Y-_CzWMWLa0HNdkA"
+  const dispatch = useDispatch();
 
   const classes = [
     "PRIMARY ONE",
@@ -36,7 +33,15 @@ const PersonalSelectionClass = () => {
     "SSS TW0",
     "SSS THREE",
   ];
-  console.log(buttonPush);
+
+  // console.log(buttonPush);
+  
+  const editaddClass = (e) => {
+    e.preventDefault();
+    console.log("Mike is a cool guy")
+    dispatch(addclassInitiate(data,token));
+  };
+
 
   const PersonalSelectClass = () => {
     return (
@@ -44,8 +49,10 @@ const PersonalSelectionClass = () => {
         <Row className="px-5 mx-auto w-50">
           <h4>Step 1: Select Class</h4>
         </Row>
+        <form onSubmit={editaddClass}>
         <Row className="pt-5 mx-auto w-50">
           <InputGroup
+           onChange={(e) => setValued(e.target.value)}
             className="mb-3 "
             style={{
               height: "63px",
@@ -82,21 +89,26 @@ const PersonalSelectionClass = () => {
               margin: "60px auto",
             }}
           >
-            <p
-              onClick={() => {
-                setValued(placehold);
-              }}
+            <button
+              // onClick={() => {
+              //   setValued(placehold);
+              // }}
+              type="submit"
               style={{
                 color: "#00D9B6",
                 margin: "auto",
                 textAlign: "center",
                 cursor: "pointer",
+                background: "none",
+                border: "none"
               }}
             >
               ADD
-            </p>
+            </button>
           </Row>
         </Row>
+        </form>
+        
         {buttonPush === "on" ? (
           <Row></Row>
         ) : buttonPush === "" ? (
@@ -226,9 +238,6 @@ const PersonalSelectionClass = () => {
     <div>
       {valued === "undefined" || valued === "" ? <PersonalSelectClass />:<PersonalClassSubmit data={valued} />}
     </div>
-    // <div>
-    //   
-    // </div>
   );
 };
 export default PersonalSelectionClass;
