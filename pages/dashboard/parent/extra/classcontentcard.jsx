@@ -105,8 +105,6 @@ console.log("third_term", third_term)
                           <li>Class note</li>
                           <li>Practice quiz</li>
                           <li onClick={() => playVideo(`${first_term_course.videoUrls[0]?.videoUrl}`)}>Video link</li>
-                          {/* <video controls src={}  /> */}
-                          {/* () => playVideo(`${first_term_course.videoUrls[0]?.videoUrl}`) */}
                     </ul>
                </div> 
                 )
@@ -126,7 +124,7 @@ console.log("third_term", third_term)
                     <ul>
                           <li>Class note</li>
                           <li>Practice quiz</li>
-                          <li>Video link</li>
+                          <li onClick={() => playVideo(`${second_term_course.videoUrls[0]?.videoUrl}`)}>Video link</li>
                     </ul>
                </div> 
                 )
@@ -145,7 +143,7 @@ console.log("third_term", third_term)
                     <ul>
                           <li>Class note</li>
                           <li>Practice quiz</li>
-                          <li>Watch video</li>
+                          <li onClick={() => playVideo(`${third_term_course.videoUrls[0]?.videoUrl}`)}>Video link</li>
                           
                     </ul>
                </div> 

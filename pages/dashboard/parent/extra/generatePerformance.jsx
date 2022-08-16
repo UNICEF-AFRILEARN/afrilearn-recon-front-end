@@ -71,6 +71,7 @@ const GeneratePerformance = ({children, courseContext}) => {
                             <>
                              <option 
                                 placeholder='Select a Role'
+                                key={childrenName.id}
                                 value={childrenName.fullName}
                                     >{childrenName.fullName}
                              </option>

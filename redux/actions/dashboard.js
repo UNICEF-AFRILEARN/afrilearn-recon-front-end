@@ -80,15 +80,15 @@ export const fetchUnfinishedVideoInitiate = (token) =>  {
 
 
 
-export const fetchStudentPerformanceInitiate = (userId, token) => {
+export const fetchStudentPerformanceInitiate = (userId) => {
     return function (dispatch) {
         dispatch(fetchStudentPerformanceStart())
         axios
-        .post("https://afrilearn-backend-01.herokuapp.com/api/v1/dashboard/student-performance-summary",
+        .post('https://afrilearn-backend-01.herokuapp.com/api/v1/courses/5fff72b3de0bdb47f826feaf/progress-and-performance',
             {   userId  },
         {
             headers: {
-                "token": token
+                "token": 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjJmNGFkOGM5OWJjNjgwMDE2NjE2NTFkIiwicm9sZSI6IjYwMmYzY2UzOWIxNDZiMzIwMWMyZGMxZCIsImZ1bGxOYW1lIjoiSm9obiBkb2UifSwiaWF0IjoxNjYwNjc5MDQ5LCJleHAiOjE2NjMyNzEwNDl9.t_ROAm1r1UQuSeCp8RfG2FUCv3PrZqoRc0pgcZfBb1k'
             }
         })
         .then((res) => {
