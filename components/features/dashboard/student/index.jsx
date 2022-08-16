@@ -77,16 +77,17 @@ const Dashboard = () => {
     ) {
       check = user.user.user?.enrolledCourses[1];
     }
+    console.log(check);
     return check;
   };
 
   const personData = {
-    personClass: checkIf().courseId.name,
+    personClass: user.user.user?.enrolledCourses[0].courseId.name,
     personName: user.user.user?.fullName,
   };
 
-  const person_id = checkIf()._id;
-  const personId = checkIf().courseId.id;
+  const person_id = user.user.user?.enrolledCourses[0]._id;
+  const personId = user.user.user?.enrolledCourses[0].courseId.id;
   const token = user.user.token;
   useEffect(() => {
     dispatch(fetchCourseInitiate(personId, person_id, token));
@@ -141,8 +142,8 @@ const TopInClasses = ({ classData, classes }) => {
       <div className={styles.contai}>
         <section className="parnet-frag-color">
           <Slider {...settings} ref={customeSlider}>
-            {classData?.map((data) => (
-              <TopInClass data={data} />
+            {classData?.map((data,i) => (
+              <TopInClass data={data} key={i}/>
             ))}
           </Slider>
         </section>

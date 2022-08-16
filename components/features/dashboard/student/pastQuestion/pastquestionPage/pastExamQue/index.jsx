@@ -4,21 +4,28 @@ import styles from "./passtExamQue.module.css";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { Modal } from "bootstrap";
-
 const ExamQuestion = () => {
   const subject = useSelector((state) => state.MySubject);
-  console.log(subject);
-  const sub_det = subject.pastQuestionQue[0].subject_details;
-  const tot_numb = subject.pastQuestionQue[0].questions.length;
+
+  const sub_data = {
+    questions: subject.pastQuestionQue[0]?.questions,
+    subject: subject.pastQuestionQue[0]?.subject_details.subject,
+    year:subject.pastQuestionQue[0]?.subject_details.exam_year
+  };
+  return <ExamQuestionPassage sub_dat={sub_data} />;
+};
+export default ExamQuestion;
+export const ExamQuestionPassage = ({sub_dat}) => {
+  const tot_numb = sub_dat.questions.length;
   const NoArray = Array.from(
-    Array(subject.pastQuestionQue[0].questions.length).keys(),
+    Array(sub_dat.questions.length).keys(),
     (n) => n + 1,
   );
 
   const [nextQues, setNextQues] = useState(1);
   const [nextAns, setNextAns] = useState({});
   const [show, setShow] = useState(false);
-  const sub_que = subject.pastQuestionQue[0].questions[+nextQues - 1];
+  const sub_que = sub_dat.questions[+nextQues - 1];
   const handleClose = () => setShow(false);
   const handleOpen = () => {
     setNextQues(nextQues);
@@ -36,7 +43,7 @@ const ExamQuestion = () => {
             <h3
               style={{ fontWeight: "700", fontSize: "30px", color: "#29465B" }}
             >
-              {`${sub_det.subject} ${sub_det.exam_year}`}
+              {`${sub_dat.subject} ${sub_dat.year}`}
             </h3>
           </Row>
           <Row className="p-3"></Row>
@@ -291,7 +298,7 @@ const ExamQuestion = () => {
         </Col>
       </Row>
       {/* <Modal show={show} onHide={handleClose}> */}
-        {/* <Modal.Header closeButton>
+      {/* <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
             <Col>
               <h3>
@@ -303,43 +310,7 @@ const ExamQuestion = () => {
         </Modal.Header> */}
       {/* </Modal> */}
     </Container>
-//     micheaol@gmail.com
-// test123456
+    //     micheaol@gmail.com
+    // test123456
   );
 };
-
-export default ExamQuestion;
-
-
-// "enrolledCourses": [
-//                 {
-//                     "status": "trial",
-//                      "startDate": "2022-07-23T00:09:30.294Z",
-//                     "endDate": "2022-07-23T00:09:30.294Z",
-//                     "_id": "62dbebe19dfc2e00168ce86c",
-//                     "userId": "62a9b6b9e6120000166ab392",
-//                     "courseId": null,
-//                     "createdAt": "2022-07-23T12:38:57.592Z",
-//                     "updatedAt": "2022-07-23T12:38:57.592Z",
-//                     "__v": 0,
-//                     "id": "62dbebe19dfc2e00168ce86c",
-//                     "paymentIsActive": true
-//                 },
-//                 {
-//                     "status": "trial",
-//                     "startDate": "2022-06-15T01:36:21.975Z",
-//                     "endDate": "2022-06-15T01:36:21.975Z",
-//                     "_id": "62a9b6b9e6120000166ab394",
-//                     "userId": "62a9b6b9e6120000166ab392",
-//                     "courseId": {
-//                         "_id": "629dbb4c5a5f270016033712",
-//                         "name": "Afrilearn KidsCode",
-//                         "id": "629dbb4c5a5f270016033712"
-//                     },
-//                     "createdAt": "2022-06-15T10:38:49.229Z",
-//                     "updatedAt": "2022-06-15T10:38:49.229Z",
-//                     "__v": 0,
-//                     "id": "62a9b6b9e6120000166ab394",
-//                     "paymentIsActive": true
-//                 }
-//             ],

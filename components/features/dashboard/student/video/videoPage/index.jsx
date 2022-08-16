@@ -6,28 +6,58 @@ import { Col, Container, Row } from "react-bootstrap";
 import styles from "../../classnote/classnote.module.css";
 import styles1 from "../../../../../../pages/dashboard/teacher/teacher.module.css";
 import styles2 from "../../topInClass.module.css";
+import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
+import {useSpeechSynthesis} from "react-speech-kit";
 
 const VideoPage = () => {
+  const router = useRouter();
+  let quary = router.query.Exam;
+  let quary1 = router.query.Lesson;
+  let quary2 = router.query.term;
+  console.log(quary);
+  const subject = useSelector((state) => state.MySubject);
+  const lessons = subject.subjectDetails[1]?.relatedLessons;
+  console.log(lessons);
   const data = {
-    topic: "Geometrical Construction (2):  Angles",
-    videoUrl:
-      "https://afrilearn-media.s3.eu-west-3.amazonaws.com/jss-one/civic-education/third-term/national-unity/video-lessons/1619685168578CE_National+unity%2B%2B.mp4",
+    topic: lessons[quary1].title,
+    videoUrl: lessons[quary1].videoUrls[quary].videoUrl,
   };
+  console.log(data?.videoUrl);
+  const [visibility, setVisibility] = useState("Show");
+  // src/App.js
+const onEnd = () => {
+  setHighlightedText('')
+}
+
+const { speak, cancel, speaking, supported, voices } = useSpeechSynthesis({onEnd})
   const iconData = [
     {
       icon: "arrowhead",
-      text: "Lesson 1",
+      text: `Lesson ${+quary + 1}`,
     },
   ];
-
+  const d = new Date();
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
   const secVidData = {
-    class: "Senoir Secondary School One",
-    subject: "Basic Technology",
-    term: "First Term",
-    date: "14th September 2020",
+    class: subject.subjectDetails[0].subject.courseId.alias,
+    subject: subject.subjectDetails[0].subject.mainSubjectId.name,
+    term: quary2,
+    date: `${d.getDate()} - ${months[d.getMonth()]} - ${d.getFullYear()}`,
   };
-
-  const [visibility, setVisibility] = useState("Show");
 
   const [show, setShow] = useState(false);
   const target = useRef(null);
@@ -36,13 +66,7 @@ const VideoPage = () => {
     <Container fluid>
       <Row>
         <Col className="p-0">
-          <video
-            src={data?.videoUrl}
-            width={"100%"}
-            height={"600px"}
-            controls
-            // autoPlay
-          />
+          <iframe width="100%" height="600px" src={data?.videoUrl}></iframe>
         </Col>
       </Row>
       <Row className="p-5">
@@ -66,14 +90,23 @@ const VideoPage = () => {
                 </Link>
               </div>
             </Col>
-            <Col >
-              <div className={styles.document}></div>
-              <div className={styles.documentBottom}>Class Note</div>
-            </Col>
             <Col>
+              <Link
+                href={{
+                  pathname: "/dashboard/student/classnote/classnotePage",
+                  query: { Exam: quary },
+                }}
+              >
+                <a>
+                  <div className={styles.document}></div>
+                  <div className={styles.documentBottom}>Class Note</div>
+                </a>
+              </Link>
+            </Col>
+            {<Col onClick={()=> speak({text:lessons[quary1].content})} style={{cursor:"pointer"}}>
               <div className={styles.mic}></div>
               <div className={styles.micBottom}>Audio Lesson</div>
-            </Col>
+            </Col>}
             <Col>
               <div className={styles.love}></div>
               <div className={styles.loveBottom}>I Love This</div>
@@ -123,11 +156,11 @@ const VideoPage = () => {
             <Col className={styles.colSeen}>
               <div className={styles.seen}></div>
 
-              <div>1240 Views</div>
+              <div>{lessons[quary1].views} Views</div>
             </Col>
             <Col className={styles.colSeen}>
               <div className={styles.loved}></div>
-              <div>1.5k Love</div>
+              <div>{lessons[quary1].likes.length} Love</div>
             </Col>
           </Row>
           <Row>
@@ -192,23 +225,11 @@ const VideoPage = () => {
           {visibility === "Show" && (
             <Row style={{ borderRadius: "20px" }}>
               <Col className="bg-light rounded-bottom ">
-                <p>
-                  "Construction" in Geometry means to draw shapes, angles or
-                  lines accurately.These constructions use only compass,
-                  straightedge (i.e. ruler) and a pencil.straightedge.This is
-                  the "pure" form of geometric construction: no numbers
-                  involved! Angles And it is useful to know how to do 30°, 45°
-                  and 60° angles. We can use the angle bisector method (above)
-                  to create other angles such as 15°, etc. And it is useful to
-                  know how to do 30°, 45° and 60° angles. We can use the
-                  "Construction" in Geometry means to draw shapes, angles or
-                  lines accurately. These constructions use only compass,
-                  straightedge (i.e. ruler) and a pencil straightedge. This is
-                  the "pure" form of geometric construction: no numbers
-                  involved! "Construction" in Geometry means to draw shapes,
-                  angles or lines accurately.These constructions use only
-                  compass, straightedge (i.e. ruler) and a pencil.straightedge.
-                </p>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: lessons[quary1].videoUrls[quary].transcript,
+                  }}
+                ></div>
               </Col>
             </Row>
           )}
@@ -445,7 +466,7 @@ export const NextPrevPage = ({ data }) => {
             <Col md={1} className="mt-2">
               <div className={`mx-0 ${styles.accordButtonLeft2}`}></div>
             </Col>
-            <Col md={2} className="" style={{padding:"0", margin:"auto"}}>
+            <Col md={2} className="" style={{ padding: "0", margin: "auto" }}>
               <div className={` ${styles.accordButtonLeft1}`}></div>
             </Col>
           </Row>

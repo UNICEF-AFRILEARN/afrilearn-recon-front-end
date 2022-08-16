@@ -17,6 +17,7 @@ const ClassnotePage = () => {
   console.log(quary);
   const subject = useSelector((state) => state.MySubject);
   const lessons = subject.subjectDetails[1]?.relatedLessons;
+  console.log(subject);
 
   let clickLikes = 124;
 
@@ -211,8 +212,7 @@ const ClassnotePage = () => {
               <p
                 className="text-justify"
                 dangerouslySetInnerHTML={{ __html: text[0].texts }}
-              >
-              </p>
+              ></p>
             </div>
 
             {/* ))} */}

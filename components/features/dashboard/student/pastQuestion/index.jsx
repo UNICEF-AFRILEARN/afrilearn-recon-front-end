@@ -13,31 +13,7 @@ const PastQuestion = () => {
 
   const subjectDat = subject.pastQuestion[0]?.subjects;
 
-  const year = [
-    { exam_year: 2000 },
-    { exam_year: 2001 },
-    { exam_year: 2002 },
-    { exam_year: 2003 },
-    { exam_year: 2004 },
-    { exam_year: 2005 },
-    { exam_year: 2006 },
-    { exam_year: 2007 },
-    { exam_year: 2008 },
-    { exam_year: 2009 },
-    { exam_year: 2010 },
-    { exam_year: 2011 },
-    { exam_year: 2012 },
-    { exam_year: 2013 },
-    { exam_year: 2014 },
-    { exam_year: 2015 },
-    { exam_year: 2016 },
-    { exam_year: 2017 },
-    { exam_year: 2018 },
-    { exam_year: 2019 },
-    { exam_year: 2020 },
-    { exam_year: 2021 },
-    { exam_year: 2022 },
-  ];
+  
   const [show, setShow] = useState(false);
   const [list, setList] = useState([]);
   const toggleModal = () => setShow(!show);
@@ -96,6 +72,7 @@ const PastQuestion = () => {
         <Modal.Body className="mx-auto">
           {list?.map((exam_year, i) => (
             <Link
+              key={i}
               passHref
               href={{
                 pathname: "/dashboard/student/pastQuestion/pastQuestionPage",
@@ -110,7 +87,6 @@ const PastQuestion = () => {
                     boxShadow: "0px 0.648094px 4.53666px rgba(0, 0, 0, 0.15)",
                     borderRadius: "9.72141px",
                   }}
-                  key={i}
                   className={`mx-4 mt-3 mb-3 ${styles1.modalBodyButton}`}
                   variant=""
                 >

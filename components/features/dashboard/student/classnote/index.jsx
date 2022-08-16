@@ -81,34 +81,53 @@ const ClassNoteVideo = ({ classData }) => {
                         {lesson.title}
                       </Accordion.Header>
                       <Accordion.Body className={styles.accordLeft}>
-                        {classData[0].map((data, i) => {
-                          return (
-                            <div key={i} className={styles.accordButtonLeft}>
-                              <Link
-                                href={{
-                                  pathname:
-                                    "/dashboard/student/classnote/classnotePage",
-                                  query: { Exam: i },
-                                }}
-                              >
-                                <div
-                                  className={styles.buttonStyle}
-                                  style={{ cursor: "pointer" }}
-                                >
-                                  <div className={styles.buttonStyleImage}>
-                                    <Image
-                                      alt={"afrilearn marketing video"}
-                                      src={`/assets/img/features/dashboard/student/${data.icon}.png`}
-                                      width={13}
-                                      height={13}
-                                    />
-                                  </div>
-                                  {data.text}
-                                </div>
-                              </Link>
+                        <div className={styles.accordButtonLeft}>
+                          <Link
+                            href={{
+                              pathname:
+                                "/dashboard/student/classnote/classnotePage",
+                              query: { Exam: i },
+                            }}
+                          >
+                            <div
+                              className={styles.buttonStyle}
+                              style={{ cursor: "pointer" }}
+                            >
+                              <div className={styles.buttonStyleImage}>
+                                <Image
+                                  alt={"afrilearn marketing video"}
+                                  src={`/assets/img/features/dashboard/student/Activity.png`}
+                                  width={13}
+                                  height={13}
+                                />
+                              </div>
+                              Classnote
                             </div>
-                          );
-                        })}
+                          </Link>
+                        </div>
+                        <div className={styles.accordButtonLeft}>
+                          <Link
+                            href={{
+                              pathname: "/quiz",
+                              query: { Exam: i },
+                            }}
+                          >
+                            <div
+                              className={styles.buttonStyle}
+                              style={{ cursor: "pointer" }}
+                            >
+                              <div className={styles.buttonStyleImage}>
+                                <Image
+                                  alt={"afrilearn marketing video"}
+                                  src={`/assets/img/features/dashboard/student/Document.png`}
+                                  width={13}
+                                  height={13}
+                                />
+                              </div>
+                              Practice quiz
+                            </div>
+                          </Link>
+                        </div>
                       </Accordion.Body>
                     </Accordion.Item>
                   </Accordion>
