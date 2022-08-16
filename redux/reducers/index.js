@@ -22,6 +22,6 @@ export default combineReducers({
   school: schoolReducer,
   myExams: examsReducer,
   studentClass: studentClassReducer,
-  course: courseReducer
+  singleCourse: courseReducer
 })
 

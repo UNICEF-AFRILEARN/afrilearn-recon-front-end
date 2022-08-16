@@ -16,16 +16,15 @@ export const fetchCourseFail = (error) => ({
 });
 
 
-export const fetchCourseInitiate = (courseId) =>  {
+export const getCourseInitiate = (classId) =>  {
+    console.log("courseId from courses API", classId)
     return function (dispatch) {
         dispatch(fetchCourseStart())
         axios
-        .get(`https://afrilearn-backend-01.herokuapp.com/api/v1/courses/${courseId}`)
-        // .get('http://localhost:5000/api/v1/courses')
+        .get(`https://afrilearn-backend-01.herokuapp.com/api/v1/courses/${classId}`)
         .then((res) => {
-            // console.log("Hello from courses API")
-            console.log("From Course API =>", res.data)
-            dispatch(fetchCourseSuccess(res))
+            console.log("From Course API =>", res.data.data)
+            dispatch(fetchCourseSuccess(res.data.data))
         })
         .catch((err) => {
             dispatch(fetchCourseFail(err))

@@ -25,7 +25,6 @@ export const courseReducer = (state = initialState, { type, payload} ) => {
                 error: payload
             };
 
-    
         default:
             return state;
     }

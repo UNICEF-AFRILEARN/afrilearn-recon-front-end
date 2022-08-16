@@ -1,13 +1,14 @@
 import React, { useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCourseInitiate } from '../../../../redux/actions/course';
+import { getCourseInitiate } from '../../../../redux/actions/course';
 
 import { BiChevronDown } from 'react-icons/bi';
 import styles from '../../../../styles/parentdashboard.module.css';
 import Classcontentmain from './classcontentmain';
 
 const ClassContent = ({courseContext, children}) => {
-
+  const { course } = useSelector((state) => state.singleCourse);
+  const dispatch = useDispatch();
   const [selectedCourse, setCourseSelected] = useState("");
   const [classId, setClassId] = useState("");
 
@@ -53,42 +54,25 @@ const ClassContent = ({courseContext, children}) => {
             for(let j = 0; j < sorting_ids[i].length; j++){
                 if(sorting_ids[i][j].courseId.name === selectedCourse){
                     setClassId(sorting_ids[i][j].courseId.id)
+                   
+                  }
                 }
+              }
             }
-        }
-    }
-
-      sortClassIds();
-    console.log("sortedClass_ids from inner course content =>>>>>", sortedClass_ids);
-
-  
-
-    const setStudentClassId = () => {
-      if(selectedCourse === 'JSS One'){
-        setClassId("60b8a33dca964400154bdbf8")
-      }else if(selectedCourse === "JSS Two"){
-        setClassId("62f6aee70e20330016bd1132")
-      }else if(selectedCourse === "JSS Three"){
-        setClassId("62f6aee70e20330016bd1137")
-      }else if(selectedCourse === 'SSS One'){
-        setClassId("62f6aee70e20330016bd113c")
-      }else if(selectedCourse === 'SSS Two'){
-        setClassId("62f6aee80e20330016bd1141")
-      }else if(selectedCourse === 'SSS Three'){
-        setClassId("62f6aee80e20330016bd1146")
-      }else if(selectedCourse === 'Afrilearn KidsCode'){
-        setClassId("62f6aee80e20330016bd114b")
-      }
-         
-    }
-
+            
+            // sortClassIds();
+            
+            console.log("Single course from inner course content =>>>>>", course );
+            
+            
+            useEffect(() => {
+              dispatch(getCourseInitiate(classId))
+                }, [classId]);
+              
     useEffect(() => {
       set_found_ids()
-      }, [set_found_ids]);
-
-    useEffect(() => {
-      setStudentClassId()
-      }, [setStudentClassId]);
+    }, [set_found_ids]);
+    
 
   return (
     <div className={styles.classcontentwrapper}>
