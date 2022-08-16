@@ -46,7 +46,6 @@ const GeneratePerformance = ({children, courseContext}) => {
         getSelectedChildId()
     }, [getSelectedChildId()])
     
-    console.log("_userId ===", _userId[0])
 
   return (
     <div className={styles.parentmaingeneratewrapper}>

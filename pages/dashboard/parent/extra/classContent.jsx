@@ -38,8 +38,7 @@ const ClassContent = ({courseContext, children}) => {
     
     //function to extract ids and name:
     const get_class_child_ids = (messages) => {
-      return messages
-        .filter((obj) => {
+      return messages?.filter((obj) => {
          return obj.enrolledCourses && obj.enrolledCourses.length > 0 ;
         })
         .map((obj) =>{

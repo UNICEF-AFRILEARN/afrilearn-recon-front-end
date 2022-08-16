@@ -7,7 +7,15 @@ import { dataContentNav } from './classcontentmainData';
 
 
 const Classcontentmain = ({myChildren, course}) => {
+  const [contentId, setContentId] = useState('');
+
   const dispatch = useDispatch();
+
+  const getContentIds = (id) =>{
+    console.log("e.target.id", id)
+  }
+
+
 
   let course_sorted = course?.course?.relatedSubjects
 
@@ -16,8 +24,8 @@ const Classcontentmain = ({myChildren, course}) => {
   return (
     <div className={styles.contentmainwrapper}>
         <div className={styles.contentinnernavwrapper}>
-            <ul>
-               {course_sorted && course_sorted?.map((course_sorted) => <li key={course_sorted.mainSubjectId.name}>{course_sorted.mainSubjectId.name}</li>) }
+            <ul >
+               {course_sorted && course_sorted?.map((course_sorted) => <li key={course_sorted.mainSubjectId.id} onClick={() => getContentIds(course_sorted.mainSubjectId.id)} >{course_sorted.mainSubjectId.name}</li>) }
             </ul>    
         </div>
         <Classcontentcard />
