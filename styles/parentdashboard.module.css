@@ -118,8 +118,6 @@
     background-color: #A8A8A8;
     margin-top: 30px;
     padding: 10px;
-    
-
 }
 
 .innercontentwrapper ul {
@@ -150,6 +148,7 @@
 
 .contentshow {
     display: block;
+    border: 1px solid black;
 }
 
 .contentquestionwrapper {

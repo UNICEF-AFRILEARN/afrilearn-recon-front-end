@@ -10,7 +10,7 @@ const ClassContent = ({courseContext, children}) => {
   const { course } = useSelector((state) => state.singleCourse);
   const dispatch = useDispatch();
   const [selectedCourse, setCourseSelected] = useState("");
-  const [classId, setClassId] = useState("");
+  const [classId, setClassId] = useState("5fff7329de0bdb47f826feb0");
 
 
   const myChildren = children;
@@ -28,8 +28,8 @@ const ClassContent = ({courseContext, children}) => {
     const sortClassIds = () => {
       sortedClassIds = sortclassId.filter((sortIds) =>  sortIds).map((sort_ids) => sort_ids)
 
-      for(let i = 0; i < sortedClassIds.length; i++){
-          for(let j = 0; j < sortedClassIds[i].length; j++){
+      for(let i = 0; i < sortedClassIds?.length; i++){
+          for(let j = 0; j < sortedClassIds[i]?.length; j++){
             sortedClass_ids = sortedClassIds[i][j].courseId
           }
       }
