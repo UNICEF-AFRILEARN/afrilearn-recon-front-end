@@ -11,7 +11,7 @@ import styles from '../../../../styles/parentdashboard.module.css';
 import VideoDetailPage from '../videolesson';
 
 
-const Classcontentcard = ({contentId, course_sorted}) => {
+const Classcontentcard = ({contentId, course_sorted, classId}) => {
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
   const handleOpen = () => setOpen(true);
@@ -21,8 +21,6 @@ const Classcontentcard = ({contentId, course_sorted}) => {
   const [firstTermId, setFirstTermId] = useState('5fc8d1b20fae0a06bc22db5c')
   const [secondTermId, setSecondTermId] = useState('600047f67cabf80f88f61735')
   const [thirdTermId, setThirdTermId] = useState('600048197cabf80f88f61736')
-
-  console.log("contentId***** from Card", course_sorted)
 
 
   //function to extract Courses based on click:
@@ -69,6 +67,10 @@ const share_course_to_term = () => {
 
 share_course_to_term();
 
+
+const get_student_class_name = (student_class) => {
+  console.log(student_class)
+}
   
   const closeModal = () => {
     setVideoUrls("")
@@ -107,7 +109,7 @@ share_course_to_term();
                           <li>Class note</li>
                           <li>Practice quiz</li>
                           <li 
-                              onClick={() => {playVideo(`${first_term_course.videoUrls[0]?.videoUrl}`); setTerm_id_for_video(first_term_course.termId)}}>Video link
+                              onClick={() => {playVideo(`${first_term_course.videoUrls[0]?.videoUrl}`); setTerm_id_for_video(first_term_course.termId); get_student_class_name()}}>Video link
                           </li>
                     </ul>
                </div> 
@@ -168,6 +170,7 @@ share_course_to_term();
         closeModal={closeModal}
         sortTermId={sortTermId}
         filtered_course_term={filtered_course_term}
+        classId={classId}
         />
       }
     </div>

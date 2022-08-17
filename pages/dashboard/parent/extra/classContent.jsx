@@ -101,7 +101,11 @@ const ClassContent = ({courseContext, children}) => {
             </ul>
           </div>
         </div>
-        <Classcontentmain  myChildren={myChildren} course={course}/>
+        <Classcontentmain 
+        myChildren={myChildren}
+        course={course}
+        classId={classId}
+        />
     </div>
   )
 }

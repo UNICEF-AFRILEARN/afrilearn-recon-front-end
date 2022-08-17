@@ -6,7 +6,7 @@ import Classcontentcard from './classcontentcard';
 import { dataContentNav } from './classcontentmainData';
 
 
-const Classcontentmain = ({myChildren, course}) => {
+const Classcontentmain = ({myChildren, course, classId}) => {
   const [contentId, setContentId] = useState('');
 
   const dispatch = useDispatch();
@@ -31,7 +31,9 @@ const Classcontentmain = ({myChildren, course}) => {
         </div>
         <Classcontentcard 
         contentId={contentId} 
-        course_sorted={course_sorted}/>
+        course_sorted={course_sorted}
+        classId={classId}
+        />
     </div>
   )
 }
