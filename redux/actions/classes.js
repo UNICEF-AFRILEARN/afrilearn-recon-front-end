@@ -57,8 +57,8 @@ export const fetchAnnouncementInitiate = (classId) =>  {
         axios
         .get(`https://afrilearn-backend-01.herokuapp.com/api/v1/classes/${classId}/announcements`)
         .then((res) => {
-            console.log("From Get announcement API =>", res.data)
-            dispatch(fetchAnnouncementSuccess(res.data))
+            console.log("From Get announcement API =>", res.data.data)
+            dispatch(fetchAnnouncementSuccess(res.data.data))
         })
         .catch((err) => {
             dispatch(fetchAnnouncementFail(err))

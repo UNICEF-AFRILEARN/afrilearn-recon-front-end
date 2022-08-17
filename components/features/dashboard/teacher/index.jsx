@@ -207,11 +207,14 @@ export const TeacherAnnouncement = () => {
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
-  console.log("classAnnouncement from Teacher announcement", classAnnouncement)
+  console.log("classAnnouncement from Teacher announcement", classAnnouncement.announcements)
   
   let token = user?.token;
   let classId = user?.user?.classOwnership[0]?.enrolledCourse?.classId
   
+  //Convert created at to dateTime:
+  // var createdDate = this.props.message.createdAt,
+  //     cdate = (new Date(cts)).toString();
  
   const monthNames = [
     "January",
@@ -232,12 +235,6 @@ export const TeacherAnnouncement = () => {
   const lastName = "Abraham";
   const [text, setText] = useState("");
 
-  // const [textInput, setTextInput] = useState({
-  //   teachTask: [
-  //     { message: "fcxcfgvhbjnkmkjbhfrcftvgybhnj", id: "1" },
-  //     { message: "dszdxfcgvhbjntyrdtfyguhjnuyudftgyhunjmcfvgbhn m", id: "2" },
-  //   ],
-  // });
 
   const handleChange = (e) => {
     setText( e.target.value);
@@ -247,17 +244,13 @@ export const TeacherAnnouncement = () => {
 
   const handleSubmit = (e) => {
       e.preventDefault();
-      makeAnnouncementInitiate(classId, text,token)
-
+      dispatch(makeAnnouncementInitiate(classId, text,token))
   };
 
-  // const handleDelete = (id) => {
-  //   setTextInput(teachTask );
-  // };
 
   useEffect(() => {
     dispatch(fetchAnnouncementInitiate(classId))
-  }, [])
+  }, [user?.token])
 
   return (
     <Container>
@@ -285,7 +278,7 @@ export const TeacherAnnouncement = () => {
             height: "227px",
           }}
           placeholder="Announce something to your class"
-          value={text.message}
+          value={text}
           onChange={handleChange}
         ></textarea>
         <div
@@ -324,74 +317,80 @@ export const TeacherAnnouncement = () => {
         </div>
       </Col>
 
-          <Row
-            // key={task.id}
-            className="mt-4"
+    {  
+    classAnnouncement.announcements && classAnnouncement.announcements.map((announceMessage) => 
+    <Row
+    // key={task.id}
+    className="mt-4"
+    style={{
+      border: "1px solid #A6A6A6",
+      borderRadius: "7px",
+      padding: "20px",
+    }}
+  >
+    <Row>
+      <Col className="p-0 ps-5">
+        <Image
+          alt={"assign content placeholder"}
+          src={`/assets/img/features/dashboard/teacher/teacherPix.png`}
+          width={45}
+          height={45}
+        />
+      </Col>
+      <Col className="" md={10}>
+        <Row>
+          Mr { announceMessage.teacher.fullName} (You)
+        </Row>
+        <Row className="text-secondary">
+          {announceMessage.createdAt}
+          {/* {new Date().getDate()} {monthNames[new Date().getMonth() + 1]}{" "}
+          {new Date().getFullYear()} */}
+        </Row>
+      </Col>
+      <Col md={1}>
+        <div className={styles2.moreIcon}>
+          <div
             style={{
-              border: "1px solid #A6A6A6",
-              borderRadius: "7px",
-              padding: "20px",
+              width: "123px",
+              height: "91px",
+              background: "#FFFFFF",
+              boxShadow: "0px 1px 7px rgba(0, 0, 0, 0.1)",
+              borderRadius: "10px",
+              position: "absolute",
+              right: "150px",
             }}
+            className={styles2.displayNone}
           >
-            <Row>
-              <Col className="p-0 ps-5">
-                <Image
-                  alt={"assign content placeholder"}
-                  src={`/assets/img/features/dashboard/teacher/teacherPix.png`}
-                  width={45}
-                  height={45}
-                />
-              </Col>
-              <Col className="" md={10}>
-                <Row>
-                  Mr {lastName} {firstName.split("")[0]}.(You)
-                </Row>
-                <Row className="text-secondary">
-                  {new Date().getDate()} {monthNames[new Date().getMonth() + 1]}{" "}
-                  {new Date().getFullYear()}
-                </Row>
-              </Col>
-              <Col md={1}>
-                <div className={styles2.moreIcon}>
-                  <div
-                    style={{
-                      width: "123px",
-                      height: "91px",
-                      background: "#FFFFFF",
-                      boxShadow: "0px 1px 7px rgba(0, 0, 0, 0.1)",
-                      borderRadius: "10px",
-                      position: "absolute",
-                      right: "150px",
-                    }}
-                    className={styles2.displayNone}
-                  >
-                    <Col className={`p-3 ps-3 `}>
-                      <Row className="ps-3 pb-2">
-                        <Col
-                          md={3}
-                          className={`ps-2 ${styles2.styleEdit}`}
-                        ></Col>
-                        <Col className="m-auto">Edit</Col>
-                      </Row>
-                      <Row className="ps-3 pb-2">
-                        <Col
-                          md={3}
-                          className={`ps-2 ${styles2.styleDelete}`}
-                        ></Col>
-                        <Col
-                          className="m-auto"
-                          // onClick={() => handleDelete(d)}
-                        >
-                          Delete
-                        </Col>
-                      </Row>
-                    </Col>
-                  </div>
-                </div>
-              </Col>
-            </Row>
-            <Row className="mx-5 mt-4">message</Row>
-          </Row>
+            <Col className={`p-3 ps-3 `}>
+              <Row className="ps-3 pb-2">
+                <Col
+                  md={3}
+                  className={`ps-2 ${styles2.styleEdit}`}
+                ></Col>
+                <Col className="m-auto">Edit</Col>
+              </Row>
+              <Row className="ps-3 pb-2">
+                <Col
+                  md={3}
+                  className={`ps-2 ${styles2.styleDelete}`}
+                ></Col>
+                <Col
+                  className="m-auto"
+                  // onClick={() => handleDelete(d)}
+                >
+                  Delete
+                </Col>
+              </Row>
+            </Col>
+          </div>
+        </div>
+      </Col>
+    </Row>
+    <Row className="mx-5 mt-4">{announceMessage.text}</Row>
+  </Row>
+
+
+)}
     </Container>
   );
 };
