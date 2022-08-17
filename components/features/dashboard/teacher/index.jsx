@@ -9,6 +9,8 @@ import styles1 from "../student/student.module.css";
 import styles from "../student/studentProfile/studentProfile.module.css";
 import styles2 from "../../../../pages/dashboard/teacher/teacher.module.css";
 import { fetchSubjectsInitiate } from '../../../../redux/actions/subjects';
+import { makeAnnouncementInitiate,  fetchAnnouncementInitiate } from '../../../../redux/actions/classes';
+
 
 
 const Dashboard = () => {
@@ -201,6 +203,16 @@ export const Heropage = () => {
 };
 
 export const TeacherAnnouncement = () => {
+  const { classAnnouncement} = useSelector((state) => state.schoolClasses);
+  const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
+  console.log("classAnnouncement from Teacher announcement", classAnnouncement)
+  
+  let token = user?.token;
+  let classId = user?.user?.classOwnership[0]?.enrolledCourse?.classId
+  
+ 
   const monthNames = [
     "January",
     "February",
@@ -218,7 +230,7 @@ export const TeacherAnnouncement = () => {
 
   const firstName = "Oluwadara";
   const lastName = "Abraham";
-  const [textEdit, setTextEdit] = useState({ message: "", id: "" });
+  const [text, setText] = useState("");
 
   const [textInput, setTextInput] = useState({
     teachTask: [
@@ -228,24 +240,24 @@ export const TeacherAnnouncement = () => {
   });
 
   const handleChange = (e) => {
-    let id = Math.random().toString();
-    setTextEdit({ message: e.target.value, id: id });
+    setText( e.target.value);
   };
+  
+  console.log("token, classId textEdit", token, classId, text)
+
   const handleSubmit = (e) => {
-    if (textEdit.message !== "") {
       e.preventDefault();
-      let teachTask = [...textInput.teachTask, textEdit];
-      setTextInput({ teachTask: teachTask });
-      setTextEdit({ message: "", id: "" });
-    }
+      makeAnnouncementInitiate(classId, text,token)
+
   };
 
-  const handleDelete = (id) => {
-    let teachTask = textInput.teachTask.filter((task) => {
-      return task.id !== id;
-    });
-    setTextInput({ teachTask: teachTask });
-  };
+  // const handleDelete = (id) => {
+  //   setTextInput(teachTask );
+  // };
+
+  useEffect(() => {
+    dispatch(fetchAnnouncementInitiate(classId))
+  }, [])
 
   return (
     <Container>
@@ -273,7 +285,7 @@ export const TeacherAnnouncement = () => {
             height: "227px",
           }}
           placeholder="Announce something to your class"
-          value={textEdit.message}
+          value={text.message}
           onChange={handleChange}
         ></textarea>
         <div

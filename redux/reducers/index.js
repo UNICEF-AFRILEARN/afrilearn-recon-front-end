@@ -11,6 +11,7 @@ import { schoolReducer } from "./schoolReducer";
 import { examsReducer } from "./examsReducer";
 import { studentClassReducer } from "./studentClass";
 import { courseReducer } from "./courseReducer";
+import { classesReducer } from "./classesReducer";
 
 export default combineReducers({
   auth: authReducer,
@@ -23,5 +24,6 @@ export default combineReducers({
   myExams: examsReducer,
   studentClass: studentClassReducer,
   singleCourse: courseReducer,
+  schoolClasses: classesReducer,
 })
 

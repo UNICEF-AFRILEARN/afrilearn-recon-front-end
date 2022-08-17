@@ -5,6 +5,7 @@ import * as types from '../types/classes';
 const initialState = {
     loading: false,
     classAnnouncement: [],
+    postAnnouncement: [],
     error: [],
 }
 
@@ -19,10 +20,28 @@ export const classesReducer = (state = initialState, { type, payload} ) => {
         case types.MAKE_ANNOUNCEMENT_SUCCESS:
             return {
                 loading: false,
-                classAnnouncement: payload
+                postAnnouncement: payload
             };
     
         case types.MAKE_ANNOUNCEMENT_FAIL:
+            return {
+                loading: false,
+                ...state,
+                error: payload
+            };
+        case types.FETCH_CLASS_ANNOUNCEMENT_START:
+            return {
+                loading: true,
+                ...state
+            };
+    
+        case types.FETCH_CLASS_ANNOUNCEMENT_SUCCESS:
+            return {
+                loading: false,
+                classAnnouncement: payload
+            };
+    
+        case types.FETCH_CLASS_ANNOUNCEMENT_FAIL:
             return {
                 loading: false,
                 ...state,
