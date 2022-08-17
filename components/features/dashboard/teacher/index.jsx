@@ -232,12 +232,12 @@ export const TeacherAnnouncement = () => {
   const lastName = "Abraham";
   const [text, setText] = useState("");
 
-  const [textInput, setTextInput] = useState({
-    teachTask: [
-      { message: "fcxcfgvhbjnkmkjbhfrcftvgybhnj", id: "1" },
-      { message: "dszdxfcgvhbjntyrdtfyguhjnuyudftgyhunjmcfvgbhn m", id: "2" },
-    ],
-  });
+  // const [textInput, setTextInput] = useState({
+  //   teachTask: [
+  //     { message: "fcxcfgvhbjnkmkjbhfrcftvgybhnj", id: "1" },
+  //     { message: "dszdxfcgvhbjntyrdtfyguhjnuyudftgyhunjmcfvgbhn m", id: "2" },
+  //   ],
+  // });
 
   const handleChange = (e) => {
     setText( e.target.value);
@@ -323,11 +323,9 @@ export const TeacherAnnouncement = () => {
           </p>
         </div>
       </Col>
-      {textInput.teachTask.map((task) => {
-        // console.log("=====",task);
-        return (
+
           <Row
-            key={task.id}
+            // key={task.id}
             className="mt-4"
             style={{
               border: "1px solid #A6A6A6",
@@ -382,7 +380,7 @@ export const TeacherAnnouncement = () => {
                         ></Col>
                         <Col
                           className="m-auto"
-                          onClick={() => handleDelete(task.id)}
+                          // onClick={() => handleDelete(d)}
                         >
                           Delete
                         </Col>
@@ -392,10 +390,8 @@ export const TeacherAnnouncement = () => {
                 </div>
               </Col>
             </Row>
-            <Row className="mx-5 mt-4">{task.message}</Row>
+            <Row className="mx-5 mt-4">message</Row>
           </Row>
-        );
-      })}
     </Container>
   );
 };
