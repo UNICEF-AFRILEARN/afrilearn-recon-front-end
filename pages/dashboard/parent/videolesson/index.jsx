@@ -1,5 +1,5 @@
 
-import * as React from 'react';
+import React, {useState, useEffect} from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -19,8 +19,36 @@ const style = {
   p: 4,
 };
 
-const VideoDetailPage = ({handleOpen, handleClose, videoUrls, closeModal}) => {
- 
+const VideoDetailPage = (
+  {
+    handleOpen, 
+    handleClose, 
+    videoUrls, 
+    closeModal, 
+    filtered_course_term,
+    sortTermId
+  }) => {
+
+
+    let sorted_term_videos = [];
+    let sorting_courses = filtered_course_term()
+
+    const share_course_to_term = (obj, id) => {
+      for(let i = 0; i < obj.length; i++){
+          for(let j = 0; j < obj[i].length; j++){
+            if(obj[i][j].termId === id){
+              sorted_term_videos.push(obj[i][j])
+            }
+
+          }
+      }
+    }
+
+    
+    share_course_to_term(sorting_courses, sortTermId)
+    
+    console.log("sorted_term_videos from video ++++", sorted_term_videos)
+    
   return (
     <div>
       <Button onClick={handleOpen}>Video link=====</Button>

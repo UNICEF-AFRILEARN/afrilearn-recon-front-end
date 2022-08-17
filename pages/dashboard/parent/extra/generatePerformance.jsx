@@ -39,7 +39,7 @@ const GeneratePerformance = ({children, courseContext}) => {
         // console.log("courseId ====>{======}", courseId)
         e.preventDefault()
         Router.push({
-            pathname: `/dashboard/performance/[_id]`,
+            pathname: `/dashboard/childperformance/[_id]`,
             query: { _id: _userId[0], course_id:_courseId || "undefined" }
         })
     }

@@ -29,7 +29,9 @@ const Classcontentmain = ({myChildren, course}) => {
                {course_sorted && course_sorted?.map((course_sorted) => <li key={course_sorted.mainSubjectId.id} onClick={() => getContentIds(course_sorted.mainSubjectId.id)} >{course_sorted.mainSubjectId.name}</li>) }
             </ul>    
         </div>
-        <Classcontentcard contentId={contentId} course_sorted={course_sorted}/>
+        <Classcontentcard 
+        contentId={contentId} 
+        course_sorted={course_sorted}/>
     </div>
   )
 }

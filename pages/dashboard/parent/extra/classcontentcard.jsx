@@ -17,6 +17,7 @@ const Classcontentcard = ({contentId, course_sorted}) => {
   const handleOpen = () => setOpen(true);
   const [videoUrls, setVideoUrls] = useState("")
   const [selectedItem, setSelectedItem] = useState(null);
+  const [sortTermId, setSortTermId] = useState(null);
   const [firstTermId, setFirstTermId] = useState('5fc8d1b20fae0a06bc22db5c')
   const [secondTermId, setSecondTermId] = useState('600047f67cabf80f88f61735')
   const [thirdTermId, setThirdTermId] = useState('600048197cabf80f88f61736')
@@ -63,23 +64,24 @@ const share_course_to_term = () => {
         }
       }
   }
-  // return first
 }
 
-// filtered_course_term();
+
 share_course_to_term();
-console.log("first_term", first_term)
-console.log("second_term", second_term)
-console.log("third_term", third_term)
-  // show_term_courses(show_course_sorted)
+
   
   const closeModal = () => {
     setVideoUrls("")
   }
 
+  //function to set Term id fro video:
+  const setTerm_id_for_video = (id) => {
+    setSortTermId(id)
+  }
+
+  //function to get video url:
   const playVideo =(url) => {
     setVideoUrls(url)
-    console.log(url)
   }
   const toggleItem = (id) => {
     if(selectedItem === id){
@@ -104,7 +106,9 @@ console.log("third_term", third_term)
                     <ul>
                           <li>Class note</li>
                           <li>Practice quiz</li>
-                          <li onClick={() => playVideo(`${first_term_course.videoUrls[0]?.videoUrl}`)}>Video link</li>
+                          <li 
+                              onClick={() => {playVideo(`${first_term_course.videoUrls[0]?.videoUrl}`); setTerm_id_for_video(first_term_course.termId)}}>Video link
+                          </li>
                     </ul>
                </div> 
                 )
@@ -124,7 +128,9 @@ console.log("third_term", third_term)
                     <ul>
                           <li>Class note</li>
                           <li>Practice quiz</li>
-                          <li onClick={() => playVideo(`${second_term_course.videoUrls[0]?.videoUrl}`)}>Video link</li>
+                          <li 
+                               onClick={() => {playVideo(`${second_term_course.videoUrls[0]?.videoUrl}`); setTerm_id_for_video(second_term_course.termId)}}>Video link
+                          </li>
                     </ul>
                </div> 
                 )
@@ -143,7 +149,9 @@ console.log("third_term", third_term)
                     <ul>
                           <li>Class note</li>
                           <li>Practice quiz</li>
-                          <li onClick={() => playVideo(`${third_term_course.videoUrls[0]?.videoUrl}`)}>Video link</li>
+                          <li 
+                               onClick={() => {playVideo(`${third_term_course.videoUrls[0]?.videoUrl}`); setTerm_id_for_video( third_term_course.termId)}}>Video link
+                          </li>
                           
                     </ul>
                </div> 
@@ -158,6 +166,8 @@ console.log("third_term", third_term)
         videoUrls={videoUrls}
         handleClose={handleClose}
         closeModal={closeModal}
+        sortTermId={sortTermId}
+        filtered_course_term={filtered_course_term}
         />
       }
     </div>
