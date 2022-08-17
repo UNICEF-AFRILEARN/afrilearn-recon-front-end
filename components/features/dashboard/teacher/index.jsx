@@ -161,7 +161,7 @@ export const HeropageWelcome = () => {
                     </Link>
                   </Col>
                   <Col md={3} className="">
-                    <Link
+                    {/* <Link
                       passHref
                       href="/dashboard/teacher/addnewadmin"
                     >
@@ -180,7 +180,7 @@ export const HeropageWelcome = () => {
                         </Row>
                         
                       </a>
-                    </Link>
+                    </Link> */}
                   </Col>
                 </Row>
               </Row>
@@ -207,7 +207,7 @@ export const TeacherAnnouncement = () => {
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
-  console.log("classAnnouncement from Teacher announcement", classAnnouncement.announcements)
+  console.log("classAnnouncement from Teacher announcement", classAnnouncement?.announcements)
   
   let token = user?.token;
   let classId = user?.user?.classOwnership[0]?.enrolledCourse?.classId
@@ -215,24 +215,15 @@ export const TeacherAnnouncement = () => {
   //Convert created at to dateTime:
   // var createdDate = this.props.message.createdAt,
   //     cdate = (new Date(cts)).toString();
- 
-  const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
 
-  const firstName = "Oluwadara";
-  const lastName = "Abraham";
+  //Convert created at to dateTime:
+  const formatter = new Intl.DateTimeFormat("en-GB", {
+    year: "numeric",
+    month: "long",
+    day: "2-digit"
+  });
+
+
   const [text, setText] = useState("");
 
 
@@ -240,7 +231,7 @@ export const TeacherAnnouncement = () => {
     setText( e.target.value);
   };
   
-  console.log("token, classId textEdit", token, classId, text)
+  console.log("token, classId textEdit", user)
 
   const handleSubmit = (e) => {
       e.preventDefault();
@@ -318,7 +309,7 @@ export const TeacherAnnouncement = () => {
       </Col>
 
     {  
-    classAnnouncement.announcements && classAnnouncement.announcements.map((announceMessage) => 
+    classAnnouncement?.announcements && classAnnouncement?.announcements.map((announceMessage) => 
     <Row
     // key={task.id}
     className="mt-4"
@@ -342,9 +333,7 @@ export const TeacherAnnouncement = () => {
           Mr { announceMessage.teacher.fullName} (You)
         </Row>
         <Row className="text-secondary">
-          {(new Date(announceMessage.createdAt)).toString()}
-          {/* {new Date().getDate()} {monthNames[new Date().getMonth() + 1]}{" "}
-          {new Date().getFullYear()} */}
+          {formatter.format(Date.parse(announceMessage.createdAt))}
         </Row>
       </Col>
       <Col md={1}>
