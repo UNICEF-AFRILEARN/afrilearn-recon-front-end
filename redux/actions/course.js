@@ -46,8 +46,7 @@ export const getCourseInitiate = (classId) =>  {
 
 }
 
-export const fetchSchoolTermInitiate = (classId) =>  {
-    console.log("courseId from courses API", classId)
+export const fetchSchoolTermInitiate = () =>  {
     return function (dispatch) {
         dispatch(fetchSchoolTermStart())
         axios

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRoles } from '../../redux/actions/auth';
 import { fetchPaymentPlansInitiate, verifyPaystackPaymentInitiate } from '../../redux/actions/payment';
@@ -8,12 +8,14 @@ import styles from "../../styles/payment.module.css"
 
 const payment = () => {
   const dispatch = useDispatch();
+  const [price, setPrice] = useState('');
   const coursesCollected = useSelector((state) => state.auth)
   const {paymentPlans} = useSelector((state) => state.myPayment)
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("price from payment", price)
     // setPrice('')
     // setDuration('')
     // setCourse('KidsCode')

@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import styles from '../../../../styles/teacher.module.css'; 
 import { Form } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
+import { fetchSchoolTermInitiate } from '../../../../redux/actions/course'
 
 const Generatequestions = () => {
+    const { schoolTerms } = useSelector((state) => state.singleCourse);
+    const dispatch = useDispatch();
+
+    console.log("schoolTerms from generate schoolTerms", schoolTerms)
+
+
+
+    useEffect(() => {
+        dispatch(fetchSchoolTermInitiate())
+    }, [])
   return (
     <div className={styles.generatequestionwrapper}>
         <div className={styles.generatetitle}>
