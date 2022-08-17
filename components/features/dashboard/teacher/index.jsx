@@ -154,6 +154,29 @@ export const HeropageWelcome = () => {
                             <u>Add Students</u>
                           </Col>
                         </Row>
+                        
+                      </a>
+                    </Link>
+                  </Col>
+                  <Col md={3} className="">
+                    <Link
+                      passHref
+                      href="/dashboard/teacher/addnewadmin"
+                    >
+                      <a>
+                        <Row className="px-auto">
+                          <Col
+                            md={2}
+                            className={`${styles.studentProfilePenIcon1}`}
+                          ></Col>
+                          <Col
+                            className={`p-0 ${styles.studentProfileColorText}`}
+                            style={{ color: "#00D9B6" }}
+                          >
+                            <u>Add Admin</u>
+                          </Col>
+                        </Row>
+                        
                       </a>
                     </Link>
                   </Col>
@@ -289,7 +312,7 @@ export const TeacherAnnouncement = () => {
         </div>
       </Col>
       {textInput.teachTask.map((task) => {
-        console.log(task);
+        // console.log("=====",task);
         return (
           <Row
             key={task.id}
