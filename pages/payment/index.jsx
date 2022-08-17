@@ -1,24 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRoles } from '../../redux/actions/auth';
-import { fetchPaymentPlansInitiate, verifyPaystackPaymentInitiate } from '../../redux/actions/payment';
+import { 
+  fetchPaymentPlansInitiate,
+  verifyPaystackPaymentInitiate,
+  fetchTeacherPaymentPlansInitiate
+} from '../../redux/actions/payment';
 import { usePaystackPayment } from 'react-paystack';
 
 import styles from "../../styles/payment.module.css"
 
-const payment = () => {
+const payment = ({test_body}) => {
   const dispatch = useDispatch();
   const [price, setPrice] = useState('');
-  const coursesCollected = useSelector((state) => state.auth)
-  const {paymentPlans} = useSelector((state) => state.myPayment)
+  const {roles, user } = useSelector((state) => state.auth)
+  const {paymentPlans, teacherPaymentPlans} = useSelector((state) => state.myPayment)
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("price from payment", price)
-    // setPrice('')
-    // setDuration('')
-    // setCourse('KidsCode')
 
 }
 
@@ -53,12 +54,18 @@ const payment = () => {
 
 const initializePayment = usePaystackPayment(config);
 
-  const courseContext = coursesCollected.roles.courses;
+  const courseContext = roles.courses;
   const allPaymentPlans = paymentPlans.paymentPlans
   
-  console.log("Plans from payment", allPaymentPlans)
+  // Get user role to fetch the payment plans to display
+  console.log("user.roles from payment", user.user.role)
+
+
   useEffect(() => {
     dispatch(fetchPaymentPlansInitiate())
+  }, [])
+  useEffect(() => {
+    dispatch(fetchTeacherPaymentPlansInitiate())
   }, [])
 
   useEffect(() => {
@@ -159,3 +166,7 @@ const initializePayment = usePaystackPayment(config);
 }
 
 export default payment
+
+export function getServerSideProps({req, res }){
+  return { props: {test_body: req.body || ""}}
+}
