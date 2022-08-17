@@ -7,6 +7,8 @@ import { fetchReconLessonInitiate } from "../../../../redux/actions/courses";
 import { useDispatch, useSelector } from "react-redux";
 
 const studentHeropage = ({ data }) => {
+  
+
   const studentdata = [
     { classData: data?.personClass, firstName: data?.personName },
     [
@@ -49,7 +51,7 @@ const studentHeropage = ({ data }) => {
     ],
   ];
 
-  return <StudentPage stuData={studentdata} />;
+  return <StudentPage stuData={studentdata}  />;
 };
 
 export default studentHeropage;
