@@ -342,7 +342,7 @@ export const TeacherAnnouncement = () => {
           Mr { announceMessage.teacher.fullName} (You)
         </Row>
         <Row className="text-secondary">
-          {announceMessage.createdAt}
+          {(new Date(announceMessage.createdAt)).toString()}
           {/* {new Date().getDate()} {monthNames[new Date().getMonth() + 1]}{" "}
           {new Date().getFullYear()} */}
         </Row>
