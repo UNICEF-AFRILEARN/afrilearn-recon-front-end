@@ -12,6 +12,7 @@ import styles from "../../styles/payment.module.css"
 
 const payment = ({test_body}) => {
   const dispatch = useDispatch();
+  const [ userRole, setUserRole ] = useState("");
   const [price, setPrice] = useState('');
   const {roles, user } = useSelector((state) => state.auth)
   const {paymentPlans, teacherPaymentPlans} = useSelector((state) => state.myPayment)
@@ -58,7 +59,7 @@ const initializePayment = usePaystackPayment(config);
   const allPaymentPlans = paymentPlans.paymentPlans
   
   // Get user role to fetch the payment plans to display
-  console.log("user.roles from payment", user.user.role)
+  console.log("user.roles from payment", user.user?.role)
 
 
   useEffect(() => {
