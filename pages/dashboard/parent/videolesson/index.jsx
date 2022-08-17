@@ -59,7 +59,7 @@ const VideoDetailPage = (
     
   return (
     <div>
-      <Button onClick={handleOpen}>Video link=====</Button>
+      <Button onClick={handleOpen}></Button>
       <Modal
         open={open}
         onClose={handleClose}
