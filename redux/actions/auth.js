@@ -111,6 +111,19 @@ export const googleSocialLoginFail = (error) => ({
 type: types.GOOGLE_SOCIAL_LOGIN_FAIL,
 payload: error
 });
+export const editTeacherProfileStart = () => ({
+  type: types.EDIT_TEACHER_PROFILE_START,
+});
+
+export const editTeacherProfileSuccess = (payload) => ({
+type: types.EDIT_TEACHER_PROFILE_SUCCESS,
+payload
+});
+
+export const editTeacherProfileFail = (error) => ({
+type: types.EDIT_TEACHER_PROFILE_FAIL,
+payload: error
+});
 
 
 
@@ -130,6 +143,24 @@ export const googleLoginInitiate = (token) => {
               dispatch(googleSocialLoginSuccess(res.data))
           })
           .catch((error) => dispatch(googleSocialLoginFail(error)))
+  }   
+}
+export const editTeacherProfileInitiate = (token, ) => {
+  return function (dispatch) {
+      dispatch(editTeacherProfileStart())
+      axios
+      .post("http://localhost:5000/api/v1/api/v1/auth/profile-update",
+          {   data  },
+      {
+          headers: {
+              "token": token
+          }
+      })
+      .then((res) => {
+              console.log("API Google login params", res.data)
+              dispatch(editTeacherProfileSuccess(res.data))
+          })
+          .catch((error) => dispatch(editTeacherProfileFail(error)))
   }   
 }
 
@@ -206,35 +237,3 @@ export const registerUserInitiate = (
   }
 
 }
-
-// export const registerUserInitiate = (
-//     fullName, 
-//     email, 
-//     password, 
-//     confirmPassword, 
-//     role, 
-//     course,
-//     phoneNumber,
-//     referral
-// ) => (dispatch) => {
-//   dispatch(registerUserStart())
-//   axios
-//   .post('https://afrilearn-backend-01.herokuapp.com/api/v1/auth/signup',
-//   {
-//     fullName, 
-//     email, 
-//     password, 
-//     confirmPassword, 
-//     role, 
-//     course,
-//     phoneNumber,
-//     referral
-//   })
-//   .then((res) => {
-//           registerUserSuccess(res.data.data)
-//           console.log("User registration API ==>", res.data.data);
-//         })
-//         .catch((error) => {
-//           console.log("Error registration API ==>", error);
-//         })
-// }

@@ -4,9 +4,13 @@ const initialState = {
     roles: [],
     classes: [],
     user: [],
+    editTeacherProfile: [],
     teachers: 0,
     allUsers: 0,
     registerUser: [],
+    students: [],
+    numberOfClassNote: [],
+    numberOfQuizQuestions: [],
 }
 
 const authReducer = (state = initialState, {type, payload}) => {
@@ -43,12 +47,6 @@ const authReducer = (state = initialState, {type, payload}) => {
             return {
                 ...state,
                 roles: payload,
-                classes: payload,
-                students: payload,
-                teachers: payload,
-                numberOfClassNote: payload,
-                numberOfQuizQuestions: payload,
-                allUsers: payload,
               };
         case types.GOOGLE_SOCIAL_LOGIN_START:
                 return {
@@ -60,6 +58,20 @@ const authReducer = (state = initialState, {type, payload}) => {
                     googleLoggedIn: payload
                 }
         case types.GOOGLE_SOCIAL_LOGIN_FAIL:
+            return {
+                ...state,
+                error: payload
+            }
+        case types.EDIT_TEACHER_PROFILE_START:
+                return {
+                    ...state
+                }
+        case types.EDIT_TEACHER_PROFILE_SUCCESS:
+                return {
+                    ...state,
+                    editTeacherProfile: payload
+                }
+        case types.EDIT_TEACHER_PROFILE_FAIL:
             return {
                 ...state,
                 error: payload
