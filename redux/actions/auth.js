@@ -131,7 +131,7 @@ export const googleLoginInitiate = (token) => {
   return function (dispatch) {
       dispatch(googleSocialLoginStart())
       axios
-      .post("http://localhost:5000/api/v1/api/v1/auth/social_login/google",
+      .post("https://afrilearn-backend-01.herokuapp.com/api/v1/auth/social_login/google",
           {   data  },
       {
           headers: {
@@ -145,19 +145,28 @@ export const googleLoginInitiate = (token) => {
           .catch((error) => dispatch(googleSocialLoginFail(error)))
   }   
 }
-export const editTeacherProfileInitiate = (token, ) => {
+export const editTeacherProfileInitiate = (token, fullName, email, age, phoneNumber, stateCon, gender, city, country) => {
   return function (dispatch) {
       dispatch(editTeacherProfileStart())
       axios
-      .post("http://localhost:5000/api/v1/api/v1/auth/profile-update",
-          {   data  },
-      {
-          headers: {
-              "token": token
-          }
-      })
+      .patch("https://afrilearn-backend-01.herokuapp.com/api/v1/auth/profile-update",
+          {  
+            fullName, 
+            email, 
+            age, 
+            phoneNumber, 
+            stateCon, 
+            gender, 
+            city, 
+            country  },
+          {
+              headers: {
+                  "token": token,
+                  "Content-Type": "application/json",
+              }
+          })
       .then((res) => {
-              console.log("API Google login params", res.data)
+              console.log("FROM Edit teacher profile", res.data)
               dispatch(editTeacherProfileSuccess(res.data))
           })
           .catch((error) => dispatch(editTeacherProfileFail(error)))

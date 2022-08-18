@@ -9,10 +9,12 @@ import {
   InputGroup,
   Row,
 } from "react-bootstrap";
+import { editTeacherProfileInitiate } from '../../../../../redux/actions/auth';
 import countryCodes from "country-codes-list";
 
 const PersonalProfile = () => {
   const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
   const [title, setTitle] = useState("+234");
   const [age, setAge] = useState("");
@@ -23,13 +25,14 @@ const PersonalProfile = () => {
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
   const [phoneNumber, setphoneNumber] = useState("");
+  const [token, setToken] = useState("");
 
 
-  console.log("fullName from profile page", fullName)
+  console.log("fullName from profile page", token)
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(fullName, email, age, phoneNumber, stateCon, gender, city, country)
+    dispatch(editTeacherProfileInitiate(token, fullName, email, age, phoneNumber, stateCon, gender, city, country))
   }
 
   const myCountryCodesObject = countryCodes.customList(
@@ -40,16 +43,22 @@ const PersonalProfile = () => {
   const codes = Object.values(myCountryCodesObject);
   const coded = [...new Set(codes.sort((a, b) => a - b))];
 
+
   useEffect(() => {
-    setFullName(user.user.fullName)
+    setToken(user?.token)
+  }, [fullName]);
+
+
+  useEffect(() => {
+    setFullName(user?.user?.fullName)
   }, [fullName]);
   
   useEffect(() => {
-    setEmail(user.user.email)
+    setEmail(user?.user?.email)
   }, [email]);
 
   useEffect(() => {
-    setphoneNumber(user.user.phoneNumber)
+    setphoneNumber(user?.user?.phoneNumber)
   }, [phoneNumber]);
 
   return (
