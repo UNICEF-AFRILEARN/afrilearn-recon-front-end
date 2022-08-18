@@ -33,7 +33,7 @@ const Video = () => {
 export default Video;
 
 const ClassNoteVideo = () => {
-  const subject = useSelector((state) => state.MySubject);
+  const subject = useSelector((state) => state.mySubjectCourse);
   const lessons = subject.subjectDetails[1]?.relatedLessons;
   console.log(lessons);
   console.log(subject);

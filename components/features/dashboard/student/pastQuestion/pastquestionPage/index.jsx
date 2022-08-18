@@ -19,7 +19,7 @@ const PastQuestion = () => {
     }
   }, [quary]);
 
-  const subject = useSelector((state) => state.MySubject);
+  const subject = useSelector((state) => state.mySubjectCourse);
   console.log(subject);
   const subjectDat = subject.pastQuestionQue[0];
   const quizData = {

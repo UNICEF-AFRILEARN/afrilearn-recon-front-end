@@ -160,7 +160,7 @@ export const HeaderHeropage = () => {
   );
 };
 const StudentHeropageBase = () => {
-  const subject = useSelector((state) => state.MySubject);
+  const subject = useSelector((state) => state.mySubjectCourse);
   const subjectDetails = subject.subjectDetails[0]?.subject;
   const data = {
     subject: subjectDetails?.courseId.name,

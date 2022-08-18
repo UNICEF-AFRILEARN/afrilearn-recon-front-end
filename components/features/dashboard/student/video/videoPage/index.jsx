@@ -8,7 +8,7 @@ import styles1 from "../../../../../../pages/dashboard/teacher/teacher.module.cs
 import styles2 from "../../topInClass.module.css";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
-import {useSpeechSynthesis} from "react-speech-kit";
+// import {useSpeechSynthesis} from "react-speech-kit";
 
 const VideoPage = () => {
   const router = useRouter();
@@ -16,7 +16,7 @@ const VideoPage = () => {
   let quary1 = router.query.Lesson;
   let quary2 = router.query.term;
   console.log(quary);
-  const subject = useSelector((state) => state.MySubject);
+  const subject = useSelector((state) => state.mySubjectCourse);
   const lessons = subject.subjectDetails[1]?.relatedLessons;
   console.log(lessons);
   const data = {
@@ -30,7 +30,7 @@ const onEnd = () => {
   setHighlightedText('')
 }
 
-const { speak, cancel, speaking, supported, voices } = useSpeechSynthesis({onEnd})
+// const { speak, cancel, speaking, supported, voices } = useSpeechSynthesis({onEnd})
   const iconData = [
     {
       icon: "arrowhead",
@@ -103,7 +103,7 @@ const { speak, cancel, speaking, supported, voices } = useSpeechSynthesis({onEnd
                 </a>
               </Link>
             </Col>
-            {<Col onClick={()=> speak({text:lessons[quary1].content})} style={{cursor:"pointer"}}>
+            {<Col /*onClick={()=> speak({text:lessons[quary1].content})}*/ style={{cursor:"pointer"}}>
               <div className={styles.mic}></div>
               <div className={styles.micBottom}>Audio Lesson</div>
             </Col>}

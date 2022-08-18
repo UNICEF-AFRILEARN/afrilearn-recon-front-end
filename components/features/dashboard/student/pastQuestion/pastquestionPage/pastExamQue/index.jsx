@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import { Modal } from "bootstrap";
 const ExamQuestion = () => {
-  const subject = useSelector((state) => state.MySubject);
+  const subject = useSelector((state) => state.mySubjectCourse);
 
   const sub_data = {
     questions: subject.pastQuestionQue[0]?.questions,

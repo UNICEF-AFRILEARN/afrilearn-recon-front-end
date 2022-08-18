@@ -9,7 +9,7 @@ const QuizInstruction = () => {
   const router = useRouter();
   let quary = router.query.Exam;
   console.log(quary);
-  const subject = useSelector((state) => state.MySubject);
+  const subject = useSelector((state) => state.mySubjectCourse);
   const user = useSelector((state) => state.auth);
 
   const lessons = subject.subjectDetails[1]?.relatedLessons;

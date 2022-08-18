@@ -13,10 +13,7 @@ export const fetchSubjectsDetailsSuccess = (subject) => ({
   type: types.FETCH_SUBJECTDETAILS_SUCCESS,
   payload: subject,
 });
-export const fetchCheckChangeSuccess = (subject) => ({
-  type: types.FETCH_CHECKCHANGE_SUCCESS,
-  payload: subject,
-});
+
 export const fetchPastQuestionSuccess = (subject) => ({
   type: types.FETCH_PASTQUESTION_SUCCESS,
   payload: subject,
@@ -46,7 +43,7 @@ export const fetchCoursesInitiate = (courseId) => {
     // });
   };
 };
-export const fetchCourseDetailsInitiate = (courseId, subjectId, sub_Id) => {
+export const fetchCourseDetailsInitiate = (courseId, subjectId) => {
   return async function (dispatch) {
     let one = `https://afrilearn-backend-01.herokuapp.com/api/v1/lessons/${courseId}/${subjectId}/subject-basic-details`;
     let two = `https://afrilearn-backend-01.herokuapp.com/api/v1/lessons/${courseId}/${subjectId}/lessons`;
@@ -64,7 +61,7 @@ export const fetchCourseDetailsInitiate = (courseId, subjectId, sub_Id) => {
 
         // use/access the results
         const response = [responseOne, responseTwo, responseThree];
-
+console.log(response);
         dispatch(fetchSubjectsDetailsSuccess(response));
       }),
     );
@@ -74,7 +71,7 @@ export const fetchCourseDetailsInitiate = (courseId, subjectId, sub_Id) => {
   };
 };
 
-export const fetchCourseInitiate = (courseId, sub_Id, token) => {
+export const fetchSubjectInitiate = (sub_Id, token) => {
   return async function (dispatch) {
     // let one = `https://afrilearn-backend-01.herokuapp.com/api/v1/courses/${courseId}/subjects`;
     let two = `https://afrilearn-backend-01.herokuapp.com/api/v1/dashboard/topTen`;

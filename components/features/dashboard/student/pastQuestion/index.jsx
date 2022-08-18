@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 const PastQuestion = () => {
   const router = useRouter();
   let quary = router.query.Exam;
-  const subject = useSelector((state) => state.MySubject);
+  const subject = useSelector((state) => state.mySubjectCourse);
 
   const subjectDat = subject.pastQuestion[0]?.subjects;
 
@@ -37,7 +37,7 @@ const PastQuestion = () => {
       </div>
       <Row className="m-5 px-5">
         {subjectDat?.map((subjectData, i) => (
-          <div key={i} className={`col-md-2 ${styles1.mySubjectt}`}>
+          <div key={i} className={`col-md-2 ${styles1.MySubjectt}`}>
             <button
               className="modalButton"
               onClick={() => {

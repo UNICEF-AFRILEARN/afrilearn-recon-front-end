@@ -33,7 +33,7 @@ const Classnote = () => {
 export default Classnote;
 
 const ClassNoteVideo = ({ classData }) => {
-  const subject = useSelector((state) => state.MySubject);
+  const subject = useSelector((state) => state.mySubjectCourse);
   const lessons = subject.subjectDetails[1]?.relatedLessons;
   console.log(lessons);
   console.log(subject);

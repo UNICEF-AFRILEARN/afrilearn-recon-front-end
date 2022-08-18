@@ -1,7 +1,6 @@
 import * as types from "../types";
 
 const initialState = {
-  checkChange: true,
   subject: [],
   subjectDetails: [],
   pastQuestion:[],
@@ -24,11 +23,7 @@ const subjectReducer = (state = initialState, { type, payload }) => {
         ...state,
         subjectDetails: payload,
       };
-    case types.FETCH_CHECKCHANGE_SUCCESS:
-      return {
-        ...state,
-        checkChange: payload,
-      };
+
     case types.FETCH_PASTQUESTION_SUCCESS:
       return {
         ...state,

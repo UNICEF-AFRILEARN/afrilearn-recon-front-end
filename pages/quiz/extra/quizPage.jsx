@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 const QuizPage = () => {
   const router = useRouter();
-  const subject = useSelector((state) => state.MySubject);
+  const subject = useSelector((state) => state.mySubjectCourse);
   let quary = router.query.Exam;
   console.log(quary);
   const lessons = subject.subjectDetails[1]?.relatedLessons;
