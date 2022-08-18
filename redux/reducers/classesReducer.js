@@ -6,6 +6,7 @@ const initialState = {
     loading: false,
     classAnnouncement: [],
     postAnnouncement: [],
+    classDetails: [],
     error: [],
 }
 
@@ -44,6 +45,24 @@ export const classesReducer = (state = initialState, { type, payload} ) => {
         case types.FETCH_CLASS_ANNOUNCEMENT_FAIL:
             return {
                 loading: false,
+                ...state,
+                error: payload
+            };
+        case types.FETCH_CLASS_DETAILS_START:
+            return {
+                loading: true,
+                ...state
+            };
+    
+        case types.FETCH_CLASS_DETAILS_SUCCESS:
+            return {
+                loading: false,
+                classDetails: payload
+            };
+    
+        case types.FETCH_CLASS_DETAILS_FAIL:
+              return{
+                  loading: false,
                 ...state,
                 error: payload
             };

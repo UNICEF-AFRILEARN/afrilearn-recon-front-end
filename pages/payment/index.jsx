@@ -6,13 +6,20 @@ import {
   verifyPaystackPaymentInitiate,
   fetchTeacherPaymentPlansInitiate
 } from '../../redux/actions/payment';
+import { fetchClassDetailsInitiate } from '../../redux/actions/classes'
 import { usePaystackPayment } from 'react-paystack';
 
 import styles from "../../styles/payment.module.css"
+import PaymentDetails from './paymentModal';
 
 const payment = ({test_body}) => {
+  const [open, setOpen] = useState(false);
+  const handleClose = () => setOpen(false);
+  const handleOpen = () => setOpen(true);
+  const { classDetails } = useSelector((state) => state.schoolClasses)
   const dispatch = useDispatch();
   const [ userRole, setUserRole ] = useState("");
+  const [ classId, setClassId ] = useState("");
   const [price, setPrice] = useState('');
   const {roles, user } = useSelector((state) => state.auth)
   const {paymentPlans, teacherPaymentPlans} = useSelector((state) => state.myPayment)
@@ -64,9 +71,19 @@ const initializePayment = usePaystackPayment(config);
   const teacher_plans = teacherPaymentPlans.paymentPlans
   
   // Get user role to fetch the payment plans to display
-  console.log("user from payment", userRole)
+  console.log("classDetails from payment", classDetails?.class?.name)
 
+  const closeModal = () => {
+    setOpen(false)
+  }
 
+  useEffect(() => {
+    setClassId(user?.user?.enrolledCourses[0]?.classId)
+  }, [classId]);
+
+  useEffect(() => {
+    dispatch(fetchClassDetailsInitiate(classId))
+  }, [classId])
   useEffect(() => {
     setUserRole(user?.user?.role)
   }, [])
@@ -263,13 +280,15 @@ const initializePayment = usePaystackPayment(config);
                 <option value={"default"}>
                     Select a class
                 </option>
-    
-                {courseContext && courseContext.map((childClass) => 
                 <option 
                 placeholder='Select a Role'
-                    >{childClass.name}
+                    >{classDetails?.class?.name}
                 </option>
-                )}
+                <option 
+                placeholder='Select a Role'
+                    >Create new class
+                </option>
+
             </select>
 
       </div>
@@ -294,7 +313,13 @@ const initializePayment = usePaystackPayment(config);
               }}>PAY WITH CARD</button>
   </div>
     <div className={` col-md-6 ${styles.paymenttypeButton2}`}>
-      <button >BANK TRANSFER</button>
+      {/* <button >BANK TRANSFER</button> */}
+       <PaymentDetails
+    handleClose={handleClose}
+    handleOpen={handleOpen}
+    open={open}
+    closeModal={closeModal}
+  />
    </div>
 
  </div>
@@ -352,7 +377,13 @@ const initializePayment = usePaystackPayment(config);
               }}>PAY WITH CARD</button>
   </div>
     <div className={` col-md-6 ${styles.paymenttypeButton2}`}>
-      <button >BANK TRANSFER</button>
+      {/* <button >BANK TRANSFER</button> */}
+      <PaymentDetails
+    handleClose={handleClose}
+    handleOpen={handleOpen}
+    open={open}
+    closeModal={closeModal}
+  />
    </div>
 
  </div>
@@ -363,8 +394,13 @@ const initializePayment = usePaystackPayment(config);
 
 </div>
 }
-
-    </div>
+  {/* <PaymentDetails
+    handleClose={handleClose}
+    handleOpen={handleOpen}
+    open={open}
+    closeModal={closeModal}
+  /> */}
+</div>
   )
 }
 
