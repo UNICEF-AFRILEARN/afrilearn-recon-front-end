@@ -5,6 +5,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { HeroPageDetailed } from "../assignContent";
 import styles from "../teacher.module.css";
 import { fetchClassMembersInitiate } from '../../../../redux/actions/classes';
+import Link from "next/link";
 
 const MyStudent = () => {
   const [ classId, setClassId ] = useState("");
@@ -12,9 +13,6 @@ const MyStudent = () => {
   const { classMembers } = useSelector((state) => state.schoolClasses);
   const { user } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
-
-
-  console.log("classId from myStudent", classMembers.classMembers.length);
 
 
   const studentName = [
@@ -42,17 +40,14 @@ const MyStudent = () => {
     setClassId(user?.user?.enrolledCourses[0]?.classId)
   }, [classId]);
   useEffect(() => {
-    setStudentCount(classMembers?.classMembers.length)
-  }, [studentCount]);
+    setStudentCount(classMembers?.classMembers?.length)
+  }, [classMembers]);
 
 
   useEffect(() => {
     dispatch(fetchClassMembersInitiate(classId))
   },[classId]);
 
-
-
-  const studentNum = studentName.length;
   return (
     <>
       <div>
@@ -88,7 +83,7 @@ const MyStudent = () => {
             </h3>
           </Col>
         </Row>
-        {classMembers?.classMembers.map((studentName) => (
+        {classMembers?.classMembers?.map((studentName) => (
           <Row
             // key={i}
             className="mx-5 mt-3"
@@ -106,7 +101,9 @@ const MyStudent = () => {
             </Col>
             <Col md={5}>{studentName.userId.fullName}</Col>
             <Col md={5} style={{ color: "#AAA6A6" }}>
-              <u>View Performance</u>
+             <Link href='/performance'>
+                <u>View Performance</u>
+             </Link>
             </Col>
             <Col className="" style={{ color: "#FF5B5B" }}>
               Remove
