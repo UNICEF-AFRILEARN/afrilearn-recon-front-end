@@ -36,6 +36,28 @@ export const fetchClassDetailsFail = (error) => ({
     type: types.FETCH_CLASS_DETAILS_FAIL,
     payload: error
 });
+export const fetchClassMembersStart = () => ({
+    type: types.FETCH_CLASS_MEMBERS_START
+});
+export const fetchClassMembersSuccess = (payload) => ({
+    type: types.FETCH_CLASS_MEMBERS_SUCCESS,
+    payload
+});
+export const fetchClassMembersFail = (error) => ({
+    type: types.FETCH_CLASS_MEMBERS_FAIL,
+    payload: error
+});
+export const sendClassInviteStart = () => ({
+    type: types.SEND_CLASS_INVITE_START
+});
+export const sendClassInviteSuccess = (payload) => ({
+    type: types.SEND_CLASS_INVITE_SUCCESS,
+    payload
+});
+export const sendClassInviteFail = (error) => ({
+    type: types.SEND_CLASS_INVITE_FAIL,
+    payload: error
+});
 
 
 export const makeAnnouncementInitiate = (classId, text, token) =>  {
@@ -57,6 +79,30 @@ export const makeAnnouncementInitiate = (classId, text, token) =>  {
         })
         .catch((err) => {
             dispatch(makeAnnouncementFail(err))
+        })
+    }
+
+}
+export const sendClassInviteInitiate = (classCode, email, token) =>  {
+    return function (dispatch) {
+        dispatch(sendClassInviteStart())
+        axios
+        .post('https://afrilearn-backend-01.herokuapp.com/api/v1/classes/send-class-request',
+        {   
+            classCode,
+            email  
+        },{
+            headers: {
+                "token": token,
+                "Content-Type": "application/json",
+            }
+        })
+        .then((res) => {
+            dispatch(sendClassInviteSuccess(res.data))
+            console.log("From class Invite API =>", res.data)
+        })
+        .catch((err) => {
+            dispatch(sendClassInviteFail(err))
         })
     }
 
@@ -88,6 +134,21 @@ export const fetchClassDetailsInitiate = (classId) =>  {
         })
         .catch((err) => {
             dispatch(fetchClassDetailsFail(err))
+        } )
+    }
+
+}
+export const fetchClassMembersInitiate = (classId) =>  {
+    return function (dispatch) {
+        dispatch(fetchClassMembersStart())
+        axios
+        .get(`https://afrilearn-backend-01.herokuapp.com/api/v1/classes/${classId}/students`)
+        .then((res) => {
+            console.log("From Get class members API =>", res.data.data)
+            dispatch(fetchClassMembersSuccess(res.data.data))
+        })
+        .catch((err) => {
+            dispatch(fetchClassMembersFail(err))
         } )
     }
 

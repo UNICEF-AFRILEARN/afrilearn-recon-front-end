@@ -7,6 +7,8 @@ const initialState = {
     classAnnouncement: [],
     postAnnouncement: [],
     classDetails: [],
+    classMembers: [],
+    classInvite: [],
     error: [],
 }
 
@@ -61,6 +63,42 @@ export const classesReducer = (state = initialState, { type, payload} ) => {
             };
     
         case types.FETCH_CLASS_DETAILS_FAIL:
+              return{
+                  loading: false,
+                ...state,
+                error: payload
+            };
+        case types.FETCH_CLASS_MEMBERS_START:
+            return {
+                loading: true,
+                ...state
+            };
+    
+        case types.FETCH_CLASS_MEMBERS_SUCCESS:
+            return {
+                loading: false,
+                classMembers: payload
+            };
+    
+        case types.FETCH_CLASS_MEMBERS_FAIL:
+              return{
+                  loading: false,
+                ...state,
+                error: payload
+            };
+        case types.SEND_CLASS_INVITE_START:
+            return {
+                loading: true,
+                ...state
+            };
+    
+        case types.SEND_CLASS_INVITE_SUCCESS:
+            return {
+                loading: false,
+                classInvite: payload
+            };
+    
+        case types.SEND_CLASS_INVITE_FAIL:
               return{
                   loading: false,
                 ...state,

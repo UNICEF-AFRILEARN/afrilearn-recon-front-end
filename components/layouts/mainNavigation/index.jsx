@@ -103,6 +103,12 @@ const Navigation = () => {
                   <Link passHref href="/payment">
                     <li>Subscribe</li>
                 </Link>
+                <Link passHref href="/dashboard/teacher/classwork/mystudents">
+                    <li>My Student</li>
+                </Link>
+                <Link passHref href="/dashboard/teacher/classwork">
+                    <li>Classwork</li>
+                </Link>
                 <div className={styles.navicons}>
                   <span><BsSearch /></span>
                   <span><BsBell /></span>

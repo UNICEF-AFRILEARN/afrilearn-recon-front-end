@@ -31,7 +31,7 @@ const payment = ({test_body}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("price from payment", price)
+    console.log("price from payment", e.target)
 
 }
 
@@ -71,7 +71,7 @@ const initializePayment = usePaystackPayment(config);
   const teacher_plans = teacherPaymentPlans.paymentPlans
   
   // Get user role to fetch the payment plans to display
-  console.log("classDetails from payment", classDetails?.class?.name)
+
 
   const closeModal = () => {
     setOpen(false)
@@ -135,15 +135,15 @@ const initializePayment = usePaystackPayment(config);
    </div>
   {  userRole === "5fd08fba50964811309722d5" &&
      <div className={`col-md-6 ${styles.paymentSecondContainer}`} >
-        <form onSubmit={handleSubmit}>
+        <form >
     <div className='row'>
       <div className={styles.paymentLabel}><label for="className "><h5>Step 1: Select Class:</h5> </label></div>
       <div  >
            <select
                 className={`${styles.pushDown} form-control form-control-sm`}
-                // value={selectedCourse}
+                value={price}
                 defaultValue={"default"}
-                // onChange={(e) => setCourseSelected(e.target.value)}
+                onChange={(e) => setPrice(e.target.value)}
                 >
                 <option value={"default"}>
                     Select a class
@@ -267,65 +267,10 @@ const initializePayment = usePaystackPayment(config);
 
 {userRole === "602f3ce39b146b3201c2dc1d" &&
   <div className={`col-md-6 ${styles.paymentSecondContainer}`} >
-   <form onSubmit={handleSubmit}>
-    <div className='row'>
-      <div className={styles.paymentLabel}><label for="className "><h5>Step 1: Select Class:</h5> </label></div>
-      <div  >
-           <select
-                className={`${styles.pushDown} form-control form-control-sm`}
-                // value={selectedCourse}
-                defaultValue={"default"}
-                // onChange={(e) => setCourseSelected(e.target.value)}
-                >
-                <option value={"default"}>
-                    Select a class
-                </option>
-                <option 
-                placeholder='Select a Role'
-                    >{classDetails?.class?.name}
-                </option>
-                <option 
-                placeholder='Select a Role'
-                    >Create new class
-                </option>
-
-            </select>
-
-      </div>
-    </div> 
-  <h5>Step 3: Select Subscription Length</h5>
-  <div className={`row ${styles.paymentdurationButtons}`}>
-  <div className= {` col-md-3 ${styles.durationPayment}`}> 
-    {teacher_plans && teacher_plans.map((teacherPlans) =>
-        <button >
-        <div className={styles.durationBold}>{teacherPlans.name}</div>
-        <div>{teacherPlans.amount}</div >
-      </button>
-    )}
-  </div>
-  <div className= {` col-md-3 ${styles.durationPayment}`}> 
-  </div>
- <div className='row'>
-  <div className= {` col-md-6 ${styles.paymenttypeButton}`}>
-    <button 
-    onClick={() => {
-                initializePayment(onSuccess, onClose)
-              }}>PAY WITH CARD</button>
-  </div>
-    <div className={` col-md-6 ${styles.paymenttypeButton2}`}>
-      {/* <button >BANK TRANSFER</button> */}
-       <PaymentDetails
-    handleClose={handleClose}
-    handleOpen={handleOpen}
-    open={open}
-    closeModal={closeModal}
-  />
-   </div>
-
- </div>
-
-</div>
-</form> 
+   <form  onSubmit= {handleSubmit}>
+   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
+    <label for="vehicle1"> I have a bike</label>
+    </form> 
 
 
 </div>
