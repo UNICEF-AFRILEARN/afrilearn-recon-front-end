@@ -2,26 +2,14 @@ import { Col, Container, Modal, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from "next/router";
 import React, { useState} from "react";
-import Modal from 'react-bootstrap/Modal';
-import { resendpasswordEmail } from "../../../../redux/actions/auth";
+import { resendpasswordEmail } from "../../../../../redux/actions/auth";
+// import { resendpasswordEmail } from "../../../../../../redux/actions/auth";
 
-  const dispatch = useDispatch();
-  const  {formConfirmPassword}  = useSelector((state) => state.auth);
-  console.log( "reset user", formConfirmPassword)
-  const [password, setPassword] = useState(" ");
-  const [email, setEmail] = useState(" ");
-  const [confirmemail, setComfirmemail] = useState("")
-  const router = useRouter();
- 
-  const changePasword = (e) => {
-    e.preventDefault();
-     setShowresponse(formConfirmPassword)
-    dispatch(resendpasswordEmail(email, password));
-   
-  };
 
 const SecurityProfile = () => {
+
   const [modalShow, setModalShow] = useState(false);
+
   return (
     <Container className="w-50 mx-auto">
       <Row className="mb-4">
@@ -69,6 +57,23 @@ const SecurityProfile = () => {
 };
 
 function MyVerticallyCenteredModal(props) {
+
+  const [modalShow, setModalShow] = useState(false);
+  const dispatch = useDispatch();
+  const  {formConfirmPassword}  = useSelector((state) => state.auth);
+  console.log( "reset user", formConfirmPassword)
+  const [oldpassword, setoldPassword] = useState(" ");
+  const [newpassword, setnewPassword] = useState("")
+  const [confirmpassword, setComfirmpassword] = useState("")
+  const router = useRouter();
+
+  const changePasword = (e) => {
+    e.preventDefault();
+    //  setShowresponse(formConfirmPassword)
+    dispatch(resendpasswordEmail(email, password)); 
+  };
+
+
   return (
     <form onSubmit={changePasword}>
       <Modal
@@ -118,7 +123,7 @@ function MyVerticallyCenteredModal(props) {
               border: "1px solid #29465B",
               borderRadius: "5px",
             }}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => setnewPassword(e.target.value)}
           />
         </Col>
       </Row>
@@ -138,7 +143,7 @@ function MyVerticallyCenteredModal(props) {
               border: "1px solid #29465B",
               borderRadius: "5px",
             }}
-            onChange={(e) => setComfirmemail(e.target.value)}
+            onChange={(e) => setComfirmpassword(e.target.value)}
             
           />
         </Col>
