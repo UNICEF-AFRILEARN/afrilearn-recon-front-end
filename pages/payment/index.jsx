@@ -17,6 +17,10 @@ const payment = ({test_body}) => {
   const {roles, user } = useSelector((state) => state.auth)
   const {paymentPlans, teacherPaymentPlans} = useSelector((state) => state.myPayment)
 
+  //5fd08fba50964811309722d5 student
+//606ed82e70f40e18e029165e parent
+//602f3ce39b146b3201c2dc1d teacher
+//607ededa2712163504210684
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -56,15 +60,21 @@ const payment = ({test_body}) => {
 const initializePayment = usePaystackPayment(config);
 
   const courseContext = roles.courses;
-  const allPaymentPlans = paymentPlans.paymentPlans
+  const allPaymentPlans = paymentPlans.paymentPlans;
+  const teacher_plans = teacherPaymentPlans.paymentPlans
   
   // Get user role to fetch the payment plans to display
-  console.log("user.roles from payment", user.user?.role)
+  console.log("user from payment", userRole)
 
+
+  useEffect(() => {
+    setUserRole(user?.user?.role)
+  }, [])
 
   useEffect(() => {
     dispatch(fetchPaymentPlansInitiate())
   }, [])
+
   useEffect(() => {
     dispatch(fetchTeacherPaymentPlansInitiate())
   }, [])
@@ -106,9 +116,9 @@ const initializePayment = usePaystackPayment(config);
    </div>
  
    </div>
-
-   <div className={`col-md-6 ${styles.paymentSecondContainer}`} >
-   <form onSubmit={handleSubmit}>
+  {  userRole === "5fd08fba50964811309722d5" &&
+     <div className={`col-md-6 ${styles.paymentSecondContainer}`} >
+        <form onSubmit={handleSubmit}>
     <div className='row'>
       <div className={styles.paymentLabel}><label for="className "><h5>Step 1: Select Class:</h5> </label></div>
       <div  >
@@ -141,7 +151,8 @@ const initializePayment = usePaystackPayment(config);
         <div>{allPlans.amount}</div >
       </button>
     )}
-
+  </div>
+  <div className= {` col-md-3 ${styles.durationPayment}`}> 
   </div>
  <div className='row'>
   <div className= {` col-md-6 ${styles.paymenttypeButton}`}>
@@ -161,6 +172,197 @@ const initializePayment = usePaystackPayment(config);
 
 
 </div>
+}
+  {  userRole === "606ed82e70f40e18e029165e" &&
+     <div className={`col-md-6 ${styles.paymentSecondContainer}`} >
+        <form onSubmit={handleSubmit}>
+    <div className='row'>
+      <div className={styles.paymentLabel}><label for="className "><h5>Step 1: Select Class:</h5> </label></div>
+      <div  >
+           <select
+                className={`${styles.pushDown} form-control form-control-sm`}
+                // value={selectedCourse}
+                defaultValue={"default"}
+                // onChange={(e) => setCourseSelected(e.target.value)}
+                >
+                <option value={"default"}>
+                    Select a class
+                </option>
+    
+                {courseContext && courseContext.map((childClass) => 
+                <option 
+                placeholder='Select a Role'
+                    >{childClass.name}
+                </option>
+                )}
+            </select>
+           <select
+                className={`${styles.pushDown} form-control form-control-sm`}
+                // value={selectedCourse}
+                defaultValue={"default"}
+                // onChange={(e) => setCourseSelected(e.target.value)}
+                >
+                <option value={"default"}>
+                    Select a class
+                </option>
+    
+                {courseContext && courseContext.map((childClass) => 
+                <option 
+                placeholder='Select a Role'
+                    >{childClass.name}
+                </option>
+                )}
+            </select>
+
+      </div>
+    </div> 
+  <h5>Step 3: Select Subscription Length</h5>
+  <div className={`row ${styles.paymentdurationButtons}`}>
+  <div className= {` col-md-3 ${styles.durationPayment}`}> 
+    {allPaymentPlans && allPaymentPlans.map((allPlans) =>
+        <button >
+        <div className={styles.durationBold}>{allPlans.name}</div>
+        <div>{allPlans.amount}</div >
+      </button>
+    )}
+  </div>
+  <div className= {` col-md-3 ${styles.durationPayment}`}> 
+  </div>
+ <div className='row'>
+  <div className= {` col-md-6 ${styles.paymenttypeButton}`}>
+    <button 
+    onClick={() => {
+                initializePayment(onSuccess, onClose)
+              }}>PAY WITH CARD</button>
+  </div>
+    <div className={` col-md-6 ${styles.paymenttypeButton2}`}>
+      <button >BANK TRANSFER</button>
+   </div>
+
+ </div>
+
+</div>
+</form> 
+
+
+</div>
+}
+
+{userRole === "602f3ce39b146b3201c2dc1d" &&
+  <div className={`col-md-6 ${styles.paymentSecondContainer}`} >
+   <form onSubmit={handleSubmit}>
+    <div className='row'>
+      <div className={styles.paymentLabel}><label for="className "><h5>Step 1: Select Class:</h5> </label></div>
+      <div  >
+           <select
+                className={`${styles.pushDown} form-control form-control-sm`}
+                // value={selectedCourse}
+                defaultValue={"default"}
+                // onChange={(e) => setCourseSelected(e.target.value)}
+                >
+                <option value={"default"}>
+                    Select a class
+                </option>
+    
+                {courseContext && courseContext.map((childClass) => 
+                <option 
+                placeholder='Select a Role'
+                    >{childClass.name}
+                </option>
+                )}
+            </select>
+
+      </div>
+    </div> 
+  <h5>Step 3: Select Subscription Length</h5>
+  <div className={`row ${styles.paymentdurationButtons}`}>
+  <div className= {` col-md-3 ${styles.durationPayment}`}> 
+    {teacher_plans && teacher_plans.map((teacherPlans) =>
+        <button >
+        <div className={styles.durationBold}>{teacherPlans.name}</div>
+        <div>{teacherPlans.amount}</div >
+      </button>
+    )}
+  </div>
+  <div className= {` col-md-3 ${styles.durationPayment}`}> 
+  </div>
+ <div className='row'>
+  <div className= {` col-md-6 ${styles.paymenttypeButton}`}>
+    <button 
+    onClick={() => {
+                initializePayment(onSuccess, onClose)
+              }}>PAY WITH CARD</button>
+  </div>
+    <div className={` col-md-6 ${styles.paymenttypeButton2}`}>
+      <button >BANK TRANSFER</button>
+   </div>
+
+ </div>
+
+</div>
+</form> 
+
+
+</div>
+}
+
+{userRole === "607ededa2712163504210684" &&
+  <div className={`col-md-6 ${styles.paymentSecondContainer}`} >
+   <form onSubmit={handleSubmit}>
+    <div className='row'>
+      <div className={styles.paymentLabel}><label for="className "><h5>Step 1: Select Class:</h5> </label></div>
+      <div  >
+           <select
+                className={`${styles.pushDown} form-control form-control-sm`}
+                // value={selectedCourse}
+                defaultValue={"default"}
+                // onChange={(e) => setCourseSelected(e.target.value)}
+                >
+                <option value={"default"}>
+                    Select a class
+                </option>
+    
+                {courseContext && courseContext.map((childClass) => 
+                <option 
+                placeholder='Select a Role'
+                    >{childClass.name}
+                </option>
+                )}
+            </select>
+
+      </div>
+    </div> 
+  <h5>Step 3: Select Subscription Length</h5>
+  <div className={`row ${styles.paymentdurationButtons}`}>
+  <div className= {` col-md-3 ${styles.durationPayment}`}> 
+    {teacher_plans && teacher_plans.map((teacherPlans) =>
+        <button >
+        <div className={styles.durationBold}>{teacherPlans.name}</div>
+        <div>{teacherPlans.amount}</div >
+      </button>
+    )}
+  </div>
+  <div className= {` col-md-3 ${styles.durationPayment}`}> 
+  </div>
+ <div className='row'>
+  <div className= {` col-md-6 ${styles.paymenttypeButton}`}>
+    <button 
+    onClick={() => {
+                initializePayment(onSuccess, onClose)
+              }}>PAY WITH CARD</button>
+  </div>
+    <div className={` col-md-6 ${styles.paymenttypeButton2}`}>
+      <button >BANK TRANSFER</button>
+   </div>
+
+ </div>
+
+</div>
+</form> 
+
+
+</div>
+}
 
     </div>
   )

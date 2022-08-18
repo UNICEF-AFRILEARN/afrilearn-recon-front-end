@@ -64,7 +64,7 @@ export const fetchTeacherPaymentPlansInitiate = () =>  {
     return function (dispatch) {
         dispatch(fetchTeacherPaymentPlansStart())
         axios
-        .get('https://afrilearn-backend-01.herokuapp.com/api/v1/payments/plans'
+        .get('https://afrilearn-backend-01.herokuapp.com/api/v1/payments/teacher-plans'
         )
         .then((res) => {
             dispatch(fetchTeacherPaymentPlansSuccess(res.data))

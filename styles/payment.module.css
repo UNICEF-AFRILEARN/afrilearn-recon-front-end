@@ -25,6 +25,9 @@
   background-color: #29465b;
 }
 
+.pushDown {
+  margin: 15px;
+}
 .paymentfirstContainer p {
   height: 24px;
   margin: 6%;

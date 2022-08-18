@@ -25,6 +25,17 @@ export const fetchAnnouncementFail = (error) => ({
     type: types.FETCH_CLASS_ANNOUNCEMENT_FAIL,
     payload: error
 });
+export const fetchClassDetailsStart = () => ({
+    type: types.FETCH_CLASS_DETAILS_START
+});
+export const fetchClassDetailsSuccess = (payload) => ({
+    type: types.FETCH_CLASS_DETAILS_SUCCESS,
+    payload
+});
+export const fetchClassDetailsFail = (error) => ({
+    type: types.FETCH_CLASS_DETAILS_FAIL,
+    payload: error
+});
 
 
 export const makeAnnouncementInitiate = (classId, text, token) =>  {
@@ -62,6 +73,21 @@ export const fetchAnnouncementInitiate = (classId) =>  {
         })
         .catch((err) => {
             dispatch(fetchAnnouncementFail(err))
+        } )
+    }
+
+}
+export const fetchClassDetailsInitiate = (classId) =>  {
+    return function (dispatch) {
+        dispatch(fetchClassDetailsStart())
+        axios
+        .get(`https://afrilearn-backend-01.herokuapp.com/api/v1/classes/${classId}/basic-details`)
+        .then((res) => {
+            console.log("From Get class details API =>", res.data.data)
+            dispatch(fetchClassDetailsSuccess(res.data.data))
+        })
+        .catch((err) => {
+            dispatch(fetchClassDetailsFail(err))
         } )
     }
 
