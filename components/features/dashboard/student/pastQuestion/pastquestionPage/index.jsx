@@ -1,18 +1,32 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPastQuestionQueInitiate } from "../../../../../../redux/actions/subject";
 import pastQuestion from "../../extra/pastQuestion";
 import styles from "./pastQuestion.module.css";
 
-// import styles from qui
-
 const PastQuestion = () => {
+  const router = useRouter();
+  const dispatch = useDispatch();
+  let quary = router.query.Exam;
+  useEffect(() => {
+    console.log(quary);
+    if (quary !== "") {
+      dispatch(fetchPastQuestionQueInitiate(quary));
+    }
+  }, [quary]);
+
+  const subject = useSelector((state) => state.MySubject);
+  console.log(subject);
+  const subjectDat = subject.pastQuestionQue[0];
   const quizData = {
-    heading: "Junior WAEC:",
-    topic: "Agriculture Science 2000",
-    name: "Feyikemi",
-    subject: "Basic technology",
-    questionNo: 50,
+    heading: `${subjectDat.subject_details.exam_name}:`,
+    topic: `${subjectDat.subject_details.subject} ${subjectDat.subject_details.exam_year}`,
+    subject: subjectDat.subject_details.subject,
+    questionNo: subjectDat.subject_details.no_of_questions,
   };
 
   return (
@@ -70,7 +84,9 @@ const PastQuestion = () => {
                 <Col sm={6} className="d-flex justify-content-end p-0">
                   <Row className="">
                     <Col sm={1} className={styles.pastqueIcon1}></Col>
-                    <Col className="">TIME: 60MINS</Col>
+                    <Col className="">
+                      TIME: {subjectDat.subject_details.duration}
+                    </Col>
                   </Row>
                 </Col>
               </Row>
@@ -83,7 +99,8 @@ const PastQuestion = () => {
             <Row className="px-5">
               <Col sm={1} className={` ${styles.circleIcon}`}></Col>
               <Col className="px-2">
-                You are about to practice official questions set for WASSCE/GCE.
+                You are about to practice official questions set for
+                {subjectDat.subject_details.exam_name}.
               </Col>
             </Row>
           </Row>
@@ -118,7 +135,10 @@ const PastQuestion = () => {
             </Col>
           </Row>
           <div className="buttonSection pt-4">
-            <Link passHref href="/dashboard/student/pastQuestion/pastQuestionPage/pastExamQue">
+            <Link
+              passHref
+              href="/dashboard/student/pastQuestion/pastQuestionPage/pastExamQue"
+            >
               <button>GET STARTED</button>
             </Link>
           </div>

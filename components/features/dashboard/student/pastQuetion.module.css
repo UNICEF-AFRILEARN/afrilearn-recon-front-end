@@ -1,18 +1,11 @@
 .container {
   width: 1250px;
-  /* height: 152px; */
   margin: auto;
   justify-content: center;
   margin-bottom: 30px;
   column-gap: 20px;
-  /* display: flex; */
-  /* padding-bottom:10px ; */
-  /* flex-wrap: wrap; */
 }
 
-/* .cointainer ~ div {
-  padding-bottom: 15px;
-} */
 
 .containerList1 {
   width: 400px;
@@ -21,9 +14,6 @@
   box-shadow: inset 10.7637px 10.7637px 10.7637px rgba(0, 0, 0, 0.41),
     inset -10.7637px -10.7637px 10.7637px #56119a;
   border-radius: 29.3311px;
-  /* padding: 5px; */
-  /* margin-bottom: 10px; */
-  /* margin: 0 10px; */
   border: 10px solid white;
 }
 .containerList2 {
@@ -34,65 +24,36 @@
     inset -10.7637px -10.7637px 10.7637px #328f4c;
   border-radius: 29.3311px;
   padding: 5px;
-  /* margin-bottom: 10px; */
-  /* margin: 0 10px; */
   border: 10px solid white;
-
-
-
-}
-.containerList3 {
-  width: 400px;
-  height: 152px;
-  background: #009442;
-  box-shadow: inset 10.7637px 10.7637px 10.7637px rgba(0, 0, 0, 0.41),
-    inset -10.7637px -10.7637px 10.7637px #328f4c;
-  border-radius: 29.3311px;
-  /* padding: 5px; */
-  /* margin-bottom: 10px; */
-  /* margin: 0 10px; */
-
-  border: 10px solid white;
-
 }
 
 .cointainerListLeft1 {
   width: 100%;
-  height: 152px;
+  height: 100px;
   display: grid;
   filter: drop-shadow(5.86623px 5.86623px 5.86623px rgba(0, 0, 0, 0.25))
     drop-shadow(-5.86623px -5.86623px 5.86623px #340067);
   grid-template-columns: 30% 70%;
-  justify-content: center;
-  align-content: center;
+  margin-top: 10px;
 }
 .cointainerListLeft2 {
   width: 100%;
-  height: 152px;
+  height: 100px;
   display: grid;
   filter: drop-shadow(5.86623px 5.86623px 5.86623px rgba(0, 0, 0, 0.25))
     drop-shadow(-5.86623px -5.86623px 5.86623px #118330);
   grid-template-columns: 30% 70%;
-  justify-content: center;
-  align-content: center;
-}
-
-.cointainerListLeft3 {
-  width: 100%;
-  height: 152px;
-  display: grid;
-  filter: drop-shadow(5.86623px 5.86623px 5.86623px rgba(0, 0, 0, 0.25))
-    drop-shadow(-5.86623px -5.86623px 5.86623px #009442);
-  grid-template-columns: 30% 70%;
-  justify-content: center;
-  align-content: center;
+  margin-top: 10px;
 }
 
 .cointainerListLeftTop,
 .cointainerListLeftBottom {
   color: #fff;
+  margin-top: 20px;
 }
 .cointainerListLeftBottom {
+  margin-top: 0;
+
   font-size: 14px;
   font-weight: 300;
   color: #ffffff;

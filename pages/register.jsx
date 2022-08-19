@@ -4,7 +4,7 @@ import { API } from './api/client-side/fetcher'
 
 const Register = () => {
 
-  const { platformContext } = API.PlatformContext()
+  // const { platformContext } = API.PlatformContext()
 
   return (
     <>

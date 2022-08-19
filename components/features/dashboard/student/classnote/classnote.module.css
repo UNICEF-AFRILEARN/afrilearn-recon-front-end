@@ -1,18 +1,15 @@
 .accord {
-  /* width: 90%; */
-  height: 80px;
-  margin: auto;
-  /* background: #a80f0f; */
+  /* height: 80px; */
+  /* margin: auto; */
   border-radius: 10px;
 }
+
 
 .classs {
   margin: 50px 100px;
 }
 
-.accordHead:focus {
-  border: none;
-}
+
 
 .accordance {
   background-image: url("/assets/img/features/dashboard/student/button2.png");

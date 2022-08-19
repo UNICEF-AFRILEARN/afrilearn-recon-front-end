@@ -1,71 +1,49 @@
 import Image from "next/image";
 import styles from "./../../student/topInClass.module.css";
 import { useState } from "react";
-import { Modal, Button } from "react-bootstrap";
 
 const topInClass = ({ data }) => {
-  // console.log(data.thumbnailUrl);
-
+  const img = ["Group 2323", "Group 2324", "Group 2327", "Group 2328"];
+  const randomise = () => {
+    const num = Math.floor(Math.random() * 4);
+    return img[num];
+  };
   const [show, setShow] = useState(false);
   const toggleModal = () => setShow(!show);
 
   return (
     <>
-      {/* <SubHeading title={`Top in ${title.class}`} /> */}
       <div className={styles.cont}>
         <div className={styles.contList}>
-          <Image
-            alt={"afrilearn marketing video"}
-            src={data?.thumbnailUrl}
-            width={240}
-            height={160}
-            className={styles.rectBox}
-          />
-          <div className={styles.rect}>
-            <Image
-              alt={"afrilearn marketing video"}
-              src={`/assets/img/features/dashboard/student/Rectangle 7862.png`}
-              width={240}
-              height={160}
-            />
-          </div>
-
-          <div className={styles.play_pause} onClick={toggleModal}>
-            <Image
-              alt={"afrilearn marketing video"}
-              src={`/assets/img/features/dashboard/student/Play.png`}
-              width={35}
-              height={35}
-            />
-          </div>
-          <div className={styles.play_text}>
-            <h6>{data?.subject}</h6>
-            <p>{data?.title}</p>
+          <div className={styles.rect} onClick={toggleModal}>
+            {data.thumbnailUrl ? (
+              <Image
+                alt={"afrilearn marketing video"}
+                src={data.thumbnailUrl}
+                width={240}
+                height={160}
+              />
+            ) : data.videoUrls.length ? (
+              <Image
+                alt={"afrilearn marketing video"}
+                src={`/assets/img/features/dashboard/student/random/${randomise()}.png`}
+                width={240}
+                height={160}
+              />
+            ) : (
+              <Image
+                alt={"afrilearn marketing video"}
+                src={`/assets/img/features/dashboard/student/random/classnote.png`}
+                width={240}
+                height={160}
+              />
+            )}{" "}
           </div>
         </div>
-
-        <Modal
-          show={show}
-          onHide={toggleModal}
-          backdrop="static"
-          keyboard={false}
-          className={styles.trendingModalClass}
-        >
-          <video
-            src={data?.videoUrl}
-            width="800px"
-            height="auto"
-            controls
-            autoPlay
-          />
-          <Button
-            variant="secondary"
-            onClick={toggleModal}
-            className={styles.backgroundColor}
-          >
-            Close
-          </Button>
-        </Modal>
+      </div>
+      <div className={styles.play_text}>
+        <h6>{data?.subjectId?.mainSubjectId.name}</h6>
+        <p>{data?.title}</p>
       </div>
     </>
   );

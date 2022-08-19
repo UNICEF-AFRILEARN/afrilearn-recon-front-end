@@ -36,15 +36,15 @@ export const forgotPasswordfail = (error) => ({
 
 // CHANGE PASSWORD
 export const changePasswordstart = (params) => ({
-  type: types.FORGOTPASSWORD_USER_START,
+  type: types.STUDENT_PASSWORDCHANGE_START,
   payload : params
 });
 export const changePasswordsuccess = (payload) => ({
-  type: types.FORGOTPASSWORD_USER_SUCCESS,
+  type: types.STUDENT_PASSWORDCHANGE_SUCCESS,
   payload,
 });
 export const changePasswordfail = (error) => ({
-  type: types.FORGOTPASSWORD_USER_SUCCESS,
+  type: types.STUDENT_PASSWORDCHANGE_SUCCESS,
   payload : error,
 });
 
@@ -95,7 +95,7 @@ export const resetpasswordFail = (error) => ({
   payload: error,
 });
 
-// RESETPASSWORD
+// RESETPASSWORDLOGIC
 export const resendpasswordEmail = (email, password) => {
 
   return function (dispatch) {
@@ -139,7 +139,7 @@ axios
   .catch((err) => dispatch( editclassFail(err)))
 }}
 
-// Updateprofile
+// UPDATEPROFILE
 export const sendeditedprofileInitiate = (data, token) => {
     return function (dispatch) {
      
@@ -166,24 +166,6 @@ export const sendeditedprofileInitiate = (data, token) => {
 }}
 
 
-// CHANGE PASSWORD
-export const sendChangepasswordemail = (email, password) => {
-
-  return function (dispatch) {
-      dispatch(changePasswordstart());
-      axios
-        .post(`https://afrilearn-backend-01.herokuapp.com/api/v1/auth/change-password`, {
-          email,
-          password
-        })
-        .then((res) => {
-          console.log(" response", res.data.message);
-          dispatch(changePasswordsuccess (res.data.message))
-        })
-        .catch((err) => dispatch(changePasswordfail(err)))
-  }
-}
-
 // FORGOT PASSWORD
 export const sendForgotpasswordemail = (email) => {
 
@@ -203,6 +185,81 @@ export const sendForgotpasswordemail = (email) => {
   }
 } 
 
+//CHANGEPASSWORD
+export const  changepasswordInitiate = (data, token) => {
+  return function (dispatch) {
+   
+dispatch(changePasswordstart());
+axios
+  .patch(
+    `https://afrilearn-backend-01.herokuapp.com/api/v1/auth/profile-update`,
+    {data},
+    {
+      headers:{
+        'token':token
+      }
+    }
+  )
+  
+  .then((res) => {
+    console.log("data is collected", res.data)
+    dispatch(changePasswordstart(res.data.data));
+  })
+  // .then((err) => {
+  //   console.log(err);
+  // });
+  .catch((err) => dispatch(changePasswordstart(err)))
+}}
+
+export const registerUserStart = () => ({
+  type: types.REGISTER_USER_START,
+
+});
+export const registerUserSuccess = (payload) => ({
+  type: types.REGISTER_USER_SUCCESS,
+  payload
+});
+
+export const registerUserFail = (error) => ({
+  type: types.REGISTER_USER_FAIL,
+  payload: error
+});
+
+export const googleSocialLoginStart = () => ({
+  type: types.GOOGLE_SOCIAL_LOGIN_START,
+});
+
+export const googleSocialLoginSuccess = (payload) => ({
+type: types.GOOGLE_SOCIAL_LOGIN_SUCCESS,
+payload
+});
+
+export const googleSocialLoginFail = (error) => ({
+type: types.GOOGLE_SOCIAL_LOGIN_FAIL,
+payload: error
+});
+
+
+
+export const googleLoginInitiate = (token) => {
+  return function (dispatch) {
+      dispatch(googleSocialLoginStart())
+      axios
+      .post("http://localhost:5000/api/v1/api/v1/auth/social_login/google",
+          {   data  },
+      {
+          headers: {
+              "token": token
+          }
+      })
+      .then((res) => {
+              console.log("API Google login params", res.data)
+              dispatch(googleSocialLoginSuccess(res.data))
+          })
+          .catch((error) => dispatch(googleSocialLoginFail(error)))
+  }   
+}
+
 export const loginInitiate = (email, password) => {
   return function (dispatch) {
       dispatch(loginUserStart());
@@ -215,6 +272,7 @@ export const loginInitiate = (email, password) => {
           console.log("login response", res.data.data);
           dispatch(loginUserSuccess(res.data.data))
         })
+        .catch((err) => dispatch(loginUserFail(err.response.data)))
         // .catch((err) => dispatch(loginUserFail(err.res.data.message)))
   }
 } 
@@ -232,3 +290,38 @@ export const fetchRoles = () => (dispatch) => {
       //   dispatch(fetchBookFailure(erroMesage));
     });
 };
+
+export const registerUserInitiate = (
+  fullName, 
+  email, 
+  password, 
+  confirmPassword, 
+  role, 
+  course,
+  phoneNumber,
+  referral) =>  {
+  return function (dispatch) {
+      dispatch(registerUserStart())
+      axios
+      .post('https://afrilearn-backend-01.herokuapp.com/api/v1/auth/signup',
+      {   
+        fullName, 
+        email, 
+        password, 
+        confirmPassword, 
+        role, 
+        course,
+        phoneNumber,
+        referral
+      })
+      .then((res) => {
+        dispatch(registerUserSuccess(res.data.data))
+        console.log("User registration API ==>", res.data.data);
+      })
+      .catch((err) => {
+          dispatch(registerUserFail(err))
+      })
+  }
+
+}
+

@@ -65,21 +65,85 @@ const initialState = {
   faculties: [],
   updateForm: [],
   updateClass: [],
+  changePassword:"",
   socialCampaign: false,
+  roles: [],
+  classes: [],
+  user: [],
+  teachers: 0,
+  allUsers: 0,
+  registerUser: [],
 };
 
-const authReducer = (state = initialState, { type, payload }) => {
-  switch (type) {
-    case types.LOGIN_USER_START:
-      return {
-        ...state,
-      };
+// const authReducer = (state = initialState, { type, payload }) => {
+//   switch (type) {
+//     case types.LOGIN_USER_START:
+//       return {
+//         ...state,
+//       };
 
-    case types.LOGIN_USER_SUCCESS:
-      return {
-        ...state,
-        user: payload,
-      };
+//     case types.LOGIN_USER_SUCCESS:
+//       return {
+//         ...state,
+//         user: payload,
+//       };
+
+
+const authReducer = (state = initialState, {type, payload}) => {
+    switch (type) {
+        case types.LOGIN_USER_START:
+            return {
+                ...state
+            }
+        case types.LOGIN_USER_SUCCESS:
+            return {
+                ...state,
+                user: payload
+            }
+        case types.LOGIN_USER_FAIL:
+            return {
+                ...state,
+                error: payload
+            }
+        case types.REGISTER_USER_START:
+                return {
+                    ...state
+                }
+        case types.REGISTER_USER_SUCCESS:
+                return {
+                    ...state,
+                    registerUser: payload
+                }
+        case types.REGISTER_USER_FAIL:
+            return {
+                ...state,
+                error: payload
+            }
+        case types.GET_ROLES_SUCCESS:
+            return {
+                ...state,
+                roles: payload,
+                classes: payload,
+                students: payload,
+                teachers: payload,
+                numberOfClassNote: payload,
+                numberOfQuizQuestions: payload,
+                allUsers: payload,
+              };
+        case types.GOOGLE_SOCIAL_LOGIN_START:
+                return {
+                    ...state
+                }
+        case types.GOOGLE_SOCIAL_LOGIN_SUCCESS:
+                return {
+                    ...state,
+                    googleLoggedIn: payload
+                }
+        case types.GOOGLE_SOCIAL_LOGIN_FAIL:
+            return {
+                ...state,
+                error: payload
+            }
 
     case types.LOGIN_USER_FAIL:
       return {
@@ -148,23 +212,22 @@ const authReducer = (state = initialState, { type, payload }) => {
         ...state,
         error: payload,
       };
-  //CHANGE PASSWORD
-  
-   case types.STUDENT_CHANGEPASSWORD_START:
-    return {
-      ...state,
-    };
-  case types.STUDENT_CHANGEPASSWORD_SUCCESS:
-    return {
-      ...state,
-      updatePassword: payload,
-    };
-  case types.STUDENT_CHANGEPASSWORD_FAIL:
-    return {
-      ...state,
-      error: payload,
-    };
-
+  // CHANGE PASSWORD
+  case types.STUDENT_PASSWORDCHANGE_START:
+      return {
+        ...state,
+      };
+    case types.STUDENT_PASSWORDCHANGE_SUCCESS:
+      return {
+        ...state,
+        changePassword: payload,
+      };
+    case types.STUDENT_PASSWORDCHANGE_FAIL:
+      return {
+        ...state,
+        error: payload,
+      };
+ 
     default:
       return state;
   }

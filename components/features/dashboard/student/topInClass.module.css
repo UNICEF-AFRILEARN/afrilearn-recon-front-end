@@ -1,11 +1,6 @@
 .cont {
   width: 240px;
-  /* display: flex; */
-  height: 250px;
-  /* background-color: gray; */
-  /* flex-wrap: wrap; */
-  /* justify-content: center; */
-  /* gap: 10px; */
+  height: 160px;
   margin: auto;
 }
 .contList {
@@ -39,7 +34,7 @@
 }
 .play_text {
   width: 240px;
-  padding: 5px;
+  padding: 10px 15px;
 }
 
 .play_text h6 {

@@ -9,25 +9,36 @@ import Selectitem from '../../../widgets/appSelect/appSelect';
 import ReactModal from 'react-modal'
 import { Button, Modal } from 'react-bootstrap';
 
-import { fetchRoles } from "../../../../redux/actions/auth";
+import { fetchRoles, registerUserInitiate } from "../../../../redux/actions/auth";
 
-import {API} from '../../../../pages/api/client-side/fetcher';
+// import {API} from '../../../../pages/api/client-side/fetcher';
+import Router, { useRouter } from 'next/router'
+import { fetchSubjectsInitiate } from '../../../../redux/actions/subjects';
 
 const Register = (props) => {
+  const { user } = useSelector(state => state.auth);
+  const { subjects} = useSelector(state => state.mySubject);
   const [roleSelected, setRoleSelected] = useState('');
-  const [courseSelected, setCourseSelected] = useState('');
+  const [role, setRole] = useState('');
+  const [classCategory, setClassCategory] = useState('');
+  const [subject, setSubject] = useState('');
+  const [subjectSelected, setSubjectSelected] = useState('');
+  const [course, setCourse] = useState('');
+  const [courseId, setCourseId] = useState('');
   const [fullName, setFullName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [referralCode, setReferralCode] = useState('');
+  const [schoolName, setSchoolName] = useState('');
+  const [referral, setReferral] = useState('');
 
 
 
   const [fullscreen, setFullscreen] = useState(true);
   const [show, setShow] = useState(false);
   const rolesCollected = useSelector((state) => state.auth)
+  const { allSubjects } = useSelector((state) => state.mySubject)
   const dispatch = useDispatch()
   
   function handleShow(breakpoint) {
@@ -38,27 +49,125 @@ const Register = (props) => {
   // const profile = {}
   const rolesContext = rolesCollected.roles.roles;
   const courseContext = rolesCollected.roles.courses;
-  console.log("courses from the UI ==>", courseContext);
+  // console.log("roles from the UI ==>", rolesContext);
+  // console.log("Registered user", courseContext)
+  
+  // const mySubjects = allSubjects.subjects
+  // const filteredSub = allSubjects.filter((filtSubj) => filtSubj.courseId?.id === '5fc8cfbb81a55b4c3c19737d')
+  // console.log("allSubjects from register",  filteredSub);
 
-  // const handleChanges = (value) => {
-      // console.log("vlaue received =>", value)
-    // profile[key] = value
-    // console.log('User Signup Profile\n', profile)
-  // }
+  //Function to filter subjects objects
+let filteredSub = []
+  const sortSubjects = (subjectsObj, id) => {
+    filteredSub = subjectsObj.filter((filtSubj) => filtSubj.courseId?.id === id)
+      return filteredSub;
+  }
 
-  const handleRegisterRequest = (e) => {
-    e.preventDefault()
-    console.log(roleSelected)
-    console.log(courseSelected)
-    console.log(fullName)
-    console.log(phone)
-    console.log(email)
-    console.log(password)
-    console.log(confirmPassword)
-    console.log(referralCode)
+
+
+
+console.log("Filtered ====>", allSubjects)
+
+  const getRoleId = () => {
+      if (roleSelected === "Student") {
+        setRole("5fd08fba50964811309722d5")
+      }else if(roleSelected === "Teacher"){
+        setRole("602f3ce39b146b3201c2dc1d")
+      }else if(roleSelected === "Parent"){
+        setRole("606ed82e70f40e18e029165e")
+      }else if(roleSelected === "School"){
+        setRole("607ededa2712163504210684")
+      }
+  }
+
+  const setClassId = () => {
+    if(course === 'Primary One'){
+      setCourseId('5fc8cfbb81a55b4c3c19737d')
+    }else if(course === 'Primary Two'){
+      setCourseId('5fd12c70e74b15663c5f4c6e')
+    }else if(course === 'Primary Three'){
+      setCourseId('5fff5a67de0bdb47f826fea8')
+    }else if(course === 'Primary Four'){
+      setCourseId('5fff5a7ede0bdb47f826fea9')
+    }else if(course === 'Primary Five'){
+      setCourseId('5fff5aaede0bdb47f826feaa')
+    }else if(course === 'Primary Six'){
+      setCourseId('5fff5abede0bdb47f826feab')
+    }else if(course === 'JSS One'){
+      setCourseId('5fff72b3de0bdb47f826feaf')
+    }else if(course === 'JSS Two'){
+      setCourseId('5fff7329de0bdb47f826feb0')
+    }else if(course === 'Jss Three'){
+      setCourseId('5fff734ade0bdb47f826feb1')
+    }else if(course === 'SSS One'){
+      setCourseId('5fff7371de0bdb47f826feb2')
+    }else if(course === 'SSS Two'){
+      setCourseId('5fff7380de0bdb47f826feb3')
+    }else if(course === 'SSS Three'){
+      setCourseId('5fff7399de0bdb47f826feb4')
+    }else if(course === 'Afrilearn KidsCode'){
+      setCourseId('629dbb4c5a5f270016033712')
+    }else if(course === 'Secondary'){
+      setCourseId('605b218f8636bc00158b4ad7')
+    }else if(course === 'Primary'){
+      setCourseId('605b21868636bc00158b4ad6')
+    }
+       
+  }
+
+  //function to filter subjects:
+sortSubjects(allSubjects, courseId)
+console.log("courseId =======>", courseId)
+  
+ 
+
+  const setClassSubject = () => {
 
   }
 
+  const handleRegisterRequest = (e) => {
+    e.preventDefault()
+    dispatch(registerUserInitiate(
+      fullName, 
+      email, 
+      password, 
+      confirmPassword, 
+      role, 
+      course,
+      courseId,
+      phoneNumber,
+      referral
+      ))
+
+      if(role === "5fd08fba50964811309722d5"){
+        Router.push('/dashboard/student')
+      }else if(role === '602f3ce39b146b3201c2dc1d'){
+        Router.push('/dashboard/teacher')
+      }else if(role === '606ed82e70f40e18e029165e'){
+        Router.push('/dashboard/parent')
+      }else if(role === '607ededa2712163504210684'){
+        Router.push('/school')
+      }
+    
+  }
+
+
+  useEffect(() => {
+    setClassId()
+  },[setClassId])
+
+useEffect(() => {
+  dispatch(fetchSubjectsInitiate())
+  
+}, [])
+
+useEffect(() => {
+  dispatch(fetchSubjectsInitiate())
+}, [])
+
+  useEffect(() => {
+   getRoleId();
+  }, [getRoleId])
 
   useEffect(() => {
     dispatch(fetchRoles())
@@ -100,20 +209,42 @@ const Register = (props) => {
                       </option>
                       )}
                   </select>
-                  <select 
-                    onChange={(e) => setCourseSelected(e.target.value)}
-                    className={`${styles.pushDown} form-control form-control-sm`}
-                    defaultValue={"default"}
-                    >
-                      <option value={"default"}>
-                         Select a Class
-                      </option>
-                      {courseContext && courseContext.map((classes) => 
-                      <option
-                      value={classes.name}
-                      >{classes.name}</option>
-                      )}
-                  </select>
+                  { role !== '606ed82e70f40e18e029165e' && role !== '607ededa2712163504210684' &&
+
+                          <select 
+                          onChange={(e) => setCourse(e.target.value)}
+                          className={`${styles.pushDown} form-control form-control-sm`}
+                          defaultValue={"default"}
+                          >
+                            <option value={"default"}>
+                              Select a Class
+                            </option>
+                            {courseContext && courseContext.map((classes) => 
+                            <option
+                            value={classes.name}
+                            >{classes.name}</option>
+                            )}
+                          </select>
+
+                  }
+                  { role === '602f3ce39b146b3201c2dc1d' &&
+
+                      <select 
+                      onChange={(e) => setSubjectSelected(e.target.value)}
+                      className={`${styles.pushDown} form-control form-control-sm`}
+                      defaultValue={"default"}
+                      >
+                        <option value={"default"}>
+                          Select a Subject
+                        </option>
+                        {filteredSub && filteredSub.map((classes) => 
+                            <option
+                            value={classes.mainSubjectId.name}
+                            >{classes.mainSubjectId.name}</option>
+                            )}
+                      </select>
+
+                  }
                 <input 
                   name={'fullName'} 
                   type='text'
@@ -123,14 +254,47 @@ const Register = (props) => {
                   placeholder='Full Name' 
                   className={styles.pushDown} 
                 />
+                  { role === '607ededa2712163504210684' &&
+                    <input 
+                    name={'schoolName'} 
+                    type='text'
+                    value={schoolName}
+                    onChange={(e) => setSchoolName(e.target.value)} 
+                    title='schoolName' 
+                    placeholder='School Name' 
+                    className={styles.pushDown} 
+                  />
+                  }
+                   { role === '607ededa2712163504210684' &&
+
+                      <select 
+                          onChange={(e) => setCourse(e.target.value)}
+                          className={`${styles.pushDown} form-control form-control-sm`}
+                          defaultValue={"default"}
+                          >
+                            <option value={"default"}>
+                              Select Class Category
+                            </option>
+                            <option
+                            value={"Primary"}
+                            >Primary</option>
+                            <option
+                            value={"Secondary"}
+                            >Secondary</option>
+                            
+                      </select>
+
+                    }
+                  
                 <input 
                   name={'phone'} 
                   type='text'
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)} 
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)} 
                   title='Phone Number' 
                   placeholder='Phone Number' 
                   className={styles.pushDown} 
+                  
                 />
                 <input 
                   name={'email'} 
@@ -140,6 +304,7 @@ const Register = (props) => {
                   title='Email' 
                   placeholder='Email' 
                   className={styles.pushDown} 
+                  
                 />
                 <input 
                   name={'password'} 
@@ -158,9 +323,9 @@ const Register = (props) => {
                 />
                 <input 
                   name={'referralCode'}
-                  value={referralCode}
+                  value={referral}
                   type='text' 
-                  onChange={(e) => setReferralCode(e.target.value)} title='Referral Code' 
+                  onChange={(e) => setReferral(e.target.value)} title='Referral Code' 
                   placeholder='Referral Code (optional)' 
                   className={`${styles.pushDown} ${styles.pushUp}`} 
                 />
@@ -177,6 +342,7 @@ const Register = (props) => {
                     <span><Image alt={"design image"} src={'/assets/img/common/login/facebook.png'} width={23} height={23} /> <span className={styles.socialText}>Facebook</span></span>
                   </div>
                 </div>
+                
               </form>
             </span>
             <p className={`center ${styles.afterSocialText}`}>Already have an account? <Link passHref href='/login'><b>Log In</b></Link></p>
