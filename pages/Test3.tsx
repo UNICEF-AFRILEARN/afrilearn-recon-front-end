@@ -1,15 +1,15 @@
-import React from 'react';
-import Head from 'next/head'
-import type { NextPage } from 'next'
-import Modal from '../components/common/Popup/index';
-import  Result from '../components/common/QuizResult';
+// import React from 'react';
+// import Head from 'next/head'
+// import type { NextPage } from 'next'
+// import Modal from '../components/common/Popup/index';
+// import  Result from '../components/common/QuizResult';
 
-const Test3: NextPage = () =>{
-    return(
+// const Test3: NextPage = () =>{
+//     return(
        
-    <Result></Result>
+//     <Result></Result>
  
-   )
-}
+//    )
+// }
 
-export default Test3; 
+// export default Test3; 
