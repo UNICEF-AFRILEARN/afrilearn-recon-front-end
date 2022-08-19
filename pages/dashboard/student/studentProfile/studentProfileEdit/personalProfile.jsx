@@ -42,7 +42,6 @@ const PersonalProfile = () => {
   
 useEffect(() => {
   if(user.user?.token === 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjJhMGJjOTg0YWYyZDkwMDE2YjcyMDk2Iiwicm9sZSI6IjVmZDA4ZmJhNTA5NjQ4MTEzMDk3MjJkNSIsImZ1bGxOYW1lIjoiTWljaGFlbCBPbGFkZWxlIn0sImlhdCI6MTY1OTYxNDI2NiwiZXhwIjoxNjYyMjA2MjY2fQ.x0H_plJQuRadJ1E_C4KNiM8JwK8Y-_CzWMWLa0HNdkA'){
-  
   }
 }, [user])
 
@@ -61,7 +60,6 @@ useEffect(() => {
                 <input
                   btn-outline-light
                   className="p-4"
-                  disabled
                   type="text"
                   placeholder={`fullname`}
                   style={{
@@ -84,7 +82,6 @@ useEffect(() => {
               <Col md={7}>
                 <input
                   className="p-4"
-                  disabled
                   placeholder="email"
                   style={{
                     width: "670px",
