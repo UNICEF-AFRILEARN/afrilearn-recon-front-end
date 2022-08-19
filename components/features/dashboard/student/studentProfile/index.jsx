@@ -218,7 +218,7 @@ const StudentProfile = () => {
                       fontSize: "20px",
                     }}
                   >
-                    {number !== "" ? { number } : "--"}
+                    {user?.user?.state !== "" ? user?.user?.state : "--"}
                   </span>
                 </p>
               </Row>
@@ -238,7 +238,7 @@ const StudentProfile = () => {
                       fontSize: "20px",
                     }}
                   >
-                    {number !== "" ? { number } : "--"}
+                    {user?.user?.gender !== "" ? user?.user?.gender : "--"}
                   </span>
                 </p>
               </Row>

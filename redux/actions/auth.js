@@ -166,8 +166,8 @@ export const editTeacherProfileInitiate = (token, fullName, email, age, phoneNum
               }
           })
       .then((res) => {
-              console.log("FROM Edit teacher profile", res.data)
-              dispatch(editTeacherProfileSuccess(res.data))
+              console.log("FROM Edit teacher profile", res.data.data)
+              dispatch(editTeacherProfileSuccess(res.data.data))
           })
           .catch((error) => dispatch(editTeacherProfileFail(error)))
   }   

@@ -18,9 +18,6 @@ const PersonalSelectionClass = () => {
   const [buttonPush, setButtonPush] = useState("on");
   const [valued, setValued] = useState("");
 
-  // {
-  //   <PersonalClassSubmit data={placehold} />;
-  // }
 
   const classes = [
     "PRIMARY ONE",

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Router, { useRouter } from 'next/router'
  import styles from "../../../../components/features/dashboard/school/addstudent.module.css";
- import { sendClassInviteInitiate} from '../../../../redux/actions/classes';
+ import { sendClassEmailInviteInitiate} from '../../../../redux/actions/classes';
 
 
 const Addnewstudent = () => {
@@ -23,7 +23,7 @@ const Addnewstudent = () => {
     
     const handleSubmit = (e) => {
       e.preventDefault()
-      dispatch(sendClassInviteInitiate(classCode, email, token))
+      dispatch(sendClassEmailInviteInitiate(classCode, email, token))
 
     }
 

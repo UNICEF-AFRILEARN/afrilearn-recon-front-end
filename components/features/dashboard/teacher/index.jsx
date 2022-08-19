@@ -161,26 +161,6 @@ export const HeropageWelcome = () => {
                     </Link>
                   </Col>
                   <Col md={3} className="">
-                    {/* <Link
-                      passHref
-                      href="/dashboard/teacher/addnewadmin"
-                    >
-                      <a>
-                        <Row className="px-auto">
-                          <Col
-                            md={2}
-                            className={`${styles.studentProfilePenIcon1}`}
-                          ></Col>
-                          <Col
-                            className={`p-0 ${styles.studentProfileColorText}`}
-                            style={{ color: "#00D9B6" }}
-                          >
-                            <u>Add Admin</u>
-                          </Col>
-                        </Row>
-                        
-                      </a>
-                    </Link> */}
                   </Col>
                 </Row>
               </Row>
@@ -212,9 +192,6 @@ export const TeacherAnnouncement = () => {
   let token = user?.token;
   let classId = user?.user?.classOwnership[0]?.enrolledCourse?.classId
   
-  //Convert created at to dateTime:
-  // var createdDate = this.props.message.createdAt,
-  //     cdate = (new Date(cts)).toString();
 
   //Convert created at to dateTime:
   const formatter = new Intl.DateTimeFormat("en-GB", {
@@ -311,7 +288,6 @@ export const TeacherAnnouncement = () => {
     {  
     classAnnouncement?.announcements && classAnnouncement?.announcements.map((announceMessage) => 
     <Row
-    // key={task.id}
     className="mt-4"
     style={{
       border: "1px solid #A6A6A6",

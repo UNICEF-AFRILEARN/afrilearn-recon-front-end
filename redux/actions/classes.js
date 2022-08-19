@@ -47,15 +47,15 @@ export const fetchClassMembersFail = (error) => ({
     type: types.FETCH_CLASS_MEMBERS_FAIL,
     payload: error
 });
-export const sendClassInviteStart = () => ({
-    type: types.SEND_CLASS_INVITE_START
+export const sendClassEmailInviteStart = () => ({
+    type: types.SEND_CLASS_EMAIL_INVITE_START
 });
-export const sendClassInviteSuccess = (payload) => ({
-    type: types.SEND_CLASS_INVITE_SUCCESS,
+export const sendClassEmailInviteSuccess = (payload) => ({
+    type: types.SEND_CLASS_EMAIL_INVITE_SUCCESS,
     payload
 });
-export const sendClassInviteFail = (error) => ({
-    type: types.SEND_CLASS_INVITE_FAIL,
+export const sendClassEmailInviteFail = (error) => ({
+    type: types.SEND_SEND_CLASS_EMAIL_INVITE_FAIL,
     payload: error
 });
 
@@ -83,14 +83,14 @@ export const makeAnnouncementInitiate = (classId, text, token) =>  {
     }
 
 }
-export const sendClassInviteInitiate = (classCode, email, token) =>  {
+export const sendClassEmailInviteInitiate = (classCode, email, token) =>  {
     return function (dispatch) {
-        dispatch(sendClassInviteStart())
+        dispatch(sendClassEmailInviteStart())
         axios
-        .post('https://afrilearn-backend-01.herokuapp.com/api/v1/classes/send-class-request',
+        .post('https://afrilearn-backend-01.herokuapp.com/api/v1/classes/send-class-invite',
         {   
             classCode,
-            email  
+            email
         },{
             headers: {
                 "token": token,
@@ -98,11 +98,11 @@ export const sendClassInviteInitiate = (classCode, email, token) =>  {
             }
         })
         .then((res) => {
-            dispatch(sendClassInviteSuccess(res.data))
+            dispatch(sendClassEmailInviteSuccess(res.data))
             console.log("From class Invite API =>", res.data)
         })
         .catch((err) => {
-            dispatch(sendClassInviteFail(err))
+            dispatch(sendClassEmailInviteFail(err))
         })
     }
 

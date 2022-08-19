@@ -86,19 +86,19 @@ export const classesReducer = (state = initialState, { type, payload} ) => {
                 ...state,
                 error: payload
             };
-        case types.SEND_CLASS_INVITE_START:
+        case types.SEND_CLASS_EMAIL_INVITE_START:
             return {
                 loading: true,
                 ...state
             };
     
-        case types.SEND_CLASS_INVITE_SUCCESS:
+        case types.SEND_CLASS_EMAIL_INVITE_SUCCESS:
             return {
                 loading: false,
                 classInvite: payload
             };
     
-        case types.SEND_CLASS_INVITE_FAIL:
+        case types.SEND_CLASS_EMAIL_INVITE_FAIL:
               return{
                   loading: false,
                 ...state,
