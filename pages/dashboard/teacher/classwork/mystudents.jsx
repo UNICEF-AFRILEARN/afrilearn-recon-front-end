@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Router, { useRouter } from 'next/router'
 import { useDispatch, useSelector } from "react-redux";
 import Image from "next/image";
 import { Col, Container, Row } from "react-bootstrap";
@@ -9,32 +10,22 @@ import Link from "next/link";
 
 const MyStudent = () => {
   const [ classId, setClassId ] = useState("");
+  const [ userId, setUserId ] = useState("");
   const [ studentCount, setStudentCount ] = useState("");
   const { classMembers } = useSelector((state) => state.schoolClasses);
   const { user } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
 
-
-  const studentName = [
-    "Alaka Feyikemi",
-    "Alli Olatunbosun",
-    "John Muhammed",
-    "Alaka Feyikemi",
-    "Alli Olatunbosun",
-    "John Muhammed",
-    "Alaka Feyikemi",
-    "Alli Olatunbosun",
-    "John Muhammed",
-    "Alaka Feyikemi",
-    "Alli Olatunbosun",
-    "John Muhammed",
-    "Alaka Feyikemi",
-    "Alli Olatunbosun",
-    "John Muhammed",
-    "Alaka Feyikemi",
-    "Alli Olatunbosun",
-    "John Muhammed",
-  ];
+  console.log("userId",userId)
+  //Navigate to performance:
+  const goToPerformance = (id) => {
+    setUserId(id)
+      Router.push({
+        pathname: `/dashboard/performance/[_id]`,
+        query: { _id: id}
+    })
+  }
+//studentName?.userId?.id
 
   useEffect(() => {
     setClassId(user?.user?.enrolledCourses[0]?.classId)
@@ -99,11 +90,11 @@ const MyStudent = () => {
                 />
               </div>
             </Col>
-            <Col md={5}>{studentName.userId.fullName}</Col>
+            <Col md={5} >{studentName.userId.fullName}</Col>
             <Col md={5} style={{ color: "#AAA6A6" }}>
-             <Link href='/performance'>
+             <p onClick={() => goToPerformance(studentName?.userId?.id)}>
                 <u>View Performance</u>
-             </Link>
+             </p>
             </Col>
             <Col className="" style={{ color: "#FF5B5B" }}>
               Remove

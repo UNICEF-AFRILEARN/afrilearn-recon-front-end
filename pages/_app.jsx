@@ -11,11 +11,11 @@ import {persistGate} from 'redux-persist/integration/react'
 function MyApp({ Component, pageProps } ) {
   return (
     <Provider store={store}>
-      <persistGate persistor={persistor}>
+      {/* <persistGate persistor={persistor}> */}
         <Layout>
           <Component {...pageProps} />
         </Layout>
-      </persistGate>
+      {/* </persistGate> */}
     </Provider>
   ); 
 }

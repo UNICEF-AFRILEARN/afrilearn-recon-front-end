@@ -15,6 +15,8 @@ const GeneratePerformance = ({children, courseContext}) => {
     const [childId, setChildId] = useState("");
     const previousInputValue = useRef("");
 
+  
+
     let filteredChildren = []
   const sortChildren = (childrenObj) => {
     filteredChildren = childrenObj?.filter((myChildId) => myChildId.fullName === selectedChild)
@@ -24,6 +26,7 @@ const GeneratePerformance = ({children, courseContext}) => {
 
     let _userId = '';
     let _courseId = '';
+
 
     //filter to get child's Ids
     const getSelectedChildId = () => {
@@ -39,7 +42,7 @@ const GeneratePerformance = ({children, courseContext}) => {
         // console.log("courseId ====>{======}", courseId)
         e.preventDefault()
         Router.push({
-            pathname: `/dashboard/childperformance/[_id]`,
+            pathname: `/dashboard/performance/[_id]`,
             query: { _id: _userId[0], course_id:_courseId || "undefined" }
         })
     }

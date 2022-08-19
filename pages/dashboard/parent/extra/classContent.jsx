@@ -49,10 +49,10 @@ const ClassContent = ({courseContext, children}) => {
 
     const set_found_ids = () => {
       let sorting_ids = get_class_child_ids(myChildren)
-        for(let i = 0; i < sorting_ids.length; i++){
+        for(let i = 0; i < sorting_ids?.length; i++){
             for(let j = 0; j < sorting_ids[i]?.length; j++){
-                if(sorting_ids[i][j]?.courseId.name === selectedCourse){
-                    setClassId(sorting_ids[i][j].courseId.id)
+                if(sorting_ids[i][j]?.courseId?.name === selectedCourse){
+                    setClassId(sorting_ids[i][j]?.courseId.id)
                    
                   }
                 }
