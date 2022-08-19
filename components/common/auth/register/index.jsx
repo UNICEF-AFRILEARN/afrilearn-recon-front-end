@@ -8,10 +8,7 @@ import AppButton from "../../../widgets/buttons/AppButton";
 import Selectitem from '../../../widgets/appSelect/appSelect';
 import ReactModal from 'react-modal'
 import { Button, Modal } from 'react-bootstrap';
-
 import { fetchRoles, registerUserInitiate } from "../../../../redux/actions/auth";
-
-// import {API} from '../../../../pages/api/client-side/fetcher';
 import Router, { useRouter } from 'next/router'
 import { fetchSubjectsInitiate } from '../../../../redux/actions/subjects';
 
@@ -21,7 +18,7 @@ const Register = (props) => {
   const [roleSelected, setRoleSelected] = useState('');
   const [role, setRole] = useState('');
   const [classCategory, setClassCategory] = useState('');
-  const [subject, setSubject] = useState('');
+  // const [subject, setSubject] = useState('');
   const [subjectSelected, setSubjectSelected] = useState('');
   const [course, setCourse] = useState('');
   const [courseId, setCourseId] = useState('');
@@ -64,10 +61,7 @@ let filteredSub = []
   }
 
 
-
-
 console.log("Filtered ====>", allSubjects)
-
   const getRoleId = () => {
       if (roleSelected === "Student") {
         setRole("5fd08fba50964811309722d5")
@@ -111,19 +105,12 @@ console.log("Filtered ====>", allSubjects)
       setCourseId('605b218f8636bc00158b4ad7')
     }else if(course === 'Primary'){
       setCourseId('605b21868636bc00158b4ad6')
-    }
-       
-  }
+    }     
+}
 
   //function to filter subjects:
 sortSubjects(allSubjects, courseId)
 console.log("courseId =======>", courseId)
-  
- 
-
-  const setClassSubject = () => {
-
-  }
 
   const handleRegisterRequest = (e) => {
     e.preventDefault()
