@@ -51,11 +51,33 @@ export const fetchExamsInitiate = (token) =>  {
     }
 
 }
-export const addExamsInitiate = (token) =>  {
+export const addExamsInitiate = (
+            title,
+            termId,
+            questionTypeId,
+            duration,
+            totalNumberOfQuestions,
+            deadline,
+            startDate,
+            subjectId,
+            instruction,
+            token
+            ) =>  {
     return function (dispatch) {
-        dispatch(fetchExamsStart())
+        dispatch(addExamsStart())
         axios
-        .get('https://afrilearn-backend-01.herokuapp.com/api/v1/exams/exam',
+        .post('https://afrilearn-backend-01.herokuapp.com/api/v1/exams/exam',
+        {   
+            title,
+            termId,
+            questionTypeId,
+            duration,
+            totalNumberOfQuestions,
+            deadline,
+            startDate,
+            subjectId,
+            instruction
+        },
         {
             headers: {
                 "token": token,
@@ -63,11 +85,11 @@ export const addExamsInitiate = (token) =>  {
             }
         })
         .then((res) => {
-            dispatch(fetchExamsSuccess(res.data.data))
-            console.log("From fetch Exams API =>", res.data.data)
+            dispatch(addExamsSuccess(res.data.data))
+            console.log("From Add Exams API =>", res.data.data)
         })
         .catch((err) => {
-            dispatch(fetchExamsFail(err))
+            dispatch(addExamsFail(err))
         })
     }
 

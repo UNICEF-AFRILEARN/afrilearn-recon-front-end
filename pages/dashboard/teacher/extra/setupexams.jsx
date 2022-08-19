@@ -6,14 +6,19 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import { Form, InputGroup, FormControl} from 'react-bootstrap';
 import { BiNote } from 'react-icons/bi';
+import { addExamsInitiate } from '../../../../redux/actions/exams';
+import { fetchClassSubjectsInitiate } from '../../../../redux/actions/classes';
 
 
 const SetupExams = () => {
-    const { user } = useSelector((state) => state.auth )
+    const { user } = useSelector((state) => state.auth);
+    const { classSubjects } = useSelector((state) => state.schoolClasses);
+    const dispatch = useDispatch();
     const [ showExamForm, setShowExamForm] = useState(false)
+    const [ classId, setClassId] = useState("")
     const [ subjectId, setSubjectId] = useState("")
     const [ subjectSelected, setSubjectSelelcted] = useState("")
-    const [ examTitle, setExamTitle] = useState("")
+    const [ title, setTitle] = useState("")
     const [ termId, setTermId] = useState("")
     const [ termSelected, setTermSelected] = useState("")
     const [ questionTypeSelected, setQuestionTypeSelected] = useState("")
@@ -21,27 +26,82 @@ const SetupExams = () => {
     const [ duration, setDuration] = useState("")
     const [ instruction, setInstruction] = useState("")
     const [ totalNumberOfQuestions, setTotalNumberOfQuestions] = useState("")
-    const [ deadLine, setDeadLine] = useState("")
+    const [ deadline, setDeadline] = useState("")
     const [ startDate, setStartDate] = useState("")
 
+    
+    let classSubjectName = classSubjects?.subjects;
+    console.log("questionTypeId  from setupexams", questionTypeId)
+    let token = user?.token;
 
-    let data = {
-            examTitle,
-            termSelected,
-            questionTypeSelected,
-            duration,
-            totalNumberOfQuestions,
-            deadLine,
-            startDate,
-            subjectSelected,instruction
+    const setClassSubjectsIds = () => {
+        classSubjectName.map((subjectIds) =>  {
+            if(subjectIds.mainSubjectId.name === subjectSelected){
+                setSubjectId(subjectIds.mainSubjectId.id)
+            }   
+        }  )
+        
     }
+
+    const setTermIds = () => {
+        if(termSelected === "First term"){
+            setTermId('5fc8d1b20fae0a06bc22db5c')
+        }else if(termSelected === "Second term"){
+            setTermId('600047f67cabf80f88f61735')
+        }else if(termSelected === "Third term"){
+            setTermId('600048197cabf80f88f61736')
+        }
+    }
+
+    const setQuestionTypeIds = () => {
+        if(questionTypeSelected === "Theory"){
+            setQuestionTypeId('61683f87df6ca80c9c5a3285')
+        }else if(questionTypeSelected === "Objective"){
+            setQuestionTypeId('61683f7ddf6ca80c9c5a3283')
+        }else if(questionTypeSelected === "Objective & Theory"){
+            setQuestionTypeId('61683f90df6ca80c9c5a3287')
+        }
+    }
+
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(data, user.token )
+        dispatch(addExamsInitiate(
+            title,
+            termId,
+            questionTypeId,
+            duration,
+            totalNumberOfQuestions,
+            deadline,
+            startDate,
+            subjectId,
+            instruction,
+            token
+            ))
     }
 
 
+
+    useEffect(() => {
+        setQuestionTypeIds();
+    }, [questionTypeSelected]);
+
+    useEffect(() => {
+        setTermIds();
+    }, [termSelected]);
+
+    useEffect(() => {
+        setClassSubjectsIds();
+    }, [subjectSelected]);
+
+    useEffect(() => {
+        setClassId(user?.user?.classOwnership[0]?.enrolledCourse?.classId)
+    }, [classId]);
+
+
+    useEffect(() => {
+        dispatch(fetchClassSubjectsInitiate(classId))
+    }, [classId])
   return (
     <div className={styles.setexammainwrapper}>
 
@@ -60,8 +120,8 @@ const SetupExams = () => {
             Exam title: <br/>
             <input
                 type="text"
-                value={examTitle}
-                onChange={(e) => setExamTitle(e.target.value)}
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
             />
             </div>
             <div>
@@ -70,10 +130,12 @@ const SetupExams = () => {
                 value={subjectSelected}
                 onChange={(e) => setSubjectSelelcted(e.target.value)}
             >
-                <option value="grapefruit">Grapefruit</option>
-                <option value="lime">Lime</option>
-                <option selected value="coconut">Coconut</option>
-                <option value="mango">Mango</option>
+                <option value="default">Select a subject</option>
+                { classSubjectName && classSubjectName.map((subjectName) =>
+                     <option value={subjectName.mainSubjectId.name}>{subjectName.mainSubjectId.name}</option>
+                )
+                   
+                }
             </select>
             </div>
             <div>
@@ -82,10 +144,10 @@ const SetupExams = () => {
             value={questionTypeSelected}
             onChange={(e) => setQuestionTypeSelected(e.target.value)}
             >
-                <option value="grapefruit">Grapefruit</option>
-                <option value="lime">Lime</option>
-                <option selected value="coconut">Coconut</option>
-                <option value="mango">Mango</option>
+                <option value="default">Select question type</option>
+                <option value="Theory">Theory</option>
+                <option value="Objective">Objective</option>
+                <option selected value="Objective & Theory">Objective & Theory</option>
             </select>
             </div>
             <div>
@@ -94,10 +156,10 @@ const SetupExams = () => {
                 value={termSelected}
                 onChange={(e) => setTermSelected(e.target.value)}
             >
-                <option value="grapefruit">Grapefruit</option>
-                <option value="lime">Lime</option>
-                <option selected value="coconut">Coconut</option>
-                <option value="mango">Mango</option>
+                <option value="default">Select the Term</option>
+                <option value="First term">First term</option>
+                <option value="Second term">Second term</option>
+                <option selected value="Third term">Third term</option>
             </select>
             </div>
             <div>
@@ -130,8 +192,8 @@ const SetupExams = () => {
             <div>
             Set Deadline: <br/>
             <input
-                value={deadLine}
-                onChange={(e) => setDeadLine(e.target.value)}
+                value={deadline}
+                onChange={(e) => setDeadline(e.target.value)}
             />
             </div>
             <div>

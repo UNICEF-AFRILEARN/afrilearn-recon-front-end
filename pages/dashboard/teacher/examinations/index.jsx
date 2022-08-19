@@ -22,7 +22,7 @@ const Examinations = () => {
         <Middletab toggleTaggleTab ={toggleTaggleTab} showTab={showTab} />
         <Searchbar  />
         { showTab == true && <SetupExams />}
-        {/* { showTab === false &&  <Examsholder />} */}
+        { showTab === false &&  <Examsholder />}
          {/* {showTab === true &&  <Setupxamssidebar /> } */}
     </div>
   )
