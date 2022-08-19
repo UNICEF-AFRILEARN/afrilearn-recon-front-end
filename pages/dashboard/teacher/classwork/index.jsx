@@ -1,12 +1,28 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Router, { useRouter } from 'next/router'
+import { useDispatch, useSelector } from "react-redux";
 import { Col, Container, Row } from "react-bootstrap";
 import { Heropage } from "../../../../components/features/dashboard/teacher";
 import styles from "../teacher.module.css";
+import { fetchClassAssignedContentInitiate } from "../../../../redux/actions/classes";
 
 const ClassWork = () => {
   const [swap, setSwap] = useState(0);
+  const dispatch = useDispatch();
+  const [classId, setClassId] = useState('')
+  const { classContents } = useSelector((state) => state.schoolClasses);
+  const { user } = useSelector((state) => state.auth);
 
+  console.log("classContents from classwork", classContents)
+
+  useEffect(() => {
+    setClassId(user?.user.classOwnership[0]?.enrolledCourse.classId)
+  }, []);
+
+  useEffect(() => {
+    dispatch(fetchClassAssignedContentInitiate(classId))
+  }, [classId])
   return (
     <>
       <div style={{ marginTop: "-40px", }}>
@@ -151,6 +167,9 @@ const ClassWork = () => {
 export default ClassWork;
 
 const AllSubject = ({ data }) => {
+  const { classContents } = useSelector((state) => state.schoolClasses);
+  const { user } = useSelector((state) => state.auth);
+
   return (
     <Col
       style={{
@@ -159,7 +178,7 @@ const AllSubject = ({ data }) => {
     >
       <Row>
         <Col md={11}>
-          <h4>{data.subject}</h4>
+          {/* <h4>{data.subject}</h4> */}
         </Col>
         <Col style={{ cursor: "pointer" }}>
           <h4>+</h4>
@@ -167,8 +186,8 @@ const AllSubject = ({ data }) => {
       </Row>
       <Row style={{ border: "1px solid rgba(229, 229, 229, 0.63)" }}></Row>
 
-      {data.subdata.map((datas, i) => (
-        <Row key={i} className="mt-3">
+      {classContents?.assignedContents.map((content) => (
+        <Row className="mt-3">
           <Col md={1}>
             <Image
               alt={"assign content placeholder"}
@@ -179,14 +198,14 @@ const AllSubject = ({ data }) => {
           </Col>
           <Col>
             <Row>
-              <p>{datas[0].message}</p>
+              <p>{content.description}</p>
             </Row>
             <Row>
-              <p className="text-secondary">{datas[0].postedDate}</p>
+              <p className="text-secondary">{content.createdAt}</p>
             </Row>
           </Col>
           <Col md={2}>
-            <p className="text-secondary">{datas[0].dueDate}</p>
+            {/* <p className="text-secondary">{datas[0].dueDate}</p> */}
           </Col>
           <Col md={1}>
             <div className={styles.moreIcon}>

@@ -8,6 +8,7 @@ import Classcontentmain from './classcontentmain';
 
 const ClassContent = ({courseContext, children}) => {
   const { course } = useSelector((state) => state.singleCourse);
+  const { classContents } = useSelector((state) => state.schoolClasses)
   const dispatch = useDispatch();
   const [selectedCourse, setCourseSelected] = useState("");
   const [classId, setClassId] = useState("5fff7329de0bdb47f826feb0");
