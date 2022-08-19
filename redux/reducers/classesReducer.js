@@ -9,6 +9,7 @@ const initialState = {
     classDetails: [],
     classMembers: [],
     classInvite: [],
+    classContents: [],
     error: [],
 }
 
@@ -99,6 +100,24 @@ export const classesReducer = (state = initialState, { type, payload} ) => {
             };
     
         case types.SEND_CLASS_EMAIL_INVITE_FAIL:
+              return{
+                  loading: false,
+                ...state,
+                error: payload
+            };
+        case types.FETCH_ASSINGED_CLASS_CONTENT_START:
+            return {
+                loading: true,
+                ...state
+            };
+    
+        case types.FETCH_ASSINGED_CLASS_CONTENT_SUCCESS:
+            return {
+                loading: false,
+                classContents: payload
+            };
+    
+        case types.FETCH_ASSINGED_CLASS_CONTENT_FAIL:
               return{
                   loading: false,
                 ...state,

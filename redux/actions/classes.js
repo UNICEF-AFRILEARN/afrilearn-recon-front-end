@@ -58,6 +58,17 @@ export const sendClassEmailInviteFail = (error) => ({
     type: types.SEND_SEND_CLASS_EMAIL_INVITE_FAIL,
     payload: error
 });
+export const fetchClassAssingedContentStart = () => ({
+    type: types.FETCH_ASSINGED_CLASS_CONTENT_START
+});
+export const fetchClassAssingedContentSuccess = (payload) => ({
+    type: types.FETCH_ASSINGED_CLASS_CONTENT_SUCCESS,
+    payload
+});
+export const fetchClassAssingedContentFail = (error) => ({
+    type: types.FETCH_ASSINGED_CLASS_CONTENT_FAIL,
+    payload: error
+});
 
 
 export const makeAnnouncementInitiate = (classId, text, token) =>  {
@@ -149,6 +160,21 @@ export const fetchClassMembersInitiate = (classId) =>  {
         })
         .catch((err) => {
             dispatch(fetchClassMembersFail(err))
+        } )
+    }
+
+}
+export const fetchClassAssignedContentInitiate = (classId) =>  {
+    return function (dispatch) {
+        dispatch(fetchClassAssingedContentStart())
+        axios
+        .get(`https://afrilearn-backend-01.herokuapp.com/api/v1/classes/${classId}/assigned-contents`)
+        .then((res) => {
+            console.log("From Get class members API =>", res.data.data)
+            dispatch(fetchClassAssingedContentSuccess(res.data.data))
+        })
+        .catch((err) => {
+            dispatch(fetchClassAssingedContentFail(err))
         } )
     }
 
