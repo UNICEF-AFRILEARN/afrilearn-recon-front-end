@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from '../../../../styles/teacher.module.css'; 
 import { BsFillCircleFill, BsCircle } from 'react-icons/bs';
 import Dropdown from 'react-bootstrap/Dropdown';
@@ -8,9 +9,40 @@ import { BiNote } from 'react-icons/bi';
 
 
 const SetupExams = () => {
+    const { user } = useSelector((state) => state.auth )
     const [ showExamForm, setShowExamForm] = useState(false)
+    const [ subjectId, setSubjectId] = useState("")
+    const [ subjectSelected, setSubjectSelelcted] = useState("")
+    const [ examTitle, setExamTitle] = useState("")
+    const [ termId, setTermId] = useState("")
+    const [ termSelected, setTermSelected] = useState("")
+    const [ questionTypeSelected, setQuestionTypeSelected] = useState("")
+    const [ questionTypeId, setQuestionTypeId] = useState("")
+    const [ duration, setDuration] = useState("")
+    const [ instruction, setInstruction] = useState("")
+    const [ totalNumberOfQuestions, setTotalNumberOfQuestions] = useState("")
+    const [ deadLine, setDeadLine] = useState("")
+    const [ startDate, setStartDate] = useState("")
+
+
+    let data = {
+            examTitle,
+            termSelected,
+            questionTypeSelected,
+            duration,
+            totalNumberOfQuestions,
+            deadLine,
+            startDate,
+            subjectSelected,instruction
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log(data, user.token )
+    }
+
+
   return (
-    
     <div className={styles.setexammainwrapper}>
 
         <div className={styles.leftsideboxwrapper}>
@@ -23,57 +55,96 @@ const SetupExams = () => {
     
    
        <div className={styles.questionoptionwrapper}>
-       <Form>
-      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-        <Form.Label>Exam Title*</Form.Label>
-        <Form.Control type="email" placeholder="Math mockup" />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-      <Form.Label>Question Type</Form.Label>
-      <InputGroup className="mb-3">
-        <Form.Control aria-label="Text input with dropdown button" />
-        <DropdownButton
-          variant="outline-secondary"
-          title="Dropdown"
-          id="input-group-dropdown-2"
-          align="end"
-        >
-          <Dropdown.Item href="#">Action</Dropdown.Item>
-          <Dropdown.Item href="#">Another action</Dropdown.Item>
-          <Dropdown.Item href="#">Something else here</Dropdown.Item>
-          <Dropdown.Divider />
-          <Dropdown.Item href="#">Separated link</Dropdown.Item>
-        </DropdownButton>
-      </InputGroup>
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-      <Form.Label>Question Type</Form.Label>
-      <InputGroup className="mb-3">
-        <Form.Control aria-label="Text input with dropdown button" />
-        <DropdownButton
-          variant="outline-secondary"
-          title="Dropdown"
-          id="input-group-dropdown-2"
-          align="end"
-        >
-          <Dropdown.Item href="#">Action</Dropdown.Item>
-          <Dropdown.Item href="#">Another action</Dropdown.Item>
-          <Dropdown.Item href="#">Something else here</Dropdown.Item>
-          <Dropdown.Divider />
-          <Dropdown.Item href="#">Separated link</Dropdown.Item>
-        </DropdownButton>
-      </InputGroup>
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-        <Form.Label>Duration</Form.Label>
-        <Form.Control type="email" placeholder="name@example.com" />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-        <Form.Label>Exam Instruction</Form.Label>
-        <Form.Control as="textarea" rows={3} />
-      </Form.Group>
-      <button>PROCEED</button>
-    </Form>
+       <Form onSubmit={handleSubmit}>
+            <div>
+            Exam title: <br/>
+            <input
+                type="text"
+                value={examTitle}
+                onChange={(e) => setExamTitle(e.target.value)}
+            />
+            </div>
+            <div>
+            Select Subject: <br/>
+            <select
+                value={subjectSelected}
+                onChange={(e) => setSubjectSelelcted(e.target.value)}
+            >
+                <option value="grapefruit">Grapefruit</option>
+                <option value="lime">Lime</option>
+                <option selected value="coconut">Coconut</option>
+                <option value="mango">Mango</option>
+            </select>
+            </div>
+            <div>
+            Question type: <br/>
+            <select
+            value={questionTypeSelected}
+            onChange={(e) => setQuestionTypeSelected(e.target.value)}
+            >
+                <option value="grapefruit">Grapefruit</option>
+                <option value="lime">Lime</option>
+                <option selected value="coconut">Coconut</option>
+                <option value="mango">Mango</option>
+            </select>
+            </div>
+            <div>
+            Select Term: <br/>
+            <select
+                value={termSelected}
+                onChange={(e) => setTermSelected(e.target.value)}
+            >
+                <option value="grapefruit">Grapefruit</option>
+                <option value="lime">Lime</option>
+                <option selected value="coconut">Coconut</option>
+                <option value="mango">Mango</option>
+            </select>
+            </div>
+            <div>
+            Set Total number of question: <br/>
+            <label>
+                <input
+                type="number"
+                value={totalNumberOfQuestions}
+                onChange={(e) => setTotalNumberOfQuestions(e.target.value)}
+                />
+            </label>
+            </div>
+            <div>
+            Set Duration: <br/>
+            <label>
+                <input
+                type="text"
+                value={duration}
+                onChange={(e) => setDuration(e.target.value)}
+                />
+            </label>
+            </div>
+            <div>
+            Set Start Date: <br/>
+            <input
+                value={startDate}
+                onChange={(e) => setStartDate(e.target.value)}
+            />
+            </div>
+            <div>
+            Set Deadline: <br/>
+            <input
+                value={deadLine}
+                onChange={(e) => setDeadLine(e.target.value)}
+            />
+            </div>
+            <div>
+            Exam Instruction(Optional): <br/>
+            <textarea
+                value={instruction}
+                onChange={(e) => setInstruction(e.target.value)}
+            >
+               
+            </textarea>
+            </div>
+            <button type='submit'>Submit</button>
+      </Form>
     </div>
 </div>
   )
