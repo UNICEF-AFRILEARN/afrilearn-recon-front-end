@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Router, { useRouter } from 'next/router';
 import styles from '../../../../styles/teacher.module.css';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import { fetchExamsInitiate } from '../../../../redux/actions/exams';
@@ -17,6 +18,13 @@ const Examsholder = () => {
         return new Date(string).toLocaleDateString([],options);
     }
 
+    const goToExamDetailPage = (id) => {
+        console.log("id ====>", id)
+        Router.push({
+            pathname: `/dashboard/teacher/examinations/examdetails/[_examId]`,
+            query: { _examId: id}
+        })
+    }
 
     useEffect(() => {
         dispatch(fetchExamsInitiate(token))
@@ -38,8 +46,15 @@ const Examsholder = () => {
                 <h5>{exam.questionTypeId.name}</h5>
                 </div>
                 <div className={styles.lastcolon}>
-                <h5>VIEW SUBMISSIONS</h5>
-                <BsThreeDotsVertical />
+                <h5 onClick={() => goToExamDetailPage(exam.id)}>VIEW SUBMISSIONS</h5>
+                <div className={styles.detailslistwrapper}>
+                    <BsThreeDotsVertical className={styles.threedotsbutton} />
+                    <ul className={styles.detailslist}>
+                        <li>Edit questions</li>
+                        <li>Unpublish exam</li>
+                        <li>Send result to students</li>
+                    </ul>
+                </div>
             </div>
         </div>
             </>
