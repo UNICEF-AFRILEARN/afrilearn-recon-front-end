@@ -54,6 +54,19 @@ export const addExamQuestionFail = (error) => ({
     type: types.ADD_EXAMS_QUESTION_FAIL,
     payload: error
 });
+export const updateExamQuestionStart = () => ({
+    type: types.UPDATE_EXAMS_QUESTION_START
+});
+
+export const updateExamQuestionSuccess = (payload) => ({
+    type: types.UPDATE_EXAMS_QUESTION_SUCCESS,
+    payload
+});
+
+export const updateExamQuestionFail = (error) => ({
+    type: types.UPDATE_EXAMS_QUESTION_FAIL,
+    payload: error
+});
 
 
 export const fetchExamsInitiate = (token) =>  {
@@ -122,6 +135,31 @@ export const addExamQuestionInitiate = (token, examId) =>  {
     }
 
 }
+export const updateExamQuestionInitiate = (questionId, data) =>  {
+    return function (dispatch) {
+        dispatch(updateExamQuestionStart())
+        axios
+        .patch(`https://afrilearn-backend-01.herokuapp.com/api/v1/exams/exam-theory-question/${questionId}`,
+        {
+            data
+        },
+        {
+            headers: {
+                "token": token,
+                "Content-Type": "application/json",
+            }
+        })
+        .then((res) => {
+            dispatch(updateExamQuestionSuccess(res.data.data))
+            console.log("From Update Exams Question API =>", res.data.data)
+        })
+        .catch((err) => {
+            dispatch(updateExamQuestionFail(err))
+        })
+    }
+
+}
+
 export const addExamsInitiate = (
             title,
             termId,
