@@ -8,6 +8,7 @@ import Link from "next/link";
 
 const Examsholder = () => {
     const { exams } = useSelector((state) => state.myExams);
+    const [classId, setClassId] = useState("");
     const { user, registerUser } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
 
@@ -28,11 +29,14 @@ const Examsholder = () => {
     const goToAddExamQuestionPage = (id) => {
         Router.push({
             pathname: `/dashboard/teacher/examinations/add-exams-question/[_examId]`,
-            query: { _examId: id}
+            query: { _examId: id, classId: classId}
         })
     }
 
 
+    useEffect(() => {
+        setClassId(user?.user?.classOwnership[0]?.enrolledCourse?.classId)
+    }, [classId]);
 
     useEffect(() => {
         dispatch(fetchExamsInitiate(token))

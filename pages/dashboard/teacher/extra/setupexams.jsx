@@ -69,6 +69,7 @@ const SetupExams = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        console.log("subjectId", subjectId)
         dispatch(addExamsInitiate(
             title,
             termId,
