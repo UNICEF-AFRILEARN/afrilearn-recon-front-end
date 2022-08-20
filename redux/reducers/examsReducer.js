@@ -3,6 +3,7 @@ import * as types from '../types/exams';
 const initialState = {
     exams: [],
     newExams: [],
+    newExamQuestion: [],
     singleExam: [],
     error: [],
 }
@@ -35,6 +36,19 @@ export const examsReducer = (state = initialState, { type, payload} ) => {
         case types.ADD_EXAMS_FAIL:
             return {
                 ...state,
+                error: payload
+            };
+        case types.ADD_EXAMS_QUESTION_START:
+            return {
+                ...state
+            };
+        case types.ADD_EXAMS_QUESTION_SUCCESS:
+            return {
+                ...state,
+                newExamQuestion: payload
+            };
+        case types.ADD_EXAMS_QUESTION_FAIL:
+            return {
                 error: payload
             };
         case types.FETCH_SINGLE_EXAM_DETAILS_START:
