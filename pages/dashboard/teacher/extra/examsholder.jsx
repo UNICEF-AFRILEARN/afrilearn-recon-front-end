@@ -4,6 +4,7 @@ import Router, { useRouter } from 'next/router';
 import styles from '../../../../styles/teacher.module.css';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import { fetchExamsInitiate } from '../../../../redux/actions/exams';
+import Link from "next/link";
 
 const Examsholder = () => {
     const { exams } = useSelector((state) => state.myExams);
@@ -19,12 +20,19 @@ const Examsholder = () => {
     }
 
     const goToExamDetailPage = (id) => {
-        console.log("id ====>", id)
         Router.push({
             pathname: `/dashboard/teacher/examinations/examdetails/[_examId]`,
             query: { _examId: id}
         })
     }
+    const goToAddExamQuestionPage = (id) => {
+        Router.push({
+            pathname: `/dashboard/teacher/examinations/add-exams-question/[_examId]`,
+            query: { _examId: id}
+        })
+    }
+
+
 
     useEffect(() => {
         dispatch(fetchExamsInitiate(token))
@@ -50,7 +58,7 @@ const Examsholder = () => {
                 <div className={styles.detailslistwrapper}>
                     <BsThreeDotsVertical className={styles.threedotsbutton} />
                     <ul className={styles.detailslist}>
-                        <li>Edit questions</li>
+                        <li onClick={() => goToAddExamQuestionPage(exam.id)}>Edit questions</li>
                         <li>Unpublish exam</li>
                         <li>Send result to students</li>
                     </ul>

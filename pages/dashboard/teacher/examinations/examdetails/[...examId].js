@@ -2,6 +2,7 @@ import React, { useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { fetchSingleExamDetailsInitiate } from '../../../../../redux/actions/exams';
+import Head from 'next/head';
 
 const ExamDetails = () => {
   const { user } = useSelector((state) => state.auth);
@@ -11,8 +12,8 @@ const ExamDetails = () => {
 
   console.log("user ===> from exam details", user)
 
-  let examId = query?.examId
-  let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjJmNGFkOGM5OWJjNjgwMDE2NjE2NTFkIiwicm9sZSI6IjYwMmYzY2UzOWIxNDZiMzIwMWMyZGMxZCIsImZ1bGxOYW1lIjoiSm9obiBkb2UifSwiaWF0IjoxNjYwOTIxNTA2LCJleHAiOjE2NjM1MTM1MDZ9.W1wGGQk8UzNGZaMY7ccTZaXPUL9UlUrbqkIhnFGBu0c'
+  let examId = query.examId
+  let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjJmNGFkOGM5OWJjNjgwMDE2NjE2NTFkIiwicm9sZSI6IjYwMmYzY2UzOWIxNDZiMzIwMWMyZGMxZCIsImZ1bGxOYW1lIjoiSm9obiBkb2UifSwiaWF0IjoxNjYwOTk2MTg5LCJleHAiOjE2NjM1ODgxODl9.eFvWg1YvRtvhfRX0R3Cb2rHymwO5rP_kMTyB4XRWFLg"
 
   //Convert minutes to hours:
   function displayHours(a){
@@ -28,7 +29,7 @@ const ExamDetails = () => {
   return (
     <div>
       <div>
-          <p>Exam title: { singleExam.exams.title}</p>
+          {/* <p>Exam title: { singleExam.exams.title}</p> */}
           <p>loremmddddddddddddddddddddddddddddddd</p>
           <p>loremmddddddddddddddddddddddddddddddd</p>
       </div>
@@ -37,10 +38,13 @@ const ExamDetails = () => {
           ExamDetails id: {examId}
       </div>
       <div>
-          <p>Exam title: { singleExam.exams.title}</p>
-          <p>Exam Type: {singleExam.exams.questionTypeId.name}</p>
-          <p>Duration: {displayHours(singleExam.exams.duration)}</p>
-          <p>{singleExam.exams.questionsCount} Student(s)</p>
+          <p>Exam title: { singleExam?.exams?.title}</p>
+          <p>Exam Type: {singleExam?.exams?.questionTypeId?.name}</p>
+          <p>Duration: {displayHours(singleExam?.exams?.duration)}</p>
+          <p>{singleExam?.exams?.participants?.length} Student(s)</p>
+      </div>
+      <div>
+        <p>Send result to student</p>
       </div>
     </div>
   )

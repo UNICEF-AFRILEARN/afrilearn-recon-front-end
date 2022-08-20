@@ -1,5 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Router, { useRouter } from 'next/router';
 import styles from '../../../../styles/teacher.module.css'; 
 import { BsFillCircleFill, BsCircle } from 'react-icons/bs';
 import Dropdown from 'react-bootstrap/Dropdown';
@@ -10,8 +11,10 @@ import { addExamsInitiate } from '../../../../redux/actions/exams';
 import { fetchClassSubjectsInitiate } from '../../../../redux/actions/classes';
 
 
+
 const SetupExams = () => {
     const { user } = useSelector((state) => state.auth);
+    const { newExams } = useSelector((state) => state.myExams);
     const { classSubjects } = useSelector((state) => state.schoolClasses);
     const dispatch = useDispatch();
     const [ showExamForm, setShowExamForm] = useState(false)
@@ -31,11 +34,11 @@ const SetupExams = () => {
 
     
     let classSubjectName = classSubjects?.subjects;
-    console.log("questionTypeId  from setupexams", questionTypeId)
+   
     let token = user?.token;
 
     const setClassSubjectsIds = () => {
-        classSubjectName.map((subjectIds) =>  {
+        classSubjectName?.map((subjectIds) =>  {
             if(subjectIds.mainSubjectId.name === subjectSelected){
                 setSubjectId(subjectIds.mainSubjectId.id)
             }   
@@ -78,9 +81,18 @@ const SetupExams = () => {
             instruction,
             token
             ))
+        if(Object?.keys(newExams).length > 0){
+                Router.push({
+                    pathname: `/dashboard/teacher/examinations/add-exams-question/[_examId]`,
+                    query: { _examId: subjectId}
+                })
+        }
     }
 
 
+    // useEffect(() => {
+    //     console.log("newExams status  from setupexams", )
+    // }, [newExams])
 
     useEffect(() => {
         setQuestionTypeIds();
@@ -104,14 +116,6 @@ const SetupExams = () => {
     }, [classId])
   return (
     <div className={styles.setexammainwrapper}>
-
-        <div className={styles.leftsideboxwrapper}>
-        <h4>Set Up Examination</h4>
-        <ul>
-            <li><span><BsFillCircleFill /></span>Set Ups</li>
-            <li><span><BsCircle /></span>Examination Questions</li>
-        </ul>
-    </div>
     
    
        <div className={styles.questionoptionwrapper}>
