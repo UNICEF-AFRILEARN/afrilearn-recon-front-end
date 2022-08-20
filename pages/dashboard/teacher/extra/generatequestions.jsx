@@ -12,6 +12,7 @@ import { addExamQuestionInitiate } from '../../../../redux/actions/exams';
 const Generatequestions = () => {
     const { schoolTerms } = useSelector((state) => state.singleCourse);
     const { user } = useSelector((state) => state.auth);
+    const { newExamQuestion } = useSelector((state) => state.myExams);
     const { classSubjects } = useSelector((state) => state.schoolClasses);
     const [ classId, setClassId ] = useState("");
     const [subjectSelected, setSubjectSelected ] = useState("")
@@ -24,8 +25,9 @@ const Generatequestions = () => {
 
     let classSubject = classSubjects?.subjects
     // console.log("classId from generate schoolTerms", query)
-    console.log("classSubject from generate schoolTerms", classSubject)
+    console.log("newExamQuestion from generate schoolTerms", newExamQuestion)
 
+    //to be removed once the persist is set up:
     let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjJmNGFkOGM5OWJjNjgwMDE2NjE2NTFkIiwicm9sZSI6IjYwMmYzY2UzOWIxNDZiMzIwMWMyZGMxZCIsImZ1bGxOYW1lIjoiSm9obiBkb2UifSwiaWF0IjoxNjYxMDA3OTg4LCJleHAiOjE2NjM1OTk5ODh9.Qj6r8EbGryzojPnhFqwTQC6rKFmqPpDetSxDjXRIipo"
 
 

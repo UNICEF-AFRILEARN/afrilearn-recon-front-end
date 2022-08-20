@@ -1,4 +1,5 @@
 import React, { useState} from 'react';
+import { Heropage, HeropageWelcome } from '../../../../components/features/dashboard/teacher';
 
 import styles from '../../../../styles/teacher.module.css';
 import Examsholder from '../extra/examsholder';
@@ -16,6 +17,8 @@ const Examinations = () => {
 
   return (
     <div className={styles.examinationwrapper}>
+      <Heropage />
+      {/* <HeropageWelcome /> */}
         <div className={styles.examsheaderwrapper}>
 
         </div>

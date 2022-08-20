@@ -6,7 +6,7 @@ import { BsSearch } from 'react-icons/bs';
 const Searchbar = () => {
   return (
     <div className={styles.teachersearchwrapper}>
-        <span><BsSearch /></span> Search friends by name
+        <span><BsSearch /></span> Search Exams by name
     </div>
   )
 }
