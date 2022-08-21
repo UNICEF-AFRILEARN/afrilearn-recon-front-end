@@ -8,13 +8,27 @@ import Questionpanel from './questionpanel';
 import Theory from './theory';
 import Generatequestions from './generatequestions';
 import Submitquestions from './submitquestions';
+import { updateExamQuestionInitiate } from '../../../../redux/actions/exams';
 
 const Objectives = () => {
     const { newExamQuestion } = useSelector((state) => state.myExams);
     const [questionId, setQuestionId] = useState("")
+    const [question, setQuestion] = useState("")
 
     console.log("questionId from onjective", questionId)
     const [showObjQuestions, setShowObjQuestions] = useState(1)
+
+
+
+    let data = {
+        question
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        // console.log("theoryBody ==>",data)
+        dispatch(updateExamQuestionInitiate(questionId, question))
+    }
 
     const showObjpanel = (id) => {
         setShowObjQuestions(id)
@@ -67,8 +81,8 @@ const Objectives = () => {
             </div>
                { showObjQuestions === 1 &&  <Questionpanel />}
                 {showObjQuestions === 2 && <Theory /> }
-                {showObjQuestions === 3 && <Generatequestions />}
-                { showObjQuestions === 4 && <Submitquestions />}
+                {/* {showObjQuestions === 3 && <Generatequestions />}
+                { showObjQuestions === 4 && <Submitquestions />} */}
         </div>
         
     </div>
