@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Form } from "react-bootstrap";
 import { useRouter } from "next/router";
+import { setCookie } from 'cookies-next';
 import { useNavigate } from "react-router-dom";
 import Link from "next/link";
 import styles from "./login.module.css";
@@ -13,7 +14,6 @@ import { loginInitiate } from "../../../../redux/actions/auth";
 const Login = () => {
   const dispatch = useDispatch();
   const { user } = useSelector(state => state.auth);
-
   const [errorCheck, setErrorCheck] = useState('');
 
   const [email, setEmail] = useState("");

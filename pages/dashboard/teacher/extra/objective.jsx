@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import styles from '../../../../styles/teacher.module.css'; 
 import { BsFillCircleFill, BsCircle } from 'react-icons/bs';
 import { RiDeleteBin6Line } from 'react-icons/ri';
@@ -9,11 +10,19 @@ import Generatequestions from './generatequestions';
 import Submitquestions from './submitquestions';
 
 const Objectives = () => {
+    const { newExamQuestion } = useSelector((state) => state.myExams);
+    const [questionId, setQuestionId] = useState("")
+
+    console.log("questionId from onjective", questionId)
     const [showObjQuestions, setShowObjQuestions] = useState(1)
 
     const showObjpanel = (id) => {
         setShowObjQuestions(id)
     }
+
+    useEffect(() =>{
+        setQuestionId(newExamQuestion?.examQuestion?.id)
+    }, [])
   return (
     <div className={styles.objectivemainwrapper}>
         <div className={styles.objleftsideboxwrapper}>
