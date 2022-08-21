@@ -11,17 +11,17 @@ const Theory = () => {
     const { query } = useRouter();
     const dispatch = useDispatch();
     const [questionId, setQuestionId] = useState("")
-    const [questions, setQuestions] = useState("")
+    const [question, setQuestion] = useState("")
     const { newExamQuestion } = useSelector((state) => state.myExams);
 
     let data = {
-        questions
+        question
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
         // console.log("theoryBody ==>",data)
-        dispatch(updateExamQuestionInitiate(questionId, questions))
+        dispatch(updateExamQuestionInitiate(questionId, question))
     }
 
 
@@ -47,8 +47,8 @@ const Theory = () => {
                     rows="5" 
                     name="address" 
                     placeholder="Type question here..."
-                    value={questions}
-                    onChange={(e) => setQuestions(e.target.value)}
+                    value={question}
+                    onChange={(e) => setQuestion(e.target.value)}
                     />
             </Form.Group>
             <button type="submit">Save changes</button>

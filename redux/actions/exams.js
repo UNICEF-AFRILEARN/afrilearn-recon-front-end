@@ -135,13 +135,13 @@ export const addExamQuestionInitiate = (token, examId) =>  {
     }
 
 }
-export const updateExamQuestionInitiate = (questionId, questions) =>  {
+export const updateExamQuestionInitiate = (questionId, question) =>  {
     return function (dispatch) {
         dispatch(updateExamQuestionStart())
         axios
         .patch(`https://afrilearn-backend-01.herokuapp.com/api/v1/exams/exam-theory-question/${questionId}`,
         {
-            questions
+            question
         })
         .then((res) => {
             dispatch(updateExamQuestionSuccess(res.data.data))
