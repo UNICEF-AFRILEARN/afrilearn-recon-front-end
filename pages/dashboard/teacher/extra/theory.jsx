@@ -10,15 +10,18 @@ import { updateExamQuestionInitiate } from '../../../../redux/actions/exams';
 const Theory = () => {
     const { query } = useRouter();
     const dispatch = useDispatch();
+    const [data, setData] = useState({
+
+    });
     const [questionId, setQuestionId] = useState("")
     const [question, setQuestion] = useState("")
     const { newExamQuestion } = useSelector((state) => state.myExams);
 
-    let data = {
-        question
-    }
+    //  data = {
+    //     question
+    // }
 
-    console.log("query ==> from theory",query)
+    console.log("questionId ==> from theory",questionId)
     const handleSubmit = (e) => {
         e.preventDefault()
         dispatch(updateExamQuestionInitiate(questionId, question))

@@ -49,7 +49,7 @@ const Examsholder = () => {
     }, []);
   return (
     <div className={styles.examsholderwrapper}>
-           {exams.exams && exams.exams.map((exam) => 
+           {exams?.exams && exams?.exams.map((exam) => 
             <>
         <div className={styles.examsmainholder}>
             <div className={styles.examstitlewrapper}>

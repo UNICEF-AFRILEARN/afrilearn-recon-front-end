@@ -27,17 +27,17 @@ const Objectives = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         // console.log("theoryBody ==>",data)
-        dispatch(updateExamQuestionInitiate(questionId, data))
+        // dispatch(updateExamQuestionInitiate(questionId, data))
     }
 
     const showObjpanel = (id) => {
         setShowObjQuestions(id)
     }
 
-    useEffect(() =>{
-        // setQuestionId(newExamQuestion?.examQuestion?.id)
-        setQuestionId("630274ab7412b500162680f5")
-    }, [])
+    // useEffect(() =>{
+    //     // setQuestionId(newExamQuestion?.examQuestion?.id)
+    //     setQuestionId("630274ab7412b500162680f5")
+    // }, [])
   return (
     <div className={styles.objectivemainwrapper}>
         <div className={styles.objleftsideboxwrapper}>

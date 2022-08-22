@@ -12,7 +12,12 @@ const Questionpanel = () => {
   const dispatch = useDispatch();
   const { newExamQuestion, exams, singleExamQuestions } = useSelector((state) => state.myExams);
   const [questionId, setQuestionId] = useState("")
+  const [data, setData] = useState({
+      question: "",
+      options: []
+  });
   const [question, setQuestion] = useState("");
+  const [options, setOptions] = useState("");
   const [optionOne, setOptionOne ] = useState("")
   const [optionTwo, setOptionTwo ] = useState("")
   const [optionThree, setOptionThree ] = useState("")
@@ -24,10 +29,13 @@ const Questionpanel = () => {
 
 
 
-  const data = {
-      options: [optionOne, optionTwo, optionThree],
-      question,
-  }
+
+  useEffect(() => {
+    setData(currValue => ({
+        ...currValue,
+        question: question
+     }))
+  }, [question])
 
   
   const currentExam = [];
@@ -41,7 +49,7 @@ const Questionpanel = () => {
   }
 
   fiterExam()
-  console.log("questionId =====>", questionId)
+  console.log("questionId from onjective", questionId)
 
 
 
