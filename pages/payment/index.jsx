@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRoles } from '../../redux/actions/auth';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -15,6 +15,7 @@ import styles from "../../styles/payment.module.css"
 import PaymentDetails from './paymentModal';
 
 const payment = ({test_body}) => {
+  const priceElement = useRef();
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
   const handleOpen = () => setOpen(true);
@@ -31,12 +32,12 @@ const payment = ({test_body}) => {
 //606ed82e70f40e18e029165e parent
 //602f3ce39b146b3201c2dc1d teacher
 //607ededa2712163504210684
-
+  let showPrice;
   const handleSelect = (price) => {
     setPriceSelected(price)
+    console.log("priceElement from payment", priceElement)
   }
   
-  console.log("priceSelected from payment", priceSelected)
   const config = {
     reference: new Date().getTime(),
     email: "text@gmail.com",
@@ -78,6 +79,11 @@ const initializePayment = usePaystackPayment(config);
   const closeModal = () => {
     setOpen(false)
   }
+
+  useEffect(() => {
+    priceElement.current = priceSelected;
+  }, [priceSelected]);
+
 
   useEffect(() => {
     setClassId(user?.user?.enrolledCourses[0]?.classId)
@@ -300,10 +306,13 @@ const initializePayment = usePaystackPayment(config);
   
   > 
     {teacher_plans && teacher_plans.map((teacherPlans) =>
-        <button >
-        <div 
-        className={styles.durationBold}
+        <button 
+        ref={priceElement}
         onClick={() => handleSelect(teacherPlans.amount)}
+        >
+        <div 
+        
+        className={styles.durationBold}
         >{teacherPlans.name}
         </div>
         <div>{teacherPlans.amount}</div >
@@ -389,8 +398,6 @@ const initializePayment = usePaystackPayment(config);
     handleClose={handleClose}
     handleOpen={handleOpen}
     open={open}
-    closeModal={closeModal}
-    // priceSelected={priceSelected}
   />
    </div>
 
