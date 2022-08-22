@@ -9,6 +9,7 @@ import Link from "next/link";
 const Examsholder = () => {
     const { exams } = useSelector((state) => state.myExams);
     const [classId, setClassId] = useState("");
+    const [questionId, setQuestionId] = useState("");
     const { user, registerUser } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
 
@@ -19,6 +20,8 @@ const Examsholder = () => {
         var options = { year: 'numeric', month: 'long', day: 'numeric' };
         return new Date(string).toLocaleDateString([],options);
     }
+
+    console.log("exams", exams)
 
     const goToExamDetailPage = (id) => {
         Router.push({
@@ -38,6 +41,9 @@ const Examsholder = () => {
         setClassId(user?.user?.classOwnership[0]?.enrolledCourse?.classId)
     }, [classId]);
 
+    useEffect(() => {
+        setQuestionId()
+    }, []);
     useEffect(() => {
         dispatch(fetchExamsInitiate(token))
     }, []);

@@ -18,15 +18,16 @@ const Theory = () => {
         question
     }
 
+    console.log("query ==> from theory",query)
     const handleSubmit = (e) => {
         e.preventDefault()
-        // console.log("theoryBody ==>",data)
         dispatch(updateExamQuestionInitiate(questionId, question))
     }
 
 
     useEffect(() =>{
-        setQuestionId(newExamQuestion?.examQuestion?.id)
+        setQuestionId("630274ab7412b500162680f5")
+        // setQuestionId(newExamQuestion?.examQuestion?.id)
     }, [])
 
   return (

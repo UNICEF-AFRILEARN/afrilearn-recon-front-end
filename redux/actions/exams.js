@@ -41,6 +41,19 @@ export const fetchSingleExamDetailsFail = (error) => ({
     type: types.FETCH_SINGLE_EXAM_DETAILS_FAIL,
     payload: error
 });
+export const fetchSingleExamQuestionsStart = () => ({
+    type: types.FETCH_SINGLE_EXAM_QUESTIONS_START
+});
+
+export const fetchSingleExamQuestionsSuccess = (payload) => ({
+    type: types.FETCH_SINGLE_EXAM_QUESTIONS_SUCCESS,
+    payload
+});
+
+export const fetchSingleExamQuestionsFail = (error) => ({
+    type: types.FETCH_SINGLE_EXAM_QUESTIONS_FAIL,
+    payload: error
+});
 export const addExamQuestionStart = () => ({
     type: types.ADD_EXAMS_QUESTION_START
 });
@@ -107,6 +120,27 @@ export const fetchSingleExamDetailsInitiate = (token, examId) =>  {
         })
         .catch((err) => {
             dispatch(fetchSingleExamDetailsFail(err))
+        })
+    }
+
+}
+export const fetchSingleExamQuestionsInitiate = (token, examId) =>  {
+    return function (dispatch) {
+        dispatch(fetchSingleExamQuestionsStart())
+        axios
+        .get(`https://afrilearn-backend-01.herokuapp.com/api/v1/exams/exam-question/${examId}`,
+        {
+            headers: {
+                "token": token,
+                "Content-Type": "application/json",
+            }
+        })
+        .then((res) => {
+            dispatch(fetchSingleExamQuestionsSuccess(res.data.data))
+            console.log("From fetch Single Exams Questions API =>", res.data.data)
+        })
+        .catch((err) => {
+            dispatch(fetchSingleExamQuestionsFail(err))
         })
     }
 

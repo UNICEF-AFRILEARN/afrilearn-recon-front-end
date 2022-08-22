@@ -6,6 +6,7 @@ const initialState = {
     newExamQuestion: [],
     updatedQuestion: [],
     singleExam: [],
+    singleExamQuestions: [],
     error: [],
 }
 
@@ -75,6 +76,20 @@ export const examsReducer = (state = initialState, { type, payload} ) => {
                 singleExam: payload
             };
         case types.FETCH_SINGLE_EXAM_DETAILS_FAIL:
+            return {
+                ...state,
+                error: payload
+            };
+        case types.FETCH_SINGLE_EXAM_QUESTIONS_START:
+            return {
+                ...state
+            };
+        case types.FETCH_SINGLE_EXAM_QUESTIONS_SUCCESS:
+            return {
+                ...state,
+                singleExamQuestions: payload
+            };
+        case types.FETCH_SINGLE_EXAM_QUESTIONS_FAIL:
             return {
                 ...state,
                 error: payload

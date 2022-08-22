@@ -27,7 +27,7 @@ const Objectives = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         // console.log("theoryBody ==>",data)
-        dispatch(updateExamQuestionInitiate(questionId, question))
+        dispatch(updateExamQuestionInitiate(questionId, data))
     }
 
     const showObjpanel = (id) => {
@@ -35,7 +35,8 @@ const Objectives = () => {
     }
 
     useEffect(() =>{
-        setQuestionId(newExamQuestion?.examQuestion?.id)
+        // setQuestionId(newExamQuestion?.examQuestion?.id)
+        setQuestionId("630274ab7412b500162680f5")
     }, [])
   return (
     <div className={styles.objectivemainwrapper}>

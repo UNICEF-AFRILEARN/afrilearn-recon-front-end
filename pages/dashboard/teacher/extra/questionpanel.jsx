@@ -1,15 +1,72 @@
-import React from 'react';
-
+import React, { useState, useEffect} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useRouter } from 'next/router';
 import { Form, InputGroup, FormControl} from 'react-bootstrap';
 import styles from '../../../../styles/teacher.module.css'; 
 import { BsPlus } from 'react-icons/bs';
 import { BiNote } from 'react-icons/bi';
 import { AiOutlineArrowsAlt } from 'react-icons/ai';
-import Questionoption from './questionoption';
-import Correctoptions from './correctoptions';
-
+import { updateExamQuestionInitiate, fetchSingleExamQuestionsInitiate, fetchExamsInitiate } from '../../../../redux/actions/exams';
 
 const Questionpanel = () => {
+  const dispatch = useDispatch();
+  const { newExamQuestion, exams, singleExamQuestions } = useSelector((state) => state.myExams);
+  const [questionId, setQuestionId] = useState("")
+  const [question, setQuestion] = useState("");
+  const [optionOne, setOptionOne ] = useState("")
+  const [optionTwo, setOptionTwo ] = useState("")
+  const [optionThree, setOptionThree ] = useState("")
+  const [optionFour, setOptionFour ] = useState("")
+  const [examId, setExamId] = useState("");
+  const { query } = useRouter();
+  //to be change after persist
+  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjJmNGFkOGM5OWJjNjgwMDE2NjE2NTFkIiwicm9sZSI6IjYwMmYzY2UzOWIxNDZiMzIwMWMyZGMxZCIsImZ1bGxOYW1lIjoiSm9obiBkb2UifSwiaWF0IjoxNjYxMTA0Njk0LCJleHAiOjE2NjM2OTY2OTR9.Srnh1RVV1p5sVrYMAgNpnCiiyFHxVYwFaSUHb32xSYI"
+
+
+
+  const data = {
+      options: [optionOne, optionTwo, optionThree],
+      question,
+  }
+
+  
+  const currentExam = [];
+  const fiterExam = () => {
+    exams?.exams?.filter((examQuestions) => {
+        if(examQuestions.id === examId){
+            currentExam.push(examQuestions)
+        }
+    })
+     
+  }
+
+  fiterExam()
+  console.log("questionId =====>", questionId)
+
+
+
+  const handleSubmit = (e) => {
+      e.preventDefault()
+      console.log("data from ob", data)
+        dispatch(updateExamQuestionInitiate(questionId, data))
+    }
+
+    useEffect(() =>{
+        // setQuestionId(newExamQuestion?.examQuestion?.id)
+        setQuestionId("630274ab7412b500162680f5")
+    }, []);
+    useEffect(() =>{
+        setExamId("62fff77c721b450016998f18")
+    }, []);
+
+    useEffect(() => {
+        dispatch(fetchExamsInitiate(token))
+    }, []);
+
+    useEffect(() => {
+        dispatch(fetchSingleExamQuestionsInitiate(token, examId))
+    }, []);
+
   return (
     <div>
         <div className={styles.questionpanelwrapper}>
@@ -26,26 +83,45 @@ const Questionpanel = () => {
          
         </div>
         <div className={styles.mainformwrapper}>
-        <Form>
+        <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-4" controlId="formBasicEmail">
-                    <Form.Control as="textarea" rows="5" name="address" placeholder="Type question here..." />
+                    <Form.Control 
+                    as="textarea" 
+                    rows="5" 
+                    name="address"
+                    value={question}
+                    onChange={(e) => setQuestion(e.target.value)}
+                    placeholder="Type question here..." 
+                    />
             </Form.Group>
             <h5>Options</h5>
         <div className={styles.mainoptionwrapper}>
             <div className={styles.optionwrapper}>
             <InputGroup className="mb-3">
                 <InputGroup.Text>A</InputGroup.Text>
-                <FormControl aria-label="Amount (to the nearest dollar)" />
+                <FormControl 
+                aria-label="Amount (to the nearest dollar)"
+                value={optionOne}
+                onChange={(e) => setOptionOne(e.target.value)}
+                />
                 <InputGroup.Text><BiNote /></InputGroup.Text>
             </InputGroup>
             <InputGroup className="mb-3">
                 <InputGroup.Text>B</InputGroup.Text>
-                <FormControl aria-label="Amount (to the nearest dollar)" />
+                <FormControl 
+                aria-label="Amount (to the nearest dollar)"
+                value={optionTwo}
+                onChange={(e) => setOptionTwo(e.target.value)}
+                />
                 <InputGroup.Text><BiNote /></InputGroup.Text>
             </InputGroup>
             <InputGroup className="mb-3">
                 <InputGroup.Text>C</InputGroup.Text>
-                <FormControl aria-label="Amount (to the nearest dollar)" />
+                <FormControl 
+                aria-label="Amount (to the nearest dollar)" 
+                value={optionThree}
+                onChange={(e) => setOptionThree(e.target.value)}
+                />
                 <InputGroup.Text><BiNote /></InputGroup.Text>
             </InputGroup>
             
@@ -65,6 +141,7 @@ const Questionpanel = () => {
                         label="Use this for all questions"
                         className={styles.checkboxcolor}
                     />
+                    <button>Save changes</button>
         </Form>
         </div>
     </div>
