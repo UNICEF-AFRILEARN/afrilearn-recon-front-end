@@ -12,10 +12,10 @@ const Questionpanel = () => {
   const dispatch = useDispatch();
   const { newExamQuestion, exams, singleExamQuestions } = useSelector((state) => state.myExams);
   const [questionId, setQuestionId] = useState("")
-  const [data, setData] = useState({
-      question: "",
-      options: []
-  });
+//   const [data, setData] = useState({
+//       question: "",
+//       options: []
+//   });
   const [question, setQuestion] = useState("");
   const [options, setOptions] = useState("");
   const [optionOne, setOptionOne ] = useState("")
@@ -30,12 +30,12 @@ const Questionpanel = () => {
 
 
 
-  useEffect(() => {
-    setData(currValue => ({
-        ...currValue,
-        question: question
-     }))
-  }, [question])
+//   useEffect(() => {
+//     setData(currValue => ({
+//         ...currValue,
+//         question: question
+//      }))
+//   }, [question])
 
   
   const currentExam = [];

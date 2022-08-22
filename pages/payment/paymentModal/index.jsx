@@ -20,10 +20,11 @@ const style = {
   p: 4,
 };
 
-const PaymentDetails = ({handleOpen, handleClose, open, closeModal}) => {
+const PaymentDetails = ({handleOpen, handleClose, open, closeModal, priceSelected}) => {
 
     // console.log("sorted_term_videos from paymentdetails ++++", sorted_term_videos)
     
+    console.log("priceSelected from modal", priceSelected)
     
   return (
     <div>
@@ -56,7 +57,7 @@ const PaymentDetails = ({handleOpen, handleClose, open, closeModal}) => {
            Account Number: 0538617241
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 3 }}>
-           Amount to be Paid: N999
+           Amount to be Paid: {priceSelected}
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
            Send proof of payment to hello@myafrilearn.com or Whatsapp +234 805 154 4949

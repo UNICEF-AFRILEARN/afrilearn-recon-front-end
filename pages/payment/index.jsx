@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRoles } from '../../redux/actions/auth';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { 
   fetchPaymentPlansInitiate,
   verifyPaystackPaymentInitiate,
@@ -20,6 +22,7 @@ const payment = ({test_body}) => {
   const dispatch = useDispatch();
   const [ userRole, setUserRole ] = useState("");
   const [ classId, setClassId ] = useState("");
+  const [ priceSelected, setPriceSelected ] = useState("");
   const [price, setPrice] = useState('');
   const {roles, user } = useSelector((state) => state.auth)
   const {paymentPlans, teacherPaymentPlans} = useSelector((state) => state.myPayment)
@@ -29,12 +32,11 @@ const payment = ({test_body}) => {
 //602f3ce39b146b3201c2dc1d teacher
 //607ededa2712163504210684
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("price from payment", e.target)
-
-}
-
+  const handleSelect = (price) => {
+    setPriceSelected(price)
+  }
+  
+  console.log("priceSelected from payment", priceSelected)
   const config = {
     reference: new Date().getTime(),
     email: "text@gmail.com",
@@ -267,10 +269,70 @@ const initializePayment = usePaystackPayment(config);
 
 {userRole === "602f3ce39b146b3201c2dc1d" &&
   <div className={`col-md-6 ${styles.paymentSecondContainer}`} >
-   <form  onSubmit= {handleSubmit}>
-   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
-    <label for="vehicle1"> I have a bike</label>
-    </form> 
+   <div >
+    <div className='row'>
+      <div className={styles.paymentLabel}><label for="className "><h5>Step 1: Select Class:</h5> </label></div>
+      <div  >
+           <select
+                className={`${styles.pushDown} form-control form-control-sm`}
+                // value={selectedCourse}
+                defaultValue={"default"}
+                // onChange={(e) => setCourseSelected(e.target.value)}
+                >
+                <option value={"default"}>
+                    Select a class
+                </option>
+    
+                {courseContext && courseContext.map((childClass) => 
+                <option 
+                placeholder='Select a Role'
+                    >{childClass.name}
+                </option>
+                )}
+            </select>
+
+      </div>
+    </div> 
+  <h5>Step 3: Select Subscription Length</h5>
+  <div className={`row ${styles.paymentdurationButtons}`}>
+  <div 
+  className= {` col-md-3 ${styles.durationPayment}`}
+  
+  > 
+    {teacher_plans && teacher_plans.map((teacherPlans) =>
+        <button >
+        <div 
+        className={styles.durationBold}
+        onClick={() => handleSelect(teacherPlans.amount)}
+        >{teacherPlans.name}
+        </div>
+        <div>{teacherPlans.amount}</div >
+      </button>
+    )}
+  </div>
+  <div className= {` col-md-3 ${styles.durationPayment}`}> 
+  </div>
+ <div className='row'>
+  <div className= {` col-md-6 ${styles.paymenttypeButton}`}>
+    <button 
+    onClick={() => {
+                initializePayment(onSuccess, onClose)
+              }}>PAY WITH CARD</button>
+  </div>
+    <div className={` col-md-6 ${styles.paymenttypeButton2}`}>
+      {/* <button >BANK TRANSFER</button> */}
+      <PaymentDetails
+    handleClose={handleClose}
+    handleOpen={handleOpen}
+    open={open}
+    closeModal={closeModal}
+  />
+   </div>
+
+ </div>
+
+</div>
+</div> 
 
 
 </div>
@@ -328,6 +390,7 @@ const initializePayment = usePaystackPayment(config);
     handleOpen={handleOpen}
     open={open}
     closeModal={closeModal}
+    // priceSelected={priceSelected}
   />
    </div>
 
