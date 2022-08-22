@@ -22,7 +22,7 @@ const MyStudent = () => {
     setUserId(id)
       Router.push({
         pathname: `/dashboard/performance/[_id]`,
-        query: { _id: id}
+        query: { _id: id, classId: classId}
     })
   }
 //studentName?.userId?.id
@@ -90,7 +90,7 @@ const MyStudent = () => {
                 />
               </div>
             </Col>
-            <Col md={5} >{studentName.userId.fullName}</Col>
+            <Col md={5} >{studentName?.userId?.name}</Col>
             <Col md={5} style={{ color: "#AAA6A6" }}>
              <p onClick={() => goToPerformance(studentName?.userId?.id)}>
                 <u>View Performance</u>

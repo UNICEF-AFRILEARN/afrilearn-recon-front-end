@@ -77,7 +77,7 @@ export const StudentPage = ({ stuData }) => {
 
 useEffect(() => {
   // dispatch(fetchReconLessonInitiate(userId, token))
-  dispatch(fetchCourseInitiate())
+  // dispatch(fetchCourseInitiate())
 }, [fetchCourseInitiate])
 
 

@@ -82,6 +82,7 @@ export const fetchUnfinishedVideoInitiate = (token) =>  {
 
 export const fetchStudentPerformanceInitiate = (userId, courseId, token) => {
     return function (dispatch) {
+        console.log("userId, courseId, token ===>", userId, courseId, token)
         dispatch(fetchStudentPerformanceStart())
         axios
         .post(`https://afrilearn-backend-01.herokuapp.com/api/v1/courses/${courseId}/progress-and-performance`,

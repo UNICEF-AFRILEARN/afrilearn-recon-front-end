@@ -16,8 +16,8 @@ const Questionpanel = () => {
 //       question: "",
 //       options: []
 //   });
-  const [question, setQuestion] = useState("");
-  const [options, setOptions] = useState("");
+  const [questionBody, setQuestionBody] = useState("");
+//   const [options, setOptions] = useState();
   const [optionOne, setOptionOne ] = useState("")
   const [optionTwo, setOptionTwo ] = useState("")
   const [optionThree, setOptionThree ] = useState("")
@@ -28,14 +28,7 @@ const Questionpanel = () => {
   const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjJmNGFkOGM5OWJjNjgwMDE2NjE2NTFkIiwicm9sZSI6IjYwMmYzY2UzOWIxNDZiMzIwMWMyZGMxZCIsImZ1bGxOYW1lIjoiSm9obiBkb2UifSwiaWF0IjoxNjYxMTA0Njk0LCJleHAiOjE2NjM2OTY2OTR9.Srnh1RVV1p5sVrYMAgNpnCiiyFHxVYwFaSUHb32xSYI"
 
 
-
-
-//   useEffect(() => {
-//     setData(currValue => ({
-//         ...currValue,
-//         question: question
-//      }))
-//   }, [question])
+ 
 
   
   const currentExam = [];
@@ -51,12 +44,19 @@ const Questionpanel = () => {
   fiterExam()
   console.log("questionId from onjective", questionId)
 
+    let options = [optionOne, optionTwo, optionThree]
+    let question = questionBody
+  let data = {
+    options,
+    question
+
+  }
 
 
   const handleSubmit = (e) => {
       e.preventDefault()
       console.log("data from ob", data)
-        dispatch(updateExamQuestionInitiate(questionId, data))
+        dispatch(updateExamQuestionInitiate(questionId, question, options))
     }
 
     useEffect(() =>{
@@ -74,6 +74,13 @@ const Questionpanel = () => {
     useEffect(() => {
         dispatch(fetchSingleExamQuestionsInitiate(token, examId))
     }, []);
+
+    // useEffect(() => {
+    //     setOptions(currValue => ({
+    //         ...currValue,
+    //         options: [optionOne, optionTwo, optionThree]
+    //      }))
+    //   }, [optionOne, optionTwo, optionThree])
 
   return (
     <div>
@@ -97,8 +104,8 @@ const Questionpanel = () => {
                     as="textarea" 
                     rows="5" 
                     name="address"
-                    value={question}
-                    onChange={(e) => setQuestion(e.target.value)}
+                    value={questionBody}
+                    onChange={(e) => setQuestionBody(e.target.value)}
                     placeholder="Type question here..." 
                     />
             </Form.Group>

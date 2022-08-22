@@ -82,8 +82,8 @@ const Objectives = () => {
             </div>
                { showObjQuestions === 1 &&  <Questionpanel />}
                 {showObjQuestions === 2 && <Theory /> }
-                {/* {showObjQuestions === 3 && <Generatequestions />}
-                { showObjQuestions === 4 && <Submitquestions />} */}
+                {showObjQuestions === 3 && <Generatequestions />}
+                {/* { showObjQuestions === 4 && <Submitquestions />} */}
         </div>
         
     </div>

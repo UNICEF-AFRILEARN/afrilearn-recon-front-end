@@ -47,7 +47,7 @@ const Dashboard = () => {
     dispatch(fetchActivitiesInitiate(token))
     dispatch(fetchUnicefReconInitiate(schoollevel, subject, lesson))
     dispatch(fetchReconLessonInitiate(userId, token))
-    dispatch(fetchCourseInitiate())
+    // dispatch(fetchCourseInitiate())
   }, [fetchCourseInitiate, fetchReconLessonInitiate, fetchUnicefReconInitiate,fetchActivitiesInitiate, fetchLessonsInitiate])
 
   console.log("activities from Dashboard index call ====>", activities)

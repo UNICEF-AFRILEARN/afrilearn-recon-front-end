@@ -17,7 +17,7 @@ const ClassWork = () => {
   console.log("classContents from classwork", classContents)
 
   useEffect(() => {
-    setClassId(user?.user.classOwnership[0]?.enrolledCourse.classId)
+    setClassId(user?.user?.classOwnership[0]?.enrolledCourse.classId)
   }, []);
 
   useEffect(() => {
@@ -186,7 +186,7 @@ const AllSubject = ({ data }) => {
       </Row>
       <Row style={{ border: "1px solid rgba(229, 229, 229, 0.63)" }}></Row>
 
-      {classContents?.assignedContents.map((content) => (
+      {classContents?.assignedContents?.map((content) => (
         <Row className="mt-3">
           <Col md={1}>
             <Image
