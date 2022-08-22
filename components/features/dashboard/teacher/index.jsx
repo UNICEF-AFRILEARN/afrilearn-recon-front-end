@@ -204,9 +204,9 @@ export const TeacherAnnouncement = () => {
   const [text, setText] = useState("");
 
 
-  const handleChange = (e) => {
-    setText( e.target.value);
-  };
+  // const handleChange = (e) => {
+  //   setText( e.target.value);
+  // };
   
   console.log("token, classId textEdit", user)
 
@@ -247,8 +247,10 @@ export const TeacherAnnouncement = () => {
           }}
           placeholder="Announce something to your class"
           value={text}
-          onChange={handleChange}
-        ></textarea>
+          onChange={(e) => setText(e.target.value)}
+        >
+
+        </textarea>
         <div
           style={{
             position: "absolute",
