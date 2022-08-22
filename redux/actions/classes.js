@@ -80,6 +80,17 @@ export const fetchClassSubjectsFail = (error) => ({
     type: types.FETCH_CLASS_SUBJECTS_FAIL,
     payload: error
 });
+export const createClassworkStart = () => ({
+    type: types.CREATE_CLASS_WORK_START
+});
+export const createClassworkSuccess = (payload) => ({
+    type: types.CREATE_CLASS_WORK_SUCCESS,
+    payload
+});
+export const createClassworkFail = (error) => ({
+    type: types.CREATE_CLASS_WORK_FAIL,
+    payload: error
+});
 
 
 export const makeAnnouncementInitiate = (classId, text, token) =>  {
@@ -101,6 +112,30 @@ export const makeAnnouncementInitiate = (classId, text, token) =>  {
         })
         .catch((err) => {
             dispatch(makeAnnouncementFail(err))
+        })
+    }
+
+}
+export const createClassworkInitiate = (classId, token, lessonId, description) =>  {
+    return function (dispatch) {
+        dispatch(createClassworkStart())
+        axios
+        .post(`https://afrilearn-backend-01.herokuapp.com/api/v1/classes/${classId}/assign-content`,
+        {   
+            lessonId,
+            description
+        },{
+            headers: {
+                "token": token,
+                "Content-Type": "application/json",
+            }
+        })
+        .then((res) => {
+            dispatch(createClassworkSuccess(res.data))
+            console.log("From create classwork API =>", res.data)
+        })
+        .catch((err) => {
+            dispatch(createClassworkFail(err))
         })
     }
 

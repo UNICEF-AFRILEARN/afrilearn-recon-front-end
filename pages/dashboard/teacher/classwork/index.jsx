@@ -39,7 +39,7 @@ const ClassWork = () => {
                 className={`text-secondary ${styles.scoreeffect1}`}
               >
                 <p style={swap === 0 ? { color: "#00d9b6" } : {}}>
-                  All Subject
+                  All Subject 
                 </p>
               </Row>
               <Row

@@ -9,6 +9,7 @@ const initialState = {
     classDetails: [],
     classMembers: [],
     classInvite: [],
+    newClasswork: [],
     classContents: [],
     classSubjects: [],
     error: [],
@@ -137,6 +138,24 @@ export const classesReducer = (state = initialState, { type, payload} ) => {
             };
     
         case types.FETCH_ASSINGED_CLASS_CONTENT_FAIL:
+              return{
+                  loading: false,
+                ...state,
+                error: payload
+            };
+        case types.CREATE_CLASS_WORK_START:
+            return {
+                loading: true,
+                ...state
+            };
+    
+        case types.CREATE_CLASS_WORK_SUCCESS:
+            return {
+                loading: false,
+                newClasswork: payload
+            };
+    
+        case types.CREATE_CLASS_WORK_FAIL:
               return{
                   loading: false,
                 ...state,
