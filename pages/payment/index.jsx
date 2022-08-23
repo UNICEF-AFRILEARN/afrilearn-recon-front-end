@@ -71,7 +71,7 @@ const initializePayment = usePaystackPayment(config);
 
   const courseContext = roles.courses;
   const allPaymentPlans = paymentPlans.paymentPlans;
-  const teacher_plans = teacherPaymentPlans.paymentPlans
+  const teacher_plans = teacherPaymentPlans?.paymentPlans
   
   // Get user role to fetch the payment plans to display
 
