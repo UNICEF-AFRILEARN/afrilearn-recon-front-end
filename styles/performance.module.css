@@ -3,18 +3,50 @@
     justify-content: space-evenly;
     padding: 15px;
     margin-top: 25px;
+    /* margin-top: 20px; */
+}
+
+.innermainwrapper { 
+    width: 35%;
+}
+.rightmainwrapper{
+    background-color: blueviolet;
+}
+.performancemenu {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+.performancemenu li{
+    list-style-type: none;
+    border-bottom: 5px solid black;
+    color: #fff;
+}
+.innermenuwrapper {
+    cursor: pointer;
+}
+.performancecontentwrapper {
+    padding: 30px;
+}
+.leftwrapper {
+    background-color: rgb(138, 128, 128);
+    margin-bottom: 40px;
+    height: 50%;
 }
 
 .studentnamewrapper {
-    background-color:#FAFAFA;
     text-align: center;
-    width: 60%;
     padding: 25px;
     margin-bottom: 10px;
     font-size: 20px;
     position:relative;
     padding-bottom: 70px;
     border-radius: 20px;
+}
+
+.progresswrapper {
+    background-color: #29465B;
+    width: 55%;
 }
 .studentnamewrapper p {
     color: #333333;
