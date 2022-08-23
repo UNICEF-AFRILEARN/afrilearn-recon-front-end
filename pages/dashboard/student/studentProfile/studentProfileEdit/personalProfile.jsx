@@ -11,6 +11,8 @@ import {
 } from "react-bootstrap";
 import { editTeacherProfileInitiate } from '../../../../../redux/actions/auth';
 import countryCodes from "country-codes-list";
+import { useDispatch, useSelector } from 'react-redux';
+import { sendeditedprofileInitiate } from "../../../../../redux/actions/auth";
 
 const PersonalProfile = () => {
   const { user } = useSelector((state) => state.auth);
@@ -26,6 +28,7 @@ const PersonalProfile = () => {
   const [country, setCountry] = useState("");
   const [phoneNumber, setphoneNumber] = useState("");
   const [token, setToken] = useState("");
+  const [name, setName] = useState(" ");
 
 
   console.log("fullName from profile page", token)
@@ -39,7 +42,7 @@ const PersonalProfile = () => {
     "countryCode",
     "+{countryCallingCode}",
   );
-
+  console.log(user)
   const codes = Object.values(myCountryCodesObject);
   const coded = [...new Set(codes.sort((a, b) => a - b))];
 
@@ -61,14 +64,32 @@ const PersonalProfile = () => {
     setphoneNumber(user?.user?.phoneNumber)
   }, [phoneNumber]);
 
+  const data={
+    name:"Mike",
+    email:"micheaol80@gmail.com"
+  }
+  const editProfile = (e) => {
+    e.preventDefault();
+    console.log("Mike is a cool guy")
+    dispatch(sendeditedprofileInitiate(data,token));
+  };
+// const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjJhMGJjOTg0YWYyZDkwMDE2YjcyMDk2Iiwicm9sZSI6IjVmZDA4ZmJhNTA5NjQ4MTEzMDk3MjJkNSIsImZ1bGxOYW1lIjoiTWljaGFlbCBPbGFkZWxlIn0sImlhdCI6MTY1OTYxNDI2NiwiZXhwIjoxNjYyMjA2MjY2fQ.x0H_plJQuRadJ1E_C4KNiM8JwK8Y-_CzWMWLa0HNdkA"
+  
+useEffect(() => {
+  if(user.user?.token === 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjJhMGJjOTg0YWYyZDkwMDE2YjcyMDk2Iiwicm9sZSI6IjVmZDA4ZmJhNTA5NjQ4MTEzMDk3MjJkNSIsImZ1bGxOYW1lIjoiTWljaGFlbCBPbGFkZWxlIn0sImlhdCI6MTY1OTYxNDI2NiwiZXhwIjoxNjYyMjA2MjY2fQ.x0H_plJQuRadJ1E_C4KNiM8JwK8Y-_CzWMWLa0HNdkA'){
+  }
+}, [user])
+
+ 
   return (
     <>
-      <form className="w-75 mx-auto" onSubmit={handleSubmit}>
+    <form onSubmit={editProfile}>
+    <Container className="w-75 mx-auto" > 
         <Row className="">
           <Col>
             <Row className="d-flex justify-content-center pt-3">
               <Col md={3} className="ps-1">
-                <p className="p-3">Full Name:</p>
+                <p className="p-3" type="text">Full Name:</p>
               </Col>
               <Col md={7} className="">
                 <input
@@ -77,6 +98,8 @@ const PersonalProfile = () => {
                   disabled
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
+                  type="text"
+                  placeholder={`fullname`}
                   style={{
                     width: "670px",
                     height: "63px",
@@ -99,6 +122,7 @@ const PersonalProfile = () => {
                   disabled
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  placeholder="email"
                   style={{
                     width: "670px",
                     height: "63px",
@@ -124,6 +148,7 @@ const PersonalProfile = () => {
                     border: "1px solid #29465B",
                     borderRadius: "5px",
                   }}
+                  onChange={(e) => setphoneNumber(e.target.value)}
                 >
                   <DropdownButton
                     variant="outline-secondary"
@@ -151,7 +176,7 @@ const PersonalProfile = () => {
               <Col md={3} className="ps-1">
                 <p className="p-3">Age:</p>
               </Col>
-              <Col md={7}>
+              <Col md={7}> 
                 <input
                   className="p-4"
                   value={age}
@@ -222,6 +247,7 @@ const PersonalProfile = () => {
                     border: "1px solid #29465B",
                     borderRadius: "5px",
                   }}
+                  // onChange={(e) => set(e.target.value)}
                 />
               </Col>
             </Row>
@@ -244,11 +270,32 @@ const PersonalProfile = () => {
                   }}
                 />
               </Col>
+              <Col className="">
+          <Row  className="mx-auto mt-4">
+            <button
+            className="mx-auto mt-4"
+              style={{
+                marginLeft: "auto",
+                textAlign: "center",
+                color: "white",
+                background: "#00D9B6",
+                border:"1px solid white",
+                borderRadius: "100px",
+                width: "223px",
+                height: "53px",
+              }}
+              type="submit"
+            >
+              SAVE CHANGES
+            </button>
+          </Row>
+        </Col>
             </Row>
           </Col>
         </Row>
-        <button type ='submit' >Save Changes</button>
-      </form>
+      </Container>
+    </form>
+    
     </>
   );
 };

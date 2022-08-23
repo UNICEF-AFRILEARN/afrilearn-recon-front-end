@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 import Link from "next/link";
 import styles from "./login.module.css";
 import Image from "next/image";
-import TextInput from "../../../widgets/appTextInput";
 import AppButton from "../../../widgets/buttons/AppButton";
 import { loginInitiate } from "../../../../redux/actions/auth";
 
@@ -46,7 +45,6 @@ const Login = () => {
     }
   }, [user])
   
-
   return (
     <>
       <div className={styles.floatImg2}>

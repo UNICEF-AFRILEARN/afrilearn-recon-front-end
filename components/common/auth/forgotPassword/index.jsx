@@ -21,7 +21,6 @@ const Login = () => {
     e.preventDefault();
      setShowresponse(formPassword)
     dispatch(sendForgotpasswordemail(email));
-   
   };
 
  

@@ -5,7 +5,7 @@ import SubHeading from "./extra/subHeading";
 import PastQuestion from "./extra/pastQuestion";
 import TopInClass from "./extra/topInClass";
 import Recommendation from "./extra/recommendation";
-import Image from "next/image";
+// import Image from "next/image";
 import Slider from "react-slick";
 import { useRef } from "react";
 import Link from "next/link";
@@ -28,15 +28,6 @@ const Dashboard = () => {
   console.log("Register registerUser from dashboard INDEX =====>", registerUser.user);
   console.log("Register user from dashboard INDEX =====>", user);
 
-
-  const schoollevel = "Primary One"
-  const subject = "Basic Technology"
-  const lesson  = "6012c173cfe09249249f7ece"
-
-  // const schoollevel = "JSS One"
-  // const subject = "Home Economics"
-  // const lesson  = "6012d3aacfe09249249f8b20"
-
   const userId = "62a0bc984af2d90016b72096"
   const token = user.token
   const lessonId = '6012c2a7cfe09249249f7f9c'
@@ -45,42 +36,12 @@ const Dashboard = () => {
     dispatch(fetchLessonsInitiate())
     dispatch(fetchSingleLessonInitiate(lessonId))
     dispatch(fetchActivitiesInitiate(token))
-    dispatch(fetchUnicefReconInitiate(schoollevel, subject, lesson))
+    // dispatch(fetchUnicefReconInitiate(schoollevel, subject, lesson))
     dispatch(fetchReconLessonInitiate(userId, token))
     // dispatch(fetchCourseInitiate())
   }, [fetchCourseInitiate, fetchReconLessonInitiate, fetchUnicefReconInitiate,fetchActivitiesInitiate, fetchLessonsInitiate])
 
   console.log("activities from Dashboard index call ====>", activities)
-
-  const recommendationDatas = [
-    {
-      _id: "6012d2b2cfe09249249f8a0e",
-      subject: "Civic Education",
-      class: "JSS One",
-      title: "Adverbial Phrase and Adjectival Clause",
-      thumbnailUrl:
-        "https://afrilearn-media.s3.eu-west-3.amazonaws.com/jss-one/civic-education/third-term/national-unity/thumbnail/national-unity.jpeg",
-      videoUrl: "Adverbial Phrase and Adjectival Clause",
-    },
-    {
-      _id: "6012d9fecfe09249249f9358",
-      subjectRecommended: "Data Science",
-      subject: "Literature in English",
-      class: "SSS One",
-      title: "Environmental Health and Science",
-      thumbnailUrl: "/assets/img/features/dashboard/student/Bookk.png",
-    },
-    {
-      _id: "6012d9fecfe09249249f9358",
-      subject: "Literature in English",
-      class: "SSS One",
-      title: "Environmental Health and Science",
-      thumbnailUrl:
-        "https://afrilearn-media.s3.eu-west-3.amazonaws.com/sss-one/literature-in-english/third-term/thumbnail/figures-of-speech.jpeg",
-      videoUrl:
-        "https://afrilearn-media.s3.eu-west-3.amazonaws.com/sss-one/literature-in-english/third-term/figures-of-speech-ii/video-lessons/1622635953448Figures+Of+Speech+_+Antithesis+_+Afrilearn.mp4",
-    },
-  ];
 
   const datas = [
     { class: "SSS One" },

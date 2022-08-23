@@ -7,9 +7,7 @@ import React, { useState} from "react";
 import Modal from 'react-bootstrap/Modal';
 import { sendChangepasswordemail } from "../../../../redux/actions/auth";
 
-
 const ResetPassword = () => {
-
   const dispatch = useDispatch();
   const  {formConfirmPassword}  = useSelector((state) => state.auth);
   console.log( "reset user", formConfirmPassword)
