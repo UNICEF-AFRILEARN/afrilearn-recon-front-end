@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <svg width="792" height="91" viewBox="0 0 792 91" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect width="791.109" height="90.901" rx="45.0005" fill="white"/>
 <g clip-path="url(#clip0_210_4254)">
@@ -9,3 +10,16 @@
 </clipPath>
 </defs>
 </svg>
+=======
+<svg width="792" height="91" viewBox="0 0 792 91" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="791.109" height="90.901" rx="45.0005" fill="white"/>
+<g clip-path="url(#clip0_210_4254)">
+<path d="M490.843 40.7256L477.905 53.6632L464.968 40.7256" stroke="black" stroke-width="3.88129" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_210_4254">
+<rect width="41.4005" height="41.4005" fill="white" transform="translate(457.205 25.2004)"/>
+</clipPath>
+</defs>
+</svg>
+>>>>>>> 03fbaf9a5573468f4bc43a2ffb23396d4b634a60

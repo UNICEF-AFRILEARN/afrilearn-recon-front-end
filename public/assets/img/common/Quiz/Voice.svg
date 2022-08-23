@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="Iconly/Light/Voice">
 <g id="Voice">
@@ -7,3 +8,14 @@
 </g>
 </g>
 </svg>
+=======
+<svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Iconly/Light/Voice">
+<g id="Voice">
+<path id="Stroke 1" d="M17.4984 32.0863V27.4766" stroke="#333333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Stroke 3" fill-rule="evenodd" clip-rule="evenodd" d="M17.4981 21.6548V21.6548C14.2267 21.6548 11.5742 18.9914 11.5742 15.7049V8.86935C11.5742 5.58281 14.2267 2.91797 17.4981 2.91797C20.771 2.91797 23.4219 5.58281 23.4219 8.86935V15.7049C23.4219 18.9914 20.771 21.6548 17.4981 21.6548Z" stroke="#333333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Stroke 5" d="M29.1654 15.7539C29.1654 22.2272 23.9428 27.4755 17.4979 27.4755C11.0546 27.4755 5.83203 22.2272 5.83203 15.7539" stroke="#333333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+</svg>
+>>>>>>> 03fbaf9a5573468f4bc43a2ffb23396d4b634a60
