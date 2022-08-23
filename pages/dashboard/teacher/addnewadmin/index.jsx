@@ -25,6 +25,7 @@ const Addnewadmin = () => {
     course = courseSelected.split("-")
     const schoolId = user.user?.schoolId?.id
 
+
     
     const handleSubmit = (e) => {
       e.preventDefault()
@@ -88,7 +89,7 @@ const Addnewadmin = () => {
          <div  className={styles.addstudentContainer}>
             <div className={styles.heading1}><h4>Add New Admin</h4></div>
             <div>Add your admin to the league of world class learners on Afrilearn</div>
-            <form className= { `row ${styles.form}`} onSubmit={handleSubmit}>
+            {/* <form className= { `row ${styles.form}`} onSubmit={handleSubmit}>
                 <input 
                     className={styles.input}
                     value={role}
@@ -141,7 +142,7 @@ const Addnewadmin = () => {
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     />
             <button className={styles.studentButton} type='submit'>REGISTER</button>
-            </form>
+            </form> */}
          </div>
         </>
        

@@ -140,13 +140,13 @@ export const createClassworkInitiate = (classId, token, lessonId, description) =
     }
 
 }
-export const sendClassEmailInviteInitiate = (classCode, email, token) =>  {
+export const sendClassEmailInviteInitiate = (invitationLink, email, token) =>  {
     return function (dispatch) {
         dispatch(sendClassEmailInviteStart())
         axios
         .post('https://afrilearn-backend-01.herokuapp.com/api/v1/classes/send-class-invite',
         {   
-            classCode,
+            link: invitationLink,
             email
         },{
             headers: {

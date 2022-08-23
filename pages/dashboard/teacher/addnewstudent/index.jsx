@@ -10,9 +10,8 @@ const Addnewstudent = () => {
     const { schoolProfile } = useSelector((state) => state.school);
     const dispatch = useDispatch();
 
-    const [fullName, setfullName] = useState("");
-    const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     // const [schoolId, setSchoolId] = useState("");
     const [token, setToken] = useState("Student");
     const [courseId, setCourseId] = useState("");
@@ -21,9 +20,16 @@ const Addnewstudent = () => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [courseSelected, setCourseSelected] = useState("");
     
+
+    const invitationLink = `https://myafrilearn.com/join-class?email=${email}&classId=${classId}`;
+
+    // console.log("user from invite", user.user.enrolledCourses[0]?.classId)
+
+    console.log("classId", classId)
     const handleSubmit = (e) => {
       e.preventDefault()
-      dispatch(sendClassEmailInviteInitiate(classCode, email, token))
+      // console.log(invitationLink)
+      dispatch(sendClassEmailInviteInitiate(invitationLink, email, token))
 
     }
 
@@ -31,6 +37,11 @@ const Addnewstudent = () => {
     useEffect(() => {
       setClassCode(user?.user?.classOwnership[0]?.classCode)
     }, [classCode]);
+
+
+    useEffect(() => {
+      setClassId(user.user.enrolledCourses[0]?.classId)
+    }, [classId]);
 
     useEffect(() => {
       setToken(user?.token)
@@ -46,7 +57,6 @@ const Addnewstudent = () => {
             <div className={styles.heading1}><h4>Add New Student</h4></div>
             <div>Add your student to the league of world class learners on Afrilearn</div>
             <form className= { `row ${styles.form}`} onSubmit={handleSubmit}>
-                
                 <input 
                     className={styles.input}
                     type="text" 

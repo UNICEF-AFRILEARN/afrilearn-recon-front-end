@@ -15,6 +15,7 @@ const ClassWork = () => {
   const { user } = useSelector((state) => state.auth);
 
   console.log("classContents from classwork", classContents)
+  console.log("classContents.subjectId from classwork", classContents.assignedContents)
 
   useEffect(() => {
     setClassId(user?.user?.classOwnership[0]?.enrolledCourse.classId)
@@ -51,80 +52,6 @@ const ClassWork = () => {
                 <p style={swap === 1 ? { color: "#00d9b6" } : {}}>
                   Mathematics
                 </p>
-              </Row>
-              <Row
-                onClick={() => {
-                  setSwap(2);
-                }}
-                className={`text-secondary mt-0 ${styles.scoreeffect2}`}
-              >
-                <p style={swap === 2 ? { color: "#00d9b6" } : {}}>
-                  English Language
-                </p>
-              </Row>
-              <Row
-                onClick={() => {
-                  setSwap(3);
-                }}
-                className={`text-secondary mt-0 ${styles.scoreeffect2}`}
-              >
-                <p style={swap === 3 ? { color: "#00d9b6" } : {}}>
-                  Business Studies
-                </p>
-              </Row>
-              <Row
-                onClick={() => {
-                  setSwap(4);
-                }}
-                className={`text-secondary mt-0 ${styles.scoreeffect2}`}
-              >
-                <p style={swap === 4 ? { color: "#00d9b6" } : {}}>
-                  Computer Science
-                </p>
-              </Row>
-              <Row
-                onClick={() => {
-                  setSwap(5);
-                }}
-                className={`text-secondary mt-0 ${styles.scoreeffect2}`}
-              >
-                <p style={swap === 5 ? { color: "#00d9b6" } : {}}>CRK</p>
-              </Row>
-              <Row
-                onClick={() => {
-                  setSwap(6);
-                }}
-                className={`text-secondary mt-0 ${styles.scoreeffect2}`}
-              >
-                <p style={swap === 6 ? { color: "#00d9b6" } : {}}>
-                  Basic Technology
-                </p>
-              </Row>
-              <Row
-                onClick={() => {
-                  setSwap(7);
-                }}
-                className={`text-secondary mt-0 ${styles.scoreeffect2}`}
-              >
-                <p style={swap === 7 ? { color: "#00d9b6" } : {}}>French</p>
-              </Row>
-              <Row
-                onClick={() => {
-                  setSwap(8);
-                }}
-                className={`text-secondary mt-0 ${styles.scoreeffect2}`}
-              >
-                <p style={swap === 8 ? { color: "#00d9b6" } : {}}>
-                  Basic Science
-                </p>
-              </Row>
-              <Row
-                onClick={() => {
-                  setSwap(9);
-                }}
-                className={`text-secondary mt-0 ${styles.scoreeffect2}`}
-              >
-                <p style={swap === 9 ? { color: "#00d9b6" } : {}}>Yoruba</p>
               </Row>
             </div>
           </Col>
