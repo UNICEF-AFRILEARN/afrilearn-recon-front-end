@@ -11,7 +11,6 @@ import {
 } from "react-bootstrap";
 import { editTeacherProfileInitiate } from '../../../../../redux/actions/auth';
 import countryCodes from "country-codes-list";
-import { useDispatch, useSelector } from 'react-redux';
 import { sendeditedprofileInitiate } from "../../../../../redux/actions/auth";
 
 const PersonalProfile = () => {

@@ -194,7 +194,7 @@ const Navigation = () => {
               
                 </ul>
                 <div className={styles.avatarcontainer}>
-                         <Link passHref href="/school/schoolProfile" className="btn-log-in-mobile">
+                         <Link passHref href="/school/schoolprofile" className="btn-log-in-mobile">
                           <BsPersonCircle size={30} className={styles.profileavatar}/>
                           </Link>
                       <div className={styles.iconswrapper}>
