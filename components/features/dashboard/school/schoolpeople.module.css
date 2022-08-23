@@ -1,0 +1,125 @@
+.videoheropage {
+    background: url("../../../../public/assets/img/classroomheroimg.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #ffffff;
+    height: 30vh;
+    position: relative;
+  }
+  .heading{
+    padding: 5% 0 0 5%;
+    font-family: "subHeading";
+}
+.headingSelect{
+    background-color: #00D9B6;
+    width: 212px;
+    height: 55px;
+    padding: 5px 20px 5px 5px;
+    color:#ffffff;
+    border: none;
+/* margin-right: 50%; */
+    border-radius: 12px;
+}
+.schooladd{
+    height : 40px;
+    padding: 3%;
+    width:35px;
+    background: url("../../../../public/assets/img/Add\ User.svg");
+    background-repeat: no-repeat;
+    margin-right: 20px;
+}
+.schdatasection{
+    color:#333333;
+    padding: 3% 0 5% 7%;
+}
+.heading2{
+    font-family: "subHeading";
+}
+.addTeacher{
+    display: flex;
+    flex-direction: row;
+}
+.schooladownload{
+    height : 40px;
+    padding: 3%;
+    width:35px;
+    background: url("../../../../public/assets/img/Download.svg");
+    background-repeat: no-repeat;
+    margin-right: 20px;
+}
+.teachersection{
+    border-bottom: 2px solid #d4cece;
+    margin: 3% 0 0 0;
+    width:1237px;
+}
+.studentsection{
+    border-bottom: 2px solid #d4cece;
+    margin: 3% 0 0 0;
+    width:1237px;
+}
+.teacherHeading  {
+    color:#00D9B6;
+    padding-left: 10%;
+}
+.numberoffteacher{
+     margin-left: 50%;
+    font-weight: 600;
+    font-size: 20px; 
+}
+.schoolgroup{
+    background: url("../../../../public/assets/img/school/Group\ 2438.svg");
+    background-repeat: no-repeat;
+    height: 70px;
+}
+.teacherContrainer{
+    padding: 2% 5% 2% 10%;
+}
+.teacherdata{
+margin-right: 12%;
+}
+.dataContainer{
+    width:1237px;
+    /* border: 1px solid #d4cece ; */
+    margin-left: 10%;
+    background-color: #FAFAFA;
+    margin-bottom: 5%;
+    padding-top: 3%;
+}
+.mainherowrapper {
+    position: relative;
+}
+.middlenavmainwrapper{
+    display: flex;
+    width: 60%;
+    margin: 0 auto;
+    align-items: center;
+    position: absolute;
+    bottom: 50%;
+    left: 28%;
+}
+.circleinnerwrapper{
+    height: 180px;
+    background-color: rgba(107, 0, 128);
+    border-radius: 50%;
+    width: 20%;
+    position: absolute;
+    left: -15%;
+    z-index: 4;
+    border: solid 5px black;
+
+}
+.middleinnerwrapper{
+    height: 100px;
+    background-color: #fff;
+    width: 45%;
+    padding: 0 15%;
+    padding-top: 10px;
+    border: 1px solid rgb(202, 197, 197);
+    text-align: center;
+    border-radius: 5px;
+}
+
+
+.middlelinks{
+    background-color: red;
+}

@@ -1,0 +1,281 @@
+.accord {
+  /* height: 80px; */
+  /* margin: auto; */
+  border-radius: 10px;
+}
+
+
+.classs {
+  margin: 50px 100px;
+}
+
+
+
+.accordance {
+  background-image: url("/assets/img/features/dashboard/student/button2.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+}
+
+.document,
+.mic,
+.love,
+.moreIcon {
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 25px;
+  height: 25px;
+  margin: 5px auto;
+}
+
+.document {
+  background-image: url("/assets/img/features/dashboard/student/Document.png");
+}
+
+.moreIcon {
+  background-image: url("/assets/img/features/dashboard/student/Group2121.png");
+  width: 7px;
+  height: 25px;
+}
+.love {
+  background-image: url("/assets/img/features/dashboard/student/Heart.png");
+}
+.seen {
+  background-image: url("/assets/img/features/dashboard/student/Show.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 20px;
+  height: 20px;
+  margin: 5px auto;
+}
+.colSeen {
+  display: flex;
+  width: fit-content;
+  justify-content: center;
+}
+.colSeendown {
+  margin: 30px 0;
+  display: flex;
+  column-gap: 20px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: #333333;
+}
+.vidCommentRight {
+  color: #a8a8a8;
+}
+
+.loved {
+  background-image: url("/assets/img/features/dashboard/student/Heart2.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 20px;
+  height: 20px;
+  margin: 5px auto;
+}
+
+.vidText {
+  font-weight: 500;
+  font-size: 25px;
+  color: #29465b;
+}
+
+.mic {
+  background-image: url("/assets/img/features/dashboard/student/Voice.png");
+}
+.documentBottom,
+.micBottom,
+.loveBottom,
+.moreIconBottom {
+  width: fit-content;
+  margin: auto;
+}
+.accordHead {
+  width: 80%;
+  /* background-color: #a80f0f !important; */
+  border: 0 !important;
+}
+
+.accordLeft {
+  background: #f1f2f4;
+  padding: 12px 64px;
+  border-bottom: 15px solid white;
+  border-radius: 0 0 23px 23px;
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+
+.accordRightDiv {
+  align-self: center;
+  /* width: 100%; */
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.accordButtonLeft {
+  border: 1.20556px solid #333333;
+  border-radius: 120.556px;
+  padding: 5px 10px;
+  width: fit-content;
+  height: fit-content;
+  margin: 7px;
+}
+
+.accordLeft {
+  display: flex;
+  gap: 15px;
+}
+
+.buttonStyle {
+  display: flex;
+  gap: 5px;
+}
+
+.headerTop {
+  /* width: 0%; */
+  margin: 30px 0;
+  height: 50px;
+  background: #29465b;
+  box-shadow: 0px 1px 7px rgba(212, 217, 232, 0.5);
+  border-radius: 10px;
+  display: grid;
+  justify-content: space-between;
+  padding: 20px 15px;
+  align-content: center;
+  grid-template-columns: 20% 10% 1% 20% 49%;
+}
+
+.headerTopRightMid {
+  background-image: url("/assets/img/features/dashboard/student/Ellipse 111.png");
+  background-repeat: no-repeat;
+  background-size: fill;
+  align-items: center;
+  margin-top: 10px;
+}
+.headerTopRight {
+  background-image: url("/assets/img/features/dashboard/student/iconDown.png");
+  background-repeat: no-repeat;
+  background-size: fill;
+  justify-self: end;
+  margin-top: 10px;
+  width: 26px;
+  height: 14.82px;
+  margin-right: 20px;
+}
+
+.headerTopLeft {
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 33px;
+  color: #00d9b6;
+  margin-left: 20px;
+}
+
+.headerTopLeftMid,
+.headerTopRightExtMid {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 33px;
+  color: white;
+  /* margin-left: 20px; */
+}
+
+.commentAvatarlSide {
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+}
+
+.commentAvatarMSide input {
+  border: 0;
+  width: 100%;
+  height: 50px;
+}
+
+.commentAvatarRight {
+  display: flex;
+}
+
+.commentAvatarRSide {
+  border-bottom: 1px solid #a8a8a8;
+}
+.commentAvatartop {
+  display: grid;
+  grid-template-columns: 85% 15%;
+  grid-row: 50px;
+  align-content: center;
+}
+
+.commentAvatarMRSide {
+  background-image: url("/assets/img/features/dashboard/student/Send.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 30px;
+  height: 30px;
+  /* margin: 5px auto; */
+  align-self: center;
+}
+.commentAvatarMSide input:focus {
+  outline: none;
+}
+
+.line {
+  margin-top: 50px;
+  border: 1px solid #a8a8a8;
+}
+
+.accordButtonLeftExtra {
+  margin-left: 100px;
+  margin-top: 30px;
+}
+
+.accordButtonLeft1 {
+  background-image: url("/assets/img/features/dashboard/student/Stroke 1.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 13px;
+  height: 13px;
+  /* margin: 5px auto; */
+  align-self: center;
+}
+
+.accordButtonLeft2 {
+  background-image: url("/assets/img/features/dashboard/student/Line 95.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 2px;
+  height: 25px;
+  /* margin: 5px auto; */
+  align-self: center;
+}
+
+.accordButtonLeftSide1 {
+  font-size: 12px;
+}
+.accordButtonLeftSide2 {
+  font-size: 15px;
+  color: #00d9b6;
+}
+.accordButtonLeftExtr {
+  border: 1.20556px solid #333333;
+  padding: auto;
+  border-radius: 120.556px;
+}
+
+.lovedtext {
+  color: #00d9b6;
+  font-size: 20px;
+  cursor: "pointer";
+}
+
+.highlightText:hover {
+  color: #00d9b6;
+}
+
+.colSeentext {
+  cursor: "pointer";
+}

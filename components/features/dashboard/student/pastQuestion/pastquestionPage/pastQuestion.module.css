@@ -1,0 +1,28 @@
+ .pastqueIcon{
+  background-image: url("/assets/img/features/dashboard/student/Group 2296.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 20px;
+  height: 20px;
+  /* margin: 5px auto; */
+  align-self: center;
+}
+.pastqueIcon1{
+    background-image: url("/assets/img/features/dashboard/student/Time Circle.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 20px;
+  height: 20px;
+  /* margin: 5px auto; */
+  align-self: center; 
+}
+
+.circleIcon{
+       background-image: url("/assets/img/features/dashboard/student/Ellipse 87.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 10px;
+  height: 12px;
+  /* margin: 5px auto; */
+  align-self: center; 
+}

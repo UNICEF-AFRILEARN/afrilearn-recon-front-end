@@ -1,0 +1,45 @@
+.homepageSecondSectionh2 {
+  font-family: "heading";
+  font-size: 40px;
+  margin-top: 50px;
+  text-align: center;
+}
+.secondSectionulWrapper {
+  overflow-x: scroll;
+}
+.secondSectionulWrapper::-webkit-scrollbar {
+  width: 0;
+}
+.secondSectionul {
+  list-style: none;
+  border-bottom: solid 1px lightgrey;
+  padding: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.secondSectionul li {
+  margin-right: 10px;
+  padding: 10px 23px;
+  color: #a6a6a6;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px 5px 0px 0px;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 31px;
+}
+.secondSectionul .border {
+  border-left: solid 3px black;
+  height: 21px;
+  margin-right: 16px;
+  position: relative;
+}
+
+.activeOption {
+  background: #f4f5f7;
+  color: black !important;
+  color: #000000;
+}

@@ -1,0 +1,61 @@
+.overallcomp {
+    margin-left: 90px;
+    font-family: Spoof;
+    font-weight: 900;
+    color: #29465B;
+    font-family: "subHeading";
+}
+.parentcontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5%;
+    width: 80vw;
+    padding-bottom: 20px;
+}
+
+.chartcard {
+    margin-left: 15px;
+    margin-right: 10px;
+}
+
+.topmath {
+   display: flex;
+   flex-direction: row;
+   margin-bottom: 40px;
+   margin-left: 10px;
+   margin-top: 30px;
+}
+
+.topmath p {
+    margin: 3px;
+    margin-top: 10px;
+}
+
+.bardetails {
+    margin-left: 10px;
+    text-align: center;
+    margin-top: 15px;
+    margin-right: 20px;
+}
+
+.bardetails h5{
+    margin-bottom: 35px;
+    margin-top: 25px;
+    border-radius: 25px;
+    padding: 10px;
+    /* font-weight: 50; */
+}
+
+.colorone {
+    background-color: #A2DBB1;
+}
+.colortwo{
+    background-color: #A6A6A6;
+}
+.colorthree{
+    background-color: #EDB68B;
+}
+.colorfour{
+    background-color: #B0C4DA;
+}

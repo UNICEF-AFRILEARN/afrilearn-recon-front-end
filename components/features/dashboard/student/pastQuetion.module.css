@@ -1,0 +1,60 @@
+.container {
+  width: 1250px;
+  margin: auto;
+  justify-content: center;
+  margin-bottom: 30px;
+  column-gap: 20px;
+}
+
+
+.containerList1 {
+  width: 400px;
+  height: 152px;
+  background: #340067;
+  box-shadow: inset 10.7637px 10.7637px 10.7637px rgba(0, 0, 0, 0.41),
+    inset -10.7637px -10.7637px 10.7637px #56119a;
+  border-radius: 29.3311px;
+  border: 10px solid white;
+}
+.containerList2 {
+  width: 400px;
+  height: 152px;
+  background: #118330;
+  box-shadow: inset 10.7637px 10.7637px 10.7637px rgba(0, 0, 0, 0.41),
+    inset -10.7637px -10.7637px 10.7637px #328f4c;
+  border-radius: 29.3311px;
+  padding: 5px;
+  border: 10px solid white;
+}
+
+.cointainerListLeft1 {
+  width: 100%;
+  height: 100px;
+  display: grid;
+  filter: drop-shadow(5.86623px 5.86623px 5.86623px rgba(0, 0, 0, 0.25))
+    drop-shadow(-5.86623px -5.86623px 5.86623px #340067);
+  grid-template-columns: 30% 70%;
+  margin-top: 10px;
+}
+.cointainerListLeft2 {
+  width: 100%;
+  height: 100px;
+  display: grid;
+  filter: drop-shadow(5.86623px 5.86623px 5.86623px rgba(0, 0, 0, 0.25))
+    drop-shadow(-5.86623px -5.86623px 5.86623px #118330);
+  grid-template-columns: 30% 70%;
+  margin-top: 10px;
+}
+
+.cointainerListLeftTop,
+.cointainerListLeftBottom {
+  color: #fff;
+  margin-top: 20px;
+}
+.cointainerListLeftBottom {
+  margin-top: 0;
+
+  font-size: 14px;
+  font-weight: 300;
+  color: #ffffff;
+}
