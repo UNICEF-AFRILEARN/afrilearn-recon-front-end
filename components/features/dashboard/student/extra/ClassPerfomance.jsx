@@ -144,11 +144,14 @@ const ClassPerfomance = (
                       </p> : <p>{pastSubject.averageTimePerSubject}</p>}
                      </div>
                       </div>
-                      {pastSubject.perSubjectResults && pastSubject.perSubjectResults.map((perSubjects) => 
-                        <ul className={styles.persubjectswrapper}>
-                           <li>{perSubjects.name}: {perSubjects.score}%</li>
-                         </ul>
-                      )}
+                        <div className={styles.accuracywrapper}>
+                            <h5>ACCURANCY/SUBJECT</h5>
+                          {pastSubject.perSubjectResults && pastSubject.perSubjectResults.map((perSubjects) =>
+                            <ul className={styles.persubjectswrapper}>
+                              <li>{perSubjects.name}: {perSubjects.score}%</li>
+                            </ul>
+                          )}
+                        </div>
                   </div>
               )}
           </div>

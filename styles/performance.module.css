@@ -3,14 +3,14 @@
     justify-content: space-evenly;
     padding: 15px;
     margin-top: 25px;
-    /* margin-top: 20px; */
+    height: 30%;
 }
 
 .innermainwrapper { 
     width: 35%;
 }
 .rightmainwrapper{
-    background-color: blueviolet;
+    background-color: rgb(27, 20, 34);
 }
 .performancemenu {
     display: flex;
@@ -36,15 +36,18 @@
 
 .performancecontentwrapperpast {
     padding: 30px;
-    border: 5px solid black;
+    border: 5px solid rgb(184, 47, 47);
     display: flex;
+    height: 10%;
     flex-direction: column;
     text-align: start;
     align-items: flex-start;
     background-color: #29465B;
 }
-.persubjectswrapper {
-    /* display: f; */
+
+.accuracywrapper {
+    margin-top: 20px;
+    height: 10%;
 }
 .pastquestionratewrapper {
     display: flex;
