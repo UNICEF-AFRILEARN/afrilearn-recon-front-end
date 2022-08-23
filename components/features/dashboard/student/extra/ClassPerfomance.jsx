@@ -1,14 +1,24 @@
 import React, { useState, useEffect} from 'react';
 import styles from '../../../../../styles/performance.module.css';
+import { FiCheckCircle } from 'react-icons/fi';
+import { AiOutlineExclamationCircle } from 'react-icons/ai';
+import { FaRegCheckCircle } from 'react-icons/fa';
 // import BarChartSect from './BarChartSect';
 // import PieChartSection from './PieChartSection';
 
 
-const ClassPerfomance = ({currentStudent, classDetails}) => {
+const ClassPerfomance = (
+  {currentStudent, 
+    classDetails, 
+    studentPerformance
+  }) => {
+
+    let pastQuestionPerformance = studentPerformance?.data?.examsList;
+    let subjectPerformance = studentPerformance?.data?.subjectsList;
   // const result = Object?.values(classDetails);
   const [showPanel, setShowPanel] = useState(false);
   const [panelId, setPanelId] = useState(1);
-  console.log("classDetails from classPerformance ===>", classDetails)
+  console.log("studentPerformance?.data? from classPerformance ===>", studentPerformance?.data)
 
 
   const displayPanel = () => {
@@ -65,16 +75,82 @@ const ClassPerfomance = ({currentStudent, classDetails}) => {
                 className={styles.innermenuwrapper}
                 >Past Questions</li>
               </ul>
-             { 
-              showPanel === true && 
+             { showPanel === true && 
+              subjectPerformance && subjectPerformance.map((subjectList) =>
               <div className={styles.performancecontentwrapper}>
-             cupiditate dolore aliquid aut voluptatum vel.
-              </div>}
+                 <div className={styles.subjectsectionone}>
+                    <p>{subjectList.subject}</p>
+                    {subjectList.performance === null? 
+                    <p className={styles.averagetimeremark}> 
+                      No Rating
+                      </p> : <p>{subjectList.performance}</p>}
+                    <h3>PERFORMANCE</h3>
+                 </div>
+                 <div className={styles.subjectsectiononemiddle}>
+                    <div className={styles.subjectquestioninner}>
+                       <p>QUESTIONS CORRECT</p>
+                        <p className={styles.totalquestionwrapper}>
+                        <FiCheckCircle  size={25}/> 
+                          {subjectList.totalQuestionsCorrect}/{subjectList.totalQuestions}
+                        </p>
+                    </div>
+                    <p>AVG. TIME/TEST</p>
+                    {subjectList.averageTimePerTest === null? 
+                    <p className={styles.totalquestionwrapperrating}> 
+                      <FaRegCheckCircle />
+                      No Rating
+                      </p> : <p>{subjectList.averageTimePerTest}</p>}
+                 </div>
+                 <div className={styles.subjectsectiononemiddle}>
+                    <div className={styles.subjectquestioninner}>
+                       <p>TEST ATTEMPTED</p>
+                        <p className={styles.totalquestionwrapperlast}>
+                        <AiOutlineExclamationCircle size={25}/> 
+                          {subjectList.numberOfTests}/{subjectList.totalTests}
+                        </p>
+                    </div>
+                    <p>REMARK</p>
+                    {subjectList.progress === 0? 
+                    <p className={styles.averagetimeremark}> 
+                      <FaRegCheckCircle />
+                      No Rating
+                      </p> : <p>{subjectList.progress}</p>}
+                 </div>
+              </div>
+              )}
               {
               showPanel === false && 
-              <div className={styles.performancecontentwrapper}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, cumque rem. Exercitationem neque illo alias excepturi minus itaque eius, deleniti vero distinctio laborum provident cupiditate dolore aliquid aut voluptatum vel.
-              </div>}
+              pastQuestionPerformance && pastQuestionPerformance.map((pastSubject) => 
+                  <div className={styles.performancecontentwrapperpast}>
+                     <p>{pastSubject.name}</p>
+                      <div className={styles.pastquestionratewrapper}>
+                      <div>
+                        Circle
+                        <p>No rated</p>
+                        <h5>PERFORMANCE</h5>
+                     </div>
+                     <div>
+                        <p>SUBJECT ATTEMPTED</p>
+                        <p>
+                          <AiOutlineExclamationCircle size={25}/> 
+                        {pastSubject.subjectsAttempted}/{pastSubject.totalSubjectsCount}</p>
+                     </div>
+                     <div>
+                     <p>AVG. TIME/SUBJECT</p>
+                     {pastSubject.averageTimePerSubject === null? 
+                    <p className={styles.averagetimeremark}>
+                       <FaRegCheckCircle />
+                      No Rating
+                      </p> : <p>{pastSubject.averageTimePerSubject}</p>}
+                     </div>
+                      </div>
+                      {pastSubject.perSubjectResults && pastSubject.perSubjectResults.map((perSubjects) => 
+                        <ul className={styles.persubjectswrapper}>
+                           <li>{perSubjects.name}: {perSubjects.score}%</li>
+                         </ul>
+                      )}
+                  </div>
+              )}
           </div>
         </div>
     </div>

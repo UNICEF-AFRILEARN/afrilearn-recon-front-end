@@ -79,6 +79,7 @@ const Performance = () => {
             </div> */}
        <div className={styles.paddingbody}>
           <ClassPerfomance
+             studentPerformance={studentPerformance}
             classDetails={classDetails}
             currentStudent={currentStudent}
           />

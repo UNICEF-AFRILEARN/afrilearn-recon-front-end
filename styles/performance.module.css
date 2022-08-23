@@ -27,6 +27,59 @@
 }
 .performancecontentwrapper {
     padding: 30px;
+    border: 5px solid black;
+    display: flex;
+    text-align: start;
+    align-items: flex-start;
+    background-color: #29465B;
+}
+
+.performancecontentwrapperpast {
+    padding: 30px;
+    border: 5px solid black;
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    align-items: flex-start;
+    background-color: #29465B;
+}
+.persubjectswrapper {
+    /* display: f; */
+}
+.pastquestionratewrapper {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+.totalquestionwrapper {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-left: 50px;
+}
+.totalquestionwrapperlast {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-left: 25px;
+}
+.totalquestionwrapperrating {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-left: 35px;
+}
+.averagetimeremark {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-left: 15px;
+}
+.subjectsectiononemiddle {
+    text-align: center;
+}
+.totalquestionwrapper p {
+    padding-bottom: 10px;
 }
 .leftwrapper {
     background-color: rgb(138, 128, 128);
@@ -44,8 +97,9 @@
     border-radius: 20px;
 }
 
+/* right side wrapper */
 .progresswrapper {
-    background-color: #29465B;
+    background-color: #295b2d;
     width: 55%;
 }
 .studentnamewrapper p {
@@ -72,6 +126,3 @@
     color: #00D9B6;
 }
 
-.piewrapper {
-
-}
