@@ -13,6 +13,7 @@ import { usePaystackPayment } from 'react-paystack';
 
 import styles from "../../styles/payment.module.css"
 import PaymentDetails from './paymentModal';
+import { fetchParentChildrenInitiate } from './../../redux/actions/dashboard';
 
 const payment = ({test_body}) => {
   const priceElement = useRef();
@@ -26,6 +27,7 @@ const payment = ({test_body}) => {
   const [ priceSelected, setPriceSelected ] = useState("");
   const [price, setPrice] = useState('');
   const {roles, user } = useSelector((state) => state.auth)
+  const { children } = useSelector((state) => state.dashboard)
   const {paymentPlans, teacherPaymentPlans} = useSelector((state) => state.myPayment)
 
   //5fd08fba50964811309722d5 student
@@ -33,7 +35,11 @@ const payment = ({test_body}) => {
 //602f3ce39b146b3201c2dc1d teacher
 //607ededa2712163504210684
 
-console.log("user from payment ====>", user.token)
+let token = user?.token
+let myChildren = children?.data?.children;
+
+
+console.log("myChildren from payment ====>", myChildren)
   let showPrice;
   const handleSelect = (price) => {
     setPriceSelected(price)
@@ -86,6 +92,10 @@ const initializePayment = usePaystackPayment(config);
     priceElement.current = priceSelected;
   }, [priceSelected]);
 
+
+  useEffect(() => {
+    dispatch(fetchParentChildrenInitiate(token))
+  }, [token]);
 
   useEffect(() => {
     setClassId(user?.user?.enrolledCourses[0]?.classId)
@@ -212,16 +222,16 @@ const initializePayment = usePaystackPayment(config);
                 defaultValue={"default"}
                 // onChange={(e) => setCourseSelected(e.target.value)}
                 >
-                <option value={"default"}>
-                    Select a class
+                   <option value={"default"}>
+                    Select a child
                 </option>
-    
-                {courseContext && courseContext.map((childClass) => 
-                <option 
-                placeholder='Select a Role'
-                    >{childClass.name}
-                </option>
-                )}
+                { myChildren && myChildren.map((myChild) => 
+                    <option value={"default"}>
+                      {myChild.fullName}
+                    </option>
+                )
+
+                }
             </select>
            <select
                 className={`${styles.pushDown} form-control form-control-sm`}
