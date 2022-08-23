@@ -146,6 +146,9 @@ const Navigation = () => {
                   <Link passHref href="/dashboard/parent/addchild">
                     <li>Add My Child</li>
                   </Link>
+                  <Link passHref href="/dashboard/parent/addchild">
+                    <li>My Children</li>
+                  </Link>
                   <Link passHref href="/payment">
                     <li>Subscribe</li>
                 </Link>

@@ -35,6 +35,17 @@ export const fetchStudentPerformanceFail = (error) => ({
     type: types.FETCH_STUDENT_PERFORMANCE_FAIL,
     payload: error
 });
+export const fetchParentChildrenStart = () => ({
+    type: types.FECTH_PARENT_CHILDREN_START
+})
+export const fetchParentChildrenSuccess = (payload) => ({
+    type: types.FECTH_PARENT_CHILDREN_SUCCESS,
+    payload
+})
+export const fetchParentChildrenFail = (error) => ({
+    type: types.FECTH_PARENT_CHILDREN_FAIL,
+    payload: error
+});
 
 
 export const fetchUserProfileInitiate = (userId, token) => {
@@ -73,6 +84,26 @@ export const fetchUnfinishedVideoInitiate = (token) =>  {
         })
         .catch((err) => {
             dispatch(fetchUnfinishedVideoFail(err))
+        })
+    }
+
+}
+export const fetchParentChildrenInitiate = (token) =>  {
+    return function (dispatch) {
+        dispatch(fetchParentChildrenStart())
+        axios
+        .get('https://afrilearn-backend-01.herokuapp.com/api/v1/parents/children',
+        {
+            headers: {
+                "token": token
+            }
+        })
+        .then((res) => {
+            dispatch(fetchParentChildrenSuccess(res.data))
+            console.log("Hello from fetch children API ====>", res.data)
+        })
+        .catch((err) => {
+            dispatch(fetchParentChildrenFail(err))
         })
     }
 

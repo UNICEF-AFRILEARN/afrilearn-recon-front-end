@@ -5,6 +5,7 @@ const initialState = {
     userProfile: [],
     unfinishedVideos: [],
     studentPerformance: [],
+    children: [],
 }
 
 
@@ -58,6 +59,22 @@ export const dashboardReducer = (state = initialState, { type, payload} ) => {
         case types.FETCH_STUDENT_PERFORMANCE_FAIL:
             return {
                 ...state,
+                error: payload,
+                loading: false
+            };
+        case types.FECTH_PARENT_CHILDREN_START:
+            return {
+                ...state,
+                loading: true
+            };
+        case types.FECTH_PARENT_CHILDREN_SUCCESS:
+            return {
+                ...state,
+                children: payload,
+                loading: false
+            };
+        case types.FECTH_PARENT_CHILDREN_FAIL:
+            return {
                 error: payload,
                 loading: false
             };

@@ -32,6 +32,8 @@ const payment = ({test_body}) => {
 //606ed82e70f40e18e029165e parent
 //602f3ce39b146b3201c2dc1d teacher
 //607ededa2712163504210684
+
+console.log("user from payment ====>", user.token)
   let showPrice;
   const handleSelect = (price) => {
     setPriceSelected(price)
@@ -200,7 +202,7 @@ const initializePayment = usePaystackPayment(config);
 }
   {  userRole === "606ed82e70f40e18e029165e" &&
      <div className={`col-md-6 ${styles.paymentSecondContainer}`} >
-        <form onSubmit={handleSubmit}>
+        <form >
     <div className='row'>
       <div className={styles.paymentLabel}><label for="className "><h5>Step 1: Select Class:</h5> </label></div>
       <div  >
@@ -349,7 +351,7 @@ const initializePayment = usePaystackPayment(config);
 
 {userRole === "607ededa2712163504210684" &&
   <div className={`col-md-6 ${styles.paymentSecondContainer}`} >
-   <form onSubmit={handleSubmit}>
+   <form>
     <div className='row'>
       <div className={styles.paymentLabel}><label for="className "><h5>Step 1: Select Class:</h5> </label></div>
       <div  >
