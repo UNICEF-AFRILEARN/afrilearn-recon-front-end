@@ -31,6 +31,11 @@ const Childtable = ({myChildren}) => {
       console.log("I am studentId clicked", studentId)
     }
 
+    const handleCheckedBox = (id) => {
+        console.log("I am checked", id)
+
+    }
+
     const closeModal = () => {
       setOpen(false)
     }
@@ -51,7 +56,12 @@ const Childtable = ({myChildren}) => {
           { myChildren && myChildren.map((myChild) => 
         <tr key={myChild.id}>
               <>
-                <td><MdOutlineCheckBoxOutlineBlank /></td>
+                <td>
+                  <input
+                    onClick={() => handleCheckedBox(myChild.id)}
+                  type='checkbox' 
+                  />
+                </td>
                 <td>{myChild.fullName}</td>
                 <td>{myChild?.enrolledCourses[0]?.courseId.name? myChild?.enrolledCourses[0]?.courseId.name : "Not enrolled"}</td>
                 <td>{myChild.email}</td>

@@ -44,22 +44,27 @@ const ChildDetails = ({
         <Box sx={style}
          onClick={closeModal}
         >
-          <Typography id="modal-modal-title" variant="h6" component="h2">
+          <Typography 
+          id="modal-modal-title" 
+          variant="h6" 
+          component="h2"
+          sx={{ m: 2 }}
+          >
             Name: {childName}
           </Typography>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
+          <Typography id="modal-modal-title" variant="h6" sx={{ m: 2 }} component="h2">
             Email: {childEmail}
           </Typography>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
+          <Typography id="modal-modal-title" sx={{ m: 2 }} variant="h6" component="h2">
             Password: 
           </Typography>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
+          <Typography id="modal-modal-title" sx={{ m: 2 }} variant="h6" component="h2">
             Class: {childClass}
           </Typography>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
+          <Typography id="modal-modal-title"  sx={{ m: 2 }} variant="h6" component="h2">
             Subscription: 
           </Typography>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
+          <Typography id="modal-modal-title" sx={{ m: 2 }} variant="h6" component="h2">
             Expiration date:
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
