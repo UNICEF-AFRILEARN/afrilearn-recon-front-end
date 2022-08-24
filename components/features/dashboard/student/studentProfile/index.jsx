@@ -16,7 +16,7 @@ const StudentProfile = () => {
 
   console.log("logged-in ==> profile", userProfile)
   console.log("logged-in ==> user profile", user)
-  const coin = { amount: 345 };
+
   const number = "";
 
   useEffect(() => {
@@ -137,28 +137,30 @@ const StudentProfile = () => {
               <p>Coin: {user.user?.afriCoins}</p>
             </Col>
           </Row>
-          <Row
-            className="mt-4"
-            style={{
-              width: "223px",
-              height: "53px",
-              background: "#00D9B6",
-              borderRadius: "100px",
-            }}
-          >
-            <p
+          <Link passHref href="/africoin">
+            <Row
+              className="mt-4"
               style={{
-                fontWeight: "500",
-                margin: "auto",
-                fontSize: "18px",
-                lineHeight: "24px",
-                color: "#FFFFFF",
-                width: "fit-content",
+                width: "223px",
+                height: "53px",
+                background: "#00D9B6",
+                borderRadius: "100px",
               }}
             >
-              BUY MORE COINS
-            </p>
-          </Row>
+              <p
+                style={{
+                  fontWeight: "500",
+                  margin: "auto",
+                  fontSize: "18px",
+                  lineHeight: "24px",
+                  color: "#FFFFFF",
+                  width: "fit-content",
+                }}
+              >
+                BUY MORE COINS
+              </p>
+            </Row>
+          </Link>
         </Col>
         <Col className="px-4">
           <Row>
@@ -474,7 +476,7 @@ const StudentProfile = () => {
                 position: "absolute",
                 left: "1015px",
                 border: "0",
-                marginLeft:"15px"
+                marginLeft: "15px",
               }}
             >
               COPY LINK

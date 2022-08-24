@@ -19,14 +19,14 @@ const PastQuestion = () => {
     }
   }, [quary]);
 
-  const subject = useSelector((state) => state.MySubject);
+  const subject = useSelector((state) => state.mySubjectCourse);
   console.log(subject);
   const subjectDat = subject.pastQuestionQue[0];
   const quizData = {
-    heading: `${subjectDat.subject_details.exam_name}:`,
-    topic: `${subjectDat.subject_details.subject} ${subjectDat.subject_details.exam_year}`,
-    subject: subjectDat.subject_details.subject,
-    questionNo: subjectDat.subject_details.no_of_questions,
+    heading: `${subjectDat?.subject_details.exam_name}:`,
+    topic: `${subjectDat?.subject_details.subject} ${subjectDat?.subject_details.exam_year}`,
+    subject: subjectDat?.subject_details.subject,
+    questionNo: subjectDat?.subject_details.no_of_questions,
   };
 
   return (
@@ -85,7 +85,7 @@ const PastQuestion = () => {
                   <Row className="">
                     <Col sm={1} className={styles.pastqueIcon1}></Col>
                     <Col className="">
-                      TIME: {subjectDat.subject_details.duration}
+                      TIME: {subjectDat?.subject_details.duration}
                     </Col>
                   </Row>
                 </Col>
@@ -100,7 +100,7 @@ const PastQuestion = () => {
               <Col sm={1} className={` ${styles.circleIcon}`}></Col>
               <Col className="px-2">
                 You are about to practice official questions set for
-                {subjectDat.subject_details.exam_name}.
+                {subjectDat?.subject_details.exam_name}.
               </Col>
             </Row>
           </Row>

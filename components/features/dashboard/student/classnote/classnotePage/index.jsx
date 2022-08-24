@@ -9,9 +9,16 @@ import styles2 from "../../classnote/classnote.module.css";
 import { Comment, NextPrevPage } from "../../video/videoPage";
 
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
 
 const ClassnotePage = () => {
   const router = useRouter();
+  let quary = router.query.Exam;
+  console.log(quary);
+  const subject = useSelector((state) => state.mySubjectCourse);
+  const lessons = subject.subjectDetails[1]?.relatedLessons;
+  console.log(subject);
+
   let clickLikes = 124;
 
   const [like, setlike] = useState({
@@ -35,7 +42,7 @@ const ClassnotePage = () => {
       });
     }
   };
-  const stuData = [{ subject: "Geometrical Construction: Angles" }];
+  const stuData = [{ subject: lessons[quary].title }];
 
   const iconData = [
     {
@@ -45,36 +52,10 @@ const ClassnotePage = () => {
   ];
 
   const text = [
-    [
-      {
-        topic: "Geometrical Construction:  Angles",
-        texts: `"Construction" in Geometry means to draw shapes, angles or lines accurately. These constructions use only compass,straightedge (i.e. ruler) and a pencil.straightedge. This is the "pure" form of geometric construction: no numbers involved! 
-    
-    "Construction" in Geometry means to draw shapes, angles or lines accurately. These constructions use only compass,straightedge (i.e. ruler) and a pencil.straightedge. This is the "pure" form of geometric construction: no numbers involved!
-    
-    "Construction" in Geometry means to draw shapes, angles or lines accurately. These constructions use only compass,straightedge (i.e. ruler) and a pencil.straightedge. This is the "pure" form of geometric construction: no numbers involved!
-    
-    "Construction" in Geometry means to draw shapes, angles or lines accurately. These constructions use only compass,straightedge (i.e. ruler) and a pencil.straightedge. This is the "pure" form of geometric construction: no numbers involved!
-    
-    "Construction" in Geometry means to draw shapes, angles or lines accurately. These constructions use only compass,straightedge (i.e. ruler) and a pencil.straightedge. This is the "pure" form of geometric construction: no numbers involved!
-    
-    "Construction" in Geometry means to draw shapes, angles or lines accurately. These constructions use only compass,straightedge (i.e. ruler) and a pencil.straightedge. This is the "pure" form of geometric construction: no numbers involved!`,
-      },
-      {
-        topic: "Degrees",
-        texts: `And it is useful to know how to do 30°, 45° and 60° angles. We can use the angle bisector method (above) to create other angles such as 15°, etc.
-    
-    And it is useful to know how to do 30°, 45° and 60° angles. We can use the angle bisector method (above) to create other angles such as 15°, etc.
-    
-    And it is useful to know how to do 30°, 45° and 60° angles. We can use the angle bisector method (above) to create other angles such as 15°, etc.
-    
-    And it is useful to know how to do 30°, 45° and 60° angles. We can use the angle bisector method (above) to create other angles such as 15°, etc.
-    
-    And it is useful to know how to do 30°, 45° and 60° angles. We can use the angle bisector method (above) to create other angles such as 15°, etc.
-    
-    And it is useful to know how to do 30°, 45° and 60° angles. We can use the angle bisector method (above) to create other angles such as 15°, etc.`,
-      },
-    ],
+    {
+      topic: lessons[quary].title,
+      texts: lessons[quary].content,
+    },
     [
       {
         term: "First Term",
@@ -150,9 +131,7 @@ const ClassnotePage = () => {
             </Col>
             <Col style={{ cursor: "pointer" }} onClick={updateLikes}>
               <div className={styles2.love}></div>
-              <div
-                className={`text-secondary ${styles2.loveBottom}`}
-              >
+              <div className={`text-secondary ${styles2.loveBottom}`}>
                 I Love This
               </div>
             </Col>
@@ -223,18 +202,20 @@ const ClassnotePage = () => {
             </Link>
           </Row>
           <Row>
-            {text[0].map((text, i) => (
-              <>
-                <div
-                  key={i}
-                  className=" mt-5  mb-3
+            {/* {text[0].map((text, i) => ( */}
+
+            <div
+              className=" mt-5  mb-3
             px-5"
-                >
-                  <h3 className="font-weight-bold">{text.topic}</h3>
-                  <p className="text-justify">{text.texts}</p>
-                </div>
-              </>
-            ))}
+            >
+              <h3 className="font-weight-bold">{text[0].topic}</h3>
+              <p
+                className="text-justify"
+                dangerouslySetInnerHTML={{ __html: text[0].texts }}
+              ></p>
+            </div>
+
+            {/* ))} */}
           </Row>
           <Row>
             <NextPrevPage data={iconData} />
@@ -244,7 +225,7 @@ const ClassnotePage = () => {
           <Row className="pt-5 ml-5 mt-5"></Row>
           <Row className="pt-4 ml-5 mt-4"></Row>
 
-          <Row className="mr-5 pt-5 mt-5 bg-light rounded">
+          {/* <Row className="mr-5 pt-5 mt-5 bg-light rounded">
             <div>
               <Col className="ml-5 w-100 mx-auto">
                 <h4>Subject Syllabus</h4>
@@ -269,7 +250,7 @@ const ClassnotePage = () => {
                 </Accordion>
               ))}
             </div>
-          </Row>
+          </Row> */}
         </Col>
       </Row>
       <Row className="border-top mt-2">

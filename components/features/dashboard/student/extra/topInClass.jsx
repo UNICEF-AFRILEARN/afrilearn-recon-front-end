@@ -2,7 +2,7 @@ import Image from "next/image";
 import styles from "./../../student/topInClass.module.css";
 import { useState } from "react";
 
-const topInClass = ({ data }) => {
+const topInClass = ({ data,key }) => {
   const img = ["Group 2323", "Group 2324", "Group 2327", "Group 2328"];
   const randomise = () => {
     const num = Math.floor(Math.random() * 4);
@@ -13,7 +13,7 @@ const topInClass = ({ data }) => {
 
   return (
     <>
-      <div className={styles.cont}>
+      <div className={styles.cont} key={key}>
         <div className={styles.contList}>
           <div className={styles.rect} onClick={toggleModal}>
             {data.thumbnailUrl ? (
