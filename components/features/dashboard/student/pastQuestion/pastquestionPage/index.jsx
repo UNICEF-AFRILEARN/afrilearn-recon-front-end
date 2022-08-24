@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPastQuestionQueInitiate } from "../../../../../../redux/actions/subject";
-import pastQuestion from "../../extra/pastQuestion";
+// import pastQuestion from "../../extra/pastQuestionaira";
 import styles from "./pastQuestion.module.css";
 
 const PastQuestion = () => {

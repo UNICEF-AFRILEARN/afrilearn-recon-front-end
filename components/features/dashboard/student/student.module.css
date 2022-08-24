@@ -245,18 +245,17 @@
   padding: 10px 15px 0;
 }
 .join {
-  position: relative;
+  margin: 0 100px;
 }
 
 .joinClass {
-  position: absolute;
-  top: 48px;
-  right: 135px;
+  /* width:150px; */
   font-size: 12px;
   background: #f5f5f5;
   border: 2px solid #333333;
   border-radius: 6px;
   color: #333333;
+  text-align: center;
 }
 
 .classComment {

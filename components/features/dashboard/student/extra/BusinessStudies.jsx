@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from "../../../../../styles/material.module.css";
-import PastQuestion from './PastQuestion';
+import PastQuestion from './pastQuestionaira';
 
 const BusinessStudies = () => {
   return (

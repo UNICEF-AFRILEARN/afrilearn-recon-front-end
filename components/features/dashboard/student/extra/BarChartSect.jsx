@@ -10,7 +10,7 @@ import {
   CartesianGrid,
   Bar,
 } from "recharts";
-import styles from '../../../../../styles/chart.module.css';
+// import styles from '../../../../../styles/chart.module.css';
 
 const BarChartSect = () => {
     const data = [
@@ -21,7 +21,8 @@ const BarChartSect = () => {
       ];
 
   return (
-    <div className={styles.chartmainwrapper}>
+    // <div className={styles.chartmainwrapper}>
+    <div >
       <div style={{ textAlign: "center" }}>
      
         <BarChart
