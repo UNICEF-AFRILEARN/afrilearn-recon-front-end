@@ -7,69 +7,42 @@ import styles from "../../school/addstudent.module.css"
 
 const Addnewteacher = () => {
     const { user, registerUser, roles } = useSelector((state) => state.auth);
-    const { schoolProfile } = useSelector((state) => state.school);
+    const { schoolProfile, classMembers } = useSelector((state) => state.school);
     const dispatch = useDispatch();
 
-    const [fullName, setfullName] = useState("");
-    const [password, setPassword] = useState("");
+    const [classSelected, setClassSelected ] = useState('');
+    const [classId, setClassId] = useState('');
     const [email, setEmail] = useState("");
     const [role, setRole] = useState("Teacher");
     const [courseId, setCourseId] = useState("");
     const [studentClassId, setStudentClassId] = useState("");
-    const [course, setCourse] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
-    const [courseSelected, setCourseSelected] = useState("");
+
     
-    const schoolId = user.user?.schoolId.id;
+    const schoolClassName = schoolProfile?.data?.schoolClassesData
+    const schoolId = user.user?.schoolId.id || registerUser.user?.schoolId.id
     const schoolClasses = schoolProfile?.data?.schoolClassesData;
-    course = courseSelected.split("-")
-    console.log("schoolProfile from addteacher ==>", schoolClasses)
+    // course = courseSelected.split("-")
+    console.log("schoolId from addteacher ==>", schoolId)
+
+
+    const filterClassIds = () => {
+      schoolClassName && schoolClassName.filter((filteredClass) => {
+          if(filteredClass.className === classSelected ){
+               setClassId(filteredClass.classId)
+          }
+      })
+  }
+
+  useEffect(() => {
+    filterClassIds()
+}, [classSelected])
+
 
     const handleSubmit = (e) => {
       e.preventDefault()
-        dispatch(addNewTeacherInitiate(
-          courseId,
-          studentClassId,
-          fullName, 
-          email, 
-          password,
-          confirmPassword,
-          schoolId
-            ))
+      console.log("Email ====>", email, schoolId, classId)
+        dispatch(addNewTeacherInitiate(classId, email, schoolId))
     }
-    const setClassId = () => {
-        if(course[0] === 'JSS One'){
-          setCourseId('5fc8cfbb81a55b4c3c19737d')
-          setStudentClassId("62f6aee70e20330016bd112d")
-        }else if(course[0] === "JSS Two"){
-          setCourseId('5fff7329de0bdb47f826feb0')
-          setStudentClassId("62f6aee70e20330016bd1132")
-        }else if(course[0] === "JSS Three"){
-          setCourseId('5fff734ade0bdb47f826feb1')
-          setStudentClassId("62f6aee70e20330016bd1137")
-        }else if(course[0] === 'SSS One'){
-          setCourseId('5fff7371de0bdb47f826feb2')
-          setStudentClassId("62f6aee70e20330016bd113c")
-        }else if(course[0] === 'SSS Two'){
-          setCourseId('5fff7380de0bdb47f826feb3')
-          setStudentClassId("62f6aee80e20330016bd1141")
-        }else if(course[0] === 'SSS Three'){
-          setCourseId('5fff7399de0bdb47f826feb4')
-          setStudentClassId("62f6aee80e20330016bd1146")
-        }else if(courseSelected === 'Afrilearn KidsCode'){
-          setCourseId('629dbb4c5a5f270016033712')
-          setStudentClassId("62f6aee80e20330016bd114b")
-        }
-           
-      }
-
-      useEffect(() => {
-        setClassId()
-      }, [setClassId]);
-
-    useEffect(() => {
-        dispatch(fetchRoles())
-      }, [])
  
     return (
         <>
@@ -90,9 +63,9 @@ const Addnewteacher = () => {
                <select 
                 className={styles.schoolselect} 
                 type="text"
-                value={courseSelected}
+                value={classSelected}
                 defaultValue={"default"}
-                onChange={(e) => setCourseSelected(e.target.value)}
+                onChange={(e) => setClassSelected(e.target.value)}
                     >
                       <option value={"default"}>
                          Select a Class
@@ -103,13 +76,7 @@ const Addnewteacher = () => {
                         )
                     }
                 </select>
-                <input  
-                    className={styles.input} 
-                    type="text"
-                    value={fullName}
-                    onChange={(e) => setfullName(e.target.value)}
-                    placeholder="Fullname"
-                />
+
                 <input 
                     className={styles.input} 
                     type="text" 
@@ -117,20 +84,7 @@ const Addnewteacher = () => {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Email"
                 />
-                <input 
-                    className={styles.input}
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Password"
-                />
-                <input 
-                    className={styles.input}
-                    type="password"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    placeholder="Confirm Password"
-                />
+
                 <button className={styles.studentButton} type='submit'>SEND INVITE</button>
             </form>
          </div>

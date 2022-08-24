@@ -17,7 +17,7 @@ const Schooldata = () => {
 
     const dispatch = useDispatch();
   
-    console.log("schoolProfile from schoolpeople=>", schoolProfile);
+    console.log("classMembers from schoolpeople=>", classMembers);
     const schoolClassName = schoolProfile?.data?.schoolClassesData
     const schoolId = user.user?.schoolId.id || registerUser.user?.schoolId.id
     console.log("schoolId from middlenaV=>", schoolId);
@@ -30,20 +30,11 @@ const Schooldata = () => {
         })
     }
 
-    const usePreviousValue = value => {
-        const ref = useRef();
-        useEffect(() => {
-          ref.current = value;
-        });
-        return ref.current;
-      };
+
 
       useEffect(() => {
         filterClassIds()
     }, [classSelected])
-    
-      const prevCount = usePreviousValue(classId);
-      console.log("prevCount", classId)
 
     useEffect(() => {
       dispatch(fetchSchoolMemberClassInitiate(classId))
@@ -54,18 +45,6 @@ const Schooldata = () => {
     },[classSelected])
 
    
-
-  const schooldata={
-    numberoftaecher: "25",
-    teacherName: "Abraham Johnson(Admin)",
-    teacherEmail:"abrahame346@gmail.com",
-    // imageURL:["/../../../public/assets/img/school/man\ 2.svg"]
-  }
-  const classmates ={
-    numberofclassmates: "254",
-    studentName: "Abraham Johnson(Admin)",
-    studentEmail:"abrahame346@gmail.com",
-  }
     return (
     <>
     <div className={styles.videoheropage}> 
@@ -96,7 +75,9 @@ const Schooldata = () => {
         </div>
             <div className={` col-md-2 ${styles.addTeacher}`}>
                 <div className={styles.schooladd}></div>
-                <div><Link passHref href="">Add new teacher</Link></div>
+                <div>
+                    <Link passHref href="">Add new teacher</Link>
+                </div>
             </div>
             <div className={` col-md-2 ${styles.addTeacher}`}>
                 <div className={styles.schooladownload}></div>
@@ -107,46 +88,51 @@ const Schooldata = () => {
             <div>
             <div className={` row ${styles.teachersection}`}> 
                 <div className={`col-md-2 ${styles.teacherHeading}`}><h4>Teacher</h4></div>
-                <div className={`col-md-4 ${styles.numberoffteacher}`}> {schooldata?.numberoftaecher} teachers</div>
+                <div className={`col-md-4 ${styles.numberoffteacher}`}> {classMembers?.data?.admins?.length? classMembers?.data?.admins?.length : 0 } teachers</div>
             </div>
             <div className={styles.teacherContrainer}>
-            <div className="row">
-                <div className=  {`col-md-3 ${styles.teacherdata} `}> <Image alt={"design image"} src="/../../../public/assets/img/school/man\ 2.svg" width="22.8px" height="22.8px" /> {schooldata.teacherName}</div>
-                <div className={`col-md-3 ${styles.teacherdata}`}>{schooldata.teacherEmail}</div>
-                <div className={`col-md-3 ${styles.schoolgroup}`}></div>
-            </div>
-            <div className="row">
-                <div className=  {`col-md-3 ${styles.teacherdata} `}> <Image alt={"design image"} src="/../../../public/assets/img/school/man\ 2.svg" width="22.8px" height="22.8px" /> {schooldata.teacherName}</div>
-                <div className={`col-md-3 ${styles.teacherdata}`}>{schooldata.teacherEmail}</div>
-                <div className={`col-md-3 ${styles.schoolgroup}`}></div>
-            </div>
-            <div className="row">
-                <div className=  {`col-md-3 ${styles.teacherdata} `}> <Image alt={"design image"} src="/../../../public/assets/img/school/man\ 2.svg" width="22.8px" height="22.8px" /> {schooldata.teacherName}</div>
-                <div className={`col-md-3 ${styles.teacherdata}`}>{schooldata.teacherEmail}</div>
-                <div className={`col-md-3 ${styles.schoolgroup}`}></div>
-            </div>
+                { classMembers?.data?.admins && classMembers?.data?.admins?.map((classTeacher) => 
+                    <div className="row">
+                    <div className=  {`col-md-3 ${styles.teacherdata} `}>           {classTeacher.userId.fullName}
+                    </div>
+                    <div className={`col-md-3 ${styles.teacherdata}`}>
+                        {classTeacher.userId.email}
+                    </div>
+                    <div className={`col-md-3 ${styles.schoolgroup}`}></div>
+                    </div>
+                )
+
+                }
+
             </div>
             </div>
             <div className={` row ${styles.studentsection}`}> 
                 <div className={`col-md-2 ${styles.teacherHeading}`}><h4>Classmates</h4></div>
-                <div className={`col-md-4 ${styles.numberoffteacher}`}>{classmates?.numberofclassmates} Pupils</div>
+                <div className={`col-md-4 ${styles.numberoffteacher}`}>{classMembers?.data?.classMembers.length? classMembers?.data?.classMembers.length : 0 } Pupil[s]</div>
             </div>
             <div className={styles.teacherContrainer}>
-            <div className="row">
+                {classMembers?.data?.classMembers && classMembers?.data?.classMembers?.map((classStudent) => 
+                
+                <div className="row">
+                <div className=  {`col-md-3 ${styles.teacherdata} `}> <Image alt={"design image"} src="/../../../public/assets/img/school/man\ 2.svg" width="22.8px" height="22.8px" /> {classStudent.userId.fullName}</div>
+                <div className={`col-md-3 ${styles.teacherdata}`}>{classStudent.userId.email}</div>
+                <div className={`col-md-3 ${styles.schoolgroup}`}></div>
+                 </div>
+
+                )
+
+                }
+           
+            {/* <div className="row">
                 <div className=  {`col-md-3 ${styles.teacherdata} `}> <Image alt={"design image"} src="/../../../public/assets/img/school/man\ 2.svg" width="22.8px" height="22.8px" /> {schooldata.teacherName}</div>
                 <div className={`col-md-3 ${styles.teacherdata}`}>{classmates?.studentEmail}</div>
                 <div className={`col-md-3 ${styles.schoolgroup}`}></div>
-            </div>
-            <div className="row">
+            </div> */}
+            {/* <div className="row">
                 <div className=  {`col-md-3 ${styles.teacherdata} `}> <Image alt={"design image"} src="/../../../public/assets/img/school/man\ 2.svg" width="22.8px" height="22.8px" /> {schooldata.teacherName}</div>
                 <div className={`col-md-3 ${styles.teacherdata}`}>{classmates?.studentEmail}</div>
                 <div className={`col-md-3 ${styles.schoolgroup}`}></div>
-            </div>
-            <div className="row">
-                <div className=  {`col-md-3 ${styles.teacherdata} `}> <Image alt={"design image"} src="/../../../public/assets/img/school/man\ 2.svg" width="22.8px" height="22.8px" /> {schooldata.teacherName}</div>
-                <div className={`col-md-3 ${styles.teacherdata}`}>{classmates?.studentEmail}</div>
-                <div className={`col-md-3 ${styles.schoolgroup}`}></div>
-            </div>
+            </div> */}
             </div>
             </div>
            
