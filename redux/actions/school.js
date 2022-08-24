@@ -118,7 +118,6 @@ export const addNewAdminInitiate = (fullName, email, password, schoolId, confirm
         fullName, 
         email, 
         password,
-        confirmPassword,
         schoolId
         ) =>  {
         return function (dispatch) {
@@ -131,12 +130,11 @@ export const addNewAdminInitiate = (fullName, email, password, schoolId, confirm
                 fullName, 
                 email, 
                 password,
-                confirmPassword,
                 schoolId
             })
             .then((res) => {
                 dispatch(addNewStudentSuccess(res.data))
-                console.log("Add Admin from School API ===>", res.data)
+                console.log("Add Student from School API ===>", res.data)
             })
             .catch((err) => {
                 dispatch(addNewStudentFail(err))

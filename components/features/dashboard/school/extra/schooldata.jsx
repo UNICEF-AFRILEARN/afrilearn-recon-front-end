@@ -18,9 +18,9 @@ const Schooldata = () => {
     const dispatch = useDispatch();
   
     console.log("classMembers from schoolpeople=>", classMembers);
-    const schoolClassName = schoolProfile?.data?.schoolClassesData
+    const schoolClassName = schoolProfile?.schoolClassesData
     const schoolId = user.user?.schoolId.id || registerUser.user?.schoolId.id
-    console.log("schoolId from middlenaV=>", schoolId);
+    console.log("schoolProfile from schooldata=>", schoolProfile);
   
     const filterClassIds = () => {
         schoolClassName && schoolClassName.filter((filteredClass) => {

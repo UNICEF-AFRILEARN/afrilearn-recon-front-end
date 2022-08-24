@@ -18,9 +18,9 @@ const Addnewteacher = () => {
     const [studentClassId, setStudentClassId] = useState("");
 
     
-    const schoolClassName = schoolProfile?.data?.schoolClassesData
+    const schoolClassName = schoolProfile?.schoolClassesData
     const schoolId = user.user?.schoolId.id || registerUser.user?.schoolId.id
-    const schoolClasses = schoolProfile?.data?.schoolClassesData;
+    const schoolClasses = schoolProfile?.schoolClassesData;
     // course = courseSelected.split("-")
     console.log("schoolId from addteacher ==>", schoolId)
 

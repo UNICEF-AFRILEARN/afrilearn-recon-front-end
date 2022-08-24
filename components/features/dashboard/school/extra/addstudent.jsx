@@ -19,22 +19,21 @@ const Addnewstudent = () => {
     const [classId, setClassId] = useState("");
     const [classSelected, setClassSelected ] = useState('');
 
-    const schoolClassName = schoolProfile?.data?.schoolClassesData
+    const schoolClassName = schoolProfile?.schoolClassesData
     const schoolId = user.user?.schoolId.id || registerUser.user?.schoolId.id
-    const schoolClasses = schoolProfile?.data?.schoolClassesData;
+    const schoolClasses = schoolProfile?.schoolClassesData;
     
     const handleSubmit = (e) => {
       e.preventDefault()
-      console.log("course =====>", fullName, email, classId, courseId)
-        // dispatch(addNewStudentInitiate(
-        //     courseId,
-        //     classId,
-        //     fullName, 
-        //     email, 
-        //     password,
-        //     confirmPassword,
-        //     schoolId
-        // ))
+      console.log("course =====>", fullName, email, classId, courseId, password)
+        dispatch(addNewStudentInitiate(
+            courseId,
+            classId,
+            fullName, 
+            email, 
+            password,
+            schoolId
+        ))
     }
 
   
