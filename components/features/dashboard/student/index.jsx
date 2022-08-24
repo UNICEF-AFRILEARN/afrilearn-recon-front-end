@@ -37,8 +37,10 @@ const Dashboard = () => {
   const { reconLesson, lessons, unicefRecon, activities } = useSelector(
     (state) => state.Mycourses,
   );
-  const { user } = useSelector((state) => state.auth);
-  const { registerUser } = useSelector((state) => state.auth);
+  const { user, registerUser } = useSelector((state) => state.auth);
+  // const { registerUser } = useSelector((state) => state.auth);
+  const subject = useSelector((state) => state.mySubjectCourse);
+  console.log(subject);
 
   console.log(
     "Register registerUser from dashboard INDEX =====>",
