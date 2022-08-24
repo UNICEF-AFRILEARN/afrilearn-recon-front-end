@@ -4,35 +4,31 @@ import Table from 'react-bootstrap/Table';
 import { MdOutlineCheckBoxOutlineBlank,MdOutlineArrowForwardIos } from 'react-icons/md';
 import styles from '../../../../styles/parentdashboard.module.css';
 import ChildModal from './childModal';
+import ChildDetails from './childtablemodal';
 
 
 const Childtable = ({myChildren}) => {
+  const [open, setOpen] = useState(false);
+  const [studentId, setStudentId] = useState('')
+  const handleClose = () => setOpen(false);
+  const handleOpen = () => {
+    // setPriceSelected(price)
+    setOpen(true);
+  }
+
   console.log("myChildren from my children component", myChildren)
-    const data = [
-        {
-            id: 1,
-            studentName: "Johnson Adewunigbe",
-            studentClass: "JSS1 , JSS2",
-            studentEmail: "johnsonA@gmail.com",
-        },
-
-        {
-            id: 2,
-            studentName: "Olatunbosun Adewunigbe",
-            studentClass: "SSS 3",
-            studentEmail: "olatunbosunA@gmail.com",
-        },
-    ]
 
 
-
-    const [showModal, setShowModal] = useState(false);
-    const [studentId, setStudentId] = useState(null)
-
-    const showChildDetails = (id) => {
-        setStudentId(id)
-        setShowModal(!showModal)
+    const handleClick = (id) => {
+      console.log("I am clicked", id)
+      setStudentId(id)
+      console.log("I am studentId clicked", studentId)
     }
+
+    const closeModal = () => {
+      setOpen(false)
+    }
+
   return (
     <div className={styles.tablewrapper}>
        <Table striped bordered hover className='mx-5 p-5'>
@@ -50,18 +46,26 @@ const Childtable = ({myChildren}) => {
         <tr key={myChild.id}>
               <>
                 <td><MdOutlineCheckBoxOutlineBlank /></td>
-                <td onClick={(() => showChildDetails(myChild.id))}>{myChild.fullName}</td>
+                <td>{myChild.fullName}</td>
                 <td>{myChild?.enrolledCourses[0]?.courseId.name? myChild?.enrolledCourses[0]?.courseId.name : "Not enrolled"}</td>
                 <td>{myChild.email}</td>
-                <td><MdOutlineArrowForwardIos /></td>
+                <td 
+                  onClick={() => handleClick(myChild.id)}
+                >
+                <ChildDetails 
+                  handleClose={handleClose}
+                  handleOpen={handleOpen}
+                  open={open}
+                  closeModal={closeModal}
+                  myChildren={myChildren}
+                  />
+                  
+                </td>
               </>
         </tr>
           )}
       </tbody>
-    </Table>
-      <div className={styles.modalwrapperouter}>
-      { showModal && <ChildModal show={showModal} showChildDetails={showChildDetails} data={data} studentId={studentId}/>}
-      </div>      
+    </Table>     
     </div>
   )
 }
