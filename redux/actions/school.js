@@ -175,10 +175,11 @@ export const addNewAdminInitiate = (fullName, email, password, schoolId, confirm
 }
 
     export const fetchSchoolMemberClassInitiate = (classId) =>  {
+        console.log("classId from API call", classId)
         return function (dispatch) {
             dispatch(fetchSchoolMemberClassStart())
             axios
-            .get(`https://afrilearn-backend-01.herokuapp.com/api/v1/schools/${classId}`
+            .get(`https://afrilearn-backend-01.herokuapp.com/api/v1/classes/${classId}/students`
             )
             .then((res) => {
                 dispatch(fetchSchoolMemberClassSuccess(res.data))
