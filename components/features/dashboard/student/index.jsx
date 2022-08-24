@@ -37,24 +37,14 @@ const Dashboard = () => {
   const { reconLesson, lessons, unicefRecon, activities } = useSelector(
     (state) => state.Mycourses,
   );
-  const { user, registerUser } = useSelector((state) => state.auth);
-  // const { registerUser } = useSelector((state) => state.auth);
-  const subject = useSelector((state) => state.mySubjectCourse);
-  console.log(subject);
+  const { user } = useSelector((state) => state.auth);
+  const { registerUser } = useSelector((state) => state.auth);
 
   console.log(
     "Register registerUser from dashboard INDEX =====>",
     registerUser.user,
   );
   console.log("Register user from dashboard INDEX =====>", user);
-
-  const schoollevel = "Primary One";
-  const Subject = "Basic Technology";
-  const lesson = "6012c173cfe09249249f7ece";
-
-  // const schoollevel = "JSS One"
-  // const subject = "Home Economics"
-  // const lesson  = "6012d3aacfe09249249f8b20"
 
   const userId = "62a0bc984af2d90016b72096";
   const token = user.token;

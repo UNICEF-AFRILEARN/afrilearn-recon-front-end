@@ -142,9 +142,9 @@ export const fetchReconLessonInitiate = (userId, token) =>  {
             }
         })
         .then((res) => {
-            dispatch(fetchRecoLessonSuccess(res.data.data))
-            console.log("Hello from reconmendation API after call ===>")
-            console.log("From reconmendation API =>", res.data.data)
+            // dispatch(fetchRecoLessonSuccess(res.data.data))
+            // console.log("Hello from reconmendation API after call ===>")
+            // console.log("From reconmendation API =>", res.data.data)
         })
         .catch((err) => {
             console.log(err)

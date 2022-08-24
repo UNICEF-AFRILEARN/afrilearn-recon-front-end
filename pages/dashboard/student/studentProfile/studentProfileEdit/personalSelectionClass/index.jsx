@@ -1,16 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
-import {
-  Col,
-  Dropdown,
-  DropdownButton,
-  Form,
-  InputGroup,
-  Row,
-} from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import {Col,  Dropdown, DropdownButton, Form, InputGroup, Row,} from "react-bootstrap";
 import styles from "../studentProfileEdit.module.css";
 import SelectionSection from "../selectionSection";
+import { useDispatch, useSelector } from 'react-redux';
+import { addclassInitiate } from "../../../../../../redux/actions/auth";
 import PersonalClassSubmit from "../personalClassSubmit";
 
 const PersonalSelectionClass = () => {
@@ -18,9 +13,48 @@ const PersonalSelectionClass = () => {
   const [buttonPush, setButtonPush] = useState("on");
   const [valued, setValued] = useState("");
 
-  // {
-  //   <PersonalClassSubmit data={placehold} />;
-  // }
+  const data={
+   classes: []
+  }
+  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjJhMGJjOTg0YWYyZDkwMDE2YjcyMDk2Iiwicm9sZSI6IjVmZDA4ZmJhNTA5NjQ4MTEzMDk3MjJkNSIsImZ1bGxOYW1lIjoiTWljaGFlbCBPbGFkZWxlIn0sImlhdCI6MTY1OTYxNDI2NiwiZXhwIjoxNjYyMjA2MjY2fQ.x0H_plJQuRadJ1E_C4KNiM8JwK8Y-_CzWMWLa0HNdkA"
+  const dispatch = useDispatch();
+
+  const setClassId = () => {
+    if(classes === 'Primary One'){
+      setCourseId('5fc8cfbb81a55b4c3c19737d')
+    }else if(classes === 'Primary Two'){
+      setCourseId('5fd12c70e74b15663c5f4c6e')
+    }else if(classes === 'Primary Three'){
+      setCourseId('5fff5a67de0bdb47f826fea8')
+    }else if(classes === 'Primary Four'){
+      setCourseId('5fff5a7ede0bdb47f826fea9')
+    }else if(classes === 'Primary Five'){
+      setCourseId('5fff5aaede0bdb47f826feaa')
+    }else if(classes === 'Primary Six'){
+      setCourseId('5fff5abede0bdb47f826feab')
+    }else if(classes === 'JSS One'){
+      setCourseId('5fff72b3de0bdb47f826feaf')
+    }else if(classes === 'JSS Two'){
+      setCourseId('5fff7329de0bdb47f826feb0')
+    }else if(classes === 'Jss Three'){
+      setCourseId('5fff734ade0bdb47f826feb1')
+    }else if(classes === 'SSS One'){
+      setCourseId('5fff7371de0bdb47f826feb2')
+    }else if(classes === 'SSS Two'){
+      setCourseId('5fff7380de0bdb47f826feb3')
+    }else if(classes === 'SSS Three'){
+      setCourseId('5fff7399de0bdb47f826feb4')
+    }else if(classes === 'Afrilearn KidsCode'){
+      setCourseId('629dbb4c5a5f270016033712')
+    }else if(classes === 'Secondary'){
+      setCourseId('605b218f8636bc00158b4ad7')
+    }else if(classes === 'Primary'){
+      setCourseId('605b21868636bc00158b4ad6')
+    }    
+  }
+  useEffect(() => {
+    setClassId()
+  },[setClassId])
 
   const classes = [
     "PRIMARY ONE",
@@ -36,7 +70,15 @@ const PersonalSelectionClass = () => {
     "SSS TW0",
     "SSS THREE",
   ];
-  console.log(buttonPush);
+
+  // console.log(buttonPush);
+  
+  const editaddClass = (e) => {
+    e.preventDefault();
+    console.log("Mike is a cool guy")
+    dispatch(addclassInitiate(data,token));
+  };
+
 
   const PersonalSelectClass = () => {
     return (
@@ -44,8 +86,10 @@ const PersonalSelectionClass = () => {
         <Row className="px-5 mx-auto w-50">
           <h4>Step 1: Select Class</h4>
         </Row>
+        <form onSubmit={editaddClass}>
         <Row className="pt-5 mx-auto w-50">
           <InputGroup
+           onChange={(e) => setValued(e.target.value)}
             className="mb-3 "
             style={{
               height: "63px",
@@ -58,7 +102,6 @@ const PersonalSelectionClass = () => {
               placeholder={placehold}
               className="shadow-none"
             />
-
             <DropdownButton
               variant="outline-secondary"
               id="input-group-dropdown-2"
@@ -82,21 +125,23 @@ const PersonalSelectionClass = () => {
               margin: "60px auto",
             }}
           >
-            <p
-              onClick={() => {
-                setValued(placehold);
-              }}
+            <button
+              type="submit"
               style={{
                 color: "#00D9B6",
                 margin: "auto",
                 textAlign: "center",
                 cursor: "pointer",
+                background: "none",
+                border: "none"
               }}
             >
               ADD
-            </p>
+            </button>
           </Row>
         </Row>
+        </form>
+        
         {buttonPush === "on" ? (
           <Row></Row>
         ) : buttonPush === "" ? (
@@ -226,9 +271,6 @@ const PersonalSelectionClass = () => {
     <div>
       {valued === "undefined" || valued === "" ? <PersonalSelectClass />:<PersonalClassSubmit data={valued} />}
     </div>
-    // <div>
-    //   
-    // </div>
   );
 };
 export default PersonalSelectionClass;

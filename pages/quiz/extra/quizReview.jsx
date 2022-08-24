@@ -4,6 +4,7 @@ import Image from "next/image";
 import QuizNumber from "../extra/quizNumberr"
 import QuizQuestion from "../extra/quizQuestion"
 import styles from "../../../styles/quiz.module.css";
+
 // import QuizNumber from "./quizNumberr";
 
 const QuizReview = () => {
