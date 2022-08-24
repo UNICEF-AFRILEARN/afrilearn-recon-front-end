@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRoles } from '../../redux/actions/auth';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { 
   fetchPaymentPlansInitiate,
   verifyPaystackPaymentInitiate,
@@ -385,7 +385,7 @@ const initializePayment = usePaystackPayment(config);
 
 {userRole === "607ededa2712163504210684" &&
   <div className={`col-md-6 ${styles.paymentSecondContainer}`} >
-   <form>
+   <div>
     <div className='row'>
       <div className={styles.paymentLabel}><label for="className "><h5>Step 1: Select Class:</h5> </label></div>
       <div  >
@@ -434,6 +434,7 @@ const initializePayment = usePaystackPayment(config);
     handleClose={handleClose}
     handleOpen={handleOpen}
     open={open}
+    closeModal={closeModal}
     priceSelected={priceSelected}
   />
    </div>
@@ -441,7 +442,7 @@ const initializePayment = usePaystackPayment(config);
  </div>
 
 </div>
-</form> 
+</div> 
 
 
 </div>

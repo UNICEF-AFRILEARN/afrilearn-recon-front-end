@@ -55,6 +55,20 @@ export const fetchSchoolProfileFail = (error) => ({
     payload: error
 });
 
+export const fetchSchoolMemberClassStart = () => ({
+    type: types.FETCH_SCHOOL_MEMBER_CLASS_START
+});
+
+export const fetchSchoolMemberClassSuccess = (payload) => ({
+    type: types.FETCH_SCHOOL_MEMBER_CLASS_SUCCESS,
+    payload
+});
+
+export const fetchSchoolMemberClassFail = (error) => ({
+    type: types.FETCH_SCHOOL_MEMBER_CLASS_FAIL,
+    payload: error
+});
+
 export const addNewAdminInitiate = (fullName, email, password, schoolId, confirmPassword, roleDescription) =>  {
     return function (dispatch) {
         dispatch(addNewAdminStart())
@@ -155,6 +169,23 @@ export const addNewAdminInitiate = (fullName, email, password, schoolId, confirm
             })
             .catch((err) => {
                 dispatch(fetchSchoolProfileFail(err))
+            })
+        }
+    
+}
+
+    export const fetchSchoolMemberClassInitiate = (classId) =>  {
+        return function (dispatch) {
+            dispatch(fetchSchoolMemberClassStart())
+            axios
+            .get(`https://afrilearn-backend-01.herokuapp.com/api/v1/schools/${classId}`
+            )
+            .then((res) => {
+                dispatch(fetchSchoolMemberClassSuccess(res.data))
+                console.log("Hello from school member API ===>", res.data)
+            })
+            .catch((err) => {
+                dispatch(fetchSchoolMemberClassFail(err))
             })
         }
     
