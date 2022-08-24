@@ -186,12 +186,13 @@ const initializePayment = usePaystackPayment(config);
   <div className={`row ${styles.paymentdurationButtons}`}>
   <div className= {` col-md-3 ${styles.durationPayment}`}> 
     {allPaymentPlans && allPaymentPlans.map((allPlans) =>
-        <button 
+        <input 
+          className={styles.btnpayment}
           onClick={() => handleSelect(allPlans.amount)}
         >
         <div className={styles.durationBold}>{allPlans.name}</div>
         <div>{allPlans.amount}</div >
-      </button>
+      </input>
     )}
   </div>
   <div className= {` col-md-3 ${styles.durationPayment}`}> 
