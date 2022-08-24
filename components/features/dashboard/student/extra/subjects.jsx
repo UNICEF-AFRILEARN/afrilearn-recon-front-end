@@ -144,7 +144,9 @@ export default Subjects;
 
 export const HeaderHeropage = () => {
   const user = useSelector((state) => state.auth);
-  const personClass = user.user.user?.enrolledCourses[0].courseId.name;
+  const personClass = user.user.user?.enrolledCourses[0].courseId
+    ? user.user.user?.enrolledCourses[0].courseId.name
+    : user.user.user?.enrolledCourses[1].courseId.name;
   return (
     <>
       <Col className="p-0">
@@ -158,7 +160,7 @@ export const HeaderHeropage = () => {
   );
 };
 const StudentHeropageBase = () => {
-  const subject = useSelector((state) => state.MySubject);
+  const subject = useSelector((state) => state.mySubjectCourse);
   const subjectDetails = subject.subjectDetails[0]?.subject;
   const data = {
     subject: subjectDetails?.courseId.name,
@@ -174,7 +176,7 @@ const StudentHeropageBase = () => {
       <div className={`row ${styles.modalSecond}`}>
         <div className={`col-md-8 ${styles.modalSecondFirst}`}>
           <h6 className="">{data?.title}</h6>
-          <p>{data?.description}</p>
+          <div dangerouslySetInnerHTML={{ __html: data?.description }}></div>
         </div>
         <div className="col-md-4">
           <p>

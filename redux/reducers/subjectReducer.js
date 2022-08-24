@@ -23,6 +23,7 @@ const subjectReducer = (state = initialState, { type, payload }) => {
         ...state,
         subjectDetails: payload,
       };
+
     case types.FETCH_PASTQUESTION_SUCCESS:
       return {
         ...state,

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // <<<<<<< HEAD
 // import QuizInstruction from "./extra/quizInstruction";
 
@@ -14,3 +15,16 @@ const Quiz = () => {
   );
 };
 export default Quiz;
+=======
+import QuizInstruction from "./extra/quizInstruction";
+// import styles from quiz.css
+
+const Quiz = () => {
+  return (
+    <>
+      <QuizInstruction />
+    </>
+  );
+};
+export default Quiz;
+>>>>>>> dev
