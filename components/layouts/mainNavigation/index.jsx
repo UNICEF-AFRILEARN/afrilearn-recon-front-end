@@ -186,9 +186,15 @@ const Navigation = () => {
                   <Link passHref href="/school">
                     <li>Dashboard</li>
                   </Link>
+                  <Link passHref href="/">
+                    <li>Add New Student</li>
+                  </Link>
                   <Link passHref href="/payment">
                     <li>Subscribe</li>
                 </Link>
+                  <Link passHref href="/">
+                    <li>People</li>
+                  </Link>
                 <div className={styles.navicons}>
                   <span><BsSearch /></span>
                   <span><BsBell /></span>
