@@ -18,8 +18,6 @@ import PaymentDetails from './paymentModal';
 const payment = ({test_body}) => {
   const priceElement = useRef();
   const [open, setOpen] = useState(false);
-  const handleClose = () => setOpen(false);
-  const handleOpen = () => setOpen(true);
   const { classDetails } = useSelector((state) => state.schoolClasses)
   const dispatch = useDispatch();
   const [ userRole, setUserRole ] = useState("");
@@ -38,12 +36,17 @@ const payment = ({test_body}) => {
 let token = user?.token
 let myChildren = children?.data?.children;
 
+const handleClose = () => setOpen(false);
+const handleOpen = () => {
+  setPriceSelected(price)
+  setOpen(true);
+}
 
 console.log("myChildren from payment ====>", myChildren)
   let showPrice;
   const handleSelect = (price) => {
     setPriceSelected(price)
-    console.log("priceElement from payment", priceElement)
+   
   }
   
   const config = {
@@ -155,7 +158,7 @@ const initializePayment = usePaystackPayment(config);
    </div>
   {  userRole === "5fd08fba50964811309722d5" &&
      <div className={`col-md-6 ${styles.paymentSecondContainer}`} >
-        <form >
+        <div >
     <div className='row'>
       <div className={styles.paymentLabel}><label for="className "><h5>Step 1: Select Class:</h5> </label></div>
       <div  >
@@ -183,7 +186,9 @@ const initializePayment = usePaystackPayment(config);
   <div className={`row ${styles.paymentdurationButtons}`}>
   <div className= {` col-md-3 ${styles.durationPayment}`}> 
     {allPaymentPlans && allPaymentPlans.map((allPlans) =>
-        <button >
+        <button 
+          onClick={() => handleSelect(allPlans.amount)}
+        >
         <div className={styles.durationBold}>{allPlans.name}</div>
         <div>{allPlans.amount}</div >
       </button>
@@ -193,26 +198,34 @@ const initializePayment = usePaystackPayment(config);
   </div>
  <div className='row'>
   <div className= {` col-md-6 ${styles.paymenttypeButton}`}>
-    <button 
+    <div 
     onClick={() => {
                 initializePayment(onSuccess, onClose)
-              }}>PAY WITH CARD</button>
+              }}>PAY WITH CARD</div>
   </div>
     <div className={` col-md-6 ${styles.paymenttypeButton2}`}>
-      <button >BANK TRANSFER</button>
+      {/* <button >BANK TRANSFER</button>
+       */}
+         <PaymentDetails
+    handleClose={handleClose}
+    handleOpen={handleOpen}
+    open={open}
+    closeModal={closeModal}
+    priceSelected={priceSelected}
+  />
    </div>
 
  </div>
 
 </div>
-</form> 
+</div> 
 
 
 </div>
 }
   {  userRole === "606ed82e70f40e18e029165e" &&
      <div className={`col-md-6 ${styles.paymentSecondContainer}`} >
-        <form >
+        <div >
     <div className='row'>
       <div className={styles.paymentLabel}><label for="className "><h5>Step 1: Select Class:</h5> </label></div>
       <div  >
@@ -257,7 +270,9 @@ const initializePayment = usePaystackPayment(config);
   <div className={`row ${styles.paymentdurationButtons}`}>
   <div className= {` col-md-3 ${styles.durationPayment}`}> 
     {allPaymentPlans && allPaymentPlans.map((allPlans) =>
-        <button >
+        <button 
+        onClick={() => handleSelect(allPlans.amount)}
+        >
         <div className={styles.durationBold}>{allPlans.name}</div>
         <div>{allPlans.amount}</div >
       </button>
@@ -273,13 +288,20 @@ const initializePayment = usePaystackPayment(config);
               }}>PAY WITH CARD</button>
   </div>
     <div className={` col-md-6 ${styles.paymenttypeButton2}`}>
-      <button >BANK TRANSFER</button>
+      {/* <button >BANK TRANSFER</button> */}
+      <PaymentDetails
+    handleClose={handleClose}
+    handleOpen={handleOpen}
+    open={open}
+    closeModal={closeModal}
+    priceSelected={priceSelected}
+  />
    </div>
 
  </div>
 
 </div>
-</form> 
+</div> 
 
 
 </div>
@@ -347,6 +369,7 @@ const initializePayment = usePaystackPayment(config);
     handleOpen={handleOpen}
     open={open}
     closeModal={closeModal}
+    priceSelected={priceSelected}
   />
    </div>
 
@@ -410,6 +433,7 @@ const initializePayment = usePaystackPayment(config);
     handleClose={handleClose}
     handleOpen={handleOpen}
     open={open}
+    priceSelected={priceSelected}
   />
    </div>
 

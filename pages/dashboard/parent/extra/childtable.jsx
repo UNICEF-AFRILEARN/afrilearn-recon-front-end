@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Table from 'react-bootstrap/Table';
 
-import { MdOutlineCheckBoxOutlineBlank } from 'react-icons/md';
+import { MdOutlineCheckBoxOutlineBlank,MdOutlineArrowForwardIos } from 'react-icons/md';
 import styles from '../../../../styles/parentdashboard.module.css';
 import ChildModal from './childModal';
 
@@ -53,6 +53,7 @@ const Childtable = ({myChildren}) => {
                 <td onClick={(() => showChildDetails(myChild.id))}>{myChild.fullName}</td>
                 <td>{myChild?.enrolledCourses[0]?.courseId.name? myChild?.enrolledCourses[0]?.courseId.name : "Not enrolled"}</td>
                 <td>{myChild.email}</td>
+                <td><MdOutlineArrowForwardIos /></td>
               </>
         </tr>
           )}
