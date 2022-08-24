@@ -72,29 +72,7 @@ const StudentProfileEdit = () => {
           show={modalShow}
           onHide={() => setModalShow(false)}
         />
-        <Col className="">
-          <Row
-            className="mx-auto mt-4"
-            style={{
-              width: "223px",
-              height: "53px",
-              background: "#00D9B6",
-              borderRadius: "100px",
-            }}
-          >
-            <p
-              style={{
-                marginLeft: "auto",
-                textAlign: "center",
-                padding: "auto",
-                margin: "auto",
-                color: "white",
-              }}
-            >
-              SAVE CHANGES
-            </p>
-          </Row>
-        </Col>
+       
       </Row>
       <Row>
         <ProfileEdit />

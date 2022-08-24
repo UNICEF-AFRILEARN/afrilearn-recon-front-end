@@ -3,7 +3,7 @@ import SubHeading from "./extra/subHeading";
 import PastQuestion from "./extra/pastQuestion";
 import TopInClass from "./extra/topInClass";
 import Recommendation from "./extra/recommendation";
-import Image from "next/image";
+// import Image from "next/image";
 import Slider from "react-slick";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
@@ -33,7 +33,7 @@ const Dashboard = () => {
   const { user, registerUser } = useSelector((state) => state.auth);
   // const { registerUser } = useSelector((state) => state.auth);
   const subject = useSelector((state) => state.mySubjectCourse);
-console.log(subject)
+  console.log(subject);
 
   console.log(
     "Register registerUser from dashboard INDEX =====>",
@@ -41,18 +41,24 @@ console.log(subject)
   );
   console.log("Register user from dashboard INDEX =====>", user);
 
-  const schoollevel = "Primary One";
-  const Subject = "Basic Technology";
-  const lesson = "6012c173cfe09249249f7ece";
-
-  // const schoollevel = "JSS One"
-  // const subject = "Home Economics"
-  // const lesson  = "6012d3aacfe09249249f8b20"
-
   const userId = "62a0bc984af2d90016b72096";
   const token = user.token;
   const lessonId = "6012c2a7cfe09249249f7f9c";
 
+  useEffect(() => {
+    dispatch(fetchLessonsInitiate());
+    dispatch(fetchSingleLessonInitiate(lessonId));
+    dispatch(fetchActivitiesInitiate(token));
+    // dispatch(fetchUnicefReconInitiate(schoollevel, subject, lesson))
+    dispatch(fetchReconLessonInitiate(userId, token));
+    dispatch(fetchCourseInitiate());
+  }, [
+    fetchCourseInitiate,
+    fetchReconLessonInitiate,
+    fetchUnicefReconInitiate,
+    fetchActivitiesInitiate,
+    fetchLessonsInitiate,
+  ]);
 
   // To be changed later
   const checkIf = () => {

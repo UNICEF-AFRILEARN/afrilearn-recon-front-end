@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 
-// import styles from qui
+// import styles from quiz
 
 const QuizInstruction = () => {
   const router = useRouter();

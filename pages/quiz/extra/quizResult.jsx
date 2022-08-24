@@ -3,7 +3,11 @@ import * as React from "react";
 import styles from "../../../styles/quiz.module.css";
 import Image from "next/image";
 import { useRouter } from 'next/router'
+// <<<<<<< HEAD
+// import { PieChart, Pie, Cell, Legend} from 'recharts';
+// =======
 // import { PieChart, Pie, Sector, Cell, Legend, ResponsiveContainer } from 'recharts';
+
 
 const data = [
   { name: 'Correct', value: 900 },
