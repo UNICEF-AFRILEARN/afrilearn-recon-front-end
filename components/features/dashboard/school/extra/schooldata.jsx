@@ -76,7 +76,7 @@ const Schooldata = () => {
             <div className={` col-md-2 ${styles.addTeacher}`}>
                 <div className={styles.schooladd}></div>
                 <div>
-                    <Link passHref href="">Add new teacher</Link>
+                    <Link passHref href="/school/addteacher">Add new teacher</Link>
                 </div>
             </div>
             <div className={` col-md-2 ${styles.addTeacher}`}>

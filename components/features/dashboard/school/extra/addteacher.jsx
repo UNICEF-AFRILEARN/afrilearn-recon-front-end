@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import Router, { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux';
+import Router, { useRouter } from 'next/router'
 import { fetchRoles } from "../../../../../redux/actions/auth";
 import { addNewTeacherInitiate } from '../../../../../redux/actions/school';
 import styles from "../../school/addstudent.module.css"

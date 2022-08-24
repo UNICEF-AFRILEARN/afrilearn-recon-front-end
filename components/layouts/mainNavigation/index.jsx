@@ -79,7 +79,7 @@ const Navigation = () => {
                           <BiDownArrow size={20} className={styles.profileavatar}/>
                           </Link>
                           <div className={styles.linkswrapper}>
-                            <a href="#">Add New class</a>
+                            <a href="/payment">Add New class</a>
                             <a href="#">My Feeds</a>
                             <a href="#">Manage Profile</a>
                             <a href="#">Share Feedback</a>

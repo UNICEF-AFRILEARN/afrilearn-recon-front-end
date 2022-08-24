@@ -152,8 +152,8 @@ export const addNewAdminInitiate = (fullName, email, password, schoolId, confirm
             .get(`https://afrilearn-backend-01.herokuapp.com/api/v1/schools/${schoolId}`
             )
             .then((res) => {
-                dispatch(fetchSchoolProfileSuccess(res.data))
-                console.log("Hello from school profile API ===>", res.data)
+                dispatch(fetchSchoolProfileSuccess(res.data.data))
+                console.log("Hello from school profile API ===>", res.data.data)
             })
             .catch((err) => {
                 dispatch(fetchSchoolProfileFail(err))

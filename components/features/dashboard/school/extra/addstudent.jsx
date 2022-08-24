@@ -6,73 +6,50 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addNewStudentInitiate } from '../../../../../redux/actions/school';
 
 const Addnewstudent = () => {
-    const { user, registerUser, roles } = useSelector((state) => state.auth);
-    const { schoolProfile } = useSelector((state) => state.school);
+  const { user, registerUser, roles } = useSelector((state) => state.auth);
+  const { schoolProfile, classMembers } = useSelector((state) => state.school);
     const dispatch = useDispatch();
 
     const [fullName, setfullName] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
-    // const [schoolId, setSchoolId] = useState("");
     const [role, setRole] = useState("Student");
     const [courseId, setCourseId] = useState("");
     const [course, setCourse] = useState("");
     const [classId, setClassId] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
-    const [courseSelected, setCourseSelected] = useState("");
+    const [classSelected, setClassSelected ] = useState('');
 
-    const schoolClasses = schoolProfile?.data.schoolClassesData
-    course = courseSelected.split("-")
-    const schoolId = user.user?.schoolId.id
-
+    const schoolClassName = schoolProfile?.data?.schoolClassesData
+    const schoolId = user.user?.schoolId.id || registerUser.user?.schoolId.id
+    const schoolClasses = schoolProfile?.data?.schoolClassesData;
     
     const handleSubmit = (e) => {
       e.preventDefault()
-      console.log("course =====>", course[0])
-        dispatch(addNewStudentInitiate(
-            courseId,
-            classId,
-            fullName, 
-            email, 
-            password,
-            confirmPassword,
-            schoolId
-        ))
+      console.log("course =====>", fullName, email, classId, courseId)
+        // dispatch(addNewStudentInitiate(
+        //     courseId,
+        //     classId,
+        //     fullName, 
+        //     email, 
+        //     password,
+        //     confirmPassword,
+        //     schoolId
+        // ))
     }
 
-    const setStudentClassId = () => {
-      if(course[0] === 'JSS One'){
-        setCourseId('5fc8cfbb81a55b4c3c19737d')
-        setClassId("62f6aee70e20330016bd112d")
-      }else if(course[0] === "JSS Two"){
-        setCourseId('5fff7329de0bdb47f826feb0')
-        setClassId("62f6aee70e20330016bd1132")
-      }else if(course[0] === "JSS Three"){
-        setCourseId('5fff734ade0bdb47f826feb1')
-        setClassId("62f6aee70e20330016bd1137")
-      }else if(course[0] === 'SSS One'){
-        setCourseId('5fff7371de0bdb47f826feb2')
-        setClassId("62f6aee70e20330016bd113c")
-      }else if(course[0] === 'SSS Two'){
-        setCourseId('5fff7380de0bdb47f826feb3')
-        setClassId("62f6aee80e20330016bd1141")
-      }else if(course[0] === 'SSS Three'){
-        setCourseId('5fff7399de0bdb47f826feb4')
-        setClassId("62f6aee80e20330016bd1146")
-      }else if(course[0] === 'Afrilearn KidsCode'){
-        setCourseId('629dbb4c5a5f270016033712')
-        setClassId("62f6aee80e20330016bd114b")
-      }
-         
-    }
+  
+    const filterClassIds = () => {
+      schoolClassName && schoolClassName.filter((filteredClass) => {
+          if(filteredClass.className === classSelected ){
+               setClassId(filteredClass.classId)
+               setCourseId(filteredClass.courseId)
+          }
+      })
+  }
 
-    useEffect(() => {
-      setStudentClassId()
-      }, [setStudentClassId]);
-
-    useEffect(() => {
-        dispatch(fetchRoles())
-      }, [])
+  useEffect(() => {
+    filterClassIds()
+}, [classSelected]);
 
     return (
         <>
@@ -93,9 +70,9 @@ const Addnewstudent = () => {
                 <select 
                 className={styles.schoolselect} 
                 type="text"
-                value={courseSelected}
+                value={classSelected}
                 defaultValue={"default"}
-                onChange={(e) => setCourseSelected(e.target.value)}
+                onChange={(e) => setClassSelected(e.target.value)}
                     >
                       <option value={"default"}>
                          Select a Class
@@ -126,13 +103,6 @@ const Addnewstudent = () => {
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    />
-                <input 
-                    className={styles.input}
-                    type="password" 
-                    placeholder="Confirm Password"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
                     />
             <button className={styles.studentButton} type='submit'>REGISTER</button>
             </form>

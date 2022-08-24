@@ -1,14 +1,21 @@
+import React, {useState, useEffect, useRef} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from "../../school/profile.module.css";
 import Image from "next/image";
 import Link from "next/link";
 
 
 const Schoolprofile = () => {
+    const { schoolProfile, classMembers } = useSelector((state) => state.school);
+    const { user, registerUser, roles } = useSelector((state) => state.auth);
+    
+    let currentUser = user || registerUser
     const schoolprofile  ={
         name: "Larin Comprehensive School",
         email: "Larinschool@gmail.com",
         location:"Lagos State, Nigeria",
     }
+    console.log("schoolProfile from main schoolProfile ====>", schoolProfile)
 const schooldata ={
     phoneNum : "08111111111",
     satte: "Lagos",
@@ -22,10 +29,10 @@ const schooldata ={
         <div className={`row ${styles.heroinputsection}`} > 
         <Image src="/assets/img/school/person_2\ 1.svg" width={"174px"} height={"174px"} className= {`col-md-3 ${styles.avatarCoin}`} />
         <div className={`col-md-7 ${styles.heroInputs}`}>
-            <h4> {schoolprofile.name}</h4>
+            <h4> {schoolProfile.profile.name}</h4>
             <div className={styles.inputdetails}>
-                <div className=''>{schoolprofile.email}</div>
-                <div className={styles.input1}><Image src="/assets/img/school/Location.svg"width={"18px"} height={"18px"} className= {`col-md-3 ${styles.avatarCoin}`} />{schoolprofile.location}</div>
+                <div className=''>{schoolProfile.profile.email}</div>
+                <div className={styles.input1}><Image src="/assets/img/school/Location.svg"width={"18px"} height={"18px"} className= {`col-md-3 ${styles.avatarCoin}`} />{schoolProfile.profile.location? schoolProfile.profile.location : "No Location Added"}</div>
                 <div className={styles.input2}>  <Image src="/assets/img/school/Edit.svg"width={"18px"} height={"18px"}  /><Link passHref href="">Edit Profile</Link></div>
            </div>
         </div>
@@ -40,7 +47,7 @@ const schooldata ={
                 <div className="col-md-3">
                     <div className="row">
                     <div className={`col-md-6 ${styles.number}`} >Phone Number:</div>
-                <div className={`col-md-3 ${styles.value}`}>{schooldata.phoneNum}</div>
+                <div className={`col-md-3 ${styles.value}`}>{currentUser.user.phoneNumber}</div>
                     </div>
                 </div>
                 <div className="col-md-5">  
@@ -53,11 +60,11 @@ const schooldata ={
             </div>
             <div className={`row  ${styles.datavalues}`}>
                 <div className={`col-md-1 ${styles.number}`}>State:</div>
-                <div className={`col-md-2 ${styles.value}`}>{schooldata.satte}</div>
+                <div className={`col-md-2 ${styles.value}`}>{currentUser.state? currentUser.state : "No state added"}</div>
             </div>
             <div className={`row  ${styles.datavalues}`}>
                 <div className={`col-md-1 ${styles.number}`}>City:</div>
-                <div className={`col-md-2 ${styles.value}`}>{schooldata.city}</div>
+                <div className={`col-md-2 ${styles.value}`}>{currentUser.state? currentUser.state : "No city added"}</div>
             </div>
             <div className={`row ${styles.status}`} >
          <div className="col-md-3">Class(es)</div>

@@ -107,7 +107,11 @@
   display: inline-block;
 }
 
-.iconswrapper:hover .linkswrapper {display: block;}
+.iconswrapper:hover .linkswrapper {
+  display: block;
+  right: 0;
+  left: auto;
+}
 .iconswrapper:hover .iconswrapper {background-color: #3e8e41;}
 
 
