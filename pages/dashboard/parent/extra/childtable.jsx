@@ -10,6 +10,9 @@ import ChildDetails from './childtablemodal';
 const Childtable = ({myChildren}) => {
   const [open, setOpen] = useState(false);
   const [studentId, setStudentId] = useState('')
+  const [childName, setChildName] = useState('')
+  const [childEmail, setChildEmail] = useState('')
+  const [childClass, setChildClass] = useState('')
   const handleClose = () => setOpen(false);
   const handleOpen = () => {
     // setPriceSelected(price)
@@ -19,9 +22,12 @@ const Childtable = ({myChildren}) => {
   console.log("myChildren from my children component", myChildren)
 
 
-    const handleClick = (id) => {
+    const handleClick = (id, email, name, myChildclass) => {
       console.log("I am clicked", id)
       setStudentId(id)
+      setChildEmail(email)
+      setChildName(name)
+      setChildClass(myChildclass)
       console.log("I am studentId clicked", studentId)
     }
 
@@ -50,7 +56,7 @@ const Childtable = ({myChildren}) => {
                 <td>{myChild?.enrolledCourses[0]?.courseId.name? myChild?.enrolledCourses[0]?.courseId.name : "Not enrolled"}</td>
                 <td>{myChild.email}</td>
                 <td 
-                  onClick={() => handleClick(myChild.id)}
+                  onClick={() => handleClick(myChild.id, myChild.email, myChild.fullName, myChild?.enrolledCourses[0]?.courseId.name)}
                 >
                 <ChildDetails 
                   handleClose={handleClose}
@@ -58,8 +64,12 @@ const Childtable = ({myChildren}) => {
                   open={open}
                   closeModal={closeModal}
                   myChildren={myChildren}
+                  studentId={studentId}
+                  childEmail={childEmail}
+                  childName={childName}
+                  childClass={childClass}
                   />
-                  
+
                 </td>
               </>
         </tr>

@@ -11,7 +11,8 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  width: 550,
+  height: 400,
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
@@ -23,13 +24,17 @@ const ChildDetails = ({
   handleOpen, 
   open, 
   closeModal, 
-  myChildren
+  myChildren,
+  studentId,
+  childEmail,
+  childName,
+  childClass
 })  => {
 
   console.log("myChildren from child details modal", myChildren)
   return (
     <div>
-      <Button onClick={handleOpen}> > </Button>
+      <Button onClick={handleOpen}> DETAILS </Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -40,10 +45,25 @@ const ChildDetails = ({
          onClick={closeModal}
         >
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
+            Name: {childName}
+          </Typography>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Email: {childEmail}
+          </Typography>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Password: 
+          </Typography>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Class: {childClass}
+          </Typography>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Subscription: 
+          </Typography>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Expiration date:
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+           
           </Typography>
         </Box>
       </Modal>
