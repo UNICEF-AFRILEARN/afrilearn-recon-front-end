@@ -64,16 +64,16 @@ const Dashboard = () => {
   };
 
   const personData = {
-    personClass: checkIf().courseId.name,
+    personClass: checkIf()?.courseId.name,
     personName: user.user?.fullName,
   };
-  const person_id = checkIf()._id;
+  const person_id = checkIf()?._id;
 
   useEffect(() => {
     // dispatch(fetchLessonsInitiate());
     dispatch(fetchSingleLessonInitiate(lessonId));
     dispatch(fetchActivitiesInitiate(token));
-    dispatch(fetchUnicefReconInitiate(schoollevel, Subject, lesson));
+    // dispatch(fetchUnicefReconInitiate(schoollevel, Subject, lesson));
     dispatch(fetchReconLessonInitiate(userId, token));
     dispatch(fetchSubjectInitiate(person_id, token));
     // dispatch(fetchCourseInitiate());
