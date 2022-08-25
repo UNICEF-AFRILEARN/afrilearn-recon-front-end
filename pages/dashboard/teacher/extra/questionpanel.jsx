@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import { Form, InputGroup, FormControl} from 'react-bootstrap';
 import styles from '../../../../styles/teacher.module.css'; 
-import { BsPlus } from 'react-icons/bs';
+
 import { BiNote } from 'react-icons/bi';
 import { AiOutlineArrowsAlt } from 'react-icons/ai';
 import { updateExamQuestionInitiate, fetchSingleExamQuestionsInitiate, fetchExamsInitiate } from '../../../../redux/actions/exams';
@@ -88,14 +88,6 @@ const Questionpanel = () => {
             <div className={styles.questionpanelheader}>
                 <h5>Open Edit Panel</h5> <span>< AiOutlineArrowsAlt size={30}/></span>
             </div>
-         <div className={styles.plusiconwrapper}>
-            <ul>
-                <li>
-                <BsPlus />
-                </li>
-            </ul>
-         </div>
-         
         </div>
         <div className={styles.mainformwrapper}>
         <Form onSubmit={handleSubmit}>

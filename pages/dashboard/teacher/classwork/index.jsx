@@ -15,7 +15,7 @@ const ClassWork = () => {
   const { user } = useSelector((state) => state.auth);
 
   console.log("classContents from classwork", classContents)
-  console.log("classContents.subjectId from classwork", classContents.assignedContents)
+  console.log("classContents.subjectId from classwork", classContents?.assignedContents)
 
   useEffect(() => {
     setClassId(user?.user?.classOwnership[0]?.enrolledCourse.classId)

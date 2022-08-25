@@ -1,24 +1,35 @@
 import React, { useState, useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import Router, { useRouter } from 'next/router';
 import styles from '../../../../styles/teacher.module.css'; 
 import { BsFillCircleFill, BsCircle } from 'react-icons/bs';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { BiNote } from 'react-icons/bi';
+import { BsPlus } from 'react-icons/bs';
 import Questionpanel from './questionpanel';
 import Theory from './theory';
 import Generatequestions from './generatequestions';
 import Submitquestions from './submitquestions';
-import { updateExamQuestionInitiate } from '../../../../redux/actions/exams';
+import { updateExamQuestionInitiate, fetchExamsInitiate } from '../../../../redux/actions/exams';
 
 const Objectives = () => {
-    const { newExamQuestion } = useSelector((state) => state.myExams);
+    const { newExamQuestion, exams } = useSelector((state) => state.myExams);
     const [questionId, setQuestionId] = useState("")
     const [question, setQuestion] = useState("")
-
-    console.log("questionId from onjective", questionId)
     const [showObjQuestions, setShowObjQuestions] = useState(1)
+    const { query } = useRouter();
+    console.log("query from onjective", query)
+    console.log("exams from onjective", exams)
 
+    let questionType = [];
 
+    const filterExams = () => {
+        exams.exams && exams.exams.filter((filteredExam) =>
+            console.log("FilteredExams", filteredExam)
+        )
+    }
+
+    filterExams()
 
     let data = {
         question
@@ -74,11 +85,17 @@ const Objectives = () => {
                         <ul>
                             <li>1</li>
                             <li>2</li>
-                            <li>3</li>
-                            <li>4</li>
                         </ul>    
                     </div>
                 }
+            {showObjQuestions !== 3 && 
+            <div className={styles.plusiconwrapper}>
+            <ul>
+                <li>
+                <BsPlus />
+                </li>
+            </ul>
+            </div>}
             </div>
                { showObjQuestions === 1 &&  <Questionpanel />}
                 {showObjQuestions === 2 && <Theory /> }
