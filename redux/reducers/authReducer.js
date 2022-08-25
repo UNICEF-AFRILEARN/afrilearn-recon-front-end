@@ -8,85 +8,82 @@ import * as types from "../types";
  */
 
 const initialState = {
-  drop: false,
-  searchRedirect: false,
-  redirect: false,
-  // location: localStorage.getItem("location"),
-  chartSection: "subject",
-  searchLocation: "/search",
-  isAuthenticated: false,
-  inClass: false,
-  targetUser: null,
-  role: "",
-  activeEnrolledCourseId: "",
-  activeCourseId: "",
-  activeCourseName: "",
-  fullName: "",
-  email: "",
-  password: "",
-  confirmPassword: "",
-  formFullName: "",
-  phoneNumber: "",
-  formEmail: "",
-  formPassword: "",
-  formConfirmPassword: "",
-  referralCode: "",
-  passwordMode: true,
-  confirmPasswordMode: true,
-  roles: [],
-  classes: [],
-  classLabel: "Select a Class",
-  userId: "",
-  user: {},
-  subjectIds: [],
-  subjectId: "",
-  courseId: "",
-  formClassId: "",
-  formCourseId: "",
-  address: "unknown",
-  activeCoursePaidStatus: false,
-  dashboardRoute: false,
-  className: "",
-  schoolName: "",
-  students: 0,
-  teachers: 0,
-  numberOfClassNote: 0,
-  numberOfQuizQuestions: 0,
-  state: "",
-  allUsers: 0,
-  courseCategoryId: "",
-  redirectTo: "",
-  rolesLoader: false,
-  authLoader: false,
-  status: "online",
-  users_online: [],
-  actives: [],
-  blogs: [],
-  faculties: [],
-  updateForm: [],
-  updateClass: [],
-  changePassword:"",
-  socialCampaign: false,
-  roles: [],
-  classes: [],
-  user: [],
-  teachers: 0,
-  allUsers: 0,
-  registerUser: [],
+    roles: [],
+    classes: [],
+    user: [],
+    editTeacherProfile: [],
+    teachers: 0,
+    allUsers: 0,
+    registerUser: [],
+    students: [],
+    numberOfClassNote: [],
+    numberOfQuizQuestions: [],
+    drop: false,
+    searchRedirect: false,
+    redirect: false,
+    // location: localStorage.getItem("location"),
+    chartSection: "subject",
+    searchLocation: "/search",
+    isAuthenticated: false,
+    inClass: false,
+    targetUser: null,
+    role: "",
+    activeEnrolledCourseId: "",
+    activeCourseId: "",
+    activeCourseName: "",
+    fullName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    formFullName: "",
+    phoneNumber: "",
+    formEmail: "",
+    formPassword: "",
+    formConfirmPassword: "",
+    referralCode: "",
+    passwordMode: true,
+    confirmPasswordMode: true,
+    roles: [],
+    classes: [],
+    classLabel: "Select a Class",
+    userId: "",
+    user: {},
+    subjectIds: [],
+    subjectId: "",
+    courseId: "",
+    formClassId: "",
+    formCourseId: "",
+    address: "unknown",
+    activeCoursePaidStatus: false,
+    dashboardRoute: false,
+    className: "",
+    schoolName: "",
+    students: 0,
+    teachers: 0,
+    numberOfClassNote: 0,
+    numberOfQuizQuestions: 0,
+    state: "",
+    allUsers: 0,
+    courseCategoryId: "",
+    redirectTo: "",
+    rolesLoader: false,
+    authLoader: false,
+    status: "online",
+    users_online: [],
+    actives: [],
+    blogs: [],
+    faculties: [],
+    updateForm: [],
+    updateClass: [],
+    changePassword:"",
+    socialCampaign: false,
+    roles: [],
+    classes: [],
+    user: [],
+    teachers: 0,
+    allUsers: 0,
+    registerUser: [],
 };
-
-// const authReducer = (state = initialState, { type, payload }) => {
-//   switch (type) {
-//     case types.LOGIN_USER_START:
-//       return {
-//         ...state,
-//       };
-
-//     case types.LOGIN_USER_SUCCESS:
-//       return {
-//         ...state,
-//         user: payload,
-//       };
 
 
 const authReducer = (state = initialState, {type, payload}) => {
@@ -123,12 +120,6 @@ const authReducer = (state = initialState, {type, payload}) => {
             return {
                 ...state,
                 roles: payload,
-                classes: payload,
-                students: payload,
-                teachers: payload,
-                numberOfClassNote: payload,
-                numberOfQuizQuestions: payload,
-                allUsers: payload,
               };
         case types.GOOGLE_SOCIAL_LOGIN_START:
                 return {
@@ -140,6 +131,20 @@ const authReducer = (state = initialState, {type, payload}) => {
                     googleLoggedIn: payload
                 }
         case types.GOOGLE_SOCIAL_LOGIN_FAIL:
+            return {
+                ...state,
+                error: payload
+            }
+        case types.EDIT_TEACHER_PROFILE_START:
+                return {
+                    ...state
+                }
+        case types.EDIT_TEACHER_PROFILE_SUCCESS:
+                return {
+                    ...state,
+                    editTeacherProfile: payload
+                }
+        case types.EDIT_TEACHER_PROFILE_FAIL:
             return {
                 ...state,
                 error: payload

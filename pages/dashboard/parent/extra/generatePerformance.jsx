@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Router, { useRouter } from 'next/router'
 
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 
@@ -8,13 +9,55 @@ import styles from '../../../../styles/parentdashboard.module.css'
 
 const GeneratePerformance = ({children, courseContext}) => {
     const [childClass, setChildClass] = useState("");
+    const [selectedChild, setSelectedChild] = useState("");
+    const [selectedChildId, setSelectedChildId] = useState("");
+    const [courseId, setCourseId] = useState("");
+    const [childId, setChildId] = useState("");
     const previousInputValue = useRef("");
 
+  
 
-    // useEffect(() => {
-    //     previousInputValue.current = inputValue;
-    //   }, [inputValue]);
+    let filteredChildren = []
+  const sortChildren = (childrenObj) => {
+    filteredChildren = childrenObj?.filter((myChildId) => myChildId.fullName === selectedChild)
+        // setSelectedChildId(myChildId.id)
+      return filteredChildren
+    }
 
+    let _userId = '';
+    let _courseId = '';
+
+
+    //filter to get child's Ids
+    const getSelectedChildId = () => {
+        _userId = filteredChildren?.map((childId) => childId.id)
+    }
+    //filter to get course Ids
+    const getSelectedCourseId = () => {
+        _courseId = filteredChildren?.map((childCourseId) => childCourseId.enrolledCourses[0]?.courseId.id)
+    }
+
+    
+    const handleSubmit = (e) => {
+        // console.log("courseId ====>{======}", courseId)
+        e.preventDefault()
+        Router.push({
+            pathname: `/dashboard/performance/[_id]`,
+            query: { _id: _userId[0], course_id:_courseId || "undefined" }
+        })
+    }
+    
+    //function to filter children:
+    useEffect(() => {
+        sortChildren(children)
+    }, [sortChildren(children)])
+    useEffect(() => {
+        getSelectedChildId()
+    }, [getSelectedChildId()])
+    useEffect(() => {
+        getSelectedCourseId()
+    }, [getSelectedCourseId()])
+    
 
   return (
     <div className={styles.parentmaingeneratewrapper}>
@@ -24,13 +67,13 @@ const GeneratePerformance = ({children, courseContext}) => {
         </div>
 
         <div className={styles.innerformwrapper}>
-            <Form>
+            <Form onSubmit={handleSubmit}>
                 <Form.Group className={`${styles.arrowparentwrapper} mb-3`} controlId="formBasicEmail">
                     <select
                         className={`${styles.pushDown} form-control form-control-sm`}
-                        // value={selectedCourse}
+                        value={selectedChild}
                         defaultValue={"default"}
-                        // onChange={(e) => setCourseSelected(e.target.value)}
+                        onChange={(e) => setSelectedChild(e.target.value)}
                         >
                         <option value={"default"}>
                             Select a child
@@ -40,17 +83,16 @@ const GeneratePerformance = ({children, courseContext}) => {
                             <>
                              <option 
                                 placeholder='Select a Role'
+                                key={childrenName.id}
+                                value={childrenName.fullName}
                                     >{childrenName.fullName}
-                                </option>
+                             </option>
                             </>
                         )}
                     </select>
                 </Form.Group>
 
                 <Form.Group className={`${styles.arrowparentwrapper} mb-3`} controlId="formBasicPassword">
-                    {/* <Form.Label>Class</Form.Label>
-                    <Form.Control type="password" placeholder="Select Class" />
-                    <span className={styles.arrowdownwrapper}><MdOutlineKeyboardArrowDown /></span> */}
                     <select
                         className={`${styles.pushDown} form-control form-control-sm`}
                         // value={selectedCourse}
@@ -61,7 +103,7 @@ const GeneratePerformance = ({children, courseContext}) => {
                             Select a class
                         </option>
             
-                        {children && children.map((childClass) => 
+                        {filteredChildren && filteredChildren.map((childClass) => 
                         <option 
                         placeholder='Select a Role'
                             >{childClass.enrolledCourses[0]?.courseId.name}
@@ -70,7 +112,7 @@ const GeneratePerformance = ({children, courseContext}) => {
                     </select>
                 </Form.Group>
             <Button variant="primary" type="submit">
-            GENERATE PERFORMANCE
+                 GENERATE PERFORMANCE
             </Button>
         </Form>
         </div>

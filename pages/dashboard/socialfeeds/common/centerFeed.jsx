@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from '../../../../styles/search.module.css';
 import CenterCard from './centerCard';
 

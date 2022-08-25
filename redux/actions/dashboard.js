@@ -24,6 +24,28 @@ export const fetchUnfinishedVideoFail = (error) => ({
     type: types.FECTH_UNFINISHED_VIDEO_FAIL,
     payload: error
 });
+export const fetchStudentPerformanceStart = () => ({
+    type: types.FETCH_STUDENT_PERFORMANCE_START
+})
+export const fetchStudentPerformanceSuccess = (payload) => ({
+    type: types.FETCH_STUDENT_PERFORMANCE_SUCCESS,
+    payload
+})
+export const fetchStudentPerformanceFail = (error) => ({
+    type: types.FETCH_STUDENT_PERFORMANCE_FAIL,
+    payload: error
+});
+export const fetchParentChildrenStart = () => ({
+    type: types.FECTH_PARENT_CHILDREN_START
+})
+export const fetchParentChildrenSuccess = (payload) => ({
+    type: types.FECTH_PARENT_CHILDREN_SUCCESS,
+    payload
+})
+export const fetchParentChildrenFail = (error) => ({
+    type: types.FECTH_PARENT_CHILDREN_FAIL,
+    payload: error
+});
 
 
 export const fetchUserProfileInitiate = (userId, token) => {
@@ -65,4 +87,46 @@ export const fetchUnfinishedVideoInitiate = (token) =>  {
         })
     }
 
+}
+export const fetchParentChildrenInitiate = (token) =>  {
+    return function (dispatch) {
+        dispatch(fetchParentChildrenStart())
+        axios
+        .get('https://afrilearn-backend-01.herokuapp.com/api/v1/parents/children',
+        {
+            headers: {
+                "token": token
+            }
+        })
+        .then((res) => {
+            dispatch(fetchParentChildrenSuccess(res.data))
+            console.log("Hello from fetch children API ====>", res.data)
+        })
+        .catch((err) => {
+            dispatch(fetchParentChildrenFail(err))
+        })
+    }
+
+}
+
+
+
+export const fetchStudentPerformanceInitiate = (userId, courseId, token) => {
+    return function (dispatch) {
+        console.log("userId, courseId, token ===>", userId, courseId, token)
+        dispatch(fetchStudentPerformanceStart())
+        axios
+        .post(`https://afrilearn-backend-01.herokuapp.com/api/v1/courses/${courseId}/progress-and-performance`,
+            {   userId  },
+        {
+            headers: {
+                "token": token
+            }
+        })
+        .then((res) => {
+                console.log("Dashboard API params", res.data)
+                dispatch(fetchStudentPerformanceSuccess(res.data))
+            })
+            .catch((error) => dispatch(fetchStudentPerformanceFail(error)))
+    }   
 }

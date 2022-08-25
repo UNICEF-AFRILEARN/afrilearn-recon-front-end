@@ -15,12 +15,13 @@ import { BsPersonCircle } from 'react-icons/bs';
 const Navigation = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [userRole, setUserRole] = useState("");
-  const { user } = useSelector(state => state.auth)
+  const { user, registerUser } = useSelector(state => state.auth)
 
   useEffect(() => {
-
-    console.log("From main navebar", user?.user?.role)
-    setUserRole(user?.user?.role)
+    console.log("From main navebar", registerUser?.user?.role)
+    const roleId = user?.user?.role || registerUser?.user?.role || user?.user?.id
+    console.log("From roleId main navebar", roleId)
+    setUserRole(roleId)
   }, [user])
 
 
@@ -78,7 +79,7 @@ const Navigation = () => {
                           <BiDownArrow size={20} className={styles.profileavatar}/>
                           </Link>
                           <div className={styles.linkswrapper}>
-                            <a href="#">Add New class</a>
+                            <a href="/payment">Add New class</a>
                             <a href="#">My Feeds</a>
                             <a href="#">Manage Profile</a>
                             <a href="#">Share Feedback</a>
@@ -96,11 +97,17 @@ const Navigation = () => {
                   <Link passHref href="/dashboard/teacher">
                     <li>Dashboard</li>
                   </Link>
-                  <Link passHref href="/dashboard/teacher">
+                  <Link passHref href="/dashboard/teacher/examinations">
                     <li>Examination</li>
                   </Link>
                   <Link passHref href="/payment">
                     <li>Subscribe</li>
+                </Link>
+                <Link passHref href="/dashboard/teacher/classwork/mystudents">
+                    <li>My Student</li>
+                </Link>
+                <Link passHref href="/dashboard/teacher/classwork">
+                    <li>Classwork</li>
                 </Link>
                 <div className={styles.navicons}>
                   <span><BsSearch /></span>
@@ -139,6 +146,9 @@ const Navigation = () => {
                   <Link passHref href="/dashboard/parent/addchild">
                     <li>Add My Child</li>
                   </Link>
+                  <Link passHref href="/dashboard/parent/children">
+                    <li>My Children</li>
+                  </Link>
                   <Link passHref href="/payment">
                     <li>Subscribe</li>
                 </Link>
@@ -176,8 +186,14 @@ const Navigation = () => {
                   <Link passHref href="/school">
                     <li>Dashboard</li>
                   </Link>
+                  <Link passHref href="/school/addnewstudent">
+                    <li>Add New Student</li>
+                </Link>
                   <Link passHref href="/payment">
                     <li>Subscribe</li>
+                </Link>
+                  <Link passHref href="/school/schoolpeople">
+                    <li>People</li>
                 </Link>
                 <div className={styles.navicons}>
                   <span><BsSearch /></span>
@@ -187,7 +203,7 @@ const Navigation = () => {
               
                 </ul>
                 <div className={styles.avatarcontainer}>
-                         <Link passHref href="/school/schoolProfile" className="btn-log-in-mobile">
+                         <Link passHref href="/school/schoolprofile" className="btn-log-in-mobile">
                           <BsPersonCircle size={30} className={styles.profileavatar}/>
                           </Link>
                       <div className={styles.iconswrapper}>

@@ -238,6 +238,19 @@ export const googleSocialLoginFail = (error) => ({
 type: types.GOOGLE_SOCIAL_LOGIN_FAIL,
 payload: error
 });
+export const editTeacherProfileStart = () => ({
+  type: types.EDIT_TEACHER_PROFILE_START,
+});
+
+export const editTeacherProfileSuccess = (payload) => ({
+type: types.EDIT_TEACHER_PROFILE_SUCCESS,
+payload
+});
+
+export const editTeacherProfileFail = (error) => ({
+type: types.EDIT_TEACHER_PROFILE_FAIL,
+payload: error
+});
 
 
 
@@ -245,7 +258,7 @@ export const googleLoginInitiate = (token) => {
   return function (dispatch) {
       dispatch(googleSocialLoginStart())
       axios
-      .post("http://localhost:5000/api/v1/api/v1/auth/social_login/google",
+      .post("https://afrilearn-backend-01.herokuapp.com/api/v1/auth/social_login/google",
           {   data  },
       {
           headers: {
@@ -259,20 +272,49 @@ export const googleLoginInitiate = (token) => {
           .catch((error) => dispatch(googleSocialLoginFail(error)))
   }   
 }
+export const editTeacherProfileInitiate = (token, fullName, email, age, phoneNumber, stateCon, gender, city, country) => {
+  return function (dispatch) {
+      dispatch(editTeacherProfileStart())
+      axios
+      .patch("https://afrilearn-backend-01.herokuapp.com/api/v1/auth/profile-update",
+          {  
+            fullName, 
+            email, 
+            age, 
+            phoneNumber, 
+            stateCon, 
+            gender, 
+            city, 
+            country  },
+          {
+              headers: {
+                  "token": token,
+                  "Content-Type": "application/json",
+              }
+          })
+      .then((res) => {
+              console.log("FROM Edit teacher profile", res.data.data)
+              dispatch(editTeacherProfileSuccess(res.data.data))
+          })
+          .catch((error) => dispatch(editTeacherProfileFail(error)))
+  }   
+}
 
 export const loginInitiate = (email, password) => {
   return function (dispatch) {
       dispatch(loginUserStart());
       axios
-        .post('https://afrilearn-backend-01.herokuapp.com/api/v1/auth/login', {
+        .post('https://afrilearn-backend-01.herokuapp.com/api/v1/auth/login', 
+        {
           email,
           password,
-        })
+        }
+        )
         .then((res) => {
           console.log("login response", res.data.data);
           dispatch(loginUserSuccess(res.data.data))
         })
-        .catch((err) => dispatch(loginUserFail(err.response.data)))
+        .catch((err) => dispatch(loginUserFail(err)))
         // .catch((err) => dispatch(loginUserFail(err.res.data.message)))
   }
 } 
@@ -298,8 +340,12 @@ export const registerUserInitiate = (
   confirmPassword, 
   role, 
   course,
+  courseId,
   phoneNumber,
-  referral) =>  {
+  schoolName,
+  courseCategoryId,
+  referral
+  ) =>  {
   return function (dispatch) {
       dispatch(registerUserStart())
       axios
@@ -311,7 +357,10 @@ export const registerUserInitiate = (
         confirmPassword, 
         role, 
         course,
+        courseId,
         phoneNumber,
+        schoolName,
+        courseCategoryId,
         referral
       })
       .then((res) => {

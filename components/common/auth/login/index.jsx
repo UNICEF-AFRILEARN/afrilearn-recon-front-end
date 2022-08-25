@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Form } from "react-bootstrap";
 import { useRouter } from "next/router";
+import { setCookie } from 'cookies-next';
+import { useNavigate } from "react-router-dom";
 import Link from "next/link";
 import styles from "./login.module.css";
 import Image from "next/image";
@@ -11,7 +13,6 @@ import { loginInitiate } from "../../../../redux/actions/auth";
 const Login = () => {
   const dispatch = useDispatch();
   const { user } = useSelector(state => state.auth);
-
   const [errorCheck, setErrorCheck] = useState('');
 
   const [email, setEmail] = useState("");
@@ -27,19 +28,19 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if(user.user?.role === '5fd08fba50964811309722d5'){
+    if(user && user.user?.role === '5fd08fba50964811309722d5' && Object.keys(user).length > 0){
       router.push("/dashboard/student");
     }
-    if(user.user?.role === '602f3ce39b146b3201c2dc1d'){
+    if(user && user.user?.role === '602f3ce39b146b3201c2dc1d' && Object.keys(user).length > 0){
       router.push("/dashboard/teacher");
     }
-    if(user.user?.role === '602f3cf79b146b3201c2dc1e'){
+    if(user &&  user.user?.role === '602f3cf79b146b3201c2dc1e' && Object.keys(user).length > 0){
       router.push("/dashboard/admin");
     }
-    if(user.user?.role === '606ed82e70f40e18e029165e'){
+    if(user && user.user?.role === '606ed82e70f40e18e029165e' && Object.keys(user).length > 0){
       router.push("/dashboard/parent");
     }
-    if(user.user?.role === '607ededa2712163504210684'){
+    if(user && user.user?.role === '607ededa2712163504210684' && Object.keys(user).length > 0){
       router.push("/school");
     }
   }, [user])
@@ -155,3 +156,4 @@ const Login = () => {
 };
 
 export default Login;
+

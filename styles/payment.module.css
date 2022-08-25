@@ -25,6 +25,9 @@
   background-color: #29465b;
 }
 
+.pushDown {
+  margin: 15px;
+}
 .paymentfirstContainer p {
   height: 24px;
   margin: 6%;
@@ -71,6 +74,11 @@ border-radius: 20px;
     font-weight: 600;
     margin-bottom: 20px;
 }
+
+.btnpayment:active {
+  background-color: red;
+}
+
 .paymentdurationButtons{
     margin-bottom: 15%;
     margin-top: 13%;

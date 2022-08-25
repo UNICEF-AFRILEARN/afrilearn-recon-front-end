@@ -4,6 +4,7 @@ import * as types from '../types/payment';
 const initialState = {
     loading: false,
     paymentPlans: [],
+    teacherPaymentPlans: [],
     paymentVerified: [],
     error: [],
 }
@@ -22,6 +23,23 @@ export const paymentReducer = (state = initialState, { type, payload} ) => {
             loading: false
         };
     case types.FETCH_PAYMENT_PLANS_FAIL:
+        return {
+            ...state,
+            error: payload,
+            loading: false
+        };
+    case types.FETCH_TEACHER_PAYMENT_PLANS_START:
+        return {
+            ...state,
+            loading: true
+        };
+    case types.FETCH_TEACHER_PAYMENT_PLANS_SUCCESS:
+        return {
+            ...state,
+            teacherPaymentPlans: payload,
+            loading: false
+        };
+    case types.FETCH_TEACHER_PAYMENT_PLANS_FAIL:
         return {
             ...state,
             error: payload,

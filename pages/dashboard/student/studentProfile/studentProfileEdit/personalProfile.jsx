@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Col,
   Container,
@@ -8,27 +9,60 @@ import {
   InputGroup,
   Row,
 } from "react-bootstrap";
+import { editTeacherProfileInitiate } from '../../../../../redux/actions/auth';
 import countryCodes from "country-codes-list";
-import { useDispatch, useSelector } from 'react-redux';
 import { sendeditedprofileInitiate } from "../../../../../redux/actions/auth";
 
 const PersonalProfile = () => {
+  const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
   const [title, setTitle] = useState("+234");
   const [age, setAge] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
   const [stateCon, setStateCon] = useState("");
   const [gender, setGender] = useState("");
-  const [name, setName] = useState(" ");
+  const [city, setCity] = useState("");
+  const [country, setCountry] = useState("");
   const [phoneNumber, setphoneNumber] = useState("");
-  const [email, setEmail] = useState(" ");
+  const [token, setToken] = useState("");
+  const [name, setName] = useState(" ");
+
+
+  console.log("fullName from profile page", token)
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(editTeacherProfileInitiate(token, fullName, email, age, phoneNumber, stateCon, gender, city, country))
+  }
+
   const myCountryCodesObject = countryCodes.customList(
     "countryCode",
     "+{countryCallingCode}",
   );
-  const { user } = useSelector(state => state.auth)
   console.log(user)
-  const dispatch = useDispatch();
   const codes = Object.values(myCountryCodesObject);
   const coded = [...new Set(codes.sort((a, b) => a - b))];
+
+
+  useEffect(() => {
+    setToken(user?.token)
+  }, [fullName]);
+
+
+  useEffect(() => {
+    setFullName(user?.user?.fullName)
+  }, [fullName]);
+  
+  useEffect(() => {
+    setEmail(user?.user?.email)
+  }, [email]);
+
+  useEffect(() => {
+    setphoneNumber(user?.user?.phoneNumber)
+  }, [phoneNumber]);
+
   const data={
     name:"Mike",
     email:"micheaol80@gmail.com"
@@ -60,6 +94,9 @@ useEffect(() => {
                 <input
                   btn-outline-light
                   className="p-4"
+                  disabled
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
                   type="text"
                   placeholder={`fullname`}
                   style={{
@@ -69,7 +106,6 @@ useEffect(() => {
                     borderRadius: "5px",
                     color: "#828282",
                   }}
-                  onChange={(e) => setName(e.target.value)}
                 />
               </Col>
             </Row>
@@ -82,6 +118,9 @@ useEffect(() => {
               <Col md={7}>
                 <input
                   className="p-4"
+                  disabled
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="email"
                   style={{
                     width: "670px",
@@ -90,7 +129,6 @@ useEffect(() => {
                     borderRadius: "5px",
                     color: "#828282",
                   }}
-                  onChange={(e) => setEmail(e.target.value)}
                 />
               </Col>
             </Row>
@@ -125,6 +163,8 @@ useEffect(() => {
                   <Form.Control
                     aria-label="Text input with dropdown button"
                     className="shadow-none"
+                    value={phoneNumber}
+                    onChange={(e) => setphoneNumber(e.target.value)}
                   />
                 </InputGroup>
               </Col>
@@ -138,13 +178,14 @@ useEffect(() => {
               <Col md={7}> 
                 <input
                   className="p-4"
+                  value={age}
+                  onChange={(e) => setAge(e.target.value)}
                   style={{
                     width: "670px",
                     height: "63px",
                     border: "1px solid #29465B",
                     borderRadius: "5px",
                   }}
-                  onChange={(e) => setAge(e.target.value)}
                 />
               </Col>
             </Row>
@@ -156,6 +197,8 @@ useEffect(() => {
               </Col>
               <Col md={7}>
                 <input
+                  value={stateCon}
+                  onChange={(e) => setStateCon(e.target.value)}
                   className="p-4 shadow-none"
                   style={{
                     width: "670px",
@@ -163,7 +206,6 @@ useEffect(() => {
                     border: "1px solid #29465B",
                     borderRadius: "5px",
                   }}
-                  onChange={(e) => setStateCon(e.target.value)}
                 />
               </Col>
             </Row>
@@ -175,6 +217,8 @@ useEffect(() => {
               </Col>
               <Col md={7}>
                 <input
+                  value={gender}
+                  onChange={(e) => setGender(e.target.value)}
                   className="p-4"
                   style={{
                     width: "670px",
@@ -182,7 +226,6 @@ useEffect(() => {
                     border: "1px solid #29465B",
                     borderRadius: "5px",
                   }}
-                  onChange={(e) => setGender(e.target.value)}
                 />
               </Col>
             </Row>
@@ -194,6 +237,8 @@ useEffect(() => {
               </Col>
               <Col md={7}>
                 <input
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
                   className="p-4"
                   style={{
                     width: "670px",
@@ -213,6 +258,8 @@ useEffect(() => {
               </Col>
               <Col md={7}>
                 <input
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
                   className="p-4"
                   style={{
                     width: "670px",

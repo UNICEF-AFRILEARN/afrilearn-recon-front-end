@@ -1,38 +1,45 @@
 import React, {useState} from 'react';
 import Table from 'react-bootstrap/Table';
 
-import { MdOutlineCheckBoxOutlineBlank } from 'react-icons/md';
+import { MdOutlineCheckBoxOutlineBlank,MdOutlineArrowForwardIos } from 'react-icons/md';
 import styles from '../../../../styles/parentdashboard.module.css';
 import ChildModal from './childModal';
+import ChildDetails from './childtablemodal';
 
 
-const Childtable = () => {
+const Childtable = ({myChildren}) => {
+  const [open, setOpen] = useState(false);
+  const [studentId, setStudentId] = useState('')
+  const [childName, setChildName] = useState('')
+  const [childEmail, setChildEmail] = useState('')
+  const [childClass, setChildClass] = useState('')
+  const handleClose = () => setOpen(false);
+  const handleOpen = () => {
+    // setPriceSelected(price)
+    setOpen(true);
+  }
 
-    const data = [
-        {
-            id: 1,
-            studentName: "Johnson Adewunigbe",
-            studentClass: "JSS1 , JSS2",
-            studentEmail: "johnsonA@gmail.com",
-        },
-
-        {
-            id: 2,
-            studentName: "Olatunbosun Adewunigbe",
-            studentClass: "SSS 3",
-            studentEmail: "olatunbosunA@gmail.com",
-        },
-    ]
+  console.log("myChildren from my children component", myChildren)
 
 
-
-    const [showModal, setShowModal] = useState(false);
-    const [studentId, setStudentId] = useState(null)
-
-    const showChildDetails = (id) => {
-        setStudentId(id)
-        setShowModal(!showModal)
+    const handleClick = (id, email, name, myChildclass) => {
+      console.log("I am clicked", id)
+      setStudentId(id)
+      setChildEmail(email)
+      setChildName(name)
+      setChildClass(myChildclass)
+      console.log("I am studentId clicked", studentId)
     }
+
+    const handleCheckedBox = (id) => {
+        console.log("I am checked", id)
+
+    }
+
+    const closeModal = () => {
+      setOpen(false)
+    }
+
   return (
     <div className={styles.tablewrapper}>
        <Table striped bordered hover className='mx-5 p-5'>
@@ -46,21 +53,39 @@ const Childtable = () => {
         </tr>
       </thead>
       <tbody>
-          { data && data.map((student) => 
-        <tr key={student.id}>
+          { myChildren && myChildren.map((myChild) => 
+        <tr key={myChild.id}>
               <>
-                <td><MdOutlineCheckBoxOutlineBlank /></td>
-                <td onClick={(() => showChildDetails(student.id))}>{student.studentName}</td>
-                <td>{student.studentClass}</td>
-                <td>{student.studentEmail}</td>
+                <td>
+                  <input
+                    onClick={() => handleCheckedBox(myChild.id)}
+                  type='checkbox' 
+                  />
+                </td>
+                <td>{myChild.fullName}</td>
+                <td>{myChild?.enrolledCourses[0]?.courseId.name? myChild?.enrolledCourses[0]?.courseId.name : "Not enrolled"}</td>
+                <td>{myChild.email}</td>
+                <td 
+                  onClick={() => handleClick(myChild.id, myChild.email, myChild.fullName, myChild?.enrolledCourses[0]?.courseId.name)}
+                >
+                <ChildDetails 
+                  handleClose={handleClose}
+                  handleOpen={handleOpen}
+                  open={open}
+                  closeModal={closeModal}
+                  myChildren={myChildren}
+                  studentId={studentId}
+                  childEmail={childEmail}
+                  childName={childName}
+                  childClass={childClass}
+                  />
+
+                </td>
               </>
         </tr>
           )}
       </tbody>
-    </Table>
-      <div className={styles.modalwrapperouter}>
-      { showModal && <ChildModal show={showModal} showChildDetails={showChildDetails} data={data} studentId={studentId}/>}
-      </div>      
+    </Table>     
     </div>
   )
 }

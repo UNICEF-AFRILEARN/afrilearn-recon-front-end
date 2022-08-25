@@ -10,7 +10,7 @@ import Middlebar from './extra/middlebar';
 import Proaddvert from './extra/proaddvert';
 
 
-const Parent = () => {
+const Parent = ({test_body}) => {
   const dispatch = useDispatch();
   const user_login = useSelector(state => state.auth)
   const coursesCollected = useSelector((state) => state.auth)
@@ -26,6 +26,7 @@ const Parent = () => {
 
     childrenCourseCount = mappedCoursesCount?.reduce((a,b) => a+b, 0)
   
+    console.log("test_body", test_body)
   useEffect(() => {
     dispatch(fetchChildrenInitiate(token))
   }, [])
@@ -58,3 +59,7 @@ useEffect(() => {
 }
 
 export default Parent
+
+export function getServerSideProps({req, res }){
+  return { props: {test_body: req.body || ""}}
+}

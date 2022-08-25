@@ -10,7 +10,7 @@ import {
   CartesianGrid,
   Bar,
 } from "recharts";
-import styles from '../../../../../styles/chart.module.css';
+// import styles from '../../../../../styles/chart.module.css';
 
 
 
@@ -23,11 +23,11 @@ const PieChartSection = () => {
   ];
 
   return (
-    <div className={styles.chartmainwrapper}>
+    <div >
       <div style={{ textAlign: "center" }}>
       <h1>Overall</h1>
       <div className="App">
-        <PieChart width={400} height={400}>
+        {/* <PieChart width={400} height={400}> */}
           <Pie
             dataKey="users"
             isAnimationActive={false}
@@ -40,7 +40,7 @@ const PieChartSection = () => {
             label
           />
           <Tooltip />
-        </PieChart>
+        {/* </PieChart> */}
       </div>
     </div>
     </div>  

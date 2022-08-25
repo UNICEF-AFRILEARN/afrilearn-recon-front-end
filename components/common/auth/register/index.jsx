@@ -13,11 +13,13 @@ import Router, { useRouter } from 'next/router'
 import { fetchSubjectsInitiate } from '../../../../redux/actions/subjects';
 
 const Register = (props) => {
-  const { user } = useSelector(state => state.auth);
+  const { user, registerUser } = useSelector(state => state.auth);
   const { subjects} = useSelector(state => state.mySubject);
   const [roleSelected, setRoleSelected] = useState('');
   const [role, setRole] = useState('');
   const [classCategory, setClassCategory] = useState('');
+  const [courseCategoryId, setCourseCategoryId] = useState('');
+  const [subject, setSubject] = useState('');
   // const [subject, setSubject] = useState('');
   const [subjectSelected, setSubjectSelected] = useState('');
   const [course, setCourse] = useState('');
@@ -46,14 +48,7 @@ const Register = (props) => {
   // const profile = {}
   const rolesContext = rolesCollected.roles.roles;
   const courseContext = rolesCollected.roles.courses;
-  // console.log("roles from the UI ==>", rolesContext);
-  // console.log("Registered user", courseContext)
-  
-  // const mySubjects = allSubjects.subjects
-  // const filteredSub = allSubjects.filter((filtSubj) => filtSubj.courseId?.id === '5fc8cfbb81a55b4c3c19737d')
-  // console.log("allSubjects from register",  filteredSub);
 
-  //Function to filter subjects objects
 let filteredSub = []
   const sortSubjects = (subjectsObj, id) => {
     filteredSub = subjectsObj.filter((filtSubj) => filtSubj.courseId?.id === id)
@@ -64,45 +59,53 @@ let filteredSub = []
 console.log("Filtered ====>", allSubjects)
   const getRoleId = () => {
       if (roleSelected === "Student") {
-        setRole("5fd08fba50964811309722d5")
+         setRole("5fd08fba50964811309722d5")
       }else if(roleSelected === "Teacher"){
-        setRole("602f3ce39b146b3201c2dc1d")
+         setRole("602f3ce39b146b3201c2dc1d")
       }else if(roleSelected === "Parent"){
-        setRole("606ed82e70f40e18e029165e")
+         setRole("606ed82e70f40e18e029165e")
       }else if(roleSelected === "School"){
-        setRole("607ededa2712163504210684")
+         setRole("607ededa2712163504210684")
       }
   }
 
-  const setClassId = () => {
+  const setCategoryId =  () => {
+    if (course === "Primary") {
+       setCourseCategoryId("605b21868636bc00158b4ad6")
+    }else if(course === "Secondary"){
+       setCourseCategoryId("605b218f8636bc00158b4ad7")
+    }
+}
+
+  const setClassId =  () => {
     if(course === 'Primary One'){
-      setCourseId('5fc8cfbb81a55b4c3c19737d')
+       setCourseId('5fc8cfbb81a55b4c3c19737d')
     }else if(course === 'Primary Two'){
-      setCourseId('5fd12c70e74b15663c5f4c6e')
+       setCourseId('5fd12c70e74b15663c5f4c6e')
     }else if(course === 'Primary Three'){
-      setCourseId('5fff5a67de0bdb47f826fea8')
+       setCourseId('5fff5a67de0bdb47f826fea8')
     }else if(course === 'Primary Four'){
-      setCourseId('5fff5a7ede0bdb47f826fea9')
+       setCourseId('5fff5a7ede0bdb47f826fea9')
     }else if(course === 'Primary Five'){
-      setCourseId('5fff5aaede0bdb47f826feaa')
+       setCourseId('5fff5aaede0bdb47f826feaa')
     }else if(course === 'Primary Six'){
-      setCourseId('5fff5abede0bdb47f826feab')
+       setCourseId('5fff5abede0bdb47f826feab')
     }else if(course === 'JSS One'){
       setCourseId('5fff72b3de0bdb47f826feaf')
     }else if(course === 'JSS Two'){
-      setCourseId('5fff7329de0bdb47f826feb0')
+       setCourseId('5fff7329de0bdb47f826feb0')
     }else if(course === 'Jss Three'){
-      setCourseId('5fff734ade0bdb47f826feb1')
+       setCourseId('5fff734ade0bdb47f826feb1')
     }else if(course === 'SSS One'){
-      setCourseId('5fff7371de0bdb47f826feb2')
+       setCourseId('5fff7371de0bdb47f826feb2')
     }else if(course === 'SSS Two'){
-      setCourseId('5fff7380de0bdb47f826feb3')
+       setCourseId('5fff7380de0bdb47f826feb3')
     }else if(course === 'SSS Three'){
-      setCourseId('5fff7399de0bdb47f826feb4')
+       setCourseId('5fff7399de0bdb47f826feb4')
     }else if(course === 'Afrilearn KidsCode'){
-      setCourseId('629dbb4c5a5f270016033712')
+       setCourseId('629dbb4c5a5f270016033712')
     }else if(course === 'Secondary'){
-      setCourseId('605b218f8636bc00158b4ad7')
+       setCourseId('605b218f8636bc00158b4ad7')
     }else if(course === 'Primary'){
       setCourseId('605b21868636bc00158b4ad6')
     }     
@@ -114,7 +117,8 @@ console.log("courseId =======>", courseId)
 
   const handleRegisterRequest = (e) => {
     e.preventDefault()
-    dispatch(registerUserInitiate(
+    console.log("courseCategoryId ===>", course, courseCategoryId)
+     dispatch(registerUserInitiate(
       fullName, 
       email, 
       password, 
@@ -123,21 +127,27 @@ console.log("courseId =======>", courseId)
       course,
       courseId,
       phoneNumber,
+      schoolName,
+      courseCategoryId,
       referral
       ))
 
-      if(role === "5fd08fba50964811309722d5"){
-        Router.push('/dashboard/student')
-      }else if(role === '602f3ce39b146b3201c2dc1d'){
-        Router.push('/dashboard/teacher')
-      }else if(role === '606ed82e70f40e18e029165e'){
-        Router.push('/dashboard/parent')
-      }else if(role === '607ededa2712163504210684'){
-        Router.push('/school')
+      if(role === "5fd08fba50964811309722d5" && Object.keys(registerUser).length > 0){
+         Router.push('/dashboard/student')
+      }else if(role === '602f3ce39b146b3201c2dc1d' && Object.keys(registerUser).length > 0){
+         Router.push('/dashboard/teacher' )
+      }else if(role === '606ed82e70f40e18e029165e' && Object.keys(registerUser).length > 0){
+         Router.push('/dashboard/parent')
+      }else if(role === '607ededa2712163504210684' && Object.keys(registerUser).length > 0){
+         Router.push('/school')
       }
     
   }
 
+
+  useEffect(() => {
+    setCategoryId()
+  },[setCategoryId]);
 
   useEffect(() => {
     setClassId()
