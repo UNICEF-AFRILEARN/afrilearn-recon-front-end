@@ -27,14 +27,41 @@ export const ExamQuestionPassage = ({sub_dat}) => {
   // console.log("questions.pastQuestionQue from pastQue", questions)
 
   const [nextQues, setNextQues] = useState(1);
+  // const [submittedAnswer, setSubmittedAnswer] = useState()
   const [nextAns, setNextAns] = useState({});
+  const [correctAnswers, setCorrectAnswer] = useState(0);
+  const [wrongAnswers, setWrongAnswers] = useState(0);
+  const [skippedQuestion, setSkippedQuestion] = useState(0);
+  const [answeredIndex, setAnsweredIndex] = useState('')
+  // const [submittedAnswer, setSubmittedQuestion] = useState(0);
   const [show, setShow] = useState(false);
   const sub_que = sub_dat.questions[+nextQues - 1];
 
+  let submittedAnswer = [];
+  // let correctAnswers = [];
+  // let wrongAnswers = [];
   const handleQuestionSubmit = (id) => {
+    
     console.log("I am the option clicked", id)
-    console.log("I am clicked", sub_que.options)
+    console.log("I am clicked", sub_que.options.indexOf(id) === 0)
+    if(sub_que.options.indexOf(id) >= 0 && sub_que.options.indexOf(id).toString() === sub_que.correct_option){
+      setCorrectAnswer(correctAnswers + 1)
+    }
+    if(sub_que.options.indexOf(id) >= 0  && sub_que.options.indexOf(id).toString() !== sub_que.correct_option){
+      setWrongAnswers(wrongAnswers + 1)
+    }
+    if(sub_que.options.indexOf(id) < 0){
+      setSkippedQuestion(skippedQuestion + 1)
+    }
+    
   }
+
+  // const handleSkippedQuestions = () => {
+      
+  // }
+  console.log("correct", correctAnswers )
+  console.log("Wrong", wrongAnswers )
+  console.log("Skipped", skippedQuestion )
   const handleClose = () => setShow(false);
   const handleOpen = () => {
     setNextQues(nextQues);
@@ -267,7 +294,7 @@ export const ExamQuestionPassage = ({sub_dat}) => {
           </Row>
           <Row className="mt-3 mb-3 px-5" style={{ height: "43px" }}>
             <Col 
-            className={styles.pastExamButton}
+             className={styles.pastExamButton}
              onClick={handleQuestionSubmit}
             ></Col>
             <Col>
@@ -284,7 +311,10 @@ export const ExamQuestionPassage = ({sub_dat}) => {
                 <div className={styles.pastExamFlag}></div>
               </div>
             </Col>
-            <Col className={styles.pastSkip}></Col>
+            <Col 
+            className={styles.pastSkip}
+            onClick={handleQuestionSubmit}
+            ></Col>
           </Row>
         </Col>
         <Col sm={3}>
@@ -314,7 +344,8 @@ export const ExamQuestionPassage = ({sub_dat}) => {
               <div className={styles.attempts1}>
                 <button></button> Attempted
               </div>
-              <div className={styles.attempts2}>
+              <div 
+              className={styles.attempts2}>
                 <button></button>Skipped
               </div>
             </div>

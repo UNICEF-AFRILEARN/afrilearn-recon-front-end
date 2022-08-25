@@ -13,7 +13,7 @@ const PastQuestion = () => {
 
   const subjectDat = subject.pastQuestion[0]?.subjects;
 
-  console.log("subjectDat from pastquestion", subjectDat.pastQuestion)
+  console.log("subjectDat from pastquestion", subject)
   
   const [show, setShow] = useState(false);
   const [list, setList] = useState([]);
