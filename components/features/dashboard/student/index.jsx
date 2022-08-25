@@ -94,21 +94,21 @@ const Dashboard = () => {
       <div>
         <SubHeading title="My Subject" />
         <Subjects
-          subData={subject.subject[1]?.enrolledCourse.courseId.relatedSubjects}
+          subData={subject?.subject[1]?.enrolledCourse.courseId.relatedSubjects}
         />
       </div>
       <PastQuestionaira
         subData={
-          subject.subject[1]?.enrolledCourse.courseId.relatedPastQuestions
+          subject?.subject[1]?.enrolledCourse.courseId.relatedPastQuestions
         }
       />
       <TopInClasses
-        classData={subject.subject[0]?.lessons}
+        classData={subject?.subject[0]?.lessons}
         classed={personData.personClass}
       />
       <PerfomanceSumm />
       <GetSolution />
-      <ClassRoom data={subject.subject[2]?.classMembership} />
+      <ClassRoom data={subject?.subject[2]?.classMembership} />
       <Recommended
         recommend={reconLesson?.recommendation}
         unicefRecon={unicefRecon}
