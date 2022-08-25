@@ -16,21 +16,32 @@ const ExamQuestion = () => {
 };
 export default ExamQuestion;
 export const ExamQuestionPassage = ({sub_dat}) => {
+  const subject = useSelector((state) => state.mySubjectCourse);
   const tot_numb = sub_dat.questions.length;
   const NoArray = Array.from(
     Array(sub_dat.questions.length).keys(),
     (n) => n + 1,
   );
 
+  console.log("I catch you from Que ===>", subject.pastQuestionQue[0].questions); // questions and the options
+  // console.log("questions.pastQuestionQue from pastQue", questions)
+
   const [nextQues, setNextQues] = useState(1);
   const [nextAns, setNextAns] = useState({});
   const [show, setShow] = useState(false);
   const sub_que = sub_dat.questions[+nextQues - 1];
+
+  const handleQuestionSubmit = (id) => {
+    console.log("I am the option clicked", id)
+    console.log("I am clicked", sub_que.options)
+  }
   const handleClose = () => setShow(false);
   const handleOpen = () => {
     setNextQues(nextQues);
     setShow(true);
   };
+
+
   return (
     <Container className="pt-3">
       <Row>
@@ -98,11 +109,13 @@ export const ExamQuestionPassage = ({sub_dat}) => {
                     padding: "15px",
                   }}
                   onClick={() =>
-                    setNextQues(
+                    {setNextQues(
                       nextQues < tot_numb && nextQues > 0
                         ? nextQues + 1
                         : nextQues,
-                    )
+                    ),
+                    handleQuestionSubmit(sub_que.options[0])
+                  }
                   }
                 >
                   <p
@@ -130,14 +143,17 @@ export const ExamQuestionPassage = ({sub_dat}) => {
                     marginTop: "20px",
                   }}
                   onClick={() =>
-                    setNextQues(
+                    {setNextQues(
                       nextQues < tot_numb && nextQues > 0
                         ? nextQues + 1
                         : nextQues,
-                    )
+                    ),
+                    handleQuestionSubmit(sub_que.options[1])
+                  }
                   }
                 >
                   <p
+                   
                     style={{
                       fontWeight: "500",
                       fontSize: "18px",
@@ -161,11 +177,13 @@ export const ExamQuestionPassage = ({sub_dat}) => {
                     marginTop: "20px",
                   }}
                   onClick={() =>
-                    setNextQues(
+                    {setNextQues(
                       nextQues < tot_numb && nextQues > 0
                         ? nextQues + 1
                         : nextQues,
-                    )
+                    ),
+                    handleQuestionSubmit(sub_que.options[2])
+                  }
                   }
                 >
                   <p
@@ -192,11 +210,13 @@ export const ExamQuestionPassage = ({sub_dat}) => {
                     marginTop: "20px",
                   }}
                   onClick={() =>
-                    setNextQues(
+                    {setNextQues(
                       nextQues < tot_numb && nextQues > 0
                         ? nextQues + 1
                         : nextQues,
-                    )
+                    ),
+                    handleQuestionSubmit(sub_que.options[3])
+                  }
                   }
                 >
                   <p
@@ -226,6 +246,7 @@ export const ExamQuestionPassage = ({sub_dat}) => {
                     nextQues <= tot_numb
                       ? setNextQues(nextQues + 1)
                       : handleOpen;
+                      handleQuestionSubmit(sub_que.options[4])
                   }}
                 >
                   <p
@@ -245,7 +266,10 @@ export const ExamQuestionPassage = ({sub_dat}) => {
             </Col>
           </Row>
           <Row className="mt-3 mb-3 px-5" style={{ height: "43px" }}>
-            <Col className={styles.pastExamButton}></Col>
+            <Col 
+            className={styles.pastExamButton}
+             onClick={handleQuestionSubmit}
+            ></Col>
             <Col>
               <div
                 style={{

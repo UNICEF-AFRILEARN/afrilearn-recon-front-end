@@ -20,7 +20,11 @@ const PastQuestion = () => {
   }, [quary]);
 
   const subject = useSelector((state) => state.mySubjectCourse);
-  console.log(subject);
+
+
+  console.log("I catch you ===>", subject.pastQuestionQue[0].questions); // questions and the options
+
+  
   const subjectDat = subject.pastQuestionQue[0];
   const quizData = {
     heading: `${subjectDat?.subject_details.exam_name}:`,

@@ -13,8 +13,9 @@ const PastQuestion = () => {
 
   const subjectDat = subject.pastQuestion[0]?.subjects;
 
+  console.log("subjectDat from pastquestion", subjectDat.pastQuestion)
   
-  // const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false);
   const [list, setList] = useState([]);
   const toggleModal = () => setShow(!show);
   return (
