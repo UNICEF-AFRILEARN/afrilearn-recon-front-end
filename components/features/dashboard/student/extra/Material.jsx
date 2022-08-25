@@ -93,8 +93,6 @@ export const Material = ({ past }) => {
   );
 };
 
-export default Material;
-
 const ClassNoteVideo = ({ lessons }) => {
   const terms = [
     "5fc8d1b20fae0a06bc22db5c",
@@ -483,3 +481,5 @@ const PastQuestionFace = ({ pastQue }) => {
     </div>
   );
 };
+
+export default Material;

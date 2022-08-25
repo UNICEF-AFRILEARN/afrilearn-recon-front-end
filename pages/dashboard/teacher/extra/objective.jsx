@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import styles from '../../../../styles/teacher.module.css'; 
 import { BsFillCircleFill, BsCircle } from 'react-icons/bs';
 import { RiDeleteBin6Line } from 'react-icons/ri';
@@ -7,13 +8,36 @@ import Questionpanel from './questionpanel';
 import Theory from './theory';
 import Generatequestions from './generatequestions';
 import Submitquestions from './submitquestions';
+import { updateExamQuestionInitiate } from '../../../../redux/actions/exams';
 
 const Objectives = () => {
+    const { newExamQuestion } = useSelector((state) => state.myExams);
+    const [questionId, setQuestionId] = useState("")
+    const [question, setQuestion] = useState("")
+
+    console.log("questionId from onjective", questionId)
     const [showObjQuestions, setShowObjQuestions] = useState(1)
+
+
+
+    let data = {
+        question
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        // console.log("theoryBody ==>",data)
+        // dispatch(updateExamQuestionInitiate(questionId, data))
+    }
 
     const showObjpanel = (id) => {
         setShowObjQuestions(id)
     }
+
+    // useEffect(() =>{
+    //     // setQuestionId(newExamQuestion?.examQuestion?.id)
+    //     setQuestionId("630274ab7412b500162680f5")
+    // }, [])
   return (
     <div className={styles.objectivemainwrapper}>
         <div className={styles.objleftsideboxwrapper}>
@@ -59,7 +83,7 @@ const Objectives = () => {
                { showObjQuestions === 1 &&  <Questionpanel />}
                 {showObjQuestions === 2 && <Theory /> }
                 {showObjQuestions === 3 && <Generatequestions />}
-                { showObjQuestions === 4 && <Submitquestions />}
+                {/* { showObjQuestions === 4 && <Submitquestions />} */}
         </div>
         
     </div>

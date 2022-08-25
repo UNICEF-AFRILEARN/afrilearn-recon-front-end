@@ -3,18 +3,107 @@
     justify-content: space-evenly;
     padding: 15px;
     margin-top: 25px;
+    height: 30%;
+}
+
+.innermainwrapper { 
+    width: 35%;
+}
+.rightmainwrapper{
+    background-color: rgb(27, 20, 34);
+}
+.performancemenu {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+.performancemenu li{
+    list-style-type: none;
+    border-bottom: 5px solid black;
+    color: #fff;
+}
+.innermenuwrapper {
+    cursor: pointer;
+}
+.performancecontentwrapper {
+    padding: 30px;
+    border: 5px solid black;
+    display: flex;
+    text-align: start;
+    align-items: flex-start;
+    background-color: #29465B;
+}
+
+.performancecontentwrapperpast {
+    padding: 30px;
+    border: 5px solid rgb(184, 47, 47);
+    display: flex;
+    height: 10%;
+    flex-direction: column;
+    text-align: start;
+    align-items: flex-start;
+    background-color: #29465B;
+}
+
+.accuracywrapper {
+    margin-top: 20px;
+    height: 10%;
+}
+.pastquestionratewrapper {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+.totalquestionwrapper {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-left: 50px;
+}
+.totalquestionwrapperlast {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-left: 25px;
+}
+.totalquestionwrapperrating {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-left: 35px;
+}
+.averagetimeremark {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-left: 15px;
+}
+.subjectsectiononemiddle {
+    text-align: center;
+}
+.totalquestionwrapper p {
+    padding-bottom: 10px;
+}
+.leftwrapper {
+    background-color: rgb(138, 128, 128);
+    margin-bottom: 40px;
+    height: 50%;
 }
 
 .studentnamewrapper {
-    background-color:#FAFAFA;
     text-align: center;
-    width: 60%;
     padding: 25px;
     margin-bottom: 10px;
     font-size: 20px;
     position:relative;
     padding-bottom: 70px;
     border-radius: 20px;
+}
+
+/* right side wrapper */
+.progresswrapper {
+    background-color: #295b2d;
+    width: 55%;
 }
 .studentnamewrapper p {
     color: #333333;
@@ -40,6 +129,3 @@
     color: #00D9B6;
 }
 
-.piewrapper {
-
-}

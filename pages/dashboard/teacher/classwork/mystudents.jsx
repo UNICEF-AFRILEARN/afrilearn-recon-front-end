@@ -1,32 +1,44 @@
+import React, { useState, useEffect } from "react";
+import Router, { useRouter } from 'next/router'
+import { useDispatch, useSelector } from "react-redux";
 import Image from "next/image";
-import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { HeroPageDetailed } from "../assignContent";
 import styles from "../teacher.module.css";
+import { fetchClassMembersInitiate } from '../../../../redux/actions/classes';
+import Link from "next/link";
 
 const MyStudent = () => {
-  const studentName = [
-    "Alaka Feyikemi",
-    "Alli Olatunbosun",
-    "John Muhammed",
-    "Alaka Feyikemi",
-    "Alli Olatunbosun",
-    "John Muhammed",
-    "Alaka Feyikemi",
-    "Alli Olatunbosun",
-    "John Muhammed",
-    "Alaka Feyikemi",
-    "Alli Olatunbosun",
-    "John Muhammed",
-    "Alaka Feyikemi",
-    "Alli Olatunbosun",
-    "John Muhammed",
-    "Alaka Feyikemi",
-    "Alli Olatunbosun",
-    "John Muhammed",
-  ];
+  const [ classId, setClassId ] = useState("");
+  const [ userId, setUserId ] = useState("");
+  const [ studentCount, setStudentCount ] = useState("");
+  const { classMembers } = useSelector((state) => state.schoolClasses);
+  const { user } = useSelector((state) => state.auth)
+  const dispatch = useDispatch()
 
-  const studentNum = studentName.length;
+  console.log("userId",userId)
+  //Navigate to performance:
+  const goToPerformance = (id) => {
+    setUserId(id)
+      Router.push({
+        pathname: `/dashboard/performance/[_id]`,
+        query: { _id: id, classId: classId}
+    })
+  }
+//studentName?.userId?.id
+
+  useEffect(() => {
+    setClassId(user?.user?.enrolledCourses[0]?.classId)
+  }, [classId]);
+  useEffect(() => {
+    setStudentCount(classMembers?.classMembers?.length)
+  }, [classMembers]);
+
+
+  useEffect(() => {
+    dispatch(fetchClassMembersInitiate(classId))
+  },[classId]);
+
   return (
     <>
       <div>
@@ -58,13 +70,13 @@ const MyStudent = () => {
                 color: "black",
               }}
             >
-              <span>{studentNum}</span> <span>Student</span>
+              <span>0 {studentCount}</span> <span>Student</span>
             </h3>
           </Col>
         </Row>
-        {studentName.map((name, i) => (
+        {classMembers?.classMembers?.map((studentName) => (
           <Row
-            key={i}
+            // key={i}
             className="mx-5 mt-3"
             style={{ height: "35px", display: "flex", alignItems: "center" }}
           >
@@ -78,9 +90,11 @@ const MyStudent = () => {
                 />
               </div>
             </Col>
-            <Col md={5}>{name}</Col>
+            <Col md={5} >{studentName?.userId?.fullName}</Col>
             <Col md={5} style={{ color: "#AAA6A6" }}>
-              <u>View Performance</u>
+             <p onClick={() => goToPerformance(studentName?.userId?.id)}>
+                <u>View Performance</u>
+             </p>
             </Col>
             <Col className="" style={{ color: "#FF5B5B" }}>
               Remove

@@ -9,7 +9,10 @@ import ClassPerfomance from "./ClassPerfomance";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
-import { fetchStudentDetailsInitiate, fetchStudentTeacherSubjInitiate } from "../../../../../redux/actions/subject";
+import {
+  fetchStudentDetailsInitiate,
+  fetchStudentTeacherSubjInitiate,
+} from "../../../../../redux/actions/subject";
 
 const Classroomnav = () => {
   const dispatch = useDispatch();
@@ -19,7 +22,6 @@ const Classroomnav = () => {
   const { user } = useSelector((state) => state.auth);
 
   const token = user.token;
-  
 
   const [toggleState, setToggleState] = useState(1);
 
@@ -34,7 +36,7 @@ const Classroomnav = () => {
     dispatch(fetchStudentDetailsInitiate(classId[0]));
     dispatch(fetchStudentTeacherSubjInitiate(classId[0]));
   }, [fetchStudentDetailsInitiate, fetchStudentTeacherSubjInitiate]);
-  
+
   return (
     <div className={styles.maincontainer}>
       <div className={styles.maincontainer2}>

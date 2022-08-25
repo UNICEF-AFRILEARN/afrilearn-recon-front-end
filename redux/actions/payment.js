@@ -16,6 +16,19 @@ export const fetchPaymentPlansFail = (error) => ({
   type: types.FETCH_PAYMENT_PLANS_FAIL,
   payload: error
 });
+export const fetchTeacherPaymentPlansStart = () => ({
+    type: types.FETCH_TEACHER_PAYMENT_PLANS_START,
+});
+
+export const fetchTeacherPaymentPlansSuccess = (payload) => ({
+  type: types.FETCH_TEACHER_PAYMENT_PLANS_SUCCESS,
+  payload
+});
+
+export const fetchTeacherPaymentPlansFail = (error) => ({
+  type: types.FETCH_TEACHER_PAYMENT_PLANS_FAIL,
+  payload: error
+});
 
 export const verifyPaymentStart = (payload) => ({
     type: types.PAYMENT_VERIFICATION_SUCCESS,
@@ -43,6 +56,22 @@ export const fetchPaymentPlansInitiate = () =>  {
         })
         .catch((err) => {
             dispatch(fetchPaymentPlansFail(err))
+        })
+    }
+
+}
+export const fetchTeacherPaymentPlansInitiate = () =>  {
+    return function (dispatch) {
+        dispatch(fetchTeacherPaymentPlansStart())
+        axios
+        .get('https://afrilearn-backend-01.herokuapp.com/api/v1/payments/teacher-plans'
+        )
+        .then((res) => {
+            dispatch(fetchTeacherPaymentPlansSuccess(res.data))
+            console.log("From Teacher payment API =>", res.data)
+        })
+        .catch((err) => {
+            dispatch(fetchTeacherPaymentPlansFail(err))
         })
     }
 

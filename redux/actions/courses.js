@@ -14,6 +14,19 @@ export const fetchCoursesFail = (error) => ({
     type: types.FETCH_COURSES_FAIL,
     payload: error
 });
+export const fetchCourseStart = () => ({
+    type: types.FETCH_COURSES_START
+});
+
+export const fetchCourseSuccess = (payload) => ({
+    type: types.FETCH_COURSES_SUCCESS,
+    payload
+})
+
+export const fetchCourseFail = (error) => ({
+    type: types.FETCH_COURSES_FAIL,
+    payload: error
+});
 export const fetchRecoLessonStart = () => ({
     type: types.FETCH_RECOMEND_COURSE_START
 });
@@ -69,11 +82,6 @@ export const fetchLessonFail = (error) => ({
     type: types.FETCH_LESSONS_FAIL,
     payload: error
 });
-
-
-
-
-
 
 // export const fetchCourseInitiate = () =>  {
 //     return function (dispatch) {

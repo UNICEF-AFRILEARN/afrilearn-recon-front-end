@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="Iconly/Light/Show">
 <g id="Show">
@@ -6,3 +7,13 @@
 </g>
 </g>
 </svg>
+=======
+<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Iconly/Light/Show">
+<g id="Show">
+<path id="Stroke 1" fill-rule="evenodd" clip-rule="evenodd" d="M15.1667 12.0531C15.1667 13.7991 13.7508 15.2141 12.0048 15.2141C10.2587 15.2141 8.84375 13.7991 8.84375 12.0531C8.84375 10.3061 10.2587 8.89111 12.0048 8.89111C13.7508 8.89111 15.1667 10.3061 15.1667 12.0531Z" stroke="#333333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Stroke 3" fill-rule="evenodd" clip-rule="evenodd" d="M12.0034 19.355C15.8114 19.355 19.2944 16.617 21.2554 12.053C19.2944 7.48898 15.8114 4.75098 12.0034 4.75098H12.0074C8.19937 4.75098 4.71637 7.48898 2.75537 12.053C4.71637 16.617 8.19937 19.355 12.0074 19.355H12.0034Z" stroke="#333333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+</svg>
+>>>>>>> 03fbaf9a5573468f4bc43a2ffb23396d4b634a60

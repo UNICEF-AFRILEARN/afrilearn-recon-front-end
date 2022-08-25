@@ -1,7 +1,7 @@
-import React from 'react';
-import Image from 'next/image';
+import React from "react";
+import Image from "next/image";
 import styles from "../../../../../styles/people.module.css";
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 
 const People = () => {
   const subject = useSelector((state) => state.mySubjectCourse);
@@ -18,7 +18,9 @@ const People = () => {
             width={30}
             height={30}
           />
-          {subject?.announcement[1]?.admins.map((data,i)=>{return(<span key={i}>{data.userId.fullName}</span>)})}
+          {subject?.announcement[1]?.admins.map((data, i) => {
+            return <span key={i}>{data.userId.fullName}</span>;
+          })}
         </div>
         <div className={styles.peoplecounter}>
           <h4>Classmates</h4>{" "}
@@ -40,6 +42,5 @@ const People = () => {
       </div>
     </div>
   );
-}
-
-export default People
+};
+export default People;

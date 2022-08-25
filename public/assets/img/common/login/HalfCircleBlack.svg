@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 <svg width="86" height="200" viewBox="0 0 86 200" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M-14 200C41.2285 200 86 155.228 86 100C86 44.7715 41.2285 0 -14 0V200Z" fill="#00D9B6"/>
 </svg>
+=======
+<svg width="86" height="200" viewBox="0 0 86 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M-14 200C41.2285 200 86 155.228 86 100C86 44.7715 41.2285 0 -14 0V200Z" fill="#00D9B6"/>
+</svg>
+>>>>>>> 03fbaf9a5573468f4bc43a2ffb23396d4b634a60

@@ -297,5 +297,4 @@ const ClassRoom = ({ data }) => {
     </>
   );
 };
-
 export default Dashboard;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   PieChart,
   Pie,
@@ -12,8 +12,6 @@ import {
 } from "recharts";
 // import styles from '../../../../../styles/chart.module.css';
 
-
-
 const PieChartSection = () => {
   const data = [
     { name: "Facebook", users: 2000000000 },
@@ -23,12 +21,11 @@ const PieChartSection = () => {
   ];
 
   return (
-    // <div className={styles.chartmainwrapper}>
-    <div >
+    <div>
       <div style={{ textAlign: "center" }}>
-      <h1>Overall</h1>
-      <div className="App">
-        <PieChart width={400} height={400}>
+        <h1>Overall</h1>
+        <div className="App">
+          {/* <PieChart width={400} height={400}> */}
           <Pie
             dataKey="users"
             isAnimationActive={false}
@@ -41,12 +38,11 @@ const PieChartSection = () => {
             label
           />
           <Tooltip />
-        </PieChart>
+          {/* </PieChart> */}
+        </div>
       </div>
     </div>
-    </div>  
+  );
+};
 
-  )
-}
-
-export default PieChartSection
+export default PieChartSection;

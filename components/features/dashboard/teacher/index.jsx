@@ -8,12 +8,43 @@ import Subjects from "../student/extra/subjects";
 import styles1 from "../student/student.module.css";
 import styles from "../student/studentProfile/studentProfile.module.css";
 import styles2 from "../../../../pages/dashboard/teacher/teacher.module.css";
+import { fetchSubjectsInitiate } from '../../../../redux/actions/subjects';
+import { makeAnnouncementInitiate,  fetchAnnouncementInitiate } from '../../../../redux/actions/classes';
+
 
 
 const Dashboard = () => {
+  const dispatch = useDispatch();
   const { registerUser, user } = useSelector((state) => state.auth);
+  const { allSubjects } = useSelector((state) => state.mySubject);
 
-  console.log("loginUser ====>", user)
+  //set up teacher subject id:
+  const teacherSubjectId = user?.user?.classOwnership[0]?.subjectIds[0]?.subjectId
+
+  //set teacher's enrolled subjects
+  let teacherEnrolledSubjectId = [];
+  const teacherEnrolledSubjects = () => {
+    teacherEnrolledSubjectId = user?.user?.classOwnership.filter((enrolledSubjectId) => enrolledSubjectId.subjectIds
+    )
+    return teacherEnrolledSubjectId
+  }
+  teacherEnrolledSubjects();
+  
+  
+  
+  let filteredSubjects = [];
+  const filterTeacherSubjects = () => {
+    filteredSubjects = allSubjects.filter((filterSubject) => filterSubject.id === teacherSubjectId)
+    return filteredSubjects
+  }
+  
+  filterTeacherSubjects();
+  console.log("filteredSubjects *****", filteredSubjects)
+
+
+  useEffect(() => {
+    dispatch(fetchSubjectsInitiate())
+  }, [])
   return (
     <div>
       <Heropage />
@@ -31,7 +62,7 @@ const Dashboard = () => {
           >
             My Subject
           </Row>
-          <Subjects />
+          <Subjects filteredSubjects={filteredSubjects}/>
         </Col>
         <Col>
           <PastQuestion />
@@ -47,7 +78,6 @@ export default Dashboard;
 export const HeropageWelcome = () => {
   const { registerUser, user } = useSelector((state) => state.auth);
 
-  console.log("registerUser ====>", registerUser.user)
   return (
     <>
       <Row
@@ -111,7 +141,7 @@ export const HeropageWelcome = () => {
                   <Col md={3} className="">
                     <Link
                       passHref
-                      href=""
+                      href="/dashboard/teacher/addnewstudent"
                     >
                       <a>
                         <Row className="px-auto">
@@ -126,8 +156,11 @@ export const HeropageWelcome = () => {
                             <u>Add Students</u>
                           </Col>
                         </Row>
+                        
                       </a>
                     </Link>
+                  </Col>
+                  <Col md={3} className="">
                   </Col>
                 </Row>
               </Row>
@@ -150,51 +183,42 @@ export const Heropage = () => {
 };
 
 export const TeacherAnnouncement = () => {
-  const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
+  const { classAnnouncement} = useSelector((state) => state.schoolClasses);
+  const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
-  const firstName = "Oluwadara";
-  const lastName = "Abraham";
-  const [textEdit, setTextEdit] = useState({ message: "", id: "" });
+  console.log("classAnnouncement from Teacher announcement", classAnnouncement?.announcements)
+  
+  let token = user?.token;
+  let classId = user?.user?.classOwnership[0]?.enrolledCourse?.classId
+  
 
-  const [textInput, setTextInput] = useState({
-    teachTask: [
-      { message: "fcxcfgvhbjnkmkjbhfrcftvgybhnj", id: "1" },
-      { message: "dszdxfcgvhbjntyrdtfyguhjnuyudftgyhunjmcfvgbhn m", id: "2" },
-    ],
+  //Convert created at to dateTime:
+  const formatter = new Intl.DateTimeFormat("en-GB", {
+    year: "numeric",
+    month: "long",
+    day: "2-digit"
   });
 
-  const handleChange = (e) => {
-    let id = Math.random().toString();
-    setTextEdit({ message: e.target.value, id: id });
-  };
+
+  const [text, setText] = useState("");
+
+
+  // const handleChange = (e) => {
+  //   setText( e.target.value);
+  // };
+  
+  console.log("token, classId textEdit", user)
+
   const handleSubmit = (e) => {
-    if (textEdit.message !== "") {
       e.preventDefault();
-      let teachTask = [...textInput.teachTask, textEdit];
-      setTextInput({ teachTask: teachTask });
-      setTextEdit({ message: "", id: "" });
-    }
+      dispatch(makeAnnouncementInitiate(classId, text,token))
   };
 
-  const handleDelete = (id) => {
-    let teachTask = textInput.teachTask.filter((task) => {
-      return task.id !== id;
-    });
-    setTextInput({ teachTask: teachTask });
-  };
+
+  useEffect(() => {
+    dispatch(fetchAnnouncementInitiate(classId))
+  }, [user?.token])
 
   return (
     <Container>
@@ -222,9 +246,11 @@ export const TeacherAnnouncement = () => {
             height: "227px",
           }}
           placeholder="Announce something to your class"
-          value={textEdit.message}
-          onChange={handleChange}
-        ></textarea>
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+        >
+
+        </textarea>
         <div
           style={{
             position: "absolute",
@@ -260,79 +286,78 @@ export const TeacherAnnouncement = () => {
           </p>
         </div>
       </Col>
-      {textInput.teachTask.map((task) => {
-        console.log(task);
-        return (
-          <Row
-            key={task.id}
-            className="mt-4"
+
+    {  
+    classAnnouncement?.announcements && classAnnouncement?.announcements.map((announceMessage) => 
+    <Row
+    className="mt-4"
+    style={{
+      border: "1px solid #A6A6A6",
+      borderRadius: "7px",
+      padding: "20px",
+    }}
+  >
+    <Row>
+      <Col className="p-0 ps-5">
+        <Image
+          alt={"assign content placeholder"}
+          src={`/assets/img/features/dashboard/teacher/teacherPix.png`}
+          width={45}
+          height={45}
+        />
+      </Col>
+      <Col className="" md={10}>
+        <Row>
+          Mr { announceMessage.teacher.fullName} (You)
+        </Row>
+        <Row className="text-secondary">
+          {formatter.format(Date.parse(announceMessage.createdAt))}
+        </Row>
+      </Col>
+      <Col md={1}>
+        <div className={styles2.moreIcon}>
+          <div
             style={{
-              border: "1px solid #A6A6A6",
-              borderRadius: "7px",
-              padding: "20px",
+              width: "123px",
+              height: "91px",
+              background: "#FFFFFF",
+              boxShadow: "0px 1px 7px rgba(0, 0, 0, 0.1)",
+              borderRadius: "10px",
+              position: "absolute",
+              right: "150px",
             }}
+            className={styles2.displayNone}
           >
-            <Row>
-              <Col className="p-0 ps-5">
-                <Image
-                  alt={"assign content placeholder"}
-                  src={`/assets/img/features/dashboard/teacher/teacherPix.png`}
-                  width={45}
-                  height={45}
-                />
-              </Col>
-              <Col className="" md={10}>
-                <Row>
-                  Mr {lastName} {firstName.split("")[0]}.(You)
-                </Row>
-                <Row className="text-secondary">
-                  {new Date().getDate()} {monthNames[new Date().getMonth() + 1]}{" "}
-                  {new Date().getFullYear()}
-                </Row>
-              </Col>
-              <Col md={1}>
-                <div className={styles2.moreIcon}>
-                  <div
-                    style={{
-                      width: "123px",
-                      height: "91px",
-                      background: "#FFFFFF",
-                      boxShadow: "0px 1px 7px rgba(0, 0, 0, 0.1)",
-                      borderRadius: "10px",
-                      position: "absolute",
-                      right: "150px",
-                    }}
-                    className={styles2.displayNone}
-                  >
-                    <Col className={`p-3 ps-3 `}>
-                      <Row className="ps-3 pb-2">
-                        <Col
-                          md={3}
-                          className={`ps-2 ${styles2.styleEdit}`}
-                        ></Col>
-                        <Col className="m-auto">Edit</Col>
-                      </Row>
-                      <Row className="ps-3 pb-2">
-                        <Col
-                          md={3}
-                          className={`ps-2 ${styles2.styleDelete}`}
-                        ></Col>
-                        <Col
-                          className="m-auto"
-                          onClick={() => handleDelete(task.id)}
-                        >
-                          Delete
-                        </Col>
-                      </Row>
-                    </Col>
-                  </div>
-                </div>
-              </Col>
-            </Row>
-            <Row className="mx-5 mt-4">{task.message}</Row>
-          </Row>
-        );
-      })}
+            <Col className={`p-3 ps-3 `}>
+              <Row className="ps-3 pb-2">
+                <Col
+                  md={3}
+                  className={`ps-2 ${styles2.styleEdit}`}
+                ></Col>
+                <Col className="m-auto">Edit</Col>
+              </Row>
+              <Row className="ps-3 pb-2">
+                <Col
+                  md={3}
+                  className={`ps-2 ${styles2.styleDelete}`}
+                ></Col>
+                <Col
+                  className="m-auto"
+                  // onClick={() => handleDelete(d)}
+                >
+                  Delete
+                </Col>
+              </Row>
+            </Col>
+          </div>
+        </div>
+      </Col>
+    </Row>
+    <Row className="mx-5 mt-4">{announceMessage.text}</Row>
+  </Row>
+
+
+)}
     </Container>
   );
 };

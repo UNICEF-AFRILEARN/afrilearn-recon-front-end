@@ -74,3 +74,14 @@
 .schooledit{
     margin-top: 50% !important;
 }
+
+.middlelinks {
+    position: absolute;
+    bottom: 45%;
+    left: 38%;
+    color: #00D9B6;
+}
+
+.middlelinks a {
+    margin: 20px;
+}

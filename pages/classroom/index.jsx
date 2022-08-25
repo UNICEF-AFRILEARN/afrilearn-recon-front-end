@@ -6,9 +6,9 @@ import Classroomnav from "../../components/features/dashboard/student/extra/clas
 
 const Classroom = () => {
   return (
-    <div className={styles.maincotainer} >
+    <div className={styles.maincotainer}>
       <div className={styles.videoheropage}></div>
-      <div style={{  }}>
+      <div style={{}}>
         <div className={styles.heroheader}>
           <Classroomnav />
         </div>
