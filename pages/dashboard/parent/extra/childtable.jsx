@@ -8,6 +8,7 @@ import ChildDetails from './childtablemodal';
 
 
 const Childtable = ({myChildren}) => {
+  const [isSubscribed, setIsSubscribed] = useState(false);
   const [open, setOpen] = useState(false);
   const [studentId, setStudentId] = useState('')
   const [childName, setChildName] = useState('')
@@ -22,6 +23,15 @@ const Childtable = ({myChildren}) => {
   console.log("myChildren from my children component", myChildren)
 
 
+  const handleCheckedBox = (event) => {
+    if (event.target.checked) {
+      console.log('✅ Checkbox is checked');
+    } else {
+      console.log('⛔️ Checkbox is NOT checked');
+    }
+    setIsSubscribed(current => !current);
+  };
+
     const handleClick = (id, email, name, myChildclass) => {
       console.log("I am clicked", id)
       setStudentId(id)
@@ -31,10 +41,10 @@ const Childtable = ({myChildren}) => {
       console.log("I am studentId clicked", studentId)
     }
 
-    const handleCheckedBox = (id) => {
-        console.log("I am checked", id)
+    // const handleCheckedBox = (id) => {
+    //     console.log("I am checked", id)
 
-    }
+    // }
 
     const closeModal = () => {
       setOpen(false)
@@ -58,7 +68,9 @@ const Childtable = ({myChildren}) => {
               <>
                 <td>
                   <input
-                    onClick={() => handleCheckedBox(myChild.id)}
+                   value={isSubscribed}
+                  //  onChange={}
+                  onChange={handleCheckedBox}
                   type='checkbox' 
                   />
                 </td>
