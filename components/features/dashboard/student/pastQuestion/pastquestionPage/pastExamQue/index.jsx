@@ -1,8 +1,9 @@
 import Image from "next/image";
 import { Col, Container, Row } from "react-bootstrap";
 import styles from "./passtExamQue.module.css";
+import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Modal } from "bootstrap";
 const ExamQuestion = () => {
   const subject = useSelector((state) => state.mySubjectCourse);
@@ -23,25 +24,27 @@ export const ExamQuestionPassage = ({sub_dat}) => {
     (n) => n + 1,
   );
 
-  console.log("I catch you from Que ===>", subject.pastQuestionQue[0].questions); // questions and the options
   // console.log("questions.pastQuestionQue from pastQue", questions)
-
+  
   const [nextQues, setNextQues] = useState(1);
-  // const [submittedAnswer, setSubmittedAnswer] = useState()
-  const [nextAns, setNextAns] = useState({});
   const [correctAnswers, setCorrectAnswer] = useState(0);
+  const [remark, setRemark] = useState("");
+  const [questionLength, setQuestionLength] = useState(0)
+  const [score, setScore] = useState(0)
+  const [timeSpent, setTimeSpent] = useState(0);
   const [wrongAnswers, setWrongAnswers] = useState(0);
   const [skippedQuestion, setSkippedQuestion] = useState(0);
   const [answeredIndex, setAnsweredIndex] = useState('')
   // const [submittedAnswer, setSubmittedQuestion] = useState(0);
   const [show, setShow] = useState(false);
   const sub_que = sub_dat.questions[+nextQues - 1];
-
-  let submittedAnswer = [];
+  
+  
+  console.log("I catch questionLength you from Que ===>", questionLength); // questions and the options
+  // let submittedAnswer = [];
   // let correctAnswers = [];
   // let wrongAnswers = [];
   const handleQuestionSubmit = (id) => {
-    
     console.log("I am the option clicked", id)
     console.log("I am clicked", sub_que.options.indexOf(id) === 0)
     if(sub_que.options.indexOf(id) >= 0 && sub_que.options.indexOf(id).toString() === sub_que.correct_option){
@@ -56,12 +59,18 @@ export const ExamQuestionPassage = ({sub_dat}) => {
     
   }
 
-  // const handleSkippedQuestions = () => {
-      
-  // }
+  const calculateScore = () => {
+    setScore(Math.round((correctAnswers / questionLength) * 100));
+    console.log("score ===>", score)
+  }
+
+  calculateScore()
   console.log("correct", correctAnswers )
   console.log("Wrong", wrongAnswers )
   console.log("Skipped", skippedQuestion )
+  console.log("timeSpent", timeSpent )
+
+
   const handleClose = () => setShow(false);
   const handleOpen = () => {
     setNextQues(nextQues);
@@ -69,8 +78,13 @@ export const ExamQuestionPassage = ({sub_dat}) => {
   };
 
 
+  useEffect(() => {
+    setQuestionLength(subject.pastQuestionQue[0].questions.length)
+  },[handleQuestionSubmit])
+
   return (
     <Container className="pt-3">
+     
       <Row>
         <Col className="p-5" sm={2}>
           <Row className="text-secondary">Instruction</Row>
