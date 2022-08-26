@@ -53,21 +53,16 @@ const Dashboard = () => {
   const lessonId = "6012c2a7cfe09249249f7f9c";
 
   // To be changed later
-  const checkIf = () => {
-    let check;
-    for (let i = 0; i < user.user?.enrolledCourses.length; i++) {
-      if (user.user?.enrolledCourses[i].courseId) {
-        check = user.user?.enrolledCourses[i];
-      }
-    }
-    return check;
-  };
 
   const personData = {
-    personClass: checkIf()?.courseId.name,
+    personClass: user.user?.enrolledCourses[0]
+      ? user.user?.enrolledCourses[0].courseId.name
+      : user.user?.enrolledCourses[1].courseId.name,
     personName: user.user?.fullName,
   };
-  const person_id = checkIf()?._id;
+  const person_id = user.user?.enrolledCourses[0]
+    ? user.user?.enrolledCourses[0]._id
+    : user.user?.enrolledCourses[1]._id;
 
   useEffect(() => {
     // dispatch(fetchLessonsInitiate());

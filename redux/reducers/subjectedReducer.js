@@ -11,7 +11,7 @@ const initialState = {
   classRequestInfo: "",
 };
 
-const subjectReducer = (state = initialState, { type, payload }) => {
+const subjectedReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case types.FETCH_SUBJECT_START:
       return {
@@ -69,4 +69,4 @@ const subjectReducer = (state = initialState, { type, payload }) => {
   }
 };
 
-export default subjectReducer;
+export default subjectedReducer;
