@@ -46,7 +46,6 @@ console.log("myChildren from payment ====>", myChildren)
   let showPrice;
   const handleSelect = (price) => {
     setPriceSelected(price)
-   
   }
   
   const config = {
