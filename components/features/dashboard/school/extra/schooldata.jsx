@@ -5,7 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { 
 fetchSchoolMemberClassInitiate, 
-fetchSchoolProfileInitiate 
+fetchSchoolProfileInitiate,
+deleteTeacherInitiate,
+deleteStudentInitiate
 } from '../../../../../redux/actions/school';
 
 
@@ -14,6 +16,7 @@ const Schooldata = () => {
     const { user, registerUser, roles } = useSelector((state) => state.auth);
     const [classSelected, setClassSelected ] = useState('');
     const [classId, setClassId] = useState('');
+    // const [userId, setUserId] = useState('');
 
     const dispatch = useDispatch();
   
@@ -31,7 +34,21 @@ const Schooldata = () => {
     }
 
 
+    const handleDeleteTeacher = (id) => {
+        setUserId(id)
+        console.log("userId", userId)
+        dispatch(deleteTeacherInitiate(userId, schoolId))
+        Router.push('/school')
 
+    }
+
+    const handleDeleteStudent = (userId) => {
+        // setUserId(id)
+        console.log("I am clicked", userId)
+       dispatch( deleteStudentInitiate(userId, schoolId))
+       Router.push('/school')
+    }
+    
       useEffect(() => {
         filterClassIds()
     }, [classSelected])
@@ -39,6 +56,7 @@ const Schooldata = () => {
     useEffect(() => {
       dispatch(fetchSchoolMemberClassInitiate(classId))
     },[classId]);
+
 
     useEffect(() => {
       dispatch(fetchSchoolProfileInitiate(schoolId))
@@ -93,12 +111,17 @@ const Schooldata = () => {
             <div className={styles.teacherContrainer}>
                 { classMembers?.data?.admins && classMembers?.data?.admins?.map((classTeacher) => 
                     <div className="row">
-                    <div className=  {`col-md-3 ${styles.teacherdata} `}>           {classTeacher.userId.fullName}
+                    <div className=  {`col-md-3 ${styles.teacherdata} `}>      {classTeacher.userId?.fullName}
                     </div>
                     <div className={`col-md-3 ${styles.teacherdata}`}>
-                        {classTeacher.userId.email}
+                        {classTeacher.userId?.email}
                     </div>
-                    <div className={`col-md-3 ${styles.schoolgroup}`}></div>
+                    <div className={`col-md-3 ${styles.schoolgroup} ${styles.iconswrapper}`}>
+                        <div className={styles.linkswrapper}>
+                                <a onClick={() => handleDeleteTeacher(classTeacher.userId?.id)}>Delete</a>
+                                <a onClick={() => handleDeleteTeacher(classTeacher.userId?.id)}>Unlink</a>
+                        </div>
+                    </div>
                     </div>
                 )
 
@@ -116,7 +139,12 @@ const Schooldata = () => {
                 <div className="row">
                 <div className=  {`col-md-3 ${styles.teacherdata} `}> <Image alt={"design image"} src="/../../../public/assets/img/school/man\ 2.svg" width="22.8px" height="22.8px" /> {classStudent.userId.fullName}</div>
                 <div className={`col-md-3 ${styles.teacherdata}`}>{classStudent.userId.email}</div>
-                <div className={`col-md-3 ${styles.schoolgroup}`}></div>
+                <div className={`col-md-3 ${styles.schoolgroup} ${styles.iconswrapper}`}>
+                    <div className={styles.linkswrapper}>
+                    <a onClick={() => handleDeleteStudent(classStudent.userId.id)}>Delete</a>
+                                <a onClick={() => handleDeleteStudent(classStudent.userId.id)}>Unlink</a>
+                          </div>
+                    </div>
                  </div>
 
                 )
