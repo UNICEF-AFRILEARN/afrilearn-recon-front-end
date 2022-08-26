@@ -272,6 +272,7 @@ const initializePayment = usePaystackPayment(config);
   <div className= {` col-md-3 ${styles.durationPayment}`}> 
     {allPaymentPlans && allPaymentPlans.map((allPlans) =>
         <button 
+        ref={priceElement}
         onClick={() => handleSelect(allPlans.amount)}
         >
         <div className={styles.durationBold}>{allPlans.name}</div>

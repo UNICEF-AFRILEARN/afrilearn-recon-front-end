@@ -34,11 +34,10 @@ const Schooldata = () => {
     }
 
 
-    const handleDeleteTeacher = (id) => {
-        setUserId(id)
+    const handleDeleteTeacher = (userId) => {
+        // setUserId(id)
         console.log("userId", userId)
         dispatch(deleteTeacherInitiate(userId, schoolId))
-        Router.push('/school')
 
     }
 
@@ -46,7 +45,6 @@ const Schooldata = () => {
         // setUserId(id)
         console.log("I am clicked", userId)
        dispatch( deleteStudentInitiate(userId, schoolId))
-       Router.push('/school')
     }
     
       useEffect(() => {

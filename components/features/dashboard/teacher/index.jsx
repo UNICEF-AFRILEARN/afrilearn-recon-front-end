@@ -76,7 +76,25 @@ const Dashboard = () => {
 export default Dashboard;
 
 export const HeropageWelcome = () => {
+  const [classId, setClassId] = useState("");
   const { registerUser, user } = useSelector((state) => state.auth);
+
+
+  // const invitationLink = `https://myafrilearn.com/join-class?email=${email}&classId=${classId}`;
+
+
+  // handleCopy = () => {
+  //   const assignURL = invitationLink
+  //   assignURL.select()
+  //   document.execCommand('copy')
+  
+  //   // now it is in your clipboard
+  
+  // }
+  useEffect(() => {
+    setClassId(user.user.enrolledCourses[0]?.classId)
+  }, [classId]);
+
 
   return (
     <>
@@ -133,7 +151,9 @@ export const HeropageWelcome = () => {
                       <Col md={2} className={`${styles.stateComponent1}`}></Col>
                       <Col>
                         <p className="m-auto" style={{ color: "#00D9B6" }}>
-                          <u>Copy Class Link</u>
+                          <u
+                            // onClick={handleCopy}
+                          >Copy Class Link</u>
                         </p>
                       </Col>
                     </Row>
