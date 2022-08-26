@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M25.4298 25.4278C21.3549 29.5031 15.321 30.3836 10.3832 28.1C9.65424 27.8065 9.05661 27.5693 8.48846 27.5693C6.90595 27.5787 4.93619 29.1131 3.91245 28.0906C2.88871 27.0668 4.42432 25.0954 4.42432 23.5034C4.42432 22.9352 4.19652 22.3482 3.90307 21.6178C1.61841 16.6808 2.50011 10.6449 6.57498 6.57091C11.7768 1.36721 20.228 1.36721 25.4298 6.56957C30.6409 11.7813 30.6316 20.2254 25.4298 25.4278Z" stroke="#130F26" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M21.2544 16.5534H21.2664" stroke="#130F26" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M15.9068 16.5534H15.9188" stroke="#130F26" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M10.563 16.5534H10.575" stroke="#130F26" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
+=======
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M25.4298 25.4278C21.3549 29.5031 15.321 30.3836 10.3832 28.1C9.65424 27.8065 9.05661 27.5693 8.48846 27.5693C6.90595 27.5787 4.93619 29.1131 3.91245 28.0906C2.88871 27.0668 4.42432 25.0954 4.42432 23.5034C4.42432 22.9352 4.19652 22.3482 3.90307 21.6178C1.61841 16.6808 2.50011 10.6449 6.57498 6.57091C11.7768 1.36721 20.228 1.36721 25.4298 6.56957C30.6409 11.7813 30.6316 20.2254 25.4298 25.4278Z" stroke="#130F26" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M21.2544 16.5534H21.2664" stroke="#130F26" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.9068 16.5534H15.9188" stroke="#130F26" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M10.563 16.5534H10.575" stroke="#130F26" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+>>>>>>> 03fbaf9a5573468f4bc43a2ffb23396d4b634a60

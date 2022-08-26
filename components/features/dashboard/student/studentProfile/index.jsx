@@ -16,7 +16,7 @@ const StudentProfile = () => {
 
   console.log("logged-in ==> profile", userProfile)
   console.log("logged-in ==> user profile", user)
-
+  const coin = { amount: 345 };
   const number = "";
 
   useEffect(() => {
@@ -137,30 +137,28 @@ const StudentProfile = () => {
               <p>Coin: {user.user?.afriCoins}</p>
             </Col>
           </Row>
-          <Link passHref href="/africoin">
-            <Row
-              className="mt-4"
+          <Row
+            className="mt-4"
+            style={{
+              width: "223px",
+              height: "53px",
+              background: "#00D9B6",
+              borderRadius: "100px",
+            }}
+          >
+            <p
               style={{
-                width: "223px",
-                height: "53px",
-                background: "#00D9B6",
-                borderRadius: "100px",
+                fontWeight: "500",
+                margin: "auto",
+                fontSize: "18px",
+                lineHeight: "24px",
+                color: "#FFFFFF",
+                width: "fit-content",
               }}
             >
-              <p
-                style={{
-                  fontWeight: "500",
-                  margin: "auto",
-                  fontSize: "18px",
-                  lineHeight: "24px",
-                  color: "#FFFFFF",
-                  width: "fit-content",
-                }}
-              >
-                BUY MORE COINS
-              </p>
-            </Row>
-          </Link>
+              BUY MORE COINS
+            </p>
+          </Row>
         </Col>
         <Col className="px-4">
           <Row>
@@ -220,7 +218,7 @@ const StudentProfile = () => {
                       fontSize: "20px",
                     }}
                   >
-                    {number !== "" ? { number } : "--"}
+                    {user?.user?.state !== "" ? user?.user?.state : "--"}
                   </span>
                 </p>
               </Row>
@@ -240,7 +238,7 @@ const StudentProfile = () => {
                       fontSize: "20px",
                     }}
                   >
-                    {number !== "" ? { number } : "--"}
+                    {user?.user?.gender !== "" ? user?.user?.gender : "--"}
                   </span>
                 </p>
               </Row>
@@ -476,7 +474,7 @@ const StudentProfile = () => {
                 position: "absolute",
                 left: "1015px",
                 border: "0",
-                marginLeft: "15px",
+                marginLeft:"15px"
               }}
             >
               COPY LINK

@@ -1,3 +1,53 @@
+<<<<<<< HEAD
+.lineSeperator {
+  background-image: url("/assets/img/features/dashboard/student/Line 85.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 1px;
+  height: 80%;
+  margin-right: 10px;
+}
+.pastExamButton {
+  background-image: url("/assets/img/features/dashboard/student/Group 2173.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 204px;
+  height: 48px;
+}
+
+.pastExamRec {
+  background-image: url("/assets/img/features/dashboard/student/Voice.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 20px;
+  height: 30px;
+}
+
+.pastExamFlag {
+  background-image: url("/assets/img/features/dashboard/student/flag 1.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 20px;
+  height: 30px;
+}
+
+.pastSkip {
+  background-image: url("/assets/img/features/dashboard/student/Frame 3.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 20px;
+  height: 30px;
+}
+
+.challengeAvatar {
+  background-image: url("/assets/img/features/dashboard/student/Ellipse 88.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 50px;
+  height: 50px;
+  margin-left: 35px;
+}
+=======
 .lineSeperator {
   background-image: url("/assets/img/features/dashboard/student/Line 85.png");
   background-repeat: no-repeat;
@@ -99,3 +149,4 @@ background: #FFCF35;
 }
  
  
+>>>>>>> dev

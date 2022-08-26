@@ -118,14 +118,13 @@
     background-color: #A8A8A8;
     margin-top: 30px;
     padding: 10px;
-    
-
 }
 
 .innercontentwrapper ul {
     display: flex;
     align-items: flex-start;
     text-align: start;
+    margin-bottom: 10px;
 }
 
 .innercontentwrapper ul li {
@@ -134,8 +133,12 @@
     background-color: #f0ecec;
     border-radius: 50px;
     padding: 3px 10px;
+    cursor: pointer;
 }
 
+.closeModal {
+    cursor: pointer;
+}
 
 .cardcontentwrapper {
     display: flex;

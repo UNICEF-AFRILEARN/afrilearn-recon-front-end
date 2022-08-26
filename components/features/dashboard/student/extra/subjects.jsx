@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCourseDetailsInitiate } from "../../../../../redux/actions/subject";
 
 let subj;
-const Subjects = ({ subData }) => {
+const Subjects = ({ subData, filteredSubjects }) => {
   const [subjCourId, setsubjCourId] = useState({});
 
   const [show, setShow] = useState(false);
@@ -38,7 +38,7 @@ const Subjects = ({ subData }) => {
 
   const SubDataJsx = () => {
     return subData ? (
-      subData?.map((dta) => {
+      filteredSubjects?.map((dta) => {
         return (
           <div key={dta.id} className={`col-md-6 ${styles.mySubjectt}`}>
             <button
