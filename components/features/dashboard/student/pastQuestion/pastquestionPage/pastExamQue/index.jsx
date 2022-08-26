@@ -27,9 +27,11 @@ export const ExamQuestionPassage = ({sub_dat}) => {
   // console.log("questions.pastQuestionQue from pastQue", questions)
   
   const [nextQues, setNextQues] = useState(1);
+  const [countDisabled, setCountDisabled] = useState(false);
   const [correctAnswers, setCorrectAnswer] = useState(0);
   const [remark, setRemark] = useState("");
   const [questionLength, setQuestionLength] = useState(0)
+  const [questionId, setQuestionId] = useState('')
   const [score, setScore] = useState(0)
   const [timeSpent, setTimeSpent] = useState(0);
   const [wrongAnswers, setWrongAnswers] = useState(0);
@@ -40,12 +42,12 @@ export const ExamQuestionPassage = ({sub_dat}) => {
   const sub_que = sub_dat.questions[+nextQues - 1];
   
   
-  console.log("I catch questionLength you from Que ===>", questionLength); // questions and the options
+  console.log("I catch questionLength you from Que ===>", sub_que); // questions and the options
   // let submittedAnswer = [];
   // let correctAnswers = [];
   // let wrongAnswers = [];
   const handleQuestionSubmit = (id) => {
-    console.log("I am the option clicked", id)
+    console.log("I am the option clicked", sub_que.question_id)
     console.log("I am clicked", sub_que.options.indexOf(id) === 0)
     if(sub_que.options.indexOf(id) >= 0 && sub_que.options.indexOf(id).toString() === sub_que.correct_option){
       setCorrectAnswer(correctAnswers + 1)
@@ -59,12 +61,21 @@ export const ExamQuestionPassage = ({sub_dat}) => {
     
   }
 
-  const calculateScore = () => {
-    setScore(Math.round((correctAnswers / questionLength) * 100));
+  const handleSubmit = () => {
+    calculateScore()
     console.log("score ===>", score)
   }
 
-  calculateScore()
+  const calculateScore = () => {
+    setScore(Math.round((correctAnswers / questionLength) * 100));
+  }
+
+  
+  const disableClick = (event) => {
+    event.preventDefault();
+    setCountDisabled(!countDisabled);
+  };
+
   console.log("correct", correctAnswers )
   console.log("Wrong", wrongAnswers )
   console.log("Skipped", skippedQuestion )
@@ -80,7 +91,8 @@ export const ExamQuestionPassage = ({sub_dat}) => {
 
   useEffect(() => {
     setQuestionLength(subject.pastQuestionQue[0].questions.length)
-  },[handleQuestionSubmit])
+  },[])
+  
 
   return (
     <Container className="pt-3">
@@ -309,7 +321,7 @@ export const ExamQuestionPassage = ({sub_dat}) => {
           <Row className="mt-3 mb-3 px-5" style={{ height: "43px" }}>
             <Col 
              className={styles.pastExamButton}
-             onClick={handleQuestionSubmit}
+             onClick={handleSubmit}
             ></Col>
             <Col>
               <div
