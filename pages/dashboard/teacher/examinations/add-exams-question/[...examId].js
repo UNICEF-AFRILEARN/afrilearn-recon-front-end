@@ -6,11 +6,15 @@ import { Form } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import styles from '../../../../../styles/teacher.module.css'; 
 import Objectives from '../../../teacher/extra/objective';
+import { Heropage } from "../../../../../components/features/dashboard/teacher";
 
 const Setupxamssidebar = () => {
     const [ showExamForm, setShowExamForm] = useState(false)
   return (
-    <div className={styles.setexammainwrapper}>
+      <>
+        <Heropage />
+         <div className={styles.setexammainwrapper}>
+
         {showExamForm &&
             <div className={styles.leftsideboxwrapper}>
             <h4>Set Up Examination</h4>
@@ -50,9 +54,9 @@ const Setupxamssidebar = () => {
             </Form>
             </div>
         }
-
  <Objectives />
     </div>
+  </>
   )
 }
 

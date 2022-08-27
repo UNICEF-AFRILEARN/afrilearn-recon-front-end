@@ -90,9 +90,9 @@ const Questionpanel = () => {
             </div>
          <div className={styles.plusiconwrapper}>
             <ul>
-                <li>
+                {/* <li>
                 <BsPlus />
-                </li>
+                </li> */}
             </ul>
          </div>
          
