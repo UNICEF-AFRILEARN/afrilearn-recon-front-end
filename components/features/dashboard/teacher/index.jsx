@@ -203,11 +203,13 @@ export const Heropage = () => {
 };
 
 export const TeacherAnnouncement = () => {
-  const { classAnnouncement} = useSelector((state) => state.schoolClasses);
+  const { classAnnouncement, postAnnouncement} = useSelector((state) => state.schoolClasses);
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const [text, setText] = useState("");
+  const [announcementCount, setAnnouncementCount] = useState(0);
 
-  console.log("classAnnouncement from Teacher announcement", classAnnouncement?.announcements)
+  console.log("classAnnouncement from Teacher announcement", postAnnouncement?.status)
   
   let token = user?.token;
   let classId = user?.user?.classOwnership[0]?.enrolledCourse?.classId
@@ -221,7 +223,6 @@ export const TeacherAnnouncement = () => {
   });
 
 
-  const [text, setText] = useState("");
 
 
   // const handleChange = (e) => {
@@ -233,12 +234,15 @@ export const TeacherAnnouncement = () => {
   const handleSubmit = (e) => {
       e.preventDefault();
       dispatch(makeAnnouncementInitiate(classId, text,token))
+      // setAnnouncementCount(classAnnouncement?.announcements.length + 1)
   };
 
 
   useEffect(() => {
-    dispatch(fetchAnnouncementInitiate(classId))
-  }, [user?.token])
+    if(postAnnouncement?.status === 'success'){
+      dispatch(fetchAnnouncementInitiate(classId))
+    }
+  }, [postAnnouncement])
 
   return (
     <Container>
