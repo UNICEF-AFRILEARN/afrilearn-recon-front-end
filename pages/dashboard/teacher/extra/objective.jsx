@@ -106,7 +106,6 @@ const Objectives = () => {
             </div>
             { showObjQuestions === 1 &&  questionOptions.map((singleQuestion, index) => (
                 <>
-                    {/* <Questiontitle index={index} /> */}
                     <Questionpanel index={index} 
                         showObjQuestionOptions={showObjQuestionOptions}
                     />
@@ -114,7 +113,7 @@ const Objectives = () => {
                )) }
                 {showObjQuestions === 2 && <Theory /> }
                 {showObjQuestions === 3 && <Generatequestions />}
-                {/* { showObjQuestions === 4 && <Submitquestions />} */}
+                {/* { showObjQuestions === 4 && <Submitquestions />} */}  
         </div>
         
     </div>
