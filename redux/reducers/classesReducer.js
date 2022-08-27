@@ -12,11 +12,29 @@ const initialState = {
     newClasswork: [],
     classContents: [],
     classSubjects: [],
+    announcementComment:[],
     error: [],
 }
 
 export const classesReducer = (state = initialState, { type, payload} ) => {
     switch (type) {
+        case types.ADD_COMMENT_TO_TEACHER_ANNOUNCEMENT_START:
+            return {
+                loading: true,
+                ...state
+            };
+    
+        case types.ADD_COMMENT_TO_TEACHER_ANNOUNCEMENT_SUCCESS:
+            return {
+                loading: false,
+                announcementComment: payload
+            };
+    
+        case types.ADD_COMMENT_TO_TEACHER_ANNOUNCEMENT_FAIL:
+            return {
+                loading: false,
+                error: payload
+            };
         case types.MAKE_ANNOUNCEMENT_START:
             return {
                 loading: true,
