@@ -127,7 +127,7 @@ export const HeropageWelcome = () => {
                         <div
                           className="text-dark"
                           style={{
-                            fontWeight: "700",
+                            fontWeight: "500",
                             // fontSize: "40px",
                             textAlign: "center",
                             color: "#333333",
@@ -136,9 +136,11 @@ export const HeropageWelcome = () => {
                           <h1>Welcome {registerUser.user?.fullName || user.user?.fullName}</h1>
                         </div>
                       </Col>
-                      <Col
-                        className={`${styles.studentProfileCrownTheme}`}
-                      ></Col>
+                          <Link href="/payment">
+                            <Col
+                          className={`${styles.studentProfileCrownTheme}`}
+                        ></Col>
+                          </Link>
                     </Row>
                   </Col>
                 </Row>
@@ -234,14 +236,12 @@ export const TeacherAnnouncement = () => {
   const handleSubmit = (e) => {
       e.preventDefault();
       dispatch(makeAnnouncementInitiate(classId, text,token))
-      // setAnnouncementCount(classAnnouncement?.announcements.length + 1)
+      setText("")
   };
 
 
   useEffect(() => {
-    if(postAnnouncement?.status === 'success'){
       dispatch(fetchAnnouncementInitiate(classId))
-    }
   }, [postAnnouncement])
 
   return (

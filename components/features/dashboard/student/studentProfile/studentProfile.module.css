@@ -39,6 +39,7 @@
   background-repeat: no-repeat;
   background-position: 50%;
   background-size: contain;
+  cursor:pointer;
 }
 
 .studentProfilePenIcon {
@@ -88,4 +89,8 @@
   background-size: contain;
   border: 0;
   margin: auto;
+}
+
+.text-dark h1{
+  background-color: red;
 }

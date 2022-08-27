@@ -186,7 +186,7 @@ console.log("myChildren from payment ====>", myChildren)
   <div className= {` col-md-3 ${styles.durationPayment}`}> 
     {allPaymentPlans && allPaymentPlans.map((allPlans) =>
         <button 
-          className={styles.btnpayment}
+        className={`${styles.paymentwrapper} ${styles.btnpayment}`}
           ref={priceElement}
           onClick={() => handleSelect(allPlans.amount)}
         >
@@ -270,6 +270,7 @@ console.log("myChildren from payment ====>", myChildren)
   <div className= {` col-md-3 ${styles.durationPayment}`}> 
     {allPaymentPlans && allPaymentPlans.map((allPlans) =>
         <button 
+        className={`${styles.paymentwrapper} ${styles.btnpayment}`}
         ref={priceElement}
         onClick={() => handleSelect(allPlans.amount)}
         >
@@ -341,6 +342,7 @@ console.log("myChildren from payment ====>", myChildren)
   > 
     {teacher_plans && teacher_plans.map((teacherPlans) =>
         <button 
+        className={`${styles.paymentwrapper} ${styles.btnpayment}`}
         ref={priceElement}
         onClick={() => handleSelect(teacherPlans.amount)}
         >
@@ -413,7 +415,7 @@ console.log("myChildren from payment ====>", myChildren)
   <div className= {` col-md-3 ${styles.durationPayment}`}> 
     {teacher_plans && teacher_plans.map((teacherPlans) =>
         <button 
-          className={styles.paymentwrapper}
+          className={`${styles.paymentwrapper} ${styles.btnpayment}`}
           ref={priceElement}
           onClick={() => handleSelect(teacherPlans.amount)}
         >
