@@ -75,11 +75,12 @@ border-radius: 20px;
     margin-bottom: 20px;
 }
 
-.btnpayment::after {
-  content: '-';
-  display: inline-block;
-  width: 12px;
-  height: 12px;
+.paymentwrapper:focus {
+  background-color: #00D9B6;;
+}
+
+.paymentwrapper::before{
+  content: icon;
 }
 
 .paymentdurationButtons{
@@ -115,4 +116,36 @@ background-position-y: 50%;
     background-position-y: 50%;
       background-position-x: 90%;
       color: #00D9B6;
+    }
+
+    .paymentmodal {
+      background-color: green;
+    }
+
+    @media screen and (max-width: 768px) {
+      .durationPayment {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      .paymentdurationButtons {
+        margin-right: 28px;
+      }
+      .paymenttypeButton, .paymenttypeButton2{
+        margin-left: 20px;
+      }
+
+      .pushDown {
+        width: 80%;
+      }
+      .divPoint {
+        height: 20px;
+        width: 20px;
+        margin-right: 0.1rem;
+        border-radius: 130px;
+        background-color: #44708f;
+      }
+      
+      .divPoint2 {
+        width: 84%;
+      }
     }

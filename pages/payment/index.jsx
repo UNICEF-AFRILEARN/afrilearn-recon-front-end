@@ -77,7 +77,7 @@ console.log("myChildren from payment ====>", myChildren)
   }
 
 
-const initializePayment = usePaystackPayment(config);
+// const initializePayment = usePaystackPayment(config);
 
   const courseContext = roles.courses;
   const allPaymentPlans = paymentPlans.paymentPlans;
@@ -160,7 +160,7 @@ const initializePayment = usePaystackPayment(config);
         <div >
     <div className='row'>
       <div className={styles.paymentLabel}><label for="className "><h5>Step 1: Select Class:</h5> </label></div>
-      <div  >
+      <div>
            <select
                 className={`${styles.pushDown} form-control form-control-sm`}
                 value={price}
@@ -197,7 +197,7 @@ const initializePayment = usePaystackPayment(config);
   </div>
   <div className= {` col-md-3 ${styles.durationPayment}`}> 
   </div>
- <div className='row'>
+ <div className={`row ${styles.btnwrapper}`}>
   <div className= {` col-md-6 ${styles.paymenttypeButton}`}>
     <div 
     onClick={() => {
@@ -205,8 +205,6 @@ const initializePayment = usePaystackPayment(config);
               }}>PAY WITH CARD</div>
   </div>
     <div className={` col-md-6 ${styles.paymenttypeButton2}`}>
-      {/* <button >BANK TRANSFER</button>
-       */}
          <PaymentDetails
     handleClose={handleClose}
     handleOpen={handleOpen}
@@ -415,8 +413,9 @@ const initializePayment = usePaystackPayment(config);
   <div className= {` col-md-3 ${styles.durationPayment}`}> 
     {teacher_plans && teacher_plans.map((teacherPlans) =>
         <button 
-        ref={priceElement}
-        onClick={() => handleSelect(teacherPlans.amount)}
+          className={styles.paymentwrapper}
+          ref={priceElement}
+          onClick={() => handleSelect(teacherPlans.amount)}
         >
         <div 
         className={styles.durationBold}
