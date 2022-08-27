@@ -215,11 +215,11 @@ export const TeacherAnnouncement = () => {
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const [text, setText] = useState("");
-  // const [announcement, setAnnouncement] = useState("");
+  const [announcement, setAnnouncement] = useState("");
   // const [comment, setComment] = useState("");
   const [announcementCount, setAnnouncementCount] = useState(0);
 
-  console.log("classAnnouncement from Teacher announcement", postAnnouncement?.status)
+  console.log("classAnnouncement from Teacher announcement", announcement)
   
   let token = user?.token;
   let classId = user?.user?.classOwnership[0]?.enrolledCourse?.classId
@@ -244,12 +244,15 @@ export const TeacherAnnouncement = () => {
   const handleSubmit = (e) => {
       e.preventDefault();
       setText(announcement)
-      console.log(text)
+      // console.log(text)
       // dispatch(makeAnnouncementInitiate(classId, text,token))
       setText("")
   };
 
-
+  const handleCommentSubmit = (announcementId) => {
+    dispatch(addCommentToTeacherAnnouncementInitiate(announcementId, text, token))
+    // window.location.reload();
+}
 
   useEffect(() => {
       dispatch(fetchAnnouncementInitiate(classId))
@@ -420,7 +423,37 @@ export const TeacherAnnouncement = () => {
    }
    {/* The line blow is to create the announcement comment  end*/}
     {/* post comment block */}
-      <CommentBlock announceMessage={announceMessage}/>
+    <Row className="border-top pb-6"
+        >
+          <Row>
+            <Col className="p-0 ps-5 mt-4">
+              <Image
+                alt={"assign content placeholder"}
+                src={`/assets/img/features/dashboard/teacher/teacherPix.png`}
+                width={46}
+                height={45}
+              />
+            </Col>
+            <Col className="mt-4" md={10}>
+            <div class="input-group mb-3 w-50">
+              <input 
+              type="text" 
+              class="form-control" 
+              placeholder="Add class comment"
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              />
+              <button 
+              onClick={() => handleCommentSubmit(announceMessage.id)}
+              class="btn btn-outline-secondary" type="button" id="button-addon2"><AiOutlineSend /></button>
+             </div>
+            </Col>
+            <Col md={1}>
+            </Col>
+          </Row>
+            
+        </Row>
+      {/* <CommentBlock announceMessage={announceMessage}/> */}
     {/* end of post comment block */}
   </Row>
 
