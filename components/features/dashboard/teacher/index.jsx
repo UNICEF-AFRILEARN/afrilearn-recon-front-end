@@ -9,8 +9,13 @@ import { AiOutlineSend } from 'react-icons/ai';
 import styles1 from "../student/student.module.css";
 import styles from "../student/studentProfile/studentProfile.module.css";
 import styles2 from "../../../../pages/dashboard/teacher/teacher.module.css";
+import CommentBlock from './commentblock';
 import { fetchSubjectsInitiate } from '../../../../redux/actions/subjects';
-import { makeAnnouncementInitiate,  fetchAnnouncementInitiate } from '../../../../redux/actions/classes';
+import { 
+  makeAnnouncementInitiate, 
+  fetchAnnouncementInitiate,
+  addCommentToTeacherAnnouncementInitiate
+} from '../../../../redux/actions/classes';
 
 
 
@@ -210,6 +215,8 @@ export const TeacherAnnouncement = () => {
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const [text, setText] = useState("");
+  // const [announcement, setAnnouncement] = useState("");
+  // const [comment, setComment] = useState("");
   const [announcementCount, setAnnouncementCount] = useState(0);
 
   console.log("classAnnouncement from Teacher announcement", postAnnouncement?.status)
@@ -236,13 +243,13 @@ export const TeacherAnnouncement = () => {
 
   const handleSubmit = (e) => {
       e.preventDefault();
-      dispatch(makeAnnouncementInitiate(classId, text,token))
+      setText(announcement)
+      console.log(text)
+      // dispatch(makeAnnouncementInitiate(classId, text,token))
       setText("")
   };
 
-  const handleCommentSubmit = (id) => {
-    console.log("Announcement =====>", id)
-  }
+
 
   useEffect(() => {
       dispatch(fetchAnnouncementInitiate(classId))
@@ -413,30 +420,7 @@ export const TeacherAnnouncement = () => {
    }
    {/* The line blow is to create the announcement comment  end*/}
     {/* post comment block */}
-    <Row className="border-top pb-6"
-  >
-    <Row>
-      <Col className="p-0 ps-5 mt-4">
-        <Image
-          alt={"assign content placeholder"}
-          src={`/assets/img/features/dashboard/teacher/teacherPix.png`}
-          width={46}
-          height={45}
-        />
-      </Col>
-      <Col className="mt-4" md={10}>
-      <div class="input-group mb-3 w-50">
-        <input type="text" class="form-control" placeholder="Add class comment" aria-label="Recipient's username" aria-describedby="button-addon2"/>
-        <button 
-        onClick={() => handleCommentSubmit(announceMessage.id)}
-        class="btn btn-outline-secondary" type="button" id="button-addon2"><AiOutlineSend /></button>
-       </div>
-      </Col>
-      <Col md={1}>
-      </Col>
-    </Row>
-      
-  </Row>
+      <CommentBlock announceMessage={announceMessage}/>
     {/* end of post comment block */}
   </Row>
 
