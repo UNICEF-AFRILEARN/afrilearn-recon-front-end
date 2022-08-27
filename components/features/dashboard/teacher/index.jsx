@@ -380,15 +380,10 @@ export const TeacherAnnouncement = () => {
     <Row className="mx-5 mt-4">{announceMessage.text}</Row>
     {/* The line blow is to create the announcement comment */}
     <Row
-    className="mt-4"
-    style={{
-      border: "1px solid #A6A6A6",
-      borderRadius: "7px",
-      padding: "20px",
-    }}
+    className="mt-4 border-top pb-4"
   >
     <Row>
-      <Col className="p-0 ps-5">
+      <Col className="p-0 ps-5 mt-4">
         <Image
           alt={"assign content placeholder"}
           src={`/assets/img/features/dashboard/teacher/teacherPix.png`}
@@ -396,7 +391,7 @@ export const TeacherAnnouncement = () => {
           height={45}
         />
       </Col>
-      <Col className="" md={10}>
+      <Col className="mt-4" md={10}>
         <Row>
           Mr { announceMessage.teacher.fullName} (You)
         </Row>
@@ -405,45 +400,33 @@ export const TeacherAnnouncement = () => {
         </Row>
       </Col>
       <Col md={1}>
-        <div className={styles2.moreIcon}>
-          <div
-            style={{
-              width: "123px",
-              height: "91px",
-              background: "#FFFFFF",
-              boxShadow: "0px 1px 7px rgba(0, 0, 0, 0.1)",
-              borderRadius: "10px",
-              position: "absolute",
-              right: "150px",
-            }}
-            className={styles2.displayNone}
-          >
-            <Col className={`p-3 ps-3 `}>
-              <Row className="ps-3 pb-2">
-                <Col
-                  md={3}
-                  className={`ps-2 ${styles2.styleEdit}`}
-                ></Col>
-                <Col className="m-auto">Edit</Col>
-              </Row>
-              <Row className="ps-3 pb-2">
-                <Col
-                  md={3}
-                  className={`ps-2 ${styles2.styleDelete}`}
-                ></Col>
-                <Col
-                  className="m-auto"
-                  // onClick={() => handleDelete(d)}
-                >
-                  Delete
-                </Col>
-              </Row>
-            </Col>
-          </div>
-        </div>
       </Col>
     </Row>
-    <Row className="mx-5 mt-4">{announceMessage.text}</Row>
+    <Row className="mx-5 m-4">{announceMessage.text}</Row>
+    {/* post comment block */}
+    <Row className="border-top pb-6"
+  >
+    <Row>
+      <Col className="p-0 ps-5 mt-4">
+        <Image
+          alt={"assign content placeholder"}
+          src={`/assets/img/features/dashboard/teacher/teacherPix.png`}
+          width={46}
+          height={45}
+        />
+      </Col>
+      <Col className="mt-4" md={10}>
+      <div class="input-group mb-3 w-50">
+        <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2"/>
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Send</button>
+       </div>
+      </Col>
+      <Col md={1}>
+      </Col>
+    </Row>
+      
+  </Row>
+    {/* end of post comment block */}
   </Row>
    {/* The line blow is to create the announcement comment  end*/}
   </Row>
