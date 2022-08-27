@@ -387,7 +387,6 @@ export const TeacherAnnouncement = () => {
       <Row
       className="mt-4 border-top pb-4"
     >
-          {/* <p>Checking</p> */}
       <Row className=''>
         <Col className="p-0 ps-5 mt-4">
           <Image
@@ -429,7 +428,7 @@ export const TeacherAnnouncement = () => {
       <div class="input-group mb-3 w-50">
         <input type="text" class="form-control" placeholder="Add class comment" aria-label="Recipient's username" aria-describedby="button-addon2"/>
         <button 
-        onClick={() => handleCommentSubmit(announceMessage)}
+        onClick={() => handleCommentSubmit(announceMessage.id)}
         class="btn btn-outline-secondary" type="button" id="button-addon2"><AiOutlineSend /></button>
        </div>
       </Col>

@@ -91,6 +91,17 @@ export const createClassworkFail = (error) => ({
     type: types.CREATE_CLASS_WORK_FAIL,
     payload: error
 });
+export const addCommentToTeacherAnnouncementStart = () => ({
+    type: types.ADD_COMMENT_TO_TEACHER_ANNOUNCEMENT_START
+});
+export const addCommentToTeacherAnnouncementSuccess = (payload) => ({
+    type: types.ADD_COMMENT_TO_TEACHER_ANNOUNCEMENT_SUCCESS,
+    payload
+});
+export const addCommentToTeacherAnnouncementFail = (error) => ({
+    type: types.ADD_COMMENT_TO_TEACHER_ANNOUNCEMENT_FAIL,
+    payload: error
+});
 
 
 export const makeAnnouncementInitiate = (classId, text, token) =>  {
