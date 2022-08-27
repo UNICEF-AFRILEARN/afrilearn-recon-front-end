@@ -20,7 +20,7 @@ const Examinations = () => {
   return (
     <div className={styles.examinationwrapper}>
       <Heropage />
-      <HeropageWelcome />
+      {/* <HeropageWelcome /> */}
         <div className={styles.examsheaderwrapper}>
 
         </div>

@@ -13,6 +13,10 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
+  typography: {
+    fontFamily: 'Raleway, Arial',
+    bgcolor: '#f44336',
+  },
   width: {
       xs: 350,
       sm: 400,
@@ -63,7 +67,7 @@ const PaymentDetails = ({handleOpen, handleClose, open, closeModal, priceSelecte
       >
         <Box sx={style}
         >
-          <Typography 
+          <Typography
           id="modal-modal-title" 
           variant="h6" 
           component="h2"
