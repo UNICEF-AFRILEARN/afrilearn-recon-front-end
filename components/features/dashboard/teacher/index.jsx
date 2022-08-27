@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Col, Container, Row } from "react-bootstrap";
 import PastQuestion from "../student/extra/PastQuestion";
 import Subjects from "../student/extra/subjects";
+import { AiOutlineSend } from 'react-icons/ai';
 import styles1 from "../student/student.module.css";
 import styles from "../student/studentProfile/studentProfile.module.css";
 import styles2 from "../../../../pages/dashboard/teacher/teacher.module.css";
@@ -417,8 +418,8 @@ export const TeacherAnnouncement = () => {
       </Col>
       <Col className="mt-4" md={10}>
       <div class="input-group mb-3 w-50">
-        <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2"/>
-        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Send</button>
+        <input type="text" class="form-control" placeholder="Add class comment" aria-label="Recipient's username" aria-describedby="button-addon2"/>
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2"><AiOutlineSend /></button>
        </div>
       </Col>
       <Col md={1}>
