@@ -7,8 +7,9 @@ import { BsPlus } from 'react-icons/bs';
 import { BiNote } from 'react-icons/bi';
 import { AiOutlineArrowsAlt } from 'react-icons/ai';
 import { updateExamQuestionInitiate, fetchSingleExamQuestionsInitiate, fetchExamsInitiate } from '../../../../redux/actions/exams';
+import Questiontitle from './questiontitle';
 
-const Questionpanel = () => {
+const Questionpanel = ({index, showObjQuestionOptions}) => {
   const dispatch = useDispatch();
   const { newExamQuestion, exams, singleExamQuestions } = useSelector((state) => state.myExams);
   const [questionId, setQuestionId] = useState("")
@@ -29,7 +30,7 @@ const Questionpanel = () => {
 
 
  
-
+    console.log("Index ===> from panel", index + 1)
   
   const currentExam = [];
   const fiterExam = () => {
@@ -84,17 +85,14 @@ const Questionpanel = () => {
 
   return (
     <div>
-        <div className={styles.questionpanelwrapper}>
+       {showObjQuestionOptions === index + 1 &&
+        <>
+        <Questiontitle index={index}/>
+            <div className={styles.questionpanelwrapper}>
             <div className={styles.questionpanelheader}>
-                <h5>Open Edit Panel</h5> <span>< AiOutlineArrowsAlt size={30}/></span>
+                <h5>Open Edit Panel</h5> <span>< AiOutlineArrowsAlt size={30}/>
+                </span>
             </div>
-         <div className={styles.plusiconwrapper}>
-            <ul>
-                {/* <li>
-                <BsPlus />
-                </li> */}
-            </ul>
-         </div>
          
         </div>
         <div className={styles.mainformwrapper}>
@@ -159,6 +157,8 @@ const Questionpanel = () => {
                     <button>Save changes</button>
         </Form>
         </div>
+       </>
+       }
     </div>
   )
 }

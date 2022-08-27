@@ -15,16 +15,27 @@ import Questiontitle from './questiontitle';
 const Objectives = () => {
     const { newExamQuestion } = useSelector((state) => state.myExams);
     const [questionId, setQuestionId] = useState("")
+    //content in the questionOptions will be data to send to the API:
     const [questionOptions, setQuestionsOptions] = useState([
-        {questionCount:""},
-        {questionCount:""},
+        {questionCount:"",
+         test:"",
+         anotherTest:""
+    },
     ])
     const [question, setQuestion] = useState("")
 
     console.log("questionId from onjective", questionId)
     const [showObjQuestions, setShowObjQuestions] = useState(1)
+    const [showObjQuestionOptions, setShowObjQuestionOptions] = useState(1)
 
+    console.log("questionOptions", questionOptions)
 
+    const handleAddQuestions = () => {
+        setQuestionsOptions([...questionOptions,    {questionCount:"",
+        test:"",
+        anotherTest:""
+   }])
+    }
 
     let data = {
         question
@@ -38,6 +49,11 @@ const Objectives = () => {
 
     const showObjpanel = (id) => {
         setShowObjQuestions(id)
+    }
+
+    const handleSelectQeustionOptions = (index) => {
+        console.log(index)
+        setShowObjQuestionOptions(index)
     }
 
     // useEffect(() =>{
@@ -69,7 +85,9 @@ const Objectives = () => {
                 {showObjQuestions === 1 && questionOptions.map((singleQuestion, index) => (
                     <div className={styles.innernumberwrapper}>
                     <ul>
-                        <li>{index + 1}</li>
+                        <li
+                          onClick={() => handleSelectQeustionOptions(index + 1)}
+                        >{index + 1}</li>
                     </ul>    
                 </div>
                 ))
@@ -78,7 +96,9 @@ const Objectives = () => {
 
                 <div className={styles.innernumberwrapper}>
                    <ul>
-                   <li>
+                   <li
+                    onClick = {handleAddQuestions}
+                   >
                         <BsPlus />
                     </li>
                    </ul>
@@ -86,8 +106,10 @@ const Objectives = () => {
             </div>
             { showObjQuestions === 1 &&  questionOptions.map((singleQuestion, index) => (
                 <>
-                    <Questiontitle index={index}/>
-                    <Questionpanel />
+                    {/* <Questiontitle index={index} /> */}
+                    <Questionpanel index={index} 
+                        showObjQuestionOptions={showObjQuestionOptions}
+                    />
                     </>
                )) }
                 {showObjQuestions === 2 && <Theory /> }
