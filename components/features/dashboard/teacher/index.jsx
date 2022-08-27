@@ -240,6 +240,9 @@ export const TeacherAnnouncement = () => {
       setText("")
   };
 
+  const handleCommentSubmit = (id) => {
+    console.log("Announcement =====>", id)
+  }
 
   useEffect(() => {
       dispatch(fetchAnnouncementInitiate(classId))
@@ -380,30 +383,36 @@ export const TeacherAnnouncement = () => {
     </Row>
     <Row className="mx-5 mt-4">{announceMessage.text}</Row>
     {/* The line blow is to create the announcement comment */}
-    <Row
-    className="mt-4 border-top pb-4"
-  >
-    <Row>
-      <Col className="p-0 ps-5 mt-4">
-        <Image
-          alt={"assign content placeholder"}
-          src={`/assets/img/features/dashboard/teacher/teacherPix.png`}
-          width={46}
-          height={45}
-        />
-      </Col>
-      <Col className="mt-4" md={10}>
-        <Row>
-          Mr { announceMessage.teacher.fullName} (You)
-        </Row>
-        <Row className="text-secondary">
-          {formatter.format(Date.parse(announceMessage.createdAt))}
-        </Row>
-      </Col>
-      <Col md={1}>
-      </Col>
+   { announceMessage.comments && announceMessage.comments.map((comment) => 
+      <Row
+      className="mt-4 border-top pb-4"
+    >
+          {/* <p>Checking</p> */}
+      <Row className=''>
+        <Col className="p-0 ps-5 mt-4">
+          <Image
+            alt={"assign content placeholder"}
+            src={`/assets/img/features/dashboard/teacher/teacherPix.png`}
+            width={46}
+            height={45}
+          />
+        </Col>
+        <Col className="mt-4" md={10}>
+          <Row>
+            Mr { comment.student.fullName} (You)
+          </Row>
+          <Row className="text-secondary">
+            {formatter.format(Date.parse(comment.createdAt))}
+          </Row>
+        </Col>
+        <Col md={1}>
+        </Col>
+      </Row>
+      <Row className="mx-5 m-4">{comment.text}</Row>
     </Row>
-    <Row className="mx-5 m-4">{announceMessage.text}</Row>
+   )
+   }
+   {/* The line blow is to create the announcement comment  end*/}
     {/* post comment block */}
     <Row className="border-top pb-6"
   >
@@ -419,7 +428,9 @@ export const TeacherAnnouncement = () => {
       <Col className="mt-4" md={10}>
       <div class="input-group mb-3 w-50">
         <input type="text" class="form-control" placeholder="Add class comment" aria-label="Recipient's username" aria-describedby="button-addon2"/>
-        <button class="btn btn-outline-secondary" type="button" id="button-addon2"><AiOutlineSend /></button>
+        <button 
+        onClick={() => handleCommentSubmit(announceMessage)}
+        class="btn btn-outline-secondary" type="button" id="button-addon2"><AiOutlineSend /></button>
        </div>
       </Col>
       <Col md={1}>
@@ -428,8 +439,6 @@ export const TeacherAnnouncement = () => {
       
   </Row>
     {/* end of post comment block */}
-  </Row>
-   {/* The line blow is to create the announcement comment  end*/}
   </Row>
 
 )}
