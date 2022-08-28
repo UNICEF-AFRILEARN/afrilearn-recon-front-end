@@ -54,11 +54,10 @@
 
 .push2e {
   background: url("./../../../../public/assets/img/features/dashboard/student/crownTheme.png");
-  background-repeat: no-repeat;
-  width: 277px;
+  width: 280px;
   height: 50px;
-  margin-left: 80px;
-  margin-top: -10px;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .push3 {
@@ -312,4 +311,23 @@
   border: 1px solid #00d9b6;
   box-shadow: 0px 0.648094px 4.53666px rgba(0, 0, 0, 0.15);
   border-radius: 9.72141px;
+}
+
+@media screen and (max-width: 376px) {
+  .dashboardFirstSection h1 {
+    font-size: 60px !important;
+    margin-top: 100px;
+  }
+  .push2 {
+    padding: 5px 9px;
+  }
+  .pointers {
+    display: none;
+  }
+  .subHeadingTitle {
+    padding: 40px 30px;
+  }
+  .mySubjectt {
+    margin: 20px auto;
+  }
 }

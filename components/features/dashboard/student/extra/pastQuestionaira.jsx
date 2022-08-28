@@ -16,7 +16,7 @@ const PastQuestion = ({ subData }) => {
 
     const settings = {
       infinite: true,
-      slidesToShow: 3,
+      slidesToShow: subData.length > 3 ? 3 : (subData.length = 2 ? 2 : 1),
       slidesToScroll: 1,
       autoplay: true,
       speed: 1500,

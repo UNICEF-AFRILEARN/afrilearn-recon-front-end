@@ -1,12 +1,18 @@
 import * as types from "../types";
 import axios from "axios";
-
+const HerokuServer = "https://afrilearn-backend-01.herokuapp.com/";
+const HerokuURL = HerokuServer + "api/v1/";
+const url = HerokuURL;
 export const fetchSubjectsStart = () => ({
   type: types.FETCH_SUBJECT_START,
 });
 
 export const fetchSubjectsSuccess = (subject) => ({
   type: types.FETCH_SUBJECT_SUCCESS,
+  payload: subject,
+});
+export const fetchUnFinishedVideosSuccess = (subject) => ({
+  type: types.FETCH_UNFINISHEDVIDEOS_SUCCESS,
   payload: subject,
 });
 export const fetchSubjectsDetailsSuccess = (subject) => ({
@@ -55,9 +61,20 @@ export const fetchCoursesInitiate = (courseId) => {
       .then((res) => {
         dispatch(fetchSubjectsSuccess(res.data.data));
       });
-    // .then((err) => {
-    //   console.log(err);
-    // });
+  };
+};
+export const fetchstoreUnFinishedVideos = (data) => {
+  return function (dispatch) {
+    dispatch(fetchSubjectsStart());
+    axios({
+      method: "post",
+      url: `${this.url}lessons/storeUnFinishedVideos`,
+      headers: this.headers(),
+      data,
+    }).then((res) => {
+      console.log(res);
+      // dispatch(fetchUnFinishedVideosSuccess(res.data.data));
+    });
   };
 };
 export const fetchSendClassRequest = (courseId, token) => {
@@ -123,6 +140,7 @@ export const fetchStudentDetailsInitiate = (classId) => {
     );
   };
 };
+
 export const fetchCourseDetailsInitiate = (courseId, subjectId) => {
   return async function (dispatch) {
     let one = `https://afrilearn-backend-01.herokuapp.com/api/v1/lessons/${courseId}/${subjectId}/subject-basic-details`;
@@ -151,11 +169,13 @@ export const fetchCourseDetailsInitiate = (courseId, subjectId) => {
   };
 };
 
-export const fetchSubjectInitiate = (sub_Id, token) => {
+export const fetchSubjectInitiate = (sub_Id, token, userId) => {
   return async function (dispatch) {
     let one = `https://afrilearn-backend-01.herokuapp.com/api/v1/dashboard/class-membership`;
     let two = `https://afrilearn-backend-01.herokuapp.com/api/v1/dashboard/topTen`;
     let three = `https://afrilearn-backend-01.herokuapp.com/api/v1/dashboard/web`;
+    let four = `https://afrilearn-backend-01.herokuapp.com/api/v1/dashboard/unfinishedVideos`;
+    let five = `https://afrilearn-backend-01.herokuapp.com/api/v1/dashboard/favourite`;
 
     dispatch(fetchSubjectsStart());
     const requestOne = await axios.post(
@@ -174,19 +194,39 @@ export const fetchSubjectInitiate = (sub_Id, token) => {
       { enrolledCourseId: sub_Id },
       { headers: { "Content-type": "application/json", token: token } },
     );
-
-    axios.all([requestOne, requestTwo, requestThree]).then(
-      axios.spread(async function (...responses) {
-        const responseOne = await responses[0].data.data;
-        const responseTwo = await responses[1].data.data;
-        const responseThree = await responses[2].data.data;
-
-        // use/access the results
-        const response = [responseTwo, responseThree, responseOne];
-
-        dispatch(fetchSubjectsSuccess(response));
-      }),
+    const requestFour = await axios.get(four, {
+      headers: { "Content-type": "application/json", token: token },
+    });
+    const requestFive = await axios.post(
+      five,
+      { userId },
+      {
+        headers: { "Content-type": "application/json", token: token },
+      },
     );
+
+    axios
+      .all([requestOne, requestTwo, requestThree, requestFour, requestFive])
+      .then(
+        axios.spread(async function (...responses) {
+          const responseOne = await responses[0].data.data;
+          const responseTwo = await responses[1].data.data;
+          const responseThree = await responses[2].data.data;
+          const responseFour = await responses[3].data.data;
+          const responseFive = await responses[4].data.data;
+
+          // use/access the results
+          const response = [
+            responseTwo,
+            responseThree,
+            responseOne,
+            responseFour,
+            responseFive,
+          ];
+
+          dispatch(fetchSubjectsSuccess(response));
+        }),
+      );
     // .then((err) => {
     //   console.log(err);
     // });A

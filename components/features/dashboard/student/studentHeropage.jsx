@@ -5,6 +5,7 @@ import styles from "./student.module.css";
 import { fetchCourseInitiate } from "../../../../redux/actions/courses";
 import { fetchReconLessonInitiate } from "../../../../redux/actions/courses";
 import { useDispatch, useSelector } from "react-redux";
+import { Container } from "react-bootstrap";
 
 const studentHeropage = ({ data }) => {
   const studentdata = [
@@ -83,25 +84,34 @@ export const StudentPage = ({ stuData }) => {
   // }, [fetchCourseInitiate]);
 
   return (
-    <>
+    <Container fluid id="subjects" className="p-0">
       <div
-        id="dashboardFirstSection"
+        id="subjects"
         className={`container-fluid relative ${styles.dashboardFirstSection}`}
       >
         <div className="row">
           <div className="col-md-12">
-            <h1 className="text-capitalize">{stuData[0].classData}</h1>
+            <h1 className={`text-capitalize ${styles.capH1}`}>
+              {stuData[0].classData}
+            </h1>
           </div>
         </div>
-        <div className={`row ${styles.push2}`}>
+        <div className={`row ps-3 ${styles.pus}`}>
           <div className="col-md-12">
-            {stuData[0].firstName && <h2>{greetings(stuData[0].firstName)}</h2>}
+            {stuData[0].firstName && (
+              <h2>{greetings(stuData[0].firstName.split(" ")[0])}</h2>
+            )}
             {stuData[0].subject && <h2>{stuData[0].subject}</h2>}
             <p>Explore the fun in learning💃</p>
           </div>
         </div>
-        <div className={`row ${styles.push2e}`}></div>
-        <div className={`row ${styles.push2} ${styles.push3}`}>
+        <Link passHref href="/trial">
+          <div
+            className={`row ms-3 ${styles.push2e}`}
+            style={{ cursor: "pointer" }}
+          ></div>
+        </Link>
+        <div className={`row pt-5 ${styles.pointers}`}>
           <div className="col-md-12">
             {stuData[0].firstName &&
               stuData[1].map((data, i) => (
@@ -112,6 +122,6 @@ export const StudentPage = ({ stuData }) => {
           </div>
         </div>
       </div>
-    </>
+    </Container>
   );
 };

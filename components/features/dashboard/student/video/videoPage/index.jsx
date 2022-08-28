@@ -8,33 +8,72 @@ import styles1 from "../../../../../../pages/dashboard/teacher/teacher.module.cs
 import styles2 from "../../topInClass.module.css";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
+import { fetchstoreUnFinishedVideos } from "../../../../../../redux/actions/subject";
+import ReactPlayer from "react-player";
 // import {useSpeechSynthesis} from "react-speech-kit";
 
 const VideoPage = () => {
   const router = useRouter();
-  let quary = router.query.Exam;
-  let quary1 = router.query.Lesson;
-  let quary2 = router.query.term;
+  let quary = router.query[0];
+  let quary1 = router.query[1];
   console.log(quary);
+  const { user } = useSelector((state) => state.auth);
   const subject = useSelector((state) => state.mySubjectCourse);
   const lessons = subject.subjectDetails[1]?.relatedLessons;
   console.log(lessons);
-  const data = {
-    topic: lessons[quary1].title,
-    videoUrl: lessons[quary1].videoUrls[quary].videoUrl,
+  const terms = [
+    { id: "5fc8d1b20fae0a06bc22db5c", term: "First Term" },
+    { id: "600047f67cabf80f88f61735", term: "Second Term" },
+    { id: "600048197cabf80f88f61736", term: "Third Term" },
+  ];
+
+  const videoId = (id) => {
+    let dat;
+    for (let i = 0; i < lessons.length; i++) {
+      if (lessons[i].id === id) {
+        dat = lessons[i];
+      }
+    }
+    return dat;
   };
+  const term = () => {
+    let dat;
+    for (let i = 0; i < terms.length; i++) {
+      if (videoId(quary).termId === terms[i].id) {
+        dat = terms[i].term;
+      }
+    }
+    return dat;
+  };
+  let lessonsNumber;
+  const videoIds = (id) => {
+    let dat;
+    const lesson = videoId(quary).videoUrls;
+    for (let i = 0; i < lesson.length; i++) {
+      if (lesson[i]._id === id) {
+        lessonsNumber = i;
+        dat = lesson[i];
+      }
+    }
+    return dat;
+  };
+  const data = {
+    topic: videoId(quary).title,
+    videoUrl: videoIds(quary1),
+  };
+
   console.log(data?.videoUrl);
   const [visibility, setVisibility] = useState("Show");
   // src/App.js
-const onEnd = () => {
-  setHighlightedText('')
-}
+  const onEnd = () => {
+    setHighlightedText("");
+  };
 
-// const { speak, cancel, speaking, supported, voices } = useSpeechSynthesis({onEnd})
+  // const { speak, cancel, speaking, supported, voices } = useSpeechSynthesis({onEnd})
   const iconData = [
     {
       icon: "arrowhead",
-      text: `Lesson ${+quary + 1}`,
+      text: `Lesson ${+lessonsNumber + 1}`,
     },
   ];
   const d = new Date();
@@ -55,18 +94,50 @@ const onEnd = () => {
   const secVidData = {
     class: subject.subjectDetails[0].subject.courseId.alias,
     subject: subject.subjectDetails[0].subject.mainSubjectId.name,
-    term: quary2,
+    term: term(),
     date: `${d.getDate()} - ${months[d.getMonth()]} - ${d.getFullYear()}`,
   };
 
   const [show, setShow] = useState(false);
   const target = useRef(null);
 
+  console.log(videoId(quary));
+  console.log(videoIds(quary1));
+  const datas = {
+    userId: user.user._id,
+    courseId: videoId(quary).courseId,
+    subjectId: videoId(quary).subjectId,
+    lessonId: videoId(quary)._id,
+    termId: videoId(quary).termId,
+    videoId: videoIds(quary1)._id,
+    videoPosition: lessonsNumber,
+  };
   return (
     <Container fluid>
       <Row>
         <Col className="p-0">
-          <iframe width="100%" height="600px" src={data?.videoUrl}></iframe>
+          {/* <iframe
+            width="100%"
+            height="600px"
+            src={data?.videoUrl.videoUrl}
+          ></iframe> */}
+          <ReactPlayer
+            className="react-player"
+            onStart={fetchstoreUnFinishedVideos(datas)}
+            config={{ file: { attributes: { controlsList: "nodownload" } } }}
+            onContextMenu={(e) => e.preventDefault()}
+            onEnded={(e) => {
+              clearUnFinishedVideo(datas);
+              toggleModal();
+            }}
+            url={data?.videoUrl.videoUrl}
+            controls="true"
+            width="100%"
+            height="500px"
+            muted={false}
+            playing={true}
+            ref={ref}
+          />
         </Col>
       </Row>
       <Row className="p-5">
@@ -103,10 +174,16 @@ const onEnd = () => {
                 </a>
               </Link>
             </Col>
-            {<Col /*onClick={()=> speak({text:lessons[quary1].content})}*/ style={{cursor:"pointer"}}>
-              <div className={styles.mic}></div>
-              <div className={styles.micBottom}>Audio Lesson</div>
-            </Col>}
+            {
+              <Col
+                /*onClick={()=> speak({text:lessons[quary1].content})}*/ style={{
+                  cursor: "pointer",
+                }}
+              >
+                <div className={styles.mic}></div>
+                <div className={styles.micBottom}>Audio Lesson</div>
+              </Col>
+            }
             <Col>
               <div className={styles.love}></div>
               <div className={styles.loveBottom}>I Love This</div>
@@ -156,11 +233,11 @@ const onEnd = () => {
             <Col className={styles.colSeen}>
               <div className={styles.seen}></div>
 
-              <div>{lessons[quary1].views} Views</div>
+              <div>{videoId(quary).views} Views</div>
             </Col>
             <Col className={styles.colSeen}>
               <div className={styles.loved}></div>
-              <div>{lessons[quary1].likes.length} Love</div>
+              <div>{videoId(quary).likes.length} Love</div>
             </Col>
           </Row>
           <Row>
@@ -227,7 +304,7 @@ const onEnd = () => {
               <Col className="bg-light rounded-bottom ">
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: lessons[quary1].videoUrls[quary].transcript,
+                    __html: data?.videoUrl.transcript,
                   }}
                 ></div>
               </Col>

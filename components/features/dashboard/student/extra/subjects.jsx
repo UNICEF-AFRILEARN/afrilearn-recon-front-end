@@ -38,7 +38,7 @@ const Subjects = ({ subData }) => {
     return subData ? (
       subData?.map((dta) => {
         return (
-          <div key={dta.id} className={`col-md-6 ${styles.mySubjectt}`}>
+          <div key={dta.id} className={`col-md-12 ${styles.mySubjectt}`}>
             <button
               className="modalButton"
               onClick={() => {
@@ -65,7 +65,7 @@ const Subjects = ({ subData }) => {
   const SubjectModal = () => {
     return (
       <>
-        <Container fluid id="subject">
+        <Container fluid id="subject" className="p-0">
           <Row>
             <div>
               <HeaderHeropage />
