@@ -79,9 +79,9 @@ const Navigation = () => {
               
                 </ul>
                 <div className={styles.avatarcontainer}>
-                         {/* <Link passHref href="/dashboard/student/studentProfile" className="btn-log-in-mobile"> */}
-                          {/* <BsPersonCircle size={30} className={styles.profileavatar}/> */}
-                          {/* </Link> */}
+                         <Link passHref href="/dashboard/student/studentProfile" className="btn-log-in-mobile">
+                          <BsPersonCircle size={30} className={styles.profileavatar}/>
+                          </Link>
                       <div className={styles.iconswrapper}>
                       <Link passHref href="/dashboard/student/studentProfile" className="btn-log-in-mobile">
                           <BiDownArrow size={20} className={styles.profileavatar}/>
@@ -89,7 +89,9 @@ const Navigation = () => {
                           <div className={styles.linkswrapper}>
                             <a href="/payment">Add New class</a>
                             <a href="#">My Feeds</a>
-                            <a href="#">Manage Profile</a>
+                            <Link href="/dashboard/student/studentProfile">
+                              <a>Manage Profile</a>
+                            </Link>
                             <a href="#">Share Feedback</a>
                             <a
                             onClick={handleLogout}
@@ -127,9 +129,9 @@ const Navigation = () => {
               
                 </ul>
                   <div className={styles.avatarcontainer}>
-                         {/* <Link passHref href="/dashboard/teacher/teacherProfile" className="btn-log-in-mobile"> */}
-                          {/* <BsPersonCircle size={30} className={styles.profileavatar}/> */}
-                          {/* </Link> */}
+                         <Link passHref href="/dashboard/teacher/teacherProfile" className="btn-log-in-mobile">
+                          <BsPersonCircle size={30} className={styles.profileavatar}/>
+                          </Link>
                       <div className={styles.iconswrapper}>
                       <Link passHref href="/dashboard/teacher/teacherProfile" className="btn-log-in-mobile">
                           <BiDownArrow size={20} className={styles.profileavatar}/>
@@ -137,7 +139,10 @@ const Navigation = () => {
                           <div className={styles.linkswrapper}>
                             <a href="/payment">Add New class</a>
                             <a href="#">My Feeds</a>
-                            <a href="#">Manage Profile</a>
+                            <a href="#">My Feeds</a>
+                            <Link href="/dashboard/student/studentProfile">
+                              <a>Manage Profile</a>
+                            </Link>
                             <a href="#">Share Feedback</a>
                             <a 
                             onClick={handleLogout}
@@ -172,9 +177,9 @@ const Navigation = () => {
               
                 </ul>
                 <div className={styles.avatarcontainer}>
-                         {/* <Link passHref href="/dashboard/student/studentProfile" className="btn-log-in-mobile"> */}
-                          {/* <BsPersonCircle size={30} className={styles.profileavatar}/> */}
-                          {/* </Link> */}
+                         <Link passHref href="/dashboard/student/studentProfile" className="btn-log-in-mobile">
+                          <BsPersonCircle size={30} className={styles.profileavatar}/>
+                          </Link>
                       <div className={styles.iconswrapper}>
                       <Link passHref href="/dashboard/student/studentProfile" className="btn-log-in-mobile">
                           <BiDownArrow size={20} className={styles.profileavatar}/>
@@ -182,7 +187,10 @@ const Navigation = () => {
                           <div className={styles.linkswrapper}>
                             <a href="/payment">Add New class</a>
                             <a href="#">My Feeds</a>
-                            <a href="#">Manage Profile</a>
+                            <a href="#">My Feeds</a>
+                            <Link href="/dashboard/student/studentProfile">
+                              <a>Manage Profile</a>
+                            </Link>
                             <a href="#">Share Feedback</a>
                             <a 
                             onClick={handleLogout}
@@ -217,9 +225,9 @@ const Navigation = () => {
               
                 </ul>
                 <div className={styles.avatarcontainer}>
-                         {/* <Link passHref href="/school/schoolprofile" className="btn-log-in-mobile"> */}
-                          {/* <BsPersonCircle size={30} className={styles.profileavatar}/> */}
-                          {/* </Link> */}
+                         <Link passHref href="/school/schoolprofile" className="btn-log-in-mobile">
+                          <BsPersonCircle size={30} className={styles.profileavatar}/>
+                          </Link>
                       <div className={styles.iconswrapper}>
                       <Link passHref href="/school/schoolProfile" className="btn-log-in-mobile">
                           <BiDownArrow size={20} className={styles.profileavatar}/>
@@ -227,7 +235,10 @@ const Navigation = () => {
                           <div className={styles.linkswrapper}>
                             <a href="/payment">Add New class</a>
                             <a href="#">My Feeds</a>
-                            <a href="#">Manage Profile</a>
+                            <a href="#">My Feeds</a>
+                            <Link href="/dashboard/student/studentProfile">
+                              <a>Manage Profile</a>
+                            </Link>
                             <a href="#">Share Feedback</a>
                             <a 
                             onClick={handleLogout}
