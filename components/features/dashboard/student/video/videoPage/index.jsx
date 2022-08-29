@@ -1,32 +1,47 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 // import Video from "..";
 import styles from "../../classnote/classnote.module.css";
 import styles1 from "../../../../../../pages/dashboard/teacher/teacher.module.css";
 import styles2 from "../../topInClass.module.css";
 import { useRouter } from "next/router";
-import { useSelector } from "react-redux";
-import { fetchstoreUnFinishedVideos } from "../../../../../../redux/actions/subject";
-import ReactPlayer from "react-player";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchClearLikeLesson,
+  fetchclearUnFinishedVideos,
+  fetchgetLessonComments,
+  fetchremoveFavouriteVideo,
+  fetchsaveFavouriteVideo,
+  fetchStoreLikeLesson,
+  fetchstoreUnFinishedVideos,
+} from "../../../../../../redux/actions/subject";
+import ReactPlayer from "react-player/lazy";
+import { FcLike } from "react-icons/fc";
+import { FcLikePlaceholder } from "react-icons/fc";
+import moment from "moment";
+import Speech from "react-speech";
+
 // import {useSpeechSynthesis} from "react-speech-kit";
 
 const VideoPage = () => {
+  const dispatch = useDispatch();
+  const ref = useRef("");
   const router = useRouter();
   let quary = router.query[0];
   let quary1 = router.query[1];
-  console.log(quary);
   const { user } = useSelector((state) => state.auth);
   const subject = useSelector((state) => state.mySubjectCourse);
   const lessons = subject.subjectDetails[1]?.relatedLessons;
   console.log(lessons);
+  console.log(subject);
+  const token = user?.token;
   const terms = [
     { id: "5fc8d1b20fae0a06bc22db5c", term: "First Term" },
     { id: "600047f67cabf80f88f61735", term: "Second Term" },
     { id: "600048197cabf80f88f61736", term: "Third Term" },
   ];
-
   const videoId = (id) => {
     let dat;
     for (let i = 0; i < lessons.length; i++) {
@@ -61,15 +76,10 @@ const VideoPage = () => {
     topic: videoId(quary).title,
     videoUrl: videoIds(quary1),
   };
-
-  console.log(data?.videoUrl);
   const [visibility, setVisibility] = useState("Show");
-  // src/App.js
-  const onEnd = () => {
-    setHighlightedText("");
-  };
 
-  // const { speak, cancel, speaking, supported, voices } = useSpeechSynthesis({onEnd})
+  const [modal, setModal] = useState(false);
+  const toggleModal = () => setModal(!modal);
   const iconData = [
     {
       icon: "arrowhead",
@@ -91,18 +101,16 @@ const VideoPage = () => {
     "November",
     "December",
   ];
+  const subjected = subject.subjectDetails[0].subject;
   const secVidData = {
-    class: subject.subjectDetails[0].subject.courseId.alias,
-    subject: subject.subjectDetails[0].subject.mainSubjectId.name,
+    class: subjected.courseId.alias,
+    subject: subjected.mainSubjectId.name,
     term: term(),
-    date: `${d.getDate()} - ${months[d.getMonth()]} - ${d.getFullYear()}`,
+    date: moment(videoId(quary) && videoId(quary).createdAt).format("LL"),
   };
 
-  const [show, setShow] = useState(false);
   const target = useRef(null);
 
-  console.log(videoId(quary));
-  console.log(videoIds(quary1));
   const datas = {
     userId: user.user._id,
     courseId: videoId(quary).courseId,
@@ -112,10 +120,104 @@ const VideoPage = () => {
     videoId: videoIds(quary1)._id,
     videoPosition: lessonsNumber,
   };
+  const [audioState, setAudioState] = useState(false);
+  const handleClick = () => {
+    setAudioState(!audioState);
+  };
+  const decodeEntities = (function () {
+    // this prevents any overhead from creating the object each time
+    var element = document.createElement("div");
+
+    function decodeHTMLEntities(str) {
+      if (str && typeof str === "string") {
+        // strip script/html tags
+        str = str.replace(/<script[^>]*>([\S\s]*?)<\/script>/gim, "");
+        str = str.replace(/<\/?\w(?:[^"'>]|"[^"]*"|'[^']*')*>/gim, "");
+        element.innerHTML = str;
+        str = element.textContent;
+        element.textContent = "";
+      }
+
+      return str;
+    }
+    return decodeHTMLEntities;
+  })();
+  const alreadyAddedToFavourite = () => {
+    let result = [];
+    let result1 = [];
+    //old records
+    if (dashboardFavouriteVideos && dashboardFavouriteVideos.length) {
+      result = dashboardFavouriteVideos.filter(
+        (item) => item.lessonId.id === parsed.lessonId,
+      );
+    }
+    //new records
+    if (
+      newlyAddedDashbaordFavouriteVideos &&
+      newlyAddedDashbaordFavouriteVideos.length
+    ) {
+      result1 = newlyAddedDashbaordFavouriteVideos.filter(
+        (item) => item.lessonId === parsed.lessonId,
+      );
+    }
+    if (result.length || result1.length) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  let likey = () => {
+    let likes = videoId(quary).likes.find((fruit) => {
+      return fruit === datas.userId;
+    });
+    return likes;
+  };
+  const fave = subject.subject[4].favouriteVideos;
+  let favoury = () => {
+    let likes = fave.find((fruit) => {
+      return fruit.lessonId.id === datas.lessonId;
+    });
+    return likes;
+  };
+  const [show, setShow] = useState(likey() ? true : false);
+  const [faves, setfaves] = useState(favoury() ? true : false);
+  console.log(faves);
+  const [liskes, setLiskes] = useState(videoId(quary).likes.length);
+  const showing = () => {
+    if (show) {
+      setLiskes(+liskes - 1);
+      setShow(!show);
+      dispatch(fetchClearLikeLesson(datas, token));
+    } else {
+      setShow(!show);
+      setLiskes(+liskes + 1);
+      dispatch(fetchStoreLikeLesson(datas, token));
+    }
+  };
+  const favouring = () => {
+    if (faves) {
+      setfaves(!faves);
+      dispatch(fetchremoveFavouriteVideo(datas, token));
+    } else {
+      setfaves(!faves);
+      dispatch(fetchsaveFavouriteVideo(datas, token));
+    }
+  };
+  useEffect(() => {
+    dispatch(
+      fetchgetLessonComments(
+        datas.lessonId,
+        { commentSection: "video" },
+        token,
+      ),
+    );
+  }, [fetchgetLessonComments]);
+
   return (
     <Container fluid>
       <Row>
-        <Col className="p-0">
+        <Col className="p-0" style={{ cursor: "pointer" }}>
           {/* <iframe
             width="100%"
             height="600px"
@@ -127,7 +229,7 @@ const VideoPage = () => {
             config={{ file: { attributes: { controlsList: "nodownload" } } }}
             onContextMenu={(e) => e.preventDefault()}
             onEnded={(e) => {
-              clearUnFinishedVideo(datas);
+              fetchclearUnFinishedVideos(datas);
               toggleModal();
             }}
             url={data?.videoUrl.videoUrl}
@@ -165,7 +267,7 @@ const VideoPage = () => {
               <Link
                 href={{
                   pathname: "/dashboard/student/classnote/classnotePage",
-                  query: { Exam: quary },
+                  query: { quary },
                 }}
               >
                 <a>
@@ -174,53 +276,84 @@ const VideoPage = () => {
                 </a>
               </Link>
             </Col>
-            {
-              <Col
-                /*onClick={()=> speak({text:lessons[quary1].content})}*/ style={{
-                  cursor: "pointer",
-                }}
+
+            <Col
+              className="w-100"
+              onClick={handleClick}
+              style={{
+                position: "relative",
+                margin: "auto",
+                cursor: "pointer",
+              }}
+            >
+              <Speech
+                text={decodeEntities(videoId(quary).content)}
+                textAsButton={true}
+                stop={audioState}
+                displayText={
+                  <div style={{ height: "54.5" }}>
+                    <div className={styles.mic}></div>
+                    <div className={styles.micBottom}>Audio Lesson</div>
+                  </div>
+                }
+              />
+            </Col>
+
+            <Col onClick={() => showing()} style={{ cursor: "pointer" }}>
+              <div
+                className="mx-5 px-4"
+                style={{ cursor: "pointer", width: "32px", height: "32px" }}
               >
-                <div className={styles.mic}></div>
-                <div className={styles.micBottom}>Audio Lesson</div>
-              </Col>
-            }
-            <Col>
-              <div className={styles.love}></div>
+                {show ? <FcLike size={32} /> : <FcLikePlaceholder size={32} />}
+              </div>
               <div className={styles.loveBottom}>I Love This</div>
             </Col>
-            <Col md={1}>
+
+            <Col md={1} className="p-2" style={{ position: "relative" }}>
               <div className={`m-auto ${styles1.moreIcon}`}>
                 <div
                   style={{
-                    width: "200px",
+                    width: "150px",
                     background: "#FFFFFF",
                     boxShadow: "0px 1px 7px rgba(0, 0, 0, 0.1)",
                     borderRadius: "10px",
                     position: "absolute",
+                    top: "-84px",
+                    left: "-45px",
                   }}
                   className={styles1.displayNone}
                 >
                   <Col className={`p-3 ps-3 `}>
                     <Link passHref href="/dashboard/teacher/assignContent">
-                      <Row className="ps-3 pb-2">
+                      <Row className="">
                         <Col className={`m-auto ${styles.highlightText}`}>
-                          Assign Content
+                          <p style={{ fontSize: "12px", margin: "2px" }}>
+                            Share
+                          </p>
                         </Col>
                       </Row>
                     </Link>
-                    <Row className="ps-3 pb-2">
-                      <Col className={`m-auto ${styles.highlightText}`}>
-                        Community
+                    <Row className="">
+                      <Col
+                        onClick={() => favouring()}
+                        className={`m-auto ${styles.highlightText}`}
+                      >
+                        {faves ? (
+                          <p style={{ fontSize: "12px", margin: "2px" }}>
+                            Remove from Favourites
+                          </p>
+                        ) : (
+                          <p style={{ fontSize: "12px", margin: "2px" }}>
+                            Add to Favourites
+                          </p>
+                        )}
                       </Col>
                     </Row>
-                    <Row className="ps-3 pb-2">
+                    <Row className="">
                       <Col className={`m-auto ${styles.highlightText}`}>
-                        Bookmark
-                      </Col>
-                    </Row>
-                    <Row className="ps-3 pb-2">
-                      <Col className={`m-auto ${styles.highlightText}`}>
-                        Share
+                        <p style={{ fontSize: "12px", margin: "2px" }}>
+                          Report Lesson
+                        </p>
                       </Col>
                     </Row>
                   </Col>
@@ -237,7 +370,7 @@ const VideoPage = () => {
             </Col>
             <Col className={styles.colSeen}>
               <div className={styles.loved}></div>
-              <div>{videoId(quary).likes.length} Love</div>
+              <div>{liskes} Like</div>
             </Col>
           </Row>
           <Row>
@@ -246,12 +379,10 @@ const VideoPage = () => {
             </Col>
           </Row>
           {/* ----------------------------------------------- */}
-          <Comment />
+          <Comment data={subject.comments} />
 
           <Row>
             <Col>
-              {/* <Link href="/dashboard/student/video/videoPage"> */}
-
               <div
                 className={` ${styles.accordButtonLeft} ${styles.accordButtonLeftExtra}`}
               >
@@ -381,7 +512,7 @@ const VideoPage = () => {
 
 export default VideoPage;
 
-export const Comment = () => {
+export const Comment = ({ data }) => {
   const comments = [
     {
       name: "Ibrahim Muhammed",
@@ -410,11 +541,10 @@ export const Comment = () => {
 
   const [comment, setComment] = useState("");
 
-  const userAvatar = { avatar: "userIcon" };
-  const lenComment = comments.length;
+  const lenComment = data.length;
 
   return (
-    <>
+    <section>
       <Row>
         <Col className={styles.colSeendown}>
           <div className={styles.vidCommentLeft}>Comments</div>
@@ -426,7 +556,7 @@ export const Comment = () => {
           <div className={styles.commentAvatarLSide}>
             <Image
               alt={"afrilearn marketing video"}
-              src={`/assets/img/features/dashboard/student/${userAvatar.avatar}.png`}
+              src={`/assets/img/profile.svg`}
               width={45}
               height={45}
             />
@@ -506,7 +636,7 @@ export const Comment = () => {
           </Col>
         </Row>
       ))}
-    </>
+    </section>
   );
 };
 

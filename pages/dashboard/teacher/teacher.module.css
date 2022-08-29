@@ -4,7 +4,8 @@
   background-size: contain;
   width: 7px;
   height: 25px;
-  position: "relative"
+  position: "relative";
+  cursor: pointer;
 }
 
 .styleEdit {
@@ -50,13 +51,12 @@
   align-self: center;
 }
 
-
 .commentAvatartop {
   display: grid;
   grid-template-columns: 85% 15%;
   grid-row: 50px;
   align-content: center;
-  position:relative;
+  position: relative;
   padding-right: 90px;
 }
 
@@ -68,5 +68,5 @@
 
 .commentAvatarMRSide {
   position: absolute;
-  right:90px;
+  right: 90px;
 }

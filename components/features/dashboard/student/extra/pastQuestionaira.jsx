@@ -16,7 +16,7 @@ const PastQuestion = ({ subData }) => {
 
     const settings = {
       infinite: true,
-      slidesToShow: subData.length > 3 ? 3 : (subData.length = 2 ? 2 : 1),
+      slidesToShow: 3,
       slidesToScroll: 1,
       autoplay: true,
       speed: 1500,
@@ -34,53 +34,107 @@ const PastQuestion = ({ subData }) => {
 
     return (
       <>
-        <Slider {...settings} ref={customeSlider}>
-          {subData?.map((data, i) => {
-            // console.log(data.pastQuestionTypes[0]);
-            return (
-              <Link
-                passHref
-                href={{
-                  pathname: "/dashboard/student/pastQuestion",
-                  query: { Exam: data.pastQuestionTypes[0].name },
-                }}
-              >
-                <div
-                  key={i}
-                  className={`${
-                    data.pastQuestionTypes[0].categoryId % 2 !== 0
-                      ? styles.containerList1
-                      : styles.containerList2
-                  }`}
-                  onClick={() => setSubId(data.pastQuestionTypes[0].categoryId)}
+        {subData?.length > 2 ? (
+          <Slider {...settings} ref={customeSlider}>
+            {subData?.map((data, i) => {
+              // console.log(data.pastQuestionTypes[0]);
+              return (
+                <Link
+                  passHref
+                  href={{
+                    pathname: "/dashboard/student/pastQuestion",
+                    query: { Exam: data.pastQuestionTypes[0].name },
+                  }}
                 >
                   <div
+                    key={i}
                     className={`${
                       data.pastQuestionTypes[0].categoryId % 2 !== 0
-                        ? styles.cointainerListLeft1
-                        : styles.cointainerListLeft2
+                        ? styles.containerList1
+                        : styles.containerList2
                     }`}
+                    onClick={() =>
+                      setSubId(data.pastQuestionTypes[0].categoryId)
+                    }
                   >
-                    <Image
-                      alt={"logo image"}
-                      src={data.pastQuestionTypes[0].imageUrl}
-                      width="100%"
-                      height="100%"
-                    />
-                    <div className={styles.cointainerListRight}>
-                      <div className={styles.cointainerListLeftTop}>
-                        {data.pastQuestionTypes[0].name}
-                      </div>
-                      <div className={styles.cointainerListLeftBottom}>
-                        {data.pastQuestionTypes[0].description}
+                    <div
+                      className={`${
+                        data.pastQuestionTypes[0].categoryId % 2 !== 0
+                          ? styles.cointainerListLeft1
+                          : styles.cointainerListLeft2
+                      }`}
+                    >
+                      <Image
+                        alt={"logo image"}
+                        src={data.pastQuestionTypes[0].imageUrl}
+                        width="100%"
+                        height="100%"
+                      />
+                      <div className={styles.cointainerListRight}>
+                        <div className={styles.cointainerListLeftTop}>
+                          {data.pastQuestionTypes[0].name}
+                        </div>
+                        <div className={styles.cointainerListLeftBottom}>
+                          {data.pastQuestionTypes[0].description}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </Link>
-            );
-          })}
-        </Slider>
+                </Link>
+              );
+            })}
+          </Slider>
+        ) : (
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "15px" }}>
+            {subData?.map((data, i) => {
+              // console.log(data.pastQuestionTypes[0]);
+              return (
+                <Link
+                  passHref
+                  href={{
+                    pathname: "/dashboard/student/pastQuestion",
+                    query: { Exam: data.pastQuestionTypes[0].name },
+                  }}
+                >
+                  <div
+                    key={i}
+                    className={`${
+                      data.pastQuestionTypes[0].categoryId % 2 !== 0
+                        ? styles.containerList1
+                        : styles.containerList2
+                    }`}
+                    onClick={() =>
+                      setSubId(data.pastQuestionTypes[0].categoryId)
+                    }
+                  >
+                    <div
+                      className={`${
+                        data.pastQuestionTypes[0].categoryId % 2 !== 0
+                          ? styles.cointainerListLeft1
+                          : styles.cointainerListLeft2
+                      }`}
+                    >
+                      <Image
+                        alt={"logo image"}
+                        src={data.pastQuestionTypes[0].imageUrl}
+                        width="100%"
+                        height="100%"
+                      />
+                      <div className={styles.cointainerListRight}>
+                        <div className={styles.cointainerListLeftTop}>
+                          {data.pastQuestionTypes[0].name}
+                        </div>
+                        <div className={styles.cointainerListLeftBottom}>
+                          {data.pastQuestionTypes[0].description}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        )}
       </>
     );
   };

@@ -3,6 +3,19 @@ import axios from "axios";
 const HerokuServer = "https://afrilearn-backend-01.herokuapp.com/";
 const HerokuURL = HerokuServer + "api/v1/";
 const url = HerokuURL;
+// const headers = (token) => {
+//   let header = {};
+//   if (fileupload) {
+//     header["Content-type"] = "application/json";
+//   }
+//   if (token && token !== undefined) {
+//     header["token"] = token;
+//   }
+//   return header;
+// };
+const headers = (token) => {
+  return { headers: { "Content-type": "application/json" }, token: token };
+};
 export const fetchSubjectsStart = () => ({
   type: types.FETCH_SUBJECT_START,
 });
@@ -11,8 +24,20 @@ export const fetchSubjectsSuccess = (subject) => ({
   type: types.FETCH_SUBJECT_SUCCESS,
   payload: subject,
 });
-export const fetchUnFinishedVideosSuccess = (subject) => ({
-  type: types.FETCH_UNFINISHEDVIDEOS_SUCCESS,
+export const fetchFavouriteSuccess = (subject) => ({
+  type: types.FETCH_FAVOURITE_SUCCESS,
+  payload: subject,
+});
+export const fetchUnfinished = (subject) => ({
+  type: types.FETCH_UNFINISHED_SUCCESS,
+  payload: subject,
+});
+export const fetchWeb = (subject) => ({
+  type: types.FETCH_WEB_SUCCESS,
+  payload: subject,
+});
+export const fetchCommentsSuccess = (subject) => ({
+  type: types.FETCH_COMMENTS_SUCCESS,
   payload: subject,
 });
 export const fetchSubjectsDetailsSuccess = (subject) => ({
@@ -59,21 +84,136 @@ export const fetchCoursesInitiate = (courseId) => {
         `https://afrilearn-backend-01.herokuapp.com/api/v1/courses/${courseId}/subjects`,
       )
       .then((res) => {
-        dispatch(fetchSubjectsSuccess(res.data.data));
+        console.log(res);
+        // dispatch(fetchSubjectsSuccess(res.data.data));
       });
   };
 };
-export const fetchstoreUnFinishedVideos = (data) => {
+export const fetchGetFavouriteInitiate = (token) => {
   return function (dispatch) {
     dispatch(fetchSubjectsStart());
     axios({
       method: "post",
-      url: `${this.url}lessons/storeUnFinishedVideos`,
-      headers: this.headers(),
-      data,
+      url: `${url}dashboard/favourite`,
+      headers: headers(token),
+    }).then((res) => {
+      dispatch(fetchFavouriteSuccess(res.data.data));
+      // dispatch((res.data.data));
+    });
+  };
+};
+export const fetchGetUnfinishedVideosInitiate = (token) => {
+  return function (dispatch) {
+    dispatch(fetchSubjectsStart());
+    axios({
+      method: "get",
+      url: `${url}dashboard/unfinishedVideos`,
+      headers: headers(token),
+    }).then((res) => {
+      dispatch(fetchUnfinished(res.data.data));
+      // dispatch((res.data.data));
+    });
+  };
+};
+export const fetchGetWebInitiate = (sub_id, token) => {
+  return function (dispatch) {
+    dispatch(fetchSubjectsStart());
+    axios({
+      method: "post",
+      url: `${url}dashboard/web`,
+      headers: headers(token),
+      enrolledCourseId: sub_id,
     }).then((res) => {
       console.log(res);
-      // dispatch(fetchUnFinishedVideosSuccess(res.data.data));
+      dispatch(fetchWeb(res.data.data));
+      // dispatch((res.data.data));
+    });
+  };
+};
+
+export const fetchstoreUnFinishedVideos = (data, token) => {
+  return function (dispatch) {
+    axios({
+      method: "post",
+      url: `${url}lessons/storeUnFinishedVideos`,
+      headers: headers(token),
+      data,
+    }).then((res) => {
+      // dispatch((res.data.data));
+    });
+  };
+};
+export const fetchgetLessonComments = (lessonId, data, token) => {
+  return function (dispatch) {
+    axios({
+      method: "post",
+      url: `${url}comments/${lessonId}`,
+      headers: headers(token),
+      data,
+    }).then((res) => {
+      dispatch(fetchCommentsSuccess(res.data.data));
+    });
+  };
+};
+export const fetchsaveFavouriteVideo = (data, token) => {
+  return function (dispatch) {
+    axios({
+      method: "post",
+      url: `${url}lessons/saveFavouriteVideos`,
+      headers: headers(token),
+      data,
+    }).then((res) => {
+      // console.log(res);
+      // dispatch((res.data.data));
+    });
+  };
+};
+export const fetchremoveFavouriteVideo = (data, token) => {
+  return function (dispatch) {
+    axios({
+      method: "delete",
+      url: `${url}lessons/removeFavouriteVideos`,
+      headers: headers(token),
+      data,
+    }).then((res) => {
+      // console.log(res);
+      // dispatch((res.data.data));
+    });
+  };
+};
+export const fetchStoreLikeLesson = (data, token) => {
+  return function (dispatch) {
+    axios({
+      method: "post",
+      url: `${url}lessons/saveLikedVideo`,
+      headers: headers(token),
+      data,
+    }).then((res) => {
+      // dispatch((res.data.data));
+    });
+  };
+};
+export const fetchClearLikeLesson = (data, token) => {
+  return function (dispatch) {
+    axios({
+      method: "delete",
+      url: `${url}lessons/removeLikedVideo`,
+      headers: headers(token),
+      data,
+    }).then((res) => {
+      // dispatch((res.data.data));
+    });
+  };
+};
+export const fetchclearUnFinishedVideos = (data, token) => {
+  return function (dispatch) {
+    axios({
+      method: "delete",
+      url: `${url}lessons/clearUnFinishedVideos`,
+      headers: headers(token),
+      data,
+    }).then((res) => {
+      // dispatch((res.data.data));
     });
   };
 };
@@ -83,8 +223,8 @@ export const fetchSendClassRequest = (courseId, token) => {
     axios
       .post(
         `https://afrilearn-backend-01.herokuapp.com/api/v1/classes/send-class-request`,
-        { classCode: courseId },
         { headers: { "Content-type": "application/json", token: token } },
+        { classCode: courseId },
       )
 
       // .then((res) => res.json())
@@ -169,13 +309,11 @@ export const fetchCourseDetailsInitiate = (courseId, subjectId) => {
   };
 };
 
-export const fetchSubjectInitiate = (sub_Id, token, userId) => {
+export const fetchSubjectInitiate = (sub_Id, token) => {
   return async function (dispatch) {
     let one = `https://afrilearn-backend-01.herokuapp.com/api/v1/dashboard/class-membership`;
-    let two = `https://afrilearn-backend-01.herokuapp.com/api/v1/dashboard/topTen`;
     let three = `https://afrilearn-backend-01.herokuapp.com/api/v1/dashboard/web`;
-    let four = `https://afrilearn-backend-01.herokuapp.com/api/v1/dashboard/unfinishedVideos`;
-    let five = `https://afrilearn-backend-01.herokuapp.com/api/v1/dashboard/favourite`;
+    // let two = `https://afrilearn-backend-01.herokuapp.com/api/v1/dashboard/topTen`;
 
     dispatch(fetchSubjectsStart());
     const requestOne = await axios.post(
@@ -183,119 +321,30 @@ export const fetchSubjectInitiate = (sub_Id, token, userId) => {
       { enrolledCourseId: sub_Id },
       { headers: { "Content-type": "application/json", token: token } },
     );
-    // const requestOne = await axios.get(one);
-    const requestTwo = await axios.post(
-      two,
-      { enrolledCourseId: sub_Id },
-      { headers: { "Content-type": "application/json", token: token } },
-    );
+    // const requestTwo = await axios.post(
+    //   two,
+    //   { enrolledCourseId: sub_Id },
+    //   { headers: { "Content-type": "application/json", token: token } },
+    // );
     const requestThree = await axios.post(
       three,
       { enrolledCourseId: sub_Id },
       { headers: { "Content-type": "application/json", token: token } },
     );
-    const requestFour = await axios.get(four, {
-      headers: { "Content-type": "application/json", token: token },
-    });
-    const requestFive = await axios.post(
-      five,
-      { userId },
-      {
-        headers: { "Content-type": "application/json", token: token },
-      },
+
+    axios.all([requestOne, requestThree]).then(
+      axios.spread(async function (...responses) {
+        const responseOne = await responses[0].data.data;
+        const responseTwo = await responses[1].data.data;
+        // const responseThree = await responses[2].data.data;
+        const response = [responseOne, responseTwo];
+        console.log(response);
+        dispatch(fetchSubjectsSuccess(response));
+      }),
     );
-
-    axios
-      .all([requestOne, requestTwo, requestThree, requestFour, requestFive])
-      .then(
-        axios.spread(async function (...responses) {
-          const responseOne = await responses[0].data.data;
-          const responseTwo = await responses[1].data.data;
-          const responseThree = await responses[2].data.data;
-          const responseFour = await responses[3].data.data;
-          const responseFive = await responses[4].data.data;
-
-          // use/access the results
-          const response = [
-            responseTwo,
-            responseThree,
-            responseOne,
-            responseFour,
-            responseFive,
-          ];
-
-          dispatch(fetchSubjectsSuccess(response));
-        }),
-      );
-    // .then((err) => {
-    //   console.log(err);
-    // });A
   };
 };
-export const fetchPastQuestionSubInitiate = (id) => {
-  return async function (dispatch) {
-    // const state = getState();
-    // if (state.subject.pastQuestion[0]?.subjects) {
-    //   return;
-    // }
-    // try {
-    await axios
-      .all(
-        await id.map(async (data) => {
-          await axios.get(
-            `https://api.exambly.com/adminpanel/v2/getMySubjects/${data}`,
-            {
-              headers: {
-                "Content-type": "application/json",
-                authorization:
-                  "F0c7ljTmi25e7LMIF0Wz01lZlkHX9b57DFTqUHFyWeVOlKAsKR0E5JdBOvdunpqv",
-              },
-            },
-          );
-        }),
-      )
-      .then(
-        axios.spread(async function (...responses) {
-          console.log(responses);
-        }),
-      );
-    // } catch (e) {
-    //   console.log("====================================");
-    //   console.log("sdfghsdfghjk");
-    //   console.log("====================================");
-    // }
-    // id.map((data, i) => {
-    //   requestTwo.push(i);
-    //   requestOne.push(
-    //     axios.get(
-    //       `https://api.exambly.com/adminpanel/v2/getMySubjects/${data}`,
-    //       {
-    //         headers: {
-    //           "Content-type": "application/json",
-    //           authorization:
-    //             "F0c7ljTmi25e7LMIF0Wz01lZlkHX9b57DFTqUHFyWeVOlKAsKR0E5JdBOvdunpqv",
-    //         },
-    //       },
-    //     ),
-    //   );
-    // });
-    // requestOne.length === requestTwo.length &&
-    //   axios
-    //     .all(requestOne)
-    //     .then(
-    //       axios.spread(async function (...responses) {
-    //         const responseOne = await responses[0].data;
-    //         const response = [responseOne];
-    //         console.log(response);
 
-    //         dispatch(fetchPastQuestionSuccess(response));
-    //       }),
-    //     )
-    //     .then((error) => {
-    //       console.log(error);
-    //     });
-  };
-};
 export const fetchPastQuestionSubjInitiate = (id) => {
   return async function (dispatch) {
     let one = `https://api.exambly.com/adminpanel/v2/getMySubjects/${id}`;
@@ -324,32 +373,22 @@ export const fetchPastQuestionSubjInitiate = (id) => {
   };
 };
 export const fetchPastQuestionInitiate = (id) => {
-  return async function (dispatch, getState) {
-    let one = `https://api.exambly.com/adminpanel/v2/getMySubjects/${id}`;
-
-    const requestOne = await axios.get(one, {
+  return async function (dispatch) {
+    axios({
+      method: "get",
+      url: `https://api.exambly.com/adminpanel/v2/getMySubjects/${id}`,
       headers: {
         "Content-type": "application/json",
         authorization:
           "F0c7ljTmi25e7LMIF0Wz01lZlkHX9b57DFTqUHFyWeVOlKAsKR0E5JdBOvdunpqv",
       },
+    }).then((res) => {
+      console.log(res);
+      dispatch(fetchUnfinished(res.data.data));
     });
-    axios
-      .all([requestOne])
-      .then(
-        axios.spread(async function (...responses) {
-          const responseOne = await responses[0].data;
-          const response = [responseOne];
-          console.log(response);
-
-          dispatch(fetchPastQuestionSuccess(response));
-        }),
-      )
-      .then((error) => {
-        console.log(error);
-      });
   };
 };
+
 export const fetchPastQuestionQueInitiate = (sub_id) => {
   return async function (dispatch) {
     let two = `https://api.exambly.com/adminpanel/v2/getQuestions/${sub_id}`;

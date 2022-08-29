@@ -4,12 +4,9 @@
   border-radius: 10px;
 }
 
-
 .classs {
   margin: 50px 100px;
 }
-
-
 
 .accordance {
   background-image: url("/assets/img/features/dashboard/student/button2.png");
@@ -42,6 +39,10 @@
 }
 .love {
   background-image: url("/assets/img/features/dashboard/student/Heart.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 32px;
+  height: 32px;
 }
 .seen {
   background-image: url("/assets/img/features/dashboard/student/Show.png");

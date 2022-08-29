@@ -1,6 +1,7 @@
 import * as types from "../types";
 
 const initialState = {
+  comments: [],
   stuTeacherSub: "",
   announcement: "",
   subject: [],
@@ -9,6 +10,8 @@ const initialState = {
   pastQuestionSub: [],
   pastQuestionQue: [],
   classRequestInfo: "",
+  unfinishedStore: "",
+  dashboardWeb: "",
 };
 
 const subjectedReducer = (state = initialState, { type, payload }) => {
@@ -17,10 +20,31 @@ const subjectedReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
       };
+
     case types.FETCH_SUBJECT_SUCCESS:
       return {
         ...state,
         subject: payload,
+      };
+    case types.FETCH_FAVOURITE_SUCCESS:
+      return {
+        ...state,
+        favourite: payload,
+      };
+    case types.FETCH_UNFINISHED_SUCCESS:
+      return {
+        ...state,
+        unfinishedStore: payload,
+      };
+    case types.FETCH_WEB_SUCCESS:
+      return {
+        ...state,
+        dashboardWeb: payload,
+      };
+    case types.FETCH_COMMENTS_SUCCESS:
+      return {
+        ...state,
+        comments: payload,
       };
     case types.FETCH_SUBJECTDETAILS_SUCCESS:
       return {

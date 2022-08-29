@@ -1136,3 +1136,21 @@ a {
   background-color: #00d9b6 !important;
   border-color: #00d9b6 !important;
 }
+
+.rs-play {
+  width: 100%;
+  background-color: transparent !important;
+}
+.rs-stop {
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 4px;
+  background-color: transparent !important;
+  position: absolute;
+  top: 4px;
+  left: 86px;
+}
+
+.adjust .rs-text {
+  display: none;
+}
