@@ -1,13 +1,17 @@
 import * as types from "../types";
 
 const initialState = {
+  stuTeacherSub: "",
+  announcement: "",
   subject: [],
   subjectDetails: [],
-  pastQuestion:[],
-  pastQuestionQue:[],
+  pastQuestion: [],
+  pastQuestionSub: [],
+  pastQuestionQue: [],
+  classRequestInfo: "",
 };
 
-const subjectReducer = (state = initialState, { type, payload }) => {
+const subjectedReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case types.FETCH_SUBJECT_START:
       return {
@@ -34,6 +38,27 @@ const subjectReducer = (state = initialState, { type, payload }) => {
         ...state,
         pastQuestionQue: payload,
       };
+    case types.FETCH_PASTQUESTIONSUB_SUCCESS:
+      return {
+        ...state,
+        pastQuestionSub: payload,
+      };
+
+    case types.FETCH_STUDENTANNOUNCEMENT_SUCCESS:
+      return {
+        ...state,
+        announcement: payload,
+      };
+    case types.FETCH_STUDENTTEACHERSUB_SUCCESS:
+      return {
+        ...state,
+        stuTeacherSub: payload,
+      };
+    case types.FETCH_SENDCLASSREQUEST_SUCCESS:
+      return {
+        ...state,
+        classRequestInfo: payload,
+      };
     case types.FETCH_SUBJECT_FAIL:
       return {
         ...state,
@@ -44,4 +69,4 @@ const subjectReducer = (state = initialState, { type, payload }) => {
   }
 };
 
-export default subjectReducer;
+export default subjectedReducer;

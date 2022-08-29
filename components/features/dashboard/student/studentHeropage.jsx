@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 
 import Link from "next/link";
@@ -56,15 +55,19 @@ const studentHeropage = ({ data }) => {
 export default studentHeropage;
 
 export const StudentPage = ({ stuData }) => {
-  const { user, registerUser}  = useSelector(state => state.auth);
+  const { user, registerUser } = useSelector((state) => state.auth);
   // const courses = useSelector(state => state.Mycourses);
   const dispatch = useDispatch();
   // const {reconLesson } = useSelector(state => state.Mycourses);
 
-
-  console.log("User from UI ==>>>", registerUser.user)
+  console.log("User from UI ==>>>", registerUser.user);
   // console.log("token from UI =>>>", token)
-  console.log("From student dashboard", user.user?.enrolledCourses.length > 1? user.user?.enrolledCourses[1]?.courseId?.name : user.user?.enrolledCourses[0]?.courseId?.name)
+  console.log(
+    "From student dashboard",
+    user.user?.enrolledCourses.length > 1
+      ? user.user?.enrolledCourses[1]?.courseId?.name
+      : user.user?.enrolledCourses[0]?.courseId?.name,
+  );
   const greetings = (firstName) => {
     return `Welcome ${firstName}!`;
   };
@@ -74,13 +77,10 @@ export const StudentPage = ({ stuData }) => {
   // const userId = "62a0bc984af2d90016b72096"
   // const token = user.token
 
-  
-
-useEffect(() => {
-  // dispatch(fetchReconLessonInitiate(userId, token))
-  // dispatch(fetchCourseInitiate())
-}, [fetchCourseInitiate])
-
+  // useEffect(() => {
+  //   // dispatch(fetchReconLessonInitiate(userId, token))
+  //   dispatch(fetchCourseInitiate());
+  // }, [fetchCourseInitiate]);
 
   return (
     <>
@@ -90,10 +90,16 @@ useEffect(() => {
       >
         <div className="row">
           <div className="col-md-12">
-            <h1 className="text-capitalize">{user.user?.enrolledCourses.length > 1? user.user?.enrolledCourses[1]?.courseId?.name : user.user?.enrolledCourses[0]?.courseId?.name}</h1>
-
+            <h1 className="text-capitalize">{stuData[0].classData}</h1>
           </div>
+        </div>
+        <div className={`row ${styles.push2}`}>
+          <div className="col-md-12">
+            {stuData[0].firstName && <h2>{greetings(stuData[0].firstName)}</h2>}
             {stuData[0].subject && <h2>{stuData[0].subject}</h2>}
+            <p>Explore the fun in learning💃</p>
+          </div>
+        </div>
         <div className={`row ${styles.push2e}`}></div>
         <div className={`row ${styles.push2} ${styles.push3}`}>
           <div className="col-md-12">
@@ -105,7 +111,6 @@ useEffect(() => {
               ))}
           </div>
         </div>
-      </div>
       </div>
     </>
   );

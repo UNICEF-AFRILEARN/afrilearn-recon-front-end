@@ -25,6 +25,7 @@
     "eslint-config-react-app": "^7.0.0",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
+    "moment": "^2.29.4",
     "next": "^12.1.0",
     "next-auth": "^4.10.3",
     "next-redux-wrapper": "^7.0.5",
@@ -49,6 +50,7 @@
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.1",
     "slick-carousel": "^1.8.1",
+    "sweetalert2": "^11.4.28",
     "swr": "^1.2.2"
   },
   "scripts": {
