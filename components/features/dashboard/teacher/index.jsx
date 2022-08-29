@@ -134,12 +134,12 @@ export const HeropageWelcome = () => {
                           className="text-dark"
                           style={{
                             fontWeight: "500",
-                            // fontSize: "40px",
+                            fontSize: "10px",
                             textAlign: "center",
                             color: "#333333",
                           }}
                         >
-                          <h1>Welcome {registerUser.user?.fullName || user.user?.fullName}</h1>
+                          <h1 className='name-tag-holder'>Welcome {registerUser.user?.fullName || user.user?.fullName}</h1>
                         </div>
                       </Col>
                           <Link href="/payment">
@@ -211,7 +211,7 @@ export const Heropage = () => {
 };
 
 export const TeacherAnnouncement = () => {
-  const { classAnnouncement, postAnnouncement} = useSelector((state) => state.schoolClasses);
+  const { classAnnouncement, postAnnouncement, announcementComment} = useSelector((state) => state.schoolClasses);
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const [text, setText] = useState("");
@@ -219,7 +219,7 @@ export const TeacherAnnouncement = () => {
   // const [comment, setComment] = useState("");
   const [announcementCount, setAnnouncementCount] = useState(0);
 
-  console.log("classAnnouncement from Teacher announcement", announcement)
+  console.log("announcementComment from Teacher announcement", announcementComment)
   
   let token = user?.token;
   let classId = user?.user?.classOwnership[0]?.enrolledCourse?.classId
@@ -245,7 +245,7 @@ export const TeacherAnnouncement = () => {
       e.preventDefault();
       setText(announcement)
       // console.log(text)
-      // dispatch(makeAnnouncementInitiate(classId, text,token))
+      dispatch(makeAnnouncementInitiate(classId, text,token))
       setText("")
   };
 
@@ -256,7 +256,7 @@ export const TeacherAnnouncement = () => {
 
   useEffect(() => {
       dispatch(fetchAnnouncementInitiate(classId))
-  }, [postAnnouncement])
+  }, [postAnnouncement, announcementComment])
 
   return (
     <Container>

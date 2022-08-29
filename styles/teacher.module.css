@@ -412,3 +412,7 @@
     list-style-type: none;
     margin: 10px;
 }
+
+.name-tag-holder {
+    color: red !important;
+}
