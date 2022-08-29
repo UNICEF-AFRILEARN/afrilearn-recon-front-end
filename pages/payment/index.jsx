@@ -23,6 +23,7 @@ const payment = ({test_body}) => {
   const [ userRole, setUserRole ] = useState("");
   const [ classId, setClassId ] = useState("");
   const [ priceSelected, setPriceSelected ] = useState("");
+  const [ selectedCourse, setSelectedCourse ] = useState("");
   const [price, setPrice] = useState('');
   const {roles, user } = useSelector((state) => state.auth)
   const { children } = useSelector((state) => state.dashboard)
@@ -42,7 +43,7 @@ const handleOpen = () => {
   setOpen(true);
 }
 
-console.log("myChildren from payment ====>", myChildren)
+console.log("selectedCourse from payment ====>", selectedCourse)
   let showPrice;
   const handleSelect = (price) => {
     setPriceSelected(price)
@@ -316,6 +317,32 @@ console.log("myChildren from payment ====>", myChildren)
       <div  >
            <select
                 className={`${styles.pushDown} form-control form-control-sm`}
+                value={selectedCourse}
+                defaultValue={"default"}
+                onChange={(e) => setSelectedCourse(e.target.value)}
+                >
+                <option value={"default"}>
+                    Select a class
+                </option>
+                <option 
+                placeholder='Select a Role'
+                    >{user?.user?.classOwnership[0]?.name}
+                </option>
+                <option 
+                placeholder='Select a Role'
+                    > Create New Class
+                </option>
+            </select>
+      </div>
+      { selectedCourse === 'Create New Class' &&
+      <div >
+           <input
+                className={`${styles.pushDown} form-control form-control-sm`}
+                placeholder="New Class"
+                >
+            </input>
+            <select
+                className={`${styles.pushDown} form-control form-control-sm`}
                 // value={selectedCourse}
                 defaultValue={"default"}
                 // onChange={(e) => setCourseSelected(e.target.value)}
@@ -330,9 +357,13 @@ console.log("myChildren from payment ====>", myChildren)
                     >{childClass.name}
                 </option>
                 )}
+                <option 
+                placeholder='Select a Role'
+                    >{user?.user?.classOwnership[0]?.name}
+                </option>
             </select>
 
-      </div>
+      </div>}
     </div> 
   <h5>Step 3: Select Subscription Length</h5>
   <div className={`row ${styles.paymentdurationButtons}`}>

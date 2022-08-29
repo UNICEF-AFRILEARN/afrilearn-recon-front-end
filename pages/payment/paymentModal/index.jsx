@@ -69,17 +69,19 @@ const PaymentDetails = ({handleOpen, handleClose, open, closeModal, priceSelecte
         >
           <Typography
           id="modal-modal-title" 
-          variant="h6" 
+          variant="h3" 
           component="h2"
           onClick={closeModal}
-          
+          align='center'
           >
             Bank Deposit
             <Typography sx={{ mt: 2 }}>
               Make deposit using the bank details below
             </Typography>
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 3 }}>
+          <Typography
+           
+          id="modal-modal-description" sx={{ mt: 3 }}>
            Bank Name: GTBank
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 3 }}>
