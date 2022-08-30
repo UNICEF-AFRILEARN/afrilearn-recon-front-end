@@ -1,5 +1,6 @@
 import styles from "./student.module.css";
 import SubHeading from "./extra/subHeading";
+
 import PastQuestionaira from "./extra/pastQuestionaira";
 import TopInClass from "./extra/topInClass";
 import Recommendation from "./extra/recommendation";
@@ -51,6 +52,23 @@ const Dashboard = () => {
   const userId = "62a0bc984af2d90016b72096";
   const token = user.token;
   const lessonId = "6012c2a7cfe09249249f7f9c";
+
+  
+  useEffect(() => {
+    dispatch(fetchLessonsInitiate());
+    dispatch(fetchSingleLessonInitiate(lessonId));
+    dispatch(fetchActivitiesInitiate(token));
+    // dispatch(fetchUnicefReconInitiate(schoollevel, subject, lesson))
+    dispatch(fetchReconLessonInitiate(userId, token));
+    // dispatch(fetchCourseInitiate());
+  }, [
+    // fetchCourseInitiate,
+    fetchReconLessonInitiate,
+    fetchUnicefReconInitiate,
+    fetchActivitiesInitiate,
+    fetchLessonsInitiate,
+  ]);
+
 
   // To be changed later
 

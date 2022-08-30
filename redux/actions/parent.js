@@ -15,6 +15,19 @@ export const signUpChildFail = (error) => ({
   type: types.SIGN_UP_FOR_A_CHILD_FAIL,
   payload: error
 });
+export const unlinkChildStart = () => ({
+    type: types.UNLINK_CHILD_ACCOUNT_START,
+});
+
+export const unlinkChildSuccess = (payload) => ({
+  type: types.UNLINK_CHILD_ACCOUNT_SUCCESS,
+  payload
+});
+
+export const unlinkChildFail = (error) => ({
+  type: types.UNLINK_CHILD_ACCOUNT_FAIL,
+  payload: error
+});
 export const fetchChildrenStart = () => ({
     type: types.FETCH_CHILDREN_START,
 });

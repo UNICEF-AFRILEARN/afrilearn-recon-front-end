@@ -1,3 +1,5 @@
+import React, { useState} from 'react';
+
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -20,14 +22,38 @@ const PastQuestion = () => {
   }, [quary]);
 
   const subject = useSelector((state) => state.mySubjectCourse);
-  console.log(subject);
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const [queryParams, setQueryParams] = useState('')
+  
+
+
+  useEffect(() => {
+    setQueryParams(router.query.Exam)
+    if (queryParams !== "") {
+      dispatch(fetchPastQuestionQueInitiate(queryParams));
+    }
+  }, [queryParams]);
+
+
+  console.log("router.query.Exam", queryParams)
+  // let quary = router.query.Exam;
+  // useEffect(() => {
+ 
+  // }, [queryParams]);
+
+
+
+  
   const subjectDat = subject.pastQuestionQue[0];
-  const quizData = {
-    heading: `${subjectDat?.subject_details.exam_name}:`,
-    topic: `${subjectDat?.subject_details.subject} ${subjectDat?.subject_details.exam_year}`,
-    subject: subjectDat?.subject_details.subject,
-    questionNo: subjectDat?.subject_details.no_of_questions,
-  };
+  console.log("I catch you ===>", subjectDat); // questions and the options
+  
+  // const quizData = {
+  //   heading: `${subjectDat.subject_details.exam_name}:`,
+  //   topic: `${subjectDat.subject_details.subject} ${subjectDat?.subject_details.exam_year}`,
+  //   subject: subjectDat?.subject_details.subject,
+  //   questionNo: subjectDat?.subject_details.no_of_questions,
+  // };
 
   return (
     <>
@@ -56,7 +82,7 @@ const PastQuestion = () => {
                 color: "#29465b",
               }}
             >
-              {quizData?.heading}
+              {/* {quizData?.heading} */}
             </h6>
           </div>
           <div className="quizzTopic">
@@ -68,7 +94,7 @@ const PastQuestion = () => {
                 color: "#29465b",
               }}
             >
-              {quizData?.topic}
+              {/* {quizData?.topic} */}
             </p>
           </div>
           <div className="quizImage"> </div>
@@ -78,14 +104,14 @@ const PastQuestion = () => {
                 <Col sm={6} className="d-flex justify-content-start p-0">
                   <Row>
                     <Col sm={1} className={styles.pastqueIcon}></Col>
-                    <Col className="p-0">QUESTIONS: {quizData?.questionNo}</Col>
+                    {/* <Col className="p-0">QUESTIONS: {quizData?.questionNo}</Col> */}
                   </Row>
                 </Col>
                 <Col sm={6} className="d-flex justify-content-end p-0">
                   <Row className="">
                     <Col sm={1} className={styles.pastqueIcon1}></Col>
                     <Col className="">
-                      TIME: {subjectDat?.subject_details.duration}
+                      {/* TIME: {subjectDat?.subject_details.duration} */}
                     </Col>
                   </Row>
                 </Col>
@@ -100,7 +126,7 @@ const PastQuestion = () => {
               <Col sm={1} className={` ${styles.circleIcon}`}></Col>
               <Col className="px-2">
                 You are about to practice official questions set for
-                {subjectDat?.subject_details.exam_name}.
+                {/* {subjectDat?.subject_details.exam_name}. */}
               </Col>
             </Row>
           </Row>

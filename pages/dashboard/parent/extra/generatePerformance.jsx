@@ -39,11 +39,11 @@ const GeneratePerformance = ({children, courseContext}) => {
 
     
     const handleSubmit = (e) => {
-        // console.log("courseId ====>{======}", courseId)
+        // console.log("courseId ====>{======}", course_id)
         e.preventDefault()
         Router.push({
-            pathname: `/dashboard/performance/[_id]`,
-            query: { _id: _userId[0], course_id:_courseId || "undefined" }
+            pathname: `/dashboard/performance/[_userId]`,
+            query: { _userId: _userId[0], course_id:_courseId}
         })
     }
     

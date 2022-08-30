@@ -7,7 +7,7 @@ import { addNewStudentInitiate } from '../../../../../redux/actions/school';
 
 const Addnewstudent = () => {
   const { user, registerUser, roles } = useSelector((state) => state.auth);
-  const { schoolProfile, classMembers } = useSelector((state) => state.school);
+  const { schoolProfile, classMembers, newStudent } = useSelector((state) => state.school);
     const dispatch = useDispatch();
 
     const [fullName, setfullName] = useState("");
@@ -25,7 +25,7 @@ const Addnewstudent = () => {
     
     const handleSubmit = (e) => {
       e.preventDefault()
-      console.log("course =====>", fullName, email, classId, courseId, password)
+      console.log("newStudent =====>", newStudent)
         dispatch(addNewStudentInitiate(
             courseId,
             classId,
@@ -34,6 +34,10 @@ const Addnewstudent = () => {
             password,
             schoolId
         ))
+        setfullName("")
+        setPassword("")
+        setEmail("")
+        Router.push('/school')
     }
 
   
@@ -48,7 +52,7 @@ const Addnewstudent = () => {
 
   useEffect(() => {
     filterClassIds()
-}, [classSelected]);
+}, [fullName]);
 
     return (
         <>

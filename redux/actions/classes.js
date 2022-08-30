@@ -91,6 +91,17 @@ export const createClassworkFail = (error) => ({
     type: types.CREATE_CLASS_WORK_FAIL,
     payload: error
 });
+export const addCommentToTeacherAnnouncementStart = () => ({
+    type: types.ADD_COMMENT_TO_TEACHER_ANNOUNCEMENT_START
+});
+export const addCommentToTeacherAnnouncementSuccess = (payload) => ({
+    type: types.ADD_COMMENT_TO_TEACHER_ANNOUNCEMENT_SUCCESS,
+    payload
+});
+export const addCommentToTeacherAnnouncementFail = (error) => ({
+    type: types.ADD_COMMENT_TO_TEACHER_ANNOUNCEMENT_FAIL,
+    payload: error
+});
 
 
 export const makeAnnouncementInitiate = (classId, text, token) =>  {
@@ -116,6 +127,31 @@ export const makeAnnouncementInitiate = (classId, text, token) =>  {
     }
 
 }
+export const addCommentToTeacherAnnouncementInitiate = (announcementId, text, token) =>  {
+    return function (dispatch) {
+        dispatch(addCommentToTeacherAnnouncementStart())
+        axios
+        .post(`https://afrilearn-backend-01.herokuapp.com/api/v1/classes/${announcementId}/comment`,
+        {   
+            text  
+        },{
+            headers: {
+                "token": token,
+                "Content-Type": "application/json",
+            }
+        })
+        .then((res) => {
+            dispatch(addCommentToTeacherAnnouncementSuccess(res.data))
+            console.log("From Add comment to announcement API =>", res.data)
+        })
+        .catch((err) => {
+            dispatch(addCommentToTeacherAnnouncementFail(err))
+        })
+    }
+
+};
+
+
 export const createClassworkInitiate = (classId, token, lessonId, description) =>  {
     return function (dispatch) {
         dispatch(createClassworkStart())

@@ -23,6 +23,7 @@ const payment = ({test_body}) => {
   const [ userRole, setUserRole ] = useState("");
   const [ classId, setClassId ] = useState("");
   const [ priceSelected, setPriceSelected ] = useState("");
+  const [ selectedCourse, setSelectedCourse ] = useState("");
   const [price, setPrice] = useState('');
   const {roles, user } = useSelector((state) => state.auth)
   const { children } = useSelector((state) => state.dashboard)
@@ -42,7 +43,7 @@ const handleOpen = () => {
   setOpen(true);
 }
 
-console.log("myChildren from payment ====>", myChildren)
+console.log("selectedCourse from payment ====>", selectedCourse)
   let showPrice;
   const handleSelect = (price) => {
     setPriceSelected(price)
@@ -77,7 +78,7 @@ console.log("myChildren from payment ====>", myChildren)
   }
 
 
-const initializePayment = usePaystackPayment(config);
+// const initializePayment = usePaystackPayment(config);
 
   const courseContext = roles.courses;
   const allPaymentPlans = paymentPlans.paymentPlans;
@@ -160,7 +161,7 @@ const initializePayment = usePaystackPayment(config);
         <div >
     <div className='row'>
       <div className={styles.paymentLabel}><label for="className "><h5>Step 1: Select Class:</h5> </label></div>
-      <div  >
+      <div>
            <select
                 className={`${styles.pushDown} form-control form-control-sm`}
                 value={price}
@@ -185,18 +186,19 @@ const initializePayment = usePaystackPayment(config);
   <div className={`row ${styles.paymentdurationButtons}`}>
   <div className= {` col-md-3 ${styles.durationPayment}`}> 
     {allPaymentPlans && allPaymentPlans.map((allPlans) =>
-        <input 
-          className={styles.btnpayment}
+        <button 
+        className={`${styles.paymentwrapper} ${styles.btnpayment}`}
+          ref={priceElement}
           onClick={() => handleSelect(allPlans.amount)}
         >
         <div className={styles.durationBold}>{allPlans.name}</div>
         <div>{allPlans.amount}</div >
-      </input>
+      </button>
     )}
   </div>
   <div className= {` col-md-3 ${styles.durationPayment}`}> 
   </div>
- <div className='row'>
+ <div className={`row ${styles.btnwrapper}`}>
   <div className= {` col-md-6 ${styles.paymenttypeButton}`}>
     <div 
     onClick={() => {
@@ -204,8 +206,6 @@ const initializePayment = usePaystackPayment(config);
               }}>PAY WITH CARD</div>
   </div>
     <div className={` col-md-6 ${styles.paymenttypeButton2}`}>
-      {/* <button >BANK TRANSFER</button>
-       */}
          <PaymentDetails
     handleClose={handleClose}
     handleOpen={handleOpen}
@@ -271,6 +271,7 @@ const initializePayment = usePaystackPayment(config);
   <div className= {` col-md-3 ${styles.durationPayment}`}> 
     {allPaymentPlans && allPaymentPlans.map((allPlans) =>
         <button 
+        className={`${styles.paymentwrapper} ${styles.btnpayment}`}
         ref={priceElement}
         onClick={() => handleSelect(allPlans.amount)}
         >
@@ -316,6 +317,32 @@ const initializePayment = usePaystackPayment(config);
       <div  >
            <select
                 className={`${styles.pushDown} form-control form-control-sm`}
+                value={selectedCourse}
+                defaultValue={"default"}
+                onChange={(e) => setSelectedCourse(e.target.value)}
+                >
+                <option value={"default"}>
+                    Select a class
+                </option>
+                <option 
+                placeholder='Select a Role'
+                    >{user?.user?.classOwnership[0]?.name}
+                </option>
+                <option 
+                placeholder='Select a Role'
+                    > Create New Class
+                </option>
+            </select>
+      </div>
+      { selectedCourse === 'Create New Class' &&
+      <div >
+           <input
+                className={`${styles.pushDown} form-control form-control-sm`}
+                placeholder="New Class"
+                >
+            </input>
+            <select
+                className={`${styles.pushDown} form-control form-control-sm`}
                 // value={selectedCourse}
                 defaultValue={"default"}
                 // onChange={(e) => setCourseSelected(e.target.value)}
@@ -330,9 +357,13 @@ const initializePayment = usePaystackPayment(config);
                     >{childClass.name}
                 </option>
                 )}
+                <option 
+                placeholder='Select a Role'
+                    >{user?.user?.classOwnership[0]?.name}
+                </option>
             </select>
 
-      </div>
+      </div>}
     </div> 
   <h5>Step 3: Select Subscription Length</h5>
   <div className={`row ${styles.paymentdurationButtons}`}>
@@ -342,6 +373,7 @@ const initializePayment = usePaystackPayment(config);
   > 
     {teacher_plans && teacher_plans.map((teacherPlans) =>
         <button 
+        className={`${styles.paymentwrapper} ${styles.btnpayment}`}
         ref={priceElement}
         onClick={() => handleSelect(teacherPlans.amount)}
         >
@@ -413,8 +445,15 @@ const initializePayment = usePaystackPayment(config);
   <div className={`row ${styles.paymentdurationButtons}`}>
   <div className= {` col-md-3 ${styles.durationPayment}`}> 
     {teacher_plans && teacher_plans.map((teacherPlans) =>
-        <button >
-        <div className={styles.durationBold}>{teacherPlans.name}</div>
+        <button 
+          className={`${styles.paymentwrapper} ${styles.btnpayment}`}
+          ref={priceElement}
+          onClick={() => handleSelect(teacherPlans.amount)}
+        >
+        <div 
+        className={styles.durationBold}
+
+        >{teacherPlans.name}</div>
         <div>{teacherPlans.amount}</div >
       </button>
     )}

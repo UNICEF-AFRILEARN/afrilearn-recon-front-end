@@ -4,21 +4,38 @@ import styles from '../../../../styles/teacher.module.css';
 import { BsFillCircleFill, BsCircle } from 'react-icons/bs';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { BiNote } from 'react-icons/bi';
+import { BsPlus } from 'react-icons/bs';
 import Questionpanel from './questionpanel';
 import Theory from './theory';
 import Generatequestions from './generatequestions';
 import Submitquestions from './submitquestions';
 import { updateExamQuestionInitiate } from '../../../../redux/actions/exams';
+import Questiontitle from './questiontitle';
 
 const Objectives = () => {
     const { newExamQuestion } = useSelector((state) => state.myExams);
     const [questionId, setQuestionId] = useState("")
+    //content in the questionOptions will be data to send to the API:
+    const [questionOptions, setQuestionsOptions] = useState([
+        {questionCount:"",
+         test:"",
+         anotherTest:""
+    },
+    ])
     const [question, setQuestion] = useState("")
 
     console.log("questionId from onjective", questionId)
     const [showObjQuestions, setShowObjQuestions] = useState(1)
+    const [showObjQuestionOptions, setShowObjQuestionOptions] = useState(1)
 
+    console.log("questionOptions", questionOptions)
 
+    const handleAddQuestions = () => {
+        setQuestionsOptions([...questionOptions,    {questionCount:"",
+        test:"",
+        anotherTest:""
+   }])
+    }
 
     let data = {
         question
@@ -32,6 +49,11 @@ const Objectives = () => {
 
     const showObjpanel = (id) => {
         setShowObjQuestions(id)
+    }
+
+    const handleSelectQeustionOptions = (index) => {
+        console.log(index)
+        setShowObjQuestionOptions(index)
     }
 
     // useEffect(() =>{
@@ -60,30 +82,38 @@ const Objectives = () => {
             <h5 onClick={() => showObjpanel(2)} className={showObjQuestions === 2? `${styles.clikeditemssetup}` : `${styles.unclikeditemssetup}`}>Theory</h5>
             </div>
             <div className={styles.classlistwrapper}>
-                {showObjQuestions === 1 | showObjQuestions === 2 && 
-                    <div className={showObjQuestions === 1? `${styles.innerclasslistwrapper}` : `${styles.innerclasslistwrapperonly}`}>
-                    <h5>Question 2</h5>
-                    <div className={styles.iconswrapper}>
-                        <span><BiNote /> </span>
-                        <span><RiDeleteBin6Line color='#FF5E5E' />  </span>  
-                    </div>
-                    </div>
-                }
-                {showObjQuestions === 1 &&
+                {showObjQuestions === 1 && questionOptions.map((singleQuestion, index) => (
                     <div className={styles.innernumberwrapper}>
-                        <ul>
-                            <li>1</li>
-                            <li>2</li>
-                            <li>3</li>
-                            <li>4</li>
-                        </ul>    
-                    </div>
+                    <ul>
+                        <li
+                          onClick={() => handleSelectQeustionOptions(index + 1)}
+                        >{index + 1}</li>
+                    </ul>    
+                </div>
+                ))
+                    
                 }
+
+                <div className={styles.innernumberwrapper}>
+                   <ul>
+                   <li
+                    onClick = {handleAddQuestions}
+                   >
+                        <BsPlus />
+                    </li>
+                   </ul>
+                </div>
             </div>
-               { showObjQuestions === 1 &&  <Questionpanel />}
+            { showObjQuestions === 1 &&  questionOptions.map((singleQuestion, index) => (
+                <>
+                    <Questionpanel index={index} 
+                        showObjQuestionOptions={showObjQuestionOptions}
+                    />
+                    </>
+               )) }
                 {showObjQuestions === 2 && <Theory /> }
                 {showObjQuestions === 3 && <Generatequestions />}
-                {/* { showObjQuestions === 4 && <Submitquestions />} */}
+                {/* { showObjQuestions === 4 && <Submitquestions />} */}  
         </div>
         
     </div>

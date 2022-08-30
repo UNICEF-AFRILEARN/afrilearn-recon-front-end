@@ -174,15 +174,23 @@
 }
 .classlistwrapper {
     margin-top: 10px;
-    display: flex;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: blue;
+    position: absolute;
+    right: 20px;
+}
+
+.questionsoptionswrapper {
+    display:flex;
+    flex-direction: column;
 }
 
 .innerclasslistwrapper {
     display: flex;
     justify-content: space-between;
     width: 65%;
-    padding: 0 10px;
+    /* padding: 0 10px; */
     align-items: center;
     border-radius: 5px;
     background-color: #FAFAFA;
@@ -403,4 +411,8 @@
 .detailslist li{
     list-style-type: none;
     margin: 10px;
+}
+
+.name-tag-holder {
+    color: red !important;
 }

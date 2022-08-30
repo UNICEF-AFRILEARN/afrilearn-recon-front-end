@@ -1,9 +1,12 @@
+
 import Image from "next/image";
 import styles from "./../../student/topInClass.module.css";
 import { useState, useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
 import Link from "next/link";
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
+
+
 
 const recommendation = ({ dataRecon }) => {
   const [show, setShow] = useState(false);
