@@ -1,9 +1,4 @@
-// <<<<<<< HEAD
-// import QuizInstruction from "./extra/quizInstruction";
-
-// =======
-import QuizInstruction from "./extra/quizPage";
-
+import QuizInstruction from "./extra/quizInstruction";
 // import styles from quiz.css
 
 const Quiz = () => {
