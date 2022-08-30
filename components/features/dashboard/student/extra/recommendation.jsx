@@ -7,11 +7,12 @@ import Link from "next/link";
 import { useSelector } from 'react-redux';
 
 
+
 const recommendation = ({ dataRecon }) => {
   const [show, setShow] = useState(false);
   const toggleModal = () => setShow(!show);
 
-  console.log("From recommendation UI ===>", dataRecon)
+  console.log("From recommendation UI ===>", dataRecon);
 
   return (
     <>
@@ -46,7 +47,9 @@ const recommendation = ({ dataRecon }) => {
           <div className={styles.play_textRec}>
             <h6>Because you watched "{dataRecon.reason.title}"</h6>
             <p className={styles.play_textRecFirstp}>Recommended:</p>
-            <p className={styles.play_textRecsecondp}>{dataRecon.recommended.title}</p>
+            <p className={styles.play_textRecsecondp}>
+              {dataRecon.recommended.title}
+            </p>
             <div className={styles.buttonPlay}>
               <button className={styles.buttonStyle} onClick={toggleModal}>
                 <div className={styles.buttonStyleImage}>
@@ -60,9 +63,8 @@ const recommendation = ({ dataRecon }) => {
                 lesson 1
               </button>
             </div>
-          
           </div>
-        
+
           <Modal
             show={show}
             onHide={toggleModal}
@@ -76,7 +78,6 @@ const recommendation = ({ dataRecon }) => {
               height="auto"
               controls
               autoPlay
-              
             />
             <Button
               variant="secondary"
@@ -108,7 +109,9 @@ const recommendation = ({ dataRecon }) => {
           <div className={styles.play_textRec}>
             <h6>Because you read "{dataRecon?.reason.title}"</h6>
             <p className={styles.play_textRecFirstp}>Recommended:</p>
-            <p className={styles.play_textRecsecondp}>{dataRecon?.recommended.title}</p>
+            <p className={styles.play_textRecsecondp}>
+              {dataRecon?.recommended.title}
+            </p>
             <div className={styles.buttonPlay}>
               <Link href="/dashboard/student">
                 <button className={styles.buttonStyle}>

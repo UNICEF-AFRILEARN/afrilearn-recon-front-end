@@ -42,7 +42,7 @@ const PastQuestion = ({ subData }) => {
                 passHref
                 href={{
                   pathname: "/dashboard/student/pastQuestion",
-                  query: {Exam:data.pastQuestionTypes[0].name},
+                  query: { Exam: data.pastQuestionTypes[0].name },
                 }}
               >
                 <div

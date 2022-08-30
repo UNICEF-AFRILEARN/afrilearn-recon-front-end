@@ -9,7 +9,7 @@ import Objectives from '../../../teacher/extra/objective';
 import { Heropage } from "../../../../../components/features/dashboard/teacher";
 
 const Setupxamssidebar = () => {
-    const [ showExamForm, setShowExamForm] = useState(false)
+  const [showExamForm, setShowExamForm] = useState(false);
   return (
       <>
         <Heropage />
@@ -60,4 +60,4 @@ const Setupxamssidebar = () => {
   )
 }
 
-export default Setupxamssidebar
+export default Setupxamssidebar;

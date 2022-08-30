@@ -1,4 +1,5 @@
 import React, { useState} from 'react';
+
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -6,10 +7,20 @@ import { useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPastQuestionQueInitiate } from "../../../../../../redux/actions/subject";
-import pastQuestion from "../../extra/pastQuestion";
+// import pastQuestion from "../../extra/pastQuestionaira";
 import styles from "./pastQuestion.module.css";
 
 const PastQuestion = () => {
+  const router = useRouter();
+  const dispatch = useDispatch();
+  let quary = router.query.Exam;
+  useEffect(() => {
+    console.log(quary);
+    if (quary !== "") {
+      dispatch(fetchPastQuestionQueInitiate(quary));
+    }
+  }, [quary]);
+
   const subject = useSelector((state) => state.mySubjectCourse);
   const router = useRouter();
   const dispatch = useDispatch();

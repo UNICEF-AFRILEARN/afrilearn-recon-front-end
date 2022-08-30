@@ -3,10 +3,11 @@ import {} from "redux-persist/lib/storage/session";
 
 import authReducer from "./authReducer";
 import coursesReducer from "./coursesReducer";
+import subjectedReducer from "./subjectedReducer";
 import { parentReducer } from "./parentReducer";
 import { paymentReducer } from "./paymentReducer";
 import { subjectsReducer } from "./subjectsReducer";
-import { dashboardReducer } from './dashboardReducer';
+import { dashboardReducer } from "./dashboardReducer";
 import { schoolReducer } from "./schoolReducer";
 import { examsReducer } from "./examsReducer";
 import { studentClassReducer } from "./studentClass";
@@ -17,6 +18,7 @@ export default combineReducers({
   auth: authReducer,
   Mycourses: coursesReducer,
   parentR: parentReducer,
+  mySubjectCourse: subjectedReducer,
   mySubject: subjectsReducer,
   myPayment: paymentReducer,
   dashboard: dashboardReducer,
@@ -25,5 +27,4 @@ export default combineReducers({
   studentClass: studentClassReducer,
   singleCourse: courseReducer,
   schoolClasses: classesReducer,
-})
-
+});

@@ -22,7 +22,7 @@ const AppButton = ({
         ${large && styles.large}
         ${className}
       `}
-      onClick={onClick}
+      onClick={() => onClick}
     >
       {IconComponent ? (
         <div style={{ marginRight: 10 }}>{IconComponent}</div>

@@ -14,6 +14,8 @@ const topInClass = ({ data,key }) => {
   return (
     <>
       <div className={styles.cont} key={key}>
+
+
         <div className={styles.contList}>
           <div className={styles.rect} onClick={toggleModal}>
             {data.thumbnailUrl ? (

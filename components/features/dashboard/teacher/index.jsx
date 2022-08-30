@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Image from "next/image";
 import Link from "next/link";
 import { Col, Container, Row } from "react-bootstrap";
-import PastQuestion from "../student/extra/PastQuestion";
+// import PastQuestion from "../student/extra/PastQuestion";
 import Subjects from "../student/extra/subjects";
 import { AiOutlineSend } from 'react-icons/ai';
 import styles1 from "../student/student.module.css";
@@ -71,7 +71,7 @@ const Dashboard = () => {
           <Subjects filteredSubjects={filteredSubjects}/>
         </Col>
         <Col>
-          <PastQuestion />
+          {/* <PastQuestion /> */}
         </Col>
       </div>
       <TeacherAnnouncement />

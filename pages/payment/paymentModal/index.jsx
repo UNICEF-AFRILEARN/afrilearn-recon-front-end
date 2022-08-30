@@ -1,7 +1,7 @@
 
 import React, {useState, useEffect, useRef} from 'react';
 import Box from '@mui/material/Box';
-import { createTheme, ThemeProvider } from "@material-ui/core/styles";
+// import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import styles from '../../../styles/payment.module.css';
@@ -9,17 +9,17 @@ import styles from '../../../styles/payment.module.css';
 
 import Modal from '@mui/material/Modal';
 
-const theme = createTheme({
-  typography: {
-    fontFamily: [
-      "Nunito",
-      "Roboto",
-      "Helvetica Neue",
-      "Arial",
-      "sans-serif"
-    ].join(",")
-  }
-});
+// const theme = createTheme({
+//   typography: {
+//     fontFamily: [
+//       "Nunito",
+//       "Roboto",
+//       "Helvetica Neue",
+//       "Arial",
+//       "sans-serif"
+//     ].join(",")
+//   }
+// });
 
 
 const style = {
@@ -81,7 +81,7 @@ const PaymentDetails = ({handleOpen, handleClose, open, closeModal, priceSelecte
       >
         <Box sx={style}
         >
-           <ThemeProvider theme={theme}>
+
           <Typography
           id="modal-modal-title" 
           variant="h3" 
@@ -94,7 +94,6 @@ const PaymentDetails = ({handleOpen, handleClose, open, closeModal, priceSelecte
               Make deposit using the bank details below
             </Typography>
           </Typography>
-          </ThemeProvider>
           <Typography
            
           id="modal-modal-description" sx={{ mt: 3 }}>
