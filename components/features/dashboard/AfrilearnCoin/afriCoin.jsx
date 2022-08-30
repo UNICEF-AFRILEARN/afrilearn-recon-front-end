@@ -7,7 +7,7 @@ import Link from "next/link";
 const Africoin = () => {
   const { user } = useSelector((state) => state.auth);
   const coinData = {
-    amount: user?.user.afriCoins,
+    amount: user?.user?.afriCoins,
   };
 
   return (
@@ -70,7 +70,7 @@ const Africoin = () => {
                   For ₦10000 you will get 10000 Coins
                 </option>
               </select>
-              <Link passHref="https://api.whatsapp.com/send?phone+2348051544949">
+              <Link href="https://api.whatsapp.com/send?phone+2348051544949">
                 <button type="submit" className={styles.coinInputbutton}>
                   BUY AFRICOIN
                 </button>
@@ -82,3 +82,5 @@ const Africoin = () => {
     </body>
   );
 };
+
+export default Africoin
