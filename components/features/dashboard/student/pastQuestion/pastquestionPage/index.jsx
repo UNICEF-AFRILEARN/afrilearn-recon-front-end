@@ -1,5 +1,4 @@
 import React, { useState} from 'react';
-
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -22,8 +21,6 @@ const PastQuestion = () => {
   }, [quary]);
 
   const subject = useSelector((state) => state.mySubjectCourse);
-  const router = useRouter();
-  const dispatch = useDispatch();
   const [queryParams, setQueryParams] = useState('')
   
 

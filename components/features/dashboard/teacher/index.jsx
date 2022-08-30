@@ -306,6 +306,7 @@ export const TeacherAnnouncement = () => {
         </div>
         <div
           style={{
+            
             width: "173px",
             height: "46px",
             background: "#00D9B6",
@@ -328,15 +329,15 @@ export const TeacherAnnouncement = () => {
     {  
     classAnnouncement?.announcements && classAnnouncement?.announcements.map((announceMessage) => 
     <Row
-    className="mt-4"
+    className="mt-4 "
     style={{
       border: "1px solid #A6A6A6",
       borderRadius: "7px",
       padding: "20px",
     }}
   >
-    <Row>
-      <Col className="p-0 ps-5">
+    <Row className="border-bottom mb-4 pb-4">
+      <Col className="p-0 ps-5 ">
         <Image
           alt={"assign content placeholder"}
           src={`/assets/img/features/dashboard/teacher/teacherPix.png`}
@@ -367,7 +368,7 @@ export const TeacherAnnouncement = () => {
             className={styles2.displayNone}
           >
             <Col className={`p-3 ps-3 `}>
-              <Row className="ps-3 pb-2">
+              <Row className="ps-3 pb-2 border-bottom">
                 <Col
                   md={3}
                   className={`ps-2 ${styles2.styleEdit}`}
@@ -390,12 +391,12 @@ export const TeacherAnnouncement = () => {
           </div>
         </div>
       </Col>
-    </Row>
     <Row className="mx-5 mt-4">{announceMessage.text}</Row>
+    </Row>
     {/* The line blow is to create the announcement comment */}
    { announceMessage.comments && announceMessage.comments.map((comment) => 
       <Row
-      className="mt-4 border-top pb-4"
+      // className="mt-4 border-top pb-4"
     >
       <Row className=''>
         <Col className="p-0 ps-5 mt-4">
