@@ -14,7 +14,7 @@ const Setupxamssidebar = () => {
       <>
         <Heropage />
          <div className={styles.setexammainwrapper}>
- <Objectives />
+      <Objectives />
     </div>
   </>
   )

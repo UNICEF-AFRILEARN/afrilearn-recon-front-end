@@ -121,7 +121,7 @@ const SetupExams = () => {
                 <li><span><BsCircle /></span>Examination Questions</li>
             </ul>
         </div>
-      <Form onSubmit={handleSubmit} className="w-50">
+      <Form onSubmit={handleSubmit} className={`${styles.examformwrapper} w-50`}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Exam title:</Form.Label>
           <Form.Control
