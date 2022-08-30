@@ -52,7 +52,7 @@ const Theory = () => {
               onChange={(e) => setQuestion(e.target.value)}
             />
           </Form.Group>
-          <Button className="w-25" type="submit">
+          <Button className="w-50" type="submit">
             Save changes
           </Button>
         </Form>

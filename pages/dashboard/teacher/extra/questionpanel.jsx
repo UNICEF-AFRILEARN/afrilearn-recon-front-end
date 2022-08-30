@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
-import { Form, InputGroup, FormControl} from 'react-bootstrap';
+import { Button, Form, InputGroup, FormControl} from 'react-bootstrap';
 import styles from '../../../../styles/teacher.module.css'; 
 import { BsPlus } from 'react-icons/bs';
 import { BiNote } from 'react-icons/bi';
@@ -10,8 +10,9 @@ import { updateExamQuestionInitiate, fetchSingleExamQuestionsInitiate, fetchExam
 import Questiontitle from './questiontitle';
 
 const Questionpanel = ({index, showObjQuestionOptions}) => {
-  const dispatch = useDispatch();
   const { newExamQuestion, exams, singleExamQuestions } = useSelector((state) => state.myExams);
+  const { registerUser, user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
   const [questionId, setQuestionId] = useState("")
 //   const [data, setData] = useState({
 //       question: "",
@@ -25,12 +26,8 @@ const Questionpanel = ({index, showObjQuestionOptions}) => {
   const [optionFour, setOptionFour ] = useState("")
   const [examId, setExamId] = useState("");
   const { query } = useRouter();
-  //to be change after persist
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjJmNGFkOGM5OWJjNjgwMDE2NjE2NTFkIiwicm9sZSI6IjYwMmYzY2UzOWIxNDZiMzIwMWMyZGMxZCIsImZ1bGxOYW1lIjoiSm9obiBkb2UifSwiaWF0IjoxNjYxMTA0Njk0LCJleHAiOjE2NjM2OTY2OTR9.Srnh1RVV1p5sVrYMAgNpnCiiyFHxVYwFaSUHb32xSYI"
+  const token = user.token
 
-
- 
-    console.log("Index ===> from panel", index + 1)
   
   const currentExam = [];
   const fiterExam = () => {
@@ -43,7 +40,7 @@ const Questionpanel = ({index, showObjQuestionOptions}) => {
   }
 
   fiterExam()
-  console.log("questionId from onjective", questionId)
+  console.log("currentExam from onjective", currentExam)
 
     let options = [optionOne, optionTwo, optionThree]
     let question = questionBody
@@ -65,7 +62,7 @@ const Questionpanel = ({index, showObjQuestionOptions}) => {
         setQuestionId("630274ab7412b500162680f5")
     }, []);
     useEffect(() =>{
-        setExamId("62fff77c721b450016998f18")
+        setExamId(query.examId[0])
     }, []);
 
     useEffect(() => {
@@ -154,7 +151,9 @@ const Questionpanel = ({index, showObjQuestionOptions}) => {
                         label="Use this for all questions"
                         className={styles.checkboxcolor}
                     />
-                    <button>Save changes</button>
+                    <Button className="w-50 mt-3" type="submit">
+                  Save changes
+                </Button>
         </Form>
         </div>
        </>

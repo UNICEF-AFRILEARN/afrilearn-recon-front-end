@@ -115,8 +115,8 @@ export const fetchSingleExamDetailsInitiate = (token, examId) =>  {
             }
         })
         .then((res) => {
-            dispatch(fetchSingleExamDetailsSuccess(res.data.data))
-            console.log("From fetch Single Exams API =>", res.data.data)
+            dispatch(fetchSingleExamDetailsSuccess(res.data))
+            console.log("From fetch Single Exams API =>", res.data)
         })
         .catch((err) => {
             dispatch(fetchSingleExamDetailsFail(err))

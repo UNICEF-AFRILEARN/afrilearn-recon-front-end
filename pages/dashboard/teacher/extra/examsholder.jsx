@@ -32,7 +32,7 @@ const Examsholder = () => {
     const goToAddExamQuestionPage = (id) => {
         Router.push({
             pathname: `/dashboard/teacher/examinations/add-exams-question/[_examId]`,
-            query: { _examId: id, classId: classId}
+            query: { _examId: id}
         })
     }
 
