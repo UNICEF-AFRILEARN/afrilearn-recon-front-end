@@ -150,7 +150,7 @@ export const HeropageWelcome = () => {
                     </Row>
                   </Col>
                 </Row>
-                <Row className="p-4">
+                <Row className="">
                   <Col md={2}>
                     <p className="text-dark">Class code: {registerUser.user?.classOwnership[0].classCode || user.user?.classOwnership[0].classCode}</p>
                   </Col>
@@ -188,8 +188,8 @@ export const HeropageWelcome = () => {
                       </a>
                     </Link>
                   </Col>
-                  <Col md={3} className="">
-                  </Col>
+                  {/* <Col md={3} className=""> */}
+                  {/* </Col> */}
                 </Row>
               </Row>
             </Col>

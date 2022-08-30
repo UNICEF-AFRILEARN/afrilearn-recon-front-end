@@ -10,6 +10,8 @@ import { BiNote } from "react-icons/bi";
 import { addExamsInitiate } from "../../../../redux/actions/exams";
 import { fetchClassSubjectsInitiate } from "../../../../redux/actions/classes";
 
+
+
 const SetupExams = () => {
   const { user } = useSelector((state) => state.auth);
   const { newExams } = useSelector((state) => state.myExams);
@@ -112,6 +114,13 @@ const SetupExams = () => {
   }, [classId]);
   return (
     <div className={styles.setexammainwrapper}>
+          <div className={styles.objleftsideboxwrapper}>
+            <h4>Set Up Examination</h4>
+            <ul>
+                <li><span><BsFillCircleFill /></span>Set Ups</li>
+                <li><span><BsCircle /></span>Examination Questions</li>
+            </ul>
+        </div>
       <Form onSubmit={handleSubmit} className="w-50">
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Exam title:</Form.Label>
@@ -222,8 +231,8 @@ const SetupExams = () => {
             style={{ outline: "none" }}
           ></textarea>
         </Form.Group>
-        <Button className="w-25" type="submit">
-          Submit
+        <Button className="w-100" type="submit">
+          PROCEED
         </Button>
       </Form>
     </div>
