@@ -433,5 +433,24 @@
     .detailslist {
         min-width: 250px;
     }
+    .middletabwrapper {
+        display: grid;
+        margin: 0 10px;
+    }
+
+    .leftsidetabwrapper {
+        width: 100%;
+        gap: 20px;
+        margin: 20px 0;
+
+    }
+    .teachersearchwrapper {
+        width: 90%;
+        margin-left: 15px;
+    }
+
+    .righttabwrapper {
+        margin-left: 15px;
+    }
 }
 
