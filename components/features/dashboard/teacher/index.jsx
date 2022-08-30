@@ -306,6 +306,7 @@ export const TeacherAnnouncement = () => {
         </div>
         <div
           style={{
+            
             width: "173px",
             height: "46px",
             background: "#00D9B6",

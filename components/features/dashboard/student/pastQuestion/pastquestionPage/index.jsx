@@ -22,8 +22,6 @@ const PastQuestion = () => {
   }, [quary]);
 
   const subject = useSelector((state) => state.mySubjectCourse);
-  const router = useRouter();
-  const dispatch = useDispatch();
   const [queryParams, setQueryParams] = useState('')
   
 
