@@ -272,6 +272,7 @@ export const fetchClassAssignedContentInitiate = (classId) =>  {
     }
 
 }
+
 export const fetchClassSubjectsInitiate = (classId) =>  {
     return function (dispatch) {
         dispatch(fetchClassSubjectsStart())
@@ -283,6 +284,21 @@ export const fetchClassSubjectsInitiate = (classId) =>  {
         })
         .catch((err) => {
             dispatch(fetchClassSubjectsFail(err))
+        } )
+    }
+
+}
+export const acceptRejectClassMemberInitiate = (userId, classId, status) =>  {
+    return function (dispatch) {
+        dispatch(acceptRejectClassMemberStart())
+        axios
+        .patch('https://afrilearn-backend-01.herokuapp.com/api/v1/classes/accept-reject-class-request')
+        .then((res) => {
+            console.log("From Get Accept reject member class API =>", res.data.data)
+            dispatch(acceptRejectClassMemberSuccess(res.data.data))
+        })
+        .catch((err) => {
+            dispatch(acceptRejectClassMemberFail(err))
         } )
     }
 

@@ -35,7 +35,7 @@ const handleStatusUpdate = (id, callStatus) => {
   }else{
     setStatus('approved')
   }
-  console.log(status)
+  console.log("State status", status)
 }
 
 
@@ -113,7 +113,9 @@ const handleStatusUpdate = (id, callStatus) => {
                 onClick={() => handleStatusUpdate(studentName?.userId?.id, studentName.status)}
                 className="" style={{ color: "#FF5B5B" }}>
               {/* {studentName.status} */}
-              <select default={studentName.status}>
+              <select 
+              onChange={(e) => setStatus(e.target.value)}
+              default={studentName.status}>
                 <option>{studentName.status}</option>
                 <option>{status}</option>
               </select>
