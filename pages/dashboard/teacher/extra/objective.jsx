@@ -4,7 +4,8 @@ import styles from '../../../../styles/teacher.module.css';
 import { BsFillCircleFill, BsCircle } from 'react-icons/bs';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { BiNote } from 'react-icons/bi';
-import { BsPlus } from 'react-icons/bs';
+import Link from "next/link";
+import { BsPlus, BsPlusCircleFill } from 'react-icons/bs';
 import Questionpanel from './questionpanel';
 import Theory from './theory';
 import Generatequestions from './generatequestions';
@@ -12,29 +13,33 @@ import Submitquestions from './submitquestions';
 import { updateExamQuestionInitiate } from '../../../../redux/actions/exams';
 import Questiontitle from './questiontitle';
 
-const Objectives = () => {
+const Objectives = ({examId}) => {
     const { newExamQuestion, exams } = useSelector((state) => state.myExams);
     const [questionId, setQuestionId] = useState("")
     //content in the questionOptions will be data to send to the API:
-    const [questionOptions, setQuestionsOptions] = useState([
-        {questionCount:"",
-         test:"",
-         anotherTest:""
-    },
+    const [examQuestion, setExamQuestion] = useState([
+        {
+            options:[],
+            images:[],
+            question:""
+         },
     ])
     const [question, setQuestion] = useState("")
 
-    console.log("questionId from onjective", questionId)
+    console.log("examId from onjective", examId)
     const [showObjQuestions, setShowObjQuestions] = useState(1)
     const [showObjQuestionOptions, setShowObjQuestionOptions] = useState(1)
 
-    console.log("questionOptions", questionOptions)
+    console.log("questionOptions", examQuestion)
 
     const handleAddQuestions = () => {
-        setQuestionsOptions([...questionOptions,    {questionCount:"",
-        test:"",
-        anotherTest:""
+        setExamQuestion([...examQuestion,    
+        {
+            options:[],
+            images:[],
+            question:""
    }])
+        console.log()
     }
 
     let data = {
@@ -47,6 +52,7 @@ const Objectives = () => {
         // dispatch(updateExamQuestionInitiate(questionId, data))
     }
 
+
     const showObjpanel = (id) => {
         setShowObjQuestions(id)
     }
@@ -55,6 +61,13 @@ const Objectives = () => {
         console.log(index)
         setShowObjQuestionOptions(index)
     }
+
+    const handleGetQuestions = (e, index) => {
+        const { name, value} = e.target
+        const list = [...examQuestion]
+        list[index][name] = value;
+    }
+    console.log("examQuestion and value together ==> ", examQuestion)
 
     // useEffect(() =>{
     //     // setQuestionId(newExamQuestion?.examQuestion?.id)
@@ -81,44 +94,42 @@ const Objectives = () => {
             <h4 onClick={() => showObjpanel(1)} className={showObjQuestions === 1? `${styles.clikeditemssetup}` : `${styles.unclikeditemssetup}`}>Objective</h4>
             <h5 onClick={() => showObjpanel(2)} className={showObjQuestions === 2? `${styles.clikeditemssetup}` : `${styles.unclikeditemssetup}`}>Theory</h5>
             </div>
-            {/* <div className={styles.classlistwrapper}> */}
-            <ul className={styles.classlistwrapper}>
-                {showObjQuestions === 1 && questionOptions.map((singleQuestion, index) => (
-                    // <div className={styles.innernumberwrapper}>
+            <div className={styles.classlistwrapper}>
+            <ul>
+                {showObjQuestions === 1 && examQuestion.map((singleQuestion, index) => (
                         <li
                           onClick={() => handleSelectQeustionOptions(index + 1)}
                         >{index + 1}</li>
-                        // </div>
                         ))
                         
                     }
-                    </ul>    
+                    <div className={styles.iconswrapper}>
+                      <Link href='' className="btn-log-in-mobile">
+                          <BsPlusCircleFill size={20} className={styles.profileavatar}/>
+                          </Link>
+                          <div className={styles.linkswrapper}>
+                            <a onClick={handleAddQuestions}>Objective</a>
+                            <a onClick={handleAddQuestions}>Theory</a>
+                          </div>
+                      </div> 
+            </ul>
+               
 
-                <div className={styles.innernumberwrapper}>
-                   <ul >
-                   <li>
-                        <BsPlus />
-                    </li>
-                   </ul>
-                   <div className={styles.questiontypeoptions}>
-                       <ul>
-                       <li  onClick = {handleAddQuestions}
-                       ><a>Objective</a></li>
-                       <li  onClick = {handleAddQuestions}><a>Objective</a></li>
-                       </ul>
-                   </div>
-                </div>
-            {/* </div> */}
-            { showObjQuestions === 1 &&  questionOptions.map((singleQuestion, index) => (
+            </div>
+             <div className={styles.examquestionwrapperinnner}>
+             { showObjQuestions === 1 &&  examQuestion.map((singleQuestion, index) => (
                 <>
                     <Questionpanel index={index} 
                         showObjQuestionOptions={showObjQuestionOptions}
+                        handleGetQuestions={handleGetQuestions}
+                        singleQuestion={singleQuestion}
                     />
                     </>
                )) }
+             </div>
                 {showObjQuestions === 2 && <Theory /> }
                 {showObjQuestions === 3 && <Generatequestions />}
-                {/* { showObjQuestions === 4 && <Submitquestions />} */}  
+                {/* { showObjQuestions === 4 && <Submitquestions />} */} 
         </div>
         
     </div>

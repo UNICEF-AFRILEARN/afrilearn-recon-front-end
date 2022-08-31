@@ -9,7 +9,13 @@ import { AiOutlineArrowsAlt } from 'react-icons/ai';
 import { updateExamQuestionInitiate, fetchSingleExamQuestionsInitiate, fetchExamsInitiate } from '../../../../redux/actions/exams';
 import Questiontitle from './questiontitle';
 
-const Questionpanel = ({index, showObjQuestionOptions}) => {
+const Questionpanel = ({
+  index, 
+  showObjQuestionOptions, 
+  handleGetQuestions,
+  examQuestion,
+  singleQuestion
+}) => {
   const { newExamQuestion, exams, singleExamQuestions } = useSelector((state) => state.myExams);
   const { registerUser, user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -42,7 +48,7 @@ const Questionpanel = ({index, showObjQuestionOptions}) => {
   fiterExam()
 
   let examsQuestionType = currentExam[0]?.questionTypeId.name
-  console.log("examId from use params onjective", examId)
+  console.log("singleQuestion from use params question panel", singleQuestion)
 
     let options = [optionOne, optionTwo, optionThree]
     let question = questionBody
@@ -83,82 +89,85 @@ const Questionpanel = ({index, showObjQuestionOptions}) => {
     //   }, [optionOne, optionTwo, optionThree])
 
   return (
+    // showObjQuestionOptions === index + 1 && 
     <div>
        {showObjQuestionOptions === index + 1 &&
-        <>
-        <Questiontitle index={index}/>
-            <div className={styles.questionpanelwrapper}>
-            <div className={styles.questionpanelheader}>
-                <h5>Open Edit Panel</h5> <span>< AiOutlineArrowsAlt size={30}/>
-                </span>
-            </div>
-         
-        </div>
-        <div className={styles.mainformwrapper}>
-        <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-4" controlId="formBasicEmail">
-                    <Form.Control 
-                    as="textarea" 
-                    rows="5" 
-                    name="address"
-                    value={questionBody}
-                    onChange={(e) => setQuestionBody(e.target.value)}
-                    placeholder="Type question here..." 
-                    />
-            </Form.Group>
-            <h5>Options</h5>
-        <div className={styles.mainoptionwrapper}>
-            <div className={styles.optionwrapper}>
-            <InputGroup className="mb-3">
-                <InputGroup.Text>A</InputGroup.Text>
-                <FormControl 
-                aria-label="Amount (to the nearest dollar)"
-                value={optionOne}
-                onChange={(e) => setOptionOne(e.target.value)}
-                />
-                <InputGroup.Text><BiNote /></InputGroup.Text>
-            </InputGroup>
-            <InputGroup className="mb-3">
-                <InputGroup.Text>B</InputGroup.Text>
-                <FormControl 
-                aria-label="Amount (to the nearest dollar)"
-                value={optionTwo}
-                onChange={(e) => setOptionTwo(e.target.value)}
-                />
-                <InputGroup.Text><BiNote /></InputGroup.Text>
-            </InputGroup>
-            <InputGroup className="mb-3">
-                <InputGroup.Text>C</InputGroup.Text>
-                <FormControl 
-                aria-label="Amount (to the nearest dollar)" 
-                value={optionThree}
-                onChange={(e) => setOptionThree(e.target.value)}
-                />
-                <InputGroup.Text><BiNote /></InputGroup.Text>
-            </InputGroup>
+          <>
+          <Questiontitle index={index}/>
+              <div className={styles.questionpanelwrapper}>
+              <div className={styles.questionpanelheader}>
+                  <h5>Open Edit Panel</h5> <span>< AiOutlineArrowsAlt size={30}/>
+                  </span>
+              </div>
+           
+          </div>
+          <div className={styles.mainformwrapper}>
             
-            </div>
-        </div>
-        <Form.Group className="mb-4" controlId="formBasicEmail">
-                        <Form.Label>Correct Option</Form.Label>
-                        <Form.Control type="text" placeholder="Select corect option" />
-                    </Form.Group>
-                    <Form.Group className="mb-4" controlId="formBasicEmail">
-                        <Form.Label>Assign mark(score)</Form.Label>
-                        <Form.Control type="text" placeholder="2" />
-                    </Form.Group>
-                    <Form.Check
-                        checked
-                        type="checkbox"
-                        label="Use this for all questions"
-                        className={styles.checkboxcolor}
-                    />
-                    <Button className="w-50 mt-3" type="submit">
-                  Save changes
-                </Button>
-        </Form>
-        </div>
-       </>
+          <Form onSubmit={handleSubmit}> 
+              <Form.Group className="mb-4" controlId="formBasicEmail">
+              <Form.Control 
+              as="textarea" 
+              rows="5" 
+              name="question"
+              // value={singleExamQuestion.question}
+              onChange={(e) => handleGetQuestions(e, index)}
+              placeholder="Type question here..." 
+              />
+            </Form.Group>
+             
+              <h5>Options</h5>
+          <div className={styles.mainoptionwrapper}>
+              <div className={styles.optionwrapper}>
+              <InputGroup className="mb-3">
+                  <InputGroup.Text>A</InputGroup.Text>
+                  <FormControl 
+                  aria-label="Amount (to the nearest dollar)"
+                  value={optionOne}
+                  onChange={(e) => setOptionOne(e.target.value)}
+                  />
+                  <InputGroup.Text><BiNote /></InputGroup.Text>
+              </InputGroup>
+              <InputGroup className="mb-3">
+                  <InputGroup.Text>B</InputGroup.Text>
+                  <FormControl 
+                  aria-label="Amount (to the nearest dollar)"
+                  value={optionTwo}
+                  onChange={(e) => setOptionTwo(e.target.value)}
+                  />
+                  <InputGroup.Text><BiNote /></InputGroup.Text>
+              </InputGroup>
+              <InputGroup className="mb-3">
+                  <InputGroup.Text>C</InputGroup.Text>
+                  <FormControl 
+                  aria-label="Amount (to the nearest dollar)" 
+                  value={optionThree}
+                  onChange={(e) => setOptionThree(e.target.value)}
+                  />
+                  <InputGroup.Text><BiNote /></InputGroup.Text>
+              </InputGroup>
+              
+              </div>
+          </div>
+          <Form.Group className="mb-4" controlId="formBasicEmail">
+                          <Form.Label>Correct Option</Form.Label>
+                          <Form.Control type="text" placeholder="Select corect option" />
+                      </Form.Group>
+                      <Form.Group className="mb-4" controlId="formBasicEmail">
+                          <Form.Label>Assign mark(score)</Form.Label>
+                          <Form.Control type="text" placeholder="2" />
+                      </Form.Group>
+                      <Form.Check
+                          checked
+                          type="checkbox"
+                          label="Use this for all questions"
+                          className={styles.checkboxcolor}
+                      />
+                      <Button className="w-50 mt-3" type="submit">
+                    Save changes
+                  </Button>
+          </Form>
+          </div>
+         </>
        }
     </div>
   )
