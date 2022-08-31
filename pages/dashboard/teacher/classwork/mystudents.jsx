@@ -32,19 +32,6 @@ const MyStudent = () => {
         query: { _id: id, classId: classId}
     })
   }
-//studentName?.userId?.id
-
-//Check student status on page-load
-// const checkUpdateStudentStatus = () => {
-//   classMembers?.classMembers.filter((studentStatus) => {
-//     if (studentStatus.status === 'rejected'){
-//       setStatus('approved')
-//     }else{
-//       setStatus('rejected')
-//     }
-//   })
-//   return status
-// }
 
 const handleStatusUpdate = async (id, status) => {
   setUserId(id)
@@ -56,16 +43,6 @@ useEffect(() => {
     dispatch(acceptRejectClassMemberInitiate(userId, classId, status, token))
 }, [status])
 
-// const usePreviousValue = value => {
-//   const ref = useRef();
-//   useEffect(() => {
-//     ref.current = value;
-//   });
-//   return ref.current;
-// };
-
-// const prevCount = usePreviousValue(status);
-// console.log("State userId, classId, status", prevCount)
 
   useEffect(() => {
     setClassId(user?.user?.enrolledCourses[0]?.classId)
@@ -91,8 +68,8 @@ useEffect(() => {
           }}
         />
       </div>
-      <Container>
-        <Row className="mt-5 mx-5">
+      <Container >
+        <Row className="mt-5">
           <Col>
             <h3
               style={{
@@ -104,7 +81,7 @@ useEffect(() => {
               Students
             </h3>
           </Col>
-          <Col md={2}>
+          <Col className={`${styles.studentnumber}`}>
             <h3
               style={{
                 fontWeight: "500",
@@ -119,20 +96,19 @@ useEffect(() => {
         {classMembers?.classMembers?.map((studentName) => (
           <Row
             // key={i}
-            className="mx-5 mt-3"
-            style={{ height: "35px", display: "flex", alignItems: "center" }}
+            className={`${styles.peoplelists} mt-3 d-flex w-60`}
           >
-            <Col md={1} style={{ padding: "0", width: "35px" }}>
+            <Col>
               <div className={styles.vidAvatar}>
                 <Image
                   alt={"afrilearn marketing video"}
                   src={`/assets/img/features/dashboard/student/comment1.png`}
-                  width={35}
-                  height={35}
+                  width={30}
+                  height={30}
                 />
               </div>
             </Col>
-            <Col md={5} >{studentName?.userId?.fullName}</Col>
+            <Col >{studentName?.userId?.fullName}</Col>
             <Col md={5} style={{ color: "#AAA6A6" }}>
              <p onClick={() => goToPerformance(studentName?.userId?.id)}>
                 <u>View Performance</u>
@@ -140,18 +116,14 @@ useEffect(() => {
             </Col>
             <Col
                 value={studentName.status}
-                // onChange={(e) => }
                 className="" style={{ color: "#FF5B5B" }}>
-              {/* {studentName.status} */}
               <select
               ref={statusElement}
               onChange={(e) => { setStatus(e.target.value), handleStatusUpdate(studentName?.userId?.id, studentName.status)}}
               default={studentName.status}>
                 <option
-                  // value={studentName.status === 'approved'? 'rejected' : 'approved'}
                 >{studentName.status}</option>
                 <option
-                  // value={studentName.status === 'approved'? 'rejected' : 'approved'}
                 >{studentName.status === 'approved'? 'rejected' : 'approved'}</option>
               </select>
             </Col>

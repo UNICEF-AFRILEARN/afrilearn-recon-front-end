@@ -71,3 +71,12 @@
   right:90px;
 }
 
+.peoplelists {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+}
+
+.studentnumber {
+  text-align: center !important;
+  margin-left: 20%;
+}
