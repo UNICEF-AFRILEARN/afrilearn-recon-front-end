@@ -48,3 +48,33 @@
   background-position: 50%;
   background-size: contain;
 }
+.profileBox input{
+  width: 42vw;
+  height: 8vh;
+  border: "1px solid #29465B";
+  border-radius: "5px";
+  color: "#828282";
+}
+.profilenumberBox{
+  width: 42vw;
+  height: 8vh;
+  border: "1px solid #29465B";
+  border-radius: "5px";
+}
+.selectHeading{
+  font-size: 25px;
+  text-align: center;
+}
+@media screen and (max-width: 900px) {
+  .profileBox input{
+    width: 62vw !important;
+    height: "63px";
+  }
+  .profilenumberBox{
+    width: 62vw;
+    height: "63px";
+  }
+  .selectHeading{
+    font-size: 15px;
+  }
+}
