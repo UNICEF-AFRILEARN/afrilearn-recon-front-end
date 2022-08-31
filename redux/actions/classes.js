@@ -102,6 +102,17 @@ export const addCommentToTeacherAnnouncementFail = (error) => ({
     type: types.ADD_COMMENT_TO_TEACHER_ANNOUNCEMENT_FAIL,
     payload: error
 });
+export const acceptRejectClassMemberStart = () => ({
+    type: types.ACCEPT_REJECT_CLASS_MEMBER_START
+});
+export const acceptRejectClassMemberSuccess = (payload) => ({
+    type: types.ACCEPT_REJECT_CLASS_MEMBER_SUCCESS,
+    payload
+});
+export const acceptRejectClassMemberFail = (error) => ({
+    type: types.ACCEPT_REJECT_CLASS_MEMBER_FAIL,
+    payload: error
+});
 
 
 export const makeAnnouncementInitiate = (classId, text, token) =>  {

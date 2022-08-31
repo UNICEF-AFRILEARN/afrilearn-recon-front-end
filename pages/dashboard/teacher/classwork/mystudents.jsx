@@ -11,6 +11,7 @@ import Link from "next/link";
 const MyStudent = () => {
   const [ classId, setClassId ] = useState("");
   const [ userId, setUserId ] = useState("");
+  const [ status, setStatus ] = useState("");
   const [ studentCount, setStudentCount ] = useState("");
   const { classMembers } = useSelector((state) => state.schoolClasses);
   const { user } = useSelector((state) => state.auth)
@@ -26,6 +27,17 @@ const MyStudent = () => {
     })
   }
 //studentName?.userId?.id
+
+const handleStatusUpdate = (id, callStatus) => {
+  console.log("Update status func id", callStatus)
+  if(callStatus === 'approved'){
+    setStatus('rejected')
+  }else{
+    setStatus('approved')
+  }
+  console.log(status)
+}
+
 
   useEffect(() => {
     setClassId(user?.user?.enrolledCourses[0]?.classId)
@@ -96,8 +108,15 @@ const MyStudent = () => {
                 <u>View Performance</u>
              </p>
             </Col>
-            <Col className="" style={{ color: "#FF5B5B" }}>
-              Remove
+            <Col
+                value={studentName.status}
+                onClick={() => handleStatusUpdate(studentName?.userId?.id, studentName.status)}
+                className="" style={{ color: "#FF5B5B" }}>
+              {/* {studentName.status} */}
+              <select default={studentName.status}>
+                <option>{studentName.status}</option>
+                <option>{status}</option>
+              </select>
             </Col>
           </Row>
         ))}

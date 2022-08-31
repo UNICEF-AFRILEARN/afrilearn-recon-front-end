@@ -145,6 +145,7 @@
 
 .examsetupwrapper {
     width: 60%;
+    position: relative;
 }
 .xamssetpheader {
     display: flex;
@@ -176,10 +177,9 @@
 .classlistwrapper {
     margin-top: 10px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    background-color: blue;
+    grid-template-columns: repeat(4, 1fr);
     position: absolute;
-    right: 20px;
+    right: -10px;
 }
 
 .questionsoptionswrapper {
@@ -208,6 +208,18 @@
 }
 .innernumberwrapper {
     width: 30%;
+    position: absolute;
+    right: 20px;
+}
+
+.innernumberwrapperplusbtn{
+    margin-top: 10px;
+}
+.innernumberwrapperplusbtn ul li{
+    list-style-type: none;
+    padding: 0 10px;
+    border-radius: 5px;
+    border: #E3E3E3 solid 1px;
 }
 
 .innernumberwrapper ul {
@@ -418,7 +430,17 @@
     color: red !important;
 }
 
+.questiontypeoptions ul{
+    position:absolute;
+    display:flex;
+    flex-direction: column;
+}
 
+.questiontypeoptions {
+    display: none;
+}
+
+.innernumberwrapper:hover .questiontypeoptions{display: block}
 
 @media screen and (max-width: 768px) {
     .examsmainholder {
@@ -480,7 +502,7 @@
         margin-top: 10px;
         display: grid;
         right: 100px;
-        bottom:-150px;
+        top:-120px;
     }
     .mainformwrapper, .optionwrapper {
         width: 84%;

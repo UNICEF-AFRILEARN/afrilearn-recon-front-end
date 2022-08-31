@@ -3,12 +3,13 @@ import styles from '../../../../../styles/performance.module.css';
 import { FiCheckCircle } from 'react-icons/fi';
 import { AiOutlineExclamationCircle } from 'react-icons/ai';
 import { FaRegCheckCircle } from 'react-icons/fa';
+import Barchart from '../../../../../pages/dashboard/performance/barchart';
 // import BarChartSect from './BarChartSect';
 // import PieChartSection from './PieChartSection';
 
 
 const ClassPerfomance = (
-  {currentStudent, 
+  {currentStudent,
     classDetails, 
     studentPerformance
   }) => {
@@ -61,7 +62,31 @@ const ClassPerfomance = (
         </div>
        </div>
         <div className={styles.progresswrapper}>
-          
+          {/* testing */}
+          <div>
+              <div className={styles.performancecontentwrapper}>
+              
+                 <div className={styles.subjectsectiononemiddle}>
+                    <Barchart />
+                 </div>
+                 <div className={styles.subjectsectiononemiddle}>
+                    <div className={styles.subjectquestioninner}>
+                       <p>TEST ATTEMPTED</p>
+                        <p className={styles.totalquestionwrapperlast}>
+                        <AiOutlineExclamationCircle size={25}/> 
+                          
+                        </p>
+                    </div>
+                    <p>REMARK</p>
+           
+                    <p className={styles.averagetimeremark}> 
+                      <FaRegCheckCircle />
+                      No Ratin
+                      </p> : <p></p>
+                 </div>
+              </div>
+          </div>
+          {/* end testing */}
             <div>
               <ul className={styles.performancemenu}>
                 <li 

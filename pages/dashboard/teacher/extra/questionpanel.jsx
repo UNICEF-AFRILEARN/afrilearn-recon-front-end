@@ -40,7 +40,9 @@ const Questionpanel = ({index, showObjQuestionOptions}) => {
   }
 
   fiterExam()
-  console.log("currentExam from onjective", currentExam)
+
+  let examsQuestionType = currentExam[0]?.questionTypeId.name
+  console.log("examId from use params onjective", examId)
 
     let options = [optionOne, optionTwo, optionThree]
     let question = questionBody
@@ -61,9 +63,9 @@ const Questionpanel = ({index, showObjQuestionOptions}) => {
         // setQuestionId(newExamQuestion?.examQuestion?.id)
         setQuestionId("630274ab7412b500162680f5")
     }, []);
-    useEffect(() =>{
-        setExamId(query.examId[0])
-    }, []);
+    // useEffect(() =>{
+    //     setExamId(query.examId[0])
+    // }, [query]);
 
     useEffect(() => {
         dispatch(fetchExamsInitiate(token))

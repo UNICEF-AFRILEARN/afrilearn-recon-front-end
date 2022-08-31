@@ -13,7 +13,7 @@ import { updateExamQuestionInitiate } from '../../../../redux/actions/exams';
 import Questiontitle from './questiontitle';
 
 const Objectives = () => {
-    const { newExamQuestion } = useSelector((state) => state.myExams);
+    const { newExamQuestion, exams } = useSelector((state) => state.myExams);
     const [questionId, setQuestionId] = useState("")
     //content in the questionOptions will be data to send to the API:
     const [questionOptions, setQuestionsOptions] = useState([
@@ -81,29 +81,34 @@ const Objectives = () => {
             <h4 onClick={() => showObjpanel(1)} className={showObjQuestions === 1? `${styles.clikeditemssetup}` : `${styles.unclikeditemssetup}`}>Objective</h4>
             <h5 onClick={() => showObjpanel(2)} className={showObjQuestions === 2? `${styles.clikeditemssetup}` : `${styles.unclikeditemssetup}`}>Theory</h5>
             </div>
-            <div className={styles.classlistwrapper}>
+            {/* <div className={styles.classlistwrapper}> */}
+            <ul className={styles.classlistwrapper}>
                 {showObjQuestions === 1 && questionOptions.map((singleQuestion, index) => (
-                    <div className={styles.innernumberwrapper}>
-                    <ul>
+                    // <div className={styles.innernumberwrapper}>
                         <li
                           onClick={() => handleSelectQeustionOptions(index + 1)}
                         >{index + 1}</li>
+                        // </div>
+                        ))
+                        
+                    }
                     </ul>    
-                </div>
-                ))
-                    
-                }
 
                 <div className={styles.innernumberwrapper}>
-                   <ul>
-                   <li
-                    onClick = {handleAddQuestions}
-                   >
+                   <ul >
+                   <li>
                         <BsPlus />
                     </li>
                    </ul>
+                   <div className={styles.questiontypeoptions}>
+                       <ul>
+                       <li  onClick = {handleAddQuestions}
+                       ><a>Objective</a></li>
+                       <li  onClick = {handleAddQuestions}><a>Objective</a></li>
+                       </ul>
+                   </div>
                 </div>
-            </div>
+            {/* </div> */}
             { showObjQuestions === 1 &&  questionOptions.map((singleQuestion, index) => (
                 <>
                     <Questionpanel index={index} 
