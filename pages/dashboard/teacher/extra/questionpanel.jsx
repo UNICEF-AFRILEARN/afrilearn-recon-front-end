@@ -14,7 +14,8 @@ const Questionpanel = ({
   showObjQuestionOptions, 
   handleGetQuestions,
   examQuestion,
-  singleQuestion
+  singleQuestion,
+  // singleExamQuestions
 }) => {
   const { newExamQuestion, exams, singleExamQuestions } = useSelector((state) => state.myExams);
   const { registerUser, user } = useSelector((state) => state.auth);
@@ -50,8 +51,8 @@ const Questionpanel = ({
   let examsQuestionType = currentExam[0]?.questionTypeId.name
   console.log("singleQuestion from use params question panel", singleQuestion)
 
-    let options = [optionOne, optionTwo, optionThree]
-    let question = questionBody
+    let options = [singleQuestion.optionOne, singleQuestion.optionTwo, singleQuestion.optionThree, singleQuestion.optionFour]
+    let question = singleQuestion.question
   let data = {
     options,
     question
@@ -61,8 +62,8 @@ const Questionpanel = ({
 
   const handleSubmit = (e) => {
       e.preventDefault()
-      console.log("data from ob", data)
-        dispatch(updateExamQuestionInitiate(questionId, question, options))
+      console.log("singleQuestion from ob", question)
+        dispatch(updateExamQuestionInitiate(questionId, question , options))
     }
 
     useEffect(() =>{
@@ -122,8 +123,9 @@ const Questionpanel = ({
                   <InputGroup.Text>A</InputGroup.Text>
                   <FormControl 
                   aria-label="Amount (to the nearest dollar)"
-                  value={optionOne}
-                  onChange={(e) => setOptionOne(e.target.value)}
+                  name='optionOne'
+                  // value={option}
+                  onChange={(e) => handleGetQuestions(e, index)}
                   />
                   <InputGroup.Text><BiNote /></InputGroup.Text>
               </InputGroup>
@@ -131,8 +133,9 @@ const Questionpanel = ({
                   <InputGroup.Text>B</InputGroup.Text>
                   <FormControl 
                   aria-label="Amount (to the nearest dollar)"
-                  value={optionTwo}
-                  onChange={(e) => setOptionTwo(e.target.value)}
+                  name='optionTwo'
+                  // value={option}
+                  onChange={(e) => handleGetQuestions(e, index)}
                   />
                   <InputGroup.Text><BiNote /></InputGroup.Text>
               </InputGroup>
@@ -140,8 +143,9 @@ const Questionpanel = ({
                   <InputGroup.Text>C</InputGroup.Text>
                   <FormControl 
                   aria-label="Amount (to the nearest dollar)" 
-                  value={optionThree}
-                  onChange={(e) => setOptionThree(e.target.value)}
+                  // value=
+                  name='optionThree'
+                  onChange={(e) => handleGetQuestions(e, index)}
                   />
                   <InputGroup.Text><BiNote /></InputGroup.Text>
               </InputGroup>

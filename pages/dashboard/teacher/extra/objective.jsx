@@ -10,36 +10,45 @@ import Questionpanel from './questionpanel';
 import Theory from './theory';
 import Generatequestions from './generatequestions';
 import Submitquestions from './submitquestions';
-import { updateExamQuestionInitiate } from '../../../../redux/actions/exams';
+import { 
+    updateExamQuestionInitiate, 
+    fetchSingleExamQuestionsInitiate 
+} from '../../../../redux/actions/exams';
 import Questiontitle from './questiontitle';
 
 const Objectives = ({examId}) => {
-    const { newExamQuestion, exams } = useSelector((state) => state.myExams);
+    const dispatch = useDispatch();
+    const { newExamQuestion, exams, singleExamQuestions } = useSelector((state) => state.myExams);
     const [questionId, setQuestionId] = useState("")
     //content in the questionOptions will be data to send to the API:
     const [examQuestion, setExamQuestion] = useState([
         {
-            options:[],
+            optionsOne:"",
+            optionsTwo:"",
+            optionsThree:"",
+            optionsFour:"",
             images:[],
             question:""
          },
     ])
     const [question, setQuestion] = useState("")
 
-    console.log("examId from onjective", examId)
+    console.log("singleExamQuestions from objective", singleExamQuestions)
     const [showObjQuestions, setShowObjQuestions] = useState(1)
     const [showObjQuestionOptions, setShowObjQuestionOptions] = useState(1)
 
     console.log("questionOptions", examQuestion)
 
     const handleAddQuestions = () => {
-        setExamQuestion([...examQuestion,    
+        setExamQuestion([...singleExamQuestions.questions,    
         {
-            options:[],
+            optionsOne:"",
+            optionsTwo:"",
+            optionsThree:"",
+            optionsFour:"",
             images:[],
             question:""
    }])
-        console.log()
     }
 
     let data = {
@@ -69,10 +78,9 @@ const Objectives = ({examId}) => {
     }
     console.log("examQuestion and value together ==> ", examQuestion)
 
-    // useEffect(() =>{
-    //     // setQuestionId(newExamQuestion?.examQuestion?.id)
-    //     setQuestionId("630274ab7412b500162680f5")
-    // }, [])
+    useEffect(() =>{
+        dispatch(fetchSingleExamQuestionsInitiate(examId))
+    }, [])
   return (
     <div className={styles.objectivemainwrapper}>
         <div className={styles.objleftsideboxwrapper}>
@@ -96,7 +104,7 @@ const Objectives = ({examId}) => {
             </div>
             <div className={styles.classlistwrapper}>
             <ul>
-                {showObjQuestions === 1 && examQuestion.map((singleQuestion, index) => (
+                {showObjQuestions === 1 && singleExamQuestions.questions.map((singleQuestion, index) => (
                         <li
                           onClick={() => handleSelectQeustionOptions(index + 1)}
                         >{index + 1}</li>
@@ -122,6 +130,7 @@ const Objectives = ({examId}) => {
                     <Questionpanel index={index} 
                         showObjQuestionOptions={showObjQuestionOptions}
                         handleGetQuestions={handleGetQuestions}
+                        singleExamQuestions={singleExamQuestions}
                         singleQuestion={singleQuestion}
                     />
                     </>
