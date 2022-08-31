@@ -15,10 +15,10 @@ const MyStudent = () => {
   const statusElement = useRef();
   const [ classId, setClassId ] = useState("");
   const [ userId, setUserId ] = useState("");
+  // const [ status, setStatus ] = useState("");
   const [ status, setStatus ] = useState("");
-  const [ selectedStatus, setSelectedStatus ] = useState("");
   const [ studentCount, setStudentCount ] = useState("");
-  const { classMembers } = useSelector((state) => state.schoolClasses);
+  const { classMembers, classMemberStatusChange } = useSelector((state) => state.schoolClasses);
   const { user } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
 
@@ -46,23 +46,26 @@ const MyStudent = () => {
 //   return status
 // }
 
-const handleStatusUpdate = async (userId, selectStatus) => {
-  let status = selectedStatus
-  console.log("selectedStatus ===>", selectedStatus)
-  // dispatch(acceptRejectClassMemberInitiate(userId, classId, status, token))
+const handleStatusUpdate = async (id, status) => {
+  setUserId(id)
 }
+// // console.log("selectedStatus ===>", selectedStatus)
 
+useEffect(() => {
+  console.log("selectedStatus function===>",  userId, classId, status)
+    dispatch(acceptRejectClassMemberInitiate(userId, classId, status, token))
+}, [status])
 
-const usePreviousValue = value => {
-  const ref = useRef();
-  useEffect(() => {
-    ref.current = value;
-  });
-  return ref.current;
-};
+// const usePreviousValue = value => {
+//   const ref = useRef();
+//   useEffect(() => {
+//     ref.current = value;
+//   });
+//   return ref.current;
+// };
 
-const prevCount = usePreviousValue(selectedStatus);
-console.log("State userId, classId, status", prevCount)
+// const prevCount = usePreviousValue(status);
+// console.log("State userId, classId, status", prevCount)
 
   useEffect(() => {
     setClassId(user?.user?.enrolledCourses[0]?.classId)
@@ -76,7 +79,7 @@ console.log("State userId, classId, status", prevCount)
 
   useEffect(() => {
     dispatch(fetchClassMembersInitiate(classId))
-  },[classId]);
+  },[classId, status, classMemberStatusChange]);
 
   return (
     <>
@@ -142,15 +145,13 @@ console.log("State userId, classId, status", prevCount)
               {/* {studentName.status} */}
               <select
               ref={statusElement}
-              onChange={(e) => {setSelectedStatus(e.target.value), handleStatusUpdate(studentName?.userId?.id, studentName.status)}}
+              onChange={(e) => { setStatus(e.target.value), handleStatusUpdate(studentName?.userId?.id, studentName.status)}}
               default={studentName.status}>
                 <option
-                 ref={statusElement}
-                  value={studentName.status}
+                  // value={studentName.status === 'approved'? 'rejected' : 'approved'}
                 >{studentName.status}</option>
                 <option
-                 ref={statusElement}
-                  value={studentName.status === 'approved'? 'rejected' : 'approved'}
+                  // value={studentName.status === 'approved'? 'rejected' : 'approved'}
                 >{studentName.status === 'approved'? 'rejected' : 'approved'}</option>
               </select>
             </Col>
