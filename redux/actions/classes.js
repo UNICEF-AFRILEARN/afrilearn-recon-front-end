@@ -288,11 +288,21 @@ export const fetchClassSubjectsInitiate = (classId) =>  {
     }
 
 }
-export const acceptRejectClassMemberInitiate = (userId, classId, status) =>  {
+export const acceptRejectClassMemberInitiate = (userId, classId, status, token) =>  {
     return function (dispatch) {
         dispatch(acceptRejectClassMemberStart())
         axios
-        .patch('https://afrilearn-backend-01.herokuapp.com/api/v1/classes/accept-reject-class-request')
+        .patch('https://afrilearn-backend-01.herokuapp.com/api/v1/classes/accept-reject-class-request',
+        {   userId, 
+            classId, 
+            status  
+        },
+        {
+            headers: {
+                "token": token,
+                "Content-Type": "application/json",
+            }
+        })
         .then((res) => {
             console.log("From Get Accept reject member class API =>", res.data.data)
             dispatch(acceptRejectClassMemberSuccess(res.data.data))

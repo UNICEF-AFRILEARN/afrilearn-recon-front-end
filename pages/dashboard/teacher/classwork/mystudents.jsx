@@ -1,23 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Router, { useRouter } from 'next/router'
 import { useDispatch, useSelector } from "react-redux";
 import Image from "next/image";
 import { Col, Container, Row } from "react-bootstrap";
 import { HeroPageDetailed } from "../assignContent";
 import styles from "../teacher.module.css";
-import { fetchClassMembersInitiate } from '../../../../redux/actions/classes';
+import { 
+  fetchClassMembersInitiate,
+  acceptRejectClassMemberInitiate
+} from '../../../../redux/actions/classes';
 import Link from "next/link";
 
 const MyStudent = () => {
+  const statusElement = useRef();
   const [ classId, setClassId ] = useState("");
   const [ userId, setUserId ] = useState("");
   const [ status, setStatus ] = useState("");
+  const [ selectedStatus, setSelectedStatus ] = useState("");
   const [ studentCount, setStudentCount ] = useState("");
   const { classMembers } = useSelector((state) => state.schoolClasses);
   const { user } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
 
-  console.log("userId",userId)
+  console.log("user",user.token)
+  let token = user.token
   //Navigate to performance:
   const goToPerformance = (id) => {
     setUserId(id)
@@ -28,20 +34,41 @@ const MyStudent = () => {
   }
 //studentName?.userId?.id
 
-const handleStatusUpdate = (id, callStatus) => {
-  console.log("Update status func id", callStatus)
-  if(callStatus === 'approved'){
-    setStatus('rejected')
-  }else{
-    setStatus('approved')
-  }
-  console.log("State status", status)
+//Check student status on page-load
+// const checkUpdateStudentStatus = () => {
+//   classMembers?.classMembers.filter((studentStatus) => {
+//     if (studentStatus.status === 'rejected'){
+//       setStatus('approved')
+//     }else{
+//       setStatus('rejected')
+//     }
+//   })
+//   return status
+// }
+
+const handleStatusUpdate = async (userId, selectStatus) => {
+  let status = selectedStatus
+  console.log("selectedStatus ===>", selectedStatus)
+  // dispatch(acceptRejectClassMemberInitiate(userId, classId, status, token))
 }
 
+
+const usePreviousValue = value => {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value;
+  });
+  return ref.current;
+};
+
+const prevCount = usePreviousValue(selectedStatus);
+console.log("State userId, classId, status", prevCount)
 
   useEffect(() => {
     setClassId(user?.user?.enrolledCourses[0]?.classId)
   }, [classId]);
+
+
   useEffect(() => {
     setStudentCount(classMembers?.classMembers?.length)
   }, [classMembers]);
@@ -110,14 +137,21 @@ const handleStatusUpdate = (id, callStatus) => {
             </Col>
             <Col
                 value={studentName.status}
-                onClick={() => handleStatusUpdate(studentName?.userId?.id, studentName.status)}
+                // onChange={(e) => }
                 className="" style={{ color: "#FF5B5B" }}>
               {/* {studentName.status} */}
-              <select 
-              onChange={(e) => setStatus(e.target.value)}
+              <select
+              ref={statusElement}
+              onChange={(e) => {setSelectedStatus(e.target.value), handleStatusUpdate(studentName?.userId?.id, studentName.status)}}
               default={studentName.status}>
-                <option>{studentName.status}</option>
-                <option>{status}</option>
+                <option
+                 ref={statusElement}
+                  value={studentName.status}
+                >{studentName.status}</option>
+                <option
+                 ref={statusElement}
+                  value={studentName.status === 'approved'? 'rejected' : 'approved'}
+                >{studentName.status === 'approved'? 'rejected' : 'approved'}</option>
               </select>
             </Col>
           </Row>
