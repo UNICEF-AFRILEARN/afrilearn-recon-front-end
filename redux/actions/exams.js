@@ -125,10 +125,11 @@ export const fetchSingleExamDetailsInitiate = (token, examId) =>  {
 
 }
 export const fetchSingleExamQuestionsInitiate = (token, examId) =>  {
+    console.log("examId from API ===>", examId)
     return function (dispatch) {
         dispatch(fetchSingleExamQuestionsStart())
         axios
-        .get(`https://afrilearn-backend-01.herokuapp.com/api/v1/exams/exam-question/${examId}`,
+        .get('https://afrilearn-backend-01.herokuapp.com/api/v1/exams/exam-question/62fff77c721b450016998f18',
         {
             headers: {
                 "token": token,

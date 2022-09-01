@@ -110,7 +110,7 @@ const Questionpanel = ({
               as="textarea" 
               rows="5" 
               name="question"
-              // value={singleExamQuestion.question}
+              defaultValue={singleQuestion.question}
               onChange={(e) => handleGetQuestions(e, index)}
               placeholder="Type question here..." 
               />
@@ -124,7 +124,7 @@ const Questionpanel = ({
                   <FormControl 
                   aria-label="Amount (to the nearest dollar)"
                   name='optionOne'
-                  // value={option}
+                  defaultValue={singleQuestion.options[0]}
                   onChange={(e) => handleGetQuestions(e, index)}
                   />
                   <InputGroup.Text><BiNote /></InputGroup.Text>
@@ -134,7 +134,7 @@ const Questionpanel = ({
                   <FormControl 
                   aria-label="Amount (to the nearest dollar)"
                   name='optionTwo'
-                  // value={option}
+                  defaultValue={singleQuestion.options[1]}
                   onChange={(e) => handleGetQuestions(e, index)}
                   />
                   <InputGroup.Text><BiNote /></InputGroup.Text>
@@ -143,8 +143,18 @@ const Questionpanel = ({
                   <InputGroup.Text>C</InputGroup.Text>
                   <FormControl 
                   aria-label="Amount (to the nearest dollar)" 
-                  // value=
+                  defaultValue={singleQuestion.options[2]}
                   name='optionThree'
+                  onChange={(e) => handleGetQuestions(e, index)}
+                  />
+                  <InputGroup.Text><BiNote /></InputGroup.Text>
+              </InputGroup>
+              <InputGroup className="mb-3">
+                  <InputGroup.Text>C</InputGroup.Text>
+                  <FormControl 
+                  aria-label="Amount (to the nearest dollar)" 
+                  defaultValue={singleQuestion.options[3]}
+                  name='optionFour'
                   onChange={(e) => handleGetQuestions(e, index)}
                   />
                   <InputGroup.Text><BiNote /></InputGroup.Text>
