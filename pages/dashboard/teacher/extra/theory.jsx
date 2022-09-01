@@ -39,27 +39,27 @@ const Theory = ({
   }, []);
 
   return (
-    <div className={styles.theorymainwrapper}>
-      { showObjQuestionOptions === index + 1 &&
-      <>
-          <Questiontitle index={index}/>
-              <div className={styles.questionpanelwrapper}>
-              <div className={styles.questionpanelheader}>
-                  <h5>Open Edit Panel</h5> <span>< AiOutlineArrowsAlt size={30}/>
-                  </span>
-              </div>
-           
-          </div>
+    <div>
+    {showObjQuestionOptions === index + 1 &&
+       <>
+       <Questiontitle index={index}/>
+           <div className={styles.questionpanelwrapper}>
+           <div className={styles.questionpanelheader}>
+               <h5>Open Edit Panel</h5> <span>< AiOutlineArrowsAlt size={30}/>
+               </span>
+           </div>
+        
+       </div>
       <div className={styles.mainformwrapper}>
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-4" controlId="formBasicEmail">
             <Form.Control
               as="textarea"
               rows="5"
-              name="address"
+              name="question"
               placeholder="Type question here..."
               defaultValue={singleQuestion.question}
-              onChange={(e) => setQuestion(e.target.value)}
+              onChange={(e) => handleGetQuestions(e, index)}
             />
           </Form.Group>
           <Button className="w-50" type="submit">

@@ -25,6 +25,7 @@ const Objectives = ({examId}) => {
             [...singleExamQuestions.questions]
     )
     const [question, setQuestion] = useState("")
+    const [questionType, setQuestionType] = useState("")
 
     console.log("singleExamQuestions from objective", examQuestion)
     const [showObjQuestions, setShowObjQuestions] = useState(1)
@@ -32,7 +33,8 @@ const Objectives = ({examId}) => {
 
     console.log("questionOptions", examQuestion)
 
-    const handleAddQuestions = () => {
+    const handleAddQuestions = (e) => {
+        setQuestionType(e.target.innerText)
         setExamQuestion([...examQuestion,    
         {
             optionsOne:"",
@@ -65,11 +67,11 @@ const Objectives = ({examId}) => {
     }
 
     const handleGetQuestions = (e, index) => {
+       
         const { name, value} = e.target
         const list = [...examQuestion]
         list[index][name] = value;
     }
-    console.log("examId and value together ==> ", examId)
 
     useEffect(() =>{
         dispatch(fetchSingleExamQuestionsInitiate(examId))
@@ -122,7 +124,9 @@ const Objectives = ({examId}) => {
              <div className={styles.examquestionwrapperinnner}>
              { showObjQuestions === 1 &&  examQuestion.map((singleQuestion, index) => (
                 <>
-                    <Questionpanel index={index} 
+                    <Questionpanel 
+                        index={index}
+                        questionType={questionType} 
                         showObjQuestionOptions={showObjQuestionOptions}
                         handleGetQuestions={handleGetQuestions}
                         singleExamQuestions={singleExamQuestions}

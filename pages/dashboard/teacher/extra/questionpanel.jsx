@@ -15,6 +15,7 @@ const Questionpanel = ({
   handleGetQuestions,
   examQuestion,
   singleQuestion,
+  questionType
   // singleExamQuestions
 }) => {
   const { newExamQuestion, exams, singleExamQuestions } = useSelector((state) => state.myExams);
@@ -116,7 +117,9 @@ const Questionpanel = ({
               />
             </Form.Group>
              
-              <h5>Options</h5>
+          { questionType !== 'Theory' &&
+            <>
+          <h5>Options</h5>
           <div className={styles.mainoptionwrapper}>
               <div className={styles.optionwrapper}>
               <InputGroup className="mb-3">
@@ -124,7 +127,7 @@ const Questionpanel = ({
                   <FormControl 
                   aria-label="Amount (to the nearest dollar)"
                   name='optionOne'
-                  defaultValue={singleQuestion.options[0]}
+                  defaultValue={singleQuestion?.options[0]}
                   onChange={(e) => handleGetQuestions(e, index)}
                   />
                   <InputGroup.Text><BiNote /></InputGroup.Text>
@@ -134,7 +137,7 @@ const Questionpanel = ({
                   <FormControl 
                   aria-label="Amount (to the nearest dollar)"
                   name='optionTwo'
-                  defaultValue={singleQuestion.options[1]}
+                  defaultValue={singleQuestion?.options[1]}
                   onChange={(e) => handleGetQuestions(e, index)}
                   />
                   <InputGroup.Text><BiNote /></InputGroup.Text>
@@ -143,7 +146,7 @@ const Questionpanel = ({
                   <InputGroup.Text>C</InputGroup.Text>
                   <FormControl 
                   aria-label="Amount (to the nearest dollar)" 
-                  defaultValue={singleQuestion.options[2]}
+                  defaultValue={singleQuestion?.options[2]}
                   name='optionThree'
                   onChange={(e) => handleGetQuestions(e, index)}
                   />
@@ -153,7 +156,7 @@ const Questionpanel = ({
                   <InputGroup.Text>C</InputGroup.Text>
                   <FormControl 
                   aria-label="Amount (to the nearest dollar)" 
-                  defaultValue={singleQuestion.options[3]}
+                  defaultValue={singleQuestion?.options[3]}
                   name='optionFour'
                   onChange={(e) => handleGetQuestions(e, index)}
                   />
@@ -176,6 +179,8 @@ const Questionpanel = ({
                           label="Use this for all questions"
                           className={styles.checkboxcolor}
                       />
+                      </>
+                      }
                       <Button className="w-50 mt-3" type="submit">
                     Save changes
                   </Button>
