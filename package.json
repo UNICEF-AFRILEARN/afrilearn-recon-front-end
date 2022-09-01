@@ -44,6 +44,7 @@
     "react-slick": "^0.29.0",
     "react-speech": "^1.0.2",
     "react-speech-kit": "^3.0.1",
+    "react-time-ago": "^7.2.1",
     "recharts": "2.1.12",
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",

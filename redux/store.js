@@ -29,8 +29,8 @@ export const store = createStore(
 // const persistor = persistStore(store);
 
 // assigning store to next wrapper
-// const makeStore = () => store;
+const makeStore = () => store;
 
 // export { persistor };
 
-// export const wrapper = createWrapper(makeStore);
+export const wrapper = createWrapper(makeStore);

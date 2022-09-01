@@ -16,6 +16,7 @@ import _ from "lodash";
 import StudentHeropage from "./studentHeropage";
 import { useSelector, useDispatch } from "react-redux";
 import {
+  fetchClassMember,
   fetchCoursesInitiate,
   fetchGetFavouriteInitiate,
   fetchGetUnfinishedVideosInitiate,
@@ -23,6 +24,7 @@ import {
   fetchSendClassRequest,
   fetchstoreSubject,
   fetchSubjectInitiate,
+  fetchTopInClassInitiate,
 } from "../../../../redux/actions/subject";
 import Swal from "sweetalert2";
 import {
@@ -69,24 +71,28 @@ const Dashboard = () => {
     ? user.user?.enrolledCourses[0].userId
     : user.user?.enrolledCourses[1].userId;
   useEffect(() => {
+    dispatch(fetchGetWebInitiate(person_id, token));
     // dispatch(fetchLessonsInitiate());
     dispatch(fetchSingleLessonInitiate(lessonId));
     dispatch(fetchActivitiesInitiate(token));
     // dispatch(fetchUnicefReconInitiate(schoollevel, Subject, lesson));
     dispatch(fetchReconLessonInitiate(userId, token));
-    dispatch(fetchSubjectInitiate(person_id, token));
+    // dispatch(fetchSubjectInitiate(person_id, token));
     dispatch(fetchGetFavouriteInitiate(token));
     dispatch(fetchGetUnfinishedVideosInitiate(token));
-    // dispatch(fetchGetWebInitiate(person_id, token));
+    dispatch(fetchTopInClassInitiate(person_id, token));
+    dispatch(fetchClassMember(person_id, token));
   }, [
     // fetchCourseInitiate,
     fetchReconLessonInitiate,
     fetchUnicefReconInitiate,
     fetchActivitiesInitiate,
     fetchLessonsInitiate,
-    fetchSubjectInitiate,
+    // fetchSubjectInitiate,
     fetchGetUnfinishedVideosInitiate,
-    // fetchGetWebInitiate,
+    fetchGetWebInitiate,
+    fetchTopInClassInitiate,
+    fetchClassMember,
   ]);
 
   console.log("activities from Dashboard index call ====>", activities);
@@ -97,23 +103,25 @@ const Dashboard = () => {
       <div>
         <SubHeading title="My Subject" />
         <Subjects
-          subData={subject?.subject[2]?.enrolledCourse.courseId.relatedSubjects}
+          subData={
+            subject?.dashboardWeb?.enrolledCourse?.courseId.relatedSubjects
+          }
         />
       </div>
       <PastQuestionaira
         subData={
-          subject?.subject[2]?.enrolledCourse.courseId.relatedPastQuestions
+          subject?.dashboardWeb?.enrolledCourse?.courseId.relatedPastQuestions
         }
       />
       <UnfinshedVideos classData={subject?.unfinishedStore.unFinishedVideos} />
       <MyFavs classData={subject?.favourite?.favouriteVideos} />
       <TopInClasses
-        classData={subject?.subject[1]?.lessons}
+        classData={subject?.topInclass?.lessons}
         classed={personData.personClass}
       />
       <PerfomanceSumm />
       <GetSolution />
-      <ClassRoom data={subject?.subject[0]?.classMembership} />
+      <ClassRoom data={subject?.classroom?.classMembership} />
       <Recommended
         recommend={reconLesson?.recommendation}
         unicefRecon={unicefRecon}

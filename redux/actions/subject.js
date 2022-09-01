@@ -3,16 +3,6 @@ import axios from "axios";
 const HerokuServer = "https://afrilearn-backend-01.herokuapp.com/";
 const HerokuURL = HerokuServer + "api/v1/";
 const url = HerokuURL;
-// const headers = (token) => {
-//   let header = {};
-//   if (fileupload) {
-//     header["Content-type"] = "application/json";
-//   }
-//   if (token && token !== undefined) {
-//     header["token"] = token;
-//   }
-//   return header;
-// };
 const headers = (token) => {
   return { headers: { "Content-type": "application/json" }, token: token };
 };
@@ -24,8 +14,16 @@ export const fetchSubjectsSuccess = (subject) => ({
   type: types.FETCH_SUBJECT_SUCCESS,
   payload: subject,
 });
+export const fetchMember = (data) => ({
+  type: types.FETCH_MEMBERSHIP_SUCCESS,
+  payload: data,
+});
 export const fetchFavouriteSuccess = (subject) => ({
   type: types.FETCH_FAVOURITE_SUCCESS,
+  payload: subject,
+});
+export const fetchClassRoom = (subject) => ({
+  type: types.FETCH_CLASSROOM_SUCCESS,
   payload: subject,
 });
 export const fetchUnfinished = (subject) => ({
@@ -122,11 +120,44 @@ export const fetchGetWebInitiate = (sub_id, token) => {
       method: "post",
       url: `${url}dashboard/web`,
       headers: headers(token),
-      enrolledCourseId: sub_id,
+      data: { enrolledCourseId: "6299129385ce1500162bf187" },
     }).then((res) => {
-      console.log(res);
+      // console.log(res);
       dispatch(fetchWeb(res.data.data));
       // dispatch((res.data.data));
+    });
+  };
+};
+export const fetchTopInClassInitiate = (sub_id, token) => {
+  return function (dispatch) {
+    // topTenclass - membership;
+    dispatch(fetchSubjectsStart());
+    axios({
+      method: "post",
+      url: `${url}dashboard/topTen`,
+      headers: headers(token),
+      data: { enrolledCourseId: "6299129385ce1500162bf187" },
+    }).then((res) => {
+      // console.log(res);
+      dispatch(fetchSubjectsSuccess(res.data.data));
+      // dispatch((res.data.data));
+    });
+  };
+};
+export const fetchClassMember = (sub_id, token) => {
+  return function (dispatch) {
+    console.log("6299129385ce1500162bf187", sub_id);
+    // topTenclass - membership;
+    dispatch(fetchSubjectsStart());
+    axios({
+      method: "post",
+      url: `${url}dashboard/class-membership`,
+      headers: headers(token),
+      data: { enrolledCourseId: "6299129385ce1500162bf187" },
+    }).then((res) => {
+      // console.log(res);
+
+      dispatch(fetchClassRoom(res.data.data));
     });
   };
 };
@@ -309,41 +340,41 @@ export const fetchCourseDetailsInitiate = (courseId, subjectId) => {
   };
 };
 
-export const fetchSubjectInitiate = (sub_Id, token) => {
-  return async function (dispatch) {
-    let one = `https://afrilearn-backend-01.herokuapp.com/api/v1/dashboard/class-membership`;
-    let three = `https://afrilearn-backend-01.herokuapp.com/api/v1/dashboard/web`;
-    // let two = `https://afrilearn-backend-01.herokuapp.com/api/v1/dashboard/topTen`;
+// export const fetchSubjectInitiate = (sub_Id, token) => {
+//   return async function (dispatch) {
+//     let one = `https://afrilearn-backend-01.herokuapp.com/api/v1/dashboard/class-membership`;
+//     let three = `https://afrilearn-backend-01.herokuapp.com/api/v1/dashboard/web`;
+//     // let two = `https://afrilearn-backend-01.herokuapp.com/api/v1/dashboard/topTenclass-membership`;
 
-    dispatch(fetchSubjectsStart());
-    const requestOne = await axios.post(
-      one,
-      { enrolledCourseId: sub_Id },
-      { headers: { "Content-type": "application/json", token: token } },
-    );
-    // const requestTwo = await axios.post(
-    //   two,
-    //   { enrolledCourseId: sub_Id },
-    //   { headers: { "Content-type": "application/json", token: token } },
-    // );
-    const requestThree = await axios.post(
-      three,
-      { enrolledCourseId: sub_Id },
-      { headers: { "Content-type": "application/json", token: token } },
-    );
+//     dispatch(fetchSubjectsStart());
+//     const requestOne = await axios.post(
+//       one,
+//       { enrolledCourseId: sub_Id },
+//       { headers: { "Content-type": "application/json", token: token } },
+//     );
+//     // const requestTwo = await axios.post(
+//     //   two,
+//     //   { enrolledCourseId: sub_Id },
+//     //   { headers: { "Content-type": "application/json", token: token } },
+//     // );
+//     const requestThree = await axios.post(
+//       three,
+//       { enrolledCourseId: sub_Id },
+//       { headers: { "Content-type": "application/json", token: token } },
+//     );
 
-    axios.all([requestOne, requestThree]).then(
-      axios.spread(async function (...responses) {
-        const responseOne = await responses[0].data.data;
-        const responseTwo = await responses[1].data.data;
-        // const responseThree = await responses[2].data.data;
-        const response = [responseOne, responseTwo];
-        console.log(response);
-        dispatch(fetchSubjectsSuccess(response));
-      }),
-    );
-  };
-};
+//     axios.all([requestOne, requestThree]).then(
+//       axios.spread(async function (...responses) {
+//         const responseOne = await responses[0].data.data;
+//         const responseTwo = await responses[1].data.data;
+//         // const responseThree = await responses[2].data.data;
+//         const response = [responseOne, responseTwo];
+//         console.log(response);
+//         dispatch(fetchSubjectsSuccess(response));
+//       }),
+//     );
+//   };
+// };
 
 export const fetchPastQuestionSubjInitiate = (id) => {
   return async function (dispatch) {

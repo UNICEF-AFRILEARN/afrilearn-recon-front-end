@@ -8,6 +8,7 @@ import styles1 from "../../../../../../pages/dashboard/teacher/teacher.module.cs
 import styles2 from "../../topInClass.module.css";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
+import ReactTimeAgo from "react-time-ago";
 import {
   fetchClearLikeLesson,
   fetchclearUnFinishedVideos,
@@ -22,6 +23,22 @@ import { FcLike } from "react-icons/fc";
 import { FcLikePlaceholder } from "react-icons/fc";
 import moment from "moment";
 import Speech from "react-speech";
+import TimeAgo from "javascript-time-ago";
+
+import en from "javascript-time-ago/locale/en.json";
+import ru from "javascript-time-ago/locale/ru.json";
+import {
+  addLessonComment,
+  addLessonCommentReply,
+  addResponse,
+  deleteLessonComment,
+  likeLessonComment,
+  unlikeLessonComment,
+  updateLessonComment,
+} from "../../../../../../redux/actions/comment";
+
+TimeAgo.addDefaultLocale(en);
+TimeAgo.addLocale(ru);
 
 // import {useSpeechSynthesis} from "react-speech-kit";
 
@@ -173,7 +190,7 @@ const VideoPage = () => {
     });
     return likes;
   };
-  const fave = subject.subject[4].favouriteVideos;
+  const fave = subject.favourite.favouriteVideos;
   let favoury = () => {
     let likes = fave.find((fruit) => {
       return fruit.lessonId.id === datas.lessonId;
@@ -182,7 +199,7 @@ const VideoPage = () => {
   };
   const [show, setShow] = useState(likey() ? true : false);
   const [faves, setfaves] = useState(favoury() ? true : false);
-  console.log(faves);
+
   const [liskes, setLiskes] = useState(videoId(quary).likes.length);
   const showing = () => {
     if (show) {
@@ -204,6 +221,18 @@ const VideoPage = () => {
       dispatch(fetchsaveFavouriteVideo(datas, token));
     }
   };
+  // const [refresh, setRefresh] = useState();
+  const refref = () => {
+    dispatch(
+      fetchgetLessonComments(
+        datas.lessonId,
+        { commentSection: "video" },
+        token,
+      ),
+    );
+  };
+  // console.log(refresh);
+
   useEffect(() => {
     dispatch(
       fetchgetLessonComments(
@@ -212,17 +241,12 @@ const VideoPage = () => {
         token,
       ),
     );
-  }, [fetchgetLessonComments]);
+  }, []);
 
   return (
     <Container fluid>
       <Row>
         <Col className="p-0" style={{ cursor: "pointer" }}>
-          {/* <iframe
-            width="100%"
-            height="600px"
-            src={data?.videoUrl.videoUrl}
-          ></iframe> */}
           <ReactPlayer
             className="react-player"
             onStart={fetchstoreUnFinishedVideos(datas)}
@@ -242,8 +266,8 @@ const VideoPage = () => {
           />
         </Col>
       </Row>
-      <Row className="p-5">
-        <Col sm={7}>
+      <Row className="m-5 ">
+        <Col className="me-5">
           <Row>
             <Col>
               {" "}
@@ -267,7 +291,7 @@ const VideoPage = () => {
               <Link
                 href={{
                   pathname: "/dashboard/student/classnote/classnotePage",
-                  query: { quary },
+                  query: [quary],
                 }}
               >
                 <a>
@@ -379,20 +403,11 @@ const VideoPage = () => {
             </Col>
           </Row>
           {/* ----------------------------------------------- */}
-          <Comment data={subject.comments} />
+          <Comment data={subject.comments} datas={datas} deta={refref} />
 
-          <Row>
-            <Col>
-              <div
-                className={` ${styles.accordButtonLeft} ${styles.accordButtonLeftExtra}`}
-              >
-                See More
-              </div>
-            </Col>
-          </Row>
           <NextPrevPage data={iconData} />
         </Col>
-        <Col className="mx-5">
+        <Col className="ms-5">
           <Row>
             <Col sm={4} className="">
               <Row className="text-secondary  pb-1">Class:</Row>
@@ -512,37 +527,273 @@ const VideoPage = () => {
 
 export default VideoPage;
 
-export const Comment = ({ data }) => {
-  const comments = [
-    {
-      name: "Ibrahim Muhammed",
-      time: "30 minutes ago",
-      comment: "Does it mean that tractor is a simple farm tool?",
-      likes: "14",
-      reply: [
-        { name: "kolawole isaac", repcom: "that is a valid question" },
-        { name: "semiu isaac", repcom: "i second isaac" },
-      ],
-      Avatar: "comment1",
-    },
-    {
-      name: "Ibrahim Muhammed",
-      time: "30 minutes ago",
-      comment: "Does it mean that tractor is a simple farm tool?",
-      likes: "14",
-      reply: [
-        { name: "kolawole isaac", repcom: "that is a valid question" },
-        { name: "semiu isaac", repcom: "i second isaac" },
-        { name: "semiu isaac", repcom: "i second isaac" },
-      ],
-      Avatar: "comment2",
-    },
-  ];
+export const Comment = ({ datas, deta }) => {
+  const { user } = useSelector((state) => state.auth);
+  const subject = useSelector((state) => state.mySubjectCourse);
+  const dispatch = useDispatch();
+  const token = user?.token;
+  const data = subject.comments;
 
   const [comment, setComment] = useState("");
 
-  const lenComment = data.length;
+  const lenComment = data?.length;
+  const pix =
+    data?.comments?.userId?.profilePhotoUrl !== undefined
+      ? data?.comment.userId.profilePhotoUrl
+      : `/assets/img/profile.svg`;
 
+  const commentData = {
+    userId: datas.userId,
+    lessonId: datas?.lessonId,
+    text: comment,
+    commentSection: "video",
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault;
+    if (comment !== "") {
+      dispatch(addLessonComment(commentData, token));
+      comment !== "" && console.log(comment);
+      setComment("");
+      deta();
+    }
+  };
+  const comLik = true;
+  const [inite, setInite] = useState("");
+  const [commentEdit, setCommentEdit] = useState("");
+  const handleEdit = (rey, ray) => {
+    // console.log(commentEdit);
+    rey === inite ? setInite("") : setInite(rey);
+    setCommentEdit(ray);
+  };
+  const [comRep, setComRep] = useState("");
+  const handleReply = (rey) => {
+    // console.log(rey);
+    rey === comRep ? setComRep("") : setComRep(rey);
+  };
+  console.log(comRep);
+  let likery = (e) => {
+    let likes = data?.comments[e]?.likes?.find((fruit) => {
+      return fruit === datas.userId;
+    });
+    return likes;
+  };
+  const [commentReply, setCommentReply] = useState("");
+  console.log(commentReply);
+
+  const handleReplySubmit = (e, i) => {
+    const commentReplyData = {
+      userId: datas.userId,
+      text: commentReply,
+      lessonCommentId: data?.comments[i]?.id,
+    };
+    e.preventDefault;
+    if (commentReply !== "") {
+      dispatch(addResponse(commentReplyData, token));
+      commentReply !== "" && console.log(commentReply);
+      setCommentReply("");
+      deta();
+    }
+  };
+  // const [commentEdit, setCommentEdit] = useState("");
+  // console.log(commentEdit);
+
+  const handleSubmitEdit = (e, commentId) => {
+    const commentEditData = {
+      text: commentEdit,
+    };
+    e.preventDefault;
+    console.log(commentEdit);
+    if (commentEdit !== "") {
+      dispatch(updateLessonComment(commentEditData, commentId, token));
+      commentEdit !== "" && console.log(commentEdit);
+      setCommentEdit("");
+      setInite("");
+      deta();
+    }
+  };
+  const handleDelete = (e, commentId) => {
+    e.preventDefault;
+    console.log(commentId);
+    dispatch(deleteLessonComment(commentId, token));
+    deta();
+  };
+
+  const CommentFunc = ({ num, comment, main, rep }) => {
+    const [show, setShow] = useState(likery(num) ? true : false);
+    const dtas = {
+      userId: datas.userId,
+      lessonCommentId: data?.comments[num]?.id,
+    };
+    const [liskes, setLiskes] = useState(data?.comments[num]?.likes?.length);
+    const showing = () => {
+      if (show) {
+        setLiskes(+liskes - 1);
+        setShow(!show);
+        dispatch(likeLessonComment(dtas, token));
+      } else {
+        setShow(!show);
+        setLiskes(+liskes + 1);
+        dispatch(unlikeLessonComment(dtas, token));
+      }
+    };
+
+    return (
+      <>
+        {rep ? (
+          comment?.text ? (
+            // data?.comments.map((comment, i) => (
+            <Row className="pt-4 px-3 ms-5 ps-5" key={comment.id}>
+              <Col className="" md={2}>
+                <Image
+                  alt={"afrilearn marketing video"}
+                  src={
+                    comment?.userId?.profilePhotoUrl !== undefined
+                      ? comment?.userId.profilePhotoUrl
+                      : `/assets/img/profile.svg`
+                  }
+                  width={45}
+                  height={45}
+                />
+              </Col>
+              <Col>
+                <Row>
+                  <p style={{ fontSize: "16px", color: "#CBCBCB" }}>
+                    {comment.userId.fullName}
+                    {" . "}{" "}
+                    {comment.createdAt ? (
+                      <ReactTimeAgo
+                        date={comment.createdAt}
+                        locale="en-US"
+                        timeStyle="twitter"
+                      />
+                    ) : (
+                      "Not Known"
+                    )}
+                  </p>
+                </Row>
+                <Row>
+                  <Col sm={12}>{comment.text}</Col>
+                </Row>
+              </Col>
+            </Row>
+          ) : (
+            // ))
+            <h6 className="text-center mt-4"> Be the first to respond🥳 </h6>
+          )
+        ) : (
+          <Row className="pt-4 px-3" key={comment.id}>
+            <Col className="" md={2}>
+              <Image
+                alt={"afrilearn marketing video"}
+                src={
+                  comment?.userId?.profilePhotoUrl !== undefined
+                    ? comment?.userId.profilePhotoUrl
+                    : `/assets/img/profile.svg`
+                }
+                width={45}
+                height={45}
+              />
+            </Col>
+            <Col>
+              <Row>
+                <p style={{ fontSize: "16px", color: "#CBCBCB" }}>
+                  {comment.userId.fullName}
+                  {" . "}{" "}
+                  {comment.createdAt ? (
+                    <ReactTimeAgo
+                      date={comment.createdAt}
+                      locale="en-US"
+                      timeStyle="twitter"
+                    />
+                  ) : (
+                    "Not Known"
+                  )}
+                </p>
+              </Row>
+              <Row>
+                <Col sm={12}>{comment.text}</Col>
+              </Row>
+            </Col>
+          </Row>
+        )}
+        {main && (
+          <Row className="ms-5 ps-5">
+            <Col onClick={() => showing()}>
+              <Image
+                alt={"afrilearn marketing video"}
+                src={`/assets/img/features/dashboard/student/${
+                  liskes ? "Dark Heart" : "Heart"
+                }.png`}
+                width={13}
+                height={13}
+              />{" "}
+              {liskes}
+            </Col>
+            <Col onClick={() => handleReply(num)} style={{ cursor: "pointer" }}>
+              <Image
+                alt={"afrilearn marketing video"}
+                src={`/assets/img/features/dashboard/student/Chat.png`}
+                width={13}
+                height={13}
+              />{" "}
+              {data?.comments[num]?.commentReplies?.length}
+            </Col>
+            <Col onClick={() => handleReply(num)} style={{ cursor: "pointer" }}>
+              REPLY
+            </Col>
+            <Col md={1} className="p-2" style={{ position: "relative" }}>
+              <div className={`m-auto ${styles1.moreIcon}`}>
+                <div
+                  style={{
+                    width: "150px",
+                    background: "#FFFFFF",
+                    boxShadow: "0px 1px 7px rgba(0, 0, 0, 0.1)",
+                    borderRadius: "10px",
+                    position: "absolute",
+                    top: "-65px",
+                    left: "-45px",
+                  }}
+                  className={styles1.displayNone}
+                >
+                  <Col className={`p-3 ps-3 `}>
+                    <Row
+                      className=""
+                      onClick={() => handleEdit(num, comment.text)}
+                    >
+                      <Col className={`m-auto ${styles.highlightText}`}>
+                        <p style={{ fontSize: "13px", margin: "2px" }}>
+                          Edit Comment
+                        </p>
+                      </Col>
+                    </Row>
+
+                    <Row className="">
+                      <Col
+                        className={`m-auto ${styles.highlightText}`}
+                        onClick={(e) => {
+                          handleDelete(e, comment.id);
+                        }}
+                      >
+                        <p style={{ fontSize: "13px", margin: "2px" }}>
+                          Delete Comment
+                        </p>
+                      </Col>
+                    </Row>
+                  </Col>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        )}
+      </>
+    );
+  };
+  const [seeMore, setSeeMore] = useState(false);
+  const spliced = data?.comments?.slice(0, 3);
+
+  console.log(seeMore);
+  console.log(spliced);
   return (
     <section>
       <Row>
@@ -551,18 +802,22 @@ export const Comment = ({ data }) => {
           <div className={styles.vidCommentRight}>{lenComment}</div>
         </Col>
       </Row>
-      <Row>
-        <Col xs={3} md={2}>
+      <Row className="px-3">
+        <Col md={2}>
           <div className={styles.commentAvatarLSide}>
             <Image
               alt={"afrilearn marketing video"}
-              src={`/assets/img/profile.svg`}
+              src={
+                data?.comments?.userId?.profilePhotoUrl !== undefined
+                  ? data?.comments.userId.profilePhotoUrl
+                  : `/assets/img/profile.svg`
+              }
               width={45}
               height={45}
             />
           </div>
         </Col>
-        <Col xs={12} md={10} className={styles.commentAvatarRSide}>
+        <Col className={styles.commentAvatarRSide}>
           <div className={styles.commentAvatartop}>
             <div className={styles.commentAvatarMSide}>
               <input
@@ -573,7 +828,11 @@ export const Comment = ({ data }) => {
                 title="Comment"
               />
             </div>
-            <div className={styles.commentAvatarMRSide}></div>
+            <div
+              style={{ cursor: "pointer" }}
+              className={`${styles.commentAvatarMRSide}`}
+              onClick={(e) => handleSubmit(e)}
+            ></div>
           </div>
         </Col>
       </Row>
@@ -582,60 +841,222 @@ export const Comment = ({ data }) => {
           <div className={styles.line}></div>
         </Col>
       </Row>
-      {comments.map((comments, i) => (
-        <Row className="pt-5" key={i}>
+
+      {seeMore
+        ? data?.comments?.map((data, i) => (
+            <>
+              <Row key={i}>
+                <CommentFunc num={i} comment={data} main={true} />
+                {comRep === i && (
+                  <>
+                    <Row className="w-75 ms-5 ps-5">
+                      <Row className="px-3 pt-4">
+                        <Col md={2}>
+                          <div className={styles.commentAvatarLSide}>
+                            <Image
+                              alt={"afrilearn marketing video"}
+                              src={
+                                comment?.userId?.profilePhotoUrl !== undefined
+                                  ? comment?.userId.profilePhotoUrl
+                                  : `/assets/img/profile.svg`
+                              }
+                              width={45}
+                              height={45}
+                            />
+                          </div>
+                        </Col>
+
+                        <Col className={styles.commentAvatarRSide}>
+                          <div className={styles.commentAvatartop}>
+                            <div className={styles.commentAvatarMSide}>
+                              <input
+                                placeholder="Add a public comment..."
+                                type="text"
+                                value={commentReply}
+                                onChange={(e) =>
+                                  setCommentReply(e.target.value)
+                                }
+                                title="Comment"
+                              />
+                            </div>
+                            <div
+                              style={{ cursor: "pointer" }}
+                              className={`${styles.commentAvatarMRSide}`}
+                              onClick={(e) => handleReplySubmit(e, i)}
+                            ></div>
+                          </div>
+                        </Col>
+                      </Row>
+                    </Row>
+                    {data?.commentReplies.length > 0 ? (
+                      data.commentReplies.map((data, i) => (
+                        <Row key={i}>
+                          <CommentFunc comment={data} rep={true} />
+                        </Row>
+                      ))
+                    ) : (
+                      <h6 className="text-center mt-4">
+                        {" "}
+                        Be the first to respond🥳{" "}
+                      </h6>
+                    )}
+                  </>
+                )}
+              </Row>
+              {inite === i && (
+                <Row className="ps-5 ms-5">
+                  <Col md={2}>
+                    <div className={styles.commentAvatarLSide}>
+                      <Image
+                        alt={"afrilearn marketing video"}
+                        src={
+                          data?.comments?.userId?.profilePhotoUrl !== undefined
+                            ? data?.comments.userId.profilePhotoUrl
+                            : `/assets/img/profile.svg`
+                        }
+                        width={45}
+                        height={45}
+                      />
+                    </div>
+                  </Col>
+                  <Col className={styles.commentAvatarRSide}>
+                    <div className={styles.commentAvatartop}>
+                      <div className={styles.commentAvatarMSide}>
+                        <input
+                          placeholder="Add a public comment..."
+                          type="text"
+                          value={commentEdit}
+                          onChange={(e) => setCommentEdit(e.target.value)}
+                          title="Comment"
+                        />
+                      </div>
+                      <div
+                        style={{ cursor: "pointer" }}
+                        className={`${styles.commentAvatarMRSide}`}
+                        onClick={(e) => handleSubmitEdit(e, data.id)}
+                      ></div>
+                    </div>
+                  </Col>
+                </Row>
+              )}
+            </>
+          ))
+        : spliced?.map((data, i) => (
+            <>
+              <Row key={i}>
+                <CommentFunc num={i} comment={data} main={true} />
+                {comRep === i && (
+                  <>
+                    <Row className="w-75 ms-5 ps-5">
+                      <Row className="px-3 pt-4">
+                        <Col md={2}>
+                          <div className={styles.commentAvatarLSide}>
+                            <Image
+                              alt={"afrilearn marketing video"}
+                              src={
+                                comment?.userId?.profilePhotoUrl !== undefined
+                                  ? comment?.userId.profilePhotoUrl
+                                  : `/assets/img/profile.svg`
+                              }
+                              width={45}
+                              height={45}
+                            />
+                          </div>
+                        </Col>
+                        <Col className={styles.commentAvatarRSide}>
+                          <div className={styles.commentAvatartop}>
+                            <div className={styles.commentAvatarMSide}>
+                              <input
+                                placeholder="Add a public comment..."
+                                type="text"
+                                value={commentReply}
+                                onChange={(e) =>
+                                  setCommentReply(e.target.value)
+                                }
+                                title="Comment"
+                              />
+                            </div>
+                            <div
+                              style={{ cursor: "pointer" }}
+                              className={`${styles.commentAvatarMRSide}`}
+                              onClick={(e) => handleReplySubmit(e, i)}
+                            ></div>
+                          </div>
+                        </Col>
+                      </Row>
+                    </Row>
+                    {data?.commentReplies.length > 0 ? (
+                      data.commentReplies.map((data, i) => (
+                        <Row key={i}>
+                          <CommentFunc comment={data} rep={true} />
+                        </Row>
+                      ))
+                    ) : (
+                      <h6 className="text-center mt-4">
+                        {" "}
+                        Be the first to respond🥳{" "}
+                      </h6>
+                    )}
+                  </>
+                )}
+              </Row>
+              {inite === i && (
+                <Row className="ps-5 ms-5">
+                  <Col md={2}>
+                    <div className={styles.commentAvatarLSide}>
+                      <Image
+                        alt={"afrilearn marketing video"}
+                        src={
+                          data?.comments?.userId?.profilePhotoUrl !== undefined
+                            ? data?.comments.userId.profilePhotoUrl
+                            : `/assets/img/profile.svg`
+                        }
+                        width={45}
+                        height={45}
+                      />
+                    </div>
+                  </Col>
+                  <Col className={styles.commentAvatarRSide}>
+                    <div className={styles.commentAvatartop}>
+                      <div className={styles.commentAvatarMSide}>
+                        <input
+                          placeholder="Add a public comment..."
+                          type="text"
+                          value={commentEdit}
+                          onChange={(e) => setCommentEdit(e.target.value)}
+                          title="Comment"
+                        />
+                      </div>
+                      <div
+                        style={{ cursor: "pointer" }}
+                        className={`${styles.commentAvatarMRSide}`}
+                        onClick={(e) => handleSubmitEdit(e, data.id)}
+                      ></div>
+                    </div>
+                  </Col>
+                </Row>
+              )}
+            </>
+          ))}
+
+      {data?.comments.length > 3 && (
+        <Row>
           <Col>
-            <div className={styles.vidAvatar}>
-              <Image
-                alt={"afrilearn marketing video"}
-                src={`/assets/img/features/dashboard/student/${comments.Avatar}.png`}
-                width={45}
-                height={45}
-              />
-            </div>
-          </Col>
-          <Col xs={8}>
-            <Row>
-              <Col sm={5}>{comments.name}</Col>
-              <Col sm={5}>{comments.time}</Col>
-            </Row>
-            <Row>
-              <Col sm={12}>{comments.comment}</Col>
-            </Row>
-            <Row>
-              <Col sm={2}>
-                <Image
-                  alt={"afrilearn marketing video"}
-                  src={`/assets/img/features/dashboard/student/Heart.png`}
-                  width={13}
-                  height={13}
-                />
-                {comments.likes}
-              </Col>
-              <Col sm={2}>
-                <Image
-                  alt={"afrilearn marketing video"}
-                  src={`/assets/img/features/dashboard/student/Chat.png`}
-                  width={13}
-                  height={13}
-                />
-                {comments.reply.length}
-              </Col>
-              <Col sm={2}>REPLY</Col>
-            </Row>
-          </Col>
-          <Col>
-            <div className={styles.threeIcons}>
-              <Image
-                alt={"afrilearn marketing video"}
-                src={`/assets/img/features/dashboard/student/Group2121.png`}
-                width={5}
-                height={20}
-              />
+            <div
+              onClick={() => setSeeMore(!seeMore)}
+              className={` ${styles.accordButtonLeft} ${styles.accordButtonLeftExtra}`}
+              style={{ cursor: "pointer" }}
+            >
+              {!seeMore ? "See More" : "See Less"}
             </div>
           </Col>
         </Row>
-      ))}
+      )}
+      <Row>
+        <Col>
+          <div className={styles.line}></div>
+        </Col>
+      </Row>
     </section>
   );
 };

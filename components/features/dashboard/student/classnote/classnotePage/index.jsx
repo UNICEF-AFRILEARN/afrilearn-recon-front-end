@@ -13,7 +13,7 @@ import { useSelector } from "react-redux";
 
 const ClassnotePage = () => {
   const router = useRouter();
-  let quary = router.query.Exam;
+  let quary = router.query[0];
   console.log(quary);
   const subject = useSelector((state) => state.mySubjectCourse);
   const lessons = subject.subjectDetails[1]?.relatedLessons;
@@ -99,17 +99,13 @@ const ClassnotePage = () => {
   ];
   return (
     <Container fluid className="p-0">
-      <Row>
-        <Col
-          id="dashboardFirstSection"
-          className={`relative ${styles1.dashboardFirstSection}`}
-        >
-          <Row>
-            <div className="col-md-12">
-              <h1 className={styles1.fontSize}>{stuData[0].subject}</h1>
-            </div>
-          </Row>
-        </Col>
+      <Row
+        id="dashboardFirstSection"
+        className={`relative ${styles1.dashboardFirstSection}`}
+      >
+        <div className="col-md-12">
+          <h1 className={styles1.fontSize}>{stuData[0].subject}</h1>
+        </div>
       </Row>
       <Row className="px-5">
         <Col md={8}>
@@ -215,44 +211,39 @@ const ClassnotePage = () => {
           <Row>
             <div style={{ boxSizing: "border-box" }}>
               <h3 className="font-weight-bold">{text[0].topic}</h3>
-              <div
-                className=""
-                dangerouslySetInnerHTML={{ __html: text[0].texts }}
-              ></div>
             </div>
+            <div
+              md={8}
+              dangerouslySetInnerHTML={{ __html: text[0].texts }}
+            ></div>
           </Row>
           <Row>
             <NextPrevPage data={iconData} />
           </Row>
         </Col>
-        <Col>
-          <Row className="pt-5 ml-5 mt-5"></Row>
-          <Row className="pt-4 ml-5 mt-4"></Row>
-
-          <Row className="mr-5 pt-5 mt-5 bg-light rounded">
+        <Col md={4} className="position-sticky">
+          <Row className="mr-5 pt-5 mt-5  rounded position-sticky">
             <div>
               <Col className="ml-5 w-100 mx-auto">
                 <h4>Subject Syllabus</h4>
-                <div className="border-bottom p-3  ml-5"></div>
+                <div className="border-bottom"></div>
               </Col>
-              {text[1].map((title, i) => (
-                <Accordion key={i} className="w-75 pt-2 bg-light">
-                  <Accordion.Item eventKey={i}>
-                    <Accordion.Header>{title.term}</Accordion.Header>
-                    <Accordion.Body className="bg-light">
-                      {title.topics.map((topic, i) => (
-                        <div
-                          key={i}
-                          v
-                          className={`pb-0 text-normal bg-light ${styles2.highlightText}`}
-                        >
-                          {topic}
-                        </div>
-                      ))}
-                    </Accordion.Body>
-                  </Accordion.Item>
-                </Accordion>
-              ))}
+              <div className="acagon">
+                {text[1].map((title, i) => (
+                  <Accordion key={i} className={styles.newton}>
+                    <Accordion.Item eventKey={i}>
+                      <Accordion.Header>{title.term}</Accordion.Header>
+                      <Accordion.Body className="helo">
+                        {title.topics.map((topic, i) => (
+                          <div key={i} className={` ${styles2.highlightText}`}>
+                            {topic}
+                          </div>
+                        ))}
+                      </Accordion.Body>
+                    </Accordion.Item>
+                  </Accordion>
+                ))}
+              </div>
             </div>
           </Row>
         </Col>

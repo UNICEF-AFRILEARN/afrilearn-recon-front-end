@@ -1144,13 +1144,22 @@ a {
 .rs-stop {
   background-repeat: no-repeat;
   background-size: contain;
-  width: 4px;
-  background-color: transparent !important;
+  width: 53px;
+  background-color: red !important;
   position: absolute;
-  top: 4px;
-  left: 86px;
+  top: -7px;
+  left: 42px;
 }
 
 .adjust .rs-text {
   display: none;
+}
+
+figure img {
+  width: 100%;
+}
+
+.acagon .accordion-button {
+  width: 100% !important;
+  background: #fafafa !important;
 }

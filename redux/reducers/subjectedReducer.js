@@ -4,7 +4,7 @@ const initialState = {
   comments: [],
   stuTeacherSub: "",
   announcement: "",
-  subject: [],
+  topInclass: [],
   subjectDetails: [],
   pastQuestion: [],
   pastQuestionSub: [],
@@ -12,6 +12,8 @@ const initialState = {
   classRequestInfo: "",
   unfinishedStore: "",
   dashboardWeb: "",
+  classMember: [],
+  classroom: [],
 };
 
 const subjectedReducer = (state = initialState, { type, payload }) => {
@@ -24,18 +26,32 @@ const subjectedReducer = (state = initialState, { type, payload }) => {
     case types.FETCH_SUBJECT_SUCCESS:
       return {
         ...state,
-        subject: payload,
+        topInclass: payload,
       };
+
+    case types.FETCH_MEMBERSHIP_SUCCESS:
+      return {
+        ...state,
+        classMember: payload,
+      };
+
     case types.FETCH_FAVOURITE_SUCCESS:
       return {
         ...state,
         favourite: payload,
       };
+    case types.FETCH_CLASSROOM_SUCCESS:
+      return {
+        ...state,
+        classroom: payload,
+      };
+
     case types.FETCH_UNFINISHED_SUCCESS:
       return {
         ...state,
         unfinishedStore: payload,
       };
+
     case types.FETCH_WEB_SUCCESS:
       return {
         ...state,
