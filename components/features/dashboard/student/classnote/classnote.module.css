@@ -240,7 +240,17 @@
   background-size: contain;
   width: 13px;
   height: 13px;
-  /* margin: 5px auto; */
+  margin: 5px 0;
+  margin-left: 15px;
+  align-self: center;
+}
+.accordButtonLeft22 {
+  background-image: url("/assets/img/features/dashboard/student/Stroke 11.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 13px;
+  height: 13px;
+  margin: 5px auto;
   align-self: center;
 }
 

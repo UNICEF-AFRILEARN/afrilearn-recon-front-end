@@ -40,14 +40,12 @@ import {
 TimeAgo.addDefaultLocale(en);
 TimeAgo.addLocale(ru);
 
-// import {useSpeechSynthesis} from "react-speech-kit";
-
 const VideoPage = () => {
   const dispatch = useDispatch();
   const ref = useRef("");
   const router = useRouter();
-  let quary = router.query[0];
-  let quary1 = router.query[1];
+  let quarie = router.query[0];
+  let quarie1 = router.query[1];
   const { user } = useSelector((state) => state.auth);
   const subject = useSelector((state) => state.mySubjectCourse);
   const lessons = subject.subjectDetails[1]?.relatedLessons;
@@ -59,6 +57,20 @@ const VideoPage = () => {
     { id: "600047f67cabf80f88f61735", term: "Second Term" },
     { id: "600048197cabf80f88f61736", term: "Third Term" },
   ];
+
+  const [quary, setQuary] = useState(quarie);
+  const [quary1, setQuary1] = useState(quarie1);
+
+  const idSetter = (first) => {
+    // console.log(first);
+    // console.log(lessons[first].id);
+    // console.log(lessons[first].videoUrls[0]._id);
+    // console.log(quary, quary1);
+    // console.log(first, second);
+    setQuary(lessons[first].id);
+    setQuary1(lessons[first].videoUrls[0]._id);
+  };
+
   const videoId = (id) => {
     let dat;
     for (let i = 0; i < lessons.length; i++) {
@@ -89,6 +101,7 @@ const VideoPage = () => {
     }
     return dat;
   };
+  console.log(videoId(quary));
   const data = {
     topic: videoId(quary).title,
     videoUrl: videoIds(quary1),
@@ -97,27 +110,11 @@ const VideoPage = () => {
 
   const [modal, setModal] = useState(false);
   const toggleModal = () => setModal(!modal);
-  const iconData = [
-    {
-      icon: "arrowhead",
-      text: `Lesson ${+lessonsNumber + 1}`,
-    },
-  ];
-  const d = new Date();
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
+  const iconData = {
+    icon: "arrowhead",
+    text: `Lesson ${+lessonsNumber + 1}`,
+    leng: videoId(quary).videoUrls.length,
+  };
   const subjected = subject.subjectDetails[0].subject;
   const secVidData = {
     class: subjected.courseId.alias,
@@ -159,30 +156,6 @@ const VideoPage = () => {
     }
     return decodeHTMLEntities;
   })();
-  const alreadyAddedToFavourite = () => {
-    let result = [];
-    let result1 = [];
-    //old records
-    if (dashboardFavouriteVideos && dashboardFavouriteVideos.length) {
-      result = dashboardFavouriteVideos.filter(
-        (item) => item.lessonId.id === parsed.lessonId,
-      );
-    }
-    //new records
-    if (
-      newlyAddedDashbaordFavouriteVideos &&
-      newlyAddedDashbaordFavouriteVideos.length
-    ) {
-      result1 = newlyAddedDashbaordFavouriteVideos.filter(
-        (item) => item.lessonId === parsed.lessonId,
-      );
-    }
-    if (result.length || result1.length) {
-      return true;
-    } else {
-      return false;
-    }
-  };
 
   let likey = () => {
     let likes = videoId(quary).likes.find((fruit) => {
@@ -243,8 +216,14 @@ const VideoPage = () => {
     );
   }, []);
 
+  const img = ["Group 2323", "Group 2324", "Group 2327", "Group 2328"];
+  const randomise = () => {
+    const num = Math.floor(Math.random() * 4);
+    return img[num];
+  };
+
   return (
-    <Container fluid>
+    <Container fluid id="videoPlay">
       <Row>
         <Col className="p-0" style={{ cursor: "pointer" }}>
           <ReactPlayer
@@ -269,7 +248,7 @@ const VideoPage = () => {
       <Row className="m-5 ">
         <Col className="me-5">
           <Row>
-            <Col>
+            <Col md={3}>
               {" "}
               <div className={styles.accordButtonLeft}>
                 <Link href="/dashboard/student/video/videoPage">
@@ -277,12 +256,12 @@ const VideoPage = () => {
                     <div className={styles.buttonStyleImage}>
                       <Image
                         alt={"afrilearn marketing video"}
-                        src={`/assets/img/features/dashboard/student/${iconData[0].icon}.png`}
+                        src={`/assets/img/features/dashboard/student/${iconData.icon}.png`}
                         width={13}
                         height={13}
                       />
                     </div>
-                    {iconData[0].text}
+                    {iconData.text}
                   </div>
                 </Link>
               </div>
@@ -296,7 +275,7 @@ const VideoPage = () => {
               >
                 <a>
                   <div className={styles.document}></div>
-                  <div className={styles.documentBottom}>Class Note</div>
+                  <div className={styles.documentBottom}>Note</div>
                 </a>
               </Link>
             </Col>
@@ -317,7 +296,7 @@ const VideoPage = () => {
                 displayText={
                   <div style={{ height: "54.5" }}>
                     <div className={styles.mic}></div>
-                    <div className={styles.micBottom}>Audio Lesson</div>
+                    <div className={styles.micBottom}>Audio</div>
                   </div>
                 }
               />
@@ -405,7 +384,7 @@ const VideoPage = () => {
           {/* ----------------------------------------------- */}
           <Comment data={subject.comments} datas={datas} deta={refref} />
 
-          <NextPrevPage data={iconData} />
+          <NextPrevPage datay={idSetter} />
         </Col>
         <Col className="ms-5">
           <Row>
@@ -465,60 +444,54 @@ const VideoPage = () => {
             </Col>
           </Row>
 
-          <Row className="bg-light" style={{ borderRadius: "0 0 20px 20px" }}>
-            <Col className="bg-light rounded-bottom ">
-              <Col>
+          {videoId(quary).videoUrls.map((dater, i) => (
+            <Row className="bg-light pt-0 pb-0" style={{ borderRadius: "0 0" }}>
+              <Col className="bg-light rounded-bottom m-auto" md={4}>
                 <Row>
-                  <div className={`px-0 ${styles2.contList}`}>
+                  {dater?.thumbnailUrl ? (
                     <Image
                       alt={"afrilearn marketing video"}
-                      src="https://afrilearn-media.s3.eu-west-3.amazonaws.com/sss-one/economics/first-term/meaning-of-economics/thumbnail/economics.jpeg"
-                      width={150}
-                      height={120}
-                      className={styles2.rectBox}
+                      src={dater.thumbnailUrl}
+                      width={200}
+                      height={110}
                     />
-                    <div className={styles2.rect}>
-                      <Image
-                        alt={"afrilearn marketing video"}
-                        src={`/assets/img/features/dashboard/student/Rectangle 7862.png`}
-                        width={150}
-                        height={120}
-                      />
-                    </div>
-
-                    <div className={`mb-5 ${styles2.play_paus2}`}>
-                      <Image
-                        alt={"afrilearn marketing video"}
-                        src={`/assets/img/features/dashboard/student/Play.png`}
-                        width={20}
-                        height={20}
-                      />
-                    </div>
-                  </div>
+                  ) : (
+                    <Image
+                      alt={"afrilearn marketing video"}
+                      src={`/assets/img/features/dashboard/student/random/${randomise()}.png`}
+                      width={200}
+                      height={110}
+                    />
+                  )}
                 </Row>
               </Col>
-            </Col>
-            <Col>
-              <Row className="bg-light">
-                Geometrical Construction (2): Angles
-              </Row>
-              <Row>
-                <div className={styles2.buttonPlay}>
-                  <button className={styles2.buttonStyle}>
-                    <div className={styles2.buttonStyleImage}>
-                      <Image
-                        alt={"afrilearn marketing video"}
-                        src={`/assets/img/features/dashboard/student/arrowhead.png`}
-                        width={13}
-                        height={13}
-                      />
+              <Col>
+                <Row className="bg-light">{videoId(quary).title}</Row>
+                <Row
+                  onClick={() => {
+                    setQuary1(dater._id);
+                  }}
+                >
+                  <a href="#videoPlay">
+                    {" "}
+                    <div className={styles2.buttonPlay}>
+                      <button className={styles2.buttonStyle}>
+                        <div className={styles2.buttonStyleImage}>
+                          <Image
+                            alt={"afrilearn marketing video"}
+                            src={`/assets/img/features/dashboard/student/arrowhead.png`}
+                            width={13}
+                            height={13}
+                          />
+                        </div>
+                        lesson {i + 1}
+                      </button>
                     </div>
-                    lesson 1
-                  </button>
-                </div>
-              </Row>
-            </Col>
-          </Row>
+                  </a>
+                </Row>
+              </Col>
+            </Row>
+          ))}
         </Col>
       </Row>
     </Container>
@@ -1039,7 +1012,7 @@ export const Comment = ({ datas, deta }) => {
             </>
           ))}
 
-      {data?.comments.length > 3 && (
+      {data?.comments?.length > 3 && (
         <Row>
           <Col>
             <div
@@ -1061,45 +1034,81 @@ export const Comment = ({ datas, deta }) => {
   );
 };
 
-export const NextPrevPage = ({ data }) => {
+export const NextPrevPage = ({ datay }) => {
+  const subject = useSelector((state) => state.mySubjectCourse);
+  const lesson = subject.subjectDetails[1]?.relatedLessons;
+
+  const truncate = (str, max) => {
+    if (str.length > max) {
+      return str.slice(0, max) + "...";
+    } else {
+      return str;
+    }
+  };
+
+  const [page, setPage] = useState(0);
+  // console.log(page);
+  const handlePrevPage = () => {
+    datay(page - 1);
+    page > 0 && setPage(+page - 1);
+  };
+  const handleNextPage = () => {
+    datay(page + 1);
+    page + 1 < lesson.length && setPage(+page + 1);
+  };
   return (
     <>
+      {/* {lesson.map((les, i) => ( */}
       <Row className="pt-5">
-        <Col md={4} className="">
-          <Row className={` ${styles.accordButtonLeftExtr}`}>
-            <Col md={2} className="mt-3">
-              <Row className={`mx-4 ${styles.accordButtonLeft1}`}></Row>
-            </Col>
-            <Col md={1} className="mt-2">
-              <div className={styles.accordButtonLeft2}></div>
-            </Col>
-            <Col md={8} className="">
-              <div className={styles.accordButtonLeftSide1}>Go to</div>
-              <div className={styles.accordButtonLeftSide2}>Prev Page</div>
-            </Col>
-          </Row>
-        </Col>
+        {page !== 0 ? (
+          <Col md={4} className="pointer" onClick={() => handlePrevPage()}>
+            <Row className={` ${styles.accordButtonLeftExtr}`}>
+              <Col className="" style={{ padding: "0", margin: "auto 0" }}>
+                <Row className={`${styles.accordButtonLeft1}`}></Row>
+              </Col>
+              <Col md={1} className="mt-2">
+                <div className={`mx-0 ${styles.accordButtonLeft2}`}></div>
+              </Col>
+              <Col md={9} className="p-0" style={{ textAlign: "left" }}>
+                <div className={styles.accordButtonLeftSide1}>Go to</div>
+                <div className={styles.accordButtonLeftSide2}>
+                  {truncate(lesson[page - 1].title, 15)}
+                </div>
+              </Col>
+            </Row>
+          </Col>
+        ) : (
+          <Col md={4}></Col>
+        )}
 
-        <Col md={4}>
+        <Col md={4} className="m-auto text-center">
           <div className={`${styles.accordButtonLeftExtr2}`}>
-            {data[0].text} of {data.length}
+            {+page + 1} of {lesson.length}
           </div>
         </Col>
-        <Col md={4}>
-          <Row className={` ${styles.accordButtonLeftExtr}`}>
-            <Col md={8} className="">
-              <div className={styles.accordButtonLeftSide1}>Go to</div>
-              <div className={styles.accordButtonLeftSide2}>Next Page</div>
-            </Col>
-            <Col md={1} className="mt-2">
-              <div className={`mx-0 ${styles.accordButtonLeft2}`}></div>
-            </Col>
-            <Col md={2} className="" style={{ padding: "0", margin: "auto" }}>
-              <div className={` ${styles.accordButtonLeft1}`}></div>
-            </Col>
-          </Row>
-        </Col>
+
+        {page + 1 !== lesson.length ? (
+          <Col md={4} className="pointer" onClick={() => handleNextPage()}>
+            <Row className={` ${styles.accordButtonLeftExtr}`}>
+              <Col md={9} className="p-0" style={{ textAlign: "right" }}>
+                <div className={styles.accordButtonLeftSide1}>Go to</div>
+                <div className={styles.accordButtonLeftSide2}>
+                  {truncate(lesson[page + 1].title, 15)}
+                </div>
+              </Col>
+              <Col md={1} className="mt-2">
+                <div className={`mx-0 ${styles.accordButtonLeft2}`}></div>
+              </Col>
+              <Col className="" style={{ padding: "0", margin: "auto 0" }}>
+                <div className={` ${styles.accordButtonLeft22}`}></div>
+              </Col>
+            </Row>
+          </Col>
+        ) : (
+          <Col md={4}></Col>
+        )}
       </Row>
+      {/* ))} */}
     </>
   );
 };

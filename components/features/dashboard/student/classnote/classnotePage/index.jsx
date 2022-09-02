@@ -97,6 +97,26 @@ const ClassnotePage = () => {
       },
     ],
   ];
+
+  const datas = {
+    userId: user.user._id,
+    courseId: videoId(quary).courseId,
+    subjectId: videoId(quary).subjectId,
+    lessonId: videoId(quary)._id,
+    termId: videoId(quary).termId,
+    videoId: videoIds(quary1)._id,
+    videoPosition: lessonsNumber,
+  };
+  const refref = () => {
+    dispatch(
+      fetchgetLessonComments(
+        datas.lessonId,
+        { commentSection: "video" },
+        token,
+      ),
+    );
+  };
+
   return (
     <Container fluid className="p-0">
       <Row
@@ -250,7 +270,7 @@ const ClassnotePage = () => {
       </Row>
       <Row className="border-top mt-2">
         <Col className="px-5 mt-3" id="comment">
-          <Comment />
+          <Comment deta={refref} datas={datas} />
         </Col>
         <Col className="px-5 mt-3"></Col>
       </Row>
