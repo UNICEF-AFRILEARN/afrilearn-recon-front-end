@@ -147,6 +147,7 @@ export const fetchSingleExamQuestionsInitiate = (token, examId) =>  {
 
 }
 export const addExamQuestionInitiate = (token, examId) =>  {
+    console.log("ExamId from add exam question", examId)
     return function (dispatch) {
         dispatch(addExamQuestionStart())
         axios

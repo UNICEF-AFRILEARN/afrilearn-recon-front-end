@@ -165,7 +165,7 @@ const Questionpanel = ({
               
               </div>
           </div>
-          <Form.Group className="mb-4" controlId="formBasicEmail">
+                      <Form.Group className="mb-4" controlId="formBasicEmail">
                           <Form.Label>Correct Option</Form.Label>
                           <Form.Control type="text" placeholder="Select corect option" />
                       </Form.Group>
@@ -181,7 +181,7 @@ const Questionpanel = ({
                       />
                       </>
                       }
-                      <Button className="w-50 mt-3" type="submit">
+                      <Button className="w-100 mt-3" type="submit">
                     Save changes
                   </Button>
           </Form>
