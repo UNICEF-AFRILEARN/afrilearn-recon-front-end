@@ -25,18 +25,16 @@ const Objectives = ({examId}) => {
     const { user } = useSelector((state) => state.auth)
     const [questionId, setQuestionId] = useState("")
     //content in the questionOptions will be data to send to the API:
-    const [examQuestion, setExamQuestion] = useState(   
-            []
-    )
+    const [examQuestion, setExamQuestion] = useState([])
     const [question, setQuestion] = useState("")
     const [questionType, setQuestionType] = useState("")
+    // const [examType, setExamType] = useState("")
 
-    console.log("user from objective", user)
+    // console.log("singleExamQuestions from objective", singleExamQuestions)
     const [showObjQuestions, setShowObjQuestions] = useState(1)
     const [showObjQuestionOptions, setShowObjQuestionOptions] = useState(0)
 
-    console.log("questionType from objective", questionType)
-
+    
     let token = user.token;
     let receivedQuestions = singleExamQuestions?.questions
     const handleAddQuestions = (e) => {
@@ -45,45 +43,54 @@ const Objectives = ({examId}) => {
         dispatch(addExamQuestionInitiate(token, examId))
         // dispatch(fetchSingleExamQuestionsInitiate(examId))
         setExamQuestion([...examQuestion,    
-        {
+            {
             optionsOne:"",
             optionsTwo:"",
             optionsThree:"",
             optionsFour:"",
             images:[],
             question:""
-   }])
+        }])
     }
 
     let data = {
         question
     }
-
+    
     const handleSubmit = (e) => {
         e.preventDefault()
         // console.log("theoryBody ==>",data)
         dispatch(updateExamQuestionInitiate(questionId, data))
     }
-
-
-    const showObjpanel = (id) => {
-        setShowObjQuestions(id)
-    }
-
-    let clickedExamQuestion = []
-    const handleSelectQeustionOptions = (index, id, qIndex) => {
-        console.log("From handleSelectQeustionOptions", id)
-        setShowObjQuestionOptions(index)
-        examQuestion.filter((filterExamQuestion) => {
-            if(filterExamQuestion.id === id){
-                clickedExamQuestion.push(filterExamQuestion)
+    let examType = [];
+    const filterExams = () => {
+        exams.exams.filter((filteredExams) => {
+            if(filteredExams.id === examId){
+                examType.push(filteredExams.type)
             }
         })
     }
     
     
-    console.log("From clickedExamQuestion", clickedExamQuestion)
+    
+    const showObjpanel = (id) => {
+        setShowObjQuestions(id)
+    }
 
+    // let clickedExamQuestion = []
+    // const handleSelectQeustionOptions = (index, id, qIndex) => {
+    //     console.log("From handleSelectQeustionOptions", id)
+    //     setShowObjQuestionOptions(index)
+    //     examQuestion.filter((filterExamQuestion) => {
+    //         if(filterExamQuestion.id === id){
+    //             clickedExamQuestion.push(filterExamQuestion)
+    //         }
+    //     })
+    // }
+    
+    
+    console.log("From clickedExamQuestion", clickedExamQuestion)
+    
     const handleGetQuestions = (e, index) => {
         
         const { name, value} = e.target
@@ -91,13 +98,15 @@ const Objectives = ({examId}) => {
         list[index][name] = value;
     }
 
-   
-
+    
+    // filterExams()
+    
     useEffect(() =>{
         dispatch(fetchSingleExamQuestionsInitiate(examId))
     }, [examId, newExamQuestion])
-
-
+    
+    console.log("examType from objective", examType)
+    
     useEffect(() => {
         if(receivedQuestions){
             setExamQuestion([...receivedQuestions])
