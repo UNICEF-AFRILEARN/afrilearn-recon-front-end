@@ -35,7 +35,7 @@ const Objectives = ({examId}) => {
     const [showObjQuestions, setShowObjQuestions] = useState(1)
     const [showObjQuestionOptions, setShowObjQuestionOptions] = useState(0)
 
-    console.log("examQuestion", examQuestion)
+    console.log("questionType from objective", questionType)
 
     let token = user.token;
     let receivedQuestions = singleExamQuestions?.questions
@@ -122,15 +122,19 @@ const Objectives = ({examId}) => {
         <div className={styles.examsetupwrapper}>
            { examQuestion.length > 0 &&
            <div className={styles.xamssetpheader}>
-            <h4 onClick={() => showObjpanel(1)} className={showObjQuestions === 1? `${styles.clikeditemssetup}` : `${styles.unclikeditemssetup}`}>Objective</h4>
-            <h5 onClick={() => showObjpanel(2)} className={showObjQuestions === 2? `${styles.clikeditemssetup}` : `${styles.unclikeditemssetup}`}>Theory</h5>
+            <div className={questionType === 'Objective' && questionType !=='undefined'? styles.objectivewrapper : styles.nobackgroundcolor}>
+                <h4>Objective</h4>
+            </div>
+            <div className={questionType === 'Theory' && questionType !=='undefined'? styles.theorywrapper : styles.nobackgroundcolor}>
+                <h5>Theory</h5>
+            </div>
             </div>
             }
             <div className={styles.classlistwrapper}>
             <ul>
                 {examQuestion.length > 0 && examQuestion.map((singleQuestion, index) => (
                         <li
-                          onClick={() => handleSelectQeustionOptions(index + 1, singleQuestion.id, (examQuestion.indexOf(singleQuestion) + 1))}
+                          onClick={() => {handleSelectQeustionOptions(index + 1, singleQuestion.id, (examQuestion.indexOf(singleQuestion) + 1)), setQuestionType(singleQuestion.type)}}
                         >{index + 1}</li>
                         ))
                         
@@ -159,6 +163,7 @@ const Objectives = ({examId}) => {
                         index={index}
                         showObjQuestions={showObjQuestions}
                         questionType={questionType} 
+                        setQuestionType={setQuestionType} 
                         showObjQuestionOptions={showObjQuestionOptions}
                         handleGetQuestions={handleGetQuestions}
                         singleExamQuestions={singleExamQuestions}

@@ -17,7 +17,8 @@ const Questionpanel = ({
   handleGetQuestions,
   examQuestion,
   singleQuestion,
-  questionType
+  questionType,
+  setQuestionType
   // singleExamQuestions
 }) => {
   const { newExamQuestion, exams, singleExamQuestions } = useSelector((state) => state.myExams);
@@ -34,6 +35,7 @@ const Questionpanel = ({
   const [optionTwo, setOptionTwo ] = useState("")
   const [optionThree, setOptionThree ] = useState("")
   const [optionFour, setOptionFour ] = useState("")
+  const [examQuestionType, setExamQuestionType ] = useState("")
   const [examId, setExamId] = useState("");
   const { query } = useRouter();
   const token = user.token
@@ -62,7 +64,6 @@ const Questionpanel = ({
 
   }
 
-  const filteredExamQuestion = examQuestion
 
   console.log("questionId from ob", questionId)
 
@@ -129,7 +130,7 @@ const Questionpanel = ({
               />
             </Form.Group>
              
-          { questionType !== 'Theory' &&
+          { singleQuestion.type !== 'Theory' &&
             <>
           <h5>Options</h5>
           <div className={styles.mainoptionwrapper}>
