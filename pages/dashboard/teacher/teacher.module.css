@@ -80,3 +80,7 @@
   text-align: center !important;
   margin-left: 20%;
 }
+
+.addexamquestionbtn {
+  background-color: red;
+}

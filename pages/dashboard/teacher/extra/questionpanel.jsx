@@ -8,10 +8,12 @@ import { BiNote } from 'react-icons/bi';
 import { AiOutlineArrowsAlt } from 'react-icons/ai';
 import { updateExamQuestionInitiate, fetchSingleExamQuestionsInitiate, fetchExamsInitiate } from '../../../../redux/actions/exams';
 import Questiontitle from './questiontitle';
+import Addexambutton from './addexambutton';
 
 const Questionpanel = ({
   index, 
-  showObjQuestionOptions, 
+  showObjQuestionOptions,
+  showObjQuestions,
   handleGetQuestions,
   examQuestion,
   singleQuestion,
@@ -50,7 +52,7 @@ const Questionpanel = ({
   fiterExam()
 
   let examsQuestionType = currentExam[0]?.questionTypeId.name
-  console.log("singleQuestion from use params question panel", singleQuestion)
+  // console.log("singleQuestion from use params question panel", singleQuestion)
 
     let options = [singleQuestion.optionOne, singleQuestion.optionTwo, singleQuestion.optionThree, singleQuestion.optionFour]
     let question = singleQuestion.question
@@ -93,6 +95,10 @@ const Questionpanel = ({
   return (
     // showObjQuestionOptions === index + 1 && 
     <div>
+      {/* { showObjQuestions === 0 && 
+          <Addexambutton />
+      } */}
+ 
        {showObjQuestionOptions === index + 1 &&
           <>
           <Questiontitle index={index}/>
@@ -103,7 +109,9 @@ const Questionpanel = ({
               </div>
            
           </div>
-          <div className={styles.mainformwrapper}>
+          <div 
+          key={singleQuestion.id}
+          className={styles.mainformwrapper}>
             
           <Form onSubmit={handleSubmit}> 
               <Form.Group className="mb-4" controlId="formBasicEmail">
@@ -173,12 +181,12 @@ const Questionpanel = ({
                           <Form.Label>Assign mark(score)</Form.Label>
                           <Form.Control type="text" placeholder="2" />
                       </Form.Group>
-                      <Form.Check
+                      {/* <Form.Check
                           checked
                           type="checkbox"
                           label="Use this for all questions"
                           className={styles.checkboxcolor}
-                      />
+                      /> */}
                       </>
                       }
                       <Button className="w-100 mt-3" type="submit">
