@@ -62,11 +62,6 @@ const VideoPage = () => {
   const [quary1, setQuary1] = useState(quarie1);
 
   const idSetter = (first) => {
-    // console.log(first);
-    // console.log(lessons[first].id);
-    // console.log(lessons[first].videoUrls[0]._id);
-    // console.log(quary, quary1);
-    // console.log(first, second);
     setQuary(lessons[first].id);
     setQuary1(lessons[first].videoUrls[0]._id);
   };
