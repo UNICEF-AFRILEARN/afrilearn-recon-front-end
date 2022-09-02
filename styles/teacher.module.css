@@ -466,6 +466,7 @@
     display: block;
     right: auto;
     left: 0;
+    top:35px;
   }
   .iconswrapper:active .iconswrapper {background-color: #3e8e41;}
   

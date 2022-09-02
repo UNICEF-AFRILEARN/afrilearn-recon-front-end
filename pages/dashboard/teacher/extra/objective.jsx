@@ -44,15 +44,15 @@ const Objectives = ({examId}) => {
         console.log("questionType", examId)
         dispatch(addExamQuestionInitiate(token, examId))
         // dispatch(fetchSingleExamQuestionsInitiate(examId))
-//         setExamQuestion([...examQuestion,    
-//         {
-//             optionsOne:"",
-//             optionsTwo:"",
-//             optionsThree:"",
-//             optionsFour:"",
-//             images:[],
-//             question:""
-//    }])
+        setExamQuestion([...examQuestion,    
+        {
+            optionsOne:"",
+            optionsTwo:"",
+            optionsThree:"",
+            optionsFour:"",
+            images:[],
+            question:""
+   }])
     }
 
     let data = {
@@ -70,11 +70,19 @@ const Objectives = ({examId}) => {
         setShowObjQuestions(id)
     }
 
-    const handleSelectQeustionOptions = (index, id) => {
-        console.log("From handleSelectQeustionOptions", index, id)
+    let clickedExamQuestion = []
+    const handleSelectQeustionOptions = (index, id, qIndex) => {
+        console.log("From handleSelectQeustionOptions", id)
         setShowObjQuestionOptions(index)
+        examQuestion.filter((filterExamQuestion) => {
+            if(filterExamQuestion.id === id){
+                clickedExamQuestion.push(filterExamQuestion)
+            }
+        })
     }
-
+    
+    
+    console.log("From clickedExamQuestion", clickedExamQuestion)
 
     const handleGetQuestions = (e, index) => {
         
@@ -122,7 +130,7 @@ const Objectives = ({examId}) => {
             <ul>
                 {examQuestion.length > 0 && examQuestion.map((singleQuestion, index) => (
                         <li
-                          onClick={() => handleSelectQeustionOptions(index + 1, singleQuestion.id)}
+                          onClick={() => handleSelectQeustionOptions(index + 1, singleQuestion.id, (examQuestion.indexOf(singleQuestion) + 1))}
                         >{index + 1}</li>
                         ))
                         

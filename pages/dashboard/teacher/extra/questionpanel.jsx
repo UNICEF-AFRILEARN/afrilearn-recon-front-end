@@ -62,17 +62,20 @@ const Questionpanel = ({
 
   }
 
+  const filteredExamQuestion = examQuestion
+
+  console.log("questionId from ob", questionId)
 
   const handleSubmit = (e) => {
       e.preventDefault()
-      console.log("singleQuestion from ob", question)
+      console.log("e =======", e.target)
         dispatch(updateExamQuestionInitiate(questionId, question , options))
     }
 
-    useEffect(() =>{
-        // setQuestionId(newExamQuestion?.examQuestion?.id)
-        setQuestionId("630274ab7412b500162680f5")
-    }, []);
+    // useEffect(() =>{
+    //     // setQuestionId(newExamQuestion?.examQuestion?.id)
+    //     setQuestionId("630274ab7412b500162680f5")
+    // }, []);
     // useEffect(() =>{
     //     setExamId(query.examId[0])
     // }, [query]);
@@ -99,9 +102,9 @@ const Questionpanel = ({
           <Addexambutton />
       } */}
  
-       {showObjQuestionOptions === index + 1 &&
+       {showObjQuestionOptions === index + 1 && 
           <>
-          <Questiontitle index={index}/>
+          <Questiontitle index={examQuestion.indexOf(singleQuestion) }/>
               <div className={styles.questionpanelwrapper}>
               <div className={styles.questionpanelheader}>
                   <h5>Open Edit Panel</h5> <span>< AiOutlineArrowsAlt size={30}/>
@@ -109,7 +112,8 @@ const Questionpanel = ({
               </div>
            
           </div>
-          <div 
+         { singleQuestion &&
+         <div 
           key={singleQuestion.id}
           className={styles.mainformwrapper}>
             
@@ -119,8 +123,8 @@ const Questionpanel = ({
               as="textarea" 
               rows="5" 
               name="question"
-              defaultValue={singleQuestion.question}
-              onChange={(e) => handleGetQuestions(e, index)}
+              defaultValue={singleQuestion.type}
+              onChange={(e) => {handleGetQuestions(e, index), setQuestionId(singleQuestion.id)}}
               placeholder="Type question here..." 
               />
             </Form.Group>
@@ -194,6 +198,7 @@ const Questionpanel = ({
                   </Button>
           </Form>
           </div>
+          }
          </>
        }
     </div>
