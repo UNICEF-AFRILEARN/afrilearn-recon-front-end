@@ -6,7 +6,7 @@ const Addexambutton = ({examQuestion}) => {
   return (
     <div >
         { 
-            examQuestion.length > 0? "" : 
+            examQuestion?.length > 0? "" : 
             <span> <FaPlus /> Add new question</span>
 
         }

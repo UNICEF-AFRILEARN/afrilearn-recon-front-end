@@ -37,6 +37,7 @@ const Objectives = ({examId}) => {
 
     
     let token = user.token;
+    let allExams = exams
     let receivedQuestions = singleExamQuestions?.questions
     const handleAddQuestions = (e) => {
         setQuestionType(e.target.innerText)
@@ -66,8 +67,8 @@ const Objectives = ({examId}) => {
     }
     // let examType = [];
     // const filterExams = () => {
-        let examType = exams?.exams?.filter((filteredExams) => 
-            filteredExams.id === '6300dd26104d6700167bdf40'
+        let examType = allExams?.exams?.filter((filteredExams) => 
+            filteredExams.id === '62fff77c721b450016998f18'
             
         )
     // }
@@ -79,7 +80,7 @@ const Objectives = ({examId}) => {
     const showObjpanel = (id) => {
         setShowObjQuestions(id)
     }
-    console.log("From examType", examType[0].publish)
+    console.log("From allExams", allExams)
 
     let clickedExamQuestion = []
     const handleSelectQeustionOptions = (index, id, qIndex) => {
@@ -128,9 +129,18 @@ const Objectives = ({examId}) => {
                <h4 onClick={() => showObjpanel(3)}>Generate questions</h4>
                }
                 <div className={styles.btnmainwrapper}>
-                    <h4 onClick={() => showObjpanel(4)}>{examType[0]?.publish === true? 'UNPUBLISH' : 'PUBLISH'}</h4>
+                    <h4>{examType[0]?.publish === true? 'UNPUBLISH' : 'PUBLISH'}</h4>
                     <h5>PREVIEW</h5>
                 </div>
+                <div>
+               <h4>{examType[0]?.publish === true? 'This exam is currently published' : 'This exam is currently unpublished'}</h4>
+               </div>
+               {/* add button add new question */}
+               <div>
+                <Addexambutton />
+               </div>
+               {/* End add button add new question */}
+               
             </div>
         </div>
         <div className={styles.examsetupwrapper}>

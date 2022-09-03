@@ -80,6 +80,19 @@ export const updateExamQuestionFail = (error) => ({
     type: types.UPDATE_EXAMS_QUESTION_FAIL,
     payload: error
 });
+export const updateExamStart = () => ({
+    type: types.UPDATE_EXAMS_START
+});
+
+export const updateExamSuccess = (payload) => ({
+    type: types.UPDATE_EXAMS_SUCCESS,
+    payload
+});
+
+export const updateExamFail = (error) => ({
+    type: types.UPDATE_EXAMS_FAIL,
+    payload: error
+});
 
 
 export const fetchExamsInitiate = (token) =>  {
@@ -129,7 +142,7 @@ export const fetchSingleExamQuestionsInitiate = (token, examId) =>  {
     return function (dispatch) {
         dispatch(fetchSingleExamQuestionsStart())
         axios
-        .get('https://afrilearn-backend-01.herokuapp.com/api/v1/exams/exam-question/6300dd26104d6700167bdf40',
+        .get('https://afrilearn-backend-01.herokuapp.com/api/v1/exams/exam-question/62fff77c721b450016998f18',
         {
             headers: {
                 "token": token,
@@ -153,7 +166,7 @@ export const addExamQuestionInitiate = (token, examId, type) =>  {
         axios
         .post('https://afrilearn-backend-01.herokuapp.com/api/v1/exams/exam-question',
         {
-            examId: '6300dd26104d6700167bdf40',
+            examId: '62fff77c721b450016998f18',
             type
         },
         {
@@ -188,6 +201,26 @@ export const updateExamQuestionInitiate = (questionId, question , options) =>  {
         })
         .catch((err) => {
             dispatch(updateExamQuestionFail(err))
+        })
+    }
+
+}
+export const updateExamInitiate = (questionId, data) =>  {
+    console.log(questionId)
+    return function (dispatch) {
+        // console.log("data from update API", data)
+        dispatch(updateExamStart())
+        axios
+        .patch('https://afrilearn-backend-01.herokuapp.com/api/v1/exams/exam/62fff77c721b450016998f18',
+        {
+            data
+        })
+        .then((res) => {
+            dispatch(updateExamSuccess(res.data.data))
+            console.log("From Update Exams API =>", res.data.data)
+        })
+        .catch((err) => {
+            dispatch(updateExamFail(err))
         })
     }
 
