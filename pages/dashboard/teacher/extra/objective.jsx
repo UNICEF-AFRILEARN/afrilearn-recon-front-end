@@ -24,6 +24,7 @@ const Objectives = ({examId}) => {
     const { newExamQuestion, exams, singleExamQuestions } = useSelector((state) => state.myExams);
     const { user } = useSelector((state) => state.auth)
     const [questionId, setQuestionId] = useState("")
+    const [openQuestionType, setOpenQuestionType] = useState(false)
     //content in the questionOptions will be data to send to the API:
     const [examQuestion, setExamQuestion] = useState([])
     const [question, setQuestion] = useState("")
@@ -39,18 +40,19 @@ const Objectives = ({examId}) => {
     let receivedQuestions = singleExamQuestions?.questions
     const handleAddQuestions = (e) => {
         setQuestionType(e.target.innerText)
-        console.log("questionType", examId)
-        dispatch(addExamQuestionInitiate(token, examId))
+        let type = e.target.innerText
+        console.log("questionType ====", e.target.innerText)
+        dispatch(addExamQuestionInitiate(token, examId, type))
         // dispatch(fetchSingleExamQuestionsInitiate(examId))
-        setExamQuestion([...examQuestion,    
-            {
-            optionsOne:"",
-            optionsTwo:"",
-            optionsThree:"",
-            optionsFour:"",
-            images:[],
-            question:""
-        }])
+        // setExamQuestion([...examQuestion,    
+        //     {
+        //     optionsOne:"",
+        //     optionsTwo:"",
+        //     optionsThree:"",
+        //     optionsFour:"",
+        //     images:[],
+        //     question:""
+        // }])
     }
 
     let data = {
@@ -62,34 +64,35 @@ const Objectives = ({examId}) => {
         // console.log("theoryBody ==>",data)
         dispatch(updateExamQuestionInitiate(questionId, data))
     }
-    let examType = [];
-    const filterExams = () => {
-        exams.exams.filter((filteredExams) => {
-            if(filteredExams.id === examId){
-                examType.push(filteredExams.type)
-            }
-        })
+    // let examType = [];
+    // const filterExams = () => {
+        let examType = exams?.exams?.filter((filteredExams) => 
+            filteredExams.id === '6300dd26104d6700167bdf40'
+            
+        )
+    // }
+    
+    const onClickExamsType = () => {
+        setOpenQuestionType(!openQuestionType)
     }
-    
-    
     
     const showObjpanel = (id) => {
         setShowObjQuestions(id)
     }
 
-    // let clickedExamQuestion = []
-    // const handleSelectQeustionOptions = (index, id, qIndex) => {
-    //     console.log("From handleSelectQeustionOptions", id)
-    //     setShowObjQuestionOptions(index)
-    //     examQuestion.filter((filterExamQuestion) => {
-    //         if(filterExamQuestion.id === id){
-    //             clickedExamQuestion.push(filterExamQuestion)
-    //         }
-    //     })
-    // }
+    let clickedExamQuestion = []
+    const handleSelectQeustionOptions = (index, id, qIndex) => {
+        console.log("From handleSelectQeustionOptions", id)
+        setShowObjQuestionOptions(index)
+        examQuestion.filter((filterExamQuestion) => {
+            if(filterExamQuestion.id === id){
+                clickedExamQuestion.push(filterExamQuestion)
+            }
+        })
+    }
     
-    
-    console.log("From clickedExamQuestion", clickedExamQuestion)
+    // 
+    // console.log("From examType", examType)
     
     const handleGetQuestions = (e, index) => {
         
@@ -105,7 +108,7 @@ const Objectives = ({examId}) => {
         dispatch(fetchSingleExamQuestionsInitiate(examId))
     }, [examId, newExamQuestion])
     
-    console.log("examType from objective", examType)
+    // console.log("examType from objective", examType)
     
     useEffect(() => {
         if(receivedQuestions){
@@ -151,13 +154,37 @@ const Objectives = ({examId}) => {
                     { examQuestion.length > 0 && 
                      <div className={styles.iconswrapper}>
                       <div className="btn-log-in-mobile">
-                          <BsPlusCircleFill size={20} className={styles.profileavatar}/>
+                          <BsPlusCircleFill 
+                          size={20} 
+                          className={styles.profileavatar}
+                          onClick={onClickExamsType}
+                          />
                           </div>
-                          <div className={styles.linkswrapper}>
-                            <a onClick={handleAddQuestions}>Objective</a>
-                            <a onClick={handleAddQuestions}>Theory</a>
-                          </div>
-                      </div>} 
+                         { openQuestionType === true &&
+                         <div className={styles.linkswrapper}>
+                           
+                          { examType[0]?.questionTypeId?.name === "Objective" && 
+                          <a onClick={handleAddQuestions}>Objective</a>
+                          }
+                          { examType[0]?.questionTypeId?.name === "Theory" && 
+                          <a onClick={handleAddQuestions}>Theory</a>
+                          }
+                                    { examType[0]?.questionTypeId?.name === "Objective & Theory" && 
+                                    <>
+                                     <a onClick={handleAddQuestions}>Objective</a>
+                                        <a onClick={handleAddQuestions}>Theory</a>
+                                    </>
+                                     }
+                                      {/* { examType[0]?.questionTypeId?.name === "Objective & Theory" && 
+                                    <>
+                                        <a onClick={handleAddQuestions}>Theory</a>
+                                    </>
+                                     } */}
+
+
+                          </div>}
+                      </div>
+                      } 
             </ul>
             </div>
              <div className={styles.examquestionwrapperinnner}>

@@ -455,14 +455,14 @@
     display: none;
 }
 
-.innernumberwrapper:hover .questiontypeoptions{display: block}
+/* .innernumberwrapper:active .questiontypeoptions{display: block} */
 
 .iconswrapper {
     position: relative;
     display: inline-block;
   }
   
-  .iconswrapper:hover .linkswrapper {
+  .iconswrapper:active .linkswrapper {
     display: block;
     right: auto;
     left: 0;
@@ -472,7 +472,7 @@
   
   
   .linkswrapper {
-    display: none;
+    /* display: bloc; */
     position: absolute;
     background-color: #f1f1f1;
     min-width: 160px;
@@ -488,7 +488,7 @@
     border: none;
   }
   .theorywrapper {
-    border: 2px solid red;
+      border: 2px solid red;
   }
   
   .linkswrapper a{

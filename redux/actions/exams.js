@@ -129,7 +129,7 @@ export const fetchSingleExamQuestionsInitiate = (token, examId) =>  {
     return function (dispatch) {
         dispatch(fetchSingleExamQuestionsStart())
         axios
-        .get('https://afrilearn-backend-01.herokuapp.com/api/v1/exams/exam-question/62fff77c721b450016998f18',
+        .get('https://afrilearn-backend-01.herokuapp.com/api/v1/exams/exam-question/6300dd26104d6700167bdf40',
         {
             headers: {
                 "token": token,
@@ -146,14 +146,15 @@ export const fetchSingleExamQuestionsInitiate = (token, examId) =>  {
     }
 
 }
-export const addExamQuestionInitiate = (token, examId) =>  {
+export const addExamQuestionInitiate = (token, examId, type) =>  {
     console.log("ExamId from add exam question", token)
     return function (dispatch) {
         dispatch(addExamQuestionStart())
         axios
         .post('https://afrilearn-backend-01.herokuapp.com/api/v1/exams/exam-question',
         {
-            examId: '62fff77c721b450016998f18'
+            examId: '6300dd26104d6700167bdf40',
+            type
         },
         {
             headers: {
