@@ -79,10 +79,10 @@ const Objectives = ({examId}) => {
     const showObjpanel = (id) => {
         setShowObjQuestions(id)
     }
+    console.log("From examType", examType[0].publish)
 
     let clickedExamQuestion = []
     const handleSelectQeustionOptions = (index, id, qIndex) => {
-        console.log("From handleSelectQeustionOptions", id)
         setShowObjQuestionOptions(index)
         examQuestion.filter((filterExamQuestion) => {
             if(filterExamQuestion.id === id){
@@ -128,7 +128,7 @@ const Objectives = ({examId}) => {
                <h4 onClick={() => showObjpanel(3)}>Generate questions</h4>
                }
                 <div className={styles.btnmainwrapper}>
-                    <h4 onClick={() => showObjpanel(4)}>PUBLISH</h4>
+                    <h4 onClick={() => showObjpanel(4)}>{examType[0]?.publish === true? 'UNPUBLISH' : 'PUBLISH'}</h4>
                     <h5>PREVIEW</h5>
                 </div>
             </div>
