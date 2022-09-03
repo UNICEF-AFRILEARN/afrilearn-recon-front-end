@@ -124,9 +124,11 @@ const Objectives = ({examId}) => {
                 <li><span><BsCircle /></span>Examination Questions</li>
             </ul>
             <div className={styles.bottombtnwrapper}>
-                <h4 onClick={() => showObjpanel(3)}>Generate questions</h4>
+               { showObjQuestions === 3 &&
+               <h4 onClick={() => showObjpanel(3)}>Generate questions</h4>
+               }
                 <div className={styles.btnmainwrapper}>
-                    <h4 onClick={() => showObjpanel(4)}>PROCEED</h4>
+                    <h4 onClick={() => showObjpanel(4)}>PUBLISH</h4>
                     <h5>PREVIEW</h5>
                 </div>
             </div>
