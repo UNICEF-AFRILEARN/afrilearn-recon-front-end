@@ -93,8 +93,36 @@ export const updateExamFail = (error) => ({
     type: types.UPDATE_EXAMS_FAIL,
     payload: error
 });
+export const deleteExamStart = () => ({
+    type: types.DELETE_EXAM_START
+});
+
+export const deleteExamSuccess = (payload) => ({
+    type: types.DELETE_EXAM_SUCCESS,
+    payload
+});
+
+export const deleteExamFail = (error) => ({
+    type: types.DELETE_EXAM_FAIL,
+    payload: error
+});
 
 
+export const deleteExamsInitiate = (id) =>  {
+    return function (dispatch) {
+        dispatch(deleteExamStart())
+        axios
+        .delete(`https://afrilearn-backend-01.herokuapp.com/api/v1/exams/question/${id}`)
+        .then((res) => {
+            dispatch(deleteExamSuccess(res.data.data))
+            console.log("From delete Exams API =>", res.data.data)
+        })
+        .catch((err) => {
+            dispatch(deleteExamFail(err))
+        })
+    }
+
+}
 export const fetchExamsInitiate = (token) =>  {
     return function (dispatch) {
         dispatch(fetchExamsStart())

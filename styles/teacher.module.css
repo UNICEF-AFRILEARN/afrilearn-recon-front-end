@@ -1,5 +1,5 @@
 .examinationwrapper {
-    margin-top: 10%;
+    /* margin-top: 10%; */
 }
 
 .middletabwrapper {
@@ -13,6 +13,7 @@
     width: 35%;
     justify-content: space-evenly;
     align-items: center;
+    margin-top: 4%;
 }
 
 .leftsidetabwrapper h2 {
@@ -45,6 +46,7 @@
     color: #C4C4C4;
     border-bottom: 1px solid #C4C4C4;
     font-size: 15px;
+    margin-top: 35%;
 }
 
 .teachersearchwrapper {
@@ -119,6 +121,8 @@
     height: 60vh;
 }
 
+
+
 .leftsideboxwrapper h4, .objleftsideboxwrapper h4 {
     font-size: 20px;
 }
@@ -185,7 +189,7 @@
 
 .classlistwrapper ul {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     width: 100%;
     margin-left: 60%;
     padding: 10px;
@@ -195,13 +199,12 @@
 .classlistwrapper ul li {
     list-style: none;
     border: solid 1px #00D9B6;
-    /* width: 20px;
-    height: 25px; */
     padding:  2px 5px;
     text-align: center;
     margin: 3px;
     border-radius: 50%;
 }
+
 
 .questionsoptionswrapper {
     display:flex;
@@ -251,7 +254,7 @@
     width: 10%;
     display: flex;
     justify-content: space-around;
-    margin-left: 20%;
+    margin-left: 15%;
 }
 .iconswrapper span {
     gap: 70px;
@@ -486,7 +489,9 @@
   }
 
   .objectivewrapper {
-      border: 2px solid red;
+      /* border: 2px solid red;
+      padding: 10px 20%; */
+      color: #00D9B6;
   
   }
 
@@ -494,7 +499,9 @@
     border: none;
   }
   .theorywrapper {
-      border: 2px solid red;
+      /* border: 2px solid red;
+      padding: 10px 20%; */
+      color: #00D9B6;
   }
   
   .linkswrapper a{
@@ -530,6 +537,8 @@
         margin: 0 10px;
     }
 
+    
+
     .leftsidetabwrapper {
         width: 100%;
         gap: 20px;
@@ -543,6 +552,7 @@
 
     .righttabwrapper {
         margin-left: 15px;
+
     }
     .setexammainwrapper {
         display: grid   ;

@@ -105,7 +105,10 @@ const Questionpanel = ({
  
        {showObjQuestionOptions === index + 1 && 
           <>
-          <Questiontitle index={examQuestion.indexOf(singleQuestion) }/>
+          <Questiontitle 
+            singleQuestion={singleQuestion}
+          index={examQuestion.indexOf(singleQuestion) }
+          />
               <div className={styles.questionpanelwrapper}>
               <div className={styles.questionpanelheader}>
                   <h5>Open Edit Panel</h5> <span>< AiOutlineArrowsAlt size={30}/>

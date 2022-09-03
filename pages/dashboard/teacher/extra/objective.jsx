@@ -22,7 +22,7 @@ import Addexambutton from './addexambutton';
 
 const Objectives = ({examId}) => {
     const dispatch = useDispatch();
-    const { newExamQuestion, exams, singleExamQuestions, updatedExam } = useSelector((state) => state.myExams);
+    const { newExamQuestion, exams, singleExamQuestions, updatedExam, deletedExam } = useSelector((state) => state.myExams);
     const { user } = useSelector((state) => state.auth)
     const [questionId, setQuestionId] = useState("")
     const [openQuestionType, setOpenQuestionType] = useState(false)
@@ -117,14 +117,14 @@ const Objectives = ({examId}) => {
     
     useEffect(() =>{
         dispatch(fetchSingleExamQuestionsInitiate(examId))
-    }, [examId, newExamQuestion, updatedExam])
+    }, [examId, newExamQuestion, updatedExam, deletedExam])
     
     
     useEffect(() => {
         if(receivedQuestions){
             setExamQuestion([...receivedQuestions])
         }
-    }, [receivedQuestions, newExamQuestion, updatedExam])
+    }, [receivedQuestions, newExamQuestion, updatedExam, deletedExam])
   return (
     <div className={styles.objectivemainwrapper}>
         <div className={styles.objleftsideboxwrapper}>
@@ -174,7 +174,7 @@ const Objectives = ({examId}) => {
                     }
                     { examQuestion.length > 0 && 
                      <div className={styles.iconswrapper}>
-                      <div className="btn-log-in-mobile">
+                      <div className={`${styles.btnpluswrapper} btn-log-in-mobile`}>
                           <BsPlusCircleFill 
                           size={20} 
                           className={styles.profileavatar}

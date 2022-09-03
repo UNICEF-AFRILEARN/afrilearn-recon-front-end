@@ -7,6 +7,7 @@ const initialState = {
     updatedQuestion: [],
     singleExam: [],
     updatedExam: [],
+    deletedExam: [],
     singleExamQuestions: [],
     error: [],
 }
@@ -51,6 +52,19 @@ export const examsReducer = (state = initialState, { type, payload} ) => {
                 newExamQuestion: payload
             };
         case types.ADD_EXAMS_QUESTION_FAIL:
+            return {
+                error: payload
+            };
+        case types.DELETE_EXAM_START:
+            return {
+                ...state
+            };
+        case types.DELETE_EXAM_SUCCESS:
+            return {
+                ...state,
+                deletedExam: payload
+            };
+        case types.DELETE_EXAM_FAIL:
             return {
                 error: payload
             };
