@@ -194,8 +194,13 @@
 
 .classlistwrapper ul li {
     list-style: none;
-    border: solid 1px red;
-    padding: 5px;
+    border: solid 1px #00D9B6;
+    /* width: 20px;
+    height: 25px; */
+    padding:  2px 5px;
+    text-align: center;
+    margin: 3px;
+    border-radius: 50%;
 }
 
 .questionsoptionswrapper {
@@ -482,6 +487,7 @@
 
   .objectivewrapper {
       border: 2px solid red;
+  
   }
 
   .nobackgroundcolor{

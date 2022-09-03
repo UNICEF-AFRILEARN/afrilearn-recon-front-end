@@ -13,7 +13,8 @@ import Submitquestions from './submitquestions';
 import { 
     updateExamQuestionInitiate, 
     fetchSingleExamQuestionsInitiate,
-    addExamQuestionInitiate
+    addExamQuestionInitiate,
+    updateExamInitiate
 } from '../../../../redux/actions/exams';
 import Questiontitle from './questiontitle';
 import {wrapper } from '../../../../redux/store'
@@ -21,7 +22,7 @@ import Addexambutton from './addexambutton';
 
 const Objectives = ({examId}) => {
     const dispatch = useDispatch();
-    const { newExamQuestion, exams, singleExamQuestions } = useSelector((state) => state.myExams);
+    const { newExamQuestion, exams, singleExamQuestions, updatedExam } = useSelector((state) => state.myExams);
     const { user } = useSelector((state) => state.auth)
     const [questionId, setQuestionId] = useState("")
     const [openQuestionType, setOpenQuestionType] = useState(false)
@@ -56,9 +57,9 @@ const Objectives = ({examId}) => {
         // }])
     }
 
-    let data = {
-        question
-    }
+    // let data = {
+    //     publish: true
+    // }
     
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -80,7 +81,7 @@ const Objectives = ({examId}) => {
     const showObjpanel = (id) => {
         setShowObjQuestions(id)
     }
-    console.log("From allExams", allExams)
+    
 
     let clickedExamQuestion = []
     const handleSelectQeustionOptions = (index, id, qIndex) => {
@@ -94,9 +95,18 @@ const Objectives = ({examId}) => {
     
     // 
     // console.log("From examType", examType)
+
+    const handleUpdateStatus = (e) => {
+        let publish
+        if(e.target.innerHTML === 'PUBLISH'){
+             publish = true
+        }else{
+            publish = false
+        }
+        dispatch(updateExamInitiate(questionId, publish))
+    }
     
     const handleGetQuestions = (e, index) => {
-        
         const { name, value} = e.target
         const list = [...examQuestion]
         list[index][name] = value;
@@ -107,15 +117,14 @@ const Objectives = ({examId}) => {
     
     useEffect(() =>{
         dispatch(fetchSingleExamQuestionsInitiate(examId))
-    }, [examId, newExamQuestion])
+    }, [examId, newExamQuestion, updatedExam])
     
-    // console.log("examType from objective", examType)
     
     useEffect(() => {
         if(receivedQuestions){
             setExamQuestion([...receivedQuestions])
         }
-    }, [receivedQuestions, newExamQuestion])
+    }, [receivedQuestions, newExamQuestion, updatedExam])
   return (
     <div className={styles.objectivemainwrapper}>
         <div className={styles.objleftsideboxwrapper}>
@@ -129,7 +138,7 @@ const Objectives = ({examId}) => {
                <h4 onClick={() => showObjpanel(3)}>Generate questions</h4>
                }
                 <div className={styles.btnmainwrapper}>
-                    <h4>{examType[0]?.publish === true? 'UNPUBLISH' : 'PUBLISH'}</h4>
+                    <h4 onClick={handleUpdateStatus}>{examType[0]?.publish === true? 'UNPUBLISH' : 'PUBLISH'}</h4>
                     <h5>PREVIEW</h5>
                 </div>
                 <div>
