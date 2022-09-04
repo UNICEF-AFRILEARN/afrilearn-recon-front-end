@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useRef, useEffect } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Modal, Row, Button, Form } from "react-bootstrap";
 // import Video from "..";
 import styles from "../../classnote/classnote.module.css";
 import styles1 from "../../../../../../pages/dashboard/teacher/teacher.module.css";
@@ -33,14 +33,33 @@ import {
   addResponse,
   deleteLessonComment,
   likeLessonComment,
+  reportLesson,
   unlikeLessonComment,
   updateLessonComment,
 } from "../../../../../../redux/actions/comment";
+
+import {
+  EmailShareButton,
+  FacebookShareButton,
+  LinkedinShareButton,
+  TelegramShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+  EmailIcon,
+  FacebookIcon,
+  LinkedinIcon,
+  TelegramIcon,
+  TwitterIcon,
+  WhatsappIcon,
+} from "react-share";
+
+// import { Modal, ModalHeader, ModalBody } from "reactstrap";
 
 TimeAgo.addDefaultLocale(en);
 TimeAgo.addLocale(ru);
 
 const VideoPage = () => {
+  let shareLink = `Transform your life through world-class education. Download the Afrilearn App for free now at https://play.google.com/store/apps/details?id=com.afrilearn or visit https://myafrilearn.com/`;
   const dispatch = useDispatch();
   const ref = useRef("");
   const router = useRouter();
@@ -216,6 +235,15 @@ const VideoPage = () => {
     const num = Math.floor(Math.random() * 4);
     return img[num];
   };
+  const [modal1, setModal1] = useState(false);
+  const toggle1 = () => {
+    setModal1(!modal1);
+    console.log(modal1);
+  };
+
+  const [Amodals, setAModal] = useState(false);
+
+  const [classnote, setClassnote] = useState(1);
 
   return (
     <Container fluid id="videoPlay">
@@ -322,7 +350,7 @@ const VideoPage = () => {
                   className={styles1.displayNone}
                 >
                   <Col className={`p-3 ps-3 `}>
-                    <Link passHref href="/dashboard/teacher/assignContent">
+                    {/* <Link passHref href="/dashboard/teacher/assignContent">
                       <Row className="">
                         <Col className={`m-auto ${styles.highlightText}`}>
                           <p style={{ fontSize: "12px", margin: "2px" }}>
@@ -330,7 +358,60 @@ const VideoPage = () => {
                           </p>
                         </Col>
                       </Row>
-                    </Link>
+                    </Link> */}
+                    <Row className="" onClick={() => toggle1()}>
+                      <Col className={`m-auto ${styles.highlightText}`}>
+                        <p style={{ fontSize: "12px", margin: "2px" }}>Share</p>
+                      </Col>
+                    </Row>
+                    <Modal
+                      show={modal1}
+                      onHide={() => toggle1()}
+                      animation={false}
+                      className="shareModal"
+                    >
+                      <Modal.Header closeButton>&nbsp;</Modal.Header>
+                      <Modal.Body>
+                        <ul style={{ listStyleType: "none", padding: "0" }}>
+                          <li className={`m-3 ${styles.highlightText}`}>
+                            <WhatsappShareButton url={shareLink}>
+                              <WhatsappIcon size={30} round={true} />
+                              &nbsp;&nbsp;&nbsp;Share via Whatsapp
+                            </WhatsappShareButton>
+                          </li>
+                          <li className={`m-3 ${styles.highlightText}`}>
+                            <FacebookShareButton url={shareLink}>
+                              <FacebookIcon size={30} round={true} />
+                              &nbsp;&nbsp;&nbsp;Share via Facebook
+                            </FacebookShareButton>
+                          </li>
+                          <li className={`m-3 ${styles.highlightText}`}>
+                            <TelegramShareButton url={shareLink}>
+                              <TelegramIcon size={30} round={true} />
+                              &nbsp;&nbsp;&nbsp;Share via Telegram
+                            </TelegramShareButton>
+                          </li>
+                          <li className={`m-3 ${styles.highlightText}`}>
+                            <TwitterShareButton url={shareLink}>
+                              <TwitterIcon size={30} round={true} />
+                              &nbsp;&nbsp;&nbsp;Share via Twitter
+                            </TwitterShareButton>
+                          </li>
+                          <li className={`m-3 ${styles.highlightText}`}>
+                            <EmailShareButton url={shareLink}>
+                              <EmailIcon size={30} round={true} />
+                              &nbsp;&nbsp;&nbsp;Share via Email
+                            </EmailShareButton>
+                          </li>
+                          <li className={`m-3 ${styles.highlightText}`}>
+                            <LinkedinShareButton url={shareLink}>
+                              <LinkedinIcon size={30} round={true} />
+                              &nbsp;&nbsp;&nbsp;Share via Linkedin
+                            </LinkedinShareButton>
+                          </li>
+                        </ul>
+                      </Modal.Body>
+                    </Modal>
                     <Row className="">
                       <Col
                         onClick={() => favouring()}
@@ -348,11 +429,21 @@ const VideoPage = () => {
                       </Col>
                     </Row>
                     <Row className="">
-                      <Col className={`m-auto ${styles.highlightText}`}>
+                      <Col
+                        className={`m-auto ${styles.highlightText}`}
+                        onClick={() => setAModal(true)}
+                      >
                         <p style={{ fontSize: "12px", margin: "2px" }}>
                           Report Lesson
                         </p>
                       </Col>
+                      <Amodal
+                        show={Amodals}
+                        onHide={() => setAModal(false)}
+                        classnote={classnote}
+                        subjectDetails={subjected}
+                        lesson={() => videoId(quary)}
+                      />
                     </Row>
                   </Col>
                 </div>
@@ -1107,3 +1198,181 @@ export const NextPrevPage = ({ datay }) => {
     </>
   );
 };
+
+export function Amodal(props) {
+  const dispatch = useDispatch();
+
+  const { user } = useSelector((state) => state.auth);
+  const classnote = props.classnote;
+  const subjectData = props.subjectDetails;
+  const lesson = props.lesson;
+  const token = user?.token;
+  // const [modal, setModal] = useState(false);
+
+  // const toggle = (e) => {
+  //   e.preventDefault();
+  //   setModal(!modal);
+  // };
+  const [valued, setValued] = useState("");
+  const [messages, setMessages] = useState([]);
+  const handleReport = () => {
+    let message = `${subjectData.courseId.name}-${
+      subjectData.mainSubjectId.name
+    } ${classnote === 1 ? "class note" : "video lesson"} with title '${
+      lesson.title
+    }' has the following complaints:`;
+
+    const data = {
+      message: `${message} ${
+        messages > 1
+          ? messages?.map((dat) => {
+              return dat;
+            }) +
+            "," +
+            valued
+          : messages + "," + valued
+      }`,
+    };
+    dispatch(reportLesson(data, token));
+    setValued("");
+    props.onHide();
+    setMessages("");
+  };
+
+  const changeHandle = (e) => {
+    const reportId = e.target.id;
+
+    // let message = `${subjectData.courseId.name}-${
+    //   subjectData.mainSubjectId.name
+    // } ${classnote === 1 ? "class note" : "video lesson"} with title '${
+    //   props.lesson.title
+    // }' has the following complaints:`;
+
+    if (reportId === "report1") {
+      setMessages((mes) => [
+        ...mes,
+        `${classnote === 1 ? "Typographic error " : "Video not clear "}`,
+      ]);
+    }
+    if (reportId === "report2") {
+      setMessages((mes) => [
+        ...mes,
+        `${classnote === 1 ? "Incomplete text " : "Grammatical error "}`,
+      ]);
+    }
+    if (reportId === "report3") {
+      setMessages((mes) => [
+        ...mes,
+        `${
+          classnote === 1
+            ? "Images does not look quite right "
+            : "Wrong title or transcript "
+        }`,
+      ]);
+    }
+    if (reportId === "report4") {
+      setMessages((mes) => [
+        ...mes,
+        `${classnote === 1 ? "An image is missing " : "Video not loading "}`,
+      ]);
+    }
+    if (reportId === "report5") {
+      setMessages((mes) => [...mes, "Spam, repulsive or abusive content"]);
+    }
+    if (reportId === "report7") {
+      setValued(e.target.value);
+    }
+  };
+
+  return (
+    <>
+      <Modal {...props} className="reportModalClass">
+        <Modal.Header closeButton>Report An Issue</Modal.Header>
+        <Modal.Body>
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-12">
+                <div className="row">
+                  <div className="col-12 push333">
+                    <Form>
+                      <div className="mb-3">
+                        <Form.Check
+                          type="checkbox"
+                          id="report1"
+                          label={
+                            classnote === 1
+                              ? "Typographic error"
+                              : "Video not clear"
+                          }
+                          onChange={(e) => changeHandle(e)}
+                        />
+                      </div>
+                      <div className="mb-3">
+                        <Form.Check
+                          type="checkbox"
+                          id="report2"
+                          label={
+                            classnote === 1
+                              ? "Incomplete text"
+                              : "Grammatical error"
+                          }
+                          onChange={(e) => changeHandle(e)}
+                        />
+                      </div>
+                      <div className="mb-3">
+                        <Form.Check
+                          type="checkbox"
+                          id="report3"
+                          label={
+                            classnote === 1
+                              ? "Images does not look quite right"
+                              : "Wrong title or transcript"
+                          }
+                          onChange={(e) => changeHandle(e)}
+                        />
+                      </div>
+                      <div className="mb-3">
+                        <Form.Check
+                          type="checkbox"
+                          id="report4"
+                          label={
+                            classnote === 1
+                              ? "An image is missing "
+                              : "Video not loading"
+                          }
+                          onChange={(e) => changeHandle(e)}
+                        />
+                      </div>
+                      <div className="mb-3">
+                        <Form.Check
+                          type="checkbox"
+                          id="report5"
+                          label={"Spam, repulsive or abusive content"}
+                          onChange={(e) => changeHandle(e)}
+                        />
+                      </div>
+                      <div className="mb-3">
+                        <input
+                          type="text"
+                          placeholder="eg. Something else..."
+                          id="report7"
+                          value={valued}
+                          onChange={(e) => changeHandle(e)}
+                        />
+                      </div>
+                    </Form>
+                  </div>
+                </div>
+                <div className="row relative">
+                  <div className="col-12">
+                    <Button onClick={() => handleReport()}>Submit</Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Modal.Body>
+      </Modal>
+    </>
+  );
+}

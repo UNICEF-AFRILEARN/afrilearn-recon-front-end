@@ -62,7 +62,7 @@ export const addResponse = (data, token) => {
       headers: headers(token),
       data,
     }).then((res) => {
-      console.log(res);
+      // console.log(res);
     });
   };
 };
@@ -74,7 +74,7 @@ export const updateLessonComment = (data, commentId, token) => {
       headers: headers(token),
       data,
     }).then((res) => {
-      console.log(res);
+      // console.log(res);
     });
   };
 };
@@ -85,11 +85,31 @@ export const deleteLessonComment = (commentId, token) => {
       url: `${url}comments/${commentId}`,
       headers: headers(token),
     }).then((res) => {
+      // console.log(res);
+    });
+  };
+};
+export const reportLesson = (data, token) => {
+  return function (dispatch) {
+    axios({
+      method: "post",
+      url: `${url}lessons/reportLesson`,
+      headers: headers(token),
+      data,
+    }).then((res) => {
       console.log(res);
     });
   };
 };
 
+// reportLesson(data) {
+//     return axios({
+//       method: "post",
+//       url: `${this.url}lessons/reportLesson`,
+//       headers: this.headers(),
+//       data,
+//     });
+//   },
 // updateLessonComment(data, commentId) {
 //     return axios({
 //       method: "patch",
