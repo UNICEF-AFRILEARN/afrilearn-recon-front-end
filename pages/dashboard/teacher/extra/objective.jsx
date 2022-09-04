@@ -38,7 +38,7 @@ const Objectives = ({examId}) => {
 
     
     let token = user.token;
-    let allExams = exams
+    let allExams = exams?.exams
     let receivedQuestions = singleExamQuestions?.questions
     const handleAddQuestions = (e) => {
         setQuestionType(e.target.innerText)
@@ -68,7 +68,7 @@ const Objectives = ({examId}) => {
     }
     // let examType = [];
     // const filterExams = () => {
-        let examType = allExams?.exams?.filter((filteredExams) => 
+        let examType = allExams?.filter((filteredExams) => 
             filteredExams.id === '62fff77c721b450016998f18'
             
         )
@@ -138,11 +138,11 @@ const Objectives = ({examId}) => {
                <h4 onClick={() => showObjpanel(3)}>Generate questions</h4>
                }
                 <div className={styles.btnmainwrapper}>
-                    <h4 onClick={handleUpdateStatus}>{examType[0]?.publish === true? 'UNPUBLISH' : 'PUBLISH'}</h4>
+                    {/* <h4 onClick={handleUpdateStatus}>{examType[0]?.publish === true? 'UNPUBLISH' : 'PUBLISH'}</h4> */}
                     <h5>PREVIEW</h5>
                 </div>
                 <div>
-               <h4>{examType[0]?.publish === true? 'This exam is currently published' : 'This exam is currently unpublished'}</h4>
+               {/* <h4>{examType[0]?.publish === true? 'This exam is currently published' : 'This exam is currently unpublished'}</h4> */}
                </div>
                {/* add button add new question */}
                <div>

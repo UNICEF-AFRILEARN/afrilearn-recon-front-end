@@ -24,11 +24,14 @@ const Navigation = () => {
   const handleLogout = () => {
 
   }
-
+  // let className;
+  
+  // useEffect(() => {
+  //   className = user.user.classOwnership
+  // }, [user])
+  console.log("From main navebar", user.user.classOwnership)
   useEffect(() => {
-    console.log("From main navebar", registerUser?.user?.role)
     const roleId = user?.user?.role || registerUser?.user?.role || user?.user?.id
-    console.log("From roleId main navebar", roleId)
     setUserRole(roleId)
   }, [user])
 
@@ -137,8 +140,8 @@ const Navigation = () => {
                           <BiDownArrow size={20} className={styles.profileavatar}/>
                           </Link>
                           <div className={styles.linkswrapper}>
-                            <a href="/payment">Add New class</a>
                             <a href="#">My Feeds</a>
+                            <a href="/payment">Add New class</a>
                             <a href="#">My Feeds</a>
                             <Link href="/dashboard/student/studentProfile">
                               <a>Manage Profile</a>
