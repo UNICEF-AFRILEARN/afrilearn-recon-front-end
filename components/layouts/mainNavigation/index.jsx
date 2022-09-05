@@ -24,12 +24,8 @@ const Navigation = () => {
   const handleLogout = () => {
 
   }
-  // let className;
-  
-  // useEffect(() => {
-  //   className = user.user.classOwnership
-  // }, [user])
-  console.log("From main navebar", user.user.classOwnership)
+
+  console.log("From main navebar", user?.user?.classOwnership)
   useEffect(() => {
     const roleId = user?.user?.role || registerUser?.user?.role || user?.user?.id
     setUserRole(roleId)

@@ -63,16 +63,13 @@ const Objectives = ({examId}) => {
     
     const handleSubmit = (e) => {
         e.preventDefault()
-        // console.log("theoryBody ==>",data)
         dispatch(updateExamQuestionInitiate(questionId, data))
     }
-    // let examType = [];
-    // const filterExams = () => {
+
         let examType = allExams?.filter((filteredExams) => 
-            filteredExams.id === '62fff77c721b450016998f18'
+            filteredExams.id === '6300e0b9104d6700167be084'
             
         )
-    // }
     
     const onClickExamsType = () => {
         setOpenQuestionType(!openQuestionType)
@@ -93,8 +90,6 @@ const Objectives = ({examId}) => {
         })
     }
     
-    // 
-    // console.log("From examType", examType)
 
     const handleUpdateStatus = (e) => {
         let publish
@@ -138,15 +133,22 @@ const Objectives = ({examId}) => {
                <h4 onClick={() => showObjpanel(3)}>Generate questions</h4>
                }
                 <div className={styles.btnmainwrapper}>
-                    {/* <h4 onClick={handleUpdateStatus}>{examType[0]?.publish === true? 'UNPUBLISH' : 'PUBLISH'}</h4> */}
+                   { examType && 
+                   <h4 onClick={handleUpdateStatus}>{examType[0]?.publish === true? 'UNPUBLISH' : 'PUBLISH'}</h4>
+                   }
                     <h5>PREVIEW</h5>
                 </div>
                 <div>
-               {/* <h4>{examType[0]?.publish === true? 'This exam is currently published' : 'This exam is currently unpublished'}</h4> */}
+               { examType && 
+                   <h4>{examType[0]?.publish === true? 'This exam is currently published' : 'This exam is currently unpublished'}</h4>}
                </div>
                {/* add button add new question */}
                <div>
-                <Addexambutton />
+               { examType && 
+               <Addexambutton 
+                examId={examId}
+                examType={examType}
+                />}
                </div>
                {/* End add button add new question */}
                
@@ -190,20 +192,17 @@ const Objectives = ({examId}) => {
                           { examType[0]?.questionTypeId?.name === "Theory" && 
                           <a onClick={handleAddQuestions}>Theory</a>
                           }
-                                    { examType[0]?.questionTypeId?.name === "Objective & Theory" && 
+                                    { 
+                                    examType[0]?.questionTypeId?.name === "Objective & Theory" && 
                                     <>
                                      <a onClick={handleAddQuestions}>Objective</a>
                                         <a onClick={handleAddQuestions}>Theory</a>
                                     </>
                                      }
-                                      {/* { examType[0]?.questionTypeId?.name === "Objective & Theory" && 
-                                    <>
-                                        <a onClick={handleAddQuestions}>Theory</a>
-                                    </>
-                                     } */}
 
 
-                          </div>}
+                          </div>
+                          }
                       </div>
                       } 
             </ul>
