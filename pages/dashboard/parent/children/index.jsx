@@ -29,13 +29,13 @@ const Chidren = () => {
       console.log('✅ Checkbox is checked', childId, parentId);
       
     } else {
+      setUserId('')
       console.log('⛔️ Checkbox is NOT checked');
     }
   };
 
   const clickUnlinkChild = () => {
-    console.log("clicked")
-    // dispatch(unlinkChildInitiate(userId, parentId))
+    dispatch(unlinkChildInitiate(userId, parentId))
   }
 
   useEffect(() => {
@@ -55,7 +55,6 @@ const Chidren = () => {
                   <p 
                   className={styles.unlinkwrapper}
                   onClick={() => setModalShow(true)}
-                  // onClick={clickUnlinkChild}
                   >  Unlink account</p>
                     <span><RiDeleteBin6Line color='red'/></span><p className={styles.deletewrapper}> Delete</p>
                 </div>
@@ -73,6 +72,7 @@ const Chidren = () => {
            
           <Unlinkmodal 
            show={modalShow}
+           userId={userId}
            onHide={() => setModalShow(false)}
            clickUnlinkChild={clickUnlinkChild}
           />
