@@ -14,7 +14,8 @@ import {
     updateExamQuestionInitiate, 
     fetchSingleExamQuestionsInitiate,
     addExamQuestionInitiate,
-    updateExamInitiate
+    updateExamInitiate,
+    fetchSingleExamDetailsInitiate
 } from '../../../../redux/actions/exams';
 import Questiontitle from './questiontitle';
 import {wrapper } from '../../../../redux/store'
@@ -22,7 +23,7 @@ import Addexambutton from './addexambutton';
 
 const Objectives = ({examId}) => {
     const dispatch = useDispatch();
-    const { newExamQuestion, exams, singleExamQuestions, updatedExam, deletedExam } = useSelector((state) => state.myExams);
+    const { newExamQuestion, exams, singleExamQuestions, updatedExam, deletedExam, singleExam } = useSelector((state) => state.myExams);
     const { user } = useSelector((state) => state.auth)
     const [questionId, setQuestionId] = useState("")
     const [openQuestionType, setOpenQuestionType] = useState(false)
@@ -33,6 +34,8 @@ const Objectives = ({examId}) => {
     const [showObjQuestions, setShowObjQuestions] = useState(1)
     const [showObjQuestionOptions, setShowObjQuestionOptions] = useState(0)
 
+
+    
     
     let token = user.token;
     let allExams = exams?.exams
@@ -53,6 +56,7 @@ const Objectives = ({examId}) => {
             filteredExams.id === '6300e0b9104d6700167be084'
             
         )
+        console.log("examType from objective ===>", examType)
     
     const onClickExamsType = () => {
         setOpenQuestionType(!openQuestionType)
@@ -78,7 +82,7 @@ const Objectives = ({examId}) => {
         let publish
         if(e.target.innerHTML === 'PUBLISH'){
              publish = true
-        }else{
+        }else if(e.target.innerHTML === 'UNPUBLISH'){
             publish = false
         }
         dispatch(updateExamInitiate(questionId, publish))
@@ -97,7 +101,10 @@ const Objectives = ({examId}) => {
         dispatch(fetchSingleExamQuestionsInitiate(examId))
     }, [examId, newExamQuestion, updatedExam, deletedExam])
     
-    
+    useEffect(() => {
+        dispatch(fetchSingleExamDetailsInitiate(token, examId))
+      }, [])
+      
     useEffect(() => {
         if(receivedQuestions){
             setExamQuestion([...receivedQuestions])

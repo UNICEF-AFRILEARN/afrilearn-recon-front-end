@@ -40,7 +40,7 @@ const Addexambutton = ({examQuestion, examId}) => {
             </span>
         }
        { showType === true &&
-       <div>
+       <div className={styles.pointerwrapper}>
            { examType[0]?.questionTypeId?.name === "Objective" && 
                           <a onClick={handleAddQuestions}>Objective</a>
             }
