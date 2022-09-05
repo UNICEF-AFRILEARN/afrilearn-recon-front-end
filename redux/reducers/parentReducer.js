@@ -5,7 +5,7 @@ const initialState = {
     childData: [],
     error: [],
     children: [],
-    unlinkedChild: []
+    unlinkedChild: [],
     linkedChild: []
 }
 

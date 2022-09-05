@@ -140,7 +140,7 @@ export const linkChildInitiate = (email, parentId) =>  {
         })
         .then((res) => {
             dispatch(linkChildSuccess(res.data.data))
-            console.log("Unlink child From parent API =>", res.data.data)
+            console.log("Link child From parent API =>", res.data.data)
         })
         .catch((err) => {
             dispatch(linkChildFail(err))

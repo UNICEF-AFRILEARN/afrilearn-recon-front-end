@@ -18,6 +18,7 @@ const Chidren = () => {
   const { user } = useSelector((state) => state.auth)
   const [userId, setUserId] = useState('')
   const [modalShow, setModalShow] = useState(false);
+  const [showModalTwo, setShowModalTwo] = useState(false);
   // const [test, setTest] = useState(false);
   const dispatch = useDispatch();
 
@@ -69,7 +70,7 @@ const Chidren = () => {
                 <div className={styles.rightlinkswrapper}>
                 <span><FaLink /></span> <p 
                 className={styles.linkinchildwrapper}
-                // onClick={() => setModalShow(true)}
+                onClick={() => setShowModalTwo(true)}
                 > Link Existing Account</p>
                 </div>
             </div>
@@ -85,6 +86,12 @@ const Chidren = () => {
            onHide={() => setModalShow(false)}
            clickUnlinkChild={clickUnlinkChild}
           />
+
+       <Linkachildmodal 
+        show={showModalTwo}
+        onHide={() => setShowModalTwo(false)}
+       />
+       
          
     </div>
   )
