@@ -28,6 +28,19 @@ export const unlinkChildFail = (error) => ({
   type: types.UNLINK_CHILD_ACCOUNT_FAIL,
   payload: error
 });
+export const linkChildStart = () => ({
+    type: types.LINK_CHILD_ACCOUNT_START,
+});
+
+export const linkChildSuccess = (payload) => ({
+  type: types.LINK_CHILD_ACCOUNT_SUCCESS,
+  payload
+});
+
+export const linkChildFail = (error) => ({
+  type: types.LINK_CHILD_ACCOUNT_FAIL,
+  payload: error
+});
 export const fetchChildrenStart = () => ({
     type: types.FETCH_CHILDREN_START,
 });
@@ -112,6 +125,25 @@ export const unlinkChildInitiate = (userId, parentId) =>  {
         })
         .catch((err) => {
             dispatch(unlinkChildFail(err))
+        })
+    }
+
+}
+export const linkChildInitiate = (email, parentId) =>  {
+    return function (dispatch) {
+        dispatch(linkChildStart)
+        axios
+        .post('https://afrilearn-backend-01.herokuapp.com/api/v1/parents/add-user-as-child',
+        {
+            email,
+            parentId
+        })
+        .then((res) => {
+            dispatch(linkChildSuccess(res.data.data))
+            console.log("Unlink child From parent API =>", res.data.data)
+        })
+        .catch((err) => {
+            dispatch(linkChildFail(err))
         })
     }
 

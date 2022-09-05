@@ -11,12 +11,14 @@ import ParentHeader from '../extra/header';
 import Childtable from '../extra/childtable';
 import { fetchParentChildrenInitiate } from './../../../../redux/actions/dashboard';
 import Unlinkmodal from '../extra/unlinkmodal';
+import Linkachildmodal from '../extra/linkachildmodal';
 const Chidren = () => {
   const { children } = useSelector((state) => state.dashboard);
   const { unlinkedChild } = useSelector((state) => state.parentR);
   const { user } = useSelector((state) => state.auth)
   const [userId, setUserId] = useState('')
   const [modalShow, setModalShow] = useState(false);
+  // const [test, setTest] = useState(false);
   const dispatch = useDispatch();
 
   let token = user?.token
@@ -33,6 +35,12 @@ const Chidren = () => {
       console.log('⛔️ Checkbox is NOT checked');
     }
   };
+
+  const showClickedIcon = (action) => {
+    setClickedAction(action)
+    console.log("target ===>", clickAction)
+
+  }
 
   const clickUnlinkChild = () => {
     dispatch(unlinkChildInitiate(userId, parentId))
@@ -59,7 +67,10 @@ const Chidren = () => {
                     <span><RiDeleteBin6Line color='red'/></span><p className={styles.deletewrapper}> Delete</p>
                 </div>
                 <div className={styles.rightlinkswrapper}>
-                <span><FaLink /></span> <p className={styles.linkinchildwrapper}> Link Existing Account</p>
+                <span><FaLink /></span> <p 
+                className={styles.linkinchildwrapper}
+                // onClick={() => setModalShow(true)}
+                > Link Existing Account</p>
                 </div>
             </div>
             <Childtable 
@@ -67,8 +78,6 @@ const Chidren = () => {
               handleCheckedBox={handleCheckedBox}
               userId={userId}
             />
-            
-              Launch vertically centered modal
            
           <Unlinkmodal 
            show={modalShow}
@@ -76,6 +85,7 @@ const Chidren = () => {
            onHide={() => setModalShow(false)}
            clickUnlinkChild={clickUnlinkChild}
           />
+         
     </div>
   )
 }

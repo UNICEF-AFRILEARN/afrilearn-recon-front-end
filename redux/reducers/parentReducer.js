@@ -6,6 +6,7 @@ const initialState = {
     error: [],
     children: [],
     unlinkedChild: []
+    linkedChild: []
 }
 
 export const parentReducer = (state = initialState, { type, payload} ) => {
@@ -39,6 +40,22 @@ export const parentReducer = (state = initialState, { type, payload} ) => {
                 loading: false
             };
         case types.UNLINK_CHILD_ACCOUNT_FAIL:
+            return {
+                error: payload,
+                loading: false
+            };
+        case types.LINK_CHILD_ACCOUNT_START:
+            return {
+                ...state,
+                loading: true
+            };
+        case types.LINK_CHILD_ACCOUNT_SUCCESS:
+            return {
+                ...state,
+                linkedChild: payload,
+                loading: false
+            };
+        case types.LINK_CHILD_ACCOUNT_FAIL:
             return {
                 error: payload,
                 loading: false

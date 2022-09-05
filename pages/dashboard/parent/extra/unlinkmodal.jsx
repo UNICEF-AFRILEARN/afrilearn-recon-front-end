@@ -42,7 +42,7 @@ const UnlinkChildModal = (props) =>  {
           <Button className='w-25 mx-5' onClick={props.onHide}>Ok</Button>
         </div>
         }
-      </Modal.Body>
+        </Modal.Body>
     </Modal>
   );
 }
@@ -50,21 +50,3 @@ const UnlinkChildModal = (props) =>  {
 
 export default UnlinkChildModal;
 
-// function App() {
-//   const [modalShow, setModalShow] = React.useState(false);
-
-//   return (
-//     <>
-//       <Button variant="primary" onClick={() => setModalShow(true)}>
-//         Launch vertically centered modal
-//       </Button>
-
-//       <MyVerticallyCenteredModal
-//         show={modalShow}
-//         onHide={() => setModalShow(false)}
-//       />
-//     </>
-//   );
-// }
-
-// render(<App />);
