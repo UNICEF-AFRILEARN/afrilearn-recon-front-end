@@ -23,11 +23,6 @@ const Childtable = ({myChildren, handleCheckedBox, userId}) => {
   }
 
 
-
-
-
-
-
     const handleClick = (id, email, name, myChildclass) => {
       console.log("I am clicked", id)
       setStudentId(id)

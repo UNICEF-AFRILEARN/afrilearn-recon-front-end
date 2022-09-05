@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import Button from 'react-bootstrap/Button';
 import { BiUnlink } from 'react-icons/bi';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { FaLink } from 'react-icons/fa';
@@ -9,15 +10,17 @@ import styles from '../../../../styles/parentdashboard.module.css';
 import ParentHeader from '../extra/header';
 import Childtable from '../extra/childtable';
 import { fetchParentChildrenInitiate } from './../../../../redux/actions/dashboard';
+import Unlinkmodal from '../extra/unlinkmodal';
 const Chidren = () => {
   const { children } = useSelector((state) => state.dashboard);
   const { unlinkedChild } = useSelector((state) => state.parentR);
   const { user } = useSelector((state) => state.auth)
   const [userId, setUserId] = useState('')
+  const [modalShow, setModalShow] = useState(false);
   const dispatch = useDispatch();
 
   let token = user?.token
-  let parentId = user.user.id
+  let parentId = user?.user?.id
   let myChildren = children?.data?.children;
 
   const handleCheckedBox = (childId) => {
@@ -31,7 +34,8 @@ const Chidren = () => {
   };
 
   const clickUnlinkChild = () => {
-    dispatch(unlinkChildInitiate(userId, parentId))
+    console.log("clicked")
+    // dispatch(unlinkChildInitiate(userId, parentId))
   }
 
   useEffect(() => {
@@ -47,10 +51,12 @@ const Chidren = () => {
             <div className={styles.linkwrapper}>
                 <div className={styles.leftlinkswrapper}>
                 <span><BiUnlink /></span> 
-                <p 
-                className={styles.unlinkwrapper}
-                onClick={clickUnlinkChild}
-                >  Unlink account</p>
+
+                  <p 
+                  className={styles.unlinkwrapper}
+                  onClick={() => setModalShow(true)}
+                  // onClick={clickUnlinkChild}
+                  >  Unlink account</p>
                     <span><RiDeleteBin6Line color='red'/></span><p className={styles.deletewrapper}> Delete</p>
                 </div>
                 <div className={styles.rightlinkswrapper}>
@@ -62,6 +68,14 @@ const Chidren = () => {
               handleCheckedBox={handleCheckedBox}
               userId={userId}
             />
+            
+              Launch vertically centered modal
+           
+          <Unlinkmodal 
+           show={modalShow}
+           onHide={() => setModalShow(false)}
+           clickUnlinkChild={clickUnlinkChild}
+          />
     </div>
   )
 }
