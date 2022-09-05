@@ -2,12 +2,18 @@ import React, { useState, useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from '../teacher.module.css';
 import { FaPlus } from 'react-icons/fa';
+import { 
+  addExamQuestionInitiate,
+} from '../../../../redux/actions/exams';
 
-const Addexambutton = ({examQuestion, examType, examId}) => {
+const Addexambutton = ({examQuestion, examId}) => {
   const { newExamQuestion, exams, singleExamQuestions, updatedExam, deletedExam } = useSelector((state) => state.myExams);
+  const { user } = useSelector((state) => state.auth)
   const [showType, setShowType] = useState(false)
+  const dispatch = useDispatch();
 
 
+  let token = user.token;
   let allExams = exams?.exams
 
   let examType = allExams?.filter((filteredExams) => 
@@ -18,6 +24,10 @@ const Addexambutton = ({examQuestion, examType, examId}) => {
     setShowType(!showType)
   }
 
+  const handleAddQuestions = (e) => {
+    let type = e.target.innerText
+    dispatch(addExamQuestionInitiate(token, examId, type))
+}
 
   return (
     <div >
@@ -32,18 +42,21 @@ const Addexambutton = ({examQuestion, examType, examId}) => {
        { showType === true &&
        <div>
            { examType[0]?.questionTypeId?.name === "Objective" && 
-                          <a>Objective</a>
+                          <a onClick={handleAddQuestions}>Objective</a>
             }
 
             { examType[0]?.questionTypeId?.name === "Objective & Theory" && 
-                          <a>
+                        <>
+                          <a onClick={handleAddQuestions}>
                             Theory</a>
+                             <a onClick={handleAddQuestions}>Objective</a>
+                        </>
             }
 
             {
               examType[0]?.questionTypeId?.name === "Theory" && 
               <>
-                  <a>Theory</a>
+                  <a onClick={handleAddQuestions}>Theory</a>
               </>
             }
 

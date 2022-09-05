@@ -26,13 +26,10 @@ const Objectives = ({examId}) => {
     const { user } = useSelector((state) => state.auth)
     const [questionId, setQuestionId] = useState("")
     const [openQuestionType, setOpenQuestionType] = useState(false)
-    //content in the questionOptions will be data to send to the API:
     const [examQuestion, setExamQuestion] = useState([])
     const [question, setQuestion] = useState("")
     const [questionType, setQuestionType] = useState("")
-    // const [examType, setExamType] = useState("")
 
-    // console.log("singleExamQuestions from objective", singleExamQuestions)
     const [showObjQuestions, setShowObjQuestions] = useState(1)
     const [showObjQuestionOptions, setShowObjQuestionOptions] = useState(0)
 
@@ -40,26 +37,12 @@ const Objectives = ({examId}) => {
     let token = user.token;
     let allExams = exams?.exams
     let receivedQuestions = singleExamQuestions?.questions
+
     const handleAddQuestions = (e) => {
         setQuestionType(e.target.innerText)
         let type = e.target.innerText
-        console.log("questionType ====", e.target.innerText)
         dispatch(addExamQuestionInitiate(token, examId, type))
-        // dispatch(fetchSingleExamQuestionsInitiate(examId))
-        // setExamQuestion([...examQuestion,    
-        //     {
-        //     optionsOne:"",
-        //     optionsTwo:"",
-        //     optionsThree:"",
-        //     optionsFour:"",
-        //     images:[],
-        //     question:""
-        // }])
     }
-
-    // let data = {
-    //     publish: true
-    // }
     
     const handleSubmit = (e) => {
         e.preventDefault()
