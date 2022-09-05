@@ -51,7 +51,9 @@ console.log("singleExam ===> from exam details", singleExam)
           <p>Exam title: {singleExam?.data?.exams.title}</p>
 
           <p>Exam Type: {singleExam?.data?.exams.questionTypeId.name}</p>
-          <p>Duration: {displayHours(examType[0]?.duration)}</p>
+         { examType &&
+         <p>Duration: {displayHours(examType[0]?.duration)}</p>
+         }
           <p>{singleExam?.exams?.participants?.length} Student(s)</p>
       </div>
       <div>
