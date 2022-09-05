@@ -40,7 +40,6 @@ export const parentReducer = (state = initialState, { type, payload} ) => {
             };
         case types.UNLINK_CHILD_ACCOUNT_FAIL:
             return {
-                ...state,
                 error: payload,
                 loading: false
             };

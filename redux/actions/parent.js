@@ -97,3 +97,22 @@ export const fetchChildrenInitiate = (token) =>  {
     }
 
 }
+export const unlinkChildInitiate = (userId, parentId) =>  {
+    return function (dispatch) {
+        dispatch(unlinkChildStart)
+        axios
+        .patch('https://afrilearn-backend-01.herokuapp.com/api/v1/parents/unlink-child-account',
+        {
+            userId,
+            parentId
+        })
+        .then((res) => {
+            dispatch(unlinkChildSuccess(res.data.data))
+            console.log("Unlink child From parent API =>", res.data.data)
+        })
+        .catch((err) => {
+            dispatch(unlinkChildFail(err))
+        })
+    }
+
+}

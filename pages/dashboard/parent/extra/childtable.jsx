@@ -1,13 +1,15 @@
 import React, {useState} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Table from 'react-bootstrap/Table';
-
 import { MdOutlineCheckBoxOutlineBlank,MdOutlineArrowForwardIos } from 'react-icons/md';
 import styles from '../../../../styles/parentdashboard.module.css';
 import ChildModal from './childModal';
 import ChildDetails from './childtablemodal';
 
 
-const Childtable = ({myChildren}) => {
+const Childtable = ({myChildren, handleCheckedBox, userId}) => {
+  const {user } = useSelector(state => state.auth);
+  const dispatch = useDispatch()
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [open, setOpen] = useState(false);
   const [studentId, setStudentId] = useState('')
@@ -20,17 +22,11 @@ const Childtable = ({myChildren}) => {
     setOpen(true);
   }
 
-  console.log("myChildren from my children component", myChildren)
 
 
-  const handleCheckedBox = (event) => {
-    if (event.target.checked) {
-      console.log('✅ Checkbox is checked');
-    } else {
-      console.log('⛔️ Checkbox is NOT checked');
-    }
-    setIsSubscribed(current => !current);
-  };
+
+
+
 
     const handleClick = (id, email, name, myChildclass) => {
       console.log("I am clicked", id)
@@ -70,7 +66,7 @@ const Childtable = ({myChildren}) => {
                   <input
                    value={isSubscribed}
                   //  onChange={}
-                  onChange={handleCheckedBox}
+                  onClick={() => handleCheckedBox(myChild.id)}
                   type='checkbox' 
                   />
                 </td>
