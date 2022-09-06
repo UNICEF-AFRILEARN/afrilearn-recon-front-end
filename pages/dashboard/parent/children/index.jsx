@@ -14,7 +14,7 @@ import Unlinkmodal from '../extra/unlinkmodal';
 import Linkachildmodal from '../extra/linkachildmodal';
 const Chidren = () => {
   const { children } = useSelector((state) => state.dashboard);
-  const { unlinkedChild } = useSelector((state) => state.parentR);
+  const { unlinkedChild, linkedChild } = useSelector((state) => state.parentR);
   const { user } = useSelector((state) => state.auth)
   const [userId, setUserId] = useState('')
   const [modalShow, setModalShow] = useState(false);
@@ -36,10 +36,10 @@ const Chidren = () => {
       console.log('⛔️ Checkbox is NOT checked');
     }
   };
-
+  
+  
   const showClickedIcon = (action) => {
     setClickedAction(action)
-    console.log("target ===>", clickAction)
 
   }
 
@@ -49,7 +49,7 @@ const Chidren = () => {
 
   useEffect(() => {
     dispatch(fetchParentChildrenInitiate(token))
-  }, [unlinkedChild])
+  }, [unlinkedChild, linkedChild])
 
 
   return (

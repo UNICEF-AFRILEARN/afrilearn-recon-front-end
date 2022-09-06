@@ -7,21 +7,28 @@ import Modal from 'react-bootstrap/Modal';
 import {AiOutlineExclamationCircle } from 'react-icons/ai'
 
 import {linkChildInitiate } from '../../../../redux/actions/parent'
+import Linksuccess from './linksuccess';
 
 const Linkachildmodal = (props) => {
     const { linkedChild } = useSelector((state) => state.parentR);
     const dispatch = useDispatch();
     const [email, setEmail] = useState('')
+    const [test, setTest] = useState(true)
+    const [thirdModalShow, setThirdModalShow] = useState(false);
     const { user } = useSelector((state) => state.auth)
 
 
     let parentId = user?.user?.id
-
+    console.log("target from link children ===>", linkedChild.message)
     const handleSendLink = () => {
         dispatch(linkChildInitiate(email, parentId))
-        console.log("Email from link sender => ", linkedChild)
+        // console.log("Email from link sender => ", linkedChild)
+        if(linkedChild.message === 'Your parent request was sent'){
+          setThirdModalShow(true)
+        }
     }
   return (
+    <>
     <Modal
       {...props}
       size="md"
@@ -58,7 +65,15 @@ const Linkachildmodal = (props) => {
         onClick={() => {props.onHide(), handleSendLink()}}>Send Request</Button>
         </div>
       </Modal.Body>
+      
     </Modal>
+    {linkedChild && 
+      <Linksuccess 
+      show={thirdModalShow}
+      onHide={() => setThirdModalShow(false)}
+      />
+      }
+    </>
   )
 }
 
