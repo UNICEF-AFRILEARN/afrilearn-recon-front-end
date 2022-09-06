@@ -6,6 +6,7 @@ const initialState = {
     error: [],
     children: [],
     unlinkedChild: [],
+    deletedChild: [],
     linkedChild: []
 }
 

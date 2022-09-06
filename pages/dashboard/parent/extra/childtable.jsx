@@ -16,6 +16,7 @@ const Childtable = ({myChildren, handleCheckedBox, userId}) => {
   const [childName, setChildName] = useState('')
   const [childEmail, setChildEmail] = useState('')
   const [childClass, setChildClass] = useState('')
+  const [modalShow, setModalShow] = useState(false);
   const handleClose = () => setOpen(false);
   const handleOpen = () => {
     // setPriceSelected(price)
@@ -69,26 +70,25 @@ const Childtable = ({myChildren, handleCheckedBox, userId}) => {
                 <td>{myChild?.enrolledCourses[0]?.courseId.name? myChild?.enrolledCourses[0]?.courseId.name : "Not enrolled"}</td>
                 <td>{myChild.email}</td>
                 <td 
-                  onClick={() => handleClick(myChild.id, myChild.email, myChild.fullName, myChild?.enrolledCourses[0]?.courseId.name)}
+                  onClick={() => setModalShow(true)}
                 >
-                <ChildDetails 
-                  handleClose={handleClose}
-                  handleOpen={handleOpen}
-                  open={open}
-                  closeModal={closeModal}
-                  myChildren={myChildren}
-                  studentId={studentId}
-                  childEmail={childEmail}
-                  childName={childName}
-                  childClass={childClass}
-                  />
+                view details
 
                 </td>
               </>
         </tr>
           )}
       </tbody>
-    </Table>     
+    </Table> 
+    <ChildDetails 
+                  show={modalShow}
+                  onHide={() => setModalShow(false)}
+                  myChildren={myChildren}
+                  studentId={studentId}
+                  childEmail={childEmail}
+                  childName={childName}
+                  childClass={childClass}
+                  />    
     </div>
   )
 }

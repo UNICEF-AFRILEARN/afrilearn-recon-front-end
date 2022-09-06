@@ -24,7 +24,7 @@ const UnlinkChildModal = (props) =>  {
         <>
           <h4>Are you sure?</h4>
         <p>
-          Do you want to unlink this child account?
+          Do you want to unlink/delete this child account?
         </p>
         </> : <p>No child is selected</p>
         }
@@ -33,7 +33,7 @@ const UnlinkChildModal = (props) =>  {
         {props.userId !== ''? 
         <div className="d-flex align-items-center justify-content-center w-100 ">
           <Button 
-         onClick={() => {props.clickUnlinkChild(), props.onHide()}}
+         onClick={() => {props.clickUnlinkChild(), props.onHide(), props.handleDeleteChild()}}
          className='w-25 mx-5' 
         >Yes</Button>
         <Button className='w-25 mx-5' onClick={props.onHide}>No</Button>

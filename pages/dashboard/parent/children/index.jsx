@@ -5,16 +5,17 @@ import { BiUnlink } from 'react-icons/bi';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { FaLink } from 'react-icons/fa';
 
-import { unlinkChildInitiate} from '../../../../redux/actions/parent'
+import { unlinkChildInitiate, deleteChildInitiate} from '../../../../redux/actions/parent'
 import styles from '../../../../styles/parentdashboard.module.css';
 import ParentHeader from '../extra/header';
 import Childtable from '../extra/childtable';
 import { fetchParentChildrenInitiate } from './../../../../redux/actions/dashboard';
 import Unlinkmodal from '../extra/unlinkmodal';
 import Linkachildmodal from '../extra/linkachildmodal';
+import Linksuccess from '../extra/linksuccess';
 const Chidren = () => {
   const { children } = useSelector((state) => state.dashboard);
-  const { unlinkedChild, linkedChild } = useSelector((state) => state.parentR);
+  const { unlinkedChild, linkedChild, deletedChild } = useSelector((state) => state.parentR);
   const { user } = useSelector((state) => state.auth)
   const [userId, setUserId] = useState('')
   const [modalShow, setModalShow] = useState(false);
@@ -43,13 +44,17 @@ const Chidren = () => {
 
   }
 
+  const handleDeleteChild = () => {
+    dispatch(deleteChildInitiate(userId, parentId))
+  }
+
   const clickUnlinkChild = () => {
     dispatch(unlinkChildInitiate(userId, parentId))
   }
 
   useEffect(() => {
     dispatch(fetchParentChildrenInitiate(token))
-  }, [unlinkedChild, linkedChild])
+  }, [unlinkedChild, linkedChild, deletedChild])
 
 
   return (
@@ -65,7 +70,11 @@ const Chidren = () => {
                   className={styles.unlinkwrapper}
                   onClick={() => setModalShow(true)}
                   >  Unlink account</p>
-                    <span><RiDeleteBin6Line color='red'/></span><p className={styles.deletewrapper}> Delete</p>
+                    <span><RiDeleteBin6Line color='red'/></span>
+                     <p className={styles.deletewrapper}
+                    //  onClick={handleDeleteChild}
+                    onClick={() => setModalShow(true)}
+                     > Delete</p>
                 </div>
                 <div className={styles.rightlinkswrapper}>
                 <span><FaLink /></span> <p 
@@ -85,13 +94,16 @@ const Chidren = () => {
            userId={userId}
            onHide={() => setModalShow(false)}
            clickUnlinkChild={clickUnlinkChild}
+           handleDeleteChild={handleDeleteChild}
           />
 
        <Linkachildmodal 
         show={showModalTwo}
         onHide={() => setShowModalTwo(false)}
        />
-       
+       <Linksuccess 
+          deletedChild={deletedChild}
+       />
          
     </div>
   )

@@ -20,9 +20,14 @@ const Linksuccess = (props) => {
                 size={100}
                 color='#00D9B6'
             />
+       { props.deletedChild? 
         <p className='m-3'>
-          You have successfully sent the link request to the student.
-        </p>
+          You have successfully unlinked/deleted the student.
+        </p> :
+        <p className='m-3'>
+        You have successfully sent the link request to the student.
+      </p>
+        }
       </Modal.Body>
 
       <Modal.Body className='d-flex justify-center p-3'>
