@@ -5,10 +5,12 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import {BsFillCheckCircleFill } from 'react-icons/bs'
+import { Children } from 'react';
 
 const ChildDetails = (props)  => {
 
-  console.log("myChildren from child details modal", props.userId)
+  let allChildren = props.myChildren.filter((singleChild) => singleChild.id === props.userId)
+  console.log("myChildren from child details modal", allChildren)
   return (
     <Modal
       {...props}
@@ -19,9 +21,13 @@ const ChildDetails = (props)  => {
     >
       <Modal.Body className='text-center'>          
 
-        <p className='m-3'>
+        {props.userId? 
+          <p className='m-3'>
          Student id: {props.userId}
-        </p> 
+        </p> :  <p className='m-3'>
+           No Child is selected
+        </p>
+        }
       </Modal.Body>
 
       <Modal.Body className='d-flex justify-center p-3'>

@@ -7,7 +7,7 @@ import ChildModal from './childModal';
 import ChildDetails from './childtablemodal';
 
 
-const Childtable = ({myChildren, handleCheckedBox, userId}) => {
+const Childtable = ({myChildren, handleCheckedBox, userId, handleViewChildDetails}) => {
   const {user } = useSelector(state => state.auth);
   const dispatch = useDispatch()
   const [isSubscribed, setIsSubscribed] = useState(false);
@@ -23,9 +23,9 @@ const Childtable = ({myChildren, handleCheckedBox, userId}) => {
     setOpen(true);
   }
 
+  console.log("I am clicked userId", userId)
 
     const handleClick = (id, email, name, myChildclass) => {
-      console.log("I am clicked", id)
       setStudentId(id)
       setChildEmail(email)
       setChildName(name)
@@ -70,7 +70,7 @@ const Childtable = ({myChildren, handleCheckedBox, userId}) => {
                 <td>{myChild?.enrolledCourses[0]?.courseId.name? myChild?.enrolledCourses[0]?.courseId.name : "Not enrolled"}</td>
                 <td>{myChild.email}</td>
                 <td 
-                  onClick={() => setModalShow(true)}
+                  onClick={() => {setModalShow(true), handleViewChildDetails(myChild.id)}}
                 >
                 view details
                    
@@ -78,18 +78,17 @@ const Childtable = ({myChildren, handleCheckedBox, userId}) => {
                 
               </>
         </tr>
+         
           )}
       </tbody>
     </Table> 
     <ChildDetails 
-                  show={modalShow}
-                  onHide={() => setModalShow(false)}
-                  myChildren={myChildren}
-                  userId={userId}
-                  childEmail={childEmail}
-                  childName={childName}
-                  childClass={childClass}
-                  /> 
+         show={modalShow}
+         onHide={() => setModalShow(false)}
+         myChildren={myChildren}
+         userId={userId}
+         handleViewChildDetails={handleViewChildDetails}
+         /> 
     </div>
   )
 }

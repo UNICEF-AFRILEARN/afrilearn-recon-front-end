@@ -38,7 +38,10 @@ const Chidren = () => {
     }
   };
   
-  
+  const handleViewChildDetails = (childId) => {
+    console.log("For modal details", childId)
+    setUserId(childId)
+  }
   const showClickedIcon = (action) => {
     setClickedAction(action)
 
@@ -86,6 +89,7 @@ const Chidren = () => {
             <Childtable 
               myChildren={myChildren}
               handleCheckedBox={handleCheckedBox}
+              handleViewChildDetails={handleViewChildDetails}
               userId={userId}
             />
            
