@@ -73,8 +73,9 @@ const Childtable = ({myChildren, handleCheckedBox, userId}) => {
                   onClick={() => setModalShow(true)}
                 >
                 view details
-
+                   
                 </td>
+                
               </>
         </tr>
           )}
@@ -84,11 +85,11 @@ const Childtable = ({myChildren, handleCheckedBox, userId}) => {
                   show={modalShow}
                   onHide={() => setModalShow(false)}
                   myChildren={myChildren}
-                  studentId={studentId}
+                  userId={userId}
                   childEmail={childEmail}
                   childName={childName}
                   childClass={childClass}
-                  />    
+                  /> 
     </div>
   )
 }
