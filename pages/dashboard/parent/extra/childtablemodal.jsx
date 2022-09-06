@@ -9,8 +9,8 @@ import { Children } from 'react';
 
 const ChildDetails = (props)  => {
 
-  let allChildren = props.myChildren.filter((singleChild) => singleChild.id === props.userId)
-  console.log("myChildren from child details modal", allChildren)
+  let filteredChild= props.myChildren.filter((singleChild) => singleChild.id === props.userId)
+  console.log("myChildren from child details modal", filteredChild)
   return (
     <Modal
       {...props}
@@ -19,26 +19,73 @@ const ChildDetails = (props)  => {
       centered
       className='text-center'
     >
-      <Modal.Body className='text-center'>          
+      {
+      
+      filteredChild && filteredChild.map((mappedChild) => 
+      <>
+         <div className='text-center d-flex mx-3'>          
+        <p className='m-3'>
+       Email:
+      </p> 
+        <p className='m-3 px-5'>
+         {mappedChild.email} 
+      </p> 
+      
+    </div>
+    <div className='text-center d-flex mx-3'>          
+        <p className='m-3'>
+       Password:
+      </p> 
+        <p className='m-3 px-2'>
+         {mappedChild.email} 
+      </p> 
+      
+    </div>
+    <div>
+    <h5 className='text-start mx-4'>{mappedChild.enrolledCourses[0].courseId.name}</h5>     
+    </div>
+    <div className='text-center d-flex mx-3'>     
+        <p className='m-3'>
+       Password:
+      </p> 
+        <p className='m-3 px-2'>
+         {mappedChild.email} 
+      </p> 
+      
+    </div>
+    <div>
+    <h5 className='text-start mx-4'>{mappedChild.enrolledCourses[0].courseId.name}</h5>     
+    </div>
+    <div className='text-center d-flex'>     
+        <p className='m-3'>
+       Subscription:
+      </p> 
+        <p className='m-3 px-2'>
+         {mappedChild.email} 
+      </p> 
+      
+    </div>
+    <div className='text-center d-flex'>     
+        <p className='m-3'>
+       Expiration Date:
+      </p> 
+        <p className='m-3'>
+         {mappedChild.email} 
+      </p> 
+      
+    </div>
 
-        {props.userId? 
-          <p className='m-3'>
-         Student id: {props.userId}
-        </p> :  <p className='m-3'>
-           No Child is selected
-        </p>
-        }
-      </Modal.Body>
+    <Modal.Body className='d-flex justify-center p-3'>
 
-      <Modal.Body className='d-flex justify-center p-3'>
-
-        <div className="d-flex align-items-center justify-content-center w-100 mx-5">
-          <Button 
-         onClick={props.onHide}
-         className='w-100 mx-5' 
-        >Ok</Button>
-        </div>
-      </Modal.Body>
+      <div className="d-flex align-items-center justify-content-center w-100 mx-5">
+        <Button 
+       onClick={props.onHide}
+       className='w-100 mx-5' 
+      >Ok</Button>
+      </div>
+    </Modal.Body>
+    </>
+      )}
     </Modal>
   );
 }
