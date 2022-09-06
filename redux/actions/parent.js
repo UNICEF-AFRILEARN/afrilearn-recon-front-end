@@ -41,6 +41,19 @@ export const linkChildFail = (error) => ({
   type: types.LINK_CHILD_ACCOUNT_FAIL,
   payload: error
 });
+export const deleteChildStart = () => ({
+    type: types.DELETE_CHILD_ACCOUNT_START,
+});
+
+export const deleteChildSuccess = (payload) => ({
+  type: types.DELETE_CHILD_ACCOUNT_SUCCESS,
+  payload
+});
+
+export const deleteChildFail = (error) => ({
+  type: types.DELETE_CHILD_ACCOUNT_FAIL,
+  payload: error
+});
 export const fetchChildrenStart = () => ({
     type: types.FETCH_CHILDREN_START,
 });
@@ -144,6 +157,25 @@ export const linkChildInitiate = (email, parentId) =>  {
         })
         .catch((err) => {
             dispatch(linkChildFail(err))
+        })
+    }
+
+}
+export const deleteChildInitiate = (userId, parentId) =>  {
+    return function (dispatch) {
+        dispatch(deleteChildStart)
+        axios
+        .delete('https://afrilearn-backend-01.herokuapp.com/api/v1/parents/delete-child-account',
+        {
+            userId,
+            parentId
+        })
+        .then((res) => {
+            dispatch(deleteChildSuccess(res.data.data))
+            console.log("Link child From parent API =>", res.data.data)
+        })
+        .catch((err) => {
+            dispatch(deleteChildFail(err))
         })
     }
 

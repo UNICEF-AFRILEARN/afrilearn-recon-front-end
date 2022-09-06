@@ -60,6 +60,22 @@ export const parentReducer = (state = initialState, { type, payload} ) => {
                 error: payload,
                 loading: false
             };
+        case types.DELETE_CHILD_ACCOUNT_START:
+            return {
+                ...state,
+                loading: true
+            };
+        case types.DELETE_CHILD_ACCOUNT_SUCCESS:
+            return {
+                ...state,
+                deletedChild: payload,
+                loading: false
+            };
+        case types.DELETE_CHILD_ACCOUNT_FAIL:
+            return {
+                error: payload,
+                loading: false
+            };
         case types.FETCH_CHILDREN_START:
             return {
                 ...state,
