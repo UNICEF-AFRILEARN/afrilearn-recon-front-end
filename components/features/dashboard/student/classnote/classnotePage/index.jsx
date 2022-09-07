@@ -1,48 +1,38 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Accordion, Col, Container, Row } from "react-bootstrap";
 import styles from "../../../../../../pages/dashboard/teacher/teacher.module.css";
 
 import styles1 from "../../../student/student.module.css";
 import styles2 from "../../classnote/classnote.module.css";
 import { Comment, NextPrevPage } from "../../video/videoPage";
-
+import Speech from "react-speech";
 import { useRouter } from "next/router";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
+import { FcLike } from "react-icons/fc";
+import { FcLikePlaceholder } from "react-icons/fc";
+import {
+  fetchClearLikeLesson,
+  fetchgetLessonComments,
+  fetchStoreLikeLesson,
+} from "../../../../../../redux/actions/subject";
 
 const ClassnotePage = () => {
   const router = useRouter();
-  let quary = router.query[0];
-  console.log(quary);
+  const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const token = user?.token;
+  let quarie = router.query[0];
   const subject = useSelector((state) => state.mySubjectCourse);
   const lessons = subject.subjectDetails[1]?.relatedLessons;
   console.log(subject);
 
-  let clickLikes = 124;
-
-  const [like, setlike] = useState({
-    likes: clickLikes,
-    updated: false,
-  });
-  const updateLikes = () => {
-    if (!like.updated) {
-      setlike((prevState) => {
-        return {
-          likes: prevState.likes + 1,
-          updated: true,
-        };
-      });
-    } else {
-      setlike((prevState) => {
-        return {
-          likes: prevState.likes - 1,
-          updated: false,
-        };
-      });
-    }
+  const [quary, setQuary] = useState(quarie);
+  const idSetter = (first) => {
+    setQuary(lessons[first].id);
   };
-
   const videoId = (id) => {
     let dat;
     for (let i = 0; i < lessons.length; i++) {
@@ -52,7 +42,62 @@ const ClassnotePage = () => {
     }
     return dat;
   };
+  const datas = {
+    userId: user.user._id,
+    courseId: videoId(quary).courseId,
+    subjectId: videoId(quary).subjectId,
+    lessonId: videoId(quary)._id,
+    termId: videoId(quary).termId,
+  };
+  const decodeEntities = (function () {
+    // this prevents any overhead from creating the object each time
+    var element = document.createElement("div");
 
+    function decodeHTMLEntities(str) {
+      if (str && typeof str === "string") {
+        // strip script/html tags
+        str = str.replace(/<script[^>]*>([\S\s]*?)<\/script>/gim, "");
+        str = str.replace(/<\/?\w(?:[^"'>]|"[^"]*"|'[^']*')*>/gim, "");
+        element.innerHTML = str;
+        str = element.textContent;
+        element.textContent = "";
+      }
+
+      return str;
+    }
+    return decodeHTMLEntities;
+  })();
+  // const videoIds = (id) => {
+  //   let dat;
+  //   const lesson = videoId(quary).videoUrls;
+  //   for (let i = 0; i < lesson.length; i++) {
+  //     if (lesson[i]._id === id) {
+  //       lessonsNumber = i;
+  //       dat = lesson[i];
+  //     }
+  //   }
+  //   return dat;
+  // };
+  let likey = () => {
+    let likes = videoId(quary).likes.find((fruit) => {
+      return fruit === datas.userId;
+    });
+    return likes;
+  };
+  const [show, setShow] = useState(likey() ? true : false);
+
+  const [liskes, setLiskes] = useState(videoId(quary).likes.length);
+  const showing = () => {
+    if (show) {
+      setLiskes(+liskes - 1);
+      setShow(!show);
+      dispatch(fetchClearLikeLesson(datas, token));
+    } else {
+      setShow(!show);
+      setLiskes(+liskes + 1);
+      dispatch(fetchStoreLikeLesson(datas, token));
+    }
+  };
   const stuData = [{ subject: videoId(quary).title }];
 
   const iconData = [
@@ -61,61 +106,28 @@ const ClassnotePage = () => {
       text: "Lesson 1",
     },
   ];
-
+  const [audioState, setAudioState] = useState(false);
+  const handleClick = () => {
+    setAudioState(!audioState);
+  };
   const text = [
     {
       topic: videoId(quary).title,
       texts: videoId(quary).content,
     },
-    [
-      {
-        term: "First Term",
-        topics: [
-          "Geometrical Construction (1):  Lines",
-          "Geometrical Construction (2):  Angles",
-          "Properties of Materials (1): Wood and Metals",
-          "Properties of Materials (2): Ceramics, Plastics, and Rubber",
-        ],
-      },
-      {
-        term: "Second Term",
-        topics: [
-          "Geometrical Construction (1):  Lines",
-          "Geometrical Construction (2):  Angles",
-          "Properties of Materials (1): Wood and Metals",
-          "Properties of Materials (2): Ceramics, Plastics, and Rubber",
-        ],
-      },
-      {
-        term: "Third Term",
-        topics: [
-          "Geometrical Construction (1):  Lines",
-          "Geometrical Construction (2):  Angles",
-          "Properties of Materials (1): Wood and Metals",
-          "Properties of Materials (2): Ceramics, Plastics, and Rubber",
-        ],
-      },
-    ],
   ];
 
-  const datas = {
-    userId: user.user._id,
-    courseId: videoId(quary).courseId,
-    subjectId: videoId(quary).subjectId,
-    lessonId: videoId(quary)._id,
-    termId: videoId(quary).termId,
-    videoId: videoIds(quary1)._id,
-    videoPosition: lessonsNumber,
-  };
   const refref = () => {
     dispatch(
-      fetchgetLessonComments(
-        datas.lessonId,
-        { commentSection: "video" },
-        token,
-      ),
+      fetchgetLessonComments(datas.lessonId, { commentSection: "note" }, token),
     );
   };
+
+  useEffect(() => {
+    dispatch(
+      fetchgetLessonComments(datas.lessonId, { commentSection: "note" }, token),
+    );
+  }, []);
 
   return (
     <Container fluid className="p-0">
@@ -128,10 +140,11 @@ const ClassnotePage = () => {
         </div>
       </Row>
       <Row className="px-5">
-        <Col md={8}>
-          <Row className="p-5">
+        <Col lg={8}>
+          <Row className="p-lg-5">
             <Col
-              sm={5}
+              lg={6}
+              className="d-sm-none d-md-block"
               onClick={() => router.back()}
               style={{ cursor: "pointer" }}
             >
@@ -146,76 +159,55 @@ const ClassnotePage = () => {
                       height={10}
                     />
                   </div>
-                  <p className="m-0">Go back to lesson</p>
+                  <p className="m-0 ">Go back to lesson</p>
                 </div>
               </div>
             </Col>
-            <Col>
-              <div className={styles2.mic}></div>
-              <div className={`text-secondary ${styles2.micBottom}`}>
-                Text to Speech
-              </div>
+            <Col
+              className="w-100 classNote"
+              onClick={handleClick}
+              style={{
+                position: "relative",
+                margin: "auto",
+                cursor: "pointer",
+              }}
+            >
+              <Speech
+                text={decodeEntities(videoId(quary).content)}
+                textAsButton={true}
+                stop={audioState}
+                displayText={
+                  <div style={{ height: "54.5" }}>
+                    <div className={styles2.mic}></div>
+                    <div className={styles2.micBottom}>Audio</div>
+                  </div>
+                }
+              />
             </Col>
-            <Col style={{ cursor: "pointer" }} onClick={updateLikes}>
-              <div className={styles2.love}></div>
-              <div className={`text-secondary ${styles2.loveBottom}`}>
-                I Love This
+            <Col onClick={() => showing()} style={{ cursor: "pointer" }}>
+              <div
+                className="m-auto"
+                style={{ cursor: "pointer", width: "32px", height: "32px" }}
+              >
+                {show ? <FcLike size={32} /> : <FcLikePlaceholder size={32} />}
               </div>
+              <div className={styles2.loveBottom}>I Love This</div>
             </Col>
-            <Col md={1} className="mt-2">
-              <div className={`m-auto ${styles.moreIcon}`}>
-                <div
-                  style={{
-                    width: "200px",
-                    background: "#FFFFFF",
-                    boxShadow: "0px 1px 7px rgba(0, 0, 0, 0.1)",
-                    borderRadius: "10px",
-                    position: "absolute",
-                  }}
-                  className={styles.displayNone}
-                >
-                  <Col className={`p-3 ps-3 `}>
-                    <Link passHref href="/dashboard/teacher/assignContent">
-                      <Row className="ps-3 pb-2">
-                        <Col className={`m-auto ${styles2.highlightText}`}>
-                          Assign Content
-                        </Col>
-                      </Row>
-                    </Link>
-                    <Row className="ps-3 pb-2">
-                      <Col className={`m-auto ${styles2.highlightText}`}>
-                        Community
-                      </Col>
-                    </Row>
-                    <Row className="ps-3 pb-2">
-                      <Col className={`m-auto ${styles2.highlightText}`}>
-                        Bookmark
-                      </Col>
-                    </Row>
-                    <Row className="ps-3 pb-2">
-                      <Col className={`m-auto ${styles2.highlightText}`}>
-                        Share
-                      </Col>
-                    </Row>
-                  </Col>
-                </div>
-              </div>
-              <div className={styles2.moreIconBottom} style={{ color: "gray" }}>
-                More
-              </div>
-            </Col>
+            <Col md={1} className="mt-2"></Col>
           </Row>
-          <Row className="px-5">
+          <Row className="px-5 px-md-0">
             <Col className={styles2.colSeen}>
               <div className={`pl-5 pr-5 ${styles2.seen}`}></div>
 
-              <div className="text-secondary">{1240} Views</div>
+              <div className="text-secondary">
+                <div>{videoId(quary).views} Views</div>
+              </div>
             </Col>
             <Col className={styles2.colSeen}>
               <div className={`pl-5 pr-5 text-danger ${styles2.loved}`}></div>
-              <div className="text-secondary">{like.likes}k Love</div>
+              <div className="text-secondary">{liskes} Like</div>
             </Col>
-            <Col></Col>
+            <Col md={1}></Col>
             <Link href="#comment">
               <Col
                 md={4}
@@ -233,15 +225,16 @@ const ClassnotePage = () => {
               <h3 className="font-weight-bold">{text[0].topic}</h3>
             </div>
             <div
+              className="innerHtml"
               md={8}
               dangerouslySetInnerHTML={{ __html: text[0].texts }}
             ></div>
           </Row>
           <Row>
-            <NextPrevPage data={iconData} />
+            <NextPrevPage datay={idSetter} />
           </Row>
         </Col>
-        <Col md={4} className="position-sticky">
+        <Col className="position-sticky">
           <Row className="mr-5 pt-5 mt-5  rounded position-sticky">
             <div>
               <Col className="ml-5 w-100 mx-auto">
@@ -249,30 +242,78 @@ const ClassnotePage = () => {
                 <div className="border-bottom"></div>
               </Col>
               <div className="acagon">
-                {text[1].map((title, i) => (
-                  <Accordion key={i} className={styles.newton}>
-                    <Accordion.Item eventKey={i}>
-                      <Accordion.Header>{title.term}</Accordion.Header>
-                      <Accordion.Body className="helo">
-                        {title.topics.map((topic, i) => (
-                          <div key={i} className={` ${styles2.highlightText}`}>
-                            {topic}
-                          </div>
-                        ))}
-                      </Accordion.Body>
-                    </Accordion.Item>
-                  </Accordion>
-                ))}
+                {/* {text[1].map((title, i) => ( */}
+                <Accordion key={1} className={styles.newton}>
+                  <Accordion.Item eventKey={1}>
+                    <Accordion.Header>First Term </Accordion.Header>
+                    <Accordion.Body className="helo">
+                      {lessons.map((dats, i) => {
+                        return (
+                          dats.termId === "5fc8d1b20fae0a06bc22db5c" && (
+                            <div
+                              onClick={() => idSetter(i)}
+                              key={i}
+                              className={` pointer ${styles2.highlightText}`}
+                            >
+                              {dats.title}
+                            </div>
+                          )
+                        );
+                      })}
+                    </Accordion.Body>
+                  </Accordion.Item>
+                  <Accordion.Item eventKey={2}>
+                    <Accordion.Header>Second Term </Accordion.Header>
+                    <Accordion.Body className="helo">
+                      {lessons.map((dats, i) => {
+                        return (
+                          dats.termId === "600047f67cabf80f88f61735" && (
+                            <div
+                              onClick={() => idSetter(i)}
+                              key={i}
+                              className={` pointer ${styles2.highlightText}`}
+                            >
+                              {dats.title}
+                            </div>
+                          )
+                        );
+                      })}
+                    </Accordion.Body>
+                  </Accordion.Item>
+                  <Accordion.Item eventKey={3}>
+                    <Accordion.Header>Third Term </Accordion.Header>
+                    <Accordion.Body className="helo">
+                      {lessons.map((dats, i) => {
+                        return (
+                          dats.termId === "600048197cabf80f88f61736" && (
+                            <div
+                              onClick={() => idSetter(i)}
+                              key={i}
+                              className={` pointer ${styles2.highlightText}`}
+                            >
+                              {dats.title}
+                            </div>
+                          )
+                        );
+                      })}
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Accordion>
               </div>
             </div>
           </Row>
         </Col>
       </Row>
       <Row className="border-top mt-2">
-        <Col className="px-5 mt-3" id="comment">
-          <Comment deta={refref} datas={datas} />
+        <Col lg={6} className="px-5 mt-3" id="comment">
+          <Comment
+            data={subject.comments}
+            datas={datas}
+            deta={refref}
+            commentSection={"note"}
+          />
         </Col>
-        <Col className="px-5 mt-3"></Col>
+        {/* <Col className="px-5 mt-3"></Col> */}
       </Row>
     </Container>
   );

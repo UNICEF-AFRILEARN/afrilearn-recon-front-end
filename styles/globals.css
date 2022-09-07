@@ -1151,11 +1151,23 @@ a {
   left: 42px;
 }
 
+.classNote .rs-stop {
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 53px;
+  background-color: red !important;
+  position: absolute;
+  top: -7px;
+  left: 60px;
+}
 .adjust .rs-text {
   display: none;
 }
 
 figure img {
+  width: 100%;
+}
+.innerHtml img {
   width: 100%;
 }
 
@@ -1170,4 +1182,24 @@ figure img {
 
 .shareModal.modal-content {
   width: fit-content;
+}
+
+.classnote_accordHead .accordion-button {
+  display: grid;
+}
+
+@media screen and (max-width: 415px) {
+  .innerHtml img {
+    height: 200px !important;
+  }
+  .student_fontSize {
+    font-size: 28px !important;
+  }
+  .testText .div {
+    font-size: 12px;
+  }
+  .moreIcon {
+    top: -10px !important;
+    left: 19px !important;
+  }
 }

@@ -37,6 +37,7 @@ const Subjects = ({ subData }) => {
   const SubDataJsx = () => {
     return subData ? (
       subData?.map((dta) => {
+        console.log(dta);
         return (
           <div key={dta.id} className={`col-md-12 ${styles.mySubjectt}`}>
             <button

@@ -1,10 +1,12 @@
 import Image from "next/image";
 import styles from "./../../student/topInClass.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCourseDetailsInitiate } from "../../../../../redux/actions/subject";
 
 const topInClass = ({ data }) => {
+  const dispatch = useDispatch();
   const img = ["Group 2323", "Group 2324", "Group 2327", "Group 2328"];
   const randomise = () => {
     const num = Math.floor(Math.random() * 4);
@@ -13,46 +15,48 @@ const topInClass = ({ data }) => {
   const subject = useSelector((state) => state.mySubjectCourse);
   const lessons = subject.subjectDetails[1]?.relatedLessons;
 
-  const videoId = (id) => {
-    let dat;
-    for (let i = 0; i < lessons.length; i++) {
-      if (lessons[i].id === id) {
-        dat = i;
-      }
-    }
-    return dat;
-  };
-  // const videoIds = (id) => {
-  //   let dat;
-  //   // const lesson = lessons[videoId("6012db92cfe09249249f973a")].videoUrls;
-  //   for (let i = 0; i < lesson.length; i++) {
-  //     if (lesson[i]._id === id) {
-  //       dat = i;
-  //     }
-  //   }
-  //   return dat;
-  // };
-  // videoIds("6279ec6fe8aff90016cd2918");
-  // console.log(videoId("6012db92cfe09249249f973a"));
+  console.log(data);
   const [show, setShow] = useState(false);
-  const toggleModal = () => setShow(!show);
-  // console.log(data);
+  const [subjCourId, setsubjCourId] = useState({});
+  const toggleModal = (cour, subj) => {
+    setShow(!show);
+    setsubjCourId({ courId: cour, subjId: subj });
+  };
+
+  useEffect(() => {
+    if (Object.keys(subjCourId).length !== 0) {
+      dispatch(fetchCourseDetailsInitiate(subjCourId.courId, subjId));
+    }
+  }, [fetchCourseDetailsInitiate]);
+
   return (
     <section>
       <div className={styles.cont}>
         <div className={styles.contList}>
           <Link
             passHref
-            href={{
-              pathname: "/dashboard/student/video/videoPage",
-              query: {
-                // Exam: data.id,
-                // Lesson: i,
-                term: "First Term",
-              },
-            }}
+            href={
+              (data.lessonId && data.lessonId.videoUrls.length) ||
+              (data.videoUrls && data.videoUrls.length)
+                ? {
+                    pathname: "/dashboard/student/video/videoPage",
+                    query: [
+                      data.lessonId ? data.lessonId.id : data.id,
+                      data.lessonId
+                        ? data.lessonId.videoUrls[0]._id
+                        : data.videoUrls[0]._id,
+                    ],
+                  }
+                : {
+                    pathname: "/dashboard/student/classnote/classnotePage",
+                    query: [data.lessonId ? data.lessonId.id : data.id],
+                  }
+            }
           >
-            <div className={styles.rect} onClick={toggleModal}>
+            <div
+              className={styles.rect}
+              onClick={() => toggleModal(data.courseId.id, data.subjectId.id)}
+            >
               {data?.thumbnailUrl ? (
                 <Image
                   alt={"afrilearn marketing video"}

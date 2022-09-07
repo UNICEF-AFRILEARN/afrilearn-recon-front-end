@@ -171,12 +171,6 @@ const VideoPage = () => {
     return decodeHTMLEntities;
   })();
 
-  let likey = () => {
-    let likes = videoId(quary).likes.find((fruit) => {
-      return fruit === datas.userId;
-    });
-    return likes;
-  };
   const fave = subject.favourite.favouriteVideos;
   let favoury = () => {
     let likes = fave.find((fruit) => {
@@ -184,8 +178,14 @@ const VideoPage = () => {
     });
     return likes;
   };
-  const [show, setShow] = useState(likey() ? true : false);
   const [faves, setfaves] = useState(favoury() ? true : false);
+  let likey = () => {
+    let likes = videoId(quary).likes.find((fruit) => {
+      return fruit === datas.userId;
+    });
+    return likes;
+  };
+  const [show, setShow] = useState(likey() ? true : false);
 
   const [liskes, setLiskes] = useState(videoId(quary).likes.length);
   const showing = () => {
@@ -268,10 +268,10 @@ const VideoPage = () => {
           />
         </Col>
       </Row>
-      <Row className="m-5 ">
-        <Col className="me-5">
+      <Row className="mt-5 mx-lg-5">
+        <Col lg={6} md={7} sm={4} className="">
           <Row>
-            <Col md={3}>
+            <Col>
               {" "}
               <div className={styles.accordButtonLeft}>
                 <Link href="/dashboard/student/video/videoPage">
@@ -327,7 +327,7 @@ const VideoPage = () => {
 
             <Col onClick={() => showing()} style={{ cursor: "pointer" }}>
               <div
-                className="mx-5 px-4"
+                className="m-auto p-auto"
                 style={{ cursor: "pointer", width: "32px", height: "32px" }}
               >
                 {show ? <FcLike size={32} /> : <FcLikePlaceholder size={32} />}
@@ -347,18 +347,20 @@ const VideoPage = () => {
                     top: "-84px",
                     left: "-45px",
                   }}
-                  className={styles1.displayNone}
+                  className={`moreIcon ${styles1.displayNone}`}
                 >
-                  <Col className={`p-3 ps-3 `}>
-                    {/* <Link passHref href="/dashboard/teacher/assignContent">
+                  <Col className={`p-3 ps-3`}>
+                    {/* {user.user?.role === "602f3ce39b146b3201c2dc1d" && ( */}
+                    <Link passHref href="/dashboard/teacher/assignContent">
                       <Row className="">
                         <Col className={`m-auto ${styles.highlightText}`}>
                           <p style={{ fontSize: "12px", margin: "2px" }}>
-                            Share
+                            Assign Content
                           </p>
                         </Col>
                       </Row>
-                    </Link> */}
+                    </Link>
+                    {/* )} */}
                     <Row className="" onClick={() => toggle1()}>
                       <Col className={`m-auto ${styles.highlightText}`}>
                         <p style={{ fontSize: "12px", margin: "2px" }}>Share</p>
@@ -462,31 +464,37 @@ const VideoPage = () => {
               <div>{liskes} Like</div>
             </Col>
           </Row>
+        </Col>
+        <Col className="testText ms-5">
+          <Row className="text-secondary  pb-1">Class: {secVidData.class} </Row>
+          <Row className="text-secondary  pb-1">
+            Subject: {secVidData.subject}
+          </Row>
+          <Row className="text-secondary  pb-1">Term: {secVidData.term}</Row>
+          <Row className="text-secondary  pb-1">
+            Date Created: {secVidData.date}
+          </Row>
+        </Col>
+      </Row>
+      <Row className="mx-lg-5 mx-md-3">
+        <Col className="me-lg-5 me-md-3 mx-sm-3" lg={6} sm={12}>
           <Row>
             <Col className="pl-4">
               <div className={styles.vidText}>{data.topic}</div>
             </Col>
           </Row>
           {/* ----------------------------------------------- */}
-          <Comment data={subject.comments} datas={datas} deta={refref} />
+          <Comment
+            data={subject.comments}
+            datas={datas}
+            deta={refref}
+            commentSection={"video"}
+          />
 
-          <NextPrevPage datay={idSetter} />
+          <NextPrevPage datay={idSetter} className="mx-sm-5" />
         </Col>
-        <Col className="ms-5">
-          <Row>
-            <Col sm={4} className="">
-              <Row className="text-secondary  pb-1">Class:</Row>
-              <Row className="text-secondary  pb-1">Subject:</Row>
-              <Row className="text-secondary  pb-1">Term:</Row>
-              <Row className="text-secondary  pb-1">Date Created:</Row>
-            </Col>
-            <Col>
-              <Row className="pb-1">{secVidData.class}</Row>
-              <Row className="pb-1">{secVidData.subject}</Row>
-              <Row className="pb-1">{secVidData.term}</Row>
-              <Row className="pb-1">{secVidData.date}</Row>
-            </Col>
-          </Row>
+        <Col className="ms-lg-5 ms-md-2 mx-sm-3">
+          <Row></Row>
           <Row className="ml-5">
             <Col className="bg-light rounded-top mt-5 ml-5 border-bottom">
               <Row>
@@ -586,12 +594,10 @@ const VideoPage = () => {
 
 export default VideoPage;
 
-export const Comment = ({ datas, deta }) => {
+export const Comment = ({ data, datas, deta, commentSection }) => {
   const { user } = useSelector((state) => state.auth);
-  const subject = useSelector((state) => state.mySubjectCourse);
   const dispatch = useDispatch();
   const token = user?.token;
-  const data = subject.comments;
 
   const [comment, setComment] = useState("");
 
@@ -605,7 +611,7 @@ export const Comment = ({ datas, deta }) => {
     userId: datas.userId,
     lessonId: datas?.lessonId,
     text: comment,
-    commentSection: "video",
+    commentSection: commentSection,
   };
 
   const handleSubmit = (e) => {
@@ -777,7 +783,7 @@ export const Comment = ({ datas, deta }) => {
           </Row>
         )}
         {main && (
-          <Row className="ms-5 ps-5">
+          <Row className={`ms-5 ms-xs-0 ps-xs-0 ps-5 ${styles.commentRows}`}>
             <Col onClick={() => showing()}>
               <Image
                 alt={"afrilearn marketing video"}
@@ -801,7 +807,7 @@ export const Comment = ({ datas, deta }) => {
             <Col onClick={() => handleReply(num)} style={{ cursor: "pointer" }}>
               REPLY
             </Col>
-            <Col md={1} className="p-2" style={{ position: "relative" }}>
+            <Col md={1} xs={1} className="p-2" style={{ position: "relative" }}>
               <div className={`m-auto ${styles1.moreIcon}`}>
                 <div
                   style={{
@@ -1147,15 +1153,22 @@ export const NextPrevPage = ({ datay }) => {
       {/* {lesson.map((les, i) => ( */}
       <Row className="pt-5">
         {page !== 0 ? (
-          <Col md={4} className="pointer" onClick={() => handlePrevPage()}>
+          <Col
+            lg={4}
+            md={4}
+            xs={10}
+            sm={10}
+            className="pointer m-auto"
+            onClick={() => handlePrevPage()}
+          >
             <Row className={` ${styles.accordButtonLeftExtr}`}>
               <Col className="" style={{ padding: "0", margin: "auto 0" }}>
                 <Row className={`${styles.accordButtonLeft1}`}></Row>
               </Col>
-              <Col md={1} className="mt-2">
+              <Col md={1} xs={1} className="mt-2">
                 <div className={`mx-0 ${styles.accordButtonLeft2}`}></div>
               </Col>
-              <Col md={9} className="p-0" style={{ textAlign: "left" }}>
+              <Col md={9} xs={9} className="p-0" style={{ textAlign: "left" }}>
                 <div className={styles.accordButtonLeftSide1}>Go to</div>
                 <div className={styles.accordButtonLeftSide2}>
                   {truncate(lesson[page - 1].title, 15)}
@@ -1164,25 +1177,32 @@ export const NextPrevPage = ({ datay }) => {
             </Row>
           </Col>
         ) : (
-          <Col md={4}></Col>
+          <Col lg={4} md={4} xs={10} sm={10}></Col>
         )}
 
-        <Col md={4} className="m-auto text-center">
+        <Col lg={4} md={4} xs={10} sm={10} className="m-auto text-center">
           <div className={`${styles.accordButtonLeftExtr2}`}>
             {+page + 1} of {lesson.length}
           </div>
         </Col>
 
         {page + 1 !== lesson.length ? (
-          <Col md={4} className="pointer" onClick={() => handleNextPage()}>
+          <Col
+            lg={4}
+            md={4}
+            sm={10}
+            xs={10}
+            className="pointer m-auto"
+            onClick={() => handleNextPage()}
+          >
             <Row className={` ${styles.accordButtonLeftExtr}`}>
-              <Col md={9} className="p-0" style={{ textAlign: "right" }}>
+              <Col md={9} xs={9} className="p-0" style={{ textAlign: "right" }}>
                 <div className={styles.accordButtonLeftSide1}>Go to</div>
                 <div className={styles.accordButtonLeftSide2}>
                   {truncate(lesson[page + 1].title, 15)}
                 </div>
               </Col>
-              <Col md={1} className="mt-2">
+              <Col md={1} xs={1} className="mt-2">
                 <div className={`mx-0 ${styles.accordButtonLeft2}`}></div>
               </Col>
               <Col className="" style={{ padding: "0", margin: "auto 0" }}>
@@ -1191,7 +1211,7 @@ export const NextPrevPage = ({ datay }) => {
             </Row>
           </Col>
         ) : (
-          <Col md={4}></Col>
+          <Col md={4} xs={5}></Col>
         )}
       </Row>
       {/* ))} */}

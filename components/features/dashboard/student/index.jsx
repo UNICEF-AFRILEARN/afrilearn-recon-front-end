@@ -159,7 +159,14 @@ const TopInClasses = ({ classData, classed }) => {
               ))}
             </Slider>
           ) : (
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "15px" }}>
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "15px",
+                marginLeft: "15px",
+              }}
+            >
               {classData?.map((data, i) => (
                 <TopInClass data={data} key={i} />
               ))}
@@ -197,7 +204,14 @@ const UnfinshedVideos = ({ classData }) => {
               ))}
             </Slider>
           ) : (
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "15px" }}>
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "15px",
+                marginLeft: "15px",
+              }}
+            >
               {classData?.map((data, i) => (
                 <TopInClass data={data} key={i} />
               ))}
@@ -234,7 +248,14 @@ const MyFavs = ({ classData }) => {
               ))}
             </Slider>
           ) : (
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "15px" }}>
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "15px",
+                marginLeft: "15px",
+              }}
+            >
               {classData?.map((data, i) => (
                 <TopInClass data={data} key={i} />
               ))}

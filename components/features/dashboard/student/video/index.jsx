@@ -56,14 +56,11 @@ const ClassNoteVideo = () => {
         <Accordion.Item eventKey={0} className={styles.accord_button}>
           <Accordion.Header className={styles.accordHead}>
             <Row md={8}>
-              <Col md={5}>
-                <h5 style={{ colour: "#00d9b6 !important" }}>First Term</h5>
-              </Col>
-              <Col>
-                <h6 style={{ colour: "#00d9b6 !important" }}>
-                  {termsNumber(0)} lessons available
-                </h6>
-              </Col>
+              <h5 style={{ colour: "#00d9b6 !important" }}>First Term</h5>
+
+              <h6 style={{ colour: "#00d9b6 !important" }}>
+                {termsNumber(0)} lessons available
+              </h6>
             </Row>
           </Accordion.Header>
           <Accordion.Body>
@@ -146,14 +143,11 @@ const ClassNoteVideo = () => {
         <Accordion.Item eventKey={0} className={styles.accord_button}>
           <Accordion.Header className={styles.accordHead}>
             <Row md={8}>
-              <Col md={5}>
-                <h5 style={{ colour: "#00d9b6 !important" }}>Second Term</h5>
-              </Col>
-              <Col>
-                <h6 style={{ colour: "#00d9b6 !important" }}>
-                  {termsNumber(1)} lessons available
-                </h6>
-              </Col>
+              <h5 style={{ colour: "#00d9b6 !important" }}>Second Term</h5>
+
+              <h6 style={{ colour: "#00d9b6 !important" }}>
+                {termsNumber(1)} lessons available
+              </h6>
             </Row>
           </Accordion.Header>
           <Accordion.Body>
@@ -236,14 +230,11 @@ const ClassNoteVideo = () => {
         <Accordion.Item eventKey={0} className={styles.accord_button}>
           <Accordion.Header className={styles.accordHead}>
             <Row md={8}>
-              <Col md={5}>
-                <h5 style={{ colour: "#00d9b6 !important" }}>Third Term</h5>
-              </Col>
-              <Col>
-                <h6 style={{ colour: "#00d9b6 !important" }}>
-                  {termsNumber(2)} lessons available
-                </h6>
-              </Col>
+              <h5 style={{ colour: "#00d9b6 !important" }}>Third Term</h5>
+
+              <h6 style={{ colour: "#00d9b6 !important" }}>
+                {termsNumber(2)} lessons available
+              </h6>
             </Row>
           </Accordion.Header>
           <Accordion.Body>

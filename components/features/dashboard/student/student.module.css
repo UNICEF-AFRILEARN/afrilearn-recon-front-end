@@ -319,10 +319,36 @@
   border-radius: 9.72141px;
 }
 
+@media screen and (min-width: 1200px) {
+  .dashboardFirstSection,
+  .dashboardFirstSection4,
+  .dashboardFirstSection1 {
+    padding-left: 60px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .dashboardFirstSection h1 {
+    font-size: 90px !important;
+  }
+  .modalSecond div {
+    margin-top: 20px;
+  }
+}
+@media screen and (max-width: 415px) {
+  .fontSize {
+    font-size: 60px !important;
+  }
+  .modalSecond div {
+    margin-top: 20px;
+  }
+}
 @media screen and (max-width: 376px) {
   .dashboardFirstSection h1 {
-    font-size: 60px !important;
+    font-size: 50px !important;
     margin-top: 100px;
+  }
+  .fontSize {
+    font-size: 30px !important;
   }
   .push2 {
     padding: 5px 9px;

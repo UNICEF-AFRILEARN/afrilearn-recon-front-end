@@ -63,7 +63,7 @@ const AssignContent = () => {
             </div>
           </Col>
           <Col md={4} className="mt-5 m-4 p-0">
-            <Row >
+            <Row>
               <Col md={11}>
                 <h4>Attachment</h4>
               </Col>
@@ -75,10 +75,6 @@ const AssignContent = () => {
                 <h4>+</h4>
               </Col>
             </Row>
-            <MyVerticallyCenteredModal
-              show={modalShow}
-              onHide={() => setModalShow(false)}
-            />
             <Row
               style={{ border: "1px solid rgba(229, 229, 229, 0.63)" }}
             ></Row>
