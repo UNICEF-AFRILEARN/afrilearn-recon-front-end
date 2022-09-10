@@ -17,7 +17,6 @@ const ExamDetails = () => {
 
 
   let allExams = exams?.exams
-  // let exam_id = examId[0]
   let token = user.token
 
   //Convert minutes to hours:
@@ -28,24 +27,23 @@ const ExamDetails = () => {
   }
 
 
-  let examType = allExams?.filter((filteredExams) => 
-  filteredExams.id === exam_id
-  
-)
-
 console.log("exam_id ===> from exam detail", exam_id)
 
 useEffect(()=>{
   if(router.isReady) {
     setExam_id(examId[0])
-
   }
 
-}, [router.isReady, singleExam]);
+}, [router.isReady, exam_id]);
+
+let examType = allExams?.filter((filteredExams) => 
+filteredExams.id === exam_id
+
+)
  
   useEffect(() => {
     dispatch(fetchSingleExamDetailsInitiate(token, exam_id))
-  }, [])
+  }, [exam_id])
 
   return (
     <div className={styles.examinationwrapper}>
