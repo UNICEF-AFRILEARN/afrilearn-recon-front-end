@@ -1,3 +1,4 @@
+import { useState} from "react";
 import { Col, Row } from "react-bootstrap";
 import styles1 from "../student.module.css";
 import styles from "./studentProfile.module.css";
@@ -12,17 +13,25 @@ const StudentProfile = () => {
   const { schoolProfile } = useSelector((state) => state.school);
   const {user} = useSelector(state => state.auth);
   const { userProfile } = useSelector(state => state.dashboard)
+  const [referal, setReferal] = useState(`https://myafrilearn.com/register?referralCode=${user.user?.id}`);
+  const [copyMessage, setCopyMessage] = useState("COPY LINK")
   const dispatch = useDispatch();
 
   const token = user.token;
   const userId = user.user?.id;
 
-  console.log("logged-in ==> schoolProfile", schoolProfile.schoolClassesData
+  console.log("logged-in ==> schoolProfile", schoolProfile
 
   )
-  console.log("logged-in ==> user profile", user)
+  console.log("logged-in ==> user profile", userId)
   const coin = { amount: 345 };
   const number = "";
+
+
+  const copyReferalCode = (link) => {
+    navigator.clipboard.writeText(link)
+    setCopyMessage("LINK COPIED")
+  }
 
   useEffect(() => {
     dispatch(fetchUserProfileInitiate(userId, token))
@@ -474,7 +483,8 @@ const StudentProfile = () => {
           </Row>
           <Row className="mx-auto mb-5">
             <input
-              placeholder="blzdblugzblujhbluybgfdliu"
+            defaultValue={referal}
+              // placeholder=""
               style={{
                 width: "751px",
                 height: "71px",
@@ -488,6 +498,7 @@ const StudentProfile = () => {
               }}
             />
             <button
+            onClick={() => copyReferalCode(referal)}
               style={{
                 width: "193px",
                 height: "71px",
@@ -500,7 +511,7 @@ const StudentProfile = () => {
                 marginLeft:"15px"
               }}
             >
-              COPY LINK
+              {copyMessage}
             </button>
           </Row>
         </Col>
