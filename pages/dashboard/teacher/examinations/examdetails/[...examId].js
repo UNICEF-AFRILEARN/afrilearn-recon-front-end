@@ -9,15 +9,16 @@ import Head from 'next/head';
 const ExamDetails = () => {
   const { user } = useSelector((state) => state.auth);
   const { singleExam, exams } = useSelector((state) => state.myExams);
-  // const [examId, setExamId] = useState('')
+  const [exam_id, setExam_id] = useState('')
   const dispatch = useDispatch();
-  const { query } = useRouter();
+  const router = useRouter();
+  const {examId} = router.query;
 
 
 
   let allExams = exams?.exams
-  let examId = '6300e0b9104d6700167be084'
-  let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjJmNGFkOGM5OWJjNjgwMDE2NjE2NTFkIiwicm9sZSI6IjYwMmYzY2UzOWIxNDZiMzIwMWMyZGMxZCIsImZ1bGxOYW1lIjoiSm9obiBkb2UifSwiaWF0IjoxNjYwOTk2MTg5LCJleHAiOjE2NjM1ODgxODl9.eFvWg1YvRtvhfRX0R3Cb2rHymwO5rP_kMTyB4XRWFLg"
+  // let exam_id = examId[0]
+  let token = user.token
 
   //Convert minutes to hours:
   function displayHours(a){
@@ -28,19 +29,22 @@ const ExamDetails = () => {
 
 
   let examType = allExams?.filter((filteredExams) => 
-  filteredExams.id === '6300e0b9104d6700167be084'
+  filteredExams.id === exam_id
   
 )
 
-console.log("singleExam ===> from exam details", singleExam)
+console.log("exam_id ===> from exam detail", exam_id)
 
+useEffect(()=>{
+  if(router.isReady) {
+    setExam_id(examId[0])
+
+  }
+
+}, [router.isReady, singleExam]);
+ 
   useEffect(() => {
-    if(query) {
-      // setExamId(query?.examId[0])
-    }
-  }, [query])
-  useEffect(() => {
-    dispatch(fetchSingleExamDetailsInitiate(token, examId))
+    dispatch(fetchSingleExamDetailsInitiate(token, exam_id))
   }, [])
 
   return (
