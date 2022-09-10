@@ -20,15 +20,15 @@ const MiddleNavbar = () => {
     
     <div className={styles.middlenavmainwrapper}>
         <div className={styles.circleinnerwrapper}>
-           
+           {/* wrapper for icon */}
         </div>
         <div className={styles.middleinnerwrapper}>
-            <h4> Teacher</h4>
-            <h3>0{schoolProfile?.numOfTeachers}</h3>
+              <h4> Teacher(s): </h4>
+              <h3>0{schoolProfile?.numOfTeachers}</h3>
         </div>
         <div className={styles.middleinnerwrapper}>
-            <h4> Students</h4>
-            <h3>0{schoolProfile?.numOfStudents}</h3>
+              <h4> Student(s): </h4>
+              <h3>0{schoolProfile?.numOfStudents}</h3>
         </div>
     </div>
 

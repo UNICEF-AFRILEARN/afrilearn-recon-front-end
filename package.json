@@ -52,7 +52,8 @@
     "redux-thunk": "^2.4.1",
     "slick-carousel": "^1.8.1",
     "sweetalert2": "^11.4.28",
-    "swr": "^1.2.2"
+    "swr": "^1.2.2",
+    "use-file-picker": "^1.5.1"
   },
   "scripts": {
     "dev": "next dev",

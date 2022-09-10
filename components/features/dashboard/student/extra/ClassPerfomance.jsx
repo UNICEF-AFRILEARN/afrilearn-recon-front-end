@@ -19,7 +19,7 @@ const ClassPerfomance = (
   // const result = Object?.values(classDetails);
   const [showPanel, setShowPanel] = useState(false);
   const [panelId, setPanelId] = useState(1);
-  console.log("studentPerformance?.data? from classPerformance ===>", studentPerformance?.data)
+  console.log("currentStudent?.data? from classPerformance ===>", currentStudent)
 
 
   const displayPanel = () => {
@@ -44,11 +44,12 @@ const ClassPerfomance = (
        <div className={styles.innermainwrapper}>
        <div className={styles.leftwrapper}>
             <div className={styles.innerwrapper}>
-              <div className={styles.studentnamewrapper}>
+              {currentStudent &&
+                <div className={styles.studentnamewrapper}>
                   <h2>{currentStudent[0]?.userId.fullName}</h2>
                     <p>{currentStudent[0]?.userId.email}</p>
                   <h3>JSS 1</h3>
-              </div>
+              </div>}
           </div>
         </div>
         <div className={styles.leftwrapper}>
@@ -63,7 +64,7 @@ const ClassPerfomance = (
        </div>
         <div className={styles.progresswrapper}>
           {/* testing */}
-          <div>
+          {/* <div>
               <div className={styles.performancecontentwrapper}>
               
                  <div className={styles.subjectsectiononemiddle}>
@@ -85,7 +86,7 @@ const ClassPerfomance = (
                       </p> : <p></p>
                  </div>
               </div>
-          </div>
+          </div> */}
           {/* end testing */}
             <div>
               <ul className={styles.performancemenu}>
@@ -105,6 +106,7 @@ const ClassPerfomance = (
               <div className={styles.performancecontentwrapper}>
                  <div className={styles.subjectsectionone}>
                     <p>{subjectList.subject}</p>
+                    <Barchart />
                     {subjectList.performance === null? 
                     <p className={styles.averagetimeremark}> 
                       No Rating

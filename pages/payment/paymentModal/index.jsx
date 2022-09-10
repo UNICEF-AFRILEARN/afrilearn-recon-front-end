@@ -4,14 +4,14 @@ import Box from '@mui/material/Box';
 // import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import { createTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import styles from '../../../styles/payment.module.css';
 
 
 
 import Modal from '@mui/material/Modal';
 
-const theme = createMuiTheme({
+const theme = createTheme({
   typography: {
     h1: {
       fontFamily: "Montserrat"
@@ -118,7 +118,7 @@ const PaymentDetails = ({handleOpen, handleClose, open, closeModal, priceSelecte
            Account Number: 0538617241
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 3 }}>
-           Amount to be Paid: {prevCount}
+           Amount to be Paid: N{prevCount}
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
            Send proof of payment to hello@myafrilearn.com or Whatsapp +234 805 154 4949

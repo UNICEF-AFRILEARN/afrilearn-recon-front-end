@@ -7,11 +7,13 @@ import ChildModal from './childModal';
 import ChildDetails from './childtablemodal';
 
 
-const Childtable = ({myChildren, handleCheckedBox, userId, handleViewChildDetails}) => {
+const Childtable = ({myChildren, handleCheckedBox, userId, handleViewChildDetails, setUserId}) => {
   const {user } = useSelector(state => state.auth);
   const dispatch = useDispatch()
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [open, setOpen] = useState(false);
+  const [checkAllInputs, setCheckAllInpus] = useState();
+  const [isChecked, setIsChecked] = useState(false)
   const [studentId, setStudentId] = useState('')
   const [childName, setChildName] = useState('')
   const [childEmail, setChildEmail] = useState('')
@@ -33,10 +35,9 @@ const Childtable = ({myChildren, handleCheckedBox, userId, handleViewChildDetail
       console.log("I am studentId clicked", studentId)
     }
 
-    // const handleCheckedBox = (id) => {
-    //     console.log("I am checked", id)
-
-    // }
+    const handleCheckAll = (e) => {
+        console.log("Testing Name", e)
+    }
 
     const closeModal = () => {
       setOpen(false)
@@ -47,7 +48,14 @@ const Childtable = ({myChildren, handleCheckedBox, userId, handleViewChildDetail
        <Table striped bordered hover className='mx-5 p-5'>
       <thead>
         <tr>
-        <td><MdOutlineCheckBoxOutlineBlank /></td>
+        <td>
+        <input
+                   value={isSubscribed}
+                  //  onChange={}
+                  // onClick={() => handleCheckedBox(myChild.id)}
+                  type='checkbox' 
+                  />
+        </td>
           <th>Name</th>
           <th>Class(es)</th>
           <th>Email</th>
@@ -62,7 +70,9 @@ const Childtable = ({myChildren, handleCheckedBox, userId, handleViewChildDetail
                   <input
                    value={isSubscribed}
                   //  onChange={}
-                  onClick={() => handleCheckedBox(myChild.id)}
+                  name='childId'
+                  isChecked={isChecked}
+                  onClick={(e) => {handleCheckedBox(myChild.id), handleCheckAll(e.target.name)}}
                   type='checkbox' 
                   />
                 </td>
@@ -86,6 +96,7 @@ const Childtable = ({myChildren, handleCheckedBox, userId, handleViewChildDetail
          show={modalShow}
          onHide={() => setModalShow(false)}
          myChildren={myChildren}
+         setUserId={setUserId}
          userId={userId}
          handleViewChildDetails={handleViewChildDetails}
          /> 

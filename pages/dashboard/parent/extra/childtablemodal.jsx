@@ -9,7 +9,7 @@ import { Children } from 'react';
 
 const ChildDetails = (props)  => {
 
-  let filteredChild= props.myChildren.filter((singleChild) => singleChild.id === props.userId)
+  let filteredChild = props.myChildren?.filter((singleChild) => singleChild.id === props.userId)
   console.log("myChildren from child details modal", filteredChild)
   return (
     <Modal
