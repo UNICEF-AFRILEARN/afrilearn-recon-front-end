@@ -237,6 +237,38 @@
 
 .examdetailswrapper {
     padding: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.sendresultwrapper{
+    padding-top: 40px;
+}
+
+.examresultsectionwrapper {
+    margin: 0 10px;
+}
+
+.headerwrapper{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+.examresultinnerwrapper {
+    background-color: red;
+    padding: 15px;
+}
+
+.noresultwrapper{
+    border: 2px solid blue;
+    text-align:center;
+    padding: 50px 0;
+}
+
+.innerwrapperheader {
+    display:flex;
+    justify-content: space-between;
+    padding: 20px;
 }
 
 .innernumberwrapperplusbtn{

@@ -56,9 +56,27 @@ console.log("singleExam ===> from exam details", singleExam)
          }
           <p>{singleExam?.exams?.participants?.length} Student(s)</p>
       </div>
-      <div>
+      <div className={styles.sendresultwrapper}>
         <p>Send result to student</p>
       </div>
+      </div>
+      <div className={styles.examresultsectionwrapper}>
+         <div className={styles.innerwrapperheader}>
+           <h4>Submissions</h4>
+           <h4>0 student</h4>
+         </div>
+        <div className={styles.examresultinnerwrapper}>
+          <div className={styles.headerwrapper}>
+          <p>Names</p>
+          <p>Date Submitted</p>
+          <p>Status</p>
+          <p>Total Score</p>
+          <p>View</p>
+          </div>
+          <div className={styles.noresultwrapper}>
+            <p>No result to show at the moment</p>
+          </div>
+        </div>
       </div>
     </div>
   )
