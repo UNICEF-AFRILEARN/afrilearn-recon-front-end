@@ -47,7 +47,7 @@ export const deleteStudentStart = () => ({
 
 export const deleteStudentSuccess = (payload) => ({
     type: types.DELETE_STUDENT_SUCCESS,
-    payload
+    payload 
 });
 
 export const deleteStudentFail = (error) => ({

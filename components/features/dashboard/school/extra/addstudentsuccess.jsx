@@ -6,9 +6,11 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import {BsFillCheckCircleFill } from 'react-icons/bs'
+import {MdErrorOutline } from 'react-icons/md'
 
 const AddStudentsuccess = (props) => {
     console.log("newStudent from modal", props.newStudent)
+    console.log("error from modal", props.error)
   return (
     <Modal
       {...props}
@@ -18,17 +20,29 @@ const AddStudentsuccess = (props) => {
       className='text-center'
     >
       <Modal.Body className='text-center'>          
-            <BsFillCheckCircleFill 
+            
+       { props.error? props.error?.errors?.map((errorMessage) => 
+          <>
+                  <MdErrorOutline 
+            size={100}
+            color='red'
+        />
+                  <p className='m-3'>
+                      {errorMessage}
+                  </p>
+          </>
+       )
+         :
+         <>
+         <BsFillCheckCircleFill 
                 size={100}
                 color='#00D9B6'
             />
-       { props.deletedChild? 
-        <p className='m-3'>
-          You have successfully unlinked/deleted the student.
-        </p> :
-        <p className='m-3'>
-        You have successfully sent the link request to the student.
-      </p>
+            
+            <p className='m-3'>
+                The user has been added successfully.
+            </p>
+         </>
         }
       </Modal.Body>
 

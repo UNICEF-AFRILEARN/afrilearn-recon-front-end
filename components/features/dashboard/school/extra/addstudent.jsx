@@ -56,7 +56,7 @@ const Addnewstudent = () => {
 
   useEffect(() => {
     filterClassIds()
-}, [user]);
+}, [fullName]);
 
     return (
         <>
@@ -122,6 +122,7 @@ const Addnewstudent = () => {
             show={showModalTwo}
             onHide={() => setShowModalTwo(false)}
             newStudent={newStudent}
+            error={error}
             />
          </div>
         </>
