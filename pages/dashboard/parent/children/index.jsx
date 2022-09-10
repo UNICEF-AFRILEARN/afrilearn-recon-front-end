@@ -93,7 +93,7 @@ const Chidren = () => {
               userId={userId}
             />
            
-          <Unlinkmodal 
+          <Unlinkmodal
            show={modalShow}
            userId={userId}
            onHide={() => setModalShow(false)}

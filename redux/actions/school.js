@@ -163,7 +163,8 @@ export const addNewAdminInitiate = (fullName, email, password, schoolId, confirm
                 console.log("Add Student from School API ===>", res.data)
             })
             .catch((err) => {
-                dispatch(addNewStudentFail(err))
+                console.log("from the API call ==>", err.response.data)
+                dispatch(addNewStudentFail(err.response.data))
             })
         }
 

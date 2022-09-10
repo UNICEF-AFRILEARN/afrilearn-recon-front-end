@@ -121,6 +121,12 @@ margin-right: 12%;
     border-radius: 5px;
 }
 
+.loaderstyling {
+    align-items: center;
+    width: 90vw;
+    padding-left: 40%;
+}
+
 .innerprofilewrapper {
     display: flex;
     justify-content: space-evenly;

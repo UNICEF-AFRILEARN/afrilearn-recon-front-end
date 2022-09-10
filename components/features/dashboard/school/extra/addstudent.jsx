@@ -4,28 +4,32 @@ import { useDispatch, useSelector } from 'react-redux';
  import styles from "../../school/addstudent.module.css";
  import { fetchRoles } from "../../../../../redux/actions/auth";
 import { addNewStudentInitiate } from '../../../../../redux/actions/school';
+import AddStudentsuccess from './addstudentsuccess';
 
 const Addnewstudent = () => {
   const { user, registerUser, roles } = useSelector((state) => state.auth);
-  const { schoolProfile, classMembers, newStudent } = useSelector((state) => state.school);
+  const { schoolProfile, classMembers, newStudent, error } = useSelector((state) => state.school);
     const dispatch = useDispatch();
 
     const [fullName, setfullName] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
+    const [errorLoader, setErrorLoader] = useState("");
     const [role, setRole] = useState("Student");
+    const [disabled, setDisabled] = useState(true);
     const [courseId, setCourseId] = useState("");
     const [course, setCourse] = useState("");
     const [classId, setClassId] = useState("");
     const [classSelected, setClassSelected ] = useState('');
+    const [showModalTwo, setShowModalTwo] = useState(false);
 
     const schoolClassName = schoolProfile?.schoolClassesData
     const schoolId = user.user?.schoolId.id || registerUser.user?.schoolId.id
     const schoolClasses = schoolProfile?.schoolClassesData;
+    console.log("NewSTudent from newStudent =====>", newStudent)
     
     const handleSubmit = (e) => {
       e.preventDefault()
-      console.log("newStudent =====>", newStudent)
         dispatch(addNewStudentInitiate(
             courseId,
             classId,
@@ -37,7 +41,7 @@ const Addnewstudent = () => {
         setfullName("")
         setPassword("")
         setEmail("")
-        Router.push('/school')
+        // Router.push('/school')
     }
 
   
@@ -52,7 +56,7 @@ const Addnewstudent = () => {
 
   useEffect(() => {
     filterClassIds()
-}, [fullName]);
+}, [user]);
 
     return (
         <>
@@ -68,6 +72,7 @@ const Addnewstudent = () => {
                     value={role}
                     type="text" 
                     placeholder="student"
+                    require
                     onChange={(e) => setRole(e.target.value)}
                     />
                 <select 
@@ -75,6 +80,7 @@ const Addnewstudent = () => {
                 type="text"
                 value={classSelected}
                 defaultValue={"default"}
+                require
                 onChange={(e) => setClassSelected(e.target.value)}
                     >
                       <option value={"default"}>
@@ -107,8 +113,16 @@ const Addnewstudent = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     />
-            <button className={styles.studentButton} type='submit'>REGISTER</button>
+            <button 
+            className={styles.studentButton} 
+            onClick={() => setShowModalTwo(true)}
+            type='submit' disabled={!email || !password || !fullName}>REGISTER</button>
             </form>
+            <AddStudentsuccess 
+            show={showModalTwo}
+            onHide={() => setShowModalTwo(false)}
+            newStudent={newStudent}
+            />
          </div>
         </>
        
