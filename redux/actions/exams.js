@@ -144,11 +144,12 @@ export const fetchExamsInitiate = (token) =>  {
     }
 
 }
-export const fetchSingleExamDetailsInitiate = (token, examId) =>  {
+export const fetchSingleExamDetailsInitiate = (token, exam_id) =>  {
+    console.log("exam_id from single exams", exam_id)
     return function (dispatch) {
         dispatch(fetchSingleExamDetailsStart())
         axios
-        .get(`https://afrilearn-backend-01.herokuapp.com/api/v1/exams/instruction/${examId}`,
+        .get(`https://afrilearn-backend-01.herokuapp.com/api/v1/exams/instruction/${exam_id}`,
         {
             headers: {
                 "token": token,
@@ -166,7 +167,7 @@ export const fetchSingleExamDetailsInitiate = (token, examId) =>  {
 
 }
 export const fetchSingleExamQuestionsInitiate = (token, exam_id) =>  {
-    console.log("examId from API ===>", examId)
+    console.log("exam_id from single examsQ", exam_id)
     return function (dispatch) {
         dispatch(fetchSingleExamQuestionsStart())
         axios
@@ -187,14 +188,14 @@ export const fetchSingleExamQuestionsInitiate = (token, exam_id) =>  {
     }
 
 }
-export const addExamQuestionInitiate = (token, examId, type) =>  {
+export const addExamQuestionInitiate = (token, exam_id, type) =>  {
     console.log("ExamId from add exam question", token)
     return function (dispatch) {
         dispatch(addExamQuestionStart())
         axios
         .post('https://afrilearn-backend-01.herokuapp.com/api/v1/exams/exam-question',
         {
-            examId: '6300e0b9104d6700167be084',
+            examId: exam_id,
             type
         },
         {

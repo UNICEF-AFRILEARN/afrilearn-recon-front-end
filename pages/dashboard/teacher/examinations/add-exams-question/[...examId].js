@@ -11,26 +11,26 @@ import { Heropage } from "../../../../../components/features/dashboard/teacher";
 
 const Setupxamssidebar = () => {
   const [showExamForm, setShowExamForm] = useState(false);
-  const [examId, setExamId] = useState('')
+  const [exam_id, setExam_id] = useState('')
   const router = useRouter();
+  const {examId} = router.query;
   // const { examId } = router.query
 
   // let examId = query.examId[0];
 
-  useEffect(() => {
-    if (router.isReady) {
-      // Code using query
-      setExamId(router.query.examId[0])
-      console.log("router.query",examId);
-     }
-  }, [router.isReady]);
+  useEffect(()=>{
+    if(router.isReady) {
+      setExam_id(examId[0])
+    }
+  
+  }, [router.isReady, exam_id]);
   // console.log("query from add-exams-questions", examId[0])
   return (
       <>
         <Heropage />
          <div className={styles.setexammainwrapper}>
       <Objectives 
-        examId={examId}
+        exam_id={exam_id}
       />
     </div>
   </>

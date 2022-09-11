@@ -21,7 +21,7 @@ import Questiontitle from './questiontitle';
 import {wrapper } from '../../../../redux/store'
 import Addexambutton from './addexambutton';
 
-const Objectives = ({examId}) => {
+const Objectives = ({exam_id}) => {
     const dispatch = useDispatch();
     const { newExamQuestion, exams, singleExamQuestions, updatedExam, deletedExam, singleExam } = useSelector((state) => state.myExams);
     const { user } = useSelector((state) => state.auth)
@@ -44,7 +44,7 @@ const Objectives = ({examId}) => {
     const handleAddQuestions = (e) => {
         setQuestionType(e.target.innerText)
         let type = e.target.innerText
-        dispatch(addExamQuestionInitiate(token, examId, type))
+        dispatch(addExamQuestionInitiate(token, exam_id, type))
     }
     
     const handleSubmit = (e) => {
@@ -53,10 +53,10 @@ const Objectives = ({examId}) => {
     }
 
         let examType = allExams?.filter((filteredExams) => 
-            filteredExams.id === '6300e0b9104d6700167be084'
+            filteredExams.id === exam_id
             
         )
-        console.log("examType from objective ===>", examType)
+        console.log("exams from objective ===>", examType)
     
     const onClickExamsType = () => {
         setOpenQuestionType(!openQuestionType)
@@ -97,13 +97,15 @@ const Objectives = ({examId}) => {
     
     // filterExams()
     
-    useEffect(() =>{
-        dispatch(fetchSingleExamQuestionsInitiate(examId))
-    }, [examId, newExamQuestion, updatedExam, deletedExam])
+   
     
     useEffect(() => {
-        dispatch(fetchSingleExamDetailsInitiate(token, examId))
-      }, [])
+        dispatch(fetchSingleExamDetailsInitiate(token, exam_id))
+      }, [exam_id])
+
+      useEffect(() =>{
+        dispatch(fetchSingleExamQuestionsInitiate(token, exam_id))
+    }, [exam_id, newExamQuestion, updatedExam, deletedExam])
       
     useEffect(() => {
         if(receivedQuestions){
@@ -133,13 +135,13 @@ const Objectives = ({examId}) => {
                    <h4>{examType[0]?.publish === true? 'This exam is currently published' : 'This exam is currently unpublished'}</h4>}
                </div>
                {/* add button add new question */}
-               <div>
+               {/* <div>
                { examType && 
                <Addexambutton 
-                examId={examId}
+               exam_id={exam_id}
                 examType={examType}
                 />}
-               </div>
+               </div> */}
                {/* End add button add new question */}
                
             </div>
@@ -196,12 +198,16 @@ const Objectives = ({examId}) => {
                       </div>
                       } 
             </ul>
-            </div>
-             <div className={styles.examquestionwrapperinnner}>
+            <div className={styles.examquestionwrapperinnner}>
                     <Addexambutton 
+                        exam_id={exam_id}
+                        examType={examType}
                         examQuestion={examQuestion}
                     />
              </div>
+            </div>
+        
+           
              <div className={styles.examquestionwrapperinnner}>
              { showObjQuestions === 1 &&  examQuestion && examQuestion.map((singleQuestion, index) => (
                 <>

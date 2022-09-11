@@ -6,7 +6,7 @@ import {
   addExamQuestionInitiate,
 } from '../../../../redux/actions/exams';
 
-const Addexambutton = ({examQuestion, examId}) => {
+const Addexambutton = ({examQuestion, exam_id}) => {
   const { newExamQuestion, exams, singleExamQuestions, updatedExam, deletedExam } = useSelector((state) => state.myExams);
   const { user } = useSelector((state) => state.auth)
   const [showType, setShowType] = useState(false)
@@ -17,7 +17,7 @@ const Addexambutton = ({examQuestion, examId}) => {
   let allExams = exams?.exams
 
   let examType = allExams?.filter((filteredExams) => 
-  filteredExams.id === '6300e0b9104d6700167be084'
+  filteredExams.id === exam_id
   
 )
   const handleClick = () => {
@@ -26,11 +26,13 @@ const Addexambutton = ({examQuestion, examId}) => {
 
   const handleAddQuestions = (e) => {
     let type = e.target.innerText
-    dispatch(addExamQuestionInitiate(token, examId, type))
+    dispatch(addExamQuestionInitiate(token, exam_id, type))
 }
 
+console.log("examType from add button component ===>", examType,)
+
   return (
-    <div >
+    <div className={styles.addexambuttonwrapper}>
         { examType &&
             examQuestion?.length > 0? "" : 
             <span
