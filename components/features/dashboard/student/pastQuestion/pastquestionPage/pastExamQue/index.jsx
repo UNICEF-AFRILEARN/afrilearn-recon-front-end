@@ -32,8 +32,6 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
     (n) => n + 1,
   );
 
-  // console.log("questions.pastQuestionQue from pastQue", questions)
-
   const [nextQues, setNextQues] = useState(1);
   const [nextAns, setNextAns] = useState({});
   const [show, setShow] = useState(false);

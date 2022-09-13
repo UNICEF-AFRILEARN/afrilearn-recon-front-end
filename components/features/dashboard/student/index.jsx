@@ -27,7 +27,7 @@ import {
   fetchSubjectInitiate,
   fetchTopInClassInitiate,
 } from "../../../../redux/actions/subject";
-// import Swal from "sweetalert2";
+import Swal from "sweetalert2";
 import {
   // fetchCourseInitiate,
   fetchReconLessonInitiate,
