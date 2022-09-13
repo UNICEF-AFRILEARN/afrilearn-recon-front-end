@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Image from "next/image";
 import Link from "next/link";
 import { Col, Container, Row } from "react-bootstrap";
-import PastQuestion from "../student/extra/PastQuestionaira";
+// import PastQuestion from "../student/extra/PastQuestionaira";
 import Subjects from "../student/extra/subjects";
 
 import { AiOutlineSend } from "react-icons/ai";
@@ -40,7 +40,6 @@ const Dashboard = () => {
     : user.user?.enrolledCourses[1].id;
   const teacherSubjectId =
     user?.user?.classOwnership[0]?.subjectIds[0]?.subjectId;
-
   //set teacher's enrolled subjects
   let teacherEnrolledSubjectId = [];
   const teacherEnrolledSubjects = () => {
@@ -86,9 +85,7 @@ const Dashboard = () => {
           </Row>
           <Subjects subData={teachSubject} />
         </Col>
-        <Col>
-          <PastQuestion />
-        </Col>
+        <Col>{/* <PastQuestion /> */}</Col>
         <Col>{/* <PastQuestion /> */}</Col>
       </div>
       <TeacherAnnouncement />
@@ -155,8 +152,8 @@ export const HeropageWelcome = () => {
                         <div
                           className="text-dark"
                           style={{
-                            fontWeight: "700",
-                            // fontSize: "40px",
+                            fontWeight: "500",
+                            fontSize: "10px",
                             textAlign: "center",
                             color: "#333333",
                           }}
@@ -196,19 +193,6 @@ export const HeropageWelcome = () => {
                           </u>
                         </p>
                       </Col>
-                      <Col md={5}>
-                        <Row>
-                          <Col
-                            md={1}
-                            className={`${styles.stateComponent1}`}
-                          ></Col>
-                          <Col>
-                            <p className="m-auto" style={{ color: "#00D9B6" }}>
-                              <u>Copy Class Link</u>
-                            </p>
-                          </Col>
-                        </Row>
-                      </Col>
                     </Row>
                   </Col>
                   <Col md={3} className="">
@@ -229,6 +213,8 @@ export const HeropageWelcome = () => {
                       </a>
                     </Link>
                   </Col>
+                  {/* <Col md={3} className=""> */}
+                  {/* </Col> */}
                 </Row>
               </Row>
             </Col>
@@ -252,9 +238,12 @@ export const Heropage = () => {
 export const TeacherAnnouncement = () => {
   const { classAnnouncement, postAnnouncement, announcementComment } =
     useSelector((state) => state.schoolClasses);
-
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const [text, setText] = useState("");
+  const [announcement, setAnnouncement] = useState("");
+  // const [comment, setComment] = useState("");
+  const [announcementCount, setAnnouncementCount] = useState(0);
 
   console.log(
     "announcementComment from Teacher announcement",
@@ -271,7 +260,6 @@ export const TeacherAnnouncement = () => {
     day: "2-digit",
   });
 
-  const [text, setText] = useState("");
   // const handleChange = (e) => {
   //   setText( e.target.value);
   // };
@@ -280,7 +268,6 @@ export const TeacherAnnouncement = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     setText(announcement);
     // console.log(text)
     dispatch(makeAnnouncementInitiate(classId, text, token));
