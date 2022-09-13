@@ -202,9 +202,9 @@ const AssignContent = () => {
                 ))}
               </Form.Select>
               <Row
-                className="mx-3"
-                style={{ border: "1px solid rgba(229, 229, 229, 0.63)" }}
-              ></Row>
+              className="mx-3"
+              style={{ border: "1px solid rgba(229, 229, 229, 0.63)" }}
+            ></Row>
               <Form.Select
                 aria-label="Default select example"
                 style={{ outline: "none !important", border: "none" }}

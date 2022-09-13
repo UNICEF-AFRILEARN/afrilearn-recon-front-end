@@ -20,6 +20,7 @@ const initialState = {
   motivationItemNo: 0,
   motivationInterval: 0,
   motivateGoodPerformance: false,
+  answers: [],
 };
 
 const subjectedReducer = (state = initialState, { type, payload }) => {
