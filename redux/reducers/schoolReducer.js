@@ -8,6 +8,8 @@ const initialState = {
     classMembers: [],
     newStudent: [],
     schoolProfile: [],
+    deletedTeacher: [],
+    deletedStudent: [],
 }
 
 export const schoolReducer = (state = initialState, { type, payload} ) => {
@@ -39,6 +41,38 @@ export const schoolReducer = (state = initialState, { type, payload} ) => {
                 newTeacher: payload
             }
         case types.ADD_NEW_TEACHER_FAIL:
+            return {
+                ...state,
+                error: payload
+
+            }
+        case types.DELETE_TEACHER_START:
+            return {
+                loading: true,
+            };
+        case types.DELETE_TEACHER_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                deletedTeacher: payload
+            }
+        case types.DELETE_TEACHER_FAIL:
+            return {
+                ...state,
+                error: payload
+
+            }
+        case types.DELETE_STUDENT_START:
+            return {
+                loading: true,
+            };
+        case types.DELETE_STUDENT_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                deletedStudent: payload
+            }
+        case types.DELETE_STUDENT_FAIL:
             return {
                 ...state,
                 error: payload

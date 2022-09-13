@@ -91,6 +91,28 @@ export const createClassworkFail = (error) => ({
     type: types.CREATE_CLASS_WORK_FAIL,
     payload: error
 });
+export const addCommentToTeacherAnnouncementStart = () => ({
+    type: types.ADD_COMMENT_TO_TEACHER_ANNOUNCEMENT_START
+});
+export const addCommentToTeacherAnnouncementSuccess = (payload) => ({
+    type: types.ADD_COMMENT_TO_TEACHER_ANNOUNCEMENT_SUCCESS,
+    payload
+});
+export const addCommentToTeacherAnnouncementFail = (error) => ({
+    type: types.ADD_COMMENT_TO_TEACHER_ANNOUNCEMENT_FAIL,
+    payload: error
+});
+export const acceptRejectClassMemberStart = () => ({
+    type: types.ACCEPT_REJECT_CLASS_MEMBER_START
+});
+export const acceptRejectClassMemberSuccess = (payload) => ({
+    type: types.ACCEPT_REJECT_CLASS_MEMBER_SUCCESS,
+    payload
+});
+export const acceptRejectClassMemberFail = (error) => ({
+    type: types.ACCEPT_REJECT_CLASS_MEMBER_FAIL,
+    payload: error
+});
 
 
 export const makeAnnouncementInitiate = (classId, text, token) =>  {
@@ -116,6 +138,31 @@ export const makeAnnouncementInitiate = (classId, text, token) =>  {
     }
 
 }
+export const addCommentToTeacherAnnouncementInitiate = (announcementId, text, token) =>  {
+    return function (dispatch) {
+        dispatch(addCommentToTeacherAnnouncementStart())
+        axios
+        .post(`https://afrilearn-backend-01.herokuapp.com/api/v1/classes/${announcementId}/comment`,
+        {   
+            text  
+        },{
+            headers: {
+                "token": token,
+                "Content-Type": "application/json",
+            }
+        })
+        .then((res) => {
+            dispatch(addCommentToTeacherAnnouncementSuccess(res.data))
+            console.log("From Add comment to announcement API =>", res.data)
+        })
+        .catch((err) => {
+            dispatch(addCommentToTeacherAnnouncementFail(err))
+        })
+    }
+
+};
+
+
 export const createClassworkInitiate = (classId, token, lessonId, description) =>  {
     return function (dispatch) {
         dispatch(createClassworkStart())
@@ -225,6 +272,7 @@ export const fetchClassAssignedContentInitiate = (classId) =>  {
     }
 
 }
+
 export const fetchClassSubjectsInitiate = (classId) =>  {
     return function (dispatch) {
         dispatch(fetchClassSubjectsStart())
@@ -236,6 +284,31 @@ export const fetchClassSubjectsInitiate = (classId) =>  {
         })
         .catch((err) => {
             dispatch(fetchClassSubjectsFail(err))
+        } )
+    }
+
+}
+export const acceptRejectClassMemberInitiate = (userId, classId, status, token) =>  {
+    return function (dispatch) {
+        dispatch(acceptRejectClassMemberStart())
+        axios
+        .patch('https://afrilearn-backend-01.herokuapp.com/api/v1/classes/accept-reject-class-request',
+        {   userId, 
+            classId, 
+            status  
+        },
+        {
+            headers: {
+                "token": token,
+                "Content-Type": "application/json",
+            }
+        })
+        .then((res) => {
+            console.log("From Get Accept reject member class API =>", res.data.data)
+            dispatch(acceptRejectClassMemberSuccess(res.data.data))
+        })
+        .catch((err) => {
+            dispatch(acceptRejectClassMemberFail(err))
         } )
     }
 

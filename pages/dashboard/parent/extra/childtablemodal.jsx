@@ -1,78 +1,92 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
+import React, { useEffect, useState, useRef } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import {BsFillCheckCircleFill } from 'react-icons/bs'
+import { Children } from 'react';
 
+const ChildDetails = (props)  => {
 
-
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 550,
-  height: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
-
-const ChildDetails = ({
-  handleClose, 
-  handleOpen, 
-  open, 
-  closeModal, 
-  myChildren,
-  studentId,
-  childEmail,
-  childName,
-  childClass
-})  => {
-
-  console.log("myChildren from child details modal", myChildren)
+  let filteredChild = props.myChildren?.filter((singleChild) => singleChild.id === props.userId)
+  console.log("myChildren from child details modal", filteredChild)
   return (
-    <div>
-      <Button onClick={handleOpen}> DETAILS </Button>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}
-         onClick={closeModal}
-        >
-          <Typography 
-          id="modal-modal-title" 
-          variant="h6" 
-          component="h2"
-          sx={{ m: 2 }}
-          >
-            Name: {childName}
-          </Typography>
-          <Typography id="modal-modal-title" variant="h6" sx={{ m: 2 }} component="h2">
-            Email: {childEmail}
-          </Typography>
-          <Typography id="modal-modal-title" sx={{ m: 2 }} variant="h6" component="h2">
-            Password: 
-          </Typography>
-          <Typography id="modal-modal-title" sx={{ m: 2 }} variant="h6" component="h2">
-            Class: {childClass}
-          </Typography>
-          <Typography id="modal-modal-title"  sx={{ m: 2 }} variant="h6" component="h2">
-            Subscription: 
-          </Typography>
-          <Typography id="modal-modal-title" sx={{ m: 2 }} variant="h6" component="h2">
-            Expiration date:
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-           
-          </Typography>
-        </Box>
-      </Modal>
+    <Modal
+      {...props}
+      size="md"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+      className='text-center'
+    >
+      {
+      
+      filteredChild && filteredChild.map((mappedChild) => 
+      <>
+         <div className='text-center d-flex mx-3'>          
+        <p className='m-3'>
+       Email:
+      </p> 
+        <p className='m-3 px-5'>
+         {mappedChild.email} 
+      </p> 
+      
     </div>
+    <div className='text-center d-flex mx-3'>          
+        <p className='m-3'>
+       Password:
+      </p> 
+        <p className='m-3 px-2'>
+         {mappedChild.email} 
+      </p> 
+      
+    </div>
+    <div>
+    <h5 className='text-start mx-4'>{mappedChild.enrolledCourses[0].courseId.name}</h5>     
+    </div>
+    <div className='text-center d-flex mx-3'>     
+        <p className='m-3'>
+       Password:
+      </p> 
+        <p className='m-3 px-2'>
+         {mappedChild.email} 
+      </p> 
+      
+    </div>
+    <div>
+    <h5 className='text-start mx-4'>{mappedChild.enrolledCourses[0].courseId.name}</h5>     
+    </div>
+    <div className='text-center d-flex'>     
+        <p className='m-3'>
+       Subscription:
+      </p> 
+        <p className='m-3 px-2'>
+         {mappedChild.email} 
+      </p> 
+      
+    </div>
+    <div className='text-center d-flex'>     
+        <p className='m-3'>
+       Expiration Date:
+      </p> 
+        <p className='m-3'>
+         {mappedChild.email} 
+      </p> 
+      
+    </div>
+
+    <Modal.Body className='d-flex justify-center p-3'>
+
+      <div className="d-flex align-items-center justify-content-center w-100 mx-5">
+        <Button 
+       onClick={props.onHide}
+       className='w-100 mx-5' 
+      >Ok</Button>
+      </div>
+    </Modal.Body>
+    </>
+      )}
+    </Modal>
   );
 }
 

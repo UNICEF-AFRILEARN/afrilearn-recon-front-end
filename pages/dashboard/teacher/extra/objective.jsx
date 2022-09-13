@@ -4,40 +4,114 @@ import styles from '../../../../styles/teacher.module.css';
 import { BsFillCircleFill, BsCircle } from 'react-icons/bs';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { BiNote } from 'react-icons/bi';
+import Link from "next/link";
+import { BsPlus, BsPlusCircleFill } from 'react-icons/bs';
 import Questionpanel from './questionpanel';
 import Theory from './theory';
 import Generatequestions from './generatequestions';
 import Submitquestions from './submitquestions';
-import { updateExamQuestionInitiate } from '../../../../redux/actions/exams';
+import { 
+    updateExamQuestionInitiate, 
+    fetchSingleExamQuestionsInitiate,
+    addExamQuestionInitiate,
+    updateExamInitiate,
+    fetchSingleExamDetailsInitiate
+} from '../../../../redux/actions/exams';
+import Questiontitle from './questiontitle';
+import {wrapper } from '../../../../redux/store'
+import Addexambutton from './addexambutton';
 
-const Objectives = () => {
-    const { newExamQuestion } = useSelector((state) => state.myExams);
+const Objectives = ({exam_id}) => {
+    const dispatch = useDispatch();
+    const { newExamQuestion, exams, singleExamQuestions, updatedExam, deletedExam, singleExam } = useSelector((state) => state.myExams);
+    const { user } = useSelector((state) => state.auth)
     const [questionId, setQuestionId] = useState("")
+    const [openQuestionType, setOpenQuestionType] = useState(false)
+    const [examQuestion, setExamQuestion] = useState([])
     const [question, setQuestion] = useState("")
+    const [questionType, setQuestionType] = useState("")
 
-    console.log("questionId from onjective", questionId)
     const [showObjQuestions, setShowObjQuestions] = useState(1)
+    const [showObjQuestionOptions, setShowObjQuestionOptions] = useState(0)
 
 
+    
+    
+    let token = user.token;
+    let allExams = exams?.exams
+    let receivedQuestions = singleExamQuestions?.questions
 
-    let data = {
-        question
+    const handleAddQuestions = (e) => {
+        setQuestionType(e.target.innerText)
+        let type = e.target.innerText
+        dispatch(addExamQuestionInitiate(token, exam_id, type))
     }
-
+    
     const handleSubmit = (e) => {
         e.preventDefault()
-        // console.log("theoryBody ==>",data)
-        // dispatch(updateExamQuestionInitiate(questionId, data))
+        dispatch(updateExamQuestionInitiate(questionId, data))
     }
 
+        let examType = allExams?.filter((filteredExams) => 
+            filteredExams.id === exam_id
+            
+        )
+        console.log("exams from objective ===>", examType)
+    
+    const onClickExamsType = () => {
+        setOpenQuestionType(!openQuestionType)
+    }
+    
     const showObjpanel = (id) => {
         setShowObjQuestions(id)
     }
+    
 
-    // useEffect(() =>{
-    //     // setQuestionId(newExamQuestion?.examQuestion?.id)
-    //     setQuestionId("630274ab7412b500162680f5")
-    // }, [])
+    let clickedExamQuestion = []
+    const handleSelectQeustionOptions = (index, id, qIndex) => {
+        setShowObjQuestionOptions(index)
+        examQuestion.filter((filterExamQuestion) => {
+            if(filterExamQuestion.id === id){
+                clickedExamQuestion.push(filterExamQuestion)
+            }
+        })
+    }
+    
+
+    const handleUpdateStatus = (e) => {
+        let publish
+        if(e.target.innerHTML === 'PUBLISH'){
+             publish = true
+        }else if(e.target.innerHTML === 'UNPUBLISH'){
+            publish = false
+        }
+        dispatch(updateExamInitiate(questionId, publish))
+    }
+    
+    const handleGetQuestions = (e, index) => {
+        const { name, value} = e.target
+        const list = [...examQuestion]
+        list[index][name] = value;
+    }
+
+    
+    // filterExams()
+    
+   
+    
+    useEffect(() => {
+        dispatch(fetchSingleExamDetailsInitiate(token, exam_id))
+      }, [exam_id])
+
+      useEffect(() =>{
+        dispatch(fetchSingleExamQuestionsInitiate(token, exam_id))
+    }, [exam_id, newExamQuestion, updatedExam, deletedExam])
+      
+    useEffect(() => {
+        if(receivedQuestions){
+            setExamQuestion([...receivedQuestions])
+        }
+    }, [receivedQuestions, newExamQuestion, updatedExam, deletedExam])
   return (
     <div className={styles.objectivemainwrapper}>
         <div className={styles.objleftsideboxwrapper}>
@@ -47,47 +121,131 @@ const Objectives = () => {
                 <li><span><BsCircle /></span>Examination Questions</li>
             </ul>
             <div className={styles.bottombtnwrapper}>
-                <h4 onClick={() => showObjpanel(3)}>Generate questions</h4>
+               { showObjQuestions === 3 &&
+               <h4 onClick={() => showObjpanel(3)}>Generate questions</h4>
+               }
                 <div className={styles.btnmainwrapper}>
-                    <h4 onClick={() => showObjpanel(4)}>PROCEED</h4>
+                   { examType && 
+                   <h4 onClick={handleUpdateStatus}>{examType[0]?.publish === true? 'UNPUBLISH' : 'PUBLISH'}</h4>
+                   }
                     <h5>PREVIEW</h5>
                 </div>
+                <div>
+               { examType && 
+                   <h4>{examType[0]?.publish === true? 'This exam is currently published' : 'This exam is currently unpublished'}</h4>}
+               </div>
+               {/* add button add new question */}
+               {/* <div>
+               { examType && 
+               <Addexambutton 
+               exam_id={exam_id}
+                examType={examType}
+                />}
+               </div> */}
+               {/* End add button add new question */}
+               
             </div>
         </div>
         <div className={styles.examsetupwrapper}>
-            <div className={styles.xamssetpheader}>
-            <h4 onClick={() => showObjpanel(1)} className={showObjQuestions === 1? `${styles.clikeditemssetup}` : `${styles.unclikeditemssetup}`}>Objective</h4>
-            <h5 onClick={() => showObjpanel(2)} className={showObjQuestions === 2? `${styles.clikeditemssetup}` : `${styles.unclikeditemssetup}`}>Theory</h5>
+           { examQuestion.length > 0 &&
+           <div className={styles.xamssetpheader}>
+            <div className={questionType === 'Objective' && questionType !=='undefined'? styles.objectivewrapper : styles.nobackgroundcolor}>
+                <h4>Objective</h4>
             </div>
+            <div className={questionType === 'Theory' && questionType !=='undefined'? styles.theorywrapper : styles.nobackgroundcolor}>
+                <h5>Theory</h5>
+            </div>
+            </div>
+            }
             <div className={styles.classlistwrapper}>
-                {showObjQuestions === 1 | showObjQuestions === 2 && 
-                    <div className={showObjQuestions === 1? `${styles.innerclasslistwrapper}` : `${styles.innerclasslistwrapperonly}`}>
-                    <h5>Question 2</h5>
-                    <div className={styles.iconswrapper}>
-                        <span><BiNote /> </span>
-                        <span><RiDeleteBin6Line color='#FF5E5E' />  </span>  
-                    </div>
-                    </div>
-                }
-                {showObjQuestions === 1 &&
-                    <div className={styles.innernumberwrapper}>
-                        <ul>
-                            <li>1</li>
-                            <li>2</li>
-                            <li>3</li>
-                            <li>4</li>
-                        </ul>    
-                    </div>
-                }
+            <ul>
+                {examQuestion.length > 0 && examQuestion.map((singleQuestion, index) => (
+                        <li
+                          onClick={() => {handleSelectQeustionOptions(index + 1, singleQuestion.id, (examQuestion.indexOf(singleQuestion) + 1)), setQuestionType(singleQuestion.type)}}
+                        >{index + 1}</li>
+                        ))
+                        
+                    }
+                    { examQuestion.length > 0 && 
+                     <div className={styles.iconswrapper}>
+                      <div className={`${styles.btnpluswrapper} btn-log-in-mobile`}>
+                          <BsPlusCircleFill 
+                          size={20} 
+                          className={styles.profileavatar}
+                          onClick={onClickExamsType}
+                          />
+                          </div>
+                         { openQuestionType === true &&
+                         <div className={styles.linkswrapper}>
+                           
+                          { examType[0]?.questionTypeId?.name === "Objective" && 
+                          <a onClick={handleAddQuestions}>Objective</a>
+                          }
+                          { examType[0]?.questionTypeId?.name === "Theory" && 
+                          <a onClick={handleAddQuestions}>Theory</a>
+                          }
+                                    { 
+                                    examType[0]?.questionTypeId?.name === "Objective & Theory" && 
+                                    <>
+                                     <a onClick={handleAddQuestions}>Objective</a>
+                                        <a onClick={handleAddQuestions}>Theory</a>
+                                    </>
+                                     }
+
+
+                          </div>
+                          }
+                      </div>
+                      } 
+            </ul>
+            <div className={styles.examquestionwrapperinnner}>
+                    <Addexambutton 
+                        exam_id={exam_id}
+                        examType={examType}
+                        examQuestion={examQuestion}
+                    />
+             </div>
             </div>
-               { showObjQuestions === 1 &&  <Questionpanel />}
-                {showObjQuestions === 2 && <Theory /> }
+        
+           
+             <div className={styles.examquestionwrapperinnner}>
+             { showObjQuestions === 1 &&  examQuestion && examQuestion.map((singleQuestion, index) => (
+                <>
+                    <Questionpanel 
+                        index={index}
+                        showObjQuestions={showObjQuestions}
+                        questionType={questionType} 
+                        setQuestionType={setQuestionType} 
+                        showObjQuestionOptions={showObjQuestionOptions}
+                        handleGetQuestions={handleGetQuestions}
+                        singleExamQuestions={singleExamQuestions}
+                        singleQuestion={singleQuestion}
+                        examQuestion={examQuestion}
+                    />
+                </>
+               )) }
+             </div>
+                {showObjQuestions === 2 && examQuestion && examQuestion.map((singleQuestion, index) => (
+                    
+                <Theory 
+                index={index} 
+                showObjQuestionOptions={showObjQuestionOptions}
+                handleGetQuestions={handleGetQuestions}
+                singleExamQuestions={singleExamQuestions}
+                singleQuestion={singleQuestion}
+                examQuestion={examQuestion}
+            />
+                ))}
                 {showObjQuestions === 3 && <Generatequestions />}
-                {/* { showObjQuestions === 4 && <Submitquestions />} */}
+                {/* { showObjQuestions === 4 && <Submitquestions />} */} 
         </div>
         
     </div>
   )
 }
+
+export const getStaticProps =  wrapper.getStaticProps((store) => () => {
+    store.dispatch(fetchSingleExamQuestionsInitiate(examId))
+  })
 
 export default Objectives

@@ -17,7 +17,7 @@ const ClassWork = () => {
   console.log("classContents from classwork", classContents);
   console.log(
     "classContents.subjectId from classwork",
-    classContents?.assignedContents,
+    classContents.assignedContents,
   );
 
   useEffect(() => {

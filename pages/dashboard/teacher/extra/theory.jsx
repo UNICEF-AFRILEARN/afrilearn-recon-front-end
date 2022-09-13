@@ -6,8 +6,16 @@ import styles from "../../../../styles/teacher.module.css";
 import { BsPlus } from "react-icons/bs";
 import { AiOutlineArrowsAlt } from "react-icons/ai";
 import { updateExamQuestionInitiate } from "../../../../redux/actions/exams";
+import Questiontitle from "./questiontitle";
 
-const Theory = () => {
+const Theory = ({
+  index, 
+  showObjQuestionOptions, 
+  handleGetQuestions,
+  examQuestion,
+  singleQuestion,
+  // singleExamQuestions
+}) => {
   const { query } = useRouter();
   const dispatch = useDispatch();
   const [data, setData] = useState({});
@@ -31,28 +39,30 @@ const Theory = () => {
   }, []);
 
   return (
-    <div className={styles.theorymainwrapper}>
-      <div className={styles.questionpanelwrapper}>
-        <div className={styles.questionpanelheader}>
-          <h5>Open Edit Panel</h5>{" "}
-          <span>
-            <AiOutlineArrowsAlt size={30} />
-          </span>
-        </div>
-      </div>
+    <div>
+    {showObjQuestionOptions === index + 1 &&
+       <>
+       <Questiontitle index={index}/>
+           <div className={styles.questionpanelwrapper}>
+           <div className={styles.questionpanelheader}>
+               <h5>Open Edit Panel</h5> <span>< AiOutlineArrowsAlt size={30}/>
+               </span>
+           </div>
+        
+       </div>
       <div className={styles.mainformwrapper}>
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-4" controlId="formBasicEmail">
             <Form.Control
               as="textarea"
               rows="5"
-              name="address"
+              name="question"
               placeholder="Type question here..."
-              value={question}
-              onChange={(e) => setQuestion(e.target.value)}
+              defaultValue={singleQuestion.question}
+              onChange={(e) => handleGetQuestions(e, index)}
             />
           </Form.Group>
-          <Button className="w-25" type="submit">
+          <Button className="w-50" type="submit">
             Save changes
           </Button>
         </Form>
@@ -63,6 +73,8 @@ const Theory = () => {
         </span>
         <h5>Add new question</h5>
       </div>
+      </>
+      }
     </div>
   );
 };

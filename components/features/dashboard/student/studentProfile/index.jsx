@@ -1,3 +1,4 @@
+import { useState} from "react";
 import { Col, Row } from "react-bootstrap";
 import styles1 from "../student.module.css";
 import styles from "./studentProfile.module.css";
@@ -5,23 +6,40 @@ import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchUserProfileInitiate } from "../../../../../redux/actions/dashboard";
+import { fetchSchoolProfileInitiate } from "../../../../../redux/actions/school";
+
 
 const StudentProfile = () => {
+  const { schoolProfile } = useSelector((state) => state.school);
   const {user} = useSelector(state => state.auth);
   const { userProfile } = useSelector(state => state.dashboard)
+  const [referal, setReferal] = useState(`https://myafrilearn.com/register?referralCode=${user.user?.id}`);
+  const [copyMessage, setCopyMessage] = useState("COPY LINK")
   const dispatch = useDispatch();
 
   const token = user.token;
   const userId = user.user?.id;
 
-  console.log("logged-in ==> profile", userProfile)
-  console.log("logged-in ==> user profile", user)
+  console.log("logged-in ==> schoolProfile", schoolProfile
+
+  )
+  console.log("logged-in ==> user profile", userId)
   const coin = { amount: 345 };
   const number = "";
+
+
+  const copyReferalCode = (link) => {
+    navigator.clipboard.writeText(link)
+    setCopyMessage("LINK COPIED")
+  }
 
   useEffect(() => {
     dispatch(fetchUserProfileInitiate(userId, token))
   }, [])
+
+  // useEffect(() => {
+  //   dispatch(fetchSchoolProfileInitiate(schoolId))
+  // },[schoolId])
   
   return (
     <>
@@ -340,7 +358,21 @@ const StudentProfile = () => {
                 border: "1px solid rgba(51, 51, 51, 0.35)",
                 boxShadow: "0px 1px 7px rgba(255, 255, 255, 0.25)",
               }}
-            ></Row>
+            >
+              
+            </Row>
+              <Row>
+                <ul >
+             { schoolProfile.schoolClassesData && schoolProfile.schoolClassesData.map((schoolClasses) => 
+                <li style={{
+                  listStyle: "none",
+                  marginTop: 10,
+                }}>{schoolClasses.className
+                }</li>
+             )
+              }
+              </ul>
+              </Row>
             {number !== "" ? (
               <Row className="p-5">
                 <p style={{ color: "#A6A6A6" }}>
@@ -451,7 +483,8 @@ const StudentProfile = () => {
           </Row>
           <Row className="mx-auto mb-5">
             <input
-              placeholder="blzdblugzblujhbluybgfdliu"
+            defaultValue={referal}
+              // placeholder=""
               style={{
                 width: "751px",
                 height: "71px",
@@ -465,6 +498,7 @@ const StudentProfile = () => {
               }}
             />
             <button
+            onClick={() => copyReferalCode(referal)}
               style={{
                 width: "193px",
                 height: "71px",
@@ -477,7 +511,7 @@ const StudentProfile = () => {
                 marginLeft:"15px"
               }}
             >
-              COPY LINK
+              {copyMessage}
             </button>
           </Row>
         </Col>

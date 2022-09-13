@@ -1,5 +1,6 @@
 import styles from "./student.module.css";
 import SubHeading from "./extra/subHeading";
+
 import PastQuestionaira from "./extra/pastQuestionaira";
 import TopInClass from "./extra/topInClass";
 import Recommendation from "./extra/recommendation";
@@ -45,13 +46,13 @@ const Dashboard = () => {
   const { user, registerUser } = useSelector((state) => state.auth);
   // const { registerUser } = useSelector((state) => state.auth);
   const subject = useSelector((state) => state.mySubjectCourse);
-  console.log(subject);
+  console.log("subject, subject", subject);
 
   console.log(
     "Register registerUser from dashboard INDEX =====>",
     registerUser.user,
   );
-  console.log("Register user from dashboard INDEX =====>", user);
+  console.log("unicefRecon from dashboard INDEX =====>", unicefRecon);
 
   const userId = "62a0bc984af2d90016b72096";
   const token = user.token;
@@ -297,14 +298,14 @@ const Recommended = ({ recommend, unicefRecon, lessons }) => {
   // const unicefRecons = Object.values(unicefRecon);
   return (
     <>
-      {recommend !== 0 && (
+      {unicefRecon !== 0 && (
         <>
           <SubHeading title="Recommended For You" />
 
           <div className={styles.contai}>
             <section className="parnet-frag-color">
-              {recommend?.map((recData) => (
-                <Recommendation data={recData} />
+              {unicefRecon?.map((recData) => (
+                <Recommendation recData={recData} />
               ))}
             </section>
           </div>

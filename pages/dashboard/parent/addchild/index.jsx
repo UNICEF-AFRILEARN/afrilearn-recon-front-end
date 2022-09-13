@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
@@ -7,7 +7,6 @@ import styles from '../../../../styles/parentdashboard.module.css';
 import ParentHeader from '../extra/header';
 import Middlebar from '../extra/middlebar';
 import Proaddvert from '../extra/proaddvert';
-import { useSelector } from 'react-redux';
 import { fetchRoles } from '../../../../redux/actions/auth';
 import { signUpChildInitiate } from '../../../../redux/actions/parent';
 
@@ -25,6 +24,7 @@ const Addmychild = () => {
   const [myChildClass, setMyChildClass] = useState("")
 
   const user_login = useSelector(state => state.auth);
+  const rolesCollected = useSelector((state) => state.auth)
   const {children} = useSelector(state => state.parentR);
 
   const token  = user_login.user.token;
@@ -35,7 +35,11 @@ const Addmychild = () => {
     children.enrolledCourses.length)
 
     childrenCourseCount = mappedCoursesCount.reduce((a,b) => a+b, 0)
-  console.log("Add child component", courseId, selectedCourse)
+  
+    let allClasses = rolesCollected?.roles?.courses
+  
+  
+    console.log("Add child component", rolesCollected?.roles?.courses)
 
 
   const getCourseId = () => {
@@ -127,7 +131,7 @@ const Addmychild = () => {
                          Select a class
                       </option>
            
-                      {childClasses && childClasses.map((childClass) => 
+                      {allClasses && allClasses.map((childClass) => 
                       <option 
                       placeholder='Select a Role'
                         >{childClass.name}

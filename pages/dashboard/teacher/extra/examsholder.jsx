@@ -9,6 +9,8 @@ import Link from "next/link";
 const Examsholder = () => {
     const { exams } = useSelector((state) => state.myExams);
     const [classId, setClassId] = useState("");
+    const [selection, setSelection] = useState(false);
+    const [selectionIndex, setSelectionIndex] = useState(0);
     const [questionId, setQuestionId] = useState("");
     const { user, registerUser } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
@@ -32,10 +34,14 @@ const Examsholder = () => {
     const goToAddExamQuestionPage = (id) => {
         Router.push({
             pathname: `/dashboard/teacher/examinations/add-exams-question/[_examId]`,
-            query: { _examId: id, classId: classId}
+            query: { _examId: id}
         })
     }
 
+    const handleSelectionClicked = () => {
+            setSelection(!selection)
+
+    }
 
     useEffect(() => {
         setClassId(user?.user?.classOwnership[0]?.enrolledCourse?.classId)
@@ -49,7 +55,7 @@ const Examsholder = () => {
     }, []);
   return (
     <div className={styles.examsholderwrapper}>
-           {exams?.exams && exams?.exams.map((exam) => 
+           {exams?.exams && exams?.exams.map((exam, index) => 
             <>
         <div className={styles.examsmainholder}>
             <div className={styles.examstitlewrapper}>
@@ -66,12 +72,16 @@ const Examsholder = () => {
                 <div className={styles.lastcolon}>
                 <h5 onClick={() => goToExamDetailPage(exam.id)}>VIEW SUBMISSIONS</h5>
                 <div className={styles.detailslistwrapper}>
-                    <BsThreeDotsVertical className={styles.threedotsbutton} />
-                    <ul className={styles.detailslist}>
+                    <BsThreeDotsVertical 
+                    className={styles.threedotsbutton}
+                    onClick={ handleSelectionClicked}
+                    />
+                   { selection === true &&
+                   <ul className={styles.detailslist}>
                         <li onClick={() => goToAddExamQuestionPage(exam.id)}>Edit questions</li>
                         <li>Unpublish exam</li>
                         <li>Send result to students</li>
-                    </ul>
+                    </ul>}
                 </div>
             </div>
         </div>

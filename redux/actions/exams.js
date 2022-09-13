@@ -80,8 +80,49 @@ export const updateExamQuestionFail = (error) => ({
     type: types.UPDATE_EXAMS_QUESTION_FAIL,
     payload: error
 });
+export const updateExamStart = () => ({
+    type: types.UPDATE_EXAMS_START
+});
+
+export const updateExamSuccess = (payload) => ({
+    type: types.UPDATE_EXAMS_SUCCESS,
+    payload
+});
+
+export const updateExamFail = (error) => ({
+    type: types.UPDATE_EXAMS_FAIL,
+    payload: error
+});
+export const deleteExamStart = () => ({
+    type: types.DELETE_EXAM_START
+});
+
+export const deleteExamSuccess = (payload) => ({
+    type: types.DELETE_EXAM_SUCCESS,
+    payload
+});
+
+export const deleteExamFail = (error) => ({
+    type: types.DELETE_EXAM_FAIL,
+    payload: error
+});
 
 
+export const deleteExamsInitiate = (id) =>  {
+    return function (dispatch) {
+        dispatch(deleteExamStart())
+        axios
+        .delete(`https://afrilearn-backend-01.herokuapp.com/api/v1/exams/question/${id}`)
+        .then((res) => {
+            dispatch(deleteExamSuccess(res.data.data))
+            console.log("From delete Exams API =>", res.data.data)
+        })
+        .catch((err) => {
+            dispatch(deleteExamFail(err))
+        })
+    }
+
+}
 export const fetchExamsInitiate = (token) =>  {
     return function (dispatch) {
         dispatch(fetchExamsStart())
@@ -103,11 +144,12 @@ export const fetchExamsInitiate = (token) =>  {
     }
 
 }
-export const fetchSingleExamDetailsInitiate = (token, examId) =>  {
+export const fetchSingleExamDetailsInitiate = (token, exam_id) =>  {
+    console.log("exam_id from single exams", exam_id)
     return function (dispatch) {
         dispatch(fetchSingleExamDetailsStart())
         axios
-        .get(`https://afrilearn-backend-01.herokuapp.com/api/v1/exams/instruction/${examId}`,
+        .get(`https://afrilearn-backend-01.herokuapp.com/api/v1/exams/instruction/${exam_id}`,
         {
             headers: {
                 "token": token,
@@ -115,8 +157,8 @@ export const fetchSingleExamDetailsInitiate = (token, examId) =>  {
             }
         })
         .then((res) => {
-            dispatch(fetchSingleExamDetailsSuccess(res.data.data))
-            console.log("From fetch Single Exams API =>", res.data.data)
+            dispatch(fetchSingleExamDetailsSuccess(res.data))
+            console.log("From fetch Single Exams API =>", res.data)
         })
         .catch((err) => {
             dispatch(fetchSingleExamDetailsFail(err))
@@ -124,11 +166,12 @@ export const fetchSingleExamDetailsInitiate = (token, examId) =>  {
     }
 
 }
-export const fetchSingleExamQuestionsInitiate = (token, examId) =>  {
+export const fetchSingleExamQuestionsInitiate = (token, exam_id) =>  {
+    console.log("exam_id from single examsQ", exam_id)
     return function (dispatch) {
         dispatch(fetchSingleExamQuestionsStart())
         axios
-        .get(`https://afrilearn-backend-01.herokuapp.com/api/v1/exams/exam-question/${examId}`,
+        .get(`https://afrilearn-backend-01.herokuapp.com/api/v1/exams/exam-question/${exam_id}`,
         {
             headers: {
                 "token": token,
@@ -145,13 +188,15 @@ export const fetchSingleExamQuestionsInitiate = (token, examId) =>  {
     }
 
 }
-export const addExamQuestionInitiate = (token, examId) =>  {
+export const addExamQuestionInitiate = (token, exam_id, type) =>  {
+    console.log("ExamId from add exam question", token)
     return function (dispatch) {
         dispatch(addExamQuestionStart())
         axios
         .post('https://afrilearn-backend-01.herokuapp.com/api/v1/exams/exam-question',
         {
-            examId
+            examId: exam_id,
+            type
         },
         {
             headers: {
@@ -169,14 +214,15 @@ export const addExamQuestionInitiate = (token, examId) =>  {
     }
 
 }
-export const updateExamQuestionInitiate = (questionId, question, options) =>  {
+export const updateExamQuestionInitiate = (questionId, question , options) =>  {
+    console.log(questionId)
     return function (dispatch) {
         // console.log("data from update API", data)
         dispatch(updateExamQuestionStart())
         axios
         .patch(`https://afrilearn-backend-01.herokuapp.com/api/v1/exams/exam-theory-question/${questionId}`,
         {
-            question, options
+            question , options
         })
         .then((res) => {
             dispatch(updateExamQuestionSuccess(res.data.data))
@@ -184,6 +230,28 @@ export const updateExamQuestionInitiate = (questionId, question, options) =>  {
         })
         .catch((err) => {
             dispatch(updateExamQuestionFail(err))
+        })
+    }
+
+}
+export const updateExamInitiate = (questionId,  publish) =>  {
+    console.log(questionId)
+    return function (dispatch) {
+        // console.log("data from update API", data)
+        dispatch(updateExamStart())
+        axios
+        .patch('https://afrilearn-backend-01.herokuapp.com/api/v1/exams/exam/62fff77c721b450016998f18',
+        {
+            
+                publish
+            
+        })
+        .then((res) => {
+            dispatch(updateExamSuccess(res.data.data))
+            console.log("From Update Exams API =>", res.data.data)
+        })
+        .catch((err) => {
+            dispatch(updateExamFail(err))
         })
     }
 

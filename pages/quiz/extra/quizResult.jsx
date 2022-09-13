@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 // <<<<<<< HEAD
 // import { PieChart, Pie, Cell, Legend} from 'recharts';
 // =======
-// import { PieChart, Pie, Sector, Cell, Legend, ResponsiveContainer } from 'recharts';
+import { PieChart, Pie, Sector, Cell, Legend, ResponsiveContainer } from 'recharts';
 
 
 const data = [
@@ -54,7 +54,7 @@ const QuizResult = () => {
             <h6>{resultData?.matric}</h6>
             <div className={styles.chartReview}>
             <div className="">
-            {/* <PieChart width={500} height={200} className={styles.chart}>
+            <PieChart width={500} height={200} className={styles.chart}>
           <Pie
             data={data}
             // cx="50%"
@@ -70,7 +70,7 @@ const QuizResult = () => {
             ))}
           </Pie>
           <Legend iconSize={5} align="right" layout="vertical" verticalAlign="middle"  />
-        </PieChart> */}
+        </PieChart>
             </div>
     </div>
      

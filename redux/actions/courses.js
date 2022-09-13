@@ -161,20 +161,18 @@ export const fetchReconLessonInitiate = (userId, token) =>  {
 
 }
 
-export const fetchUnicefReconInitiate = (schoollevel, subject, lesson) =>  {
+export const fetchUnicefReconInitiate = (schoollevel, reco_subject, lessonId) =>  {
     return function (dispatch) {
         dispatch(fetchUnicefRecoStart())
         axios
         .post('https://unicef-afrilearn-app.herokuapp.com/recommend',
         {   
-            schoollevel,
-            subject,
-            lesson  
+            schoollevel: "Primary One",
+            subject: "Agricultural Science",
+            lesson: "6012bdcecfe09249249f7e9c" 
         })
         .then((res) => {
             dispatch(fetchUnicefRecoSuccess(res.data))
-            console.log("Hello from UNICEF reconmendation API after call ===>", schoollevel, subject, lesson)
-            console.log("Hello from UNICEF reconmendation API after call ===>")
             console.log("From UNICEF reconmendation API =>", res.data)
         })
         .catch((err) => {

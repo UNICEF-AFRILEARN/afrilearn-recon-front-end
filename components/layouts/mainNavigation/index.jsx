@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect } from "react";
+import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from "react-redux";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import Link from "next/link";
@@ -13,14 +14,20 @@ import AppButton from "../../widgets/buttons/AppButton";
 import { BsPersonCircle } from 'react-icons/bs';
 
 const Navigation = () => {
+  const router = useRouter();
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [userRole, setUserRole] = useState("");
   const { user, registerUser } = useSelector(state => state.auth)
 
+
+
+  const handleLogout = () => {
+
+  }
+
+  console.log("From main navebar", user?.user?.classOwnership)
   useEffect(() => {
-    console.log("From main navebar", registerUser?.user?.role)
     const roleId = user?.user?.role || registerUser?.user?.role || user?.user?.id
-    console.log("From roleId main navebar", roleId)
     setUserRole(roleId)
   }, [user])
 
@@ -81,9 +88,13 @@ const Navigation = () => {
                           <div className={styles.linkswrapper}>
                             <a href="/payment">Add New class</a>
                             <a href="#">My Feeds</a>
-                            <a href="#">Manage Profile</a>
+                            <Link href="/dashboard/student/studentProfile">
+                              <a>Manage Profile</a>
+                            </Link>
                             <a href="#">Share Feedback</a>
-                            <a href="#">Log out</a>
+                            <a
+                            onClick={handleLogout}
+                            >Log out</a>
                           </div>
                       </div>
                   </div>
@@ -125,11 +136,16 @@ const Navigation = () => {
                           <BiDownArrow size={20} className={styles.profileavatar}/>
                           </Link>
                           <div className={styles.linkswrapper}>
-                            <a href="#">Add New class</a>
+                           
+                            <a href="/payment">Add New class</a>
                             <a href="#">My Feeds</a>
-                            <a href="#">Manage Profile</a>
+                            <Link href="/dashboard/student/studentProfile">
+                              <a>Manage Profile</a>
+                            </Link>
                             <a href="#">Share Feedback</a>
-                            <a href="#">Log out</a>
+                            <a 
+                            onClick={handleLogout}
+                            >Log out</a>
                           </div>
                       </div>
                   </div>
@@ -168,11 +184,16 @@ const Navigation = () => {
                           <BiDownArrow size={20} className={styles.profileavatar}/>
                           </Link>
                           <div className={styles.linkswrapper}>
-                            <a href="#">Add New class</a>
+                            <a href="/payment">Add New class</a>
+                          
                             <a href="#">My Feeds</a>
-                            <a href="#">Manage Profile</a>
+                            <Link href="/dashboard/student/studentProfile">
+                              <a>Manage Profile</a>
+                            </Link>
                             <a href="#">Share Feedback</a>
-                            <a href="#">Log out</a>
+                            <a 
+                            onClick={handleLogout}
+                            >Log out</a>
                           </div>
                       </div>
                   </div>
@@ -211,11 +232,15 @@ const Navigation = () => {
                           <BiDownArrow size={20} className={styles.profileavatar}/>
                           </Link>
                           <div className={styles.linkswrapper}>
-                            <a href="#">Add New class</a>
+                            <a href="/payment">Add New class</a>
                             <a href="#">My Feeds</a>
-                            <a href="#">Manage Profile</a>
+                            <Link href="/dashboard/student/studentProfile">
+                              <a>Manage Profile</a>
+                            </Link>
                             <a href="#">Share Feedback</a>
-                            <a href="#">Log out</a>
+                            <a 
+                            onClick={handleLogout}
+                            >Log out</a>
                           </div>
                       </div>
                   </div>

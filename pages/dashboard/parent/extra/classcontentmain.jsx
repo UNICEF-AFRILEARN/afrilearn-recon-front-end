@@ -20,8 +20,8 @@ const Classcontentmain = ({myChildren, course, classId}) => {
 
   let course_sorted = course?.course?.relatedSubjects
 
-  course_sorted?.map((course_sorted) => console.log("course_sorted ==>", course_sorted.mainSubjectId.name))
- console.log("course from course content main =>", course_sorted)
+  course_sorted?.map((course_sorted) => course_sorted.mainSubjectId.name)
+
   return (
     <div className={styles.contentmainwrapper}>
         <div className={styles.contentinnernavwrapper}>
