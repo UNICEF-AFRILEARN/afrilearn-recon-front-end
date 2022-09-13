@@ -191,7 +191,7 @@ const ClassNoteVideo = ({ classData }) => {
           </Accordion.Header>
           <Accordion.Body>
             {lessons?.map((lesson, i) => {
-              if (lesson.termId === terms[2]) {
+              if (lesson.termId === terms[1]) {
                 return (
                   <Accordion key={i} className={styles.accord}>
                     <Accordion.Item

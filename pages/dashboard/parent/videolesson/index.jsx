@@ -3,12 +3,12 @@ import React, {useState, useEffect} from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import CloseTwoToneIcon from '@material-ui/icons/CloseTwoTone';
-import MoreVertOutlinedIcon from '@material-ui/icons/MoreVertOutlined';
-import MicOutlinedIcon from '@material-ui/icons/MicOutlined';
-import ThumbUpAltOutlinedIcon from '@material-ui/icons/ThumbUpAltOutlined';
-import EventNoteSharpIcon from '@material-ui/icons/EventNoteSharp';
-import RemoveRedEyeSharpIcon from '@material-ui/icons/RemoveRedEyeSharp';
+// import CloseTwoToneIcon from '@material-ui/icons/CloseTwoTone';
+// import MoreVertOutlinedIcon from '@material-ui/icons/MoreVertOutlined';
+// import MicOutlinedIcon from '@material-ui/icons/MicOutlined';
+// import ThumbUpAltOutlinedIcon from '@material-ui/icons/ThumbUpAltOutlined';
+// import EventNoteSharpIcon from '@material-ui/icons/EventNoteSharp';
+// import RemoveRedEyeSharpIcon from '@material-ui/icons/RemoveRedEyeSharp';
 
 
 
@@ -20,7 +20,7 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 1000,
-  height: 730,
+  height: 530,
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
@@ -73,7 +73,7 @@ const VideoDetailPage = (
           component="h2"
           onClick={closeModal}
           >
-            <CloseTwoToneIcon />
+           X {/* <CloseTwoToneIcon /> */}
           </Typography>
           <Typography id="modal-modal-description" sx={{ mb: 2 }}>
           <video 
@@ -87,16 +87,16 @@ const VideoDetailPage = (
           >
           </video>
           <Typography >
-          <EventNoteSharpIcon />
-          <MicOutlinedIcon />
+          {/* <EventNoteSharpIcon />
+          <MicOutlinedIcon /> */}
           <Typography>
-          <ThumbUpAltOutlinedIcon />
+          {/* <ThumbUpAltOutlinedIcon /> */}
           10 likes
           </Typography>
-          <MoreVertOutlinedIcon />
+          {/* <MoreVertOutlinedIcon /> */}
           </Typography>
           <Typography>
-            <RemoveRedEyeSharpIcon />
+            {/* <RemoveRedEyeSharpIcon /> */}
           </Typography>
           </Typography>
         </Box>

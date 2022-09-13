@@ -28,6 +28,32 @@ export const addNewTeacherFail = (error) => ({
     type: types.ADD_NEW_TEACHER_FAIL,
     payload: error
 });
+export const deleteTeacherStart = () => ({
+    type: types.DELETE_TEACHER_START
+});
+
+export const deleteTeacherSuccess = (payload) => ({
+    type: types.DELETE_TEACHER_SUCCESS,
+    payload
+});
+
+export const deleteTeacherFail = (error) => ({
+    type: types.DELETE_TEACHER_FAIL,
+    payload: error
+});
+export const deleteStudentStart = () => ({
+    type: types.DELETE_STUDENT_START
+});
+
+export const deleteStudentSuccess = (payload) => ({
+    type: types.DELETE_STUDENT_SUCCESS,
+    payload 
+});
+
+export const deleteStudentFail = (error) => ({
+    type: types.DELETE_STUDENT_FAIL,
+    payload: error
+});
 export const addNewStudentStart = () => ({
     type: types.ADD_NEW_STUDENT_START
 });
@@ -137,7 +163,8 @@ export const addNewAdminInitiate = (fullName, email, password, schoolId, confirm
                 console.log("Add Student from School API ===>", res.data)
             })
             .catch((err) => {
-                dispatch(addNewStudentFail(err))
+                console.log("from the API call ==>", err.response.data)
+                dispatch(addNewStudentFail(err.response.data))
             })
         }
 
@@ -173,6 +200,46 @@ export const addNewAdminInitiate = (fullName, email, password, schoolId, confirm
             })
             .catch((err) => {
                 dispatch(fetchSchoolMemberClassFail(err))
+            })
+        }
+    
+    }
+
+    export const deleteTeacherInitiate = (userId, schoolId) =>  {
+        console.log("userId from API call", userId)
+        return function (dispatch) {
+            dispatch(deleteTeacherStart())
+            axios
+            .delete('https://afrilearn-backend-01.herokuapp.com/api/v1/schools/delete-teacher-account',
+            {
+                data:{userId: userId, schoolId: schoolId}
+            }
+            )
+            .then((res) => {
+                dispatch(deleteTeacherSuccess(res.data))
+                console.log("Hello from delete teacher API ===>", res.data)
+            })
+            .catch((err) => {
+                dispatch(deleteTeacherFail(err))
+            })
+        }
+    
+    }
+    export const deleteStudentInitiate = (userId, schoolId) =>  {
+        return function (dispatch) {
+            dispatch(deleteStudentStart())
+            axios
+            .delete('https://afrilearn-backend-01.herokuapp.com/api/v1/schools/delete-student-account',
+            {
+                data:{userId: userId, schoolId: schoolId}
+            }
+            )
+            .then((res) => {
+                dispatch(deleteStudentSuccess(res.data))
+                console.log("Hello from delete teacher API ===>", res.data)
+            })
+            .catch((err) => {
+                dispatch(deleteStudentFail(err))
             })
         }
     

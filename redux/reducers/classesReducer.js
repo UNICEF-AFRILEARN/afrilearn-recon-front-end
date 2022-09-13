@@ -8,15 +8,34 @@ const initialState = {
     postAnnouncement: [],
     classDetails: [],
     classMembers: [],
+    classMemberStatusChange: [],
     classInvite: [],
     newClasswork: [],
     classContents: [],
     classSubjects: [],
+    announcementComment:[],
     error: [],
 }
 
 export const classesReducer = (state = initialState, { type, payload} ) => {
     switch (type) {
+        case types.ADD_COMMENT_TO_TEACHER_ANNOUNCEMENT_START:
+            return {
+                loading: true,
+                ...state
+            };
+    
+        case types.ADD_COMMENT_TO_TEACHER_ANNOUNCEMENT_SUCCESS:
+            return {
+                loading: false,
+                announcementComment: payload
+            };
+    
+        case types.ADD_COMMENT_TO_TEACHER_ANNOUNCEMENT_FAIL:
+            return {
+                loading: false,
+                error: payload
+            };
         case types.MAKE_ANNOUNCEMENT_START:
             return {
                 loading: true,
@@ -159,6 +178,23 @@ export const classesReducer = (state = initialState, { type, payload} ) => {
               return{
                   loading: false,
                 ...state,
+                error: payload
+            };
+        case types.ACCEPT_REJECT_CLASS_MEMBER_START:
+            return {
+                loading: true,
+                ...state
+            };
+    
+        case types.ACCEPT_REJECT_CLASS_MEMBER_SUCCESS:
+            return {
+                loading: false,
+                classMemberStatusChange: payload
+            };
+    
+        case types.ACCEPT_REJECT_CLASS_MEMBER_FAIL:
+              return{
+                  loading: false,
                 error: payload
             };
     

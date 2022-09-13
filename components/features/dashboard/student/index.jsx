@@ -1,5 +1,6 @@
 import styles from "./student.module.css";
 import SubHeading from "./extra/subHeading";
+
 import PastQuestionaira from "./extra/pastQuestionaira";
 import TopInClass from "./extra/topInClass";
 import Recommendation from "./extra/recommendation";
@@ -26,7 +27,7 @@ import {
   fetchSubjectInitiate,
   fetchTopInClassInitiate,
 } from "../../../../redux/actions/subject";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 import {
   // fetchCourseInitiate,
   fetchReconLessonInitiate,
@@ -45,17 +46,19 @@ const Dashboard = () => {
   const { user, registerUser } = useSelector((state) => state.auth);
   // const { registerUser } = useSelector((state) => state.auth);
   const subject = useSelector((state) => state.mySubjectCourse);
-  console.log(subject);
+  console.log("subject, subject", subject);
 
   console.log(
     "Register registerUser from dashboard INDEX =====>",
     registerUser.user,
   );
-  console.log("Register user from dashboard INDEX =====>", user);
+  console.log("unicefRecon from dashboard INDEX =====>", unicefRecon);
 
   const userId = "62a0bc984af2d90016b72096";
   const token = user.token;
   const lessonId = "6012c2a7cfe09249249f7f9c";
+  const schoollevel = "Primary One";
+  const reco_subject = "Agricultural Science";
   // To be changed later
 
   const personData = {
@@ -74,8 +77,9 @@ const Dashboard = () => {
     dispatch(fetchGetWebInitiate(person_id, token));
     // dispatch(fetchLessonsInitiate());
     dispatch(fetchSingleLessonInitiate(lessonId));
+    dispatch(fetchLessonsInitiate());
     dispatch(fetchActivitiesInitiate(token));
-    // dispatch(fetchUnicefReconInitiate(schoollevel, Subject, lesson));
+    dispatch(fetchUnicefReconInitiate(schoollevel, reco_subject, lessonId));
     dispatch(fetchReconLessonInitiate(userId, token));
     // dispatch(fetchSubjectInitiate(person_id, token));
     dispatch(fetchGetFavouriteInitiate(token));
@@ -297,14 +301,14 @@ const Recommended = ({ recommend, unicefRecon, lessons }) => {
   // const unicefRecons = Object.values(unicefRecon);
   return (
     <>
-      {recommend !== 0 && (
+      {unicefRecon !== 0 && (
         <>
           <SubHeading title="Recommended For You" />
 
           <div className={styles.contai}>
             <section className="parnet-frag-color">
-              {recommend?.map((recData) => (
-                <Recommendation data={recData} />
+              {unicefRecon?.map((recData) => (
+                <Recommendation recData={recData} />
               ))}
             </section>
           </div>

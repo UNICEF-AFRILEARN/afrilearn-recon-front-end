@@ -4,7 +4,9 @@
   column-gap: 5%;
   max-width: 80%;
 }
-
+.classlink{
+  cursor:pointer;
+}
 .studentProfileAvatar {
   background: url("/assets/img/features/dashboard/student/Ellipse 1.png");
   height: 210px;
@@ -39,6 +41,7 @@
   background-repeat: no-repeat;
   background-position: 50%;
   background-size: contain;
+  cursor:pointer;
 }
 
 .studentProfilePenIcon {
@@ -88,4 +91,8 @@
   background-size: contain;
   border: 0;
   margin: auto;
+}
+
+.text-dark h1{
+  background-color: red;
 }
