@@ -82,11 +82,17 @@ const Dashboard = () => {
 export default Dashboard;
 
 export const HeropageWelcome = () => {
-  const [classId, setClassId] = useState("");
   const { registerUser, user } = useSelector((state) => state.auth);
+  const [classId, setClassId] = useState("");
+  const [copyMessage, setCopyMessage] = useState("Copy Class Link");
+  const [referal, setReferal] = useState(`https://myafrilearn.com/register?referralCode=${user.user?.id}`);
 
 
-  // const invitationLink = `https://myafrilearn.com/join-class?email=${email}&classId=${classId}`;
+
+  const copyReferalCode = (link) => {
+    navigator.clipboard.writeText(link)
+    setCopyMessage("Class Link Copied")
+  }
 
 
   // handleCopy = () => {
@@ -150,7 +156,7 @@ export const HeropageWelcome = () => {
                     </Row>
                   </Col>
                 </Row>
-                <Row className="p-4">
+                <Row className="">
                   <Col md={2}>
                     <p className="text-dark">Class code: {registerUser.user?.classOwnership[0].classCode || user.user?.classOwnership[0].classCode}</p>
                   </Col>
@@ -158,10 +164,10 @@ export const HeropageWelcome = () => {
                     <Row>
                       <Col md={2} className={`${styles.stateComponent1}`}></Col>
                       <Col>
-                        <p className="m-auto" style={{ color: "#00D9B6" }}>
+                        <p className={`${styles.classlink} m-auto`} style={{ color: "#00D9B6" }}>
                           <u
-                            // onClick={handleCopy}
-                          >Copy Class Link</u>
+                            onClick={() => copyReferalCode(referal)}
+                          >{copyMessage}</u>
                         </p>
                       </Col>
                     </Row>
@@ -188,8 +194,8 @@ export const HeropageWelcome = () => {
                       </a>
                     </Link>
                   </Col>
-                  <Col md={3} className="">
-                  </Col>
+                  {/* <Col md={3} className=""> */}
+                  {/* </Col> */}
                 </Row>
               </Row>
             </Col>

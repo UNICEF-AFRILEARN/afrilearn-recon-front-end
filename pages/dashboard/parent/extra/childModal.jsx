@@ -11,20 +11,6 @@ const ChildModal = ({show, myChildren, studentId}) => {
   console.log("data from childmodal", myChildren)
   return (
 
-    // <div className={styles.modalwrapper}>
-    //     <div className={styles.modaltitlewrapper}>
-    //       <ul>
-    //     { data && data.filter(student => student.id === studentId).map((filteredStudent) =>   
-    //       <>
-    //         <li>{filteredStudent.id}</li>
-    //         <li>{filteredStudent.studentName}</li>
-    //         <li>{filteredStudent.studentEmail}</li>
-    //         <li>{filteredStudent.studentClass}</li>
-    //       </>
-    //     )}
-    //       </ul> 
-    //     </div>
-    // </div>
     <Modal show aria-labelledby="contained-modal-title-vcenter">
       <Modal.Header >
         <Modal.Title id="contained-modal-title-vcenter" className={` ${styles.modaltitle} d-flex flex-row justify-content-between`}>

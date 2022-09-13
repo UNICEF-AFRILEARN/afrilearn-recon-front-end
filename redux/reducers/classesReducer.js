@@ -8,6 +8,7 @@ const initialState = {
     postAnnouncement: [],
     classDetails: [],
     classMembers: [],
+    classMemberStatusChange: [],
     classInvite: [],
     newClasswork: [],
     classContents: [],
@@ -177,6 +178,23 @@ export const classesReducer = (state = initialState, { type, payload} ) => {
               return{
                   loading: false,
                 ...state,
+                error: payload
+            };
+        case types.ACCEPT_REJECT_CLASS_MEMBER_START:
+            return {
+                loading: true,
+                ...state
+            };
+    
+        case types.ACCEPT_REJECT_CLASS_MEMBER_SUCCESS:
+            return {
+                loading: false,
+                classMemberStatusChange: payload
+            };
+    
+        case types.ACCEPT_REJECT_CLASS_MEMBER_FAIL:
+              return{
+                  loading: false,
                 error: payload
             };
     

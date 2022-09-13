@@ -12,7 +12,7 @@ deleteStudentInitiate
 
 
 const Schooldata = () => {
-    const { schoolProfile, classMembers } = useSelector((state) => state.school);
+    const { schoolProfile, classMembers, deletedStudent, deletedTeacher } = useSelector((state) => state.school);
     const { user, registerUser, roles } = useSelector((state) => state.auth);
     const [classSelected, setClassSelected ] = useState('');
     const [classId, setClassId] = useState('');
@@ -53,12 +53,12 @@ const Schooldata = () => {
 
     useEffect(() => {
       dispatch(fetchSchoolMemberClassInitiate(classId))
-    },[classId]);
+    },[classId, deletedStudent, deletedTeacher]);
 
 
     useEffect(() => {
       dispatch(fetchSchoolProfileInitiate(schoolId))
-    },[classSelected])
+    },[classSelected, deletedStudent, deletedTeacher])
 
    
     return (

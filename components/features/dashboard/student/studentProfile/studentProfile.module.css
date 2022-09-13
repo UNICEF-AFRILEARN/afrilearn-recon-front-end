@@ -4,7 +4,9 @@
   column-gap: 5%;
   max-width: 80%;
 }
-
+.classlink{
+  cursor:pointer;
+}
 .studentProfileAvatar {
   background: url("/assets/img/features/dashboard/student/Ellipse 1.png");
   height: 210px;

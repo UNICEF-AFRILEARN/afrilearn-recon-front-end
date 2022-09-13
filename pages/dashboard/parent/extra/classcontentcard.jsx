@@ -67,9 +67,14 @@ const share_course_to_term = () => {
 
 share_course_to_term();
 
+console.log("course_sorted from card", course_sorted)
 
 const get_student_class_name = (student_class) => {
   console.log(student_class)
+//   Router.push({
+//     pathname: `/dashboard/performance/[_userId]`,
+//     query: { _userId: _userId[0], course_id:_courseId}
+// })
 }
   
   const closeModal = () => {
@@ -82,8 +87,9 @@ const get_student_class_name = (student_class) => {
   }
 
   //function to get video url:
-  const playVideo =(url) => {
-    setVideoUrls(url)
+  const playVideo =(url, id) => {
+    console.log("video id from view", url)
+    // setVideoUrls(url)
   }
   const toggleItem = (id) => {
     if(selectedItem === id){
@@ -108,9 +114,9 @@ const get_student_class_name = (student_class) => {
                     <ul>
                           <li>Class note</li>
                           <li>Practice quiz</li>
-                          <li 
-                              onClick={() => {playVideo(`${first_term_course.videoUrls[0]?.videoUrl}`); setTerm_id_for_video(first_term_course.termId); get_student_class_name()}}>Video link
-                          </li>
+                          {/* <li 
+                              onClick={() => playVideo(first_term_course.termId)}>Video link
+                          </li> */}
                     </ul>
                </div> 
                 )
@@ -131,7 +137,7 @@ const get_student_class_name = (student_class) => {
                           <li>Class note</li>
                           <li>Practice quiz</li>
                           <li 
-                               onClick={() => {playVideo(`${second_term_course.videoUrls[0]?.videoUrl}`); setTerm_id_for_video(second_term_course.termId)}}>Video link
+                               onClick={ playVideo(second_term_course.courseId)}>Video link
                           </li>
                     </ul>
                </div> 
@@ -151,9 +157,9 @@ const get_student_class_name = (student_class) => {
                     <ul>
                           <li>Class note</li>
                           <li>Practice quiz</li>
-                          <li 
+                          {/* <li 
                                onClick={() => {playVideo(`${third_term_course.videoUrls[0]?.videoUrl}`); setTerm_id_for_video( third_term_course.termId)}}>Video link
-                          </li>
+                          </li> */}
                           
                     </ul>
                </div> 

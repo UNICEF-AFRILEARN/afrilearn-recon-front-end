@@ -1,17 +1,29 @@
 import React, { useState, useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
-import { Form, InputGroup, FormControl} from 'react-bootstrap';
+import { Button, Form, InputGroup, FormControl} from 'react-bootstrap';
 import styles from '../../../../styles/teacher.module.css'; 
 import { BsPlus } from 'react-icons/bs';
 import { BiNote } from 'react-icons/bi';
 import { AiOutlineArrowsAlt } from 'react-icons/ai';
 import { updateExamQuestionInitiate, fetchSingleExamQuestionsInitiate, fetchExamsInitiate } from '../../../../redux/actions/exams';
 import Questiontitle from './questiontitle';
+import Addexambutton from './addexambutton';
 
-const Questionpanel = ({index, showObjQuestionOptions}) => {
-  const dispatch = useDispatch();
+const Questionpanel = ({
+  index, 
+  showObjQuestionOptions,
+  showObjQuestions,
+  handleGetQuestions,
+  examQuestion,
+  singleQuestion,
+  questionType,
+  setQuestionType
+  // singleExamQuestions
+}) => {
   const { newExamQuestion, exams, singleExamQuestions } = useSelector((state) => state.myExams);
+  const { registerUser, user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
   const [questionId, setQuestionId] = useState("")
 //   const [data, setData] = useState({
 //       question: "",
@@ -23,14 +35,11 @@ const Questionpanel = ({index, showObjQuestionOptions}) => {
   const [optionTwo, setOptionTwo ] = useState("")
   const [optionThree, setOptionThree ] = useState("")
   const [optionFour, setOptionFour ] = useState("")
+  const [examQuestionType, setExamQuestionType ] = useState("")
   const [examId, setExamId] = useState("");
   const { query } = useRouter();
-  //to be change after persist
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjJmNGFkOGM5OWJjNjgwMDE2NjE2NTFkIiwicm9sZSI6IjYwMmYzY2UzOWIxNDZiMzIwMWMyZGMxZCIsImZ1bGxOYW1lIjoiSm9obiBkb2UifSwiaWF0IjoxNjYxMTA0Njk0LCJleHAiOjE2NjM2OTY2OTR9.Srnh1RVV1p5sVrYMAgNpnCiiyFHxVYwFaSUHb32xSYI"
+  const token = user.token
 
-
- 
-    console.log("Index ===> from panel", index + 1)
   
   const currentExam = [];
   const fiterExam = () => {
@@ -43,10 +52,12 @@ const Questionpanel = ({index, showObjQuestionOptions}) => {
   }
 
   fiterExam()
-  console.log("questionId from onjective", questionId)
 
-    let options = [optionOne, optionTwo, optionThree]
-    let question = questionBody
+  let examsQuestionType = currentExam[0]?.questionTypeId.name
+  // console.log("singleQuestion from use params question panel", singleQuestion)
+
+    let options = [singleQuestion.optionOne, singleQuestion.optionTwo, singleQuestion.optionThree, singleQuestion.optionFour]
+    let question = singleQuestion.question
   let data = {
     options,
     question
@@ -54,19 +65,21 @@ const Questionpanel = ({index, showObjQuestionOptions}) => {
   }
 
 
+  console.log("questionId from ob", questionId)
+
   const handleSubmit = (e) => {
       e.preventDefault()
-      console.log("data from ob", data)
-        dispatch(updateExamQuestionInitiate(questionId, question, options))
+      console.log("e =======", e.target)
+        dispatch(updateExamQuestionInitiate(questionId, question , options))
     }
 
-    useEffect(() =>{
-        // setQuestionId(newExamQuestion?.examQuestion?.id)
-        setQuestionId("630274ab7412b500162680f5")
-    }, []);
-    useEffect(() =>{
-        setExamId("62fff77c721b450016998f18")
-    }, []);
+    // useEffect(() =>{
+    //     // setQuestionId(newExamQuestion?.examQuestion?.id)
+    //     setQuestionId("630274ab7412b500162680f5")
+    // }, []);
+    // useEffect(() =>{
+    //     setExamId(query.examId[0])
+    // }, [query]);
 
     useEffect(() => {
         dispatch(fetchExamsInitiate(token))
@@ -84,80 +97,113 @@ const Questionpanel = ({index, showObjQuestionOptions}) => {
     //   }, [optionOne, optionTwo, optionThree])
 
   return (
+    // showObjQuestionOptions === index + 1 && 
     <div>
-       {showObjQuestionOptions === index + 1 &&
-        <>
-        <Questiontitle index={index}/>
-            <div className={styles.questionpanelwrapper}>
-            <div className={styles.questionpanelheader}>
-                <h5>Open Edit Panel</h5> <span>< AiOutlineArrowsAlt size={30}/>
-                </span>
-            </div>
-         
-        </div>
-        <div className={styles.mainformwrapper}>
-        <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-4" controlId="formBasicEmail">
-                    <Form.Control 
-                    as="textarea" 
-                    rows="5" 
-                    name="address"
-                    value={questionBody}
-                    onChange={(e) => setQuestionBody(e.target.value)}
-                    placeholder="Type question here..." 
-                    />
-            </Form.Group>
-            <h5>Options</h5>
-        <div className={styles.mainoptionwrapper}>
-            <div className={styles.optionwrapper}>
-            <InputGroup className="mb-3">
-                <InputGroup.Text>A</InputGroup.Text>
-                <FormControl 
-                aria-label="Amount (to the nearest dollar)"
-                value={optionOne}
-                onChange={(e) => setOptionOne(e.target.value)}
-                />
-                <InputGroup.Text><BiNote /></InputGroup.Text>
-            </InputGroup>
-            <InputGroup className="mb-3">
-                <InputGroup.Text>B</InputGroup.Text>
-                <FormControl 
-                aria-label="Amount (to the nearest dollar)"
-                value={optionTwo}
-                onChange={(e) => setOptionTwo(e.target.value)}
-                />
-                <InputGroup.Text><BiNote /></InputGroup.Text>
-            </InputGroup>
-            <InputGroup className="mb-3">
-                <InputGroup.Text>C</InputGroup.Text>
-                <FormControl 
-                aria-label="Amount (to the nearest dollar)" 
-                value={optionThree}
-                onChange={(e) => setOptionThree(e.target.value)}
-                />
-                <InputGroup.Text><BiNote /></InputGroup.Text>
-            </InputGroup>
+      {/* { showObjQuestions === 0 && 
+          <Addexambutton />
+      } */}
+ 
+       {showObjQuestionOptions === index + 1 && 
+          <>
+          <Questiontitle 
+            singleQuestion={singleQuestion}
+          index={examQuestion.indexOf(singleQuestion) }
+          />
+              <div className={styles.questionpanelwrapper}>
+              <div className={styles.questionpanelheader}>
+                  <h5>Open Edit Panel</h5> <span>< AiOutlineArrowsAlt size={30}/>
+                  </span>
+              </div>
+           
+          </div>
+         { singleQuestion &&
+         <div 
+          key={singleQuestion.id}
+          className={styles.mainformwrapper}>
             
-            </div>
-        </div>
-        <Form.Group className="mb-4" controlId="formBasicEmail">
-                        <Form.Label>Correct Option</Form.Label>
-                        <Form.Control type="text" placeholder="Select corect option" />
-                    </Form.Group>
-                    <Form.Group className="mb-4" controlId="formBasicEmail">
-                        <Form.Label>Assign mark(score)</Form.Label>
-                        <Form.Control type="text" placeholder="2" />
-                    </Form.Group>
-                    <Form.Check
-                        checked
-                        type="checkbox"
-                        label="Use this for all questions"
-                        className={styles.checkboxcolor}
-                    />
-                    <button>Save changes</button>
-        </Form>
-        </div>
-       </>
+          <Form onSubmit={handleSubmit}> 
+              <Form.Group className="mb-4" controlId="formBasicEmail">
+              <Form.Control 
+              as="textarea" 
+              rows="5" 
+              name="question"
+              defaultValue={singleQuestion.question}
+              onChange={(e) => {handleGetQuestions(e, index), setQuestionId(singleQuestion.id)}}
+              placeholder="Type question here..." 
+              />
+            </Form.Group>
+             
+          { singleQuestion.type !== 'Theory' &&
+            <>
+          <h5>Options</h5>
+          <div className={styles.mainoptionwrapper}>
+              <div className={styles.optionwrapper}>
+              <InputGroup className="mb-3">
+                  <InputGroup.Text>A</InputGroup.Text>
+                  <FormControl 
+                  aria-label="Amount (to the nearest dollar)"
+                  name='optionOne'
+                  defaultValue={singleQuestion?.options[0]}
+                  onChange={(e) => handleGetQuestions(e, index)}
+                  />
+                  <InputGroup.Text><BiNote /></InputGroup.Text>
+              </InputGroup>
+              <InputGroup className="mb-3">
+                  <InputGroup.Text>B</InputGroup.Text>
+                  <FormControl 
+                  aria-label="Amount (to the nearest dollar)"
+                  name='optionTwo'
+                  defaultValue={singleQuestion?.options[1]}
+                  onChange={(e) => handleGetQuestions(e, index)}
+                  />
+                  <InputGroup.Text><BiNote /></InputGroup.Text>
+              </InputGroup>
+              <InputGroup className="mb-3">
+                  <InputGroup.Text>C</InputGroup.Text>
+                  <FormControl 
+                  aria-label="Amount (to the nearest dollar)" 
+                  defaultValue={singleQuestion?.options[2]}
+                  name='optionThree'
+                  onChange={(e) => handleGetQuestions(e, index)}
+                  />
+                  <InputGroup.Text><BiNote /></InputGroup.Text>
+              </InputGroup>
+              <InputGroup className="mb-3">
+                  <InputGroup.Text>C</InputGroup.Text>
+                  <FormControl 
+                  aria-label="Amount (to the nearest dollar)" 
+                  defaultValue={singleQuestion?.options[3]}
+                  name='optionFour'
+                  onChange={(e) => handleGetQuestions(e, index)}
+                  />
+                  <InputGroup.Text><BiNote /></InputGroup.Text>
+              </InputGroup>
+              
+              </div>
+          </div>
+                      <Form.Group className="mb-4" controlId="formBasicEmail">
+                          <Form.Label>Correct Option</Form.Label>
+                          <Form.Control type="text" placeholder="Select corect option" />
+                      </Form.Group>
+                      <Form.Group className="mb-4" controlId="formBasicEmail">
+                          <Form.Label>Assign mark(score)</Form.Label>
+                          <Form.Control type="text" placeholder="2" />
+                      </Form.Group>
+                      {/* <Form.Check
+                          checked
+                          type="checkbox"
+                          label="Use this for all questions"
+                          className={styles.checkboxcolor}
+                      /> */}
+                      </>
+                      }
+                      <Button className="w-100 mt-3" type="submit">
+                    Save changes
+                  </Button>
+          </Form>
+          </div>
+          }
+         </>
        }
     </div>
   )

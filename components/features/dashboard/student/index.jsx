@@ -36,29 +36,29 @@ import { Button, Col, Modal, Row, Tooltip } from "react-bootstrap";
 const Dashboard = () => {
   const dispatch = useDispatch();
   const { reconLesson, lessons, unicefRecon, activities } = useSelector(
-    (state) => state.Mycourses,
-  );
+    (state) => state.Mycourses);
   const { user, registerUser } = useSelector((state) => state.auth);
   // const { registerUser } = useSelector((state) => state.auth);
   const subject = useSelector((state) => state.mySubjectCourse);
-  console.log(subject);
+  console.log("subject, subject", subject);
 
   console.log(
     "Register registerUser from dashboard INDEX =====>",
     registerUser.user,
   );
-  console.log("Register user from dashboard INDEX =====>", user);
+  console.log("unicefRecon from dashboard INDEX =====>", unicefRecon);
 
   const userId = "62a0bc984af2d90016b72096";
   const token = user.token;
   const lessonId = "6012c2a7cfe09249249f7f9c";
-
+  const schoollevel = 'Primary One'
+  const reco_subject = 'Agricultural Science'
   
   useEffect(() => {
     dispatch(fetchLessonsInitiate());
     dispatch(fetchSingleLessonInitiate(lessonId));
     dispatch(fetchActivitiesInitiate(token));
-    // dispatch(fetchUnicefReconInitiate(schoollevel, subject, lesson))
+    dispatch(fetchUnicefReconInitiate(schoollevel, reco_subject, lessonId))
     dispatch(fetchReconLessonInitiate(userId, token));
     // dispatch(fetchCourseInitiate());
   }, [
@@ -84,10 +84,10 @@ const Dashboard = () => {
 
   useEffect(() => {
     // dispatch(fetchLessonsInitiate());
-    dispatch(fetchSingleLessonInitiate(lessonId));
-    dispatch(fetchActivitiesInitiate(token));
-    // dispatch(fetchUnicefReconInitiate(schoollevel, Subject, lesson));
-    dispatch(fetchReconLessonInitiate(userId, token));
+    // dispatch(fetchSingleLessonInitiate(lessonId));
+    // dispatch(fetchActivitiesInitiate(token));
+    // dispatch(fetchUnicefReconInitiate(schoollevel, reco_subject, lessonId));
+    // dispatch(fetchReconLessonInitiate(userId, token));
     dispatch(fetchSubjectInitiate(person_id, token));
     // dispatch(fetchCourseInitiate());
   }, [
@@ -193,14 +193,14 @@ const Recommended = ({ recommend, unicefRecon, lessons }) => {
   // const unicefRecons = Object.values(unicefRecon);
   return (
     <>
-      {recommend !== 0 && (
+      {unicefRecon !== 0 && (
         <>
           <SubHeading title="Recommended For You" />
 
           <div className={styles.contai}>
             <section className="parnet-frag-color">
-              {recommend?.map((recData) => (
-                <Recommendation data={recData} />
+              {unicefRecon?.map((recData) => (
+                <Recommendation recData={recData} />
               ))}
             </section>
           </div>

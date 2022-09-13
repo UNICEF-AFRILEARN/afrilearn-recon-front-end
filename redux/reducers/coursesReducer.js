@@ -50,7 +50,6 @@ const coursesReducer = (state = initialState, { type, payload} ) => {
                 }
         case types.FETCH_UNICEF_RECOMEND_FAIL:
             return {
-                ...state,
                 error: payload
             }
         case types.FETCH_ACTIVITIES_START:
