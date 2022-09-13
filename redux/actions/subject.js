@@ -10,6 +10,42 @@ export const fetchSubjectsStart = () => ({
   type: types.FETCH_SUBJECT_START,
 });
 
+export const inputChange = (name, value) => async (dispatch) => {
+  try {
+    dispatch({
+      type: types.PAST_QUESTIONS_INPUT_CHANGE,
+      payload: {
+        name: name,
+        value: value,
+      },
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const populateSubmittedAnswer = (answer) => async (dispatch) => {
+  try {
+    dispatch({
+      type: types.POPULATE_SUBMITTED_ANSWER,
+      payload: {
+        value: answer,
+      },
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const fetchTeachSubjectsStart = (data) => ({
+  type: types.FETCH_Teacher_SUBJECT_SUCCESS,
+  payload: data,
+});
+export const fetchTeaSubsStart = (data) => ({
+  type: types.FETCH_Teacher_SINGLESUBJECT_SUCCESS,
+  payload: data,
+});
+
 export const fetchSubjectsSuccess = (subject) => ({
   type: types.FETCH_SUBJECT_SUCCESS,
   payload: subject,
@@ -74,17 +110,45 @@ export const fetchSubjectsFail = (error) => ({
   payload: error,
 });
 
-export const fetchCoursesInitiate = (courseId) => {
+export const fetchTeachCoursesInitiate = (classId) => {
   return function (dispatch) {
     dispatch(fetchSubjectsStart());
     axios
       .get(
-        `https://afrilearn-backend-01.herokuapp.com/api/v1/courses/${courseId}/subjects`,
+        `https://afrilearn-backend-01.herokuapp.com/api/v1/classes/${classId}/subjects`,
       )
       .then((res) => {
         console.log(res);
-        // dispatch(fetchSubjectsSuccess(res.data.data));
+        // dispatch(fetchTeachSubjectsStart(res.data.data));
       });
+  };
+};
+export const getSchoolCourses = (schoolId) => {
+  return function (dispatch) {
+    dispatch(fetchSubjectsStart());
+    axios({
+      method: "get",
+      url: `${url}schools/${schoolId}/courses`,
+    }).then((res) => {
+      console.log(res.data.data);
+      dispatch(fetchTeaSubsStart(res.data.data));
+      // dispatch((res.data.data));
+    });
+  };
+};
+export const assignContent = (data, classId, token) => {
+  return function (dispatch) {
+    dispatch(fetchSubjectsStart());
+    axios({
+      method: "post",
+      url: `${url}classes/${classId}/assign-content`,
+      headers: headers(token),
+      data,
+    }).then((res) => {
+      console.log(res.data.status);
+      dispatch(fetchTeachSubjectsStart(res.data.status));
+      // dispatch((res.data.data));
+    });
   };
 };
 export const fetchGetFavouriteInitiate = (token) => {
@@ -113,16 +177,15 @@ export const fetchGetUnfinishedVideosInitiate = (token) => {
     });
   };
 };
-export const fetchGetWebInitiate = (sub_id, token) => {
+export const fetchGetWebInitiate = (sub_id, token, user) => {
   return function (dispatch) {
     dispatch(fetchSubjectsStart());
     axios({
       method: "post",
       url: `${url}dashboard/web`,
       headers: headers(token),
-      data: { enrolledCourseId: "6299129385ce1500162bf187" },
+      data: { enrolledCourseId: sub_id },
     }).then((res) => {
-      // console.log(res);
       dispatch(fetchWeb(res.data.data));
       // dispatch((res.data.data));
     });
@@ -136,24 +199,25 @@ export const fetchTopInClassInitiate = (sub_id, token) => {
       method: "post",
       url: `${url}dashboard/topTen`,
       headers: headers(token),
-      data: { enrolledCourseId: "6299129385ce1500162bf187" },
+      data: { enrolledCourseId: sub_id },
     }).then((res) => {
       // console.log(res);
       dispatch(fetchSubjectsSuccess(res.data.data));
+
       // dispatch((res.data.data));
     });
   };
 };
 export const fetchClassMember = (sub_id, token) => {
   return function (dispatch) {
-    console.log("6299129385ce1500162bf187", sub_id);
+    console.log(sub_id, sub_id);
     // topTenclass - membership;
     dispatch(fetchSubjectsStart());
     axios({
       method: "post",
       url: `${url}dashboard/class-membership`,
       headers: headers(token),
-      data: { enrolledCourseId: "6299129385ce1500162bf187" },
+      data: { enrolledCourseId: sub_id },
     }).then((res) => {
       // console.log(res);
 
@@ -376,33 +440,33 @@ export const fetchCourseDetailsInitiate = (courseId, subjectId) => {
 //   };
 // };
 
-export const fetchPastQuestionSubjInitiate = (id) => {
-  return async function (dispatch) {
-    let one = `https://api.exambly.com/adminpanel/v2/getMySubjects/${id}`;
+// export const fetchPastQuestionSubjInitiate = (id) => {
+//   return async function (dispatch) {
+//     let one = `https://api.exambly.com/adminpanel/v2/getMySubjects/${id}`;
 
-    const requestOne = await axios.get(one, {
-      headers: {
-        "Content-type": "application/json",
-        authorization:
-          "F0c7ljTmi25e7LMIF0Wz01lZlkHX9b57DFTqUHFyWeVOlKAsKR0E5JdBOvdunpqv",
-      },
-    });
-    axios
-      .all([requestOne])
-      .then(
-        axios.spread(async function (...responses) {
-          const responseOne = await responses[0].data;
-          const response = [responseOne];
-          console.log(response);
+//     const requestOne = await axios.get(one, {
+//       headers: {
+//         "Content-type": "application/json",
+//         authorization:
+//           "F0c7ljTmi25e7LMIF0Wz01lZlkHX9b57DFTqUHFyWeVOlKAsKR0E5JdBOvdunpqv",
+//       },
+//     });
+//     axios
+//       .all([requestOne])
+//       .then(
+//         axios.spread(async function (...responses) {
+//           const responseOne = await responses[0].data;
+//           const response = [responseOne];
+//           // console.log(response);
 
-          dispatch(fetchPastQuestionSubjSuccess(response));
-        }),
-      )
-      .then((error) => {
-        console.log(error);
-      });
-  };
-};
+//           dispatch(fetchPastQuestionSubjSuccess(response));
+//         }),
+//       )
+//       .then((error) => {
+//         console.log(error);
+//       });
+//   };
+// };
 export const fetchPastQuestionInitiate = (id) => {
   return async function (dispatch) {
     axios({
@@ -415,7 +479,7 @@ export const fetchPastQuestionInitiate = (id) => {
       },
     }).then((res) => {
       console.log(res);
-      dispatch(fetchUnfinished(res.data.data));
+      dispatch(fetchPastQuestionSubjSuccess(res.data));
     });
   };
 };
