@@ -171,9 +171,9 @@ const VideoPage = () => {
     return decodeHTMLEntities;
   })();
 
-  const fave = subject.favourite.favouriteVideos;
+  const fave = subject.favourite?.favouriteVideos;
   let favoury = () => {
-    let likes = fave.find((fruit) => {
+    let likes = fave?.find((fruit) => {
       return fruit.lessonId.id === datas.lessonId;
     });
     return likes;
@@ -350,17 +350,17 @@ const VideoPage = () => {
                   className={`moreIcon ${styles1.displayNone}`}
                 >
                   <Col className={`p-3 ps-3`}>
-                    {/* {user.user?.role === "602f3ce39b146b3201c2dc1d" && ( */}
-                    <Link passHref href="/dashboard/teacher/assignContent">
-                      <Row className="">
-                        <Col className={`m-auto ${styles.highlightText}`}>
-                          <p style={{ fontSize: "12px", margin: "2px" }}>
-                            Assign Content
-                          </p>
-                        </Col>
-                      </Row>
-                    </Link>
-                    {/* )} */}
+                    {user.user?.role === "602f3ce39b146b3201c2dc1d" && (
+                      <Link passHref href="/dashboard/teacher/assignContent">
+                        <Row className="">
+                          <Col className={`m-auto ${styles.highlightText}`}>
+                            <p style={{ fontSize: "12px", margin: "2px" }}>
+                              Assign Content
+                            </p>
+                          </Col>
+                        </Row>
+                      </Link>
+                    )}
                     <Row className="" onClick={() => toggle1()}>
                       <Col className={`m-auto ${styles.highlightText}`}>
                         <p style={{ fontSize: "12px", margin: "2px" }}>Share</p>
@@ -414,22 +414,24 @@ const VideoPage = () => {
                         </ul>
                       </Modal.Body>
                     </Modal>
-                    <Row className="">
-                      <Col
-                        onClick={() => favouring()}
-                        className={`m-auto ${styles.highlightText}`}
-                      >
-                        {faves ? (
-                          <p style={{ fontSize: "12px", margin: "2px" }}>
-                            Remove from Favourites
-                          </p>
-                        ) : (
-                          <p style={{ fontSize: "12px", margin: "2px" }}>
-                            Add to Favourites
-                          </p>
-                        )}
-                      </Col>
-                    </Row>
+                    {user.user?.role === "602f3ce39b146b3201c2dc1d" && (
+                      <Row className="">
+                        <Col
+                          onClick={() => favouring()}
+                          className={`m-auto ${styles.highlightText}`}
+                        >
+                          {faves ? (
+                            <p style={{ fontSize: "12px", margin: "2px" }}>
+                              Remove from Favourites
+                            </p>
+                          ) : (
+                            <p style={{ fontSize: "12px", margin: "2px" }}>
+                              Add to Favourites
+                            </p>
+                          )}
+                        </Col>
+                      </Row>
+                    )}
                     <Row className="">
                       <Col
                         className={`m-auto ${styles.highlightText}`}

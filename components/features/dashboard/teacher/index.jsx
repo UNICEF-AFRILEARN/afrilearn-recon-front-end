@@ -13,40 +13,32 @@ import {
   makeAnnouncementInitiate,
   fetchAnnouncementInitiate,
 } from "../../../../redux/actions/classes";
+import {
+  fetchGetWebInitiate,
+  fetchTeaSubsStart,
+} from "../../../../redux/actions/subject";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
-  const { registerUser, user } = useSelector((state) => state.auth);
-  const { allSubjects } = useSelector((state) => state.mySubject);
+  const { user } = useSelector((state) => state.auth);
+  // const { allSubjects } = useSelector((state) => state.mySubject);
+  const { classMembers } = useSelector((state) => state.schoolClasses);
+  const subject = useSelector((state) => state.mySubjectCourse);
+  // console.log(classMembers);
+  const teachSubject =
+    subject?.dashboardWeb?.enrolledCourse?.courseId.relatedSubjects;
 
-  //set up teacher subject id:
-  const teacherSubjectId =
-    user?.user?.classOwnership[0]?.subjectIds[0]?.subjectId;
+  const token = user?.token;
+  const person_id = user.user?.enrolledCourses[0]
+    ? user.user?.enrolledCourses[0].id
+    : user.user?.enrolledCourses[1].id;
 
-  //set teacher's enrolled subjects
-  let teacherEnrolledSubjectId = [];
-  const teacherEnrolledSubjects = () => {
-    teacherEnrolledSubjectId = user?.user?.classOwnership.filter(
-      (enrolledSubjectId) => enrolledSubjectId.subjectIds,
-    );
-    return teacherEnrolledSubjectId;
-  };
-  teacherEnrolledSubjects();
-
-  let filteredSubjects = [];
-  const filterTeacherSubjects = () => {
-    filteredSubjects = allSubjects.filter(
-      (filterSubject) => filterSubject.id === teacherSubjectId,
-    );
-    return filteredSubjects;
-  };
-
-  filterTeacherSubjects();
-  console.log("filteredSubjects *****", filteredSubjects);
+  const subId = user?.user?.classOwnership[0];
 
   useEffect(() => {
-    dispatch(fetchSubjectsInitiate());
-  }, []);
+    dispatch(fetchGetWebInitiate(person_id, token, subId));
+    // dispatch(fetchSubjectsInitiate());
+  }, [token]);
   return (
     <div>
       <Heropage />
@@ -64,7 +56,7 @@ const Dashboard = () => {
           >
             My Subject
           </Row>
-          <Subjects filteredSubjects={filteredSubjects} />
+          <Subjects subData={teachSubject} />
         </Col>
         <Col>
           <PastQuestion />

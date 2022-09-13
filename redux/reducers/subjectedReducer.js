@@ -1,6 +1,8 @@
 import * as types from "../types";
 
 const initialState = {
+  teachSub: "",
+  schcourse: [],
   comments: [],
   stuTeacherSub: "",
   announcement: "",
@@ -14,6 +16,10 @@ const initialState = {
   dashboardWeb: "",
   classMember: [],
   classroom: [],
+  motivations: [],
+  motivationItemNo: 0,
+  motivationInterval: 0,
+  motivateGoodPerformance: false,
 };
 
 const subjectedReducer = (state = initialState, { type, payload }) => {
@@ -23,10 +29,25 @@ const subjectedReducer = (state = initialState, { type, payload }) => {
         ...state,
       };
 
+    case types.PAST_QUESTIONS_INPUT_CHANGE:
+      return {
+        ...state,
+        [payload.name]: payload.value,
+      };
     case types.FETCH_SUBJECT_SUCCESS:
       return {
         ...state,
         topInclass: payload,
+      };
+    case types.FETCH_Teacher_SINGLESUBJECT_SUCCESS:
+      return {
+        ...state,
+        schcourse: payload,
+      };
+    case types.FETCH_Teacher_SUBJECT_SUCCESS:
+      return {
+        ...state,
+        teachSub: payload,
       };
 
     case types.FETCH_MEMBERSHIP_SUCCESS:

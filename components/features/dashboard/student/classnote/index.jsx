@@ -62,7 +62,7 @@ const ClassNoteVideo = ({ classData }) => {
               </h6>
             </Row>
           </Accordion.Header>
-          <Accordion.Body className={styles.accordLeft}>
+          <Accordion.Body>
             {lessons?.map((lesson, i) => {
               if (lesson.termId === terms[0]) {
                 return (
@@ -71,11 +71,11 @@ const ClassNoteVideo = ({ classData }) => {
                       eventKey={i}
                       className={styles.accord_button}
                     >
-                      <Accordion.Header className={styles.accordHead2}>
+                      <Accordion.Header className={styles.accordHead}>
                         <span className={styles.accordance}></span>{" "}
                         {lesson.title}
                       </Accordion.Header>
-                      <Accordion.Body className={styles.accordLeft2}>
+                      <Accordion.Body className={styles.accordLeft}>
                         {classData[0].map((data, i) => {
                           return (
                             <div
@@ -127,7 +127,7 @@ const ClassNoteVideo = ({ classData }) => {
               </h6>
             </Row>
           </Accordion.Header>
-          <Accordion.Body className={styles.accordLeft}>
+          <Accordion.Body>
             {lessons?.map((lesson, i) => {
               if (lesson.termId === terms[1]) {
                 return (
@@ -136,11 +136,11 @@ const ClassNoteVideo = ({ classData }) => {
                       eventKey={i}
                       className={styles.accord_button}
                     >
-                      <Accordion.Header className={styles.accordHead2}>
+                      <Accordion.Header className={styles.accordHead}>
                         <span className={styles.accordance}></span>{" "}
                         {lesson.title}
                       </Accordion.Header>
-                      <Accordion.Body className={styles.accordLeft2}>
+                      <Accordion.Body className={styles.accordLeft}>
                         {classData[0].map((data, i) => {
                           return (
                             <div key={i} className={styles.accordButtonLeft}>
@@ -189,7 +189,7 @@ const ClassNoteVideo = ({ classData }) => {
               </h6>
             </Row>
           </Accordion.Header>
-          <Accordion.Body className={styles.accordLeft}>
+          <Accordion.Body>
             {lessons?.map((lesson, i) => {
               if (lesson.termId === terms[2]) {
                 return (
@@ -198,11 +198,11 @@ const ClassNoteVideo = ({ classData }) => {
                       eventKey={i}
                       className={styles.accord_button}
                     >
-                      <Accordion.Header className={styles.accordHead2}>
+                      <Accordion.Header className={styles.accordHead}>
                         <span className={styles.accordance}></span>{" "}
                         {lesson.title}
                       </Accordion.Header>
-                      <Accordion.Body className={styles.accordLeft2}>
+                      <Accordion.Body className={styles.accordLeft}>
                         {classData[0].map((data, i) => {
                           return (
                             <div key={i} className={styles.accordButtonLeft}>

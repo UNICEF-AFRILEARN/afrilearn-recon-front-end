@@ -65,8 +65,8 @@ const Dashboard = () => {
     personName: user.user?.fullName,
   };
   const person_id = user.user?.enrolledCourses[0]
-    ? user.user?.enrolledCourses[0].courseId._id
-    : user.user?.enrolledCourses[1].courseId._id;
+    ? user.user?.enrolledCourses[0].id
+    : user.user?.enrolledCourses[1].id;
   const user_id = user.user?.enrolledCourses[0]
     ? user.user?.enrolledCourses[0].userId
     : user.user?.enrolledCourses[1].userId;
@@ -113,7 +113,7 @@ const Dashboard = () => {
           subject?.dashboardWeb?.enrolledCourse?.courseId.relatedPastQuestions
         }
       />
-      <UnfinshedVideos classData={subject?.unfinishedStore.unFinishedVideos} />
+      <UnfinshedVideos classData={subject?.unfinishedStore?.unFinishedVideos} />
       <MyFavs classData={subject?.favourite?.favouriteVideos} />
       <TopInClasses
         classData={subject?.topInclass?.lessons}
