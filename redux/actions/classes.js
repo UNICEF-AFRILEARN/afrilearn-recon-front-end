@@ -91,6 +91,18 @@ export const createClassworkFail = (error) => ({
     type: types.CREATE_CLASS_WORK_FAIL,
     payload: error
 });
+export const fetchClasPerformanceStart = () => ({
+    type: types.FETCH_CLASS_PERFORMANCE_START
+});
+export const fetchClasPerformanceSuccess = (payload) => ({
+    type: types.FETCH_CLASS_PERFORMANCE_SUCCESS,
+    payload
+});
+export const fetchClasPerformanceFail = (error) => ({
+    type: types.FETCH_CLASS_PERFORMANCE_FAIL,
+    payload: error
+});
+
 export const addCommentToTeacherAnnouncementStart = () => ({
     type: types.ADD_COMMENT_TO_TEACHER_ANNOUNCEMENT_START
 });
