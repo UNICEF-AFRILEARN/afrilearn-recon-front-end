@@ -8,9 +8,17 @@ Chart.register(ArcElement);
 //   Tooltip, Title, ArcElement, Legend
 // )
 
+const options = {
+  cutoutPercentage: 70,
+};
+
 const data = {
   datasets:[{
-    data:[10, 20, 30]
+    barPercentage: 0.5,
+    barThickness: 6,
+    maxBarThickness: 8,
+    minBarLength: 2,
+    data:[10, 20, 30, 50, 60]
   }],
 
   labels:[
@@ -23,7 +31,7 @@ const data = {
 const Barchart = () => {
   return (
     <div>
-           <Doughnut data={data}/>
+           <Doughnut data={data} />
     </div>
   )
 }

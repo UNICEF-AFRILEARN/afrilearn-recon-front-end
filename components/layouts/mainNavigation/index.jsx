@@ -19,13 +19,16 @@ const Navigation = () => {
   const [userRole, setUserRole] = useState("");
   const { user, registerUser } = useSelector(state => state.auth)
 
-
-
+  if (typeof window !== 'undefined'){
+    let user_info = JSON.parse(localStorage.getItem('persist:persist-key'))
+    console.log("user_info From main navebar", user_info)
+  }
   const handleLogout = () => {
+    window.localStorage.clear()
+    router.push('/login')
 
   }
 
-  console.log("From main navebar", user?.user?.classOwnership)
   useEffect(() => {
     const roleId = user?.user?.role || registerUser?.user?.role || user?.user?.id
     setUserRole(roleId)

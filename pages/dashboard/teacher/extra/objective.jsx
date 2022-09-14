@@ -78,13 +78,15 @@ const Objectives = ({exam_id}) => {
     }
     
 
+    let publish
     const handleUpdateStatus = (e) => {
-        let publish
+        console.log("e.target.innerHTML, ", e.target.innerHTML)
         if(e.target.innerHTML === 'PUBLISH'){
-             publish = true
+              publish = true
         }else if(e.target.innerHTML === 'UNPUBLISH'){
-            publish = false
+             publish = false
         }
+        console.log("e.target.innerHTML, ", publish)
         dispatch(updateExamInitiate(questionId, publish))
     }
     
@@ -101,11 +103,11 @@ const Objectives = ({exam_id}) => {
     
     useEffect(() => {
         dispatch(fetchSingleExamDetailsInitiate(token, exam_id))
-      }, [exam_id])
+      }, [exam_id, publish, updatedExam])
 
       useEffect(() =>{
         dispatch(fetchSingleExamQuestionsInitiate(token, exam_id))
-    }, [exam_id, newExamQuestion, updatedExam, deletedExam])
+    }, [exam_id, newExamQuestion, updatedExam, deletedExam, publish])
       
     useEffect(() => {
         if(receivedQuestions){
@@ -198,6 +200,8 @@ const Objectives = ({exam_id}) => {
                       </div>
                       } 
             </ul>
+
+            </div>
             <div className={styles.examquestionwrapperinnner}>
                     <Addexambutton 
                         exam_id={exam_id}
@@ -205,8 +209,6 @@ const Objectives = ({exam_id}) => {
                         examQuestion={examQuestion}
                     />
              </div>
-            </div>
-        
            
              <div className={styles.examquestionwrapperinnner}>
              { showObjQuestions === 1 &&  examQuestion && examQuestion.map((singleQuestion, index) => (

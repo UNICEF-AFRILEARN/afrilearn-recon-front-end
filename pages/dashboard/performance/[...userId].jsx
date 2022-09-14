@@ -29,8 +29,9 @@ const Performance = () => {
   // console.log("query from performance ===> ", query)
   // console.log("user from performance ===> ", user)
   // console.log("classMembers from performance ===> ", classMembers?.classMembers)
+  // const { email } = user?.user
   console.log("query from studentPerformance ===>", query)
-  console.log("studentPerformance =====>&", studentPerformance)
+  // console.log("email from performance =====>&", email)
   
   //Filter current student to show student details
   let currentStudent = [];

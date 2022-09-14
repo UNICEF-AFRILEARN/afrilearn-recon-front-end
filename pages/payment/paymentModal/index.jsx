@@ -30,7 +30,34 @@ const theme = createTheme({
     }
   }
 });
-
+const style_s = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  typography: {
+    fontFamily: 'Raleway, Arial',
+    bgcolor: '#000',
+  },
+  width: {
+      xs: 350,
+      sm: 400,
+      md: 500,
+      lg: 570,
+      xl: 600,
+  },
+  height: {
+    xs: 250,
+    sm: 250,
+    md: 300,
+    lg: 250,
+    xl: 400,
+  },
+  bgcolor: 'background.paper',
+  borderRadius:5,
+  boxShadow: 24,
+  p: 4,
+};
 
 const style = {
   position: 'absolute',
@@ -89,6 +116,7 @@ const PaymentDetails = ({handleOpen, handleClose, open, closeModal, priceSelecte
         aria-describedby="modal-modal-description"
         
       >
+        {prevCount?
         <Box sx={style}
         >
 
@@ -135,6 +163,43 @@ const PaymentDetails = ({handleOpen, handleClose, open, closeModal, priceSelecte
         style={{backgroundColor: '#00D9B6', color: '#FFFFFF'}}
         >Okay, Got it</Button>
         </Box>
+          :<Box sx={style_s}
+          >
+  
+            <Typography
+            id="modal-modal-title" 
+            variant="h3" 
+            component="h2"
+            onClick={closeModal}
+            align='center'
+            >
+              Bank Deposit
+              <Typography sx={{ mt: 2 }}>
+               
+              </Typography>
+            </Typography>
+            <MuiThemeProvider theme={theme}>
+              <Typography
+              
+              id="modal-modal-description" sx={{ mt: 3 }}>
+              
+              </Typography>
+            </MuiThemeProvider>
+            
+            <Typography
+             id="modal-modal-description" sx={{ mt: 2 }}>
+             Please select a payment plan
+            </Typography>
+           
+          <Button
+          sx={{m: 5}}
+          variant="contained"
+          onClose={handleClose}
+          onClick={closeModal}
+          style={{backgroundColor: '#00D9B6', color: '#FFFFFF'}}
+          >Okay, Got it</Button>
+          </Box>
+        }
       </Modal>
     </div>
   );

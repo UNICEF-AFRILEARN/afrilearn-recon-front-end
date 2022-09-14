@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import DatePicker from "react-datepicker";
 import Router, { useRouter } from "next/router";
 import styles from "../../../../styles/teacher.module.css";
 import { BsFillCircleFill, BsCircle } from "react-icons/bs";
@@ -13,6 +14,7 @@ import { fetchClassSubjectsInitiate } from "../../../../redux/actions/classes";
 
 
 const SetupExams = () => {
+  // const [startDate, setStartDate] = 
   const { user } = useSelector((state) => state.auth);
   const { newExams } = useSelector((state) => state.myExams);
   const { classSubjects } = useSelector((state) => state.schoolClasses);
@@ -29,11 +31,11 @@ const SetupExams = () => {
   const [duration, setDuration] = useState("");
   const [instruction, setInstruction] = useState("");
   const [totalNumberOfQuestions, setTotalNumberOfQuestions] = useState("");
-  const [deadline, setDeadline] = useState("");
-  const [startDate, setStartDate] = useState("");
+  const [deadline, setDeadline] = useState(new Date());
+  const [startDate, setStartDate] = useState(new Date());
 
   let classSubjectName = classSubjects?.subjects;
-
+console.log("questionTypeId", questionTypeId)
   let token = user?.token;
 
   const setClassSubjectsIds = () => {
@@ -66,8 +68,7 @@ const SetupExams = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("subjectId", subjectId);
-    dispatch(
+     dispatch(
       addExamsInitiate(
         title,
         termId,
@@ -81,12 +82,12 @@ const SetupExams = () => {
         token,
       ),
     );
-    if (Object?.keys(newExams).length > 0) {
-      Router.push({
-        pathname: `/dashboard/teacher/examinations/add-exams-question/[_examId]`,
-        query: { _examId: subjectId },
-      });
-    }
+    // if (Object.keys(newExams).length > 0) {
+    //   Router.push({
+    //     pathname: `/dashboard/teacher/examinations/add-exams-question/[_examId]`,
+    //     query: { _examId: subjectId },
+    //   });
+    // }
   };
 
   // useEffect(() => {
@@ -125,7 +126,7 @@ const SetupExams = () => {
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Exam title:</Form.Label>
           <Form.Control
-            type="email"
+            type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             className="shadow-none"
@@ -141,11 +142,14 @@ const SetupExams = () => {
             className="shadow-none"
             style={{ outline: "none" }}
           >
+            <option value="default">Select the Term</option>
             {classSubjectName &&
               classSubjectName.map((subjectName) => (
+                <>
                 <option value={subjectName.mainSubjectId.name}>
                   {subjectName.mainSubjectId.name}
                 </option>
+                </>
               ))}
           </Form.Select>
         </Form.Group>
@@ -158,6 +162,7 @@ const SetupExams = () => {
             className="shadow-none"
             style={{ outline: "none" }}
           >
+            <option value="default">Select the question type</option>
             <option value="Theory">Theory</option>
             <option value="Objective">Objective</option>
             <option selected value="Objective & Theory">
@@ -204,23 +209,17 @@ const SetupExams = () => {
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Set Start Date: </Form.Label>
-          <Form.Control
-            type="text"
-            value={startDate}
-            onChange={(e) => setStartDate(e.target.value)}
-            className="shadow-none"
-            style={{ outline: "none" }}
-          />
+          <DatePicker 
+        selected={startDate}
+        onChange={(date) => setStartDate(date)}
+         />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Set Deadline: </Form.Label>
-          <Form.Control
-            type="text"
-            value={startDate}
-            onChange={(e) => setStartDate(e.target.value)}
-            className="shadow-none"
-            style={{ outline: "none" }}
-          />
+          <DatePicker 
+        selected={deadline}
+        onChange={(date) => setDeadline(date)}
+         />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Exam Instruction(Optional): </Form.Label>

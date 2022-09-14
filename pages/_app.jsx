@@ -4,9 +4,9 @@ import '../styles/globals.css'
 import Layout from '../components/layouts'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { wrapper, store, persistor } from "../redux/store";
+import {store } from "../redux/store";
 import { Provider } from "react-redux";
-import {persistGate} from 'redux-persist/integration/react'
+// import {persistGate} from 'redux-persist/integration/react'
 
 function MyApp({ Component, pageProps } ) {
   return (

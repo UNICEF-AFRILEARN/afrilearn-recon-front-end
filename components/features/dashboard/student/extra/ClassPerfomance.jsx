@@ -1,7 +1,9 @@
 import React, { useState, useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from '../../../../../styles/performance.module.css';
 import { FiCheckCircle } from 'react-icons/fi';
 import { AiOutlineExclamationCircle } from 'react-icons/ai';
+import { MdLocationOn } from 'react-icons/md';
 import { FaRegCheckCircle } from 'react-icons/fa';
 import Barchart from '../../../../../pages/dashboard/performance/barchart';
 // import BarChartSect from './BarChartSect';
@@ -11,9 +13,11 @@ import Barchart from '../../../../../pages/dashboard/performance/barchart';
 const ClassPerfomance = (
   {currentStudent,
     classDetails, 
-    studentPerformance
+    studentPerformance,
+
   }) => {
 
+    const { user} = useSelector((state) => state.auth)
     let pastQuestionPerformance = studentPerformance?.data?.examsList;
     let subjectPerformance = studentPerformance?.data?.subjectsList;
   // const result = Object?.values(classDetails);
@@ -45,11 +49,20 @@ const ClassPerfomance = (
        <div className={styles.leftwrapper}>
             <div className={styles.innerwrapper}>
               {currentStudent &&
+               <>
                 <div className={styles.studentnamewrapper}>
                   <h2>{currentStudent[0]?.userId.fullName}</h2>
-                    <p>{currentStudent[0]?.userId.email}</p>
-                  <h3>JSS 1</h3>
-              </div>}
+                  { user &&  <p>{user?.user?.email}</p>}
+                 { user && <h3>{user?.user?.classOwnership[0]?.name}</h3>}
+                 {/* <MdLocationOn
+                className={styles.locationiconwrapper}
+                      size={40}
+                    /> */}
+              </div>
+                  <p className={styles.invitewrapper}>Invite your friends</p>
+                
+               </>
+              }
           </div>
         </div>
         <div className={styles.leftwrapper}>

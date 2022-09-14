@@ -10,6 +10,7 @@ import {
   acceptRejectClassMemberInitiate
 } from '../../../../redux/actions/classes';
 import Link from "next/link";
+import Spinner from './../../../../components/widgets/spinner/index';
 
 const MyStudent = () => {
   const statusElement = useRef();
@@ -62,10 +63,6 @@ useEffect(() => {
     <>
       <div>
         <HeroPageDetailed
-          datas={{
-            textH3: "My Students",
-            textP: "Junior Secondary School One",
-          }}
         />
       </div>
       <Container >
@@ -93,7 +90,12 @@ useEffect(() => {
             </h3>
           </Col>
         </Row>
-        {classMembers?.classMembers?.map((studentName) => (
+        {!classMembers? 
+         <Row className={styles.loaderwrapper}>
+             <Spinner />
+          </Row> :
+        
+        classMembers?.classMembers?.map((studentName) => (
           <Row
             // key={i}
             className={`${styles.peoplelists} mt-3 d-flex w-60`}
@@ -110,7 +112,8 @@ useEffect(() => {
             </Col>
             <Col >{studentName?.userId?.fullName}</Col>
             <Col md={5} style={{ color: "#AAA6A6" }}>
-             <p onClick={() => goToPerformance(studentName?.userId?.id)}>
+             <p className={styles.classperfomancewrapper}
+             onClick={() => goToPerformance(studentName?.userId?.id)}>
                 <u>View Performance</u>
              </p>
             </Col>

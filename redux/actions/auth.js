@@ -93,6 +93,45 @@ export const resetpasswordFail = (error) => ({
   type: types.STUDENT_ADDCLASS_FAIL,
   payload: error,
 });
+export const registerUserStart = () => ({
+  type: types.REGISTER_USER_START,
+});
+export const registerUserSuccess = (payload) => ({
+  type: types.REGISTER_USER_SUCCESS,
+  payload,
+});
+
+export const registerUserFail = (error) => ({
+  type: types.REGISTER_USER_FAIL,
+  payload: error,
+});
+
+export const googleSocialLoginStart = () => ({
+  type: types.GOOGLE_SOCIAL_LOGIN_START,
+});
+
+export const googleSocialLoginSuccess = (payload) => ({
+  type: types.GOOGLE_SOCIAL_LOGIN_SUCCESS,
+  payload,
+});
+
+export const googleSocialLoginFail = (error) => ({
+  type: types.GOOGLE_SOCIAL_LOGIN_FAIL,
+  payload: error,
+});
+export const editTeacherProfileStart = () => ({
+  type: types.EDIT_TEACHER_PROFILE_START,
+});
+
+export const editTeacherProfileSuccess = (payload) => ({
+  type: types.EDIT_TEACHER_PROFILE_SUCCESS,
+  payload,
+});
+
+export const editTeacherProfileFail = (error) => ({
+  type: types.EDIT_TEACHER_PROFILE_FAIL,
+  payload: error,
+});
 
 // RESETPASSWORDLOGIC
 export const resendpasswordEmail = (email, password) => {
@@ -209,46 +248,6 @@ export const changepasswordInitiate = (data, token) => {
       .catch((err) => dispatch(changePasswordstart(err)));
   };
 };
-
-export const registerUserStart = () => ({
-  type: types.REGISTER_USER_START,
-});
-export const registerUserSuccess = (payload) => ({
-  type: types.REGISTER_USER_SUCCESS,
-  payload,
-});
-
-export const registerUserFail = (error) => ({
-  type: types.REGISTER_USER_FAIL,
-  payload: error,
-});
-
-export const googleSocialLoginStart = () => ({
-  type: types.GOOGLE_SOCIAL_LOGIN_START,
-});
-
-export const googleSocialLoginSuccess = (payload) => ({
-  type: types.GOOGLE_SOCIAL_LOGIN_SUCCESS,
-  payload,
-});
-
-export const googleSocialLoginFail = (error) => ({
-  type: types.GOOGLE_SOCIAL_LOGIN_FAIL,
-  payload: error,
-});
-export const editTeacherProfileStart = () => ({
-  type: types.EDIT_TEACHER_PROFILE_START,
-});
-
-export const editTeacherProfileSuccess = (payload) => ({
-  type: types.EDIT_TEACHER_PROFILE_SUCCESS,
-  payload,
-});
-
-export const editTeacherProfileFail = (error) => ({
-  type: types.EDIT_TEACHER_PROFILE_FAIL,
-  payload: error,
-});
 
 export const googleLoginInitiate = (token) => {
   return function (dispatch) {

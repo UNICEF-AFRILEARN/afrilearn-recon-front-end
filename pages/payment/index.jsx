@@ -43,12 +43,14 @@ const handleOpen = () => {
   setOpen(true);
 }
 
+
 console.log("selectedCourse from payment ====>", selectedCourse)
   let showPrice;
   const handleSelect = (price) => {
     setPriceSelected(price)
   }
   
+
   const config = {
     reference: new Date().getTime(),
     email: "text@gmail.com",
