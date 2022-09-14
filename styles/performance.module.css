@@ -33,19 +33,28 @@
 .performancemenu li{
     list-style-type: none;
     border-bottom: 5px solid black;
-    color: #fff;
+    color:  #29465B;
 }
 .innermenuwrapper {
     cursor: pointer;
 }
+
+.innermenuwrapper li{
+   
+
+}
 .performancecontentwrapper {
     padding: 30px;
-    border: 5px solid black;
+    border: 1px solid #29465B;
     display: flex;
     text-align: start;
     align-items: flex-start;
-    /* background-color: #29465B; */
+    background-color: #FAFAFA;
+}
 
+.barinnerwrapper {
+    border: 2px solid red;
+    padding: 40px 20px;
 }
 
 .performancecontentwrapperpast {
@@ -58,7 +67,13 @@
     align-items: flex-start;
     background-color: #29465B;
 }
-
+.subjectheaderwrapper{
+    background-color: #A2DBB1;
+    border-radius: 20px;
+    text-align: center;
+    margin-right: 25px;
+    padding: 5px 1px;
+}
 .accuracywrapper {
     margin-top: 20px;
     height: 10%;

@@ -6,6 +6,7 @@ import { AiOutlineExclamationCircle } from 'react-icons/ai';
 import { MdLocationOn } from 'react-icons/md';
 import { FaRegCheckCircle } from 'react-icons/fa';
 import Barchart from '../../../../../pages/dashboard/performance/barchart';
+import Piechart from '../../../../../pages/dashboard/performance/piechart';
 // import BarChartSect from './BarChartSect';
 // import PieChartSection from './PieChartSection';
 
@@ -14,16 +15,17 @@ const ClassPerfomance = (
   {currentStudent,
     classDetails, 
     studentPerformance,
+    classPerformance
 
   }) => {
 
     const { user} = useSelector((state) => state.auth)
-    let pastQuestionPerformance = studentPerformance?.data?.examsList;
-    let subjectPerformance = studentPerformance?.data?.subjectsList;
+    let pastQuestionPerformance = classPerformance?.data?.examsList;
+    let subjectPerformance = classPerformance?.data?.subjectsList;
   // const result = Object?.values(classDetails);
   const [showPanel, setShowPanel] = useState(false);
   const [panelId, setPanelId] = useState(1);
-  console.log("currentStudent?.data? from classPerformance ===>", currentStudent)
+  // console.log("currentStudent?.data? from classPerformance ===>", currentStudent)
 
 
   const displayPanel = () => {
@@ -48,7 +50,6 @@ const ClassPerfomance = (
        <div className={styles.innermainwrapper}>
        <div className={styles.leftwrapper}>
             <div className={styles.innerwrapper}>
-              {currentStudent &&
                <>
                 <div className={styles.studentnamewrapper}>
                   <h2>{currentStudent[0]?.userId.fullName}</h2>
@@ -62,16 +63,22 @@ const ClassPerfomance = (
                   <p className={styles.invitewrapper}>Invite your friends</p>
                 
                </>
-              }
+              
           </div>
         </div>
-        <div className={styles.leftwrapper}>
-            <div className={styles.innerwrapper}>
+        <div >
+            {/* <div className={styles.innerwrapper}>
               <div className={styles.studentnamewrapper}>
                   <h2>{currentStudent[0]?.userId.fullName}</h2>
                     <p>{currentStudent[0]?.userId.email}</p>
                   <h3>JSS 1</h3>
               </div>
+          </div> */}
+          <div className={styles.barinnerwrapper}>
+            <div>
+              <h3>Progress</h3>
+            </div>
+             <Piechart />
           </div>
         </div>
        </div>
@@ -118,7 +125,7 @@ const ClassPerfomance = (
               subjectPerformance && subjectPerformance.map((subjectList) =>
               <div className={styles.performancecontentwrapper}>
                  <div className={styles.subjectsectionone}>
-                    <p>{subjectList.subject}</p>
+                    <p className={styles.subjectheaderwrapper}>{subjectList.subject}</p>
                     <Barchart />
                     {subjectList.performance === null? 
                     <p className={styles.averagetimeremark}> 

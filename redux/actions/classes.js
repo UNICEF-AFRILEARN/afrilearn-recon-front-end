@@ -239,6 +239,31 @@ export const fetchAnnouncementInitiate = (classId) =>  {
     }
 
 }
+export const fetchClassPerformanceInitiate = (courseId, token) =>  {
+    console.log('token', token)
+    return function (dispatch) {
+        dispatch(fetchClasPerformanceStart())
+        axios
+        .post(`https://afrilearn-backend-01.herokuapp.com/api/v1/courses/${courseId}/progress-and-performance`,
+        {
+
+        },
+        {
+            headers: {
+                "Content-Type": "application/json",
+                "token": token,
+            }
+        })
+        .then((res) => {
+            console.log("From Get class performance API =>", res.data)
+            dispatch(fetchClasPerformanceSuccess(res.data))
+        })
+        .catch((err) => {
+            dispatch(fetchClasPerformanceFail(err))
+        } )
+    }
+
+}
 export const fetchClassDetailsInitiate = (classId) =>  {
     return function (dispatch) {
         dispatch(fetchClassDetailsStart())

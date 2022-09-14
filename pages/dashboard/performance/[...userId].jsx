@@ -7,30 +7,30 @@ import  styles  from "../../../styles/classroom.module.css"
 import ClassPerfomance from '../../../components/features/dashboard/student/extra/ClassPerfomance';
 import { fetchStudentPerformanceInitiate } from '../../../redux/actions/dashboard';
 import SubjectChart from '../../../components/features/dashboard/student/extra/SubjectChart';
-import { fetchClassMembersInitiate, fetchClassDetailsInitiate } from '../../../redux/actions/classes';
+import { fetchClassMembersInitiate, fetchClassDetailsInitiate, fetchClassPerformanceInitiate } from '../../../redux/actions/classes';
 
 
 
 const Performance = () => {
   const { studentPerformance } = useSelector((state) => state.dashboard);
-  const { classMembers, classDetails } = useSelector((state) => state.schoolClasses);
+  const { classMembers, classDetails, classPerformance } = useSelector((state) => state.schoolClasses);
   const { user} = useSelector((state) => state.auth)
   const dispatch = useDispatch();
   const router = useRouter();
   const { query } = useRouter();
  
 
-  let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjJmNGFkOGM5OWJjNjgwMDE2NjE2NTFkIiwicm9sZSI6IjYwMmYzY2UzOWIxNDZiMzIwMWMyZGMxZCIsImZ1bGxOYW1lIjoiSm9obiBkb2UifSwiaWF0IjoxNjYxMTc3NjgyLCJleHAiOjE2NjM3Njk2ODJ9.J5eGjZiTHSeSU1Dwt7dVhIxHESXcxd2juGIDnrPTp8g'
+  let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjJmNGFkOGM5OWJjNjgwMDE2NjE2NTFkIiwicm9sZSI6IjYwMmYzY2UzOWIxNDZiMzIwMWMyZGMxZCIsImZ1bGxOYW1lIjoiSm9obiBkb2UifSwiaWF0IjoxNjYzMTUxNzI0LCJleHAiOjE2NjU3NDM3MjR9.MN1RXkpWvFF0Jjx_ZI6hT3bqXNyZHiAWOmc_f9Hm2nc'
 
   const userId = query.userId
-  const courseId = "5fff7329de0bdb47f826feb0"
+  const courseId = user?.user?.enrolledCourses[0]?.courseId.id
   let classId = query.classId;
   //to make performance dynamic which use query for api call:
   // console.log("query from performance ===> ", query)
   // console.log("user from performance ===> ", user)
   // console.log("classMembers from performance ===> ", classMembers?.classMembers)
   // const { email } = user?.user
-  console.log("query from studentPerformance ===>", query)
+  console.log("classPerformance from studentPerformance ===>",   courseId)
   // console.log("email from performance =====>&", email)
   
   //Filter current student to show student details
@@ -44,24 +44,27 @@ const Performance = () => {
   }
   
   filterSTudent()
- 
+  
+  useEffect(() => {
+    dispatch(fetchClassPerformanceInitiate(courseId, token))
+     }, [])
 
   useEffect(() => {
     if(classId){
       dispatch(fetchClassDetailsInitiate(classId))
     }
   }, [classId])
-
-  useEffect(() => {
-    if(userId){
-      dispatch(fetchStudentPerformanceInitiate(userId, courseId, token))
-    }
-     }, [userId, courseId])
   
-  useEffect(() => {
-    dispatch(fetchClassMembersInitiate(classId))
-  },[classId]);
-
+  // useEffect(() => {
+    //   if(userId){
+      //     dispatch(fetchStudentPerformanceInitiate(userId, courseId, token))
+      //   }
+      //    }, [userId, courseId])
+      
+      useEffect(() => {
+        dispatch(fetchClassMembersInitiate(classId))
+      },[classId]);
+      
 
   return (
     <div className={styles.maincotainer}>
@@ -84,9 +87,10 @@ const Performance = () => {
             </div> */}
        <div className={styles.paddingbody}>
           <ClassPerfomance
+             currentStudent={currentStudent}
              studentPerformance={studentPerformance}
+             classPerformance={classPerformance}
             classDetails={classDetails}
-            currentStudent={currentStudent}
           />
           <SubjectChart />
        </div>
