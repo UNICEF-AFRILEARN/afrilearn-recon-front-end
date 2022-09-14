@@ -78,6 +78,7 @@ const ClassPerfomance = (
           <div className={styles.barinnerwrapper}>
             <div>
               <h3>Progress</h3>
+              <p>Progress level per  subject</p>
             </div>
              <Piechart />
           </div>

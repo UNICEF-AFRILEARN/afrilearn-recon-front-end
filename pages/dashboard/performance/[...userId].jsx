@@ -63,13 +63,12 @@ const Performance = () => {
       
       useEffect(() => {
         dispatch(fetchClassMembersInitiate(classId))
-      },[classId]);
+      },[]);
       
 
   return (
     <div className={styles.maincotainer}>
       <div className={styles.videoheropage}>
-          
               <div className={styles.subheadings}>
                   <Image
               src="/assets/img/classavatar.svg"

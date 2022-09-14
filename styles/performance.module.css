@@ -50,13 +50,14 @@
     text-align: start;
     align-items: flex-start;
     background-color: #FAFAFA;
+    
 }
 .spinnerwrapper {
     text-align: center;
     margin-top: 20px;
 }
 .barinnerwrapper {
-    border: 2px solid red;
+    border: 1px solid #29465B;
     padding: 40px 20px;
 }
 
@@ -121,6 +122,13 @@
 }
 .subjectsectiononemiddle {
     text-align: center;
+    align-self: center;
+    margin-left: 45px;
+}
+.subjectquestioninner {
+    padding: 20px 0;
+}
+.subjectsectionone{
 }
 .totalquestionwrapper p {
     padding-bottom: 10px;

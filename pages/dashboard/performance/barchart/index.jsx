@@ -9,11 +9,11 @@ const COLORS = ['#0088FE', '#00C49F'];
 
 const Barchart = () => {
     return (
-      <PieChart width={200} height={200}>
+      <PieChart width={200} height={162}>
         <Pie
           data={data}
           cx={85}
-          cy={90}
+          cy={74}
           innerRadius={60}
           outerRadius={80}
           fill="#8884d8"
