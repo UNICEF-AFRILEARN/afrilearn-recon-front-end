@@ -51,7 +51,10 @@
     align-items: flex-start;
     background-color: #FAFAFA;
 }
-
+.spinnerwrapper {
+    text-align: center;
+    margin-top: 20px;
+}
 .barinnerwrapper {
     border: 2px solid red;
     padding: 40px 20px;
@@ -59,20 +62,29 @@
 
 .performancecontentwrapperpast {
     padding: 30px;
-    border: 5px solid rgb(184, 47, 47);
+    border: 1px solid #29465B;
     display: flex;
     height: 10%;
     flex-direction: column;
     text-align: start;
     align-items: flex-start;
-    background-color: #29465B;
+    background-color: #FAFAFA;
 }
 .subjectheaderwrapper{
     background-color: #A2DBB1;
     border-radius: 20px;
     text-align: center;
-    margin-right: 25px;
+    margin-right: 15px;
     padding: 5px 1px;
+    width: 100%;
+}
+.pastheaderwrapper {
+    background-color: #A2DBB1;
+    border-radius: 20px;
+    text-align: center;
+    margin-right: 15px;
+    padding: 5px 1px;
+    width: 25%;
 }
 .accuracywrapper {
     margin-top: 20px;

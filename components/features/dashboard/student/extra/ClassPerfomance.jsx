@@ -5,6 +5,7 @@ import { FiCheckCircle } from 'react-icons/fi';
 import { AiOutlineExclamationCircle } from 'react-icons/ai';
 import { MdLocationOn } from 'react-icons/md';
 import { FaRegCheckCircle } from 'react-icons/fa';
+import Spinner from '../../../../widgets/spinner';
 import Barchart from '../../../../../pages/dashboard/performance/barchart';
 import Piechart from '../../../../../pages/dashboard/performance/piechart';
 // import BarChartSect from './BarChartSect';
@@ -108,8 +109,8 @@ const ClassPerfomance = (
               </div>
           </div> */}
           {/* end testing */}
-            <div>
-              <ul className={styles.performancemenu}>
+          <div>
+          <ul className={styles.performancemenu}>
                 <li 
                   key={1} 
                   onClick={() => createPanelId(1)}
@@ -121,6 +122,12 @@ const ClassPerfomance = (
                 className={styles.innermenuwrapper}
                 >Past Questions</li>
               </ul>
+          </div>
+            { !subjectPerformance || !pastQuestionPerformance? 
+            <div className={styles.spinnerwrapper}>
+                <Spinner />
+            </div> :
+              <div>
              { showPanel === true && 
               subjectPerformance && subjectPerformance.map((subjectList) =>
               <div className={styles.performancecontentwrapper}>
@@ -169,10 +176,10 @@ const ClassPerfomance = (
               showPanel === false && 
               pastQuestionPerformance && pastQuestionPerformance.map((pastSubject) => 
                   <div className={styles.performancecontentwrapperpast}>
-                     <p>{pastSubject.name}</p>
+                     <p className={styles.pastheaderwrapper}>{pastSubject.name}</p>
                       <div className={styles.pastquestionratewrapper}>
                       <div>
-                        Circle
+                      <Barchart />
                         <p>No rated</p>
                         <h5>PERFORMANCE</h5>
                      </div>
@@ -201,7 +208,7 @@ const ClassPerfomance = (
                         </div>
                   </div>
               )}
-          </div>
+          </div>}
         </div>
     </div>
   )
