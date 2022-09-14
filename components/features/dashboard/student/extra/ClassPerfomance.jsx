@@ -8,6 +8,7 @@ import { FaRegCheckCircle } from 'react-icons/fa';
 import Spinner from '../../../../widgets/spinner';
 import Barchart from '../../../../../pages/dashboard/performance/barchart';
 import Piechart from '../../../../../pages/dashboard/performance/piechart';
+import OverallChart from '../../../../../pages/dashboard/performance/overallbarchart';
 // import BarChartSect from './BarChartSect';
 // import PieChartSection from './PieChartSection';
 
@@ -90,7 +91,7 @@ const ClassPerfomance = (
               <div className={styles.performancecontentwrapper}>
               
                  <div className={styles.subjectsectiononemiddle}>
-                    <Barchart />
+                    <OverallChart />
                  </div>
                  <div className={styles.subjectsectiononemiddle}>
                     <div className={styles.subjectquestioninner}>
