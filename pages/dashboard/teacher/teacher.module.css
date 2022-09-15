@@ -4,7 +4,8 @@
   background-size: contain;
   width: 7px;
   height: 25px;
-  position: "relative"
+  position: "relative";
+  cursor: pointer;
 }
 
 .styleEdit {
@@ -50,13 +51,12 @@
   align-self: center;
 }
 
-
 .commentAvatartop {
   display: grid;
   grid-template-columns: 85% 15%;
   grid-row: 50px;
   align-content: center;
-  position:relative;
+  position: relative;
   padding-right: 90px;
 }
 
@@ -68,7 +68,7 @@
 
 .commentAvatarMRSide {
   position: absolute;
-  right:90px;
+  right: 90px;
 }
 
 .peoplelists {
@@ -98,22 +98,21 @@
 }
 
 .addexambuttonwrapper {
-  border: dotted 2px #F4F4F4;
+  border: dotted 2px #f4f4f4;
   width: 55vw;
   padding: 15%;
   margin-top: 10%;
   text-align: center;
 }
-.addexambuttonwrapper span{
+.addexambuttonwrapper span {
   padding: 18px;
   border: dotted 2px #000;
   border-radius: 20px;
   /* margin-top: 45px; */
-  background-color: #F4F4F4;
-  
+  background-color: #f4f4f4;
 }
 
-.addexamquestionbtn span{
+.addexamquestionbtn span {
   font-size: 1.5rem;
   border: 1px solid black;
   padding: 12px;

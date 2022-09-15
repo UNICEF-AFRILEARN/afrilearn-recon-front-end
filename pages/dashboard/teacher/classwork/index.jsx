@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
-import Router, { useRouter } from 'next/router'
+import Router, { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { Col, Container, Row } from "react-bootstrap";
 import { Heropage } from "../../../../components/features/dashboard/teacher";
@@ -10,28 +10,31 @@ import { fetchClassAssignedContentInitiate } from "../../../../redux/actions/cla
 const ClassWork = () => {
   const [swap, setSwap] = useState(0);
   const dispatch = useDispatch();
-  const [classId, setClassId] = useState('')
+  const [classId, setClassId] = useState("");
   const { classContents } = useSelector((state) => state.schoolClasses);
   const { user } = useSelector((state) => state.auth);
 
-  // console.log("classContents from classwork", classContents)
-  // console.log("classContents.subjectId from classwork", classContents.assignedContents)
+  console.log("classContents from classwork", classContents);
+  console.log(
+    "classContents.subjectId from classwork",
+    classContents.assignedContents,
+  );
 
   useEffect(() => {
-    setClassId(user?.user?.classOwnership[0]?.enrolledCourse.classId)
+    setClassId(user?.user?.classOwnership[0]?.enrolledCourse.classId);
   }, []);
 
   useEffect(() => {
-    dispatch(fetchClassAssignedContentInitiate(classId))
-  }, [classId])
+    dispatch(fetchClassAssignedContentInitiate(classId));
+  }, [classId]);
   return (
     <>
-      <div style={{ marginTop: "-40px", }}>
+      <div style={{ marginTop: "-40px" }}>
         <Heropage />
       </div>
       <Container className="pt-3 pb-3">
         <Row className="p-4 ">
-          <Col md={2} >
+          <Col md={2}>
             <div>
               <Row
                 onClick={() => {
@@ -40,7 +43,7 @@ const ClassWork = () => {
                 className={`text-secondary ${styles.scoreeffect1}`}
               >
                 <p style={swap === 0 ? { color: "#00d9b6" } : {}}>
-                  All Subject 
+                  All Subject
                 </p>
               </Row>
               <Row
@@ -104,9 +107,7 @@ const AllSubject = ({ data }) => {
       }}
     >
       <Row>
-        <Col md={11}>
-          {/* <h4>{data.subject}</h4> */}
-        </Col>
+        <Col md={11}>{/* <h4>{data.subject}</h4> */}</Col>
         <Col style={{ cursor: "pointer" }}>
           <h4>+</h4>
         </Col>

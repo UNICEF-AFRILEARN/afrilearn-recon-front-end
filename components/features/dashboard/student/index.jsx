@@ -17,12 +17,17 @@ import _ from "lodash";
 import StudentHeropage from "./studentHeropage";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  fetchPastQuestionInitiate,
+  fetchClassMember,
+  fetchCoursesInitiate,
+  fetchGetFavouriteInitiate,
+  fetchGetUnfinishedVideosInitiate,
+  fetchGetWebInitiate,
   fetchSendClassRequest,
-  fetchSendClassRequestSuccess,
+  fetchstoreSubject,
   fetchSubjectInitiate,
+  fetchTopInClassInitiate,
 } from "../../../../redux/actions/subject";
-// import Swal from "sweetalert2";
+import Swal from "sweetalert2";
 import {
   // fetchCourseInitiate,
   fetchReconLessonInitiate,
@@ -36,7 +41,8 @@ import { Button, Col, Modal, Row, Tooltip } from "react-bootstrap";
 const Dashboard = () => {
   const dispatch = useDispatch();
   const { reconLesson, lessons, unicefRecon, activities } = useSelector(
-    (state) => state.Mycourses);
+    (state) => state.Mycourses,
+  );
   const { user, registerUser } = useSelector((state) => state.auth);
   // const { registerUser } = useSelector((state) => state.auth);
   const subject = useSelector((state) => state.mySubjectCourse);
@@ -51,25 +57,8 @@ const Dashboard = () => {
   const userId = "62a0bc984af2d90016b72096";
   const token = user.token;
   const lessonId = "6012c2a7cfe09249249f7f9c";
-  const schoollevel = 'Primary One'
-  const reco_subject = 'Agricultural Science'
-  
-  useEffect(() => {
-    dispatch(fetchLessonsInitiate());
-    dispatch(fetchSingleLessonInitiate(lessonId));
-    dispatch(fetchActivitiesInitiate(token));
-    dispatch(fetchUnicefReconInitiate(schoollevel, reco_subject, lessonId))
-    dispatch(fetchReconLessonInitiate(userId, token));
-    // dispatch(fetchCourseInitiate());
-  }, [
-    // fetchCourseInitiate,
-    fetchReconLessonInitiate,
-    fetchUnicefReconInitiate,
-    fetchActivitiesInitiate,
-    fetchLessonsInitiate,
-  ]);
-
-
+  const schoollevel = "Primary One";
+  const reco_subject = "Agricultural Science";
   // To be changed later
 
   const personData = {
@@ -79,24 +68,35 @@ const Dashboard = () => {
     personName: user.user?.fullName,
   };
   const person_id = user.user?.enrolledCourses[0]
-    ? user.user?.enrolledCourses[0]._id
-    : user.user?.enrolledCourses[1]._id;
-
+    ? user.user?.enrolledCourses[0].id
+    : user.user?.enrolledCourses[1].id;
+  const user_id = user.user?.enrolledCourses[0]
+    ? user.user?.enrolledCourses[0].userId
+    : user.user?.enrolledCourses[1].userId;
   useEffect(() => {
+    dispatch(fetchGetWebInitiate(person_id, token));
     // dispatch(fetchLessonsInitiate());
-    // dispatch(fetchSingleLessonInitiate(lessonId));
-    // dispatch(fetchActivitiesInitiate(token));
-    // dispatch(fetchUnicefReconInitiate(schoollevel, reco_subject, lessonId));
-    // dispatch(fetchReconLessonInitiate(userId, token));
-    dispatch(fetchSubjectInitiate(person_id, token));
-    // dispatch(fetchCourseInitiate());
+    dispatch(fetchSingleLessonInitiate(lessonId));
+    dispatch(fetchLessonsInitiate());
+    dispatch(fetchActivitiesInitiate(token));
+    dispatch(fetchUnicefReconInitiate(schoollevel, reco_subject, lessonId));
+    dispatch(fetchReconLessonInitiate(userId, token));
+    // dispatch(fetchSubjectInitiate(person_id, token));
+    dispatch(fetchGetFavouriteInitiate(token));
+    dispatch(fetchGetUnfinishedVideosInitiate(token));
+    dispatch(fetchTopInClassInitiate(person_id, token));
+    dispatch(fetchClassMember(person_id, token));
   }, [
     // fetchCourseInitiate,
     fetchReconLessonInitiate,
     fetchUnicefReconInitiate,
     fetchActivitiesInitiate,
     fetchLessonsInitiate,
-    fetchSubjectInitiate,
+    // fetchSubjectInitiate,
+    fetchGetUnfinishedVideosInitiate,
+    fetchGetWebInitiate,
+    fetchTopInClassInitiate,
+    fetchClassMember,
   ]);
 
   console.log("activities from Dashboard index call ====>", activities);
@@ -107,21 +107,25 @@ const Dashboard = () => {
       <div>
         <SubHeading title="My Subject" />
         <Subjects
-          subData={subject?.subject[1]?.enrolledCourse.courseId.relatedSubjects}
+          subData={
+            subject?.dashboardWeb?.enrolledCourse?.courseId.relatedSubjects
+          }
         />
       </div>
       <PastQuestionaira
         subData={
-          subject?.subject[1]?.enrolledCourse.courseId.relatedPastQuestions
+          subject?.dashboardWeb?.enrolledCourse?.courseId.relatedPastQuestions
         }
       />
+      <UnfinshedVideos classData={subject?.unfinishedStore?.unFinishedVideos} />
+      <MyFavs classData={subject?.favourite?.favouriteVideos} />
       <TopInClasses
-        classData={subject?.subject[0]?.lessons}
+        classData={subject?.topInclass?.lessons}
         classed={personData.personClass}
       />
       <PerfomanceSumm />
       <GetSolution />
-      <ClassRoom data={subject?.subject[2]?.classMembership} />
+      <ClassRoom data={subject?.classroom?.classMembership} />
       <Recommended
         recommend={reconLesson?.recommendation}
         unicefRecon={unicefRecon}
@@ -145,20 +149,124 @@ const TopInClasses = ({ classData, classed }) => {
     cssEase: "linear",
     initialSlide: 0,
     arrows: false,
+    rows: "1",
   };
   return (
     <>
       <SubHeading title={`Top in ${classed}`} />
       <div className={styles.contai}>
         <section className="parnet-frag-color">
-          <Slider {...settings} ref={customeSlider}>
-            {classData?.map((data, i) => (
-              <TopInClass data={data} key={i} />
-            ))}
-          </Slider>
+          {classData?.length > 4 ? (
+            <Slider {...settings} ref={customeSlider}>
+              {classData?.map((data, i) => (
+                <TopInClass data={data} key={i} />
+              ))}
+            </Slider>
+          ) : (
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "15px",
+                marginLeft: "15px",
+              }}
+            >
+              {classData?.map((data, i) => (
+                <TopInClass data={data} key={i} />
+              ))}
+            </div>
+          )}
         </section>
       </div>
-      ;
+    </>
+  );
+};
+const UnfinshedVideos = ({ classData }) => {
+  const customeSlider = useRef();
+
+  const settings = {
+    infinite: true,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    autoplay: true,
+    speed: 1500,
+    autoplaySpeed: 1000,
+    cssEase: "linear",
+    initialSlide: 0,
+    arrows: false,
+    rows: "1",
+  };
+  return (
+    <>
+      <SubHeading title={`Unfinished Videos`} />
+      <div className={styles.contai}>
+        <section className="parnet-frag-color">
+          {classData?.length > 4 ? (
+            <Slider {...settings} ref={customeSlider}>
+              {classData?.map((data, i) => (
+                <TopInClass data={data} key={i} />
+              ))}
+            </Slider>
+          ) : (
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "15px",
+                marginLeft: "15px",
+              }}
+            >
+              {classData?.map((data, i) => (
+                <TopInClass data={data} key={i} />
+              ))}
+            </div>
+          )}
+        </section>
+      </div>
+    </>
+  );
+};
+const MyFavs = ({ classData }) => {
+  const customeSlider = useRef();
+
+  const settings = {
+    infinite: true,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    autoplay: true,
+    speed: 1500,
+    autoplaySpeed: 1000,
+    cssEase: "linear",
+    initialSlide: 0,
+    arrows: false,
+  };
+  return (
+    <>
+      <SubHeading title={`Favourites`} />
+      <div className={styles.contai}>
+        <section className="parnet-frag-color">
+          {classData?.length > 4 ? (
+            <Slider {...settings} ref={customeSlider}>
+              {classData?.map((data, i) => (
+                <TopInClass data={data} key={i} />
+              ))}
+            </Slider>
+          ) : (
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "15px",
+                marginLeft: "15px",
+              }}
+            >
+              {classData?.map((data, i) => (
+                <TopInClass data={data} key={i} />
+              ))}
+            </div>
+          )}
+        </section>
+      </div>
     </>
   );
 };
@@ -274,7 +382,7 @@ const ClassRoom = ({ data }) => {
         ) : (
           data?.map((dta, i) => {
             return (
-              <Row key={i}>
+              <Row key={i} className="pb-5">
                 <Col>
                   <p>{`${dta.classId?.name} - ${dta.classId?.classCode}`}</p>
                 </Col>
@@ -292,13 +400,13 @@ const ClassRoom = ({ data }) => {
                         query: dta?.classId._id,
                       }}
                     >
-                      <Row style={{ width: "250px", margin: "auto" }}>
-                        <Button>Enter Classroom</Button>
-                      </Row>
+                      {/* <Row style={{ width: "250px", margin: "auto" }}> */}
+                      <Button clasName="w-25">Enter Classroom</Button>
+                      {/* </Row> */}
                     </Link>
                   ) : (
                     <Row style={{ width: "250px", margin: "auto" }}>
-                      <Button>{dta?.status}</Button>
+                      <Button className="w-25">{dta?.status}</Button>
                     </Row>
                   )}
                 </Col>

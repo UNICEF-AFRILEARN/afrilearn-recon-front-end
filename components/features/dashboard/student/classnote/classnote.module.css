@@ -4,12 +4,9 @@
   border-radius: 10px;
 }
 
-
 .classs {
   margin: 50px 100px;
 }
-
-
 
 .accordance {
   background-image: url("/assets/img/features/dashboard/student/button2.png");
@@ -42,6 +39,10 @@
 }
 .love {
   background-image: url("/assets/img/features/dashboard/student/Heart.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 32px;
+  height: 32px;
 }
 .seen {
   background-image: url("/assets/img/features/dashboard/student/Show.png");
@@ -96,17 +97,32 @@
 }
 .accordHead {
   width: 80%;
-  /* background-color: #a80f0f !important; */
   border: 0 !important;
+}
+.accordHead2 {
+  width: 80%;
+  border: 0 !important;
+}
+.accordHead2 .accordion-button {
+  border: 0 !important;
+  display: flex;
 }
 
 .accordLeft {
   background: #f1f2f4;
   padding: 12px 64px;
-  border-bottom: 15px solid white;
+  display: flex;
+  flex-wrap: wrap;
+  /* border-bottom: 15px solid white;
   border-radius: 0 0 23px 23px;
   display: grid;
-  grid-template-columns: 30% 70%;
+  grid-template-columns: 30% 70%; */
+}
+
+.accordLeft2 {
+  background: #f1f2f4;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .accordRightDiv {
@@ -125,11 +141,6 @@
   margin: 7px;
 }
 
-.accordLeft {
-  display: flex;
-  gap: 15px;
-}
-
 .buttonStyle {
   display: flex;
   gap: 5px;
@@ -138,15 +149,12 @@
 .headerTop {
   /* width: 0%; */
   margin: 30px 0;
-  height: 50px;
   background: #29465b;
   box-shadow: 0px 1px 7px rgba(212, 217, 232, 0.5);
   border-radius: 10px;
-  display: grid;
   justify-content: space-between;
   padding: 20px 15px;
   align-content: center;
-  grid-template-columns: 20% 10% 1% 20% 49%;
 }
 
 .headerTopRightMid {
@@ -239,7 +247,17 @@
   background-size: contain;
   width: 13px;
   height: 13px;
-  /* margin: 5px auto; */
+  margin: 5px 0;
+  margin-left: 15px;
+  align-self: center;
+}
+.accordButtonLeft22 {
+  background-image: url("/assets/img/features/dashboard/student/Stroke 11.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 13px;
+  height: 13px;
+  margin: 5px auto;
   align-self: center;
 }
 
@@ -278,4 +296,16 @@
 
 .colSeentext {
   cursor: "pointer";
+}
+
+@media screen and (max-width: 1000px) {
+  .accordLeft {
+    padding: 12px 20px;
+  }
+}
+
+@media screen and (max-width: 415px) {
+  .classs {
+    margin: 0 5px;
+  }
 }
