@@ -1,141 +1,107 @@
-// import React from 'react';
-// // import { Chart as ChartJs, Tooltip, Title, ArcElement, Legend} from 'react-chartjs-2';
-// // import { Pie} from 'chart.js';
-// import {Chart as ChartJS,
-//   CategoryScale,
-//   LinearScale,
-//   BarElement,
-//   Title,
-//   Tooltip,
-//   Legend,} from 'chart.js'
-// import { Bar } from 'react-chartjs-2';
 
-// ChartJS.register(
-//   CategoryScale,
-//   LinearScale,
-//   BarElement,
-//   Title,
-//   Tooltip,
-//   Legend
-// );
-
-// export const options = {
-//   responsive: true,
-//   plugins: {
-//     legend: {
-//       position: 'top',
-//     },
-//     title: {
-//       display: false,
-//       text: 'Chart.js Bar Chart',
-//     },
-//   },
-// };
-
-// const data = {
-//   datasets:[{
-//     barPercentage: 0.5,
-//     barThickness: 7,
-//     maxBarThickness: 8,
-//     minBarLength: 2,
-//     data:[10, 20, 30, 50, 60,50, 60,50, 60]
-//   }],
-
-//   labels:[
-//     "Red",
-//     "Yellow",
-//     "Yellow",
-//     "Yellow",
-//     "Yellow",
-//     "Yellow",
-//     "Yellow",
-//     "Yellow",
-//     "Green"
-//   ]
-// };
-
-// const Piechart = () => {
-//   return (
-//     <div>
-//           <Bar options={options} data={data} />
-//     </div>
-//   )
-// }
-
-// export default Piechart
 
 import React from 'react';
-import { BarChart, Bar, Cell, XAxis, Label, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, Cell, XAxis, Label, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LabelList } from 'recharts';
 
 const data = [
   {
-    name: 'Page A',
+    name: 'A',
     uv: 4000,
     pv: 2400,
     amt: 2400,
+    per: 30,
   },
   {
-    name: 'Page B',
+    name: 'B',
     uv: 3000,
     pv: 1398,
     amt: 2210,
+    per: 50,
   },
   {
-    name: 'Page C',
+    name: 'C',
     uv: 2000,
     pv: 9800,
     amt: 2290,
+    per: 60,
   },
   {
-    name: 'Page D',
+    name: 'D',
     uv: 2780,
     pv: 3908,
     amt: 2000,
+    per: 30,
   },
   {
-    name: 'Page E',
+    name: 'English',
     uv: 1890,
     pv: 4800,
     amt: 2181,
+    per: 100,
   },
   {
-    name: 'Page F',
+    name: 'F',
     uv: 2390,
     pv: 3800,
     amt: 2500,
+    per: 80,
   },
   {
-    name: 'Page G',
+    name: 'G',
     uv: 3490,
     pv: 4300,
     amt: 2100,
+    per: 40,
   },
   {
-    name: 'Page G',
+    name: 'G',
     uv: 3490,
     pv: 4300,
     amt: 2100,
+    per: 40,
   },
   {
-    name: 'Page G',
+    name: 'WG',
     uv: 3490,
     pv: 4300,
     amt: 2100,
+    per: 60,
   },
   {
-    name: 'Page G',
+    name: 'JKG',
     uv: 3490,
     pv: 4300,
     amt: 2100,
+    per: 60,
   },
 ];
 
-const Piechart = () => {
+const Piechart = ({subjectPerformance}) => {
+  console.log("subjectPerformance from pie", subjectPerformance)
     return (
       // <ResponsiveContainer width="50%" height="50%">
         <BarChart width={400} height={350} data={data}>
-          <Bar dataKey="uv" fill="#8884d8" 
+          <Bar dataKey="per" fill="#8884d8"
+            radius={[20, 20, 20, 20]}
+            barSize={28}
+            label={{ position: 'baseline'}}
+
+            
           />
+           {subjectPerformance && subjectPerformance.map((subjectList) =>
+           <XAxis 
+           dataKey='name'
+           fontFamily="sans-serif"
+           tickSize
+           angle={-90}
+          dx={-10}
+          dy={15}
+          minTickGap={-200}
+          axisLine={false}
+          interval={0}
+       />
+           )  }
+       <YAxis hide/>
           
         </BarChart>
       //  </ResponsiveContainer>

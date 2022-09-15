@@ -81,7 +81,9 @@ const ClassPerfomance = (
               <h3>Progress</h3>
               <p>Progress level per  subject</p>
             </div>
-             <Piechart />
+             <Piechart 
+              subjectPerformance={subjectPerformance}
+             />
           </div>
         </div>
        </div>
