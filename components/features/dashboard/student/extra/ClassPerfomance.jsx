@@ -26,6 +26,7 @@ const ClassPerfomance = (
     let subjectPerformance = studentPerformance?.data?.subjectsList;
   // const result = Object?.values(classDetails);
   const [showPanel, setShowPanel] = useState(false);
+  const [data, setData] = useState([]);
   const [panelId, setPanelId] = useState(1);
   // console.log("currentStudent?.data? from classPerformance ===>", currentStudent)
 
@@ -41,6 +42,13 @@ const ClassPerfomance = (
   const createPanelId = (id) => {
     setPanelId(id)
   }
+
+  useEffect(() => {
+    if(subjectPerformance){
+
+      setData(subjectPerformance)
+    }
+  }, [])
   
   useEffect(() => {
     displayPanel()
@@ -82,7 +90,7 @@ const ClassPerfomance = (
               <p>Progress level per  subject</p>
             </div>
              <Piechart 
-              subjectPerformance={subjectPerformance}
+              data={data}
              />
           </div>
         </div>
