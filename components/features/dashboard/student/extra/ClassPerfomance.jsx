@@ -22,8 +22,8 @@ const ClassPerfomance = (
   }) => {
 
     const { user} = useSelector((state) => state.auth)
-    let pastQuestionPerformance = classPerformance?.data?.examsList;
-    let subjectPerformance = classPerformance?.data?.subjectsList;
+    let pastQuestionPerformance = studentPerformance?.data?.examsList;
+    let subjectPerformance = studentPerformance?.data?.subjectsList;
   // const result = Object?.values(classDetails);
   const [showPanel, setShowPanel] = useState(false);
   const [panelId, setPanelId] = useState(1);
@@ -135,7 +135,9 @@ const ClassPerfomance = (
               <div className={styles.performancecontentwrapper}>
                  <div className={styles.subjectsectionone}>
                     <p className={styles.subjectheaderwrapper}>{subjectList.subject}</p>
-                    <Barchart />
+                    <Barchart 
+                      subjectList={subjectList}
+                    />
                     {subjectList.performance === null? 
                     <p className={styles.averagetimeremark}> 
                       No Rating

@@ -65,7 +65,7 @@
 // export default Piechart
 
 import React from 'react';
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, Cell, XAxis, Label, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const data = [
   {
@@ -134,7 +134,9 @@ const Piechart = () => {
     return (
       // <ResponsiveContainer width="50%" height="50%">
         <BarChart width={400} height={350} data={data}>
-          <Bar dataKey="uv" fill="#8884d8" />
+          <Bar dataKey="uv" fill="#8884d8" 
+          />
+          
         </BarChart>
       //  </ResponsiveContainer>
     );

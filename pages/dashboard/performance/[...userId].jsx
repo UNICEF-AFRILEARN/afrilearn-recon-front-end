@@ -43,7 +43,7 @@ const Performance = () => {
   
   useEffect(() => {
     dispatch(fetchClassPerformanceInitiate(courseId, token))
-     }, [])
+     }, [courseId])
 
   useEffect(() => {
     if(classId){
