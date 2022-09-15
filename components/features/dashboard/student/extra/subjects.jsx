@@ -10,6 +10,7 @@ import { StudentPage } from "./../studentHeropage";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCourseDetailsInitiate } from "../../../../../redux/actions/subject";
 
+
 let subj;
 const Subjects = ({ subData }) => {
   const [subjCourId, setsubjCourId] = useState({});
@@ -59,6 +60,7 @@ const Subjects = ({ subData }) => {
       })
     ) : (
       <div>Loading...</div>
+      // <FullpageLoader />
     );
   };
 

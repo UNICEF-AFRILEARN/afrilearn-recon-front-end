@@ -9,6 +9,7 @@ import Spinner from '../../../../widgets/spinner';
 import Barchart from '../../../../../pages/dashboard/performance/barchart';
 import Piechart from '../../../../../pages/dashboard/performance/piechart';
 import OverallChart from '../../../../../pages/dashboard/performance/overallbarchart';
+import Pastquestionchart from '../../../../../pages/dashboard/performance/pastquestionchart';
 // import BarChartSect from './BarChartSect';
 // import PieChartSection from './PieChartSection';
 
@@ -45,7 +46,6 @@ const ClassPerfomance = (
 
   useEffect(() => {
     if(subjectPerformance){
-
       setData(subjectPerformance)
     }
   }, [])
@@ -146,7 +146,7 @@ const ClassPerfomance = (
                  <div className={styles.subjectsectionone}>
                     <p className={styles.subjectheaderwrapper}>{subjectList.subject}</p>
                     <Barchart 
-                      subjectList={subjectList}
+                      data={data}
                     />
                     {subjectList.performance === null? 
                     <p className={styles.averagetimeremark}> 
@@ -193,7 +193,7 @@ const ClassPerfomance = (
                      <p className={styles.pastheaderwrapper}>{pastSubject.name}</p>
                       <div className={styles.pastquestionratewrapper}>
                       <div>
-                      <Barchart />
+                      <Pastquestionchart />
                         <p>No rated</p>
                         <h5>PERFORMANCE</h5>
                      </div>

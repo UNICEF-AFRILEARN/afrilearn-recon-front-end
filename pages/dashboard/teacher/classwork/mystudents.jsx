@@ -11,6 +11,7 @@ import {
 } from '../../../../redux/actions/classes';
 import Link from "next/link";
 import Spinner from './../../../../components/widgets/spinner/index';
+import FUllpageLoader from "../../../../components/widgets/fullpageLoader";
 
 const MyStudent = () => {
   const statusElement = useRef();
@@ -93,6 +94,7 @@ useEffect(() => {
         {!classMembers? 
          <Row className={styles.loaderwrapper}>
              <Spinner />
+             {/* <FUllpageLoader /> */}
           </Row> :
         
         classMembers?.classMembers?.map((studentName) => (
