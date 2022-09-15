@@ -20,17 +20,13 @@ const Performance = () => {
   const { query } = useRouter();
  
 
-  let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjJmNGFkOGM5OWJjNjgwMDE2NjE2NTFkIiwicm9sZSI6IjYwMmYzY2UzOWIxNDZiMzIwMWMyZGMxZCIsImZ1bGxOYW1lIjoiSm9obiBkb2UifSwiaWF0IjoxNjYzMTUxNzI0LCJleHAiOjE2NjU3NDM3MjR9.MN1RXkpWvFF0Jjx_ZI6hT3bqXNyZHiAWOmc_f9Hm2nc'
+  let token = user.token
 
   const userId = query.userId
   const courseId = user?.user?.enrolledCourses[0]?.courseId.id
   let classId = query.classId;
-  //to make performance dynamic which use query for api call:
-  // console.log("query from performance ===> ", query)
-  // console.log("user from performance ===> ", user)
-  // console.log("classMembers from performance ===> ", classMembers?.classMembers)
-  // const { email } = user?.user
-  console.log("classPerformance from studentPerformance ===>",   courseId)
+
+  // console.log("user from studentPerformance ===>",   )
   // console.log("email from performance =====>&", email)
   
   //Filter current student to show student details
