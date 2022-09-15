@@ -9,7 +9,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { StudentPage } from "./../studentHeropage";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCourseDetailsInitiate } from "../../../../../redux/actions/subject";
-
+import FullpageLoader from '../../../../widgets/fullpageLoader/index'
 
 let subj;
 const Subjects = ({ subData }) => {

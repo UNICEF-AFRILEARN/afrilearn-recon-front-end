@@ -82,12 +82,12 @@ console.log("questionTypeId", questionTypeId)
         token,
       ),
     );
-    // if (Object.keys(newExams).length > 0) {
-    //   Router.push({
-    //     pathname: `/dashboard/teacher/examinations/add-exams-question/[_examId]`,
-    //     query: { _examId: subjectId },
-    //   });
-    // }
+    if (Object.keys(newExams).length > 0) {
+      Router.push({
+        pathname: `/dashboard/teacher/examinations/add-exams-question/[_examId]`,
+        query: { _examId: subjectId },
+      });
+    }
   };
 
   // useEffect(() => {

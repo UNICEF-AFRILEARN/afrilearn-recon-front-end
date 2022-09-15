@@ -7,7 +7,7 @@ import {
 } from '../../../../redux/actions/exams';
 
 const Addexambutton = ({examQuestion, exam_id}) => {
-  const { newExamQuestion, exams, singleExamQuestions, updatedExam, deletedExam } = useSelector((state) => state.myExams);
+  const { newExamQuestion, newExams, exams, singleExamQuestions, updatedExam, deletedExam } = useSelector((state) => state.myExams);
   const { user } = useSelector((state) => state.auth)
   const [showType, setShowType] = useState(false)
   const dispatch = useDispatch();
@@ -29,11 +29,11 @@ const Addexambutton = ({examQuestion, exam_id}) => {
     dispatch(addExamQuestionInitiate(token, exam_id, type))
 }
 
-console.log("examType from add button component ===>", examType,)
+console.log("examType from add button component ===>", exam_id)
 
   return (
     <div className={styles.addexambuttonwrapper}>
-        { examType &&
+        { examType || newExams &&
             examQuestion?.length > 0? "" : 
             <span
               onClick={handleClick}
@@ -42,6 +42,7 @@ console.log("examType from add button component ===>", examType,)
             </span>
         }
        { showType === true &&
+       //Check the question type with id instead of name so I can check both the new and the all exams
        <div className={styles.pointerwrapper}>
            { examType[0]?.questionTypeId?.name === "Objective" && 
                           <a onClick={handleAddQuestions}>Objective</a>
