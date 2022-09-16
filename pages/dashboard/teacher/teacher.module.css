@@ -127,6 +127,11 @@
   align-items: center !important;
 }
 
+.addexamlistwrapper li{
+  list-style-type: none;
+  margin: 10px 0;
+}
+
 .buttonwrapper{
   background-color: #00D9B6 !important;
   width: 20% !important;

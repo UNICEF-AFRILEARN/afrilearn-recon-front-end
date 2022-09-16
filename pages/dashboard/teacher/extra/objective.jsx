@@ -20,6 +20,7 @@ import {
 import Questiontitle from './questiontitle';
 import {wrapper } from '../../../../redux/store'
 import Addexambutton from './addexambutton';
+import Exammodal from '../examinations/exammodal/index'
 
 const Objectives = ({exam_id}) => {
     const dispatch = useDispatch();
@@ -33,7 +34,11 @@ const Objectives = ({exam_id}) => {
     const [theExamType, setTheExamType] = useState("")
 
     const [showObjQuestions, setShowObjQuestions] = useState(1)
-    const [showObjQuestionOptions, setShowObjQuestionOptions] = useState(0)
+    const [showObjQuestionOptions, setShowObjQuestionOptions] = useState(0);
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
 
     
@@ -80,7 +85,6 @@ const Objectives = ({exam_id}) => {
 
     let publish
     const handleUpdateStatus = (e) => {
-        console.log("e.target.innerHTML, ", e.target.innerHTML)
         if(e.target.innerHTML === 'PUBLISH'){
             publish = true
             setTheExamType('UNPUBLISH')
@@ -88,10 +92,8 @@ const Objectives = ({exam_id}) => {
             publish = false
             setTheExamType('PUBLISH')
         }
-        console.log("theExamType, ", theExamType)
         dispatch(updateExamInitiate(exam_id, publish))
     }
-    console.log("exam_id, ", exam_id)
     
     const handleGetQuestions = (e, index) => {
         const { name, value} = e.target
@@ -124,9 +126,9 @@ const Objectives = ({exam_id}) => {
             setExamQuestion([...receivedQuestions])
         }
     }, [receivedQuestions, newExamQuestion, updatedExam, deletedExam])
-
+    
+    console.log("deletedExam from objective", deletedExam)
     useEffect(() => {
-        console.log("examType[0]?.publish from hook", examType[0]?.publish)
         if(examType[0]?.publish === true){
             setTheExamType('UNPUBLISH')
         }else if(examType[0]?.publish === false){
@@ -201,16 +203,18 @@ const Objectives = ({exam_id}) => {
                          <div className={styles.linkswrapper}>
                            
                           { examType[0]?.questionTypeId?.name === "Objective" && 
-                          <a onClick={handleAddQuestions}>Objective</a>
+                          <a onClick={(e) => {handleAddQuestions(e); onClickExamsType(); handleShow()}}>Objective</a>
                           }
                           { examType[0]?.questionTypeId?.name === "Theory" && 
-                          <a onClick={handleAddQuestions}>Theory</a>
+                          <a onClick={(e) => {handleAddQuestions(e); onClickExamsType(); handleShow()}}>Theory</a>
                           }
                                     { 
                                     examType[0]?.questionTypeId?.name === "Objective & Theory" && 
                                     <>
-                                     <a onClick={handleAddQuestions}>Objective</a>
-                                        <a onClick={handleAddQuestions}>Theory</a>
+                                     <a onClick={(e) => {handleAddQuestions(e); onClickExamsType(); handleShow()}}>Objective</a>
+                                        <a onClick={(e) => {handleAddQuestions(e); onClickExamsType();
+                                        handleShow()
+                                        }}>Theory</a>
                                     </>
                                      }
 
@@ -228,6 +232,7 @@ const Objectives = ({exam_id}) => {
                         exam_id={exam_id}
                         examType={examType}
                         examQuestion={examQuestion}
+                        handleShow={handleShow}
                     />
              </div>
            
@@ -244,6 +249,7 @@ const Objectives = ({exam_id}) => {
                         singleExamQuestions={singleExamQuestions}
                         singleQuestion={singleQuestion}
                         examQuestion={examQuestion}
+                        deletedExam={deletedExam}
                     />
                 </>
                )) }
@@ -262,7 +268,13 @@ const Objectives = ({exam_id}) => {
                 {showObjQuestions === 3 && <Generatequestions />}
                 {/* { showObjQuestions === 4 && <Submitquestions />} */} 
         </div>
-        
+        <Exammodal 
+        handleClose={handleClose}
+        handleShow={handleShow}
+        show={show}
+        newExamQuestion={newExamQuestion}
+       
+        />
     </div>
   )
 }

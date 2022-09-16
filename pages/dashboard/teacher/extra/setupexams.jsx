@@ -260,6 +260,7 @@ console.log("questionTypeId", questionTypeId)
         handleShow={handleShow}
         handleClose={handleClose}
         show={show}
+        newExams={newExams}
         navigateTodetails={navigateTodetails}
       />
     </div>

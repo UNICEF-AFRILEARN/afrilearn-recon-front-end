@@ -7,7 +7,7 @@ import {
   fetchSingleExamDetailsInitiate
 } from '../../../../redux/actions/exams';
 
-const Addexambutton = ({examQuestion, exam_id}) => {
+const Addexambutton = ({examQuestion, exam_id, handleShow}) => {
   const { newExamQuestion, singleExam, newExams, exams, singleExamQuestions, updatedExam, deletedExam } = useSelector((state) => state.myExams);
   const { user } = useSelector((state) => state.auth)
   const [showType, setShowType] = useState(false)
@@ -54,22 +54,47 @@ useEffect(() => {
        //Check the question type with id instead of name so I can check both the new and the all exams
        <div className={styles.pointerwrapper}>
            { questionType_id === "61683f87df6ca80c9c5a3285" && 
-                          <a onClick={handleAddQuestions}>Theory</a>
+                          <ul className={styles.addexamlistwrapper}>
+                          <li>
+                            <a 
+                            onClick={(e) => {
+                            handleAddQuestions(e);
+                            handleShow()
+                          }}
+                          >Theory</a>
+                          </li>
+                          </ul>
             }
-
             { questionType_id === "61683f90df6ca80c9c5a3287" && 
-                        <>
-                          <a onClick={handleAddQuestions}>
-                            Theory</a>
-                             <a onClick={handleAddQuestions}>Objective</a>
-                        </>
+                        <ul className={styles.addexamlistwrapper}>
+                          <li><a 
+                          onClick={(e) => {
+                            handleAddQuestions(e);
+                            handleShow()
+                          }}
+                          >
+                            Theory</a></li>
+                          <li>
+                            <a 
+                            onClick={(e) => {
+                              handleAddQuestions(e);
+                              handleShow()
+                            }}
+                            >Objective</a></li>
+                        </ul>
             }
 
             {
               questionType_id === "61683f7ddf6ca80c9c5a3283" && 
-              <>
-                  <a onClick={handleAddQuestions}>Objective</a>
-              </>
+              <ul className={styles.addexamlistwrapper}>
+                  <li>
+                    <a 
+                   onClick={(e) => {
+                    handleAddQuestions(e);
+                    handleShow()
+                  }}
+                    >Objective</a></li>
+              </ul>
             }
 
         </div>

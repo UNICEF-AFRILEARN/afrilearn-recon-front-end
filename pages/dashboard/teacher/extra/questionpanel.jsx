@@ -9,6 +9,7 @@ import { AiOutlineArrowsAlt } from 'react-icons/ai';
 import { updateExamQuestionInitiate, fetchSingleExamQuestionsInitiate, fetchExamsInitiate } from '../../../../redux/actions/exams';
 import Questiontitle from './questiontitle';
 import Addexambutton from './addexambutton';
+import Exammodal from '../examinations/exammodal/index'
 
 const Questionpanel = ({
   index, 
@@ -18,7 +19,8 @@ const Questionpanel = ({
   examQuestion,
   singleQuestion,
   questionType,
-  setQuestionType
+  setQuestionType,
+  deletedExam
   // singleExamQuestions
 }) => {
   const { newExamQuestion, exams, singleExamQuestions } = useSelector((state) => state.myExams);
@@ -38,6 +40,10 @@ const Questionpanel = ({
   const [examQuestionType, setExamQuestionType ] = useState("")
   const [examId, setExamId] = useState("");
   const { query } = useRouter();
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const token = user.token
 
   
@@ -107,6 +113,7 @@ const Questionpanel = ({
           <>
           <Questiontitle 
             singleQuestion={singleQuestion}
+            handleShow={handleShow}
           index={examQuestion.indexOf(singleQuestion) }
           />
               <div className={styles.questionpanelwrapper}>
@@ -205,6 +212,12 @@ const Questionpanel = ({
           }
          </>
        }
+       <Exammodal 
+        handleClose={handleClose}
+        handleShow={handleShow}
+        deletedExam={deletedExam}
+        show={show}
+       />
     </div>
   )
 }

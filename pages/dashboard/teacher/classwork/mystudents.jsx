@@ -93,8 +93,8 @@ useEffect(() => {
         </Row>
         {!classMembers? 
          <Row className={styles.loaderwrapper}>
-             {/* <Spinner /> */}
-             <FUllpageLoader />
+             <Spinner />
+             {/* <FUllpageLoader /> */}
           </Row> :
         
         classMembers?.classMembers?.map((studentName) => (
