@@ -60,8 +60,9 @@ const Objectives = ({exam_id}) => {
 
         let examType = allExams?.filter((filteredExams) => 
             filteredExams.id === exam_id
-            
         )
+
+        console.log("examType =====>", examType)
     
     const onClickExamsType = () => {
         setOpenQuestionType(!openQuestionType)
@@ -231,7 +232,6 @@ const Objectives = ({exam_id}) => {
 
           
             </div>
-
                 <div className={styles.addbuttoninnermainwrapper}>
                 <Addexambutton 
                         exam_id={exam_id}
