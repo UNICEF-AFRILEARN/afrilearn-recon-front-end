@@ -41,6 +41,7 @@ useEffect(() => {
 
 
   return (
+    <div className={styles.addbuttonmainwrapper}>
     <div className={styles.addexambuttonwrapper}>
         { examType &&
             examQuestion?.length > 0? "" : 
@@ -99,6 +100,7 @@ useEffect(() => {
 
         </div>
         }
+    </div>
     </div>
   )
 }

@@ -118,7 +118,7 @@
     background-color: #FAFAFA;
     padding: 20px;
     width: 25%;
-    height: 60vh;
+    height: 70vh;
 }
 
 
@@ -549,6 +549,18 @@
   
   .linkswrapper a:hover{
     background-color: gray;
+  }
+
+  .addbuttoninnermainwrapper{
+    align-self: center;
+    position: absolute;
+    right: 40%;
+    top: 20%;
+  }
+
+  .littleaddbtnwrapper{
+      margin-top: 15%;
+      margin-left:10%;
   }
 
   .examquestionwrapperinnner {

@@ -141,7 +141,10 @@ const Objectives = ({exam_id}) => {
         <div className={styles.objleftsideboxwrapper}>
             <h4>Set Up Examination</h4>
             <ul>
-                <li><span><BsFillCircleFill /></span>Set Ups</li>
+                <li><span>
+                    <BsFillCircleFill 
+                    color='#00D9B6'
+                    /></span>Set Ups</li>
                 <li><span><BsCircle /></span>Examination Questions</li>
             </ul>
             <div className={styles.bottombtnwrapper}>
@@ -159,13 +162,14 @@ const Objectives = ({exam_id}) => {
                    <h4>{examType[0]?.publish === true? 'This exam is currently published' : 'This exam is currently unpublished'}</h4>}
                </div>
                {/* add button add new question */}
-               {/* <div>
-               { examType && 
-               <Addexambutton 
-               exam_id={exam_id}
-                examType={examType}
-                />}
-               </div> */}
+                    <div className={styles.littleaddbtnwrapper}>
+                    <Addexambutton 
+                        exam_id={exam_id}
+                        examType={examType}
+                        examQuestion={examQuestion}
+                        handleShow={handleShow}
+                     />
+                    </div>
                {/* End add button add new question */}
                
             </div>
@@ -225,18 +229,20 @@ const Objectives = ({exam_id}) => {
                       } 
             </ul>
 
+          
             </div>
 
-            <div className={styles.examquestionwrapperinnner}>
-                    <Addexambutton 
+                <div className={styles.addbuttoninnermainwrapper}>
+                <Addexambutton 
                         exam_id={exam_id}
                         examType={examType}
                         examQuestion={examQuestion}
                         handleShow={handleShow}
                     />
-             </div>
+                </div>
            
              <div className={styles.examquestionwrapperinnner}>
+             
              { showObjQuestions === 1 &&  examQuestion && examQuestion.map((singleQuestion, index) => (
                 <>
                     <Questionpanel 
