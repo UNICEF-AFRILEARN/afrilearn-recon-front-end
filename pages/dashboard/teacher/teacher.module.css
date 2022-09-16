@@ -121,7 +121,16 @@
   background-color: #F4F4F4;
   
 }
+.exammodalwrapper {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
 
+.buttonwrapper{
+  background-color: #00D9B6 !important;
+  width: 20% !important;
+}
 .addexamquestionbtn span{
   font-size: 1.5rem;
   border: 1px solid black;

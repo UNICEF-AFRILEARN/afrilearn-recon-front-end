@@ -30,6 +30,7 @@ const Objectives = ({exam_id}) => {
     const [examQuestion, setExamQuestion] = useState([])
     const [question, setQuestion] = useState("")
     const [questionType, setQuestionType] = useState("")
+    const [theExamType, setTheExamType] = useState("")
 
     const [showObjQuestions, setShowObjQuestions] = useState(1)
     const [showObjQuestionOptions, setShowObjQuestionOptions] = useState(0)
@@ -47,16 +48,15 @@ const Objectives = ({exam_id}) => {
         dispatch(addExamQuestionInitiate(token, exam_id, type))
     }
     
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        dispatch(updateExamQuestionInitiate(questionId, data))
-    }
+    // const handleSubmit = (e) => {
+    //     e.preventDefault()
+    //     dispatch(updateExamQuestionInitiate(questionId, data))
+    // }
 
         let examType = allExams?.filter((filteredExams) => 
             filteredExams.id === exam_id
             
         )
-        console.log("exams from objective ===>", examType)
     
     const onClickExamsType = () => {
         setOpenQuestionType(!openQuestionType)
@@ -82,13 +82,16 @@ const Objectives = ({exam_id}) => {
     const handleUpdateStatus = (e) => {
         console.log("e.target.innerHTML, ", e.target.innerHTML)
         if(e.target.innerHTML === 'PUBLISH'){
-              publish = true
+            publish = true
+            setTheExamType('UNPUBLISH')
         }else if(e.target.innerHTML === 'UNPUBLISH'){
-             publish = false
+            publish = false
+            setTheExamType('PUBLISH')
         }
-        console.log("e.target.innerHTML, ", publish)
-        dispatch(updateExamInitiate(questionId, publish))
+        console.log("theExamType, ", theExamType)
+        dispatch(updateExamInitiate(exam_id, publish))
     }
+    console.log("exam_id, ", exam_id)
     
     const handleGetQuestions = (e, index) => {
         const { name, value} = e.target
@@ -96,6 +99,13 @@ const Objectives = ({exam_id}) => {
         list[index][name] = value;
     }
 
+    const handleStatusUpdate = (obj) => {
+        if(obj === true){
+            setTheExamType('UNPUBLISH')
+        }else if(obj === false){
+            setTheExamType('PUBLISH')
+        }
+    }
     
     // filterExams()
     
@@ -103,17 +113,27 @@ const Objectives = ({exam_id}) => {
     
     useEffect(() => {
         dispatch(fetchSingleExamDetailsInitiate(token, exam_id))
-      }, [exam_id, publish, updatedExam])
+      }, [exam_id, updatedExam])
 
       useEffect(() =>{
         dispatch(fetchSingleExamQuestionsInitiate(token, exam_id))
-    }, [exam_id, newExamQuestion, updatedExam, deletedExam, publish])
+    }, [exam_id, newExamQuestion, updatedExam, deletedExam])
       
     useEffect(() => {
         if(receivedQuestions){
             setExamQuestion([...receivedQuestions])
         }
     }, [receivedQuestions, newExamQuestion, updatedExam, deletedExam])
+
+    useEffect(() => {
+        console.log("examType[0]?.publish from hook", examType[0]?.publish)
+        if(examType[0]?.publish === true){
+            setTheExamType('UNPUBLISH')
+        }else if(examType[0]?.publish === false){
+            setTheExamType('PUBLISH')
+        }
+
+    }, [theExamType])
   return (
     <div className={styles.objectivemainwrapper}>
         <div className={styles.objleftsideboxwrapper}>
@@ -127,9 +147,9 @@ const Objectives = ({exam_id}) => {
                <h4 onClick={() => showObjpanel(3)}>Generate questions</h4>
                }
                 <div className={styles.btnmainwrapper}>
-                   { examType && 
-                   <h4 onClick={handleUpdateStatus}>{examType[0]?.publish === true? 'UNPUBLISH' : 'PUBLISH'}</h4>
-                   }
+                  
+                 <h4 onClick={() => setTheExamType(theExamType)}>{theExamType}</h4>
+                   
                     <h5>PREVIEW</h5>
                 </div>
                 <div>
@@ -202,6 +222,7 @@ const Objectives = ({exam_id}) => {
             </ul>
 
             </div>
+
             <div className={styles.examquestionwrapperinnner}>
                     <Addexambutton 
                         exam_id={exam_id}

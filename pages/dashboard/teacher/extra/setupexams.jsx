@@ -10,7 +10,8 @@ import { Form, InputGroup, FormControl, Button } from "react-bootstrap";
 import { BiNote } from "react-icons/bi";
 import { addExamsInitiate } from "../../../../redux/actions/exams";
 import { fetchClassSubjectsInitiate } from "../../../../redux/actions/classes";
-
+import Exammodal from "../examinations/exammodal";
+import Spinner from '../../../../components/widgets/spinner/index';
 
 
 const SetupExams = () => {
@@ -34,10 +35,15 @@ const SetupExams = () => {
   const [deadline, setDeadline] = useState(new Date());
   const [startDate, setStartDate] = useState(new Date());
 
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   let classSubjectName = classSubjects?.subjects;
 console.log("questionTypeId", questionTypeId)
   let token = user?.token;
 
+  // console.log("newExams from setup", newExams.exam.id)
   const setClassSubjectsIds = () => {
     classSubjectName?.map((subjectIds) => {
       if (subjectIds.mainSubjectId.name === subjectSelected) {
@@ -82,13 +88,22 @@ console.log("questionTypeId", questionTypeId)
         token,
       ),
     );
+    if (newExams) {
+         handleShow()
+    }
+  };
+
+  const navigateTodetails = async () => {
     if (Object.keys(newExams).length > 0) {
       Router.push({
         pathname: `/dashboard/teacher/examinations/add-exams-question/[_examId]`,
-        query: { _examId: subjectId },
+        query: { _examId: newExams.exam.id },
       });
     }
-  };
+  }
+
+  //To be called in the modal:
+  // navigateTodetails()
 
   // useEffect(() => {
   //     console.log("newExams status  from setupexams", )
@@ -122,7 +137,10 @@ console.log("questionTypeId", questionTypeId)
                 <li><span><BsCircle /></span>Examination Questions</li>
             </ul>
         </div>
-      <Form onSubmit={handleSubmit} className={`${styles.examformwrapper} w-50`}>
+     { !classSubjectName? <div>
+            <h5>Loading ....... </h5>
+            <Spinner />
+       </div> : <Form onSubmit={handleSubmit} className={`${styles.examformwrapper} w-50`}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Exam title:</Form.Label>
           <Form.Control
@@ -152,6 +170,7 @@ console.log("questionTypeId", questionTypeId)
                 </>
               ))}
           </Form.Select>
+          
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Question type:</Form.Label>
@@ -202,6 +221,7 @@ console.log("questionTypeId", questionTypeId)
           <Form.Control
             type="text"
             value={duration}
+            placeholder='234'
             onChange={(e) => setDuration(e.target.value)}
             className="shadow-none"
             style={{ outline: "none" }}
@@ -230,10 +250,18 @@ console.log("questionTypeId", questionTypeId)
             style={{ outline: "none" }}
           ></textarea>
         </Form.Group>
-        <Button className="w-100" type="submit">
+        <Button 
+          disabled={!deadline || !startDate || !duration || !totalNumberOfQuestions || !termSelected}
+        className="w-25" type="submit">
           PROCEED
         </Button>
-      </Form>
+      </Form>}
+      <Exammodal 
+        handleShow={handleShow}
+        handleClose={handleClose}
+        show={show}
+        navigateTodetails={navigateTodetails}
+      />
     </div>
   );
 };
