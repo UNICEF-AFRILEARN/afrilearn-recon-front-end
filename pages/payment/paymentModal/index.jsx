@@ -103,7 +103,6 @@ const PaymentDetails = ({handleOpen, handleClose, open, closeModal, priceSelecte
     // console.log("sorted_term_videos from paymentdetails ++++", sorted_term_videos)
     let price = priceSelected
     useEffect(() => {
-      console.log("prevCount from modal=====", prevCount)
     }, [handleOpen])
     
   return (

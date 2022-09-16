@@ -14,6 +14,7 @@ import { usePaystackPayment } from 'react-paystack';
 
 import styles from "../../styles/payment.module.css"
 import PaymentDetails from './paymentModal';
+import Spinner from '../../components/widgets/spinner/index'
 
 const payment = ({test_body}) => {
   const priceElement = useRef();
@@ -187,7 +188,11 @@ console.log("selectedCourse from payment ====>", selectedCourse)
   <h5>Step 3: Select Subscription Length</h5>
   <div className={`row ${styles.paymentdurationButtons}`}>
   <div className= {` col-md-3 ${styles.durationPayment}`}> 
-    {allPaymentPlans && allPaymentPlans.map((allPlans) =>
+    {!allPaymentPlans? 
+    <div>
+        <h4>Loading ......</h4>
+        <Spinner />
+    </div> : allPaymentPlans.map((allPlans) =>
         <button 
         className={`${styles.paymentwrapper} ${styles.btnpayment}`}
           ref={priceElement}
@@ -271,7 +276,11 @@ console.log("selectedCourse from payment ====>", selectedCourse)
   <h5>Step 3: Select Subscription Length</h5>
   <div className={`row ${styles.paymentdurationButtons}`}>
   <div className= {` col-md-3 ${styles.durationPayment}`}> 
-    {allPaymentPlans && allPaymentPlans.map((allPlans) =>
+    {!allPaymentPlans? 
+    <div>
+        <h4>Loading ......</h4>
+        <Spinner />
+    </div> : allPaymentPlans.map((allPlans) =>
         <button 
         className={`${styles.paymentwrapper} ${styles.btnpayment}`}
         ref={priceElement}
@@ -373,7 +382,11 @@ console.log("selectedCourse from payment ====>", selectedCourse)
   className= {` col-md-3 ${styles.durationPayment}`}
   
   > 
-    {teacher_plans && teacher_plans.map((teacherPlans) =>
+    {!teacher_plans? 
+    <div>
+        <h4>Loading ......</h4>
+        <Spinner />
+    </div> : teacher_plans.map((teacherPlans) =>
         <button 
         className={`${styles.paymentwrapper} ${styles.btnpayment}`}
         ref={priceElement}
@@ -446,7 +459,11 @@ console.log("selectedCourse from payment ====>", selectedCourse)
   <h5>Step 3: Select Subscription Length</h5>
   <div className={`row ${styles.paymentdurationButtons}`}>
   <div className= {` col-md-3 ${styles.durationPayment}`}> 
-    {teacher_plans && teacher_plans.map((teacherPlans) =>
+    {!teacher_plans? 
+    <div>
+        <h4>Loading ......</h4>
+        <Spinner />
+    </div> : teacher_plans.map((teacherPlans) =>
         <button 
           className={`${styles.paymentwrapper} ${styles.btnpayment}`}
           ref={priceElement}

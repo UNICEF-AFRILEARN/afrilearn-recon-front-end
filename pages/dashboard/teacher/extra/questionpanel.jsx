@@ -145,6 +145,7 @@ const Questionpanel = ({
               as="textarea" 
               rows="5" 
               name="question"
+              required
               defaultValue={singleQuestion.question}
               onChange={(e) => {handleGetQuestions(e, index), setQuestionId(singleQuestion.id)}}
               placeholder="Type question here..." 
