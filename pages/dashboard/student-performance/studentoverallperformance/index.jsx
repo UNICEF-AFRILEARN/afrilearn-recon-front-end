@@ -6,12 +6,12 @@ import { AiOutlineExclamationCircle } from 'react-icons/ai';
 import { MdLocationOn } from 'react-icons/md';
 import { FaRegCheckCircle } from 'react-icons/fa';
 import Spinner from '../../../../components/widgets/spinner';
-import Barchart from '../../parent/child-performance/barchart/index';
-import Piechart from '../../parent/child-performance/piechart/index';
-import OverallChart from '../../parent/child-performance/overallchart/index';
+import Barchart from '../barchart/index';
+import Piechart from '../piechart/index';
+import OverallChart from '../overallchart/index';
 // import Piechart from '../../../../../pages/dashboard/performance/piechart';
 // import OverallChart from '../../../../../pages/dashboard/performance/overallbarchart';
-import Pastquestionchart from '../../parent/child-performance/pastquestionchart/index';
+import Pastquestionchart from '../pastquestionchart/index';
 // import BarChartSect from './BarChartSect';
 // import PieChartSection from './PieChartSection';
 
@@ -41,7 +41,7 @@ const Studentoverallperformance = ({studentPerformance, userId}) => {
   
   filterChild()
 
-  console.log("studentPerformance from childPerformance ===>", studentPerformance)
+  console.log("subjectPerformance from childPerformance ===>", subjectPerformance)
 
   const displayPanel = () => {
     if(panelId === 1){
@@ -73,9 +73,9 @@ const Studentoverallperformance = ({studentPerformance, userId}) => {
             <div className={styles.innerwrapper}>
                <>
                 <div className={styles.studentnamewrapper}>
-                  <h2>{currentChild[0]?.fullName}</h2>
-                  { currentChild &&  <p>{currentChild[0]?.email}</p>}
-                 { currentChild && <h3>{currentChild[0]?.enrolledCourses[0]?.courseId.name}</h3>}
+                  <h2>{user?.user?.fullName}</h2>
+                  { user &&  <p>{user?.user?.email}</p>}
+                 { user && <h3>{user?.user?.enrolledCourses[0]?.courseId.name}</h3>}
                  {/* <MdLocationOn
                  enrolledCourses.courseId.name
                 className={styles.locationiconwrapper}
@@ -159,7 +159,7 @@ const Studentoverallperformance = ({studentPerformance, userId}) => {
                  <div className={styles.subjectsectionone}>
                     <p className={styles.subjectheaderwrapper}>{subjectList.subject}</p>
                     <Barchart 
-                      data={data}
+                      subjectList={subjectList}
                     />
                     {subjectList.performance === null? 
                     <p className={styles.averagetimeremark}> 
@@ -206,7 +206,9 @@ const Studentoverallperformance = ({studentPerformance, userId}) => {
                      <p className={styles.pastheaderwrapper}>{pastSubject.name}</p>
                       <div className={styles.pastquestionratewrapper}>
                       <div>
-                      <Pastquestionchart />
+                      <Pastquestionchart 
+                      pastQuestionPerformance={pastQuestionPerformance}
+                      />
                         <p>No rated</p>
                         <h5>PERFORMANCE</h5>
                      </div>

@@ -1,17 +1,23 @@
-import React, { PureComponent } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PieChart, Pie, Sector, Label, LabelList, Cell, ResponsiveContainer } from 'recharts';
 
 
 
 const COLORS = ['#0088FE', '#00C49F'];
 
-const Pastquestionchart = ({subjectList}) => {
+const Pastquestionchart = ({pastQuestionPerformance}) => {
+  // const [data, setData] = useState()
 
+  //data from the API:
+  // let data = pastQuestionPerformance 
+
+
+  // useEffect(() => {
+  //   setData(pastQuestionPerformance)
+  // }, [pastQuestionPerformance])
   // let totalQuestion = subjectList.totalQuestions
   // let totalQuestionsCorrectAnswered = subjectList.totalQuestionsCorrect
   const data = [
-    { name: 'totalQuestions', value: 30 },
-    { name: 'totalQuestionsCorrect', value: 20 },
     { name: 'totalQuestionsCorrect', value: 20 },
     { name: 'totalQuestionsCorrect', value: 20 },
   ];
@@ -19,13 +25,13 @@ const Pastquestionchart = ({subjectList}) => {
   // totalQuestions: 0
   // totalQuestionsCorrect: 0
 
-  const calculatePercentage = (data, done) => {
-    let percentageCalculated = (done / data) * 100;
-    return percentageCalculated.toFixed(0).replace(".", ",").toString() + "%";
-  };
+  // const calculatePercentage = (data, done) => {
+  //   let percentageCalculated = (done / data) * 100;
+  //   return percentageCalculated.toFixed(0).replace(".", ",").toString() + "%";
+  // };
 
 
-  console.log("Pastquestionchart from barchart", subjectList)
+  console.log("data from barchart &&&&&&&&&", data)
 
     return (
       
@@ -42,7 +48,7 @@ const Pastquestionchart = ({subjectList}) => {
           dataKey="value"
         >
            <Label 
-        value='70%' position="centerBottom"  className='label-top' fontSize='27px'
+        value={console.log("Inner", data)} position="centerBottom"  className='label-top' fontSize='27px'
         />
         <Label 
         value="AVERAGE" position="centerTop" className='label'

@@ -23,17 +23,17 @@ const Studentperformance = () => {
   // const { query } = useRouter();
  
 
-  let token = user.token
+  let token = user?.token
 
   // let {_userId} = router.query;
-  let userId = user.user.id;
-  const courseId = user.user.enrolledCourses[0]?.courseId.id
+  let userId = user?.user?.id;
+  const courseId = user?.user?.enrolledCourses[0]?.courseId?.id
   // const {course_id} = router.query
   // let classId = query.classId;
   // let classId = ""
 
   // console.log("userId from studentPerformance ===>",  userId  )
-  console.log("courseId from student-performance =====>&", courseId)
+  console.log("user from student-performance =====>&", user)
   
   //Filter current student to show student details
   let currentStudent = [];

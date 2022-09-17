@@ -5,8 +5,9 @@ import { PieChart, Pie, Sector, Label, LabelList, Cell, ResponsiveContainer } fr
 
 const COLORS = ['#0088FE', '#00C49F'];
 
-const Barchart = ({subjectList}) => {
+const Barchart = ({data}) => {
 
+    // console.log("datadatadata ===>", data)
   // let totalQuestion = subjectList.totalQuestions
   // let totalQuestionsCorrectAnswered = subjectList.totalQuestionsCorrect
   const data = [
@@ -17,13 +18,13 @@ const Barchart = ({subjectList}) => {
   // totalQuestions: 0
   // totalQuestionsCorrect: 0
 
-  const calculatePercentage = (data, done) => {
-    let percentageCalculated = (done / data) * 100;
-    return percentageCalculated.toFixed(0).replace(".", ",").toString() + "%";
-  };
+//   const calculatePercentage = (data, done) => {
+//     let percentageCalculated = (done / data) * 100;
+//     return percentageCalculated.toFixed(0).replace(".", ",").toString() + "%";
+//   };
 
 
-  console.log("subjectList from barchart", subjectList)
+  console.log("subjectList from barchart", data)
 
     return (
       
