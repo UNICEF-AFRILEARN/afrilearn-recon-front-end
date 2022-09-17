@@ -108,7 +108,9 @@ export const signUpChildInitiate = (fullName,password,confirmPassword,email,cour
             console.log("Hello from parent add a child API =>", res.data.data)
         })
         .catch((err) => {
-           dispatch(signUpChildFail(err))
+           dispatch(signUpChildFail(err.response.data.error))
+           console.log("Hello from parent add a child error API =>", err.response.data.error
+           )
         })
     }
 
