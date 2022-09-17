@@ -72,11 +72,13 @@ const  data = {
          </div>
          <div>
          <div className={styles.topmath}>
-                <ul>
+         <ul> 
                 <li>Mathematics</li>
                 <li>Civic Education</li>
                 <li>Computer Science </li>
                 <li>Basic Science</li>
+                </ul>
+                <ul>
                 <li>Mathematics</li>
                 <li>Civic Education</li>
                 <li>Computer Science </li>
@@ -84,11 +86,13 @@ const  data = {
                 </ul>
             </div>
             <div className={styles.topmath}>
-                <ul>
+            <ul>
                 <li>Mathematics</li>
                 <li>Civic Education</li>
                 <li>Computer Science </li>
                 <li>Basic Science</li>
+                </ul>
+                <ul>
                 <li>Mathematics</li>
                 <li>Civic Education</li>
                 <li>Computer Science </li>
@@ -96,11 +100,13 @@ const  data = {
                 </ul>
             </div>
             <div className={styles.topmath}>
-                <ul>
+            <ul>
                 <li>Mathematics</li>
                 <li>Civic Education</li>
                 <li>Computer Science </li>
                 <li>Basic Science</li>
+                </ul>
+                <ul>
                 <li>Mathematics</li>
                 <li>Civic Education</li>
                 <li>Computer Science </li>
