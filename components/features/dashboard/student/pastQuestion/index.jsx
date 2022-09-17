@@ -11,10 +11,8 @@ const PastQuestion = () => {
   let quary = router.query.Exam;
   const subject = useSelector((state) => state.mySubjectCourse);
 
-  const subjectDat = subject.pastQuestion[0]?.subjects;
-
-  console.log("subjectDat from pastquestion", subject)
-  
+  const subjectDat = subject.pastQuestionSub.subjects;
+  console.log(subject);
   const [show, setShow] = useState(false);
   const [list, setList] = useState([]);
   const toggleModal = () => setShow(!show);
@@ -39,14 +37,14 @@ const PastQuestion = () => {
       <Row className="m-5 px-5">
         {subjectDat?.map((subjectData, i) => (
           <div key={i} className={`col-md-2 ${styles1.MySubjectt}`}>
-            <button
-              className="modalButton"
+            <div
+              className="m-auto p-auto"
               onClick={() => {
                 toggleModal();
                 setList(() => subjectData.years);
               }}
             >
-              <picture>
+              <picture className="m-auto">
                 <source
                   srcSet={`https:${subjectData.subject_image}`}
                   type="image/webp"
@@ -58,7 +56,7 @@ const PastQuestion = () => {
                 />
               </picture>
               <p>{subjectData.subject}</p>
-            </button>
+            </div>
           </div>
         ))}
       </Row>

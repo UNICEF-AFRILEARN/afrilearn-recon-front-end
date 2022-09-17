@@ -35,8 +35,7 @@ export default Video;
 const ClassNoteVideo = () => {
   const subject = useSelector((state) => state.mySubjectCourse);
   const lessons = subject.subjectDetails[1]?.relatedLessons;
-  console.log(lessons);
-  console.log(subject);
+
   const terms = [
     "5fc8d1b20fae0a06bc22db5c",
     "600047f67cabf80f88f61735",
@@ -57,20 +56,16 @@ const ClassNoteVideo = () => {
         <Accordion.Item eventKey={0} className={styles.accord_button}>
           <Accordion.Header className={styles.accordHead}>
             <Row md={8}>
-              <Col md={5}>
-                <h5 style={{ colour: "#00d9b6 !important" }}>First Term</h5>
-              </Col>
-              <Col>
-                <h6 style={{ colour: "#00d9b6 !important" }}>
-                  {termsNumber(0)} lessons available
-                </h6>
-              </Col>
+              <h5 style={{ colour: "#00d9b6 !important" }}>First Term</h5>
+
+              <h6 style={{ colour: "#00d9b6 !important" }}>
+                {termsNumber(0)} lessons available
+              </h6>
             </Row>
           </Accordion.Header>
           <Accordion.Body>
             {lessons?.map((lesson, i) => {
               if (lesson.termId === terms[0] && lesson.videoUrls[0]) {
-                console.log(lesson);
                 return (
                   <Accordion key={i} className={styles.accord}>
                     <Accordion.Item
@@ -84,16 +79,15 @@ const ClassNoteVideo = () => {
                       <Accordion.Body className={styles.accordLeft}>
                         {lesson.videoUrls.map((data, j) => {
                           return (
-                            <div key={i} className={styles.accordButtonLeft}>
+                            <div
+                              key={data._id}
+                              className={styles.accordButtonLeft}
+                            >
                               <Link
                                 href={{
                                   pathname:
                                     "/dashboard/student/video/videoPage/",
-                                  query: {
-                                    Exam: j,
-                                    Lesson: i,
-                                    term: "First Term",
-                                  },
+                                  query: [lesson.id, data._id],
                                 }}
                               >
                                 <div
@@ -149,20 +143,16 @@ const ClassNoteVideo = () => {
         <Accordion.Item eventKey={0} className={styles.accord_button}>
           <Accordion.Header className={styles.accordHead}>
             <Row md={8}>
-              <Col md={5}>
-                <h5 style={{ colour: "#00d9b6 !important" }}>Second Term</h5>
-              </Col>
-              <Col>
-                <h6 style={{ colour: "#00d9b6 !important" }}>
-                  {termsNumber(1)} lessons available
-                </h6>
-              </Col>
+              <h5 style={{ colour: "#00d9b6 !important" }}>Second Term</h5>
+
+              <h6 style={{ colour: "#00d9b6 !important" }}>
+                {termsNumber(1)} lessons available
+              </h6>
             </Row>
           </Accordion.Header>
           <Accordion.Body>
             {lessons?.map((lesson, i) => {
               if (lesson.termId === terms[1] && lesson.videoUrls[0]) {
-                console.log(lesson);
                 return (
                   <Accordion key={i} className={styles.accord}>
                     <Accordion.Item
@@ -176,12 +166,15 @@ const ClassNoteVideo = () => {
                       <Accordion.Body className={styles.accordLeft}>
                         {lesson.videoUrls.map((data, j) => {
                           return (
-                            <div key={i} className={styles.accordButtonLeft}>
+                            <div
+                              key={data._id}
+                              className={styles.accordButtonLeft}
+                            >
                               <Link
                                 href={{
                                   pathname:
                                     "/dashboard/student/video/videoPage/",
-                                  query: { Exam: j, Lesson: i, term: "Second Term" },
+                                  query: [lesson.id, data._id],
                                 }}
                               >
                                 <div
@@ -196,7 +189,7 @@ const ClassNoteVideo = () => {
                                       height={13}
                                     />
                                   </div>
-                                  Lesson {i + 1}
+                                  Lesson {j + 1}
                                 </div>
                               </Link>
                             </div>
@@ -237,14 +230,11 @@ const ClassNoteVideo = () => {
         <Accordion.Item eventKey={0} className={styles.accord_button}>
           <Accordion.Header className={styles.accordHead}>
             <Row md={8}>
-              <Col md={5}>
-                <h5 style={{ colour: "#00d9b6 !important" }}>Third Term</h5>
-              </Col>
-              <Col>
-                <h6 style={{ colour: "#00d9b6 !important" }}>
-                  {termsNumber(2)} lessons available
-                </h6>
-              </Col>
+              <h5 style={{ colour: "#00d9b6 !important" }}>Third Term</h5>
+
+              <h6 style={{ colour: "#00d9b6 !important" }}>
+                {termsNumber(2)} lessons available
+              </h6>
             </Row>
           </Accordion.Header>
           <Accordion.Body>
@@ -270,14 +260,17 @@ const ClassNoteVideo = () => {
                             flexWrap: "wrap",
                           }}
                         >
-                          {lesson.videoUrls.map((data, i) => {
+                          {lesson.videoUrls.map((data, j) => {
                             return (
-                              <div key={i} className={styles.accordButtonLeft}>
+                              <div
+                                key={data._id}
+                                className={styles.accordButtonLeft}
+                              >
                                 <Link
                                   href={{
                                     pathname:
                                       "/dashboard/student/video/videoPage/",
-                                    query: { Exam: i },
+                                    query: [lesson.id, data._id],
                                   }}
                                 >
                                   <div
