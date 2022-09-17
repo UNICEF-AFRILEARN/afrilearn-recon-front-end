@@ -207,10 +207,10 @@ console.log("selectedCourse from payment ====>", selectedCourse)
   </div>
  <div className={`row ${styles.btnwrapper}`}>
   <div className= {` col-md-6 ${styles.paymenttypeButton}`}>
-    <div 
-    onClick={() => {
-                initializePayment(onSuccess, onClose)
-              }}>PAY WITH CARD</div>
+  <button 
+  onClick={() => {
+              initializePayment(onSuccess, onClose)
+            }}>PAY WITH CARD</button>
   </div>
     <div className={` col-md-6 ${styles.paymenttypeButton2}`}>
          <PaymentDetails
@@ -294,12 +294,12 @@ console.log("selectedCourse from payment ====>", selectedCourse)
   <div className= {` col-md-3 ${styles.durationPayment}`}> 
   </div>
  <div className='row'>
-  <div className= {` col-md-6 ${styles.paymenttypeButton}`}>
-    <button 
-    onClick={() => {
-                initializePayment(onSuccess, onClose)
-              }}>PAY WITH CARD</button>
-  </div>
+ <div className= {` col-md-6 ${styles.paymenttypeButton}`}>
+  <button 
+  onClick={() => {
+              initializePayment(onSuccess, onClose)
+            }}>PAY WITH CARD</button>
+    </div>  
     <div className={` col-md-6 ${styles.paymenttypeButton2}`}>
       {/* <button >BANK TRANSFER</button> */}
       <PaymentDetails
