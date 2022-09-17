@@ -34,7 +34,7 @@ const GeneratePerformance = ({children, courseContext}) => {
     }
 
     let child_id;
-    children.filter((sorterChild) => {
+    children?.filter((sorterChild) => {
         if(sorterChild.fullName === selectedChild){
             child_id = sorterChild.id
         }
