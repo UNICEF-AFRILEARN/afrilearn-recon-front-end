@@ -64,10 +64,10 @@ const Navigation = () => {
              {userRole === '5fd08fba50964811309722d5' &&
               <div className={styles.parentloggedindash}>
                 <ul>
-                  <Link passHref href="/dashboard/student">
+                  <Link  passHref href="/dashboard/student">
                     <li>Dashboard</li>
                   </Link>
-                  <Link passHref href="/dashboard/student">
+                  <Link passHref href="/dashboard/student-performance">
                     <li>Performance Analysis</li>
                   </Link>
                   <Link passHref href="/payment">
