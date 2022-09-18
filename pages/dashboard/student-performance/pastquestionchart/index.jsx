@@ -11,6 +11,7 @@ const Pastquestionchart = ({pastQuestionPerformance}) => {
   //data from the API:
   // let data = pastQuestionPerformance 
 
+  console.log("pastQuestionPerformance", pastQuestionPerformance)
 
   // useEffect(() => {
   //   setData(pastQuestionPerformance)
@@ -18,8 +19,10 @@ const Pastquestionchart = ({pastQuestionPerformance}) => {
   // let totalQuestion = subjectList.totalQuestions
   // let totalQuestionsCorrectAnswered = subjectList.totalQuestionsCorrect
   const data = [
-    { name: 'totalQuestionsCorrect', value: 20 },
-    { name: 'totalQuestionsCorrect', value: 20 },
+    { name: `${pastQuestionPerformance.map((item) => item.name)}`,
+    label: `${pastQuestionPerformance.map((item) => item.performance)}`,
+      value: 20 },
+    // { name: 'totalQuestionsCorrect', value: 20 },
   ];
 
   // totalQuestions: 0
@@ -48,7 +51,7 @@ const Pastquestionchart = ({pastQuestionPerformance}) => {
           dataKey="value"
         >
            <Label 
-        value={console.log("Inner", data)} position="centerBottom"  className='label-top' fontSize='27px'
+        value={data.label} position="centerBottom"  className='label-top' fontSize='27px'
         />
         <Label 
         value="AVERAGE" position="centerTop" className='label'

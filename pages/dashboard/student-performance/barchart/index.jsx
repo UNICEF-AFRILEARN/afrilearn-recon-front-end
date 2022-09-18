@@ -5,7 +5,7 @@ import { PieChart, Pie, Sector, Label, LabelList, Cell, ResponsiveContainer } fr
 
 const COLORS = ['#0088FE', '#00C49F'];
 
-const Barchart = ({data}) => {
+const Barchart = () => {
 
     // console.log("datadatadata ===>", data)
   // let totalQuestion = subjectList.totalQuestions

@@ -11,6 +11,14 @@
   border-radius: 5px 5px 0 0;
 }
 
+.innerwrapperrecon {
+  background-color: blue;
+  display: flex;
+  flex-direction: row;
+  /* width: 0%; */
+
+}
+
 .dashboardFirstSection {
   background-image: radial-gradient(rgba(0, 0, 0, 0.17), rgba(0, 0, 0, 0.99)),
     url("./../../../../public/assets/img/features/dashboard/student/dashboard.png");
@@ -84,8 +92,10 @@
 }
 
 .contai {
+  /* display: grid; */
+  /* grid-t: repeat(10, 1fr); */
   width: 1300px;
-  /* background-color: gray; */
+  /* background-color: yellow; */
   /* height: 500px; */
   margin: auto;
 }
