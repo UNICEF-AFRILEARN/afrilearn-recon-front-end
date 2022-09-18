@@ -109,7 +109,12 @@ const ClassNoteVideo = () => {
                           );
                         })}
                         <div className={styles.accordButtonLeft}>
-                          <Link href="/quiz">
+                          <Link
+                            href={{
+                              pathname: "/quiz",
+                              query: [lesson.id],
+                            }}
+                          >
                             <div
                               className={styles.buttonStyle}
                               style={{ cursor: "pointer" }}

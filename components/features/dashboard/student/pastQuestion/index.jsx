@@ -75,7 +75,7 @@ const PastQuestion = () => {
               passHref
               href={{
                 pathname: "/dashboard/student/pastQuestion/pastQuestionPage",
-                query: { Exam: exam_year.subject_id },
+                query: { Exam: exam_year.subject_id, type: quary },
               }}
             >
               <a>

@@ -7,35 +7,57 @@ import Timer from "react-compound-timer";
 import { Progress } from "reactstrap";
 import Swal from "sweetalert2";
 import Speech from "react-speech";
-import { inputChange } from "../../../../../../../redux/actions/subject";
+import {
+  inputChange,
+  submitLessonQuizResult,
+  submitPastQuestionProgress,
+  submitPastQuestionResult,
+} from "../../../../../../../redux/actions/subject";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 const ExamQuestion = () => {
   const subject = useSelector((state) => state.mySubjectCourse);
-  console.log(subject.pastQuestionQue[0]);
+
+  const router = useRouter();
+  const fata =
+    subject.dashboardWeb.enrolledCourse?.courseId.relatedPastQuestions.filter(
+      (data) => data.pastQuestionTypes[0].name === router.query[0],
+    );
+  const gata = fata && fata[0]?.pastQuestionTypes[0].categoryId;
+
+  subject.pastQuestionQue[0]?.subject_details.exam_year;
   const sub_data = {
     questions: subject.pastQuestionQue[0]?.questions,
     subject: subject.pastQuestionQue[0]?.subject_details.subject,
     year: subject.pastQuestionQue[0]?.subject_details.exam_year,
     duration: subject.pastQuestionQue[0]?.subject_details.duration,
+    questionNo: subject.pastQuestionQue[0]?.subject_details.no_of_questions,
     questionId: subject.pastQuestionQue[0]?.question_id,
-    motivation: subject.pastQuestionQue[0]?.motivation,
+    motivation: subject.pastQuestionQue[0]?.motivations,
+    category: gata,
+    pastQuestion: true,
   };
   return <ExamQuestionPassage sub_dat={sub_data} />;
 };
 export default ExamQuestion;
 export const ExamQuestionPassage = ({ sub_dat }) => {
+  const router = useRouter();
   const dispatch = useDispatch();
   const subject = useSelector((state) => state.mySubjectCourse);
-  const tot_numb = sub_dat.questions.length;
+  const { user } = useSelector((state) => state.auth);
+  const token = user?.token;
+  const tot_numb = sub_dat.questions?.length;
   const NoArray = Array.from(
-    Array(sub_dat.questions.length).keys(),
+    Array(sub_dat.questions?.length).keys(),
     (n) => n + 1,
   );
 
   const [nextQues, setNextQues] = useState(1);
   const [nextAns, setNextAns] = useState({});
   const [show, setShow] = useState(false);
-  const sub_que = sub_dat.questions[+nextQues - 1];
+  const sub_que = sub_dat.questions && sub_dat.questions[+nextQues - 1];
+  const queNumber = +nextQues - 1;
   const handleClose = () => setShow(false);
   const handleOpen = () => {
     setNextQues(nextQues);
@@ -48,22 +70,31 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
   const speed = ((timed / 4) * 1) / 60000;
 
   const [Amodals, setAModal] = useState(false);
-  const [AveSpeed, setAveSpeed] = useState("");
   const [cray, setCray] = useState(false);
   const [modal1, setModal1] = useState(false);
+  const [motivationItemNo, setMotivationItemNo] = useState(0);
+  const [motivationInterval, setMotivationInterval] = useState(0);
+  const [motivateGoodPerformance, setMotivateGoodPerformance] = useState(false);
+  const [correctAnswers, setCorrectAnswers] = useState([]);
+  // const [inCorrectAnswers, setInCorrectAnswers] = useState([]);
+  const [skipQue, setSkipQue] = useState([]);
+  const [allAnswers, setAllAnswers] = useState({});
+  const [submittedAnswer, setSubmittedAnswer] = useState([]);
+  const [aveSpeed, setAveSpeed] = useState([]);
+  const ansNumber = Object.keys(allAnswers).length;
 
   const handleNextQuestion = async (answer) => {
-    if (sub_dat.motivation) {
-      const CheckPoint25Percent = Math.round(0.25 * questionLength);
-      const CheckPoint50Percent = Math.round(0.5 * questionLength);
-      const CheckPoint75Percent = Math.round(0.75 * questionLength);
-      const performanceCheckPoint = CheckPoint50Percent / 2;
+    if (sub_dat.motivation?.length) {
+      const CheckPoint25Percent = Math.round(0.25 * +sub_dat.questionNo);
+      const CheckPoint50Percent = Math.round(0.5 * +sub_dat.questionNo);
+      const CheckPoint75Percent = Math.round(0.75 * +sub_dat.questionNo);
+      const performanceCheckPoint = Math.round(CheckPoint50Percent / 2);
 
-      if (sub_que === CheckPoint25Percent) {
-        dispatch(inputChange("motivationInterval", 0));
-        dispatch(inputChange("motivateGoodPerformance", false));
+      if (ansNumber === CheckPoint25Percent) {
+        setMotivationInterval(0);
+        setMotivateGoodPerformance(false);
         let itemNo = Math.floor(Math.random() * 5 + 1) - 1;
-        dispatch(inputChange("motivationItemNo", itemNo));
+        setMotivationItemNo(itemNo);
         setModal1(true);
         setTimeout(function () {
           setModal1(false);
@@ -71,31 +102,31 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
       }
 
       if (
-        sub_que === CheckPoint50Percent &&
-        subject.correctAnswers >= performanceCheckPoint
+        ansNumber === CheckPoint50Percent &&
+        correctAnswers.length >= performanceCheckPoint
       ) {
-        dispatch(inputChange("motivationInterval", 1));
-        dispatch(inputChange("motivateGoodPerformance", true));
+        setMotivationInterval(1);
+        setMotivateGoodPerformance(true);
         let itemNo = Math.floor(Math.random() * 5 + 1) - 1;
-        dispatch(inputChange("motivationItemNo", itemNo));
+        setMotivationItemNo(itemNo);
         setModal1(true);
         setTimeout(function () {
           setModal1(false);
         }, 4000);
-      } else if (sub_que === CheckPoint50Percent) {
-        dispatch(inputChange("motivationInterval", 1));
-        dispatch(inputChange("motivateGoodPerformance", false));
+      } else if (ansNumber === CheckPoint50Percent) {
+        setMotivationInterval(1);
+        setMotivateGoodPerformance(false);
         let itemNo = Math.floor(Math.random() * 5 + 1) - 1;
-        dispatch(inputChange("motivationItemNo", itemNo));
+        setMotivationItemNo(itemNo);
         setModal1(true);
         setTimeout(function () {
           setModal1(false);
         }, 4000);
       }
 
-      if (currentQuestion === CheckPoint75Percent) {
+      if (ansNumber === CheckPoint75Percent) {
         dispatch(inputChange("motivationInterval", 2));
-        dispatch(inputChange("motivateGoodPerformance", false));
+        setMotivateGoodPerformance(false);
         let itemNo = Math.floor(Math.random() * 5 + 1) - 1;
         dispatch(inputChange("motivationItemNo", itemNo));
         setModal1(true);
@@ -105,10 +136,15 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
       }
     }
 
-    await handleCorrectAnswerCheck(answer);
+    // await handleCorrectAnswerCheck(answer);
     await handleSaveAnswer(answer);
     await prepareSubmittedAnswer(answer);
-    if (handleLastQuestionCheck()) {
+    // if (handleLastQuestionCheck()) {
+    //
+    // }
+    if (nextQues < sub_dat.questions.length) {
+      setNextQues(nextQues + 1);
+    } else {
       handleClosure();
     }
     return true;
@@ -131,10 +167,248 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
     }
     return decodeHTMLEntities;
   })();
+  const handleGrade = (getEmoji = false, getDefinition = false) => {
+    let average = Math.round(
+      (correctAnswers.length / sub_dat.questions?.length) * 100,
+    );
+    //    let grade = 'Unknown';
+    let definition = "Unknown Comment";
+    let remark = "Unknown Remark";
+    let emoji = (
+      <Image
+        src={"/assets/img/features/dashboard/student/f9.gif"}
+        alt="logo"
+        width={26}
+        height={26}
+      />
+    );
 
+    if (average >= 75) {
+      // grade = 'A1'
+      definition = "Excellent";
+      remark =
+        "Congrats, genius, that was excellent! Your Test Grade Result is A1, and we’re super proud of you. Practice more to remain ahead of the pack!";
+      emoji = (
+        <Image
+          src={"/assets/img/features/dashboard/student/a1.gif"}
+          alt="logo"
+          width={26}
+          height={26}
+        />
+      );
+    } else if (average >= 70) {
+      // grade = 'B2'
+      definition = "Very Good";
+      remark =
+        "Awesome! Your Test Grade Result is B2. You’re very smart and we’re rooting for you! Practice more to stay ahead of the pack!";
+      emoji = (
+        <Image
+          src={"/assets/img/features/dashboard/student/b2.gif"}
+          alt="logo"
+          width={26}
+          height={26}
+        />
+      );
+    } else if (average >= 65) {
+      // grade = 'B3'
+      definition = "Good";
+      remark =
+        "Great! Your Test Grade Result is B3. You did very well and can do even better, with more practice.";
+      emoji = (
+        <Image
+          src={"/assets/img/features/dashboard/student/b3.gif"}
+          alt="logo"
+          width={26}
+          height={26}
+        />
+      );
+    } else if (average >= 60) {
+      // grade = 'C4'
+      definition = "Credit";
+      remark =
+        "Very good! Your Test Grade Result is C4. You did well and can do much better, with more practice. ";
+      emoji = (
+        <Image
+          src={"/assets/img/features/dashboard/student/c4.gif"}
+          alt="logo"
+          width={26}
+          height={26}
+        />
+      );
+    } else if (average >= 55) {
+      // grade = 'C5'
+      definition = "Credit";
+      remark =
+        "Good! Your Test Grade Result is C5. You did quite well and can do even better, with more practice. We believe in you.";
+      emoji = (
+        <Image
+          src={"/assets/img/features/dashboard/student/c5.gif"}
+          alt="logo"
+          width={26}
+          height={26}
+        />
+      );
+    } else if (average >= 50) {
+      // grade = 'C6'
+      definition = "Credit";
+      remark =
+        "Fair attempt! Your Test Grade Result is C6. You did fairly well and you can improve, with more practice. ";
+      emoji = (
+        <Image
+          src={"/assets/img/features/dashboard/student/c6.gif"}
+          alt="logo"
+          width={26}
+          height={26}
+        />
+      );
+    } else if (average >= 45) {
+      // grade = 'D7'
+      definition = "Pass";
+      remark =
+        "Oops! Your Test Grade Result is D7. To ace your exam, please practice more. We strongly believe you can do better, with more practice.";
+      emoji = (
+        <Image
+          src={"/assets/img/features/dashboard/student/d7.gif"}
+          alt="logo"
+          width={26}
+          height={26}
+        />
+      );
+    } else if (average >= 40) {
+      // grade = 'E8'
+      definition = "Pass";
+      remark =
+        "Oops! Your Test Grade Result is E8. To ace your exam, please practice more. We strongly believe you can do better, with more practice. Let’s do this!";
+      emoji = (
+        <Image
+          src={"/assets/img/features/dashboard/student/e8.gif"}
+          alt="logo"
+          width={26}
+          height={26}
+        />
+      );
+    } else {
+      // grade = 'F9'
+      definition = "Fail";
+      remark =
+        "Ouch! We strongly advice you study better and retake the test. We know you can do a lot better, with more practice. Yes, it is possible!";
+      emoji = (
+        <Image
+          src={"/assets/img/features/dashboard/student/f9.gif"}
+          alt="logo"
+          width={26}
+          height={26}
+        />
+      );
+    }
+    if (getEmoji) {
+      return emoji;
+    }
+    if (getDefinition) {
+      return definition;
+    }
+    return grade;
+  };
+  const submitData = {
+    results: submittedAnswer,
+    userId: user?.user?._id,
+    courseId: subject?.dashboardWeb?.enrolledCourse?.id,
+    subjectCategoryId: subject.pastQuestionQue[0]?.subject_details.subject_id,
+    subjectName: subject.pastQuestionQue[0]?.subject_details.subject,
+    pastQuestionCategoryId: sub_dat.category,
+    pastQuestionTypeId: "5fc8e7134bfe993c34a9689c", //not needed
+    subjectId: "5fc8e7134bfe993c34a9689c", //not needed
+    timeSpent: `${speed}`,
+    ////////
+    numberOfCorrectAnswers: correctAnswers.length,
+    numberOfWrongAnswers:
+      sub_dat.questions?.length - (correctAnswers.length + skipQue.length),
+    numberOfSkippedQuestions: skipQue.length,
+
+    remark: handleGrade(false, true),
+    score: Math.round(
+      (correctAnswers.length / sub_dat.questions?.length) * 100,
+    ),
+  };
+  const submitQuiz = {
+    results: submittedAnswer,
+    userId: user?.user?._id,
+    courseId: subject?.dashboardWeb?.enrolledCourse?.id,
+    subjectId: subject.subjectDetails[0]?.subject.mainSubjectId.id,
+    lessonId: sub_dat.quizLessonId,
+    subjectName: subject.subjectDetails[0]?.subject.mainSubjectId.name,
+    pastQuestionTypeId: "5fc8e7134bfe993c34a9689c", //not needed
+    subjectId: "5fc8e7134bfe993c34a9689c", //not needed
+    timeSpent: `${speed}`,
+    ////////
+    numberOfCorrectAnswers: correctAnswers.length,
+    numberOfWrongAnswers:
+      sub_dat.questions?.length - (correctAnswers.length + skipQue.length),
+    numberOfSkippedQuestions: skipQue.length,
+
+    remark: handleGrade(false, true),
+    score: Math.round(
+      (correctAnswers.length / sub_dat.questions?.length) * 100,
+    ),
+  };
+  const progress = {
+    subjectCategoryId: subject.pastQuestionQue[0]?.subject_details.subject_id,
+    pastQuestionCategoryId: sub_dat.category,
+    courseId: subject?.dashboardWeb?.enrolledCourse?.id,
+  };
+  const quizLessonId = sub_dat.quizLessonId;
+  const submitttedData = sub_dat.pastQuestion ? "pastQue" : "Quiz";
+  const content = sub_dat.pastQuestion ? router.query[0] : sub_dat.title;
+  const content1 = sub_dat.pastQuestion && router.query[1];
+  ////////////////////////////////////////////////////////////////////////
+  const SubmitFunc = (analysis) => {
+    if (analysis === "pastQue") {
+      dispatch(submitPastQuestionResult(submitData, token));
+      dispatch(submitPastQuestionProgress(progress, token));
+    } else {
+      dispatch(submitLessonQuizResult(submitQuiz, quizLessonId, token));
+    }
+  };
+  const handleClosure = async () => {
+    Swal.fire({
+      title: "Do you want to submit?",
+      text: "Sure you’re ready to submit?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, Submit!",
+      cancelButtonText: "No, cancel",
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire(
+          "Submitted!",
+          "Your test details are been recorded.",
+          "success",
+        );
+
+        SubmitFunc(submitttedData);
+        router.push({
+          pathname: "/quiz/extra/quizResult",
+          query: [content, content1],
+        });
+        // props.inputChange("currentQuestion", 0);
+        // props.inputChange(
+        //   "pastQuestionRedirectLocation",
+        //   "/past-questions/remark",
+        // );
+        // props.inputChange("pastQuestionRedirect", true);
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          "Cancelled",
+          "That's the last question, you cannot continue",
+          "error",
+        );
+      }
+    });
+  };
+  //////////////////////////////////////////////////////////
   const handleTextToSpeech = () => {
     let options = "";
-    for (let index = 0; index < sub_que.options.length; ++index) {
+    for (let index = 0; index < sub_que?.options.length; ++index) {
       let symbol = "A. ";
       if (index === 0) {
         symbol = "A.  ";
@@ -151,35 +425,60 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
         options += symbol + sub_que.options[index];
       }
     }
-    return decodeEntities(sub_que.question) + options;
+    return decodeEntities(sub_que?.question) + options;
   };
-  const handleCorrectAnswerCheck = async (answer) => {
-    if (answer == sub_que.correct_option) {
-      dispatch(inputChange("correctAnswers", correctAnswers + 1));
-    }
-  };
+  ////////////////////////////////////////////
   const handleSaveAnswer = async (answer) => {
-    props.saveUserAnswer(answer);
+    // props.saveUserAnswer(answer);
+    let answers = [];
+
+    setAllAnswers((prevState) => {
+      {
+        prevState[+nextQues - 1] = answer;
+      }
+      return { ...prevState };
+    });
+    setSkipQue((prev) => {
+      let pre = prev.filter((lin) => lin !== +nextQues - 1);
+      if (answer === -1) {
+        return [...pre, +nextQues - 1];
+      } else {
+        return [...pre];
+      }
+    });
+
+    // if (answer === +sub_que.correct_option) {
+    setCorrectAnswers((prev) => {
+      let pre = prev.filter((lin) => lin !== +nextQues - 1);
+      if (answer === +sub_que.correct_option) {
+        return [...pre, +nextQues - 1];
+      } else {
+        return [...pre];
+      }
+    });
   };
+
   const prepareSubmittedAnswer = async (answer) => {
     let status = null;
     if (answer === -1) {
       status = "skipped";
-    } else if (answer === sub_que.correct_option) {
+    } else if (answer === +sub_que.correct_option) {
       status = "correct";
     } else {
       status = "incorrect";
     }
     let response = {
-      question_id: sub_que.question_id,
+      question_id: sub_que.question_id ? sub_que.question_id : sub_que.id,
       option_selected: answer,
       correct_option: sub_que.correct_option,
       status,
     };
-    props.populateSubmittedAnswer(response);
+    setSubmittedAnswer((prev) => {
+      prev[queNumber] = response;
+      return [...prev];
+    });
   };
 
-  console.log(Amodals);
   return (
     <Container className="pt-3">
       <Row>
@@ -222,34 +521,44 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
               color: "#333333",
             }}
           >
-            <div dangerouslySetInnerHTML={{ __html: sub_que.question }}></div>
+            <div dangerouslySetInnerHTML={{ __html: sub_que?.question }}></div>
           </Row>
-          {sub_que.question_image ? (
+          {sub_que?.question_image ? (
             <Row>
-              <Col className="pt-5 d-flex justify-content-center">
+              <Col className="pt-5 d-flex justify-content-center center">
                 <picture>
+                  <img
+                    src={`https:${sub_que.question_image}`}
+                    alt="Landscape picture"
+                    style={{ width: "50%", heigt: "50%" }}
+                  />
+                </picture>
+                {/* <picture>
                   <source
                     srcSet={`https:${sub_que.question_image}`}
                     type="image/webp"
                   />
-                  <img
+                  <Image
                     src={`https:${sub_que.question_image}`}
                     alt="Landscape picture"
+                    width="100%"
+                    height="100%"
                     style={{ width: "100%", heigt: "100%" }}
                   />
-                </picture>
+                </picture> */}
               </Col>
             </Row>
           ) : null}
           <Row>
-            <Col className="p-5 mx-5">
-              {sub_que.options[0] ? (
+            <Col className={`p-5 mx-5 ${styles.noSelect}`}>
+              {sub_que?.options[0] ? (
                 <Row
                   style={{
                     background: "#FFFFFF",
                     boxShadow: "0px 1px 7px rgba(0, 0, 0, 0.15)",
                     borderRadius: "15.4996px",
                     padding: "15px",
+                    cursor: "pointer",
                   }}
                   onClick={() => handleNextQuestion(0)}
                 >
@@ -261,18 +570,18 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
                       margin: "0",
                     }}
                   >
-                    A. {sub_que.options[0]}
+                    A. {sub_que?.options[0]}
                   </p>
                 </Row>
               ) : null}
-              {sub_que.options[1] ? (
+              {sub_que?.options[1] ? (
                 <Row
                   style={{
                     background: "#FFFFFF",
                     boxShadow: "0px 1px 7px rgba(0, 0, 0, 0.15)",
                     borderRadius: "15.4996px",
                     padding: "15px",
-
+                    cursor: "pointer",
                     marginTop: "20px",
                   }}
                   onClick={() => handleNextQuestion(1)}
@@ -285,11 +594,11 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
                       margin: "0",
                     }}
                   >
-                    B. {sub_que.options[1]}
+                    B. {sub_que?.options[1]}
                   </p>
                 </Row>
               ) : null}
-              {sub_que.options[2] ? (
+              {sub_que?.options[2] ? (
                 <Row
                   style={{
                     background: "#FFFFFF",
@@ -297,6 +606,7 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
                     borderRadius: "15.4996px",
                     padding: "15px",
                     marginTop: "20px",
+                    cursor: "pointer",
                   }}
                   onClick={() => handleNextQuestion(2)}
                 >
@@ -308,11 +618,11 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
                       margin: "0",
                     }}
                   >
-                    C. {sub_que.options[2]}
+                    C. {sub_que?.options[2]}
                   </p>
                 </Row>
               ) : null}
-              {sub_que.options[3] ? (
+              {sub_que?.options[3] ? (
                 <Row
                   style={{
                     background: "#FFFFFF",
@@ -320,6 +630,7 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
                     borderRadius: "15.4996px",
                     padding: "15px",
                     marginTop: "20px",
+                    cursor: "pointer",
                   }}
                   onClick={() => handleNextQuestion(3)}
                 >
@@ -331,11 +642,11 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
                       margin: "0",
                     }}
                   >
-                    D. {sub_que.options[3]}
+                    D. {sub_que?.options[3]}
                   </p>
                 </Row>
               ) : null}
-              {sub_que.options[4] ? (
+              {sub_que?.options[4] ? (
                 <Row
                   style={{
                     background: "#FFFFFF",
@@ -343,6 +654,7 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
                     borderRadius: "15.4996px",
                     padding: "15px",
                     marginTop: "20px",
+                    cursor: "pointer",
                   }}
                   onClick={() => handleNextQuestion(4)}
                 >
@@ -354,14 +666,17 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
                       margin: "0",
                     }}
                   >
-                    E. {sub_que.options[4]}
+                    E. {sub_que?.options[4]}
                   </p>
                 </Row>
               ) : null}
             </Col>
           </Row>
           <Row className="mt-3 mb-3 px-5" style={{ height: "43px" }}>
-            <Col className={styles.pastExamButton}></Col>
+            <Col
+              className={`pointer ${styles.pastExamButton}`}
+              onClick={() => handleClosure()}
+            ></Col>
             <Col>
               <div
                 style={{
@@ -388,7 +703,8 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
                 <Amodal
                   show={Amodals}
                   onHide={() => setAModal(false)}
-                  questionId={sub_que.question_id}
+                  questionId={sub_que?.question_id}
+                  content={content}
                 />
               </div>
             </Col>
@@ -399,77 +715,78 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
           </Row>
         </Col>
         <Col sm={3}>
-          <div className="row">
-            {/* <span className="headingOne timerTitle">Time Left:</span>{" "} */}
-            <span className="timer">
-              <Timer
-                initialTime={timed}
-                lastUnit="m"
-                direction="backward"
-                checkpoints={[
-                  {
-                    time: 300000,
-                    callback: () => setCray(true),
-                  },
-                  {
-                    time: 600000,
-                    callback: () =>
-                      Swal.fire("Time Left!", "You have 10 mins left"),
-                  },
-                  {
-                    time: speedRange3,
-                    callback: () => setAveSpeed("speed", speedRange3 / 60000),
-                  },
-                  {
-                    time: speedRange2,
-                    callback: () => setAveSpeed("speed", speedRange2 / 60000),
-                  },
-                  {
-                    time: speedRange1,
-                    callback: () => setAveSpeed("speed", speedRange1 / 60000),
-                  },
-                  {
-                    time: 0,
-                    callback: () => {
-                      Swal.fire(
-                        "Time Up!",
-                        "Thanks for attempting the test",
-                      ).then(() => {
-                        // if (isAuthenticated) {
-                        Swal.fire(
-                          "Submitted!",
-                          "Your test details are recorded successfully!",
-                          "success",
-                        );
-                        // }
-                        // props.inputChange("currentQuestion", 0);
-                        // props.inputChange("speed", questionTime / 60000);
-                      });
+          {sub_dat.duration && (
+            <div className="row">
+              <span className="timer">
+                <Timer
+                  initialTime={timed}
+                  lastUnit="m"
+                  direction="backward"
+                  checkpoints={[
+                    {
+                      time: 300000,
+                      callback: () => setCray(true),
                     },
-                  },
-                ]}
-              >
-                {() => (
-                  <React.Fragment>
-                    Time Left{" "}
-                    <span
-                      style={{
-                        width: "120px",
-                        padding: "0 8px",
-                        background: cray ? "#EDB68B" : "#29465B",
-                        boxShadow: "0px 1px 7px rgba(0, 0, 0, 0.1)",
-                        borderRadius: "5px",
-                        color: "white",
-                      }}
-                    >
-                      <Timer.Minutes />:<Timer.Seconds />
-                      mins
-                    </span>
-                  </React.Fragment>
-                )}
-              </Timer>
-            </span>
-          </div>
+                    {
+                      time: 600000,
+                      callback: () =>
+                        Swal.fire("Time Left!", "You have 10 mins left"),
+                    },
+                    {
+                      time: speedRange3,
+                      callback: () => setAveSpeed("speed", speedRange3 / 60000),
+                    },
+                    {
+                      time: speedRange2,
+                      callback: () => setAveSpeed("speed", speedRange2 / 60000),
+                    },
+                    {
+                      time: speedRange1,
+                      callback: () => setAveSpeed("speed", speedRange1 / 60000),
+                    },
+                    {
+                      time: 0,
+                      callback: () => {
+                        Swal.fire(
+                          "Time Up!",
+                          "Thanks for attempting the test",
+                        ).then(() => {
+                          // if (isAuthenticated) {
+                          Swal.fire(
+                            "Submitted!",
+                            "Your test details are recorded successfully!",
+                            "success",
+                          );
+                          // }
+                          // props.inputChange("currentQuestion", 0);
+                          // props.inputChange("speed", questionTime / 60000);
+                        });
+                      },
+                    },
+                  ]}
+                >
+                  {() => (
+                    <React.Fragment>
+                      Time Left{" "}
+                      <span
+                        style={{
+                          width: "120px",
+                          padding: "0 8px",
+                          background: cray ? "#EDB68B" : "#29465B",
+                          boxShadow: "0px 1px 7px rgba(0, 0, 0, 0.1)",
+                          borderRadius: "5px",
+                          color: "white",
+                        }}
+                      >
+                        <Timer.Minutes />:<Timer.Seconds />
+                        mins
+                      </span>
+                    </React.Fragment>
+                  )}
+                </Timer>
+              </span>
+            </div>
+          )}
           <div className="row">
             <div className="row">
               {NoArray.map((no, i) => {
@@ -477,6 +794,14 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
                   <div
                     key={i}
                     className={`col-md-3 ${styles.Quiznumber}`}
+                    style={{
+                      background:
+                        allAnswers[i] > -1
+                          ? "#00D9B6"
+                          : allAnswers[i] === -1
+                          ? "#FFB600"
+                          : "#FFFFFF",
+                    }}
                     onClick={() => {
                       setNextQues(no);
                     }}
@@ -504,50 +829,78 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
         </Col>
       </Row>
       {sub_dat.motivation ? (
-        <Modal show={modal1} onClick={toggle1}>
+        <Modal show={modal1} onHide={() => setModal1(!modal1)}>
           <Modal.Body>
             <div className="container-fluid forgotPassword">
               <div className="row">
                 <div className="col-12">
                   <div className="row">
-                    <div className="col-12 push333">
-                      <img
-                        src={
-                          sub_dat.motivation && sub_dat.motivationInterval === 0
-                            ? "https:" +
-                              sub_dat.motivations[motivationItemNo]
-                                .section25Image
-                            : sub_dat.motivations &&
-                              sub_dat.motivationInterval === 1 &&
-                              sub_dat.motivateGoodPerformance
-                            ? "https:" +
-                              sub_dat.motivations[motivationItemNo]
-                                .section50AccuracyImage
-                            : sub_dat.motivations && motivationInterval === 1
-                            ? "https:" +
-                              sub_dat.motivations[motivationItemNo]
-                                .section50Image
-                            : "https:" +
-                              sub_dat.motivations[motivationItemNo]
-                                .section75Image
-                        }
-                        alt=""
-                        className="motivation"
-                      />
+                    <div className="col-12 push333 center">
+                      {/* <Image
+                        alt={"design image"}
+                        src={"/assets/Image/common/login/HalfCircleBlackk.png"}
+                        width={86}
+                        height={100}
+                      /> */}
+                      <picture className="m-auto">
+                        <source
+                          srcSet={
+                            sub_dat.motivation && motivationInterval === 0
+                              ? "https:" +
+                                sub_dat.motivation[motivationItemNo]
+                                  .section25Image
+                              : sub_dat.motivation &&
+                                motivationInterval === 1 &&
+                                motivateGoodPerformance
+                              ? "https:" +
+                                sub_dat.motivation[motivationItemNo]
+                                  .section50AccuracyImage
+                              : sub_dat.motivation && motivationInterval === 1
+                              ? "https:" +
+                                sub_dat.motivation[motivationItemNo]
+                                  .section50Image
+                              : "https:" +
+                                sub_dat.motivation[motivationItemNo]
+                                  .section75Image
+                          }
+                          type="image/webp"
+                        />
+                        <img
+                          src={
+                            sub_dat.motivation && motivationInterval === 0
+                              ? "https:" +
+                                sub_dat.motivation[motivationItemNo]
+                                  .section25Image
+                              : sub_dat.motivation &&
+                                motivationInterval === 1 &&
+                                motivateGoodPerformance
+                              ? "https:" +
+                                sub_dat.motivation[motivationItemNo]
+                                  .section50AccuracyImage
+                              : sub_dat.motivation && motivationInterval === 1
+                              ? "https:" +
+                                sub_dat.motivation[motivationItemNo]
+                                  .section50Image
+                              : "https:" +
+                                sub_dat.motivation[motivationItemNo]
+                                  .section75Image
+                          }
+                          alt="Motivation picture"
+                          style={{ width: "100px", heigt: "100px" }}
+                        />
+                      </picture>
                     </div>
                     <div className="col-12 push333 center">
-                      {sub_dat.motivations && sub_dat.motivationInterval === 0
-                        ? sub_dat.motivations[motivationItemNo].section25Message
-                        : sub_dat.motivations &&
+                      {sub_dat.motivation && motivationInterval === 0
+                        ? sub_dat.motivation[motivationItemNo].section25Message
+                        : sub_dat.motivation &&
                           motivationInterval === 1 &&
                           motivateGoodPerformance
-                        ? sub_dat.motivations[motivationItemNo]
+                        ? sub_dat.motivation[motivationItemNo]
                             .section50AccuracyMessage
-                        : sub_dat.motivations &&
-                          sub_dat.motivationInterval === 1
-                        ? sub_dat.motivations[motivationItemNo].section50Message
-                        : sub_dat.motivations[motivationItemNo]
-                            .section75Message}
+                        : sub_dat.motivation && motivationInterval === 1
+                        ? sub_dat.motivation[motivationItemNo].section50Message
+                        : sub_dat.motivation[motivationItemNo].section75Message}
                     </div>
                   </div>
                 </div>
@@ -594,7 +947,6 @@ export function Amodal(props) {
       }`,
     };
     // dispatch(flagQuestion(data, token));
-    console.log(data);
     setValued("");
     props.onHide();
     setMessages("");
@@ -704,9 +1056,15 @@ export function Amodal(props) {
                   </div>
                 </div>
                 <div className="row relative">
-                  <div className="col-12">
+                  <Link
+                    href={{
+                      pathname: "/quiz/extra/quizResult",
+                      query: [props.content],
+                    }}
+                    className="col-12"
+                  >
                     <Button onClick={() => handleReport()}>Submit</Button>
-                  </div>
+                  </Link>
                 </div>
               </div>
             </div>

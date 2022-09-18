@@ -24,18 +24,14 @@ export const inputChange = (name, value) => async (dispatch) => {
   }
 };
 
-export const populateSubmittedAnswer = (answer) => async (dispatch) => {
-  try {
-    dispatch({
-      type: types.POPULATE_SUBMITTED_ANSWER,
-      payload: {
-        value: answer,
-      },
-    });
-  } catch (error) {
-    console.error(error);
-  }
-};
+export const storeSubmitPastQuestionResult = (answer) => ({
+  type: types.POPULATE_SUBMITTED_ANSWER,
+  payload: answer,
+});
+export const storeSubmitLessonQuizResult = (answer) => ({
+  type: types.POPULATE_SUBMITTED_QUIZ,
+  payload: answer,
+});
 
 export const fetchTeachSubjectsStart = (data) => ({
   type: types.FETCH_Teacher_SUBJECT_SUCCESS,
@@ -130,9 +126,52 @@ export const getSchoolCourses = (schoolId) => {
       method: "get",
       url: `${url}schools/${schoolId}/courses`,
     }).then((res) => {
-      console.log(res.data.data);
+      // console.log(res.data.data);
       dispatch(fetchTeaSubsStart(res.data.data));
       // dispatch((res.data.data));
+    });
+  };
+};
+
+export const submitPastQuestionResult = (data, token) => {
+  return function (dispatch) {
+    dispatch(fetchSubjectsStart());
+    axios({
+      method: "post",
+      url: `${url}past-questions/save-past-question-result`,
+      headers: headers(token),
+      data,
+    }).then((res) => {
+      // console.log(res);
+      dispatch(storeSubmitPastQuestionResult(res.data.data));
+    });
+  };
+};
+export const submitLessonQuizResult = (data, lessonId, token) => {
+  return function (dispatch) {
+    dispatch(fetchSubjectsStart());
+    axios({
+      method: "post",
+      url: `${url}lessons/${lessonId}/save-test-results`,
+      headers: headers(token),
+      data,
+    }).then((res) => {
+      console.log(res);
+      dispatch(storeSubmitLessonQuizResult(res.data.data));
+    });
+  };
+};
+export const submitPastQuestionProgress = (data, token) => {
+  return function (dispatch) {
+    dispatch(fetchSubjectsStart());
+    axios({
+      method: "post",
+      url: `${url}past-questions/add-progress`,
+      headers: headers(token),
+      data,
+    }).then((res) => {
+      // console.log(res);
+      // dispatch(storeSubmitPastQuestionProgess(res.data.data));
     });
   };
 };
@@ -513,26 +552,3 @@ export const fetchPastQuestionQueInitiate = (sub_id) => {
       });
   };
 };
-
-/*{ // try {
-    //   const requestse =
-    //     // await axios.all(
-    //     // id.map(async (data) => {
-    //     await axios.get(
-    //       `https://api.exambly.com/adminpanel/v2/getMySubjects/${id}`,
-    //       {
-    //         headers: {
-    //           "Content-type": "application/json",
-    //           authorization:
-    //             "F0c7ljTmi25e7LMIF0Wz01lZlkHX9b57DFTqUHFyWeVOlKAsKR0E5JdBOvdunpqv",
-    //         },
-    //       },
-    //       // );
-    //       // }),
-    //     );
-    //   console.log(requestse);
-    // } catch (e) {
-    //   console.log("====================================");
-    //   console.log(e);
-    //   console.log("====================================");
-    // }}*/
