@@ -66,7 +66,7 @@ const Pastquestionchart = (pastQuestionPerformance) => {
   // const data = pastQuestionPerformance.pastQuestionPerformance
   let data = [ 
     
-    { name: 'totalQuestionsCorrect', value: pastQuestionPerformance.pastQuestionPerformance, total: 38, fill: 'red' },
+    { name: 'totalQuestionsCorrect', value: pastQuestionPerformance.pastQuestionPerformance ?? 0, total: 38, fill: 'red' },
     { name: 'totalQuestionsCorrect', value: 100, total: 100, fill: 'red' },
 ];
   

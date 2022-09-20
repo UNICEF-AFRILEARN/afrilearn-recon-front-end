@@ -1,19 +1,33 @@
-import React, { PureComponent } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PieChart, Pie, Sector, Label, LabelList, Cell, ResponsiveContainer } from 'recharts';
 
 
 
 const COLORS = ['#0088FE', '#00C49F'];
 
-const Barchart = () => {
+const Barchart = ({subjectPerformance, subjectList}) => {
+const [subject, setSubject] = useState([]);
 
+
+
+//function to map through the subject and progress
+
+const getSUbject = (obj) => {
+  for(let i = 0; i < obj.length; i++){
+    setSubject(obj[i].subject)
+    console.log("here", subject)
+  }
+  return subject
+}
     // console.log("datadatadata ===>", data)
   // let totalQuestion = subjectList.totalQuestions
   // let totalQuestionsCorrectAnswered = subjectList.totalQuestionsCorrect
-  const data = [
-    { name: 'totalQuestions', value: 30 },
-    { name: 'totalQuestionsCorrect', value: 20 },
-  ];
+  let data = [ 
+    
+     
+    { name: 'totalQuestionsCorrect', value: subjectPerformance.performance ?? 0 , total: 0, fill: 'red' },
+    { name: 'totalQuestionsCorrect', value: 100, total: 100, fill: 'red' },
+];
 
   // totalQuestions: 0
   // totalQuestionsCorrect: 0
@@ -23,34 +37,49 @@ const Barchart = () => {
 //     return percentageCalculated.toFixed(0).replace(".", ",").toString() + "%";
 //   };
 
+useEffect(() => {
+  getSUbject(subjectPerformance)
+  setSubject(subjectList)
+}, [])
 
-  // console.log("subjectList from barchart", data)
+  console.log("subjectList from barchart", subject)
 
     return (
       
       <PieChart width={200} height={162}>
         <Pie
+          // activeIndex={activeIndex}
+          // activeShape={renderActiveShape}
           data={data}
           cx={85}
           cy={74}
           textAnchor={"middle"}
           innerRadius={60}
           outerRadius={80}
-          fill="#8884d8"
-          paddingAngle={5}
+          labelLine={false}
+          fill="fill"
+          paddingAngle={1}
           dataKey="value"
+      labelPosition={60}
         >
-           <Label 
-        value='70%' position="centerBottom"  className='label-top' fontSize='27px'
-        />
-        <Label 
-        value="AVERAGE" position="centerTop" className='label'
-        fontSize='15px'
+         {data.map((entry, index) => {
+      if (index === 0) {
+        return <Cell key={`cell-${index}`} fill="red"/>; // make sure to map the index to the colour you want
+      }
 
-        />
-          {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-          ))}
+        return <Cell key={`cell-${index}`} fill="grey" />;
+      
+    })}
+     <Label
+       value={`${data[0].value}%`}
+      position="center"
+      fill="grey"
+      style={{
+        fontSize: "30px",
+        fontWeight: "bold",
+        fontFamily: "Roboto"
+      }}
+    />
         </Pie>
       </PieChart>
     );

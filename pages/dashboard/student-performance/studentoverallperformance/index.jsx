@@ -27,6 +27,7 @@ const Studentoverallperformance = ({studentPerformance, userId}) => {
   const [data, setData] = useState([]);
   const [dataTwo, setDataTwo] = useState([]);
   const [panelId, setPanelId] = useState(1);
+  // const [subjectList, setSubjectList] = useState('')
 
 
   let subjectPerformance = studentPerformance?.data?.subjectsList
@@ -164,9 +165,11 @@ const Studentoverallperformance = ({studentPerformance, userId}) => {
               subjectPerformance && subjectPerformance.map((subjectList) =>
               <div className={styles.performancecontentwrapper}>
                  <div className={styles.subjectsectionone}>
-                    <p className={styles.subjectheaderwrapper}>{subjectList.subject}</p>
+                    <p className={styles.subjectheaderwrapper}
+                    >{subjectList.subject}</p>
                     <Barchart 
-                      subjectList={subjectList}
+                      subjectPerformance={subjectPerformance}
+                      subjectList={subjectList.subject}
                     />
                     {subjectList.performance === null? 
                     <p className={styles.averagetimeremark}> 

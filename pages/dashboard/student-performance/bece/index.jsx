@@ -61,7 +61,7 @@ const onPieEnter = (e) => {
     return (
       
       <PieChart width={200} height={162}>
-        <Pie
+       <Pie
           // activeIndex={activeIndex}
           // activeShape={renderActiveShape}
           data={data}
@@ -71,19 +71,21 @@ const onPieEnter = (e) => {
           innerRadius={60}
           outerRadius={80}
           labelLine={false}
-          fill="#8884d8"
+          fill="fill"
           paddingAngle={1}
-          dataKey="total"
-          // onMouseEnter={onPieEnter}
+          dataKey="value"
+      labelPosition={60}
         >
          {data.map((entry, index) => {
-      if (index === 1 || index === 2 ) {
-        return <Cell key={`cell-${index}`} fill="#f3f6f9" />; 
+      if (index === 0) {
+        return <Cell key={`cell-${index}`} fill="red"/>; // make sure to map the index to the colour you want
       }
-      return <Cell key={`cell-${index}`} fill="red" />;
+
+        return <Cell key={`cell-${index}`} fill="grey" />;
+      
     })}
-    <Label
-      value={`${data[0].value}%`}
+     <Label
+       value={`${data[0].value}%`}
       position="center"
       fill="grey"
       style={{
@@ -93,6 +95,7 @@ const onPieEnter = (e) => {
       }}
     />
         </Pie>
+        
       </PieChart>
     );
   }
