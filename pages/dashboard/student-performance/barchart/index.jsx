@@ -31,8 +31,8 @@ const [subject, setSubject] = useState([]);
   ]
 
   let data = [ 
-    { name: 'totalQuestionsCorrect', value: subjectPerformance.performance ?? 0 , total: 0, fill: 'red' },
-    { name: 'totalQuestionsCorrect', value: 100, total: 100, fill: 'red' },
+    { name: 'totalQuestionsCorrect', value: subjectPerformance[outerIndex]?? 0 , total: 0, fill: 'red' },
+    { name: 'totalQuestionsCorrect', value: 100, fill: 'red' },
 ];
 
   // totalQuestions: 0
@@ -48,7 +48,7 @@ useEffect(() => {
   setSubject(subjectList)
 }, [])
 
-  console.log("perform subjectList from barchart", subjectPerformance)
+  console.log("perform subjectList from barchart", data)
 
     return (
       
@@ -65,7 +65,7 @@ useEffect(() => {
           labelLine={false}
           fill="fill"
           paddingAngle={1}
-          dataKey="value"
+          // dataKey="value"
           labelPosition={60}
         >
          {data.map((entry, index) => {
