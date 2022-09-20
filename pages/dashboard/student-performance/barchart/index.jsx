@@ -5,26 +5,32 @@ import { PieChart, Pie, Sector, Label, LabelList, Cell, ResponsiveContainer } fr
 
 const COLORS = ['#0088FE', '#00C49F'];
 
-const Barchart = ({subjectPerformance, subjectList}) => {
+const Barchart = ({subjectPerformance, subjectList, outerIndex, perform}) => {
 const [subject, setSubject] = useState([]);
+
 
 
 
 //function to map through the subject and progress
 
-const getSUbject = (obj) => {
-  for(let i = 0; i < obj.length; i++){
-    setSubject(obj[i].subject)
-    console.log("here", subject)
-  }
-  return subject
-}
+// const getSUbject = (obj) => {
+//   for(let i = 0; i < obj.length; i++){
+//     // setSubject(obj[i].subject)
+//     if(i === index){
+//       console.log("here", obj[i])
+//     }
+//   }
+//   return subject
+// }
     // console.log("datadatadata ===>", data)
   // let totalQuestion = subjectList.totalQuestions
   // let totalQuestionsCorrectAnswered = subjectList.totalQuestionsCorrect
+  let dataTwo = [
+    {name: 'test', value: 100 ?? 0},
+    {name: 'test', value: 10}
+  ]
+
   let data = [ 
-    
-     
     { name: 'totalQuestionsCorrect', value: subjectPerformance.performance ?? 0 , total: 0, fill: 'red' },
     { name: 'totalQuestionsCorrect', value: 100, total: 100, fill: 'red' },
 ];
@@ -38,11 +44,11 @@ const getSUbject = (obj) => {
 //   };
 
 useEffect(() => {
-  getSUbject(subjectPerformance)
+  // getSUbject(subjectPerformance)
   setSubject(subjectList)
 }, [])
 
-  console.log("subjectList from barchart", subject)
+  console.log("perform subjectList from barchart", subjectPerformance)
 
     return (
       
@@ -60,26 +66,32 @@ useEffect(() => {
           fill="fill"
           paddingAngle={1}
           dataKey="value"
-      labelPosition={60}
+          labelPosition={60}
         >
          {data.map((entry, index) => {
-      if (index === 0) {
+      if (outerIndex === 0) {
         return <Cell key={`cell-${index}`} fill="red"/>; // make sure to map the index to the colour you want
+      }
+      if (outerIndex === 1) {
+        return <Cell key={`cell-${index}`} fill="green"/>; // make sure to map the index to the colour you want
+      }
+      if (outerIndex === 2) {
+        return <Cell key={`cell-${index}`} fill="blue"/>; // make sure to map the index to the colour you want
       }
 
         return <Cell key={`cell-${index}`} fill="grey" />;
       
     })}
-     <Label
-       value={`${data[0].value}%`}
-      position="center"
-      fill="grey"
-      style={{
-        fontSize: "30px",
-        fontWeight: "bold",
-        fontFamily: "Roboto"
-      }}
-    />
+       <Label
+        value={`${subjectPerformance[outerIndex].totalTests}%`}
+       position="center"
+       fill="grey"
+       style={{
+         fontSize: "30px",
+         fontWeight: "bold",
+         fontFamily: "Roboto"
+       }}
+     />
         </Pie>
       </PieChart>
     );

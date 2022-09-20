@@ -162,7 +162,7 @@ const Studentoverallperformance = ({studentPerformance, userId}) => {
             </div> :
               <div>
              { showPanel === true && 
-              subjectPerformance && subjectPerformance.map((subjectList) =>
+              subjectPerformance && subjectPerformance.map((subjectList, index) =>
               <div className={styles.performancecontentwrapper}>
                  <div className={styles.subjectsectionone}>
                     <p className={styles.subjectheaderwrapper}
@@ -170,6 +170,8 @@ const Studentoverallperformance = ({studentPerformance, userId}) => {
                     <Barchart 
                       subjectPerformance={subjectPerformance}
                       subjectList={subjectList.subject}
+                      outerIndex={index}
+                      perform={subjectList.performance}
                     />
                     {subjectList.performance === null? 
                     <p className={styles.averagetimeremark}> 
@@ -201,11 +203,11 @@ const Studentoverallperformance = ({studentPerformance, userId}) => {
                         </p>
                     </div>
                     <p>REMARK</p>
-                    {subjectList.progress === 0? 
+                    {subjectList.performance === null? 
                     <p className={styles.averagetimeremark}> 
                       <FaRegCheckCircle />
                       No Rating
-                      </p> : <p>{subjectList.progress}</p>}
+                      </p> : <p>{subjectList.performance}</p>}
                  </div>
               </div>
               )}
