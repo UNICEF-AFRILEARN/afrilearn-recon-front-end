@@ -24,7 +24,7 @@ const Barchart = () => {
 //   };
 
 
-  console.log("subjectList from barchart", data)
+  // console.log("subjectList from barchart", data)
 
     return (
       

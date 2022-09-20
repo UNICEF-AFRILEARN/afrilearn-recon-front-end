@@ -12,6 +12,7 @@ import OverallChart from '../overallchart/index';
 // import Piechart from '../../../../../pages/dashboard/performance/piechart';
 // import OverallChart from '../../../../../pages/dashboard/performance/overallbarchart';
 import Pastquestionchart from '../pastquestionchart/index';
+import Becechart from '../bece';
 // import BarChartSect from './BarChartSect';
 // import PieChartSection from './PieChartSection';
 
@@ -24,6 +25,7 @@ const Studentoverallperformance = ({studentPerformance, userId}) => {
   // const result = Object?.values(classDetails);
   const [showPanel, setShowPanel] = useState(false);
   const [data, setData] = useState([]);
+  const [dataTwo, setDataTwo] = useState([]);
   const [panelId, setPanelId] = useState(1);
 
 
@@ -60,6 +62,11 @@ const Studentoverallperformance = ({studentPerformance, userId}) => {
   useEffect(() => {
     if(subjectPerformance){
       setData(subjectPerformance)
+    }
+  }, [])
+  useEffect(() => {
+    if(pastQuestionPerformance){
+      setDataTwo(pastQuestionPerformance)
     }
   }, [])
   
@@ -206,10 +213,13 @@ const Studentoverallperformance = ({studentPerformance, userId}) => {
                      <p className={styles.pastheaderwrapper}>{pastSubject.name}</p>
                       <div className={styles.pastquestionratewrapper}>
                       <div>
-                      <Pastquestionchart 
-                      pastQuestionPerformance={pastQuestionPerformance}
-                      />
-                        <p>No rated</p>
+                       { pastSubject.name === "J.S.S ONE"? <Pastquestionchart 
+                      pastQuestionPerformance={pastSubject.performance}
+                      />: 
+                       <Becechart 
+                      pastQuestionPerformance={pastSubject.performance}
+                      /> }
+                        {pastSubject.performance !== null? "": <p>No rated</p>}
                         <h5>PERFORMANCE</h5>
                      </div>
                      <div>
