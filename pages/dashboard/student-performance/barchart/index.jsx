@@ -10,21 +10,6 @@ const [subject, setSubject] = useState([]);
 
 
 
-
-//function to map through the subject and progress
-
-// const getSUbject = (obj) => {
-//   for(let i = 0; i < obj.length; i++){
-//     // setSubject(obj[i].subject)
-//     if(i === index){
-//       console.log("here", obj[i])
-//     }
-//   }
-//   return subject
-// }
-    // console.log("datadatadata ===>", data)
-  // let totalQuestion = subjectList.totalQuestions
-  // let totalQuestionsCorrectAnswered = subjectList.totalQuestionsCorrect
   let dataTwo = [
     ...subjectPerformance,
     {name: 'test', totalTests: 100 ?? 0},
@@ -36,13 +21,7 @@ const [subject, setSubject] = useState([]);
     { name: 'totalQuestionsCorrect', value: 100, fill: 'blue' },
 ];
 
-  // totalQuestions: 0
-  // totalQuestionsCorrect: 0
 
-//   const calculatePercentage = (data, done) => {
-//     let percentageCalculated = (done / data) * 100;
-//     return percentageCalculated.toFixed(0).replace(".", ",").toString() + "%";
-//   };
 
 useEffect(() => {
   // getSUbject(subjectPerformance)
