@@ -328,7 +328,7 @@ useEffect(() => {
                 />
                 <p>By signing up, you agree to our <Link passHref href='/'><b>Terms and Privacy Policy</b></Link></p>
                 <div className={`row ${styles.pushDown1}`}>
-                    <AppButton title="LOGIN" secondary type='submit' />
+                    <AppButton title="REGISTER" secondary type='submit' />
                 </div>
                 <div className={`row ${styles.pushDown1}`}>
                   <p className={`center ${styles.socialSection}`}><small>Or sign up with</small></p>

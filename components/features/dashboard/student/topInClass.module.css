@@ -34,7 +34,8 @@
 }
 .play_text {
   width: 240px;
-  padding: 10px 15px;
+  padding: 10px 0px;
+  margin: auto;
 }
 
 .play_text h6 {
@@ -62,7 +63,7 @@
   border-radius: 95.6522px;
   display: flex;
   align-content: center;
-  padding:  3px 7px;
+  padding: 3px 7px;
   column-gap: 5px;
 }
 
@@ -70,12 +71,12 @@
   margin-top: 15px;
 }
 
-.contListRead{
+.contListRead {
   background-color: rgba(0, 0, 0, 0.4);
   width: 240px;
   height: 160px;
   border-radius: 7px;
-display: grid;
-justify-content: center;
-align-content: center;
+  display: grid;
+  justify-content: center;
+  align-content: center;
 }

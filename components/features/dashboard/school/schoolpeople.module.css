@@ -109,14 +109,28 @@ margin-right: 12%;
 
 }
 .middleinnerwrapper{
+    display:flex;
+    flex-direction: column;
     height: 100px;
     background-color: #fff;
-    width: 45%;
-    padding: 0 15%;
+    width: 95%;
+    padding: 0 5%;
     padding-top: 10px;
     border: 1px solid rgb(202, 197, 197);
     text-align: center;
     border-radius: 5px;
+}
+
+.loaderstyling {
+    align-items: center;
+    width: 90vw;
+    padding-left: 40%;
+}
+
+.innerprofilewrapper {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 30px;
 }
 
 

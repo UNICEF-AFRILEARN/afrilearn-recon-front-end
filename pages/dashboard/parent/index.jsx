@@ -18,9 +18,9 @@ const Parent = ({test_body}) => {
 
   const courseContext = coursesCollected.roles.courses;
   const token  = user_login.user.token;
-  const childrenCount  = children.children?.length;
+  const childrenCount  = children?.children?.length;
   let childrenCourseCount = 0;
-  const myChildren = children.children;
+  const myChildren = children?.children;
   const mappedCoursesCount = myChildren?.map((children) =>  
     children.enrolledCourses.length)
 
@@ -47,12 +47,12 @@ useEffect(() => {
            </div>
            {/* <SearchChild /> */}
             <GeneratePerformance 
-            children={children.children} 
+            children={children?.children} 
             courseContext={courseContext}
             />
             <ClassContent
              courseContext={courseContext}
-             children={children.children}
+             children={children?.children}
             />
     </div>
   )

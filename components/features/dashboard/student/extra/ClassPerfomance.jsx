@@ -3,12 +3,13 @@ import styles from '../../../../../styles/performance.module.css';
 import { FiCheckCircle } from 'react-icons/fi';
 import { AiOutlineExclamationCircle } from 'react-icons/ai';
 import { FaRegCheckCircle } from 'react-icons/fa';
+import Barchart from '../../../../../pages/dashboard/performance/barchart';
 // import BarChartSect from './BarChartSect';
 // import PieChartSection from './PieChartSection';
 
 
 const ClassPerfomance = (
-  {currentStudent, 
+  {currentStudent,
     classDetails, 
     studentPerformance
   }) => {
@@ -18,7 +19,7 @@ const ClassPerfomance = (
   // const result = Object?.values(classDetails);
   const [showPanel, setShowPanel] = useState(false);
   const [panelId, setPanelId] = useState(1);
-  console.log("studentPerformance?.data? from classPerformance ===>", studentPerformance?.data)
+  console.log("currentStudent?.data? from classPerformance ===>", currentStudent)
 
 
   const displayPanel = () => {
@@ -43,11 +44,12 @@ const ClassPerfomance = (
        <div className={styles.innermainwrapper}>
        <div className={styles.leftwrapper}>
             <div className={styles.innerwrapper}>
-              <div className={styles.studentnamewrapper}>
+              {currentStudent &&
+                <div className={styles.studentnamewrapper}>
                   <h2>{currentStudent[0]?.userId.fullName}</h2>
                     <p>{currentStudent[0]?.userId.email}</p>
                   <h3>JSS 1</h3>
-              </div>
+              </div>}
           </div>
         </div>
         <div className={styles.leftwrapper}>
@@ -61,7 +63,31 @@ const ClassPerfomance = (
         </div>
        </div>
         <div className={styles.progresswrapper}>
-          
+          {/* testing */}
+          {/* <div>
+              <div className={styles.performancecontentwrapper}>
+              
+                 <div className={styles.subjectsectiononemiddle}>
+                    <Barchart />
+                 </div>
+                 <div className={styles.subjectsectiononemiddle}>
+                    <div className={styles.subjectquestioninner}>
+                       <p>TEST ATTEMPTED</p>
+                        <p className={styles.totalquestionwrapperlast}>
+                        <AiOutlineExclamationCircle size={25}/> 
+                          
+                        </p>
+                    </div>
+                    <p>REMARK</p>
+           
+                    <p className={styles.averagetimeremark}> 
+                      <FaRegCheckCircle />
+                      No Ratin
+                      </p> : <p></p>
+                 </div>
+              </div>
+          </div> */}
+          {/* end testing */}
             <div>
               <ul className={styles.performancemenu}>
                 <li 
@@ -80,6 +106,7 @@ const ClassPerfomance = (
               <div className={styles.performancecontentwrapper}>
                  <div className={styles.subjectsectionone}>
                     <p>{subjectList.subject}</p>
+                    <Barchart />
                     {subjectList.performance === null? 
                     <p className={styles.averagetimeremark}> 
                       No Rating

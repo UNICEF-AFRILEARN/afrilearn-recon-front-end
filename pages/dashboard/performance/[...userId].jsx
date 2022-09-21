@@ -29,8 +29,8 @@ const Performance = () => {
   // console.log("query from performance ===> ", query)
   // console.log("user from performance ===> ", user)
   // console.log("classMembers from performance ===> ", classMembers?.classMembers)
-  console.log("classDetails from studentPerformance ===>", classDetails?.class?.courseId)
-  console.log("studentPerformance =====>", studentPerformance)
+  console.log("query from studentPerformance ===>", query)
+  console.log("studentPerformance =====>&", studentPerformance)
   
   //Filter current student to show student details
   let currentStudent = [];
@@ -46,12 +46,16 @@ const Performance = () => {
  
 
   useEffect(() => {
-    dispatch(fetchClassDetailsInitiate(classId))
+    if(classId){
+      dispatch(fetchClassDetailsInitiate(classId))
+    }
   }, [classId])
 
   useEffect(() => {
-    dispatch(fetchStudentPerformanceInitiate(userId, courseId, token))
-  }, [userId])
+    if(userId){
+      dispatch(fetchStudentPerformanceInitiate(userId, courseId, token))
+    }
+     }, [userId, courseId])
   
   useEffect(() => {
     dispatch(fetchClassMembersInitiate(classId))

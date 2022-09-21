@@ -8,20 +8,20 @@ import { useSelector } from 'react-redux';
 
 
 
-const recommendation = ({ dataRecon }) => {
+const recommendation = ({ dataRecon, recData }) => {
   const [show, setShow] = useState(false);
   const toggleModal = () => setShow(!show);
 
-  console.log("From recommendation UI ===>", dataRecon);
+  console.log("From recommendation UI ===>", recData);
 
   return (
     <>
-      {dataRecon?.recommended.videoUrls[0]?.videoUrl !== undefined && (
+      {recData?.videourl !== undefined && (
         <div className={`${styles.contList} ${styles.contRec}`}>
           <div className={`${styles.contList}`}>
             <Image
               alt={"afrilearn marketing video"}
-              src={dataRecon.recommended.thumbnailUrl}
+              // src={dataRecon.recommended.thumbnailUrl}
               width={240}
               height={160}
               className={styles.rectBox}
@@ -45,10 +45,10 @@ const recommendation = ({ dataRecon }) => {
             </div>
           </div>
           <div className={styles.play_textRec}>
-            <h6>Because you watched "{dataRecon.reason.title}"</h6>
+            <h6>Because "{recData.reason}"</h6>
             <p className={styles.play_textRecFirstp}>Recommended:</p>
             <p className={styles.play_textRecsecondp}>
-              {dataRecon.recommended.title}
+              {recData.recommended_subject}
             </p>
             <div className={styles.buttonPlay}>
               <button className={styles.buttonStyle} onClick={toggleModal}>
@@ -73,7 +73,7 @@ const recommendation = ({ dataRecon }) => {
             className={styles.trendingModalClass}
           >
             <video
-              src={dataRecon.recommended.videoUrls[0].videoUrl}
+              src={recData.videoUrl}
               width="800px"
               height="auto"
               controls
@@ -90,7 +90,7 @@ const recommendation = ({ dataRecon }) => {
         </div>
       )}
 
-      {dataRecon?.recommended.videoUrls[0]?.videoUrl === undefined && (
+      {/* {dataRecon?.recommended.videoUrls[0]?.videoUrl === undefined && (
         <div className={`${styles.contList} ${styles.contRec}`}>
           <Link href="/dashboard/student">
             <div className={styles.contListRead}>
@@ -129,7 +129,7 @@ const recommendation = ({ dataRecon }) => {
             </div>
           </div>
         </div>
-      )}
+      )} */}
     </>
   );
 };

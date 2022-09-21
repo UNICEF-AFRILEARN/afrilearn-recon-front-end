@@ -5,7 +5,9 @@ const initialState = {
     childData: [],
     error: [],
     children: [],
-    unlinkedChild: []
+    unlinkedChild: [],
+    deletedChild: [],
+    linkedChild: []
 }
 
 export const parentReducer = (state = initialState, { type, payload} ) => {
@@ -40,7 +42,38 @@ export const parentReducer = (state = initialState, { type, payload} ) => {
             };
         case types.UNLINK_CHILD_ACCOUNT_FAIL:
             return {
+                error: payload,
+                loading: false
+            };
+        case types.LINK_CHILD_ACCOUNT_START:
+            return {
                 ...state,
+                loading: true
+            };
+        case types.LINK_CHILD_ACCOUNT_SUCCESS:
+            return {
+                ...state,
+                linkedChild: payload,
+                loading: false
+            };
+        case types.LINK_CHILD_ACCOUNT_FAIL:
+            return {
+                error: payload,
+                loading: false
+            };
+        case types.DELETE_CHILD_ACCOUNT_START:
+            return {
+                ...state,
+                loading: true
+            };
+        case types.DELETE_CHILD_ACCOUNT_SUCCESS:
+            return {
+                ...state,
+                deletedChild: payload,
+                loading: false
+            };
+        case types.DELETE_CHILD_ACCOUNT_FAIL:
+            return {
                 error: payload,
                 loading: false
             };

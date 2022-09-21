@@ -19,14 +19,19 @@ const Subjects = ({ subData }) => {
     setShow(!show);
     subj = data;
   };
-
-  // console.log();
+  const { user } = useSelector((state) => state.auth);
+  console.log(subjCourId);
 
   const dispatch = useDispatch();
 
   const dataIntro = async () => {
     if (Object.keys(subjCourId).length !== 0) {
-      dispatch(fetchCourseDetailsInitiate(subjCourId.courseId, subjCourId.id));
+      dispatch(
+        fetchCourseDetailsInitiate(
+          subjCourId.courseId.id ? subjCourId.courseId.id : subjCourId.courseId,
+          subjCourId.id,
+        ),
+      );
     }
   };
 
@@ -37,8 +42,38 @@ const Subjects = ({ subData }) => {
   const SubDataJsx = () => {
     return subData ? (
       subData?.map((dta) => {
-        return (
-          <div key={dta.id} className={`col-md-6 ${styles.mySubjectt}`}>
+        // console.log(dta);
+        return user?.user?.classOwnership.length > 0 ? (
+          user?.user?.classOwnership[0].subjectIds.map((sub) => {
+            return (
+              sub.subjectId === dta.id && (
+                <div key={dta.id} className={`col-md-12 ${styles.mySubjectt}`}>
+                  <button
+                    className="modalButton"
+                    onClick={() => {
+                      setsubjCourId(() => ({
+                        id: dta.id,
+                        courseId: dta.courseId,
+                      }));
+                      toggleModal(dta.mainSubjectId.name);
+                    }}
+                  >
+                    <Image
+                      alt={"design image"}
+                      src={dta.mainSubjectId.imageUrl}
+                      width={70}
+                      height={70}
+                    />
+                    <p>{dta.mainSubjectId.name}</p>
+                  </button>
+                </div>
+              )
+            );
+            //   );
+            // });
+          })
+        ) : (
+          <div key={dta.id} className={`col-md-12 ${styles.mySubjectt}`}>
             <button
               className="modalButton"
               onClick={() => {
@@ -65,10 +100,10 @@ const Subjects = ({ subData }) => {
   const SubjectModal = () => {
     return (
       <>
-        <Container fluid id="subject">
+        <Container fluid id="subject" className="p-0">
           <Row>
             <div>
-              <HeaderHeropage />
+              <HeaderHeropage classes={subData[0].courseId.name} />
             </div>
             <div className="p-5 pt-0 pb-1">
               <div className={`row ${styles.modalThird}`}>
@@ -140,11 +175,8 @@ const Subjects = ({ subData }) => {
 
 export default Subjects;
 
-export const HeaderHeropage = () => {
-  const user = useSelector((state) => state.auth);
-  const personClass = user.user.user?.enrolledCourses[0].courseId
-    ? user.user.user?.enrolledCourses[0].courseId.name
-    : user.user.user?.enrolledCourses[1].courseId.name;
+export const HeaderHeropage = ({ classes }) => {
+  const personClass = classes;
   return (
     <>
       <Col className="p-0">

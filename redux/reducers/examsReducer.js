@@ -6,6 +6,8 @@ const initialState = {
     newExamQuestion: [],
     updatedQuestion: [],
     singleExam: [],
+    updatedExam: [],
+    deletedExam: [],
     singleExamQuestions: [],
     error: [],
 }
@@ -53,6 +55,19 @@ export const examsReducer = (state = initialState, { type, payload} ) => {
             return {
                 error: payload
             };
+        case types.DELETE_EXAM_START:
+            return {
+                ...state
+            };
+        case types.DELETE_EXAM_SUCCESS:
+            return {
+                ...state,
+                deletedExam: payload
+            };
+        case types.DELETE_EXAM_FAIL:
+            return {
+                error: payload
+            };
         case types.UPDATE_EXAMS_QUESTION_START:
             return {
                 ...state
@@ -63,6 +78,19 @@ export const examsReducer = (state = initialState, { type, payload} ) => {
                 updatedQuestion: payload
             };
         case types.UPDATE_EXAMS_QUESTION_FAIL:
+            return {
+                error: payload
+            };
+        case types.UPDATE_EXAMS_START:
+            return {
+                ...state
+            };
+        case types.UPDATE_EXAMS_SUCCESS:
+            return {
+                ...state,
+                updatedExam: payload
+            };
+        case types.UPDATE_EXAMS_FAIL:
             return {
                 error: payload
             };

@@ -39,7 +39,6 @@ const GeneratePerformance = ({children, courseContext}) => {
 
     
     const handleSubmit = (e) => {
-        // console.log("courseId ====>{======}", course_id)
         e.preventDefault()
         Router.push({
             pathname: `/dashboard/performance/[_userId]`,

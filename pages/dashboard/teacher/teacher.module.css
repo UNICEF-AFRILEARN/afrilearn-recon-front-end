@@ -4,7 +4,8 @@
   background-size: contain;
   width: 7px;
   height: 25px;
-  position: "relative"
+  position: "relative";
+  cursor: pointer;
 }
 
 .styleEdit {
@@ -50,13 +51,12 @@
   align-self: center;
 }
 
-
 .commentAvatartop {
   display: grid;
   grid-template-columns: 85% 15%;
   grid-row: 50px;
   align-content: center;
-  position:relative;
+  position: relative;
   padding-right: 90px;
 }
 
@@ -68,5 +68,55 @@
 
 .commentAvatarMRSide {
   position: absolute;
-  right:90px;
+  right: 90px;
+}
+
+.peoplelists {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+}
+
+.studentnumber {
+  text-align: center !important;
+  margin-left: 20%;
+}
+
+.addexamquestionbtn {
+  text-align: center;
+  padding-top: 13%;
+  height: 20vh;
+  width: 50vw;
+}
+
+.pointerwrapper a {
+  cursor: pointer;
+}
+
+.pointerwrapper {
+  margin-top: 20px;
+  padding-right: 85px;
+}
+
+.addexambuttonwrapper {
+  border: dotted 2px #f4f4f4;
+  width: 55vw;
+  padding: 15%;
+  margin-top: 10%;
+  text-align: center;
+}
+.addexambuttonwrapper span {
+  padding: 18px;
+  border: dotted 2px #000;
+  border-radius: 20px;
+  /* margin-top: 45px; */
+  background-color: #f4f4f4;
+}
+
+.addexamquestionbtn span {
+  font-size: 1.5rem;
+  border: 1px solid black;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 10px;
+  cursor: pointer;
 }

@@ -1,22 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Router, { useRouter } from 'next/router'
 import { useDispatch, useSelector } from "react-redux";
 import Image from "next/image";
 import { Col, Container, Row } from "react-bootstrap";
 import { HeroPageDetailed } from "../assignContent";
 import styles from "../teacher.module.css";
-import { fetchClassMembersInitiate } from '../../../../redux/actions/classes';
+import { 
+  fetchClassMembersInitiate,
+  acceptRejectClassMemberInitiate
+} from '../../../../redux/actions/classes';
 import Link from "next/link";
 
 const MyStudent = () => {
+  const statusElement = useRef();
   const [ classId, setClassId ] = useState("");
   const [ userId, setUserId ] = useState("");
+  // const [ status, setStatus ] = useState("");
+  const [ status, setStatus ] = useState("");
   const [ studentCount, setStudentCount ] = useState("");
-  const { classMembers } = useSelector((state) => state.schoolClasses);
+  const { classMembers, classMemberStatusChange } = useSelector((state) => state.schoolClasses);
   const { user } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
 
-  console.log("userId",userId)
+  console.log("user",user.token)
+  let token = user.token
   //Navigate to performance:
   const goToPerformance = (id) => {
     setUserId(id)
@@ -25,11 +32,23 @@ const MyStudent = () => {
         query: { _id: id, classId: classId}
     })
   }
-//studentName?.userId?.id
+
+const handleStatusUpdate = async (id, status) => {
+  setUserId(id)
+}
+// // console.log("selectedStatus ===>", selectedStatus)
+
+useEffect(() => {
+  console.log("selectedStatus function===>",  userId, classId, status)
+    dispatch(acceptRejectClassMemberInitiate(userId, classId, status, token))
+}, [status])
+
 
   useEffect(() => {
     setClassId(user?.user?.enrolledCourses[0]?.classId)
   }, [classId]);
+
+
   useEffect(() => {
     setStudentCount(classMembers?.classMembers?.length)
   }, [classMembers]);
@@ -37,7 +56,7 @@ const MyStudent = () => {
 
   useEffect(() => {
     dispatch(fetchClassMembersInitiate(classId))
-  },[classId]);
+  },[classId, status, classMemberStatusChange]);
 
   return (
     <>
@@ -49,8 +68,8 @@ const MyStudent = () => {
           }}
         />
       </div>
-      <Container>
-        <Row className="mt-5 mx-5">
+      <Container >
+        <Row className="mt-5">
           <Col>
             <h3
               style={{
@@ -62,7 +81,7 @@ const MyStudent = () => {
               Students
             </h3>
           </Col>
-          <Col md={2}>
+          <Col className={`${styles.studentnumber}`}>
             <h3
               style={{
                 fontWeight: "500",
@@ -77,27 +96,36 @@ const MyStudent = () => {
         {classMembers?.classMembers?.map((studentName) => (
           <Row
             // key={i}
-            className="mx-5 mt-3"
-            style={{ height: "35px", display: "flex", alignItems: "center" }}
+            className={`${styles.peoplelists} mt-3 d-flex w-60`}
           >
-            <Col md={1} style={{ padding: "0", width: "35px" }}>
+            <Col>
               <div className={styles.vidAvatar}>
                 <Image
                   alt={"afrilearn marketing video"}
                   src={`/assets/img/features/dashboard/student/comment1.png`}
-                  width={35}
-                  height={35}
+                  width={30}
+                  height={30}
                 />
               </div>
             </Col>
-            <Col md={5} >{studentName?.userId?.fullName}</Col>
+            <Col >{studentName?.userId?.fullName}</Col>
             <Col md={5} style={{ color: "#AAA6A6" }}>
              <p onClick={() => goToPerformance(studentName?.userId?.id)}>
                 <u>View Performance</u>
              </p>
             </Col>
-            <Col className="" style={{ color: "#FF5B5B" }}>
-              Remove
+            <Col
+                value={studentName.status}
+                className="" style={{ color: "#FF5B5B" }}>
+              <select
+              ref={statusElement}
+              onChange={(e) => { setStatus(e.target.value), handleStatusUpdate(studentName?.userId?.id, studentName.status)}}
+              default={studentName.status}>
+                <option
+                >{studentName.status}</option>
+                <option
+                >{studentName.status === 'approved'? 'rejected' : 'approved'}</option>
+              </select>
             </Col>
           </Row>
         ))}
