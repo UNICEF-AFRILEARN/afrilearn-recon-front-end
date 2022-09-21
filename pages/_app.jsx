@@ -20,4 +20,5 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
+// export default withDarkMode(MyApp)
 export default MyApp;

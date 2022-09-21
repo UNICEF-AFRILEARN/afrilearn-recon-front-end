@@ -14,6 +14,7 @@ import AppButton from "../../widgets/buttons/AppButton";
 import { BsPersonCircle } from 'react-icons/bs';
 
 const Navigation = () => {
+
   const router = useRouter();
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [userRole, setUserRole] = useState("");
@@ -50,6 +51,7 @@ const Navigation = () => {
               alt="logo"
               className="brand-logo"
             />
+   
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
