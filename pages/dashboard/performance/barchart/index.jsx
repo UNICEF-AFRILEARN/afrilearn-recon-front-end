@@ -10,12 +10,12 @@ const Barchart = ({subjectList, outerIndex, subjectPerformance}) => {
 
   let dataTwo = [
     ...subjectPerformance,
-    {name: 'test', totalTests: 100 ?? 0},
+    {name: 'test', value: 100 ?? 0},
   ]
   // let totalQuestion = subjectList.totalQuestions
   // let totalQuestionsCorrectAnswered = subjectList.totalQuestionsCorrect
   let data = [ 
-    { name: 'totalQuestionsCorrect', value: subjectPerformance[outerIndex].totalTests
+    { name: 'totalQuestionsCorrect', value: subjectPerformance[outerIndex].performance
     ?? 0 , total: 0, fill: 'green' },
     { name: 'totalQuestionsCorrect', value: 100, fill: 'blue' },
 ];
@@ -46,7 +46,7 @@ const Barchart = ({subjectList, outerIndex, subjectPerformance}) => {
           dataKey="value"
         >
          <Label
-        value={`${subjectPerformance[outerIndex].totalTests?? 0}%`}
+        value={`${subjectPerformance[outerIndex].performance?? 0}%`}
        position="center"
        fill="grey"
        style={{
