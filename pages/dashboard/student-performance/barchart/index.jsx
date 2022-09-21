@@ -26,13 +26,14 @@ const [subject, setSubject] = useState([]);
   // let totalQuestion = subjectList.totalQuestions
   // let totalQuestionsCorrectAnswered = subjectList.totalQuestionsCorrect
   let dataTwo = [
-    {name: 'test', value: 100 ?? 0},
-    {name: 'test', value: 10}
+    ...subjectPerformance,
+    {name: 'test', totalTests: 100 ?? 0},
   ]
 
   let data = [ 
-    { name: 'totalQuestionsCorrect', value: subjectPerformance[outerIndex]?? 0 , total: 0, fill: 'red' },
-    { name: 'totalQuestionsCorrect', value: 100, fill: 'red' },
+    { name: 'totalQuestionsCorrect', value: subjectPerformance[outerIndex].performance
+    ?? 0 , total: 0, fill: 'green' },
+    { name: 'totalQuestionsCorrect', value: 100, fill: 'blue' },
 ];
 
   // totalQuestions: 0
@@ -48,7 +49,8 @@ useEffect(() => {
   setSubject(subjectList)
 }, [])
 
-  console.log("perform subjectList from barchart", data)
+  console.log("dataTwo subjectList from barchart", dataTwo
+  )
 
     return (
       
@@ -65,25 +67,32 @@ useEffect(() => {
           labelLine={false}
           fill="fill"
           paddingAngle={1}
-          // dataKey="value"
+          dataKey="value"
           labelPosition={60}
         >
-         {data.map((entry, index) => {
-      if (outerIndex === 0) {
-        return <Cell key={`cell-${index}`} fill="red"/>; // make sure to map the index to the colour you want
+         {dataTwo.map((entry, index) => {
+      if (index === 0 && outerIndex === 0 ) {
+        return <Cell key={`cell-${index}`} fill="red"/>; 
+        // make sure to map the outerIndex to the colour you want
       }
-      if (outerIndex === 1) {
-        return <Cell key={`cell-${index}`} fill="green"/>; // make sure to map the index to the colour you want
+      if (index === 1) {
+        return <Cell key={`cell-${index}`} fill="grey"/>;  // make sure to map the outerIndex to the colour you want
       }
-      if (outerIndex === 2) {
-        return <Cell key={`cell-${index}`} fill="blue"/>; // make sure to map the index to the colour you want
+      if (index === 2 || outerIndex === 2) {
+        return <Cell key={`cell-${index}`} fill="blue"/>;  // make sure to map the outerIndex to the colour you want
+      }
+      if ( outerIndex === 3) {
+        return <Cell key={`cell-${index}`} fill="yellow"/>;  // make sure to map the outerIndex to the colour you want
+      }
+      if ( outerIndex === 1) {
+        return <Cell key={`cell-${index}`} fill="orange"/>;  // make sure to map the outerIndex to the colour you want
       }
 
         return <Cell key={`cell-${index}`} fill="grey" />;
       
     })}
        <Label
-        value={`${subjectPerformance[outerIndex].totalTests}%`}
+        value={`${subjectPerformance[outerIndex].performance?? 0}%`}
        position="center"
        fill="grey"
        style={{
