@@ -30,7 +30,6 @@ const ClassPerfomance = (
   const [data, setData] = useState([]);
   const [student, setStudent] = useState();
   const [panelId, setPanelId] = useState(1);
-  console.log("student?.data? from classPerformance ===>", student)
 
 
   const displayPanel = () => {

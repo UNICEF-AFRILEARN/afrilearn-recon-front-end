@@ -37,7 +37,6 @@ const Performance = () => {
       }
     })
   }
-  console.log("user from studentPerformance ===>",   currentStudent)
   
   filterSTudent()
   

@@ -41,8 +41,6 @@ const Childperformance = ({studentPerformance, userId}) => {
   
   filterChild()
 
-  console.log("studentPerformance from childPerformance ===>", studentPerformance)
-
   const displayPanel = () => {
     if(panelId === 1){
       setShowPanel(true)
@@ -154,12 +152,14 @@ const Childperformance = ({studentPerformance, userId}) => {
             </div> :
               <div>
              { showPanel === true && 
-              subjectPerformance && subjectPerformance.map((subjectList) =>
+              subjectPerformance && subjectPerformance.map((subjectList, index) =>
               <div className={styles.performancecontentwrapper}>
                  <div className={styles.subjectsectionone}>
                     <p className={styles.subjectheaderwrapper}>{subjectList.subject}</p>
                     <Barchart 
                       data={data}
+                      subjectPerformance={subjectPerformance}
+                      outerIndex={index}
                     />
                     {subjectList.performance === null? 
                     <p className={styles.averagetimeremark}> 

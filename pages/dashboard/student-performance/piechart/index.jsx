@@ -3,7 +3,6 @@ import { BarChart, Bar, Cell, XAxis, Label, YAxis, CartesianGrid, Tooltip, Legen
 
 
 const Piechart = ({data}) => {
-  console.log("Data from +++++++++======>", data)
     return (
       // <ResponsiveContainer width="50%" height="50%">
         <BarChart 

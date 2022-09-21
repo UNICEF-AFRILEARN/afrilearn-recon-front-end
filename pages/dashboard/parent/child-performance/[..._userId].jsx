@@ -45,6 +45,7 @@ const Performance = () => {
     })
   }
   
+
   filterSTudent()
   
   useEffect(() => {
@@ -97,6 +98,7 @@ const Performance = () => {
            classPerformance={classPerformance}
           classDetails={classDetails}
         /> */}
+        
         {/* <SubjectChart /> */}
      </div>
   </div>
