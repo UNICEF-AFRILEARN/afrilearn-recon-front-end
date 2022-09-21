@@ -3,6 +3,7 @@ import { PieChart, Pie, Sector, Label, LabelList, Cell, ResponsiveContainer } fr
 
 
 
+
 const COLORS = ['#0088FE', '#00C49F'];
 
 const Pastquestionchart = ({subjectList, outerIndex, pastQuestionPerformance}) => {

@@ -201,12 +201,15 @@ const Childperformance = ({studentPerformance, userId}) => {
               )}
               {
               showPanel === false && 
-              pastQuestionPerformance && pastQuestionPerformance.map((pastSubject) => 
+              pastQuestionPerformance && pastQuestionPerformance.map((pastSubject, index) => 
                   <div className={styles.performancecontentwrapperpast}>
                      <p className={styles.pastheaderwrapper}>{pastSubject.name}</p>
                       <div className={styles.pastquestionratewrapper}>
                       <div>
-                      <Pastquestionchart />
+                      <Pastquestionchart 
+                      pastQuestionPerformance={pastQuestionPerformance}
+                      outerIndex={index}
+                      />
                         <p>No rated</p>
                         <h5>PERFORMANCE</h5>
                      </div>

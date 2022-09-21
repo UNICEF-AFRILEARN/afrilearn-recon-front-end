@@ -3,29 +3,25 @@ import { PieChart, Pie, Sector, Label, LabelList, Cell, ResponsiveContainer } fr
 
 
 
+
 const COLORS = ['#0088FE', '#00C49F'];
 
-const Pastquestionchart = ({subjectList}) => {
-
-  // let totalQuestion = subjectList.totalQuestions
-  // let totalQuestionsCorrectAnswered = subjectList.totalQuestionsCorrect
-  const data = [
-    { name: 'totalQuestions', value: 30 },
-    { name: 'totalQuestionsCorrect', value: 20 },
-    { name: 'totalQuestionsCorrect', value: 20 },
-    { name: 'totalQuestionsCorrect', value: 20 },
-  ];
-
-  // totalQuestions: 0
-  // totalQuestionsCorrect: 0
-
-  const calculatePercentage = (data, done) => {
-    let percentageCalculated = (done / data) * 100;
-    return percentageCalculated.toFixed(0).replace(".", ",").toString() + "%";
-  };
+const Pastquestionchart = ({subjectList, pastQuestionPerformance, outerIndex}) => {
 
 
-  console.log("Pastquestionchart from barchart", subjectList)
+  let dataTwo = [
+    ...pastQuestionPerformance,
+    {name: 'test', totalTests: 100 ?? 0},
+  ]
+
+  
+  let data = [ 
+    { name: 'totalQuestionsCorrect', value: pastQuestionPerformance[outerIndex].performance ?? 0 , total: 0, fill: 'green' },
+    { name: 'totalQuestionsCorrect', value: 100, fill: 'blue' },
+];
+
+
+  console.log("pastQuestionPerformance &&& from barchart", pastQuestionPerformance)
 
     return (
       
@@ -37,21 +33,42 @@ const Pastquestionchart = ({subjectList}) => {
           textAnchor={"middle"}
           innerRadius={60}
           outerRadius={80}
-          fill="#8884d8"
+          fill="fill"
           paddingAngle={5}
           dataKey="value"
         >
-           <Label 
-        value='70%' position="centerBottom"  className='label-top' fontSize='27px'
-        />
-        <Label 
-        value="AVERAGE" position="centerTop" className='label'
-        fontSize='15px'
+         <Label
+        value={`${pastQuestionPerformance[outerIndex].performance
+          ?? 0}%`}
+       position="center"
+       fill="grey"
+       style={{
+         fontSize: "30px",
+         fontWeight: "bold",
+         fontFamily: "Roboto"
+       }}
+     />
+       {dataTwo.map((entry, index) => {
+      if (index === 0 && outerIndex === 0 ) {
+        return <Cell key={`cell-${index}`} fill="red"/>; 
+        // make sure to map the outerIndex to the colour you want
+      }
+      if (index === 1 ) {
+        return <Cell key={`cell-${index}`} fill="grey"/>;  // make sure to map the outerIndex to the colour you want
+      }
+      if (index === 2 || outerIndex === 2) {
+        return <Cell key={`cell-${index}`} fill="blue"/>;  // make sure to map the outerIndex to the colour you want
+      }
+      if ( outerIndex === 3 || outerIndex === 3) {
+        return <Cell key={`cell-${index}`} fill="yellow"/>;  // make sure to map the outerIndex to the colour you want
+      }
+      if ( outerIndex === 1) {
+        return <Cell key={`cell-${index}`} fill="orange"/>;  // make sure to map the outerIndex to the colour you want
+      }
 
-        />
-          {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-          ))}
+        return <Cell key={`cell-${index}`} fill="grey" />;
+      
+    })}
         </Pie>
       </PieChart>
     );
