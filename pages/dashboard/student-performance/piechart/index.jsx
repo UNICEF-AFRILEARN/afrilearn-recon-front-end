@@ -31,7 +31,6 @@ const Piechart = ({data}) => {
            <XAxis 
           dataKey='subject'
           fontFamily="sans-serif"
-          
           tickSize
           angle={-90}
           dx={-8}

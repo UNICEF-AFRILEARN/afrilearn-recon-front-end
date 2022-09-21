@@ -9,7 +9,6 @@ const Barchart = ({subjectPerformance, subjectList, outerIndex, perform}) => {
 const [subject, setSubject] = useState([]);
 
 
-
   let dataTwo = [
     ...subjectPerformance,
     {name: 'test', totalTests: 100 ?? 0},

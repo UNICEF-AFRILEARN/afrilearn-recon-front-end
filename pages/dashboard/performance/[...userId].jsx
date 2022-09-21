@@ -26,7 +26,6 @@ const Performance = () => {
   const courseId = user?.user?.enrolledCourses[0]?.courseId.id
   let classId = query.classId;
 
-  // console.log("user from studentPerformance ===>",   )
   // console.log("email from performance =====>&", email)
   
   //Filter current student to show student details
@@ -38,18 +37,19 @@ const Performance = () => {
       }
     })
   }
+  console.log("user from studentPerformance ===>",   currentStudent)
   
   filterSTudent()
   
   useEffect(() => {
     dispatch(fetchClassPerformanceInitiate(courseId, token))
-     }, [courseId])
+     }, [])
 
   useEffect(() => {
     if(classId){
       dispatch(fetchClassDetailsInitiate(classId))
     }
-  }, [classId])
+  }, [])
   
   // useEffect(() => {
     //   if(userId){

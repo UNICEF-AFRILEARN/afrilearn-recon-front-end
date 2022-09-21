@@ -23,13 +23,14 @@ const ClassPerfomance = (
   }) => {
 
     const { user} = useSelector((state) => state.auth)
-    let pastQuestionPerformance = studentPerformance?.data?.examsList;
-    let subjectPerformance = studentPerformance?.data?.subjectsList;
+    let pastQuestionPerformance = classPerformance?.data?.examsList;
+    let subjectPerformance = classPerformance?.data?.subjectsList;
   // const result = Object?.values(classDetails);
   const [showPanel, setShowPanel] = useState(false);
   const [data, setData] = useState([]);
+  const [student, setStudent] = useState();
   const [panelId, setPanelId] = useState(1);
-  // console.log("currentStudent?.data? from classPerformance ===>", currentStudent)
+  console.log("student?.data? from classPerformance ===>", student)
 
 
   const displayPanel = () => {
@@ -47,6 +48,12 @@ const ClassPerfomance = (
   useEffect(() => {
     if(subjectPerformance){
       setData(subjectPerformance)
+    }
+  }, [subjectPerformance])
+
+  useEffect(() => {
+    if(currentStudent){
+      setStudent(currentStudent)
     }
   }, [])
   
@@ -141,12 +148,14 @@ const ClassPerfomance = (
             </div> :
               <div>
              { showPanel === true && 
-              subjectPerformance && subjectPerformance.map((subjectList) =>
+              subjectPerformance && subjectPerformance.map((subjectList, index) =>
               <div className={styles.performancecontentwrapper}>
                  <div className={styles.subjectsectionone}>
                     <p className={styles.subjectheaderwrapper}>{subjectList.subject}</p>
                     <Barchart 
                       data={data}
+                      outerIndex={index}
+                      subjectPerformance={subjectPerformance}
                     />
                     {subjectList.performance === null? 
                     <p className={styles.averagetimeremark}> 

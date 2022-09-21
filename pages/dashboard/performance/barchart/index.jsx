@@ -5,14 +5,20 @@ import { PieChart, Pie, Sector, Label, LabelList, Cell, ResponsiveContainer } fr
 
 const COLORS = ['#0088FE', '#00C49F'];
 
-const Barchart = ({subjectList}) => {
+const Barchart = ({subjectList, outerIndex, subjectPerformance}) => {
 
+
+  let dataTwo = [
+    ...subjectPerformance,
+    {name: 'test', totalTests: 100 ?? 0},
+  ]
   // let totalQuestion = subjectList.totalQuestions
   // let totalQuestionsCorrectAnswered = subjectList.totalQuestionsCorrect
-  const data = [
-    { name: 'totalQuestions', value: 30 },
-    { name: 'totalQuestionsCorrect', value: 20 },
-  ];
+  let data = [ 
+    { name: 'totalQuestionsCorrect', value: subjectPerformance[outerIndex].totalTests
+    ?? 0 , total: 0, fill: 'green' },
+    { name: 'totalQuestionsCorrect', value: 100, fill: 'blue' },
+];
 
   // totalQuestions: 0
   // totalQuestionsCorrect: 0
@@ -23,7 +29,7 @@ const Barchart = ({subjectList}) => {
   };
 
 
-  console.log("subjectList from barchart", subjectList)
+  console.log("subjectList from barchart", outerIndex)
 
     return (
       
@@ -35,21 +41,41 @@ const Barchart = ({subjectList}) => {
           textAnchor={"middle"}
           innerRadius={60}
           outerRadius={80}
-          fill="#8884d8"
+          fill="fill"
           paddingAngle={5}
           dataKey="value"
         >
-           <Label 
-        value='70%' position="centerBottom"  className='label-top' fontSize='27px'
-        />
-        <Label 
-        value="AVERAGE" position="centerTop" className='label'
-        fontSize='15px'
+         <Label
+        value={`${subjectPerformance[outerIndex].totalTests?? 0}%`}
+       position="center"
+       fill="grey"
+       style={{
+         fontSize: "30px",
+         fontWeight: "bold",
+         fontFamily: "Roboto"
+       }}
+     />
+          {dataTwo.map((entry, index) => {
+      if (index === 0 && outerIndex === 0 ) {
+        return <Cell key={`cell-${index}`} fill="red"/>; 
+        // make sure to map the outerIndex to the colour you want
+      }
+      if (index === 1) {
+        return <Cell key={`cell-${index}`} fill="grey"/>;  // make sure to map the outerIndex to the colour you want
+      }
+      if (index === 2 || outerIndex === 2) {
+        return <Cell key={`cell-${index}`} fill="blue"/>;  // make sure to map the outerIndex to the colour you want
+      }
+      if ( outerIndex === 3) {
+        return <Cell key={`cell-${index}`} fill="yellow"/>;  // make sure to map the outerIndex to the colour you want
+      }
+      if ( outerIndex === 1) {
+        return <Cell key={`cell-${index}`} fill="orange"/>;  // make sure to map the outerIndex to the colour you want
+      }
 
-        />
-          {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-          ))}
+        return <Cell key={`cell-${index}`} fill="grey" />;
+      
+    })}
         </Pie>
       </PieChart>
     );

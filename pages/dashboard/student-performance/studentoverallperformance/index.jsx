@@ -84,11 +84,10 @@ const Studentoverallperformance = ({studentPerformance, userId}) => {
                   <h2>{user?.user?.fullName}</h2>
                   { user &&  <p>{user?.user?.email}</p>}
                  { user && <h3>{user?.user?.enrolledCourses[0]?.courseId.name}</h3>}
-                 {/* <MdLocationOn
-                 enrolledCourses.courseId.name
+                 <MdLocationOn
                 className={styles.locationiconwrapper}
                       size={40}
-                    /> */}
+                    />
               </div>
                   <p className={styles.invitewrapper}>Invite your friends</p>
                 
