@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { signIn } from 'next-auth/react';
 import Link from "next/link";
+import Toggle from "../../widgets/toggle/index"
 import { BsSearch, BsBell } from "react-icons/bs";
 
 import { BiDownArrow } from 'react-icons/bi';
@@ -12,7 +13,7 @@ import { AiOutlineSafetyCertificate } from "react-icons/ai";
 import styles from "./mainNavigation.module.css";
 import AppButton from "../../widgets/buttons/AppButton";
 import { persistor } from "../../../redux/store";
-// import { logoutActionSuccess } from "../../"
+
 import { BsPersonCircle } from 'react-icons/bs';
 
 const Navigation = () => {
@@ -61,11 +62,12 @@ const Navigation = () => {
 
   return (
     <Navbar
-      bg="light"
+      // bg="light"
       expand="lg"
       fixed="top"
       collapseOnSelect
-      style={{ backgroundColor: "#FDFDFD !important" }}
+      // style={{ backgroundColor: "#FDFDFD !important" }}
+      className="mainNavbar"
     >
         <Navbar.Brand>
           <Link passHref href="/">
@@ -79,6 +81,7 @@ const Navigation = () => {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         {/* <Toggle /> */}
+        
         {/* <DarkModeToggle /> */}
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
