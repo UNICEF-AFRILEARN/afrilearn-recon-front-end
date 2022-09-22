@@ -3,8 +3,10 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from "react-redux";
 import { Navbar, Container, Nav } from "react-bootstrap";
+import { signIn } from 'next-auth/react';
 import Link from "next/link";
 import { BsSearch, BsBell } from "react-icons/bs";
+
 import { BiDownArrow } from 'react-icons/bi';
 import { AiOutlineSafetyCertificate } from "react-icons/ai";
 import styles from "./mainNavigation.module.css";
@@ -55,6 +57,8 @@ const Navigation = () => {
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        {/* <Toggle /> */}
+        {/* <DarkModeToggle /> */}
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             {/* <div className='main-navbar-with-login'> */}
@@ -255,9 +259,14 @@ const Navigation = () => {
 
              { userRole !== '606ed82e70f40e18e029165e' && userRole !== '5fd08fba50964811309722d5' && userRole !== '602f3ce39b146b3201c2dc1d' && userRole !== '607ededa2712163504210684' &&
                <div>
-                  <Link href="/login">
-                <button className={styles.btnlogin}>Login</button>
-                </Link>
+                 {/* implementing next.auth */}
+                  {/* <Link href="/login"> */}
+                <button 
+                className={styles.btnlogin} 
+                onClick={() => {
+                  signIn()
+                }}>Login</button>
+                {/* </Link> */}
                 <Link href="/register" >
                 <button className={styles.btnloginregister}>Register</button>
                 </Link>

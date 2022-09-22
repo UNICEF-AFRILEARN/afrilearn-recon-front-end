@@ -7,8 +7,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import {store } from "../redux/store";
 import { Provider } from "react-redux";
 import { persistGate } from "redux-persist/integration/react";
-
+import Darkmode from 'darkmode-js';
+ 
 function MyApp({ Component, pageProps }) {
+  new Darkmode().showWidget();
+  
   return (
     <Provider store={store}>
       {/* <persistGate persistor={persistor}> */}
@@ -20,5 +23,4 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-// export default withDarkMode(MyApp)
 export default MyApp;
