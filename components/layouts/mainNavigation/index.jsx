@@ -67,7 +67,7 @@ const Navigation = () => {
       fixed="top"
       collapseOnSelect
       // style={{ backgroundColor: "#FDFDFD !important" }}
-      className="mainNavbar"
+      // className="mainNavbar"
     >
         <Navbar.Brand>
           <Link passHref href="/">

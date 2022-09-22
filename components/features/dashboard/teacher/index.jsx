@@ -127,7 +127,7 @@ export const HeropageWelcome = () => {
     <>
       <Row
         style={{
-          position: "absolute",
+          // position: "absolute",
           bottom: "38%",
           width: "100%",
           zIndex: "3",
