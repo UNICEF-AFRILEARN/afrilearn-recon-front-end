@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRoles } from '../../redux/actions/auth';
+import { useSession } from "next-auth/react"
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { 
@@ -17,6 +18,7 @@ import PaymentDetails from './paymentModal';
 import Spinner from '../../components/widgets/spinner/index'
 
 const payment = ({test_body}) => {
+  const session = useSession();
   const priceElement = useRef();
   const [open, setOpen] = useState(false);
   const { classDetails } = useSelector((state) => state.schoolClasses)
@@ -45,7 +47,7 @@ const handleOpen = () => {
 }
 
 
-console.log("selectedCourse from payment ====>", selectedCourse)
+console.log("session from payment ====>", session)
   let showPrice;
   const handleSelect = (price) => {
     setPriceSelected(price)

@@ -5,11 +5,13 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import styles from "./login.module.css";
 import Image from "next/image";
-import AppButton from "../../../widgets/buttons/AppButton";
-import { loginInitiate } from "../../../../redux/actions/auth";
+import AppButton from "../../../components/widgets/buttons/AppButton";
+import { loginInitiate } from "../../../redux/actions/auth";
 import { signIn } from 'next-auth/react';
 
+
 const Login = () => {
+  // const session = useSession()
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
 
@@ -19,15 +21,18 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const router = useRouter();
 
-  console.log("error", user);
+  // let userEmail = "test@email.com"
+  // let userPassword = "test233"
+  // console.log("session", session);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     // const res = await signIn("credentials", {
-    //   email,
-    //   password,
-    //   redirect: false
+    //   email: email,
+    //   password: password,
+    //   redirect: false,
     // })
+    // console.log("yes")
 
     // console.log(res)
     dispatch(loginInitiate(email, password));

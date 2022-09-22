@@ -11,26 +11,47 @@ import { BiDownArrow } from 'react-icons/bi';
 import { AiOutlineSafetyCertificate } from "react-icons/ai";
 import styles from "./mainNavigation.module.css";
 import AppButton from "../../widgets/buttons/AppButton";
-
-
+import { persistor } from "../../../redux/store";
+// import { logoutActionSuccess } from "../../"
 import { BsPersonCircle } from 'react-icons/bs';
 
 const Navigation = () => {
 
   const router = useRouter();
+  const dispatch = useDispatch();
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [userRole, setUserRole] = useState("");
   const { user, registerUser } = useSelector(state => state.auth)
 
+ const checkoLocal = () => {
+  let localData;
   if (typeof window !== 'undefined'){
-    let user_info = JSON.parse(localStorage.getItem('persist:persist-key'))
-    console.log("user_info From main navebar", user_info)
+    localData = JSON.parse(localStorage.getItem('persist:root'))
+   
   }
-  const handleLogout = () => {
-    window.localStorage.clear()
-    router.push('/login')
+  return localData
+ }
+  // const handleLogout = () => {
+  //   window.localStorage.removeItem('')
+  //   router.push('/login')
 
-  }
+  // }
+
+  const handleLogout = async () => {
+    persistor.purge()
+    // router.push({
+    //   pathname: '/auth/login',
+    // }, 
+    // undefined, { shallow: true }
+    // )
+    
+    let locals = checkoLocal()
+    if(locals === null){
+      persistor.purge()
+      router.push('/register')
+    }
+    console.log("local ===> ", locals)
+}
 
   useEffect(() => {
     const roleId = user?.user?.role || registerUser?.user?.role || user?.user?.id
@@ -260,13 +281,11 @@ const Navigation = () => {
              { userRole !== '606ed82e70f40e18e029165e' && userRole !== '5fd08fba50964811309722d5' && userRole !== '602f3ce39b146b3201c2dc1d' && userRole !== '607ededa2712163504210684' &&
                <div>
                  {/* implementing next.auth */}
-                  {/* <Link href="/login"> */}
+                  <Link href="/login">
                 <button 
                 className={styles.btnlogin} 
-                onClick={() => {
-                  signIn()
-                }}>Login</button>
-                {/* </Link> */}
+                >Login</button>
+                </Link>
                 <Link href="/register" >
                 <button className={styles.btnloginregister}>Register</button>
                 </Link>

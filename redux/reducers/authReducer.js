@@ -97,7 +97,12 @@ const authReducer = (state = initialState, {type, payload}) => {
                 ...state,
                 user: payload
             }
-        case types.LOGIN_USER_FAIL:
+            case types.LOGIN_USER_FAIL:
+          case types.LOGOUT_ACTION_SUCCESS:
+              return {
+
+                initialState
+              }
             return {
                 ...state,
                 error: payload

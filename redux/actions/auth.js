@@ -128,6 +128,11 @@ export const editTeacherProfileSuccess = (payload) => ({
   payload,
 });
 
+
+export const logoutActionSuccess = () => ({
+  type: types.LOGOUT_ACTION_SUCCESS,
+});
+
 export const editTeacherProfileFail = (error) => ({
   type: types.EDIT_TEACHER_PROFILE_FAIL,
   payload: error,

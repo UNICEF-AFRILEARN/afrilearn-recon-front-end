@@ -3,6 +3,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "../styles/globals.css";
 import Layout from "../components/layouts";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { SessionProvider } from "next-auth/react";
 
 import {store } from "../redux/store";
 import { Provider } from "react-redux";
@@ -15,9 +16,11 @@ function MyApp({ Component, pageProps }) {
   return (
     <Provider store={store}>
       {/* <persistGate persistor={persistor}> */}
+      <SessionProvider session={pageProps.session}>
       <Layout>
         <Component {...pageProps} />
       </Layout>
+      </SessionProvider>
       {/* </persistGate> */}
     </Provider>
   );
