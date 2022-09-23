@@ -24,8 +24,8 @@ const Navigation = () => {
   const [userRole, setUserRole] = useState("");
   const { user, registerUser } = useSelector(state => state.auth)
 
- const checkoLocal = () => {
   let localData;
+ const checkoLocal = () => {
   if (typeof window !== 'undefined'){
     localData = JSON.parse(localStorage.getItem('persist:root'))
    
@@ -47,11 +47,11 @@ const Navigation = () => {
     // )
     
     let locals = checkoLocal()
-    if(locals === null){
-      persistor.purge()
-      router.push('/register')
-    }
-    console.log("local ===> ", locals)
+    // if(locals === null){
+        signIn()
+      window.history.pushState(null, 'login', '/login')
+      // router.push('/login')
+    // }
 }
 
   useEffect(() => {
@@ -135,7 +135,7 @@ const Navigation = () => {
               
             }
 
-            {userRole === '602f3ce39b146b3201c2dc1d' &&
+            {userRole === '602f3ce39b146b3201c2dc1d'  &&
               <div className={styles.parentloggedindash}>
                 <ul>
                   <Link passHref href="/dashboard/teacher">
