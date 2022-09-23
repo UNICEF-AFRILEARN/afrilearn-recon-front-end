@@ -179,3 +179,35 @@
     color: #00D9B6;
 }
 
+@media screen and (max-width: 768px) {
+
+.performancemainwrapper {
+    flex-direction: column;
+}
+
+.innermainwrapper { 
+    width: 95%;
+    height: 80%;
+    align-self: center;
+}
+
+.progresswrapper {
+    width: 100%;
+}
+.performancecontentwrapper {
+    padding: 20px;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    
+}
+.subjectsectiononemiddle {
+    text-align: center;
+    align-self: center;
+    margin-left: 10px;
+}
+.performancecontentwrapperpast{
+    background-color: red;
+    
+}
+}

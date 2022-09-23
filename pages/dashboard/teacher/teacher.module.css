@@ -139,8 +139,10 @@
 
 .addexamlistwrapper li{
   list-style-type: none;
-  background-color: #00D9B6 !important;
-  width: 20% !important;
+  /* background-color: #00D9B6 !important; */
+  width: 60% !important;
+  margin-top: 10px;
+  margin-left: 40px;
 }
 .addexamquestionbtn span{
   border: 1px solid black;

@@ -58,11 +58,11 @@ const Objectives = ({exam_id}) => {
     //     dispatch(updateExamQuestionInitiate(questionId, data))
     // }
 
-        let examType = allExams?.filter((filteredExams) => 
-            filteredExams.id === exam_id
-        )
+    let examType = allExams?.filter((filteredExams) => 
+        filteredExams.id === exam_id
+    )
 
-        console.log("examType =====>", examType)
+        console.log("exams =====>", exams)
     
     const onClickExamsType = () => {
         setOpenQuestionType(!openQuestionType)
@@ -129,14 +129,14 @@ const Objectives = ({exam_id}) => {
     }, [receivedQuestions, newExamQuestion, updatedExam, deletedExam])
     
     console.log("deletedExam from objective", deletedExam)
-    useEffect(() => {
-        if(examType[0]?.publish === true){
-            setTheExamType('UNPUBLISH')
-        }else if(examType[0]?.publish === false){
-            setTheExamType('PUBLISH')
-        }
+    // useEffect(() => {
+    //     if(examType[0]?.publish === true){
+    //         setTheExamType('UNPUBLISH')
+    //     }else if(examType[0]?.publish === false){
+    //         setTheExamType('PUBLISH')
+    //     }
 
-    }, [theExamType])
+    // }, [])
   return (
     <div className={styles.objectivemainwrapper}>
         <div className={styles.objleftsideboxwrapper}>
@@ -154,7 +154,7 @@ const Objectives = ({exam_id}) => {
                }
                 <div className={styles.btnmainwrapper}>
                   
-                 <h4 onClick={() => setTheExamType(theExamType)}>{theExamType}</h4>
+                 <h4 onClick={() => setTheExamType(theExamType)}>Published</h4>
                    
                     <h5>PREVIEW</h5>
                 </div>
@@ -163,14 +163,14 @@ const Objectives = ({exam_id}) => {
                    <h4>{examType[0]?.publish === true? 'This exam is currently published' : 'This exam is currently unpublished'}</h4>}
                </div>
                {/* add button add new question */}
-                    <div className={styles.littleaddbtnwrapper}>
+                    {/* <div className={styles.littleaddbtnwrapper}>
                     <Addexambutton 
                         exam_id={exam_id}
                         examType={examType}
                         examQuestion={examQuestion}
                         handleShow={handleShow}
                      />
-                    </div>
+                    </div> */}
                {/* End add button add new question */}
                
             </div>
@@ -232,7 +232,7 @@ const Objectives = ({exam_id}) => {
 
           
             </div>
-                <div className={styles.addbuttoninnermainwrapper}>
+                <div >
                 <Addexambutton 
                         exam_id={exam_id}
                         examType={examType}

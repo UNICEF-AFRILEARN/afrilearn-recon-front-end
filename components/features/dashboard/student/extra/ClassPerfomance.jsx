@@ -70,11 +70,10 @@ const ClassPerfomance = (
                 <div className={styles.studentnamewrapper}>
                   <h2>{currentStudent[0]?.userId.fullName}</h2>
                   { user &&  <p>{user?.user?.email}</p>}
-                 { user && <h3>{user?.user?.classOwnership[0]?.name}</h3>}
-                 {/* <MdLocationOn
-                className={styles.locationiconwrapper}
-                      size={40}
-                    /> */}
+                 { user && <h3>{user?.user?.classOwnership[0]?.name}
+                 </h3>
+                 }
+                
               </div>
                   <p className={styles.invitewrapper}>Invite your friends</p>
                 

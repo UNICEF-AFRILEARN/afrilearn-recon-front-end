@@ -87,3 +87,11 @@
   text-align: center;
   padding-left: 20%;
 }
+
+@media screen and (max-width: 768px) {
+  .maincotainer {
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+  }
+}

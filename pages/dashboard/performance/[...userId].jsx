@@ -73,12 +73,6 @@ const Performance = () => {
               />
               </div>
         </div>
-            {/* <div className={styles.titlehoder}>
-                <h1>Performance Analysis: userid {userId}</h1>
-                <h1>Query Performance Analysis: userid {query.userId}</h1>
-                <h1>Performance Analysis: courseId {courseId}</h1>
-                <h1>Performance Analysis: classId {classId}</h1>
-            </div> */}
        <div className={styles.paddingbody}>
           <ClassPerfomance
              currentStudent={currentStudent}
@@ -86,7 +80,7 @@ const Performance = () => {
              classPerformance={classPerformance}
             classDetails={classDetails}
           />
-          <SubjectChart />
+          {/* <SubjectChart /> */}
        </div>
     </div>
   )

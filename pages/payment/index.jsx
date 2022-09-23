@@ -47,7 +47,6 @@ const handleOpen = () => {
 }
 
 
-console.log("session from payment ====>", session)
   let showPrice;
   const handleSelect = (price) => {
     setPriceSelected(price)

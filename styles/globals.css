@@ -55,6 +55,8 @@ p {
   padding: 0;
 }
 
+
+
 /* swtich taken from W3 schools */
 
 .switch {
@@ -892,6 +894,20 @@ a {
 
 .inner-btn-nav-bar {
   display: flex;
+}
+@media screen and (max-width: 768px) {
+  .middlebarforteacher.row {
+    display: none;
+    /* flex-direction: row; */
+  }
+
+  .image-class-teacher-middle{
+    display: none;
+  }
+
+  .imager-row {
+    background-color: blue;
+  }
 }
 
 @media screen and (max-width: 768px) {
