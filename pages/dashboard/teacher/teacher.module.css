@@ -119,8 +119,8 @@
 .addexambuttonwrapper {
   border: dotted 2px #f4f4f4;
   width: 55vw;
-  padding: 15%;
-  margin-top: 10%;
+  /* padding: 15%;
+  margin-top: 10%; */
   text-align: center;
 }
 .addexambuttonwrapper span {

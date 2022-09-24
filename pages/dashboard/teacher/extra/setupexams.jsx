@@ -230,15 +230,17 @@ console.log("questionTypeId", questionTypeId)
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Set Start Date: </Form.Label>
           <DatePicker 
-        selected={startDate}
-        onChange={(date) => setStartDate(date)}
+          className={styles.datepicker}
+          selected={startDate}
+          onChange={(date) => setStartDate(date)}
          />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Set Deadline: </Form.Label>
           <DatePicker 
-        selected={deadline}
-        onChange={(date) => setDeadline(date)}
+          className={styles.datepicker}
+          selected={deadline}
+          onChange={(date) => setDeadline(date)}
          />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">

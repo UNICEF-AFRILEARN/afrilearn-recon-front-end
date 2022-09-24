@@ -114,6 +114,12 @@
     padding: 20px 0;
 }
 
+.datepicker {
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+}
+
 .leftsideboxwrapper, .objleftsideboxwrapper {
     background-color: #FAFAFA;
     padding: 20px;
