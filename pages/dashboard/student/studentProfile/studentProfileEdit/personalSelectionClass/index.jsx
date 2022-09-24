@@ -84,23 +84,18 @@ const PersonalSelectionClass = () => {
     return (
       <div className="mt-3">
         <Row className="px-5 mx-auto w-50">
-          <h4>Step 1: Select Class</h4>
+          <h4 className={styles.selectHeading}>Step 1: Select Class</h4>
         </Row>
         <form onSubmit={editaddClass}>
         <Row className="pt-5 mx-auto w-50">
           <InputGroup
+           className={styles.profilenumberBox}
            onChange={(e) => setValued(e.target.value)}
-            className="mb-3 "
-            style={{
-              height: "63px",
-              borderRadius: "7px",
-              paddingLeft: "20px",
-            }}
           >
             <Form.Control
               aria-label="Text input with dropdown button"
               placeholder={placehold}
-              className="shadow-none"
+              className={styles.profilenumberBox}
             />
             <DropdownButton
               variant="outline-secondary"
@@ -130,7 +125,6 @@ const PersonalSelectionClass = () => {
               style={{
                 color: "#00D9B6",
                 margin: "auto",
-                textAlign: "center",
                 cursor: "pointer",
                 background: "none",
                 border: "none"

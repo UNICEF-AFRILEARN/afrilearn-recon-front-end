@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 
 
 const Studenthelp = () => {
-
+    
     const [image, setImage] = useState(null);
     const [createObjectURL, setCreateObjectURL] = useState(null);
     const uploadToClient = (event) => {
