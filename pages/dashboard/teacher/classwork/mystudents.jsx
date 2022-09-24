@@ -41,7 +41,7 @@ const handleStatusUpdate = async (id, status) => {
 // // console.log("selectedStatus ===>", selectedStatus)
 
 useEffect(() => {
-  console.log("selectedStatus function===>",  userId, classId, status)
+ 
     dispatch(acceptRejectClassMemberInitiate(userId, classId, status, token))
 }, [status])
 

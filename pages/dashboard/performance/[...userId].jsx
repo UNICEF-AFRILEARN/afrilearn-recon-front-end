@@ -58,8 +58,9 @@ const Performance = () => {
       
       useEffect(() => {
         dispatch(fetchClassMembersInitiate(classId))
-      },[]);
+      },[classId]);
       
+      // console.log("classMembers", classMembers)
 
   return (
     <div className={styles.maincotainer}>

@@ -25,6 +25,7 @@ const ClassPerfomance = (
     const { user} = useSelector((state) => state.auth)
     let pastQuestionPerformance = classPerformance?.data?.examsList;
     let subjectPerformance = classPerformance?.data?.subjectsList;
+    
   // const result = Object?.values(classDetails);
   const [showPanel, setShowPanel] = useState(false);
   const [data, setData] = useState([]);
