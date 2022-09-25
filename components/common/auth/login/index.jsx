@@ -7,6 +7,7 @@ import styles from "./login.module.css";
 import Image from "next/image";
 import AppButton from "../../../widgets/buttons/AppButton";
 import { loginInitiate } from "../../../../redux/actions/auth";
+import { signIn } from 'next-auth/react';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -20,25 +21,32 @@ const Login = () => {
 
   console.log("error", user);
 
-  const signIn = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    // const res = await signIn("credentials", {
+    //   email,
+    //   password,
+    //   redirect: false
+    // })
+
+    // console.log(res)
     dispatch(loginInitiate(email, password));
   };
 
   useEffect(() => {
-    if (user.user?.role === "5fd08fba50964811309722d5") {
+    if (user?.user?.role === "5fd08fba50964811309722d5") {
       router.push("/dashboard/student");
     }
-    if (user.user?.role === "602f3ce39b146b3201c2dc1d") {
+    if (user?.user?.role === "602f3ce39b146b3201c2dc1d") {
       router.push("/dashboard/teacher");
     }
-    if (user.user?.role === "602f3cf79b146b3201c2dc1e") {
+    if (user?.user?.role === "602f3cf79b146b3201c2dc1e") {
       router.push("/dashboard/admin");
     }
-    if (user.user?.role === "606ed82e70f40e18e029165e") {
+    if (user?.user?.role === "606ed82e70f40e18e029165e") {
       router.push("/dashboard/parent");
     }
-    if (user.user?.role === "607ededa2712163504210684") {
+    if (user?.user?.role === "607ededa2712163504210684") {
       router.push("/school");
     }
   }, [user]);
@@ -67,7 +75,7 @@ const Login = () => {
           <div className="col-xs-12 col-md-10 col-lg-6">
             <span className={styles.card}>
               <h5 className={`center `}>LOG IN</h5>
-              <Form onSubmit={signIn}>
+              <Form onSubmit={handleSubmit}>
                 <input
                   type="text"
                   value={email}

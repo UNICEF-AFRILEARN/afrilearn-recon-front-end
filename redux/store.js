@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
+import { PURGE } from "redux-persist";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { createWrapper } from "next-redux-wrapper";
 import rootReducer from "./reducers";
@@ -12,9 +13,19 @@ const initalState = {};
 const middleware = [thunk];
 
 const persistConfig = {
-  key: "persist-key",
+  key: "root",
   storage,
+  whitelist: ['auth']
+  // blacklist: ['auth']
 };
+
+
+extraReducers: (builder) => {
+  builder.addCase(PURGE, (state) => {
+    customEntityAdapter.removeAll("root");
+  });
+}
+
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
@@ -26,6 +37,8 @@ export const store = createStore(
 );
 
 const persistor = persistStore(store);
+
+
 
 // assigning store to next wrapper
 const makeStore = () => store;

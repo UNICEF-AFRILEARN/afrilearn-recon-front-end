@@ -19,10 +19,8 @@ const Linkachildmodal = (props) => {
 
 
     let parentId = user?.user?.id
-    console.log("target from link children ===>", linkedChild.message)
     const handleSendLink = async () => {
         dispatch(linkChildInitiate(email, parentId))
-        // console.log("Email from link sender => ", linkedChild)
         if(linkedChild.message === 'Your parent request was sent'){
           await setThirdModalShow(true)
         }

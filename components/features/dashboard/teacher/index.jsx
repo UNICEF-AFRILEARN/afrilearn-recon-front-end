@@ -6,6 +6,7 @@ import { Col, Container, Row } from "react-bootstrap";
 // import PastQuestion from "../student/extra/PastQuestionaira";
 import Subjects from "../student/extra/subjects";
 
+
 import { AiOutlineSend } from "react-icons/ai";
 import styles1 from "../student/student.module.css";
 import styles from "../student/studentProfile/studentProfile.module.css";
@@ -25,6 +26,7 @@ import {
 } from "../../../../redux/actions/subject";
 
 const Dashboard = () => {
+  
   const dispatch = useDispatch();
   const { registerUser, user } = useSelector((state) => state.auth);
   const { allSubjects } = useSelector((state) => state.mySubject);
@@ -124,6 +126,7 @@ export const HeropageWelcome = () => {
   return (
     <>
       <Row
+      className='middlebarforteacher'
         style={{
           position: "absolute",
           bottom: "38%",
@@ -132,14 +135,15 @@ export const HeropageWelcome = () => {
         }}
       >
         <Col>
-          <Row className={`mx-auto ${styles.studentProfileGrid}`}>
+          <Row className={`${styles.studentProfileGrid} mx-auto imager-row`}>
             <Col className={`m-auto ${styles.studentProfileAvatar}`}>
-              <Col className="mt-4 ms-2">
+              <Col className="mt-4 ms-2 image-class-teacher-middle">
                 <Image
                   alt={"afrilearn marketing video"}
                   src={`/assets/img/features/dashboard/teacher/teacherPix.png`}
                   width={168}
                   height={168}
+                  
                 />
               </Col>
             </Col>
@@ -288,7 +292,7 @@ export const TeacherAnnouncement = () => {
   return (
     <Container>
       <Col
-        className="mt-5"
+        className="mt-5 announcement"
         style={{
           background: "#FAFAFA",
           borderRadius: "10px",

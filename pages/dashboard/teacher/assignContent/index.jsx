@@ -367,7 +367,10 @@ export function HeroPageDetailed({ datas }) {
       <Row className="ms-5 ps-5">
         <Col style={{ marginTop: "-160px", zIndex: "2" }}>
           <Row>
-            <h1 className="text-light text-center">{datas.textH3}</h1>
+            {/* <h3 className="text-light">{datas.textH3}</h3> */}
+          </Row>
+          <Row>
+            {/* <p className="text-light">{datas.textP}</p> */}
           </Row>
         </Col>
       </Row>

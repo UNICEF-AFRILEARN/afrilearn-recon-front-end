@@ -148,4 +148,7 @@ background-position-y: 50%;
       .divPoint2 {
         width: 84%;
       }
+      .btnwrapper{
+        background-color: red;
+      }
     }

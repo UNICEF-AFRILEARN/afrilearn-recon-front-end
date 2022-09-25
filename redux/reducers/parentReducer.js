@@ -7,7 +7,8 @@ const initialState = {
     children: [],
     unlinkedChild: [],
     deletedChild: [],
-    linkedChild: []
+    linkedChild: [],
+    childPastQustionPerformance: []
 }
 
 export const parentReducer = (state = initialState, { type, payload} ) => {
@@ -91,6 +92,22 @@ export const parentReducer = (state = initialState, { type, payload} ) => {
         case types.FETCH_CHILDREN_FAIL:
             return {
                 ...state,
+                error: payload,
+                loading: false
+            };
+        case types.FETCH_CHILD_PASTQUESTION_PERFORMANCE_START:
+            return {
+                ...state,
+                loading: true
+            };
+        case types.FETCH_CHILD_PASTQUESTION_PERFORMANCE_SUCCESS:
+            return {
+                ...state,
+                childPastQustionPerformance: payload,
+                loading: false
+            };
+        case types.FETCH_CHILD_PASTQUESTION_PERFORMANCE_FAIL:
+            return {
                 error: payload,
                 loading: false
             };

@@ -13,6 +13,7 @@ const initialState = {
     newClasswork: [],
     classContents: [],
     classSubjects: [],
+    classPerformance: [],
     announcementComment:[],
     error: [],
 }
@@ -70,6 +71,23 @@ export const classesReducer = (state = initialState, { type, payload} ) => {
             return {
                 loading: false,
                 ...state,
+                error: payload
+            };
+        case types.FETCH_CLASS_PERFORMANCE_START:
+            return {
+                loading: true,
+                ...state
+            };
+    
+        case types.FETCH_CLASS_PERFORMANCE_SUCCESS:
+            return {
+                loading: false,
+                classPerformance: payload
+            };
+    
+        case types.FETCH_CLASS_PERFORMANCE_FAIL:
+            return {
+                loading: false,
                 error: payload
             };
         case types.FETCH_CLASS_DETAILS_START:

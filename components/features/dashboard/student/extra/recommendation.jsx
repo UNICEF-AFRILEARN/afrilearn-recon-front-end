@@ -13,7 +13,7 @@ const recommendation = ({ dataRecon, recData }) => {
   const toggleModal = () => setShow(!show);
 
   console.log("From recommendation UI ===>", recData);
-
+  
   return (
     <>
       {recData?.videourl !== undefined && (

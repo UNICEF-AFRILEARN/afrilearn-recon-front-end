@@ -91,6 +91,18 @@ export const createClassworkFail = (error) => ({
     type: types.CREATE_CLASS_WORK_FAIL,
     payload: error
 });
+export const fetchClasPerformanceStart = () => ({
+    type: types.FETCH_CLASS_PERFORMANCE_START
+});
+export const fetchClasPerformanceSuccess = (payload) => ({
+    type: types.FETCH_CLASS_PERFORMANCE_SUCCESS,
+    payload
+});
+export const fetchClasPerformanceFail = (error) => ({
+    type: types.FETCH_CLASS_PERFORMANCE_FAIL,
+    payload: error
+});
+
 export const addCommentToTeacherAnnouncementStart = () => ({
     type: types.ADD_COMMENT_TO_TEACHER_ANNOUNCEMENT_START
 });
@@ -223,6 +235,31 @@ export const fetchAnnouncementInitiate = (classId) =>  {
         })
         .catch((err) => {
             dispatch(fetchAnnouncementFail(err))
+        } )
+    }
+
+}
+export const fetchClassPerformanceInitiate = (courseId, token) =>  {
+    console.log('token', token)
+    return function (dispatch) {
+        dispatch(fetchClasPerformanceStart())
+        axios
+        .post(`https://afrilearn-backend-01.herokuapp.com/api/v1/courses/${courseId}/progress-and-performance`,
+        {
+
+        },
+        {
+            headers: {
+                "Content-Type": "application/json",
+                "token": token,
+            }
+        })
+        .then((res) => {
+            console.log("From Get class performance API =>", res.data)
+            dispatch(fetchClasPerformanceSuccess(res.data))
+        })
+        .catch((err) => {
+            dispatch(fetchClasPerformanceFail(err))
         } )
     }
 

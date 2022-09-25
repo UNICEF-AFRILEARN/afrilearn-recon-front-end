@@ -1,9 +1,15 @@
 import React, { useState, useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from '../../../../../styles/performance.module.css';
 import { FiCheckCircle } from 'react-icons/fi';
 import { AiOutlineExclamationCircle } from 'react-icons/ai';
+import { MdLocationOn } from 'react-icons/md';
 import { FaRegCheckCircle } from 'react-icons/fa';
+import Spinner from '../../../../widgets/spinner';
 import Barchart from '../../../../../pages/dashboard/performance/barchart';
+import Piechart from '../../../../../pages/dashboard/performance/piechart';
+import OverallChart from '../../../../../pages/dashboard/performance/overallbarchart';
+import Pastquestionchart from '../../../../../pages/dashboard/performance/pastquestionchart';
 // import BarChartSect from './BarChartSect';
 // import PieChartSection from './PieChartSection';
 
@@ -11,15 +17,20 @@ import Barchart from '../../../../../pages/dashboard/performance/barchart';
 const ClassPerfomance = (
   {currentStudent,
     classDetails, 
-    studentPerformance
+    studentPerformance,
+    classPerformance
+
   }) => {
 
-    let pastQuestionPerformance = studentPerformance?.data?.examsList;
-    let subjectPerformance = studentPerformance?.data?.subjectsList;
+    const { user} = useSelector((state) => state.auth)
+    let pastQuestionPerformance = classPerformance?.data?.examsList;
+    let subjectPerformance = classPerformance?.data?.subjectsList;
+    
   // const result = Object?.values(classDetails);
   const [showPanel, setShowPanel] = useState(false);
+  const [data, setData] = useState([]);
+  const [student, setStudent] = useState();
   const [panelId, setPanelId] = useState(1);
-  console.log("currentStudent?.data? from classPerformance ===>", currentStudent)
 
 
   const displayPanel = () => {
@@ -33,6 +44,18 @@ const ClassPerfomance = (
   const createPanelId = (id) => {
     setPanelId(id)
   }
+
+  useEffect(() => {
+    if(subjectPerformance){
+      setData(subjectPerformance)
+    }
+  }, [subjectPerformance])
+
+  useEffect(() => {
+    if(currentStudent){
+      setStudent(currentStudent)
+    }
+  }, [])
   
   useEffect(() => {
     displayPanel()
@@ -44,21 +67,37 @@ const ClassPerfomance = (
        <div className={styles.innermainwrapper}>
        <div className={styles.leftwrapper}>
             <div className={styles.innerwrapper}>
-              {currentStudent &&
+               <>
                 <div className={styles.studentnamewrapper}>
                   <h2>{currentStudent[0]?.userId.fullName}</h2>
-                    <p>{currentStudent[0]?.userId.email}</p>
-                  <h3>JSS 1</h3>
-              </div>}
+                  { user &&  <p>{user?.user?.email}</p>}
+                 { user && <h3>{user?.user?.classOwnership[0]?.name}
+                 </h3>
+                 }
+                
+              </div>
+                  <p className={styles.invitewrapper}>Invite your friends</p>
+                
+               </>
+              
           </div>
         </div>
-        <div className={styles.leftwrapper}>
-            <div className={styles.innerwrapper}>
+        <div >
+            {/* <div className={styles.innerwrapper}>
               <div className={styles.studentnamewrapper}>
                   <h2>{currentStudent[0]?.userId.fullName}</h2>
                     <p>{currentStudent[0]?.userId.email}</p>
                   <h3>JSS 1</h3>
               </div>
+          </div> */}
+          <div className={styles.barinnerwrapper}>
+            <div>
+              <h3>Progress</h3>
+              <p>Progress level per  subject</p>
+            </div>
+             <Piechart 
+              data={data}
+             />
           </div>
         </div>
        </div>
@@ -68,7 +107,7 @@ const ClassPerfomance = (
               <div className={styles.performancecontentwrapper}>
               
                  <div className={styles.subjectsectiononemiddle}>
-                    <Barchart />
+                    <OverallChart />
                  </div>
                  <div className={styles.subjectsectiononemiddle}>
                     <div className={styles.subjectquestioninner}>
@@ -88,8 +127,8 @@ const ClassPerfomance = (
               </div>
           </div> */}
           {/* end testing */}
-            <div>
-              <ul className={styles.performancemenu}>
+          <div>
+          <ul className={styles.performancemenu}>
                 <li 
                   key={1} 
                   onClick={() => createPanelId(1)}
@@ -101,12 +140,22 @@ const ClassPerfomance = (
                 className={styles.innermenuwrapper}
                 >Past Questions</li>
               </ul>
+          </div>
+            { !subjectPerformance || !pastQuestionPerformance? 
+            <div className={styles.spinnerwrapper}>
+                <Spinner />
+            </div> :
+              <div>
              { showPanel === true && 
-              subjectPerformance && subjectPerformance.map((subjectList) =>
+              subjectPerformance && subjectPerformance.map((subjectList, index) =>
               <div className={styles.performancecontentwrapper}>
                  <div className={styles.subjectsectionone}>
-                    <p>{subjectList.subject}</p>
-                    <Barchart />
+                    <p className={styles.subjectheaderwrapper}>{subjectList.subject}</p>
+                    <Barchart 
+                      data={data}
+                      outerIndex={index}
+                      subjectPerformance={subjectPerformance}
+                    />
                     {subjectList.performance === null? 
                     <p className={styles.averagetimeremark}> 
                       No Rating
@@ -147,12 +196,15 @@ const ClassPerfomance = (
               )}
               {
               showPanel === false && 
-              pastQuestionPerformance && pastQuestionPerformance.map((pastSubject) => 
+              pastQuestionPerformance && pastQuestionPerformance.map((pastSubject, index) => 
                   <div className={styles.performancecontentwrapperpast}>
-                     <p>{pastSubject.name}</p>
+                     <p className={styles.pastheaderwrapper}>{pastSubject.name}</p>
                       <div className={styles.pastquestionratewrapper}>
                       <div>
-                        Circle
+                      <Pastquestionchart 
+                      pastQuestionPerformance={pastQuestionPerformance}
+                        outerIndex={index}
+                      />
                         <p>No rated</p>
                         <h5>PERFORMANCE</h5>
                      </div>
@@ -181,7 +233,7 @@ const ClassPerfomance = (
                         </div>
                   </div>
               )}
-          </div>
+          </div>}
         </div>
     </div>
   )

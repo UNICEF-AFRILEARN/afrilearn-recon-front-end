@@ -4,6 +4,7 @@ import Router, { useRouter } from 'next/router';
 import styles from '../../../../styles/teacher.module.css';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import { fetchExamsInitiate } from '../../../../redux/actions/exams';
+import Spinner from '../../../../components/widgets/spinner/index'
 import Link from "next/link";
 
 const Examsholder = () => {
@@ -55,7 +56,12 @@ const Examsholder = () => {
     }, []);
   return (
     <div className={styles.examsholderwrapper}>
-           {exams?.exams && exams?.exams.map((exam, index) => 
+           {!exams?.exams? 
+           <div>
+               <h5>Loading .......</h5>
+               <Spinner />
+            </div>:
+            exams?.exams.map((exam, index) => 
             <>
         <div className={styles.examsmainholder}>
             <div className={styles.examstitlewrapper}>

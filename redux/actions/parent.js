@@ -67,6 +67,19 @@ export const fetchChildrenFail = (error) => ({
   type: types.FETCH_CHILDREN_FAIL,
   payload: error
 });
+export const fetchChildpastQuestionStart = () => ({
+    type: types.FETCH_CHILD_PASTQUESTION_PERFORMANCE_START,
+});
+
+export const fetchChildpastQuestionSuccess = (payload) => ({
+  type: types.FETCH_CHILD_PASTQUESTION_PERFORMANCE_SUCCESS,
+  payload
+});
+
+export const fetchChildpastQuestionFail = (error) => ({
+  type: types.FETCH_CHILD_PASTQUESTION_PERFORMANCE_FAIL,
+  payload: error
+});
 
 
 export const signUpChildInitiate = (fullName,password,confirmPassword,email,courseId,parentId,myChildClass, token) =>  {
@@ -95,7 +108,9 @@ export const signUpChildInitiate = (fullName,password,confirmPassword,email,cour
             console.log("Hello from parent add a child API =>", res.data.data)
         })
         .catch((err) => {
-           dispatch(signUpChildFail(err))
+           dispatch(signUpChildFail(err.response.data.error))
+           console.log("Hello from parent add a child error API =>", err.response.data.error
+           )
         })
     }
 
@@ -153,7 +168,7 @@ export const linkChildInitiate = (email, parentId) =>  {
         })
         .then((res) => {
             dispatch(linkChildSuccess(res.data.data))
-            console.log("Link child From parent API =>", res.data.data)
+            console.log("Link child From parent API +++=>", res.data.data)
         })
         .catch((err) => {
             dispatch(linkChildFail(err))
@@ -172,10 +187,34 @@ export const deleteChildInitiate = (userId, parentId) =>  {
         })
         .then((res) => {
             dispatch(deleteChildSuccess(res.data.data))
-            console.log("Link child From parent API =>", res.data.data)
         })
         .catch((err) => {
             dispatch(deleteChildFail(err))
+        })
+    }
+
+}
+
+export const fetchChildpastQuestionInitiate = (courseId, token) =>  {
+    return function (dispatch) {
+        dispatch(fetchChildpastQuestionStart)
+        axios
+        .post('https://afrilearn-backend-01.herokuapp.com/api/v1/courses/5fff7329de0bdb47f826feb0/past-question-performance',
+        {
+           
+        },
+        {
+            headers: {
+                "token": token,
+                "Content-Type": "application/json",
+            }
+        })
+        .then((res) => {
+            dispatch(fetchChildpastQuestionSuccess(res.data.data))
+            console.log("past question From parent API &&=>", res.data.data)
+        })
+        .catch((err) => {
+            dispatch(fetchChildpastQuestionFail(err))
         })
     }
 

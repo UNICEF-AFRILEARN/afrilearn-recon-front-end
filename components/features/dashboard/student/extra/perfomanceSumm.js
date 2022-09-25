@@ -71,13 +71,61 @@ const  data = {
             <h5 className={styles.colorfour}>No rating</h5>
          </div>
          <div>
-            <div className={styles.topmath}><p>Mathematics</p><p>Civic Education</p><p>Computer Science</p><p>Basic Science</p>
+         <div className={styles.topmath}>
+         <ul> 
+                <li>Mathematics</li>
+                <li>Civic Education</li>
+                <li>Computer Science </li>
+                <li>Basic Science</li>
+                </ul>
+                <ul>
+                <li>Mathematics</li>
+                <li>Civic Education</li>
+                <li>Computer Science </li>
+                <li>Basic Science</li>
+                </ul>
             </div>
-            <div className={styles.topmath}><p>Mathematics</p><p>Civic Education</p><p>Computer Science</p><p>Basic Science</p>
+            <div className={styles.topmath}>
+            <ul>
+                <li>Mathematics</li>
+                <li>Civic Education</li>
+                <li>Computer Science </li>
+                <li>Basic Science</li>
+                </ul>
+                <ul>
+                <li>Mathematics</li>
+                <li>Civic Education</li>
+                <li>Computer Science </li>
+                <li>Basic Science</li>
+                </ul>
             </div>
-            <div className={styles.topmath}><p>Mathematics</p><p>Civic Education</p><p>Computer Science</p><p>Basic Science</p>
+            <div className={styles.topmath}>
+            <ul>
+                <li>Mathematics</li>
+                <li>Civic Education</li>
+                <li>Computer Science </li>
+                <li>Basic Science</li>
+                </ul>
+                <ul>
+                <li>Mathematics</li>
+                <li>Civic Education</li>
+                <li>Computer Science </li>
+                <li>Basic Science</li>
+                </ul>
             </div>
-            <div className={styles.topmath}><p>Mathematics</p><p>Civic Education</p><p>Computer Science</p><p>Basic Science</p>
+            <div className={styles.topmath}>
+                <ul>
+                <li>Mathematics</li>
+                <li>Civic Education</li>
+                <li>Computer Science </li>
+                <li>Basic Science</li>
+                </ul>
+                <ul>
+                <li>Mathematics</li>
+                <li>Civic Education</li>
+                <li>Computer Science </li>
+                <li>Basic Science</li>
+                </ul>
             </div>
            
          </div>

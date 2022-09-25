@@ -9,6 +9,8 @@ import { AiOutlineArrowsAlt } from 'react-icons/ai';
 import { updateExamQuestionInitiate, fetchSingleExamQuestionsInitiate, fetchExamsInitiate } from '../../../../redux/actions/exams';
 import Questiontitle from './questiontitle';
 import Addexambutton from './addexambutton';
+import Exammodal from '../examinations/exammodal/index'
+import Updatemodal from '../examinations/updatemodal/index'
 
 const Questionpanel = ({
   index, 
@@ -18,10 +20,11 @@ const Questionpanel = ({
   examQuestion,
   singleQuestion,
   questionType,
-  setQuestionType
+  setQuestionType,
+  deletedExam
   // singleExamQuestions
 }) => {
-  const { newExamQuestion, exams, singleExamQuestions } = useSelector((state) => state.myExams);
+  const { newExamQuestion, updatedQuestion, exams, singleExamQuestions } = useSelector((state) => state.myExams);
   const { registerUser, user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const [questionId, setQuestionId] = useState("")
@@ -38,6 +41,17 @@ const Questionpanel = ({
   const [examQuestionType, setExamQuestionType ] = useState("")
   const [examId, setExamId] = useState("");
   const { query } = useRouter();
+  const [show, setShow] = useState(false);
+  const [showUpdate, setShowUpdate] = useState(false);
+
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+
+  const handleUpdateClose = () => setShowUpdate(false);
+  const handleUpdateShow = () => setShowUpdate(true);
+
   const token = user.token
 
   
@@ -56,21 +70,24 @@ const Questionpanel = ({
   let examsQuestionType = currentExam[0]?.questionTypeId.name
   // console.log("singleQuestion from use params question panel", singleQuestion)
 
-    let options = [singleQuestion.optionOne, singleQuestion.optionTwo, singleQuestion.optionThree, singleQuestion.optionFour]
-    let question = singleQuestion.question
-  let data = {
-    options,
-    question
+    // let options = [singleQuestion.optionOne, singleQuestion.optionTwo, singleQuestion.optionThree, singleQuestion.optionFour]
+    // let question = singleQuestion.question
+  // let data = {
+  //   options,
+  //   question
 
-  }
+  // }
 
 
-  console.log("questionId from ob", questionId)
+  console.log("updatedQuestion from question panel", updatedQuestion)
 
   const handleSubmit = (e) => {
       e.preventDefault()
-      console.log("e =======", e.target)
+       let options = [singleQuestion.optionOne, singleQuestion.optionTwo, singleQuestion.optionThree, singleQuestion.optionFour]
+      let question = singleQuestion.question
+      console.log("questionId, question , options", questionId, question , options)
         dispatch(updateExamQuestionInitiate(questionId, question , options))
+        handleUpdateShow()
     }
 
     // useEffect(() =>{
@@ -107,6 +124,7 @@ const Questionpanel = ({
           <>
           <Questiontitle 
             singleQuestion={singleQuestion}
+            handleShow={handleShow}
           index={examQuestion.indexOf(singleQuestion) }
           />
               <div className={styles.questionpanelwrapper}>
@@ -127,6 +145,7 @@ const Questionpanel = ({
               as="textarea" 
               rows="5" 
               name="question"
+              required
               defaultValue={singleQuestion.question}
               onChange={(e) => {handleGetQuestions(e, index), setQuestionId(singleQuestion.id)}}
               placeholder="Type question here..." 
@@ -189,15 +208,11 @@ const Questionpanel = ({
                           <Form.Label>Assign mark(score)</Form.Label>
                           <Form.Control type="text" placeholder="2" />
                       </Form.Group>
-                      {/* <Form.Check
-                          checked
-                          type="checkbox"
-                          label="Use this for all questions"
-                          className={styles.checkboxcolor}
-                      /> */}
                       </>
                       }
-                      <Button className="w-100 mt-3" type="submit">
+                      <Button 
+                        onClick={handleUpdateShow}
+                      className="w-50 mt-3" type="submit">
                     Save changes
                   </Button>
           </Form>
@@ -205,6 +220,18 @@ const Questionpanel = ({
           }
          </>
        }
+       <Updatemodal 
+        handleUpdateClose={handleUpdateClose}
+        handleUpdateShow={handleUpdateShow}
+        showUpdate={showUpdate}
+       />
+       <Exammodal 
+        handleClose={handleClose}
+        handleShow={handleShow}
+        deletedExam={deletedExam}
+        updatedQuestion={updatedQuestion}
+        show={show}
+       />
     </div>
   )
 }

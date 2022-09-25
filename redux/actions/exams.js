@@ -234,13 +234,13 @@ export const updateExamQuestionInitiate = (questionId, question , options) =>  {
     }
 
 }
-export const updateExamInitiate = (questionId,  publish) =>  {
-    console.log(questionId)
+export const updateExamInitiate = (exam_id,  publish) =>  {
+    // console.log("publish from exam ", questionId)
     return function (dispatch) {
         // console.log("data from update API", data)
         dispatch(updateExamStart())
         axios
-        .patch('https://afrilearn-backend-01.herokuapp.com/api/v1/exams/exam/62fff77c721b450016998f18',
+        .patch(`https://afrilearn-backend-01.herokuapp.com/api/v1/exams/exam/${exam_id}`,
         {
             
                 publish

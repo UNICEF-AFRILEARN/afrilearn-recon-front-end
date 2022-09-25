@@ -7,7 +7,7 @@ import {
   deleteExamsInitiate
 } from '../../../../redux/actions/exams';
 
-const Questiontitle = ({index, singleQuestion}) => {
+const Questiontitle = ({index, singleQuestion, handleShow}) => {
   const dispatch = useDispatch()
 
 
@@ -25,7 +25,7 @@ const Questiontitle = ({index, singleQuestion}) => {
         <div className={styles.iconswrapper}>
             <span><BiNote /> </span>
             <span
-              onClick={handleDelete}
+              onClick={() => {handleDelete(); handleShow()}}
               >
               <RiDeleteBin6Line color='#FF5E5E' 
               /> 

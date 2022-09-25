@@ -20,6 +20,7 @@ import {
 import Questiontitle from './questiontitle';
 import {wrapper } from '../../../../redux/store'
 import Addexambutton from './addexambutton';
+import Exammodal from '../examinations/exammodal/index'
 
 const Objectives = ({exam_id}) => {
     const dispatch = useDispatch();
@@ -30,9 +31,14 @@ const Objectives = ({exam_id}) => {
     const [examQuestion, setExamQuestion] = useState([])
     const [question, setQuestion] = useState("")
     const [questionType, setQuestionType] = useState("")
+    const [theExamType, setTheExamType] = useState("")
 
     const [showObjQuestions, setShowObjQuestions] = useState(1)
-    const [showObjQuestionOptions, setShowObjQuestionOptions] = useState(0)
+    const [showObjQuestionOptions, setShowObjQuestionOptions] = useState(0);
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
 
     
@@ -47,16 +53,16 @@ const Objectives = ({exam_id}) => {
         dispatch(addExamQuestionInitiate(token, exam_id, type))
     }
     
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        dispatch(updateExamQuestionInitiate(questionId, data))
-    }
+    // const handleSubmit = (e) => {
+    //     e.preventDefault()
+    //     dispatch(updateExamQuestionInitiate(questionId, data))
+    // }
 
-        let examType = allExams?.filter((filteredExams) => 
-            filteredExams.id === exam_id
-            
-        )
-        console.log("exams from objective ===>", examType)
+    let examType = allExams?.filter((filteredExams) => 
+        filteredExams.id === exam_id
+    )
+
+        console.log("exams =====>", exams)
     
     const onClickExamsType = () => {
         setOpenQuestionType(!openQuestionType)
@@ -78,14 +84,16 @@ const Objectives = ({exam_id}) => {
     }
     
 
+    let publish
     const handleUpdateStatus = (e) => {
-        let publish
         if(e.target.innerHTML === 'PUBLISH'){
-             publish = true
+            publish = true
+            setTheExamType('UNPUBLISH')
         }else if(e.target.innerHTML === 'UNPUBLISH'){
             publish = false
+            setTheExamType('PUBLISH')
         }
-        dispatch(updateExamInitiate(questionId, publish))
+        dispatch(updateExamInitiate(exam_id, publish))
     }
     
     const handleGetQuestions = (e, index) => {
@@ -94,6 +102,13 @@ const Objectives = ({exam_id}) => {
         list[index][name] = value;
     }
 
+    const handleStatusUpdate = (obj) => {
+        if(obj === true){
+            setTheExamType('UNPUBLISH')
+        }else if(obj === false){
+            setTheExamType('PUBLISH')
+        }
+    }
     
     // filterExams()
     
@@ -101,7 +116,7 @@ const Objectives = ({exam_id}) => {
     
     useEffect(() => {
         dispatch(fetchSingleExamDetailsInitiate(token, exam_id))
-      }, [exam_id])
+      }, [exam_id, updatedExam])
 
       useEffect(() =>{
         dispatch(fetchSingleExamQuestionsInitiate(token, exam_id))
@@ -112,12 +127,25 @@ const Objectives = ({exam_id}) => {
             setExamQuestion([...receivedQuestions])
         }
     }, [receivedQuestions, newExamQuestion, updatedExam, deletedExam])
+    
+    console.log("deletedExam from objective", deletedExam)
+    // useEffect(() => {
+    //     if(examType[0]?.publish === true){
+    //         setTheExamType('UNPUBLISH')
+    //     }else if(examType[0]?.publish === false){
+    //         setTheExamType('PUBLISH')
+    //     }
+
+    // }, [])
   return (
     <div className={styles.objectivemainwrapper}>
         <div className={styles.objleftsideboxwrapper}>
             <h4>Set Up Examination</h4>
             <ul>
-                <li><span><BsFillCircleFill /></span>Set Ups</li>
+                <li><span>
+                    <BsFillCircleFill 
+                    color='#00D9B6'
+                    /></span>Set Ups</li>
                 <li><span><BsCircle /></span>Examination Questions</li>
             </ul>
             <div className={styles.bottombtnwrapper}>
@@ -125,9 +153,9 @@ const Objectives = ({exam_id}) => {
                <h4 onClick={() => showObjpanel(3)}>Generate questions</h4>
                }
                 <div className={styles.btnmainwrapper}>
-                   { examType && 
-                   <h4 onClick={handleUpdateStatus}>{examType[0]?.publish === true? 'UNPUBLISH' : 'PUBLISH'}</h4>
-                   }
+                  
+                 <h4 onClick={() => setTheExamType(theExamType)}>Published</h4>
+                   
                     <h5>PREVIEW</h5>
                 </div>
                 <div>
@@ -135,13 +163,14 @@ const Objectives = ({exam_id}) => {
                    <h4>{examType[0]?.publish === true? 'This exam is currently published' : 'This exam is currently unpublished'}</h4>}
                </div>
                {/* add button add new question */}
-               {/* <div>
-               { examType && 
-               <Addexambutton 
-               exam_id={exam_id}
-                examType={examType}
-                />}
-               </div> */}
+                    {/* <div className={styles.littleaddbtnwrapper}>
+                    <Addexambutton 
+                        exam_id={exam_id}
+                        examType={examType}
+                        examQuestion={examQuestion}
+                        handleShow={handleShow}
+                     />
+                    </div> */}
                {/* End add button add new question */}
                
             </div>
@@ -179,16 +208,18 @@ const Objectives = ({exam_id}) => {
                          <div className={styles.linkswrapper}>
                            
                           { examType[0]?.questionTypeId?.name === "Objective" && 
-                          <a onClick={handleAddQuestions}>Objective</a>
+                          <a onClick={(e) => {handleAddQuestions(e); onClickExamsType(); handleShow()}}>Objective</a>
                           }
                           { examType[0]?.questionTypeId?.name === "Theory" && 
-                          <a onClick={handleAddQuestions}>Theory</a>
+                          <a onClick={(e) => {handleAddQuestions(e); onClickExamsType(); handleShow()}}>Theory</a>
                           }
                                     { 
                                     examType[0]?.questionTypeId?.name === "Objective & Theory" && 
                                     <>
-                                     <a onClick={handleAddQuestions}>Objective</a>
-                                        <a onClick={handleAddQuestions}>Theory</a>
+                                     <a onClick={(e) => {handleAddQuestions(e); onClickExamsType(); handleShow()}}>Objective</a>
+                                        <a onClick={(e) => {handleAddQuestions(e); onClickExamsType();
+                                        handleShow()
+                                        }}>Theory</a>
                                     </>
                                      }
 
@@ -198,17 +229,20 @@ const Objectives = ({exam_id}) => {
                       </div>
                       } 
             </ul>
-            <div className={styles.examquestionwrapperinnner}>
-                    <Addexambutton 
+
+          
+            </div>
+                <div >
+                <Addexambutton 
                         exam_id={exam_id}
                         examType={examType}
                         examQuestion={examQuestion}
+                        handleShow={handleShow}
                     />
-             </div>
-            </div>
-        
+                </div>
            
              <div className={styles.examquestionwrapperinnner}>
+             
              { showObjQuestions === 1 &&  examQuestion && examQuestion.map((singleQuestion, index) => (
                 <>
                     <Questionpanel 
@@ -221,6 +255,7 @@ const Objectives = ({exam_id}) => {
                         singleExamQuestions={singleExamQuestions}
                         singleQuestion={singleQuestion}
                         examQuestion={examQuestion}
+                        deletedExam={deletedExam}
                     />
                 </>
                )) }
@@ -239,7 +274,13 @@ const Objectives = ({exam_id}) => {
                 {showObjQuestions === 3 && <Generatequestions />}
                 {/* { showObjQuestions === 4 && <Submitquestions />} */} 
         </div>
-        
+        <Exammodal 
+        handleClose={handleClose}
+        handleShow={handleShow}
+        show={show}
+        newExamQuestion={newExamQuestion}
+       
+        />
     </div>
   )
 }

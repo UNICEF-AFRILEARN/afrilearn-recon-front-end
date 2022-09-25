@@ -14,6 +14,7 @@ const GeneratePerformance = ({children, courseContext}) => {
     const [courseId, setCourseId] = useState("");
     const [childId, setChildId] = useState("");
     const previousInputValue = useRef("");
+    const ref = useRef();
 
   
 
@@ -27,22 +28,45 @@ const GeneratePerformance = ({children, courseContext}) => {
     let _userId = '';
     let _courseId = '';
 
-
     //filter to get child's Ids
     const getSelectedChildId = () => {
         _userId = filteredChildren?.map((childId) => childId.id)
     }
+
+    let child_id;
+    children?.filter((sorterChild) => {
+        if(sorterChild.fullName === selectedChild){
+            child_id = sorterChild.id
+        }
+        
+    })
+
+    console.log("child_id _userId ===+++====> ", child_id)
     //filter to get course Ids
     const getSelectedCourseId = () => {
         _courseId = filteredChildren?.map((childCourseId) => childCourseId.enrolledCourses[0]?.courseId.id)
     }
 
+    const usePreviousValue = value => {
+        ref.current = value;
+        return ref.current;
+      };
+    
+      const prevCount = usePreviousValue(selectedChild);
+      
+      //filter single child id:
+      const filterSingleChildId = (child) => {
+        //   const prevCount = usePreviousValue(child);
+        child = prevCount
+        console.log("single child selectedChild===>", child)
+    }
     
     const handleSubmit = (e) => {
         e.preventDefault()
         Router.push({
-            pathname: `/dashboard/performance/[_userId]`,
-            query: { _userId: _userId[0], course_id:_courseId}
+            // pathname: `/dashboard/performance/[_userId]`,
+            pathname: `/dashboard/parent/child-performance/[_userId]`,
+            query: { _userId: child_id, course_id:_courseId}
         })
     }
     
@@ -72,7 +96,7 @@ const GeneratePerformance = ({children, courseContext}) => {
                         className={`${styles.pushDown} form-control form-control-sm`}
                         value={selectedChild}
                         defaultValue={"default"}
-                        onChange={(e) => setSelectedChild(e.target.value)}
+                        onChange={(e) => {setSelectedChild(e.target.value); filterSingleChildId(selectedChild)}}
                         >
                         <option value={"default"}>
                             Select a child

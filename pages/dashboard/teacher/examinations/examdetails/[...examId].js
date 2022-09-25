@@ -27,7 +27,7 @@ const ExamDetails = () => {
   }
 
 
-console.log("exam_id ===> from exam detail", exam_id)
+console.log("exam_id ===> from exam detail", examId)
 
 useEffect(()=>{
   if(router.isReady) {
