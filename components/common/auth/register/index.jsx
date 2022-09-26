@@ -12,6 +12,8 @@ import { fetchRoles, registerUserInitiate } from "../../../../redux/actions/auth
 import Router, { useRouter } from 'next/router'
 import { fetchSubjectsInitiate } from '../../../../redux/actions/subjects';
 import {BsChevronDown} from 'react-icons/bs'
+import Registeralert from './registeralert'
+import Spinner from '../../../../components/widgets/spinner/index'
 
 const Register = (props) => {
   const { user, registerUser, error } = useSelector(state => state.auth);
@@ -37,14 +39,13 @@ const Register = (props) => {
 
   const [fullscreen, setFullscreen] = useState(true);
   const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const rolesCollected = useSelector((state) => state.auth)
   const { allSubjects } = useSelector((state) => state.mySubject)
   const dispatch = useDispatch()
   
-  function handleShow(breakpoint) {
-    setFullscreen(breakpoint);
-    setShow(true);
-  }
   
   // const profile = {}
   const rolesContext = rolesCollected.roles.roles;
@@ -57,7 +58,7 @@ let filteredSub = []
   }
 
 
-console.log("error.message ====>", error)
+console.log("registerUser.message ====>", registerUser)
   const getRoleId = () => {
       if (roleSelected === "Student") {
          setRole("5fd08fba50964811309722d5")
@@ -114,11 +115,9 @@ console.log("error.message ====>", error)
 
   //function to filter subjects:
 sortSubjects(allSubjects, courseId)
-console.log("courseId =======>", courseId)
 
-  const handleRegisterRequest = (e) => {
+  const handleRegisterRequest = async (e) => {
     e.preventDefault()
-   
      dispatch(registerUserInitiate(
       fullName, 
       email, 
@@ -132,18 +131,17 @@ console.log("courseId =======>", courseId)
       courseCategoryId,
       referral
       ))
-
-      if(role === "5fd08fba50964811309722d5" && Object.keys(registerUser).length > 0){
-         Router.push('/dashboard/student')
-      }else if(role === '602f3ce39b146b3201c2dc1d' && Object.keys(registerUser).length > 0){
-         Router.push('/dashboard/teacher' )
-      }else if(role === '606ed82e70f40e18e029165e' && Object.keys(registerUser).length > 0){
-         Router.push('/dashboard/parent')
-      }else if(role === '607ededa2712163504210684' && Object.keys(registerUser).length > 0){
-         Router.push('/school')
+      if(registerUser){
+        await setShow(true)
+        // await Router.push('/login')
       }
+      if(!registerUser){
+        await setShow(true)
+      }
+      
     
   }
+
 
 
   useEffect(() => {
@@ -157,11 +155,11 @@ console.log("courseId =======>", courseId)
 useEffect(() => {
   dispatch(fetchSubjectsInitiate())
   
-}, [])
+}, [registerUser])
 
-useEffect(() => {
-  dispatch(fetchSubjectsInitiate())
-}, [])
+// useEffect(() => {
+//   dispatch(fetchSubjectsInitiate())
+// }, [])
 
   useEffect(() => {
    getRoleId();
@@ -178,17 +176,13 @@ useEffect(() => {
       <div className={styles.floatImg2}><Image alt={"design image"} src={'/assets/img/common/login/HalfCircleWhite.png'} width={150} height={90} /></div>
       <div className={styles.floatImg3}><Image alt={"design image"} src={'/assets/img/common/login/HalfCircleWhite.png'} width={150} height={90} /></div>
       <div className="container-fluid">
-      <Modal show={show}  onHide={() => setShow(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title className='modal-title-style'>Registration Successful</Modal.Title>
-        </Modal.Header>
-        <Modal.Body className='modal-body-style'>Your Afrilearn account has been created successfully</Modal.Body>
-      </Modal>
         <div className="row ">
           <div className='card-container-form' >
             <span className={styles.card}>
               <h5 className="center">CREATE AN ACCOUNT</h5>
-              <form onSubmit={handleRegisterRequest}>
+              {!rolesCollected? 
+              <Spinner /> :
+                <form onSubmit={handleRegisterRequest}>
                   <select
                     value={roleSelected}
                     onChange={(e) => setRoleSelected(e.target.value)}
@@ -345,12 +339,18 @@ useEffect(() => {
                   </div>
                 </div>
                 
-              </form>
+              </form>}
             </span>
             <p className={`center ${styles.afterSocialText}`}>Already have an account? <Link passHref href='/login'><b>Log In</b></Link></p>
           </div>
           <div className="col-md-4">   </div>
         </div>
+        <Registeralert
+        handleClose={handleClose}
+        handleShow={handleShow}
+        error={error}
+        show={show}
+         />
       </div>
     </>
   )
