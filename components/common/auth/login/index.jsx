@@ -75,7 +75,9 @@ const Login = () => {
           <div className="col-xs-12 col-md-10 col-lg-6">
             <span className={styles.card}>
               <h5 className={`center `}>LOG IN</h5>
-              <Form onSubmit={handleSubmit}>
+              <Form onSubmit={handleSubmit}
+              className={styles.loginformsubmit}
+              >
                 <input
                   type="text"
                   value={email}
