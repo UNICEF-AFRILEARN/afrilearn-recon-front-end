@@ -54,6 +54,7 @@
 }
 .afterSocialText {
    margin-top: 20px;
+   cursor: pointer;
 }
 .socialSection {
     margin-top: -21px;

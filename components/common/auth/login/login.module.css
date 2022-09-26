@@ -38,6 +38,11 @@
 }
 .pushDown {
   margin-bottom: 30px;
+  width: 100%;
+  padding: 15px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
 }
 .pushDown1 {
   margin-top: 37px;
@@ -50,6 +55,7 @@
 }
 .afterSocialText {
   margin-top: 20px;
+  cursor: pointer;
 }
 .socialSection {
   margin-top: -21px;

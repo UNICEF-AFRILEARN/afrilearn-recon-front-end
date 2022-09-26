@@ -84,7 +84,7 @@ const Login = () => {
                   name="email"
                   onChange={(e) => setEmail(e.target.value)}
                   title="Email"
-                  placeholder="Email"
+                  placeholder="something@gmail.com"
                   className={styles.pushDown}
                 />
                 <input
@@ -94,6 +94,7 @@ const Login = () => {
                   name="password"
                   title="Password"
                   placeholder="Password"
+                  className={styles.pushDown}
                 />
                 <h5>{errorCheck}</h5>
                 <div className={`row ${styles.pushDown1}`}>
