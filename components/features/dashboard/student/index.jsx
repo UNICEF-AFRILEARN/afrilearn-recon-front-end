@@ -46,13 +46,7 @@ const Dashboard = () => {
   const { user, registerUser } = useSelector((state) => state.auth);
   // const { registerUser } = useSelector((state) => state.auth);
   const subject = useSelector((state) => state.mySubjectCourse);
-  console.log("subject, subject", subject);
 
-  console.log(
-    "Register registerUser from dashboard INDEX =====>",
-    registerUser.user,
-  );
-  console.log("unicefRecon from dashboard INDEX =====>", unicefRecon);
 
   const userId = "62a0bc984af2d90016b72096";
   const token = user.token;

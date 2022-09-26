@@ -14,7 +14,7 @@ import { fetchSubjectsInitiate } from '../../../../redux/actions/subjects';
 import {BsChevronDown} from 'react-icons/bs'
 
 const Register = (props) => {
-  const { user, registerUser } = useSelector(state => state.auth);
+  const { user, registerUser, error } = useSelector(state => state.auth);
   const { subjects} = useSelector(state => state.mySubject);
   const [roleSelected, setRoleSelected] = useState('');
   const [role, setRole] = useState('');
@@ -57,7 +57,7 @@ let filteredSub = []
   }
 
 
-console.log("Filtered ====>", allSubjects)
+console.log("error.message ====>", error)
   const getRoleId = () => {
       if (roleSelected === "Student") {
          setRole("5fd08fba50964811309722d5")
@@ -118,7 +118,7 @@ console.log("courseId =======>", courseId)
 
   const handleRegisterRequest = (e) => {
     e.preventDefault()
-    console.log("courseCategoryId ===>", course, courseCategoryId)
+   
      dispatch(registerUserInitiate(
       fullName, 
       email, 
