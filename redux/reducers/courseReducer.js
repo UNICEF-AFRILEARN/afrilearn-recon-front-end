@@ -3,6 +3,7 @@ import * as types from "../types/course";
 const initialState = {
     loading: false,
     course: [],
+    singleCourse: [],
     schoolTerms: [],
     error: [],
 
@@ -21,6 +22,20 @@ export const courseReducer = (state = initialState, { type, payload} ) => {
                 course: payload
             };
         case types.FETCH_COURSE_FAIL:
+            return {
+                loading: false,
+                error: payload
+            };
+        case types.FETCH_SINGLE_COURSE_START:
+            return {
+                loading: true
+            };
+        case types.FETCH_SINGLE_COURSE_SUCCESS:
+            return {
+                loading: false,
+                singleCourse: payload
+            };
+        case types.FETCH_SINGLE_COURSE_FAIL:
             return {
                 loading: false,
                 error: payload

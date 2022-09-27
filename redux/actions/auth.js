@@ -336,7 +336,6 @@ export const fetchRoles = () => (dispatch) => {
   axios
     .get("https://afrilearn-backend-01.herokuapp.com/api/v1/auth/roles")
     .then((res) => {
-      console.log("Data from API call ==>", res.data.data);
       dispatch(getRolesSuccess(res.data.data));
     })
     .catch((err) => {

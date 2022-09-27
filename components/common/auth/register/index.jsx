@@ -192,7 +192,6 @@ useEffect(() => {
                     
                       <option value={"default"}>
                          Select a Role
-                        
                       </option>
                       
            

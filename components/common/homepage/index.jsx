@@ -11,7 +11,9 @@ import CommentPage from "./extra/commentPage";
 import { BsCheck2All } from 'react-icons/bs';
 import { Accordion } from 'react-bootstrap';
 import { useRouter } from "next/router";
-import { getCourseInitiate } from '../../../redux/actions/course'
+import { getCourseInitiate } from '../../../redux/actions/course';
+import { fetchRoles } from "../../../redux/actions/auth";
+import Spinner from "../../widgets/spinner/index";
 
 
 const HomePage = () => {
@@ -425,13 +427,19 @@ const Faq = () => {
   );
 };
 const QuickJoin = () => {
-  const { course } = useSelector((state) => state.singleCourse)
+  const { roles } = useSelector((state) => state.auth)
   const [classSelected, setClassSelected] = useState("");
+  const [classParams, setClassParamsm] = useState("");
+  const [classId, setClassId] = useState("");
 
   const dispatch = useDispatch();
+  const router = useRouter();
   
-  // console.log("course from homepage ==>", course)
-  let classId = "5fff7371de0bdb47f826feb2"
+
+  //Extract school classes:
+  const courseContext = roles.courses;
+  console.log("courseContext from homepage ==>", courseContext)
+  // let classId = "5fff7371de0bdb47f826feb2"
 
   const data = {
     title: "Ready for success?",
@@ -443,57 +451,66 @@ const QuickJoin = () => {
     ],
   };
 
-  const classData = [
-    {
-      classNames: "JSS One",
-      classRef: "/",
-    },
-    {
-      classNames: "JSS Two",
-      classRef: "/",
-    },
-    {
-      classNames: "JSS Three",
-      classRef: "/",
-    },
-    {
-      classNames: "SSS One",
-      classRef: "/",
-    },
-    {
-      classNames: "SSS Two",
-      classRef: "/",
-    },
-    {
-      classNames: "SSS Three",
-      classRef: "/",
-    },
-    {
-      classNames: "Primary One",
-      classRef: "/",
-    },
-    {
-      classNames: "Primary Two",
-      classRef: "/",
-    },
-    {
-      classNames: "Primary Three",
-      classRef: "/",
-    },
-    {
-      classNames: "Primary Four",
-      classRef: "/",
-    },
-    {
-      classNames: "Primary Five",
-      classRef: "/",
-    },
-    {
-      classNames: "Primary Six",
-      classRef: "/",
-    },
-  ];
 
+
+   //Navigate to class-info-details:
+   const goToPerformance = () => {
+    router.push({
+        pathname: `/classes/[_classes]`,
+        query: { _classes: classParams, classId: "5fc8cfbb81a55b4c3c19737d"}
+    })
+  }
+
+  const getClassId =  () => {
+    if(classSelected === 'Primary One'){
+      setClassId('5fc8cfbb81a55b4c3c19737d')
+      setClassParamsm('primary-one')
+    }else if(classSelected === 'Primary Two'){
+      setClassId('5fd12c70e74b15663c5f4c6e')
+      setClassParamsm('primary-two')
+    }else if(classSelected === 'Primary Three'){
+      setClassId('5fff5a67de0bdb47f826fea8')
+      setClassParamsm('primary-three')
+    }else if(classSelected === 'Primary Four'){
+      setClassId('5fff5a7ede0bdb47f826fea9')
+      setClassParamsm('primary-four')
+    }else if(classSelected === 'Primary Five'){
+      setClassId('5fff5aaede0bdb47f826feaa')
+      setClassParamsm('primary-five')
+    }else if(classSelected === 'Primary Six'){
+      setClassId('5fff5abede0bdb47f826feab')
+      setClassParamsm('primary-six')
+    }else if(classSelected === 'JSS One'){
+      setClassId('5fff72b3de0bdb47f826feaf')
+      setClassParamsm('jss-one')
+    }else if(classSelected === 'JSS Two'){
+      setClassId('5fff7329de0bdb47f826feb0')
+      setClassParamsm('jss-two')
+    }else if(classSelected === 'Jss Three'){
+      setClassId('5fff734ade0bdb47f826feb1')
+      setClassParamsm('jss-three')
+    }else if(classSelected === 'SSS One'){
+      setClassId('5fff7371de0bdb47f826feb2')
+      setClassParamsm('sss-one')
+    }else if(classSelected === 'SSS Two'){
+      setClassId('5fff7380de0bdb47f826feb3')
+      setClassParamsm('sss-two')
+    }else if(classSelected === 'SSS Three'){
+      setClassId('5fff7399de0bdb47f826feb4')
+      setClassParamsm('sss-three')
+    }else if(classSelected === 'Afrilearn KidsCode'){
+      setClassId('629dbb4c5a5f270016033712')
+      setClassParamsm('kidscode')
+    }    
+}
+
+useEffect(() => {
+  getClassId()
+},[classSelected])
+
+  useEffect(() => {
+    dispatch(fetchRoles())
+  }, [])
   useEffect(() => {
     dispatch(getCourseInitiate(classId))
   }, [classId])
@@ -505,19 +522,22 @@ const QuickJoin = () => {
         <h6>{data.description}</h6>
         <section className={styles.quickJoinSec}>
           <div className={`row ${styles.courseSelectSection}`}>
-            <div className="col-md-12">
+            {!roles? <Spinner/> : <div className="col-md-12">
               <div className="row">
                 <div className={`col-8 ${styles.paddingRightOff}`}>
-                  {/* <ul className={styles.myDropped}> */}
-                   
-                    <select className={` ${styles.myPlaceholder}`}>
-                      {classData.map((e, i) => (
-                        <option key={i}>
-                         {e.classNames}
+                    <select 
+                     value={classSelected}
+                     onChange={(e) => {setClassSelected(e.target.value); goToPerformance()}}
+                      className={` ${styles.myPlaceholder}`}>
+                        <option value={"default"}>
+                         Select a Class
+                      </option>
+                      {courseContext?.map((schoolClass, index) => (
+                        <option >
+                         {schoolClass.name}
                         </option>
                       ))}
                     </select>
-                  {/* </ul> */}
                 </div>
                 <div className={`col-4 ${styles.paddingLeftOff}`}>
                   <Link href="/register">
@@ -525,7 +545,7 @@ const QuickJoin = () => {
                   </Link>
                 </div>
               </div>
-            </div>
+            </div>}
           </div>
         </section>
       </div>
