@@ -97,6 +97,10 @@ const AllSubject = ({ data }) => {
   const { classContents } = useSelector((state) => state.schoolClasses);
   const { user } = useSelector((state) => state.auth);
 
+  const handleEdit = () => {
+    console.log("Hello there")
+  }
+  
   return (
     <Col
       style={{
@@ -124,6 +128,8 @@ const AllSubject = ({ data }) => {
           <Col>
             <Row>
               <p>{content.description}</p>
+              {console.log("content ===>", content.subjectId.mainSubjectId.name
+)}
             </Row>
             <Row>
               <p className="text-secondary">{content.createdAt}</p>
@@ -149,7 +155,10 @@ const AllSubject = ({ data }) => {
                 <Col className={`p-3 ps-3 `}>
                   <Row className="ps-3 pb-2">
                     <Col md={3} className={`ps-2 ${styles.styleEdit}`}></Col>
-                    <Col className="m-auto">Edit</Col>
+                    <Col 
+                    className="m-auto"
+                    onClick={handleEdit}
+                    >Edit</Col>
                   </Row>
                   <Row className="ps-3 pb-2">
                     <Col md={3} className={`ps-2 ${styles.styleDelete}`}></Col>
