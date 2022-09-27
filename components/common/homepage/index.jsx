@@ -457,7 +457,7 @@ const QuickJoin = () => {
    const goToPerformance = () => {
     router.push({
         pathname: `/classes/[_classes]`,
-        query: { _classes: classParams, classId: "5fc8cfbb81a55b4c3c19737d"}
+        query: { _classes: classParams, classId: "5fff7380de0bdb47f826feb3"}
     })
   }
 

@@ -1,24 +1,31 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCourseInitiate } from '../../redux/actions/course';
+import { getCourseInitiate, fetchSingleCourseInitiate } from '../../redux/actions/course';
 import { useRouter } from "next/router";
 import styles from "../../components/features/dashboard/student/student.module.css";
+import { MdStickyNote2, MdPlayArrow, MdOutlineMic} from 'react-icons/md'
+import {FaBookReader, FaQuestion} from 'react-icons/fa'
+import {BsFillPersonFill} from 'react-icons/bs'
 import { Container } from "react-bootstrap";
-import { HeaderHeropage } from "../../components/features/dashboard/student/extra/subjects";
+import Subjects, { HeaderHeropage } from "../../components/features/dashboard/student/extra/subjects";
 
 
 const Schoolclasses = () => {
-    const { course } = useSelector((state) => state.singleCourse)
+    const { course, singleCourse } = useSelector((state) => state.singleCourse)
     const router = useRouter();
     const dispatch = useDispatch();
+    let subjectCount  = singleCourse?.course?.relatedSubjects?.length
 
 
     const { classId } = router.query
-    console.log("course ====>", course)
+    console.log("course ====>", singleCourse)
 
 
+  // useEffect(() => {
+  //   dispatch(getCourseInitiate(classId))
+  // }, [classId])
   useEffect(() => {
-    dispatch(getCourseInitiate(classId))
+    dispatch(fetchSingleCourseInitiate(classId))
   }, [classId])
 
   return (
@@ -31,17 +38,57 @@ const Schoolclasses = () => {
         <div className="row">
           <div className="col-md-12">
             <h1 className={`text-capitalize ${styles.capH1}`}>
-              {/* {stuData[0].classData} */}
+              {singleCourse?.course?.name}
             </h1>
+
           </div>
         </div>
         <div className={`row ps-3 ${styles.pus}`}>
-          <div className="col-md-12">
-            {/* {stuData[0].firstName && ( */}
-              {/* <h2>{greetings(stuData[0].firstName.split(" ")[0])}</h2> */}
-            {/* )} */}
-            {/* {stuData[0].subject && <h2>{stuData[0].subject}</h2>} */}
-            {/* <p>Explore the fun in learning💃</p> */}
+          <div className={`${styles.corsedetailswrapper} col-md-12`}>
+            <p>
+              <MdStickyNote2 
+                size={50}
+                className={styles.iconswrapper}
+              />
+              <span> 450 Class Notes</span>
+              </p>
+              <p>
+              <MdPlayArrow 
+                size={50}
+                className={styles.iconswrapper}
+              />
+              <span> 56 Videos</span>
+              </p>
+              <p>
+              <MdOutlineMic 
+                size={50}
+                className={styles.iconswrapper}
+              />
+              <span> 35 Audios</span>
+              </p>
+          </div>
+          <div className={`${styles.corsedetailswrappertwo} col-md-12`}>
+          <p>
+              <FaBookReader 
+                size={50}
+                className={styles.iconswrapper}
+              />
+              <span> {subjectCount } Subjects</span>
+              </p>
+              <p>
+              <FaQuestion 
+                size={50}
+                className={styles.iconswrapper}
+              />
+              <span> Exam Practice Questions</span>
+              </p>
+              <p>
+              <BsFillPersonFill 
+                size={50}
+                className={styles.iconswrapper}
+              />
+              <span> {singleCourse?.numOfUsers } Registered students</span>
+              </p>
           </div>
         </div>
         {/* <Link passHref href="/trial">
@@ -62,9 +109,8 @@ const Schoolclasses = () => {
         </div>
       </div>
     </Container>
-       <div>
-
-       </div>
+       <Subjects 
+       />
     </div>
   )
 }
