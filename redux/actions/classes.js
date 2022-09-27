@@ -230,7 +230,6 @@ export const fetchAnnouncementInitiate = (classId) =>  {
         axios
         .get(`https://afrilearn-backend-01.herokuapp.com/api/v1/classes/${classId}/announcements`)
         .then((res) => {
-            console.log("From Get announcement API =>", res.data.data)
             dispatch(fetchAnnouncementSuccess(res.data.data))
         })
         .catch((err) => {
@@ -300,11 +299,10 @@ export const fetchClassAssignedContentInitiate = (classId) =>  {
         axios
         .get(`https://afrilearn-backend-01.herokuapp.com/api/v1/classes/${classId}/assigned-contents`)
         .then((res) => {
-            console.log("From Get class members API =>", res.data.data)
             dispatch(fetchClassAssingedContentSuccess(res.data.data))
         })
         .catch((err) => {
-            dispatch(fetchClassAssingedContentFail(err))
+            dispatch(fetchClassAssingedContentFail(err.response.data))
         } )
     }
 

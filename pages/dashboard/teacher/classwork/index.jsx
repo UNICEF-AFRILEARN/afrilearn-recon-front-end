@@ -14,12 +14,9 @@ const ClassWork = () => {
   const { classContents } = useSelector((state) => state.schoolClasses);
   const { user } = useSelector((state) => state.auth);
 
-  console.log("classContents from classwork", classContents);
-  console.log(
-    "classContents.subjectId from classwork",
-    classContents.assignedContents,
-  );
 
+  console.log("classContents ===> ", classContents)
+ 
   useEffect(() => {
     setClassId(user?.user?.classOwnership[0]?.enrolledCourse.classId);
   }, []);
@@ -53,7 +50,7 @@ const ClassWork = () => {
                 className={`text-secondary ${styles.scoreeffect1}`}
               >
                 <p style={swap === 1 ? { color: "#00d9b6" } : {}}>
-                  Mathematics
+                Agricultural Science
                 </p>
               </Row>
             </div>
@@ -144,7 +141,7 @@ const AllSubject = ({ data }) => {
                   background: "#FFFFFF",
                   boxShadow: "0px 1px 7px rgba(0, 0, 0, 0.1)",
                   borderRadius: "10px",
-                  position: "absolute",
+                  // position: "absolute",
                   right: "150px",
                 }}
                 className={styles.displayNone}

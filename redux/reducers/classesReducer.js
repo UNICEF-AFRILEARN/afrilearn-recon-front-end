@@ -25,7 +25,6 @@ export const classesReducer = (state = initialState, { type, payload} ) => {
                 loading: true,
                 ...state
             };
-    
         case types.ADD_COMMENT_TO_TEACHER_ANNOUNCEMENT_SUCCESS:
             return {
                 loading: false,
