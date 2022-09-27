@@ -6,6 +6,7 @@ import Link from "next/link";
 
 const Africoin = () => {
   const { user } = useSelector((state) => state.auth);
+  console.log(user);
   const coinData = {
     amount: user?.user?.afriCoins,
   };
@@ -31,8 +32,8 @@ const Africoin = () => {
             {coinData?.amount} Coins
           </div>
         </div>
-        <div className="row">
-          <div className={`col-md-2 ${styles.buyCoin}`}>
+        <div className="row m-5 p-5">
+          <div className={`col-md-3 ${styles.buyCoin}`}>
             <div>
               {" "}
               <h5>Wallet Balance:</h5>
@@ -51,7 +52,7 @@ const Africoin = () => {
               <button>BUY MORE COINS</button>
             </div>
           </div>
-          <div className={`col-md-8 ${styles.buycoinInput}`}>
+          <div className={`col-md-9 ${styles.buycoinInput}`}>
             <div>
               <h5>Buy Africoins</h5>
             </div>
@@ -83,4 +84,4 @@ const Africoin = () => {
   );
 };
 
-export default Africoin
+export default Africoin;
