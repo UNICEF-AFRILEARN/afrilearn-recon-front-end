@@ -62,7 +62,7 @@ const Navigation = () => {
 
   return (
     <Navbar
-      // bg="light"
+      bg="light"
       expand="lg"
       fixed="top"
       collapseOnSelect

@@ -173,7 +173,6 @@ export const fetchUnicefReconInitiate = (schoollevel, reco_subject, lessonId) =>
         })
         .then((res) => {
             dispatch(fetchUnicefRecoSuccess(res.data))
-            console.log("From UNICEF reconmendation API =>", res.data)
         })
         .catch((err) => {
             console.log(err)

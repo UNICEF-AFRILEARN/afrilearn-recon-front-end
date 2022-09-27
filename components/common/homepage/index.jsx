@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 import styles from "./homepage.module.css";
 import Slider from "react-slick";
@@ -10,6 +11,7 @@ import CommentPage from "./extra/commentPage";
 import { BsCheck2All } from 'react-icons/bs';
 import { Accordion } from 'react-bootstrap';
 import { useRouter } from "next/router";
+import { getCourseInitiate } from '../../../redux/actions/course'
 
 
 const HomePage = () => {
@@ -423,6 +425,14 @@ const Faq = () => {
   );
 };
 const QuickJoin = () => {
+  const { course } = useSelector((state) => state.singleCourse)
+  const [classSelected, setClassSelected] = useState("");
+
+  const dispatch = useDispatch();
+  
+  // console.log("course from homepage ==>", course)
+  let classId = "5fff7371de0bdb47f826feb2"
+
   const data = {
     title: "Ready for success?",
     description: ["Join the league of high-flying learners"],
@@ -484,6 +494,10 @@ const QuickJoin = () => {
     },
   ];
 
+  useEffect(() => {
+    dispatch(getCourseInitiate(classId))
+  }, [classId])
+
   return (
     <>
       <div id="landingpage-quickJoin" className={`row ${styles.quickJoin}`}>
@@ -494,33 +508,16 @@ const QuickJoin = () => {
             <div className="col-md-12">
               <div className="row">
                 <div className={`col-8 ${styles.paddingRightOff}`}>
-                  <ul className={styles.myDropped}>
-                    <div className={`relative ${styles.myDrop}`}>
-                      <div className={styles.myDropCont}>
-                        <input
-                          disabled
-                          className={styles.myPlaceholder}
-                          href="/"
-                          placeholder="Select a Class"
-                        />
-                        <span className={styles.inputImage}>
-                          <Image
-                            alt={"design image"}
-                            src="/assets/img/common/homepage/inputVector.png"
-                            width={17}
-                            height={12}
-                          />
-                        </span>
-                      </div>
-                    </div>
-                    <ul className={styles.courseSelectSectionDropDown}>
+                  {/* <ul className={styles.myDropped}> */}
+                   
+                    <select className={` ${styles.myPlaceholder}`}>
                       {classData.map((e, i) => (
-                        <li key={i}>
-                          <Link href={e.classRef}>{e.classNames}</Link>
-                        </li>
+                        <option key={i}>
+                         {e.classNames}
+                        </option>
                       ))}
-                    </ul>
-                  </ul>
+                    </select>
+                  {/* </ul> */}
                 </div>
                 <div className={`col-4 ${styles.paddingLeftOff}`}>
                   <Link href="/register">

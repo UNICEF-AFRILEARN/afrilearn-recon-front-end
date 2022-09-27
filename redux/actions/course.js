@@ -29,7 +29,6 @@ export const fetchSchoolTermFail = (error) => ({
 });
 
 export const getCourseInitiate = (classId) => {
-  console.log("courseId from courses API", classId);
   return function (dispatch) {
     dispatch(fetchCourseStart());
     axios
@@ -37,11 +36,10 @@ export const getCourseInitiate = (classId) => {
         `https://afrilearn-backend-01.herokuapp.com/api/v1/courses/${classId}`,
       )
       .then((res) => {
-        console.log("From Course API =>", res.data.data);
         dispatch(fetchCourseSuccess(res.data.data));
       })
       .catch((err) => {
-        dispatch(fetchCourseFail(err));
+        dispatch(fetchCourseFail(err.response));
       });
   };
 };

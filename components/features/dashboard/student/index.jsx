@@ -93,8 +93,6 @@ const Dashboard = () => {
     fetchClassMember,
   ]);
 
-  console.log("activities from Dashboard index call ====>", activities);
-
   return (
     <>
       <StudentHeropage data={personData} />
@@ -268,10 +266,14 @@ const MyFavs = ({ classData }) => {
 };
 
 const Recommended = ({ recommend, unicefRecon, lessons }) => {
-  console.log("From recommendation COmponent ====>", recommend);
-  console.log("unicefRecon from recommendation COmponent ====>", unicefRecon);
-  console.log("lessons From recommendation COmponent ====>", lessons);
-
+  
+  // let reduceRecon = () => {
+  //   recommend?.forEach((recon, index) => {
+  //     if(index === 3) return
+  //   })
+  // }
+  
+  // console.log(" 3reduceRecon From recommendation COmponent ====>", reduceRecon());
   const reconBucket = [];
   const finalReconLessons = [];
 
