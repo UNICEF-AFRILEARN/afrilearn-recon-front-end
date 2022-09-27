@@ -1,18 +1,15 @@
-
 import Image from "next/image";
 import styles from "./../../student/topInClass.module.css";
 import { useState, useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
 import Link from "next/link";
-import { useSelector } from 'react-redux';
-
-
+import { useSelector } from "react-redux";
 
 const recommendation = ({ dataRecon, recData }) => {
   const [show, setShow] = useState(false);
   const toggleModal = () => setShow(!show);
 
-  console.log("From recommendation UI ===>", recData);
+  // console.log("From recommendation UI ===>", recData);
 
   return (
     <>

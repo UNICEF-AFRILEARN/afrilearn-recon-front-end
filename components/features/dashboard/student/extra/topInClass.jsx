@@ -15,24 +15,27 @@ const topInClass = ({ data }) => {
   const subject = useSelector((state) => state.mySubjectCourse);
   const lessons = subject.subjectDetails[1]?.relatedLessons;
 
-  console.log(data);
-  const [show, setShow] = useState(false);
+  // console.log(data);
+  // const [show, setShow] = useState(false);
   const [subjCourId, setsubjCourId] = useState({});
   const toggleModal = (cour, subj) => {
-    setShow(!show);
+    // setShow(!show);
     setsubjCourId({ courId: cour, subjId: subj });
   };
 
   useEffect(() => {
+    console.log(subjCourId);
     if (Object.keys(subjCourId).length !== 0) {
-      dispatch(fetchCourseDetailsInitiate(subjCourId.courId, subjId));
+      dispatch(
+        fetchCourseDetailsInitiate(subjCourId.courId, subjCourId.subjId),
+      );
     }
-  }, [fetchCourseDetailsInitiate]);
+  }, [subjCourId]);
 
   return (
     <section>
       <div className={styles.cont}>
-        <div className={styles.contList}>
+        <div className={`pointer ${styles.contList}`}>
           <Link
             passHref
             href={
@@ -55,7 +58,10 @@ const topInClass = ({ data }) => {
           >
             <div
               className={styles.rect}
-              onClick={() => toggleModal(data.courseId.id, data.subjectId.id)}
+              onClick={() => {
+                console.log(data);
+                toggleModal(data.courseId.id, data.subjectId.id);
+              }}
             >
               {data?.thumbnailUrl ? (
                 <Image

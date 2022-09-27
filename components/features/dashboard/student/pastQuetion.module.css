@@ -6,7 +6,6 @@
   column-gap: 20px;
 }
 
-
 .containerList1 {
   width: 400px;
   height: 152px;
@@ -15,6 +14,7 @@
     inset -10.7637px -10.7637px 10.7637px #56119a;
   border-radius: 29.3311px;
   border: 10px solid white;
+  cursor: pointer;
 }
 .containerList2 {
   width: 400px;
@@ -25,6 +25,7 @@
   border-radius: 29.3311px;
   padding: 5px;
   border: 10px solid white;
+  cursor: pointer;
 }
 
 .cointainerListLeft1 {
@@ -35,6 +36,7 @@
     drop-shadow(-5.86623px -5.86623px 5.86623px #340067);
   grid-template-columns: 30% 70%;
   margin-top: 10px;
+  cursor: pointer;
 }
 .cointainerListLeft2 {
   width: 100%;
@@ -44,6 +46,7 @@
     drop-shadow(-5.86623px -5.86623px 5.86623px #118330);
   grid-template-columns: 30% 70%;
   margin-top: 10px;
+  cursor: pointer;
 }
 
 .cointainerListLeftTop,
@@ -53,8 +56,28 @@
 }
 .cointainerListLeftBottom {
   margin-top: 0;
-
   font-size: 14px;
   font-weight: 300;
   color: #ffffff;
+}
+@media screen and (max-width: 820px) {
+  .containerList1 {
+    width: 360px;
+  }
+  .containerList2 {
+    width: 360px;
+  }
+}
+@media screen and (max-width: 745px) {
+  .allContainer {
+    display: block;
+  }
+}
+@media screen and (max-width: 414px) {
+  .containerList1 {
+    width: 345px;
+  }
+  .containerList2 {
+    width: 345px;
+  }
 }

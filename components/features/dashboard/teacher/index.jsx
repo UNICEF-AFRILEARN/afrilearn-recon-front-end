@@ -3,9 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import Image from "next/image";
 import Link from "next/link";
 import { Col, Container, Row } from "react-bootstrap";
-// import PastQuestion from "../student/extra/PastQuestionaira";
+import PastQuestionaira from "../student/extra/PastQuestionaira";
 import Subjects from "../student/extra/subjects";
-
 import { AiOutlineSend } from "react-icons/ai";
 import styles1 from "../student/student.module.css";
 import styles from "../student/studentProfile/studentProfile.module.css";
@@ -85,7 +84,14 @@ const Dashboard = () => {
           </Row>
           <Subjects subData={teachSubject} />
         </Col>
-        <Col>{/* <PastQuestion /> */}</Col>
+        <Col>
+          <PastQuestionaira
+            subData={
+              subject?.dashboardWeb?.enrolledCourse?.courseId
+                .relatedPastQuestions
+            }
+          />
+        </Col>
         <Col>{/* <PastQuestion /> */}</Col>
       </div>
       <TeacherAnnouncement />

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "../../school/dashbord.module.css";
 import Subjects from "../../student/extra/subjects";
+import PastQuestionaira from "../../student/extra/pastQuestionaira";
 import Image from "next/image";
 import Link from "next/link";
 import { getSchoolCourses } from "../../../../../redux/actions/subject";
@@ -50,6 +51,12 @@ const Schoolsubject = () => {
             subject?.schcourse?.courses[courseIndex]?.relatedSubjects
           }
           schoolClasses={schoolClasses && schoolClasses[courseIndex]?.className}
+        />
+        <PastQuestionaira
+          subData={
+            subject?.schcourse?.courses &&
+            subject?.schcourse?.courses[courseIndex]?.relatedPastQuestions
+          }
         />
       </div>
     </>

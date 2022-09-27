@@ -20,7 +20,8 @@ const Subjects = ({ subData }) => {
     subj = data;
   };
   const { user } = useSelector((state) => state.auth);
-  console.log(subjCourId);
+  const subject = useSelector((state) => state.mySubjectCourse);
+  // console.log(subjCourId);
 
   const dispatch = useDispatch();
 
@@ -51,6 +52,7 @@ const Subjects = ({ subData }) => {
                   <button
                     className="modalButton"
                     onClick={() => {
+                      console.log(dta);
                       setsubjCourId(() => ({
                         id: dta.id,
                         courseId: dta.courseId,
@@ -77,6 +79,7 @@ const Subjects = ({ subData }) => {
             <button
               className="modalButton"
               onClick={() => {
+                console.log(dta);
                 setsubjCourId(() => ({ id: dta.id, courseId: dta.courseId }));
                 toggleModal(dta.mainSubjectId.name);
               }}
@@ -98,12 +101,15 @@ const Subjects = ({ subData }) => {
   };
 
   const SubjectModal = () => {
+    // console.log(subData[0]);
     return (
       <>
         <Container fluid id="subject" className="p-0">
           <Row>
             <div>
-              <HeaderHeropage classes={subData[0].courseId.name} />
+              <HeaderHeropage
+                classes={subject.dashboardWeb.enrolledCourse.courseId.name}
+              />
             </div>
             <div className="p-5 pt-0 pb-1">
               <div className={`row ${styles.modalThird}`}>

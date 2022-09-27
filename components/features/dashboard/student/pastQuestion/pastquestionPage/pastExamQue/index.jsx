@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Button, Col, Container, Form, Modal, Row } from "react-bootstrap";
 import styles from "./passtExamQue.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Timer from "react-compound-timer";
 import { Progress } from "reactstrap";
 import Swal from "sweetalert2";
@@ -83,6 +83,27 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
   const [aveSpeed, setAveSpeed] = useState([]);
   const ansNumber = Object.keys(allAnswers).length;
 
+  useEffect(() => {
+    for (let i = 0; i < sub_dat.questions.length; i++) {
+      let response = {
+        question_id: sub_dat.questions[i].question_id
+          ? sub_dat.questions[i].question_id
+          : sub_dat.questions[i].id,
+        option_selected: -1,
+        correct_option: sub_dat.questions[i].correct_option,
+        status: "skipped",
+      };
+      setSubmittedAnswer((prev) => {
+        prev[i] = response;
+        return [...prev];
+      });
+      setSkipQue((prev) => {
+        prev[i] = i;
+        return [...prev];
+      });
+    }
+  }, []);
+  console.log(submittedAnswer);
   const handleNextQuestion = async (answer) => {
     if (sub_dat.motivation?.length) {
       const CheckPoint25Percent = Math.round(0.25 * +sub_dat.questionNo);
@@ -313,8 +334,8 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
     results: submittedAnswer,
     userId: user?.user?._id,
     courseId: subject?.dashboardWeb?.enrolledCourse?.id,
-    subjectCategoryId: subject.pastQuestionQue[0]?.subject_details.subject_id,
-    subjectName: subject.pastQuestionQue[0]?.subject_details.subject,
+    subjectCategoryId: subject.pastQuestionQue[0]?.subject_details?.subject_id,
+    subjectName: subject.pastQuestionQue[0]?.subject_details?.subject,
     pastQuestionCategoryId: sub_dat.category,
     pastQuestionTypeId: "5fc8e7134bfe993c34a9689c", //not needed
     subjectId: "5fc8e7134bfe993c34a9689c", //not needed
@@ -352,14 +373,14 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
     ),
   };
   const progress = {
-    subjectCategoryId: subject.pastQuestionQue[0]?.subject_details.subject_id,
+    subjectCategoryId: subject.pastQuestionQue[0]?.subject_details?.subject_id,
     pastQuestionCategoryId: sub_dat.category,
     courseId: subject?.dashboardWeb?.enrolledCourse?.id,
   };
   const quizLessonId = sub_dat.quizLessonId;
   const submitttedData = sub_dat.pastQuestion ? "pastQue" : "Quiz";
-  const content = sub_dat.pastQuestion ? router.query[0] : sub_dat.title;
-  const content1 = sub_dat.pastQuestion && router.query[1];
+  const content = sub_dat.pastQuestion && router.query[0];
+  const content1 = sub_dat.pastQuestion ? router.query[1] : sub_dat.quary;
   ////////////////////////////////////////////////////////////////////////
   const SubmitFunc = (analysis) => {
     if (analysis === "pastQue") {
@@ -367,6 +388,7 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
       dispatch(submitPastQuestionProgress(progress, token));
     } else {
       dispatch(submitLessonQuizResult(submitQuiz, quizLessonId, token));
+      console.log(submitQuiz);
     }
   };
   const handleClosure = async () => {
@@ -390,12 +412,6 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
           pathname: "/quiz/extra/quizResult",
           query: [content, content1],
         });
-        // props.inputChange("currentQuestion", 0);
-        // props.inputChange(
-        //   "pastQuestionRedirectLocation",
-        //   "/past-questions/remark",
-        // );
-        // props.inputChange("pastQuestionRedirect", true);
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire(
           "Cancelled",

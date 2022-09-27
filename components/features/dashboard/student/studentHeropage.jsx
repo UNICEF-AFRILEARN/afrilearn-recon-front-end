@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Container } from "react-bootstrap";
 
 const studentHeropage = ({ data }) => {
+  const subject = useSelector((state) => state.mySubjectCourse);
+
   const studentdata = [
     { classData: data?.personClass, firstName: data?.personName },
     [

@@ -23,13 +23,13 @@ const QuizResult = () => {
   console.log(quary ? true : false);
   console.log(subject);
   const correct = quary
-    ? subject.answers.results.numberOfCorrectAnswers
+    ? subject.answers.results?.numberOfCorrectAnswers
     : subject.quizAnswers.results.numberOfCorrectAnswers;
   const skip = quary
-    ? subject.answers.results.numberOfSkippedQuestions
+    ? subject.answers.results?.numberOfSkippedQuestions
     : subject.quizAnswers.results.numberOfSkippedQuestions;
   const inCorrect = quary
-    ? subject.answers.results.numberOfWrongAnswers
+    ? subject.answers.results?.numberOfWrongAnswers
     : subject.quizAnswers.results.numberOfWrongAnswers;
   const data = [
     { name: `Correct: ${correct}`, value: correct },
@@ -38,13 +38,13 @@ const QuizResult = () => {
   ];
   const COLORS = ["#00D9B6", "#FF4939", "#FFCF35"];
 
-  const fata = subject.subjectDetails[1].relatedLessons.filter(
-    (data) => data.id === subject.quizAnswers.results.lessonId,
+  const fata = subject.subjectDetails[1]?.relatedLessons.filter(
+    (data) => data.id === subject.quizAnswers.results?.lessonId,
   );
   console.log(fata);
   const gata = fata && fata[0]?.title;
   const resultData = {
-    subject: `${quary} Past Qustion Result` ? quary : gata,
+    subject: quary ? `${quary} Past Qustion Result` : gata,
     feedback: `Well done ${
       user.user?.fullName.split(" ")[0]
     }. That was a nice try, you can do better next time! Keep up learning and do not stop practicing too `,
@@ -55,7 +55,7 @@ const QuizResult = () => {
       : `${subject.quizAnswers.results.score}%`,
     percentage: quary
       ? `${subject.answers.results.numberOfCorrectAnswers} out of ${subject.answers.results.results.length}`
-      : `${subject.quizAnswers.results.numberOfCorrectAnswers} out of ${subject.quizAnswers.results.results.length}`,
+      : `${subject.quizAnswers.results.numberOfCorrectAnswers} out of ${subject.quizAnswers.results.results?.length}`,
     remark: quary
       ? subject.answers.results.remark
       : subject.quizAnswers.results.remark,
@@ -182,7 +182,12 @@ const QuizResult = () => {
               <div className={`col-md-3 ${styles.quizSubmit}`}>
                 <button
                   className="px-3"
-                  onClick={() => router.push("/quiz/extra/quizReview")}
+                  onClick={() =>
+                    router.push({
+                      pathname: "/quiz",
+                      query: [router.query[1]],
+                    })
+                  }
                 >
                   {" "}
                   RETAKE QUIZ
@@ -196,7 +201,7 @@ const QuizResult = () => {
                     router.push({
                       pathname:
                         "/dashboard/student/pastQuestion/pastQuestionPage",
-                      query: { Exam: router.query[0], type: router.query[1] },
+                      query: [router.query[0], router.query[1]],
                     })
                   }
                 >
@@ -206,7 +211,13 @@ const QuizResult = () => {
               </div>
             )}
             <div className={`col-md-3 ${styles.quizReview}`}>
-              <Link passHref href="/quiz/extra/quizReview">
+              <Link
+                passHref
+                href={{
+                  pathname: "/quiz/extra/quizReview",
+                  query: [router.query[0], router.query[1]],
+                }}
+              >
                 Review Answers
               </Link>
             </div>

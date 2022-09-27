@@ -152,33 +152,39 @@ const TopInClasses = ({ classData, classed }) => {
     rows: "1",
   };
   return (
-    <>
-      <SubHeading title={`Top in ${classed}`} />
-      <div className={styles.contai}>
-        <section className="parnet-frag-color">
-          {classData?.length > 4 ? (
-            <Slider {...settings} ref={customeSlider}>
-              {classData?.map((data, i) => (
-                <TopInClass data={data} key={i} />
-              ))}
-            </Slider>
-          ) : (
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "15px",
-                marginLeft: "15px",
-              }}
-            >
-              {classData?.map((data, i) => (
-                <TopInClass data={data} key={i} />
-              ))}
-            </div>
-          )}
-        </section>
-      </div>
-    </>
+    classData?.length > 0 && (
+      <section>
+        <SubHeading title={`Top in ${classed}`} />
+        <div className={styles.contai}>
+          <section
+            className="parnet-frag-color"
+            style={{
+              marginLeft: "25px",
+            }}
+          >
+            {classData?.length > 4 ? (
+              <Slider {...settings} ref={customeSlider}>
+                {classData?.map((data, i) => (
+                  <TopInClass data={data} key={i} />
+                ))}
+              </Slider>
+            ) : (
+              <div
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: "15px",
+                }}
+              >
+                {classData?.map((data, i) => (
+                  <TopInClass data={data} key={i} />
+                ))}
+              </div>
+            )}
+          </section>
+        </div>
+      </section>
+    )
   );
 };
 const UnfinshedVideos = ({ classData }) => {
@@ -197,33 +203,39 @@ const UnfinshedVideos = ({ classData }) => {
     rows: "1",
   };
   return (
-    <>
-      <SubHeading title={`Unfinished Videos`} />
-      <div className={styles.contai}>
-        <section className="parnet-frag-color">
-          {classData?.length > 4 ? (
-            <Slider {...settings} ref={customeSlider}>
-              {classData?.map((data, i) => (
-                <TopInClass data={data} key={i} />
-              ))}
-            </Slider>
-          ) : (
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "15px",
-                marginLeft: "15px",
-              }}
-            >
-              {classData?.map((data, i) => (
-                <TopInClass data={data} key={i} />
-              ))}
-            </div>
-          )}
-        </section>
-      </div>
-    </>
+    classData?.length > 0 && (
+      <>
+        <SubHeading title={`Unfinished Videos`} />
+        <div className={styles.contai}>
+          <section
+            className="parnet-frag-color"
+            style={{
+              marginLeft: "25px",
+            }}
+          >
+            {classData?.length > 4 ? (
+              <Slider {...settings} ref={customeSlider}>
+                {classData?.map((data, i) => (
+                  <TopInClass data={data} key={i} />
+                ))}
+              </Slider>
+            ) : (
+              <div
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: "15px",
+                }}
+              >
+                {classData?.map((data, i) => (
+                  <TopInClass data={data} key={i} />
+                ))}
+              </div>
+            )}
+          </section>
+        </div>
+      </>
+    )
   );
 };
 const MyFavs = ({ classData }) => {
@@ -239,42 +251,74 @@ const MyFavs = ({ classData }) => {
     cssEase: "linear",
     initialSlide: 0,
     arrows: false,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
   return (
-    <>
-      <SubHeading title={`Favourites`} />
-      <div className={styles.contai}>
-        <section className="parnet-frag-color">
-          {classData?.length > 4 ? (
-            <Slider {...settings} ref={customeSlider}>
-              {classData?.map((data, i) => (
-                <TopInClass data={data} key={i} />
-              ))}
-            </Slider>
-          ) : (
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "15px",
-                marginLeft: "15px",
-              }}
-            >
-              {classData?.map((data, i) => (
-                <TopInClass data={data} key={i} />
-              ))}
-            </div>
-          )}
-        </section>
-      </div>
-    </>
+    classData?.length > 0 && (
+      <>
+        <SubHeading title={`Favourites`} />
+        <div className={styles.contai}>
+          <section
+            className="parnet-frag-color"
+            style={{
+              marginLeft: "25px",
+            }}
+          >
+            {classData?.length > 4 ? (
+              <Slider {...settings} ref={customeSlider}>
+                {classData?.map((data, i) => (
+                  <TopInClass data={data} key={i} />
+                ))}
+              </Slider>
+            ) : (
+              <div
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: "15px",
+                }}
+              >
+                {classData?.map((data, i) => (
+                  <TopInClass data={data} key={i} />
+                ))}
+              </div>
+            )}
+          </section>
+        </div>
+      </>
+    )
   );
 };
 
 const Recommended = ({ recommend, unicefRecon, lessons }) => {
-  console.log("From recommendation COmponent ====>", recommend);
-  console.log("unicefRecon from recommendation COmponent ====>", unicefRecon);
-  console.log("lessons From recommendation COmponent ====>", lessons);
+  // console.log("From recommendation COmponent ====>", recommend);
+  // console.log("unicefRecon from recommendation COmponent ====>", unicefRecon);
+  // console.log("lessons From recommendation COmponent ====>", lessons);
 
   const reconBucket = [];
   const finalReconLessons = [];
@@ -319,8 +363,12 @@ const Recommended = ({ recommend, unicefRecon, lessons }) => {
 };
 
 const ClassRoom = ({ data }) => {
+  const { user } = useSelector((state) => state.auth);
   const subject = useSelector((state) => state.mySubjectCourse);
+  const dispatch = useDispatch();
+  const token = user?.token;
 
+  console.log(token);
   const handleJoinClass = async () => {
     // e.preventDefault();
     const { value: ipAddress } = await Swal.fire({

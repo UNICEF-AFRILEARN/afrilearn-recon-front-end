@@ -18,7 +18,8 @@ const QuizPage = () => {
     duration: false,
     questionNo: lessons && lessons[0]?.questions.length,
     questionId: subject?.pastQuestionQue[0]?.question_id,
-    title: subject?.pastQuestionQue[0]?.title,
+    title: lessons[0]?.title,
+    quary,
     subjectName: subject?.pastQuestionQue[0]?.question_id,
     motivation: subject?.pastQuestionQue[0]?.motivations,
   };

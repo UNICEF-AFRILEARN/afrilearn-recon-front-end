@@ -34,17 +34,18 @@ const PastQuestion = () => {
           <h2>Select Subject</h2>
         </Row>
       </div>
-      <Row className="m-5 px-5">
+      <Row className="m-5" style={{}}>
         {subjectDat?.map((subjectData, i) => (
           <div key={i} className={`col-md-2 ${styles1.MySubjectt}`}>
             <div
-              className="m-auto p-auto"
+              className=""
               onClick={() => {
                 toggleModal();
                 setList(() => subjectData.years);
               }}
+              style={{ width: "100%", textAlign: "center" }}
             >
-              <picture className="m-auto">
+              <picture style={{ width: "100%" }}>
                 <source
                   srcSet={`https:${subjectData.subject_image}`}
                   type="image/webp"
@@ -52,7 +53,13 @@ const PastQuestion = () => {
                 <img
                   src={`https:${subjectData.subject_image}`}
                   alt="Landscape picture"
-                  style={{ width: "100px", heigt: "100px" }}
+                  style={{
+                    width: "100px",
+                    heigt: "100px",
+                    // margin: "auto",
+                    // padding: "auto",
+                    textAlign: "center",
+                  }}
                 />
               </picture>
               <p>{subjectData.subject}</p>

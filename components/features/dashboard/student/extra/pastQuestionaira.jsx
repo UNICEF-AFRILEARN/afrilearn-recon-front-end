@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { fetchPastQuestionInitiate } from "../../../../../redux/actions/subject";
 
 const PastQuestion = ({ subData }) => {
+  console.log(subData);
   const dispatch = useDispatch();
   const [subId, setSubId] = useState("");
 
@@ -20,10 +21,39 @@ const PastQuestion = ({ subData }) => {
       slidesToScroll: 1,
       autoplay: true,
       speed: 1500,
-      autoplaySpeed: 1000,
+      autoplaySpeed: 1500,
       cssEase: "linear",
-      initialSlide: 0,
+      initialSlide: 1,
       arrows: false,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 1,
+          },
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            initialSlide: 0,
+          },
+        },
+        {
+          breakpoint: 415,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            initialSlide: 0,
+            autoplay: true,
+            speed: 5500,
+            cssEase: "linear",
+            infinite: true,
+          },
+        },
+      ],
     };
     useEffect(() => {
       console.log(subId);
@@ -35,7 +65,7 @@ const PastQuestion = ({ subData }) => {
     return (
       <>
         {subData?.length > 2 ? (
-          <Slider {...settings} ref={customeSlider}>
+          <Slider {...settings}>
             {subData?.map((data, i) => {
               // console.log(data.pastQuestionTypes[0]);
               return (
@@ -48,7 +78,8 @@ const PastQuestion = ({ subData }) => {
                 >
                   <div
                     key={i}
-                    className={`${
+                    style={{ cursor: "pointer" }}
+                    className={`pointer ${
                       data.pastQuestionTypes[0].categoryId % 2 !== 0
                         ? styles.containerList1
                         : styles.containerList2
@@ -58,7 +89,7 @@ const PastQuestion = ({ subData }) => {
                     }
                   >
                     <div
-                      className={`${
+                      className={`pointer ${
                         data.pastQuestionTypes[0].categoryId % 2 !== 0
                           ? styles.cointainerListLeft1
                           : styles.cointainerListLeft2
@@ -85,7 +116,7 @@ const PastQuestion = ({ subData }) => {
             })}
           </Slider>
         ) : (
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "15px" }}>
+          <div style={{ display: "flex", flexWrap: "wrap" }}>
             {subData?.map((data, i) => {
               // console.log(data.pastQuestionTypes[0]);
               return (
@@ -98,7 +129,8 @@ const PastQuestion = ({ subData }) => {
                 >
                   <div
                     key={i}
-                    className={`${
+                    style={{ cursor: "pointer" }}
+                    className={`pointer ${
                       data.pastQuestionTypes[0].categoryId % 2 !== 0
                         ? styles.containerList1
                         : styles.containerList2
@@ -108,7 +140,7 @@ const PastQuestion = ({ subData }) => {
                     }
                   >
                     <div
-                      className={`${
+                      className={`pointer ${
                         data.pastQuestionTypes[0].categoryId % 2 !== 0
                           ? styles.cointainerListLeft1
                           : styles.cointainerListLeft2

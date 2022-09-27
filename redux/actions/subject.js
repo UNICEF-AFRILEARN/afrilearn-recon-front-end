@@ -143,7 +143,7 @@ export const submitPastQuestionResult = (data, token) => {
       data,
     }).then((res) => {
       // console.log(res);
-      dispatch(storeSubmitPastQuestionResult(res.data.data));
+      dispatch(storeSubmitPastQuestionResult({ results: data }));
     });
   };
 };
@@ -157,7 +157,7 @@ export const submitLessonQuizResult = (data, lessonId, token) => {
       data,
     }).then((res) => {
       console.log(res);
-      dispatch(storeSubmitLessonQuizResult(res.data.data));
+      dispatch(storeSubmitLessonQuizResult({ results: data }));
     });
   };
 };
@@ -353,15 +353,12 @@ export const fetchclearUnFinishedVideos = (data, token) => {
 };
 export const fetchSendClassRequest = (courseId, token) => {
   return function (dispatch) {
-    dispatch(fetchSubjectsStart());
-    axios
-      .post(
-        `https://afrilearn-backend-01.herokuapp.com/api/v1/classes/send-class-request`,
-        { headers: { "Content-type": "application/json", token: token } },
-        { classCode: courseId },
-      )
-
-      // .then((res) => res.json())
+    axios({
+      method: "post",
+      url: `${url}classes/send-class-request`,
+      headers: headers(token),
+      data: { classCode: courseId },
+    })
       .then((res) => {
         dispatch(
           fetchSendClassRequestSuccess(
@@ -376,6 +373,7 @@ export const fetchSendClassRequest = (courseId, token) => {
               ? error.response.data.error
               : error.response.data.errors,
           ),
+          console.log(error),
         );
       });
   };
@@ -417,6 +415,7 @@ export const fetchStudentDetailsInitiate = (classId) => {
 
 export const fetchCourseDetailsInitiate = (courseId, subjectId) => {
   return async function (dispatch) {
+    dispatch(fetchSubjectsDetailsSuccess(""));
     let one = `https://afrilearn-backend-01.herokuapp.com/api/v1/lessons/${courseId}/${subjectId}/subject-basic-details`;
     let two = `https://afrilearn-backend-01.herokuapp.com/api/v1/lessons/${courseId}/${subjectId}/lessons`;
     let three = `https://afrilearn-backend-01.herokuapp.com/api/v1/lessons/${courseId}/${subjectId}/subject-users`;
@@ -437,75 +436,9 @@ export const fetchCourseDetailsInitiate = (courseId, subjectId) => {
         dispatch(fetchSubjectsDetailsSuccess(response));
       }),
     );
-    // .then((err) => {
-    //   console.log(err);
-    // });
   };
 };
 
-// export const fetchSubjectInitiate = (sub_Id, token) => {
-//   return async function (dispatch) {
-//     let one = `https://afrilearn-backend-01.herokuapp.com/api/v1/dashboard/class-membership`;
-//     let three = `https://afrilearn-backend-01.herokuapp.com/api/v1/dashboard/web`;
-//     // let two = `https://afrilearn-backend-01.herokuapp.com/api/v1/dashboard/topTenclass-membership`;
-
-//     dispatch(fetchSubjectsStart());
-//     const requestOne = await axios.post(
-//       one,
-//       { enrolledCourseId: sub_Id },
-//       { headers: { "Content-type": "application/json", token: token } },
-//     );
-//     // const requestTwo = await axios.post(
-//     //   two,
-//     //   { enrolledCourseId: sub_Id },
-//     //   { headers: { "Content-type": "application/json", token: token } },
-//     // );
-//     const requestThree = await axios.post(
-//       three,
-//       { enrolledCourseId: sub_Id },
-//       { headers: { "Content-type": "application/json", token: token } },
-//     );
-
-//     axios.all([requestOne, requestThree]).then(
-//       axios.spread(async function (...responses) {
-//         const responseOne = await responses[0].data.data;
-//         const responseTwo = await responses[1].data.data;
-//         // const responseThree = await responses[2].data.data;
-//         const response = [responseOne, responseTwo];
-//         console.log(response);
-//         dispatch(fetchSubjectsSuccess(response));
-//       }),
-//     );
-//   };
-// };
-
-// export const fetchPastQuestionSubjInitiate = (id) => {
-//   return async function (dispatch) {
-//     let one = `https://api.exambly.com/adminpanel/v2/getMySubjects/${id}`;
-
-//     const requestOne = await axios.get(one, {
-//       headers: {
-//         "Content-type": "application/json",
-//         authorization:
-//           "F0c7ljTmi25e7LMIF0Wz01lZlkHX9b57DFTqUHFyWeVOlKAsKR0E5JdBOvdunpqv",
-//       },
-//     });
-//     axios
-//       .all([requestOne])
-//       .then(
-//         axios.spread(async function (...responses) {
-//           const responseOne = await responses[0].data;
-//           const response = [responseOne];
-//           // console.log(response);
-
-//           dispatch(fetchPastQuestionSubjSuccess(response));
-//         }),
-//       )
-//       .then((error) => {
-//         console.log(error);
-//       });
-//   };
-// };
 export const fetchPastQuestionInitiate = (id) => {
   return async function (dispatch) {
     axios({
