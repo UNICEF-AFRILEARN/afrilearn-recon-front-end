@@ -52,7 +52,7 @@ const Africoin = () => {
               <button>BUY MORE COINS</button>
             </div>
           </div>
-          <div className={`col-md-9 ${styles.buycoinInput}`}>
+          <div className={`col-md-7 ${styles.buycoinInput}`}>
             <div>
               <h5>Buy Africoins</h5>
             </div>

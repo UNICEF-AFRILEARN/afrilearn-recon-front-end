@@ -24,16 +24,16 @@
 .buyCoin h5 {
   font-weight: 600;
 }
-.buyCoin  {
-   margin-left: 7%;
-  }
+.buyCoin {
+  margin-left: 7%;
+}
 .buyCoin button {
   height: 50px;
   width: 80%;
   border-radius: 100px;
   border: none;
   color: #ffffff;
-  background-color:#00D9B6;
+  background-color: #00d9b6;
 }
 .amountCoin2 {
   background: #f1f2f4;
@@ -47,67 +47,68 @@
   margin-bottom: 25%;
   text-align: center;
 }
-.coinInput{
-   width:90% !important;
-    border-radius: 10px;
-    height: 70px;
-    color:#333333;
-    margin: 3% 0 5% 0;
-    border: 2px solid #333333;
-    background-color: #FAFAFA;
-    padding-left: 25%;
-    background: url("../../../../public/assets/img/features/dashboard/student/Group.png") no-repeat scroll 10px 20px  ;
+.coinInput {
+  width: 90% !important;
+  border-radius: 10px;
+  height: 70px;
+  color: #333333;
+  margin: 3% 0 5% 0;
+  border: 2px solid #333333;
+  background-color: #fafafa;
+  padding-left: 25%;
+  background: url("../../../../public/assets/img/features/dashboard/student/Group.png")
+    no-repeat scroll 10px 20px;
 }
-.coinInput2{
-  width:90% !important;
-   border-radius: 10px;
-   height: 70px;
-   color:#333333;
-   margin: 3% 0 5% 0;
-   border: 2px solid #333333;
-   background-color: #FAFAFA;
-   padding-left: 25%;
-   background: url("../../../../public/assets/img/naira.svg") no-repeat scroll 10px 20px  ;
+.coinInput2 {
+  width: 90% !important;
+  border-radius: 10px;
+  height: 70px;
+  color: #333333;
+  margin: 3% 0 5% 0;
+  border: 2px solid #333333;
+  background-color: #fafafa;
+  padding-left: 25%;
+  background: url("../../../../public/assets/img/naira.svg") no-repeat scroll
+    10px 20px;
 }
 
- .coinInputbutton{
-    background-color: #00D9B6;
-border-radius: 100px;
-width:90% !important;
-border: none;
-height: 70px;
-margin-top: 10%;
-color: #ffffff;
- }
- .buycoinInput{
-    background-color: #FAFAFA;
-    width:45%;
-    margin-left: 2%;
-    padding: 3% 5% 10% 5%;
-    border-radius: 10px;
+.coinInputbutton {
+  background-color: #00d9b6;
+  border-radius: 100px;
+  width: 90% !important;
+  border: none;
+  height: 70px;
+  margin-top: 10%;
+  color: #ffffff;
+}
+.buycoinInput {
+  background-color: #fafafa;
+  /* width: 100%; */
+  margin-left: 2%;
+  padding: 3% 5% 10% 5%;
+  border-radius: 10px;
+}
+.buycoinInput h5 {
+  font-weight: 700;
+  margin-bottom: 5%;
+}
+.buycoinInput h4 {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 5%;
+}
 
- }
- .buycoinInput h5{
-    font-weight: 700;
-margin-bottom: 5%;
- }
- .buycoinInput h4{
-    font-weight: 600;
-    font-size: 15px;
-    margin-bottom: 5%;
- }
- 
 .videoheropage {
-    background-image: url("../../../../public/assets/img/classroomheroimg.svg");
-        background-repeat: no-repeat;
-    background-size: cover;
-    height: 50vh;
-    color: #FFFFFF;
-    padding-top: 10%;
+  background-image: url("../../../../public/assets/img/classroomheroimg.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 50vh;
+  color: #ffffff;
+  padding-top: 10%;
 }
-.avatarCoin{
-    background-image: url("../../../../public/assets/img/classavatar.svg");
-    width: 20%;
-height: 100%;
-background-repeat: no-repeat;
+.avatarCoin {
+  background-image: url("../../../../public/assets/img/classavatar.svg");
+  width: 20%;
+  height: 100%;
+  background-repeat: no-repeat;
 }
