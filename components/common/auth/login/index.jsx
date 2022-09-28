@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Form } from "react-bootstrap";
+import { Form, InputGroup } from "react-bootstrap";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import styles from "./login.module.css";
 import Image from "next/image";
 import AppButton from "../../../widgets/buttons/AppButton";
 import { loginInitiate } from "../../../../redux/actions/auth";
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -43,6 +44,8 @@ const Login = () => {
     }
   }, [user]);
 
+  const [seen, setSeen] = useState(false);
+
   return (
     <>
       <div className={styles.floatImg2}>
@@ -68,23 +71,39 @@ const Login = () => {
             <span className={styles.card}>
               <h5 className={`center `}>LOG IN</h5>
               <Form onSubmit={signIn}>
-                <input
-                  type="text"
-                  value={email}
-                  name="email"
-                  onChange={(e) => setEmail(e.target.value)}
-                  title="Email"
-                  placeholder="Email"
-                  className={styles.pushDown}
-                />
-                <input
-                  type="password"
-                  onChange={(e) => setPassword(e.target.value)}
-                  value={password}
-                  name="password"
-                  title="Password"
-                  placeholder="Password"
-                />
+                <InputGroup className="mb-3">
+                  <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
+                  <Form.Control
+                    placeholder="Email"
+                    aria-label="Email"
+                    aria-describedby="basic-addon1"
+                    type="text"
+                    value={email}
+                    name="email"
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="shadow-none"
+                  />
+                </InputGroup>
+                <InputGroup className="mb-3">
+                  <Form.Control
+                    aria-label="password"
+                    aria-describedby="basic-addon1"
+                    type={seen ? "text" : "password"}
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password}
+                    name="password"
+                    title="Password"
+                    placeholder="Password"
+                    className="shadow-none"
+                  />
+                  <InputGroup.Text
+                    id="basic-addon1"
+                    onClick={() => setSeen(!seen)}
+                  >
+                    {seen ? <AiFillEyeInvisible /> : <AiFillEye />}
+                  </InputGroup.Text>
+                </InputGroup>
+
                 <h5>{errorCheck}</h5>
                 <div className={`row ${styles.pushDown1}`}>
                   <div className="col-6">

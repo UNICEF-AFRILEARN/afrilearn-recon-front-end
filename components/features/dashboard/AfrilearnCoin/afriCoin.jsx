@@ -14,7 +14,7 @@ const Africoin = () => {
   return (
     <body>
       <nav className={styles.videoheropage}>
-        <div className={styles.avatarCoin}></div>
+        {/* <div className={styles.avatarCoin}></div> */}
       </nav>
       <div className={`${styles.africoinContainer}`}>
         <div className={`row ${styles.amountContainer}`}>
