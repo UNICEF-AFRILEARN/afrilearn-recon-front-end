@@ -12,6 +12,7 @@ const initialState = {
     classInvite: [],
     newClasswork: [],
     classContents: [],
+    deletedContents: [],
     classSubjects: [],
     classPerformance: [],
     announcementComment:[],
@@ -178,6 +179,23 @@ export const classesReducer = (state = initialState, { type, payload} ) => {
                   loading: false,
                 ...state,
                 error: payload
+            };
+        case types.DELETE_ASSINGED_CLASS_CONTENT_START:
+            return {
+                loading: true,
+                ...state
+            };
+    
+        case types.DELETE_ASSINGED_CLASS_CONTENT_SUCCESS:
+            return {
+                loading: false,
+                deletedContents: payload
+            };
+    
+        case types.DELETE_ASSINGED_CLASS_CONTENT_FAIL:
+              return{
+                  loading: false,
+                  error: payload
             };
         case types.CREATE_CLASS_WORK_START:
             return {

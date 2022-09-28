@@ -5,17 +5,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { Col, Container, Row } from "react-bootstrap";
 import { Heropage } from "../../../../components/features/dashboard/teacher";
 import styles from "../teacher.module.css";
-import { fetchClassAssignedContentInitiate } from "../../../../redux/actions/classes";
+import { fetchClassAssignedContentInitiate, deleteClassAssignedContentInitiate } from "../../../../redux/actions/classes";
 
 const ClassWork = () => {
   const [swap, setSwap] = useState(0);
   const dispatch = useDispatch();
   const [classId, setClassId] = useState("");
-  const { classContents } = useSelector((state) => state.schoolClasses);
+  const { classContents, deletedContents } = useSelector((state) => state.schoolClasses);
   const { user } = useSelector((state) => state.auth);
 
 
-  console.log("classContents ===> ", classContents)
+  // console.log("classContents ===> ", classContents)
  
   useEffect(() => {
     setClassId(user?.user?.classOwnership[0]?.enrolledCourse.classId);
@@ -23,7 +23,8 @@ const ClassWork = () => {
 
   useEffect(() => {
     dispatch(fetchClassAssignedContentInitiate(classId));
-  }, [classId]);
+  }, [classId, deletedContents]);
+ 
   return (
     <>
       <div style={{ marginTop: "-40px" }}>
@@ -94,12 +95,21 @@ const ClassWork = () => {
 export default ClassWork;
 
 const AllSubject = ({ data }) => {
-  const { classContents } = useSelector((state) => state.schoolClasses);
+  const dispatch = useDispatch();
+  const { classContents, deletedContents } = useSelector((state) => state.schoolClasses);
   const { user } = useSelector((state) => state.auth);
 
-  const handleEdit = () => {
-    console.log("Hello there")
+  // const handleEdit = (id) => {
+  // }
+
+  console.log("deletedContents there", deletedContents)
+  
+  const handleDelete = (classworkId) => {
+    console.log("Hello there", classworkId)
+    dispatch(deleteClassAssignedContentInitiate(classworkId))
   }
+
+
   
   return (
     <Col
@@ -128,8 +138,6 @@ const AllSubject = ({ data }) => {
           <Col>
             <Row>
               <p>{content.description}</p>
-              {console.log("content ===>", content.subjectId.mainSubjectId.name
-)}
             </Row>
             <Row>
               <p className="text-secondary">{content.createdAt}</p>
@@ -157,12 +165,16 @@ const AllSubject = ({ data }) => {
                     <Col md={3} className={`ps-2 ${styles.styleEdit}`}></Col>
                     <Col 
                     className="m-auto"
-                    onClick={handleEdit}
+                    onClick={() => handleEdit(content.id)}
                     >Edit</Col>
                   </Row>
                   <Row className="ps-3 pb-2">
                     <Col md={3} className={`ps-2 ${styles.styleDelete}`}></Col>
-                    <Col className="m-auto">Delete</Col>
+                    <Col 
+                    className="m-auto"
+                    onClick={() => handleDelete(content.id)}
+                    // handleDelete
+                    >Delete</Col>
                   </Row>
                 </Col>
               </div>
