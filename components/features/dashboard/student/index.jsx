@@ -47,7 +47,6 @@ const Dashboard = () => {
   // const { registerUser } = useSelector((state) => state.auth);
   const subject = useSelector((state) => state.mySubjectCourse);
 
-
   const userId = "62a0bc984af2d90016b72096";
   const token = user.token;
   const lessonId = "6012c2a7cfe09249249f7f9c";
@@ -119,11 +118,11 @@ const Dashboard = () => {
       <GetSolution />
       <ClassRoom data={subject?.classroom?.classMembership} />
       <div className={styles.recomendationmainwrapper}>
-      <Recommended
-        recommend={reconLesson?.recommendation}
-        unicefRecon={unicefRecon}
-        lessons={lessons}
-      />
+        <Recommended
+          recommend={reconLesson?.recommendation}
+          unicefRecon={unicefRecon}
+          lessons={lessons}
+        />
       </div>
       <RecentActivity activities={activities?.recentActivities} />
     </>
@@ -310,21 +309,13 @@ const MyFavs = ({ classData }) => {
 };
 
 const Recommended = ({ recommend, unicefRecon, lessons }) => {
-<<<<<<< HEAD
-  // console.log("From recommendation COmponent ====>", recommend);
-  // console.log("unicefRecon from recommendation COmponent ====>", unicefRecon);
-  // console.log("lessons From recommendation COmponent ====>", lessons);
-
-=======
-  
   // let reduceRecon = () => {
   //   recommend?.forEach((recon, index) => {
   //     if(index === 3) return
   //   })
   // }
-  
+
   // console.log(" 3reduceRecon From recommendation COmponent ====>", reduceRecon());
->>>>>>> dev
   const reconBucket = [];
   const finalReconLessons = [];
 
@@ -373,15 +364,10 @@ const ClassRoom = ({ data }) => {
   const dispatch = useDispatch();
   const token = user?.token;
 
-<<<<<<< HEAD
-  console.log(token);
-  const handleJoinClass = async () => {
-=======
   //remove async and await
-  const handleJoinClass =  () => {
->>>>>>> dev
+  const handleJoinClass = () => {
     // e.preventDefault();
-    const { value: ipAddress } =  Swal.fire({
+    const { value: ipAddress } = Swal.fire({
       title: "Enter the class code below",
       input: "text",
       inputLabel: "",
