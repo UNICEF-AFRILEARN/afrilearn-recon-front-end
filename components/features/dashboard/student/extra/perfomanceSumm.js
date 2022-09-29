@@ -74,60 +74,44 @@ const  data = {
          </div>
          <div>
          <div className={styles.topmath}>
-         <ul> 
-                <li>Mathematics</li>
-                <li>Civic Education</li>
-                <li>Computer Science </li>
-                <li>Basic Science</li>
-                </ul>
-                <ul>
-                <li>Mathematics</li>
-                <li>Civic Education</li>
-                <li>Computer Science </li>
-                <li>Basic Science</li>
-                </ul>
+                {/* | <span>Mathematics</span> |
+                <span>Civic Education</span> |
+                <span>Computer Science </span> |
+                <span>Basic Science</span> |
+                <span>Mathematics</span> |
+                <span>Civic Education</span> |
+                <span>Computer Science </span> |
+                <span>Basic Science</span> | */}
             </div>
             <div className={styles.topmath}>
-            <ul>
-                <li>Mathematics</li>
-                <li>Civic Education</li>
-                <li>Computer Science </li>
-                <li>Basic Science</li>
-                </ul>
-                <ul>
-                <li>Mathematics</li>
-                <li>Civic Education</li>
-                <li>Computer Science </li>
-                <li>Basic Science</li>
-                </ul>
+                {/* | <span>Mathematics</span> |
+                <span>Civic Education</span> |
+                <span>Computer Science </span> |
+                <span>Basic Science</span> |
+                <span>Mathematics</span> |
+                <span>Civic Education</span> |
+                <span>Computer Science </span> |
+                <span>Basic Science</span> | */}
             </div>
             <div className={styles.topmath}>
-            <ul>
-                <li>Mathematics</li>
-                <li>Civic Education</li>
-                <li>Computer Science </li>
-                <li>Basic Science</li>
-                </ul>
-                <ul>
-                <li>Mathematics</li>
-                <li>Civic Education</li>
-                <li>Computer Science </li>
-                <li>Basic Science</li>
-                </ul>
+                {/* | <span>Mathematics</span> |
+                <span>Civic Education</span> |
+                <span>Computer Science </span> |
+                <span>Basic Science</span> |
+                <span>Mathematics</span> |
+                <span>Civic Education</span> |
+                <span>Computer Science </span> |
+                <span>Basic Science</span> | */}
             </div>
             <div className={styles.topmath}>
-                <ul>
-                <li>Mathematics</li>
-                <li>Civic Education</li>
-                <li>Computer Science </li>
-                <li>Basic Science</li>
-                </ul>
-                <ul>
-                <li>Mathematics</li>
-                <li>Civic Education</li>
-                <li>Computer Science </li>
-                <li>Basic Science</li>
-                </ul>
+                | <span>Mathematics</span> |
+                <span>Civic Education</span> |
+                <span>Computer Science </span> |
+                <span>Basic Science</span> |
+                <span>Mathematics</span> |
+                <span>Civic Education</span> |
+                <span>Computer Science </span> |
+                <span>Basic Science</span> |
             </div>
            
          </div>

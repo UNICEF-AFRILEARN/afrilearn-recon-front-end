@@ -8,9 +8,10 @@ const COLORS = ['#0088FE', '#00C49F'];
 const Permsumpiechart = ({subjectList, outerIndex, subjectPerformance}) => {
 
 
-  let dataTwo = [
-    // ...subjectPerformance,
+  let data = [
+   
     {name: 'test', value: 100 ?? 0},
+    {name: 'test', value: 10 ?? 0},
   ]
   // let totalQuestion = subjectList.totalQuestions
   // let totalQuestionsCorrectAnswered = subjectList.totalQuestionsCorrect
@@ -33,14 +34,14 @@ const Permsumpiechart = ({subjectList, outerIndex, subjectPerformance}) => {
 
     return (
       
-      <PieChart width={200} height={162}>
+      <PieChart width={200} height={192}>
         <Pie
-        //   data={data}
-          cx={85}
-          cy={74}
+          data={data}
+          cx={105}
+          cy={85}
           textAnchor={"middle"}
           innerRadius={60}
-          outerRadius={80}
+          outerRadius={90}
           fill="fill"
           paddingAngle={5}
           dataKey="value"
@@ -55,7 +56,7 @@ const Permsumpiechart = ({subjectList, outerIndex, subjectPerformance}) => {
          fontFamily: "Roboto"
        }}
      />
-          {dataTwo.map((entry, index) => {
+          {data.map((entry, index) => {
       if (index === 0 && outerIndex === 0 ) {
         return <Cell key={`cell-${index}`} fill="red"/>; 
         // make sure to map the outerIndex to the colour you want

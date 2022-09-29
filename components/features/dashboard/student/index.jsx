@@ -115,7 +115,7 @@ const Dashboard = () => {
         classData={subject?.topInclass?.lessons}
         classed={personData.personClass}
       />
-      {/* <PerfomanceSumm />  commented out the performance summary*/} 
+      <PerfomanceSumm /> 
       <GetSolution />
       <ClassRoom data={subject?.classroom?.classMembership} />
       <div className={styles.recomendationmainwrapper}>
