@@ -56,60 +56,7 @@ const StudentProfile = () => {
       >
         <Col>
           <Row className={`mx-auto ${styles.studentProfileGrid}`}>
-            <Col className={`m-auto ${styles.studentProfileAvatar}`}>
-              <Col
-              // style={{
-              //   marginLeft: "6px",
-              //   marginTop: "18px",
-              //   width: "174px",
-              //   height: "174px",
-              //   borderRadius: "90px",
-              //   background: "red",
-              // }}
-              >
-                <picture>
-                  <source
-                    srcSet={
-                      user?.user.profilePhotoUrl
-                        ? user?.user.profilePhotoUrl
-                        : `/assets/img/features/dashboard/student/woman.png`
-                    }
-                    type="image/webp"
-                  />
-                  <img
-                    src={
-                      user?.user.profilePhotoUrl
-                        ? user?.user.profilePhotoUrl
-                        : `/assets/img/features/dashboard/student/woman.png`
-                    }
-                    alt="Flowers"
-                    style={{
-                      marginLeft: "6px",
-                      marginTop: "18px",
-                      width: "174px",
-                      height: "174px",
-                      borderRadius: "90px",
-                      // background: "red",
-                    }}
-                  />
-                </picture>
-                {/* <Image
-                  alt={"afrilearn marketing video"}
-                  src={
-                    user?.user.profilePhotoUrl
-                      ? user?.user.profilePhotoUrl
-                      : `/assets/img/features/dashboard/student/woman.png`
-                  }
-                  width="174px"
-                  height="174px"
-                  style={{
-                    marginLeft: "0px",
-                    marginTop: "0px",
-                    borderRaduis: "20px",
-                  }}
-                /> */}
-              </Col>
-            </Col>
+            <ProfilePicture user={user} />
             <Col className={styles.studentProfileInfo}>
               <Row className="p-4">
                 <Row>
@@ -574,3 +521,39 @@ const StudentProfile = () => {
 };
 
 export default StudentProfile;
+
+export const ProfilePicture = ({ user }) => {
+  return (
+    <Row>
+      <Col className={`m-auto ${styles.studentProfileAvatar}`}>
+        <Col>
+          <picture>
+            <source
+              srcSet={
+                user?.user.profilePhotoUrl
+                  ? user?.user.profilePhotoUrl
+                  : `/assets/img/features/dashboard/student/woman.png`
+              }
+              type="image/webp"
+            />
+            <img
+              src={
+                user?.user.profilePhotoUrl
+                  ? user?.user.profilePhotoUrl
+                  : `/assets/img/features/dashboard/student/woman.png`
+              }
+              alt="Flowers"
+              style={{
+                marginLeft: "6px",
+                marginTop: "18px",
+                width: "174px",
+                height: "174px",
+                borderRadius: "90px",
+              }}
+            />
+          </picture>
+        </Col>
+      </Col>
+    </Row>
+  );
+};

@@ -129,6 +129,17 @@ const Classcontentcard = ({ contentId, course_sorted, classId }) => {
                     {first_term_course.title}
                   </h6>
                   <ul>
+                    {first_term_course.videoUrls.map((data, i) => (
+                      <Link
+                        passHref
+                        href={{
+                          pathname: "/dashboard/student/video/videoPage/",
+                          query: [first_term_course.id, data._id],
+                        }}
+                      >
+                        <li>Lesson {i + 1}</li>
+                      </Link>
+                    ))}
                     <Link
                       passHref
                       href={{
@@ -138,7 +149,16 @@ const Classcontentcard = ({ contentId, course_sorted, classId }) => {
                     >
                       <li>Class note</li>
                     </Link>
-                    <li>Practice quiz</li>
+                    {first_term_course.questions.length > 0 && (
+                      <Link
+                        href={{
+                          pathname: "/quiz",
+                          query: [first_term_course.id],
+                        }}
+                      >
+                        <li>Practice quiz</li>
+                      </Link>
+                    )}
                     {/* <li 
                               onClick={() => playVideo(first_term_course.termId)}>Video link
                           </li> */}
@@ -176,11 +196,37 @@ const Classcontentcard = ({ contentId, course_sorted, classId }) => {
                   {second_term_course.title}
                 </h6>
                 <ul>
-                  <li>Class note</li>
-                  <li>Practice quiz</li>
-                  <li onClick={playVideo(second_term_course.courseId)}>
-                    Video link
-                  </li>
+                  {second_term_course.videoUrls.map((data, i) => (
+                    <Link
+                      passHref
+                      href={{
+                        pathname: "/dashboard/student/video/videoPage/",
+                        query: [second_term_course.id, data._id],
+                      }}
+                    >
+                      <li>Lesson {i + 1}</li>
+                    </Link>
+                  ))}
+                  <Link
+                    passHref
+                    href={{
+                      pathname: "/dashboard/student/classnote/classnotePage",
+                      query: [second_term_course.id],
+                    }}
+                  >
+                    <li>Class note</li>
+                  </Link>
+
+                  {second_term_course.questions.length > 0 && (
+                    <Link
+                      href={{
+                        pathname: "/quiz",
+                        query: [second_term_course.id],
+                      }}
+                    >
+                      <li>Practice quiz</li>
+                    </Link>
+                  )}
                 </ul>
               </div>
             ))}
@@ -213,8 +259,36 @@ const Classcontentcard = ({ contentId, course_sorted, classId }) => {
                   {third_term_course.title}
                 </h6>
                 <ul>
-                  <li>Class note</li>
-                  <li>Practice quiz</li>
+                  {third_term_course.videoUrls.map((data, i) => (
+                    <Link
+                      passHref
+                      href={{
+                        pathname: "/dashboard/student/video/videoPage/",
+                        query: [third_term_course.id, data._id],
+                      }}
+                    >
+                      <li>Lesson {i + 1}</li>
+                    </Link>
+                  ))}
+                  <Link
+                    passHref
+                    href={{
+                      pathname: "/dashboard/student/classnote/classnotePage",
+                      query: [third_term_course.id],
+                    }}
+                  >
+                    <li>Class note</li>
+                  </Link>
+                  {third_term_course.questions.length > 0 && (
+                    <Link
+                      href={{
+                        pathname: "/quiz",
+                        query: [third_term_course.id],
+                      }}
+                    >
+                      <li>Practice quiz</li>
+                    </Link>
+                  )}
                   {/* <li 
                                onClick={() => {playVideo(`${third_term_course.videoUrls[0]?.videoUrl}`); setTerm_id_for_video( third_term_course.termId)}}>Video link
                           </li> */}
