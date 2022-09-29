@@ -8,11 +8,14 @@ import { useSelector } from 'react-redux';
 
 
 
-const recommendation = ({ dataRecon, recData }) => {
+const recommendation = ({ dataRecon, recData, recIndex }) => {
   const [show, setShow] = useState(false);
   const toggleModal = () => setShow(!show);
 
-  console.log("From recommendation UI ===>", recData);
+  // const filterRecon = () => {
+
+  // }
+
   
   return (
     <>
@@ -21,7 +24,7 @@ const recommendation = ({ dataRecon, recData }) => {
           <div className={`${styles.contList}`}>
             <Image
               alt={"afrilearn marketing video"}
-              // src={dataRecon.recommended.thumbnailUrl}
+              src="/assets/img/thumbnail.jpg"
               width={240}
               height={160}
               className={styles.rectBox}

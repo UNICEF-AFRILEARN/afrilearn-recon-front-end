@@ -115,7 +115,7 @@ const Dashboard = () => {
         classData={subject?.topInclass?.lessons}
         classed={personData.personClass}
       />
-      <PerfomanceSumm />
+      {/* <PerfomanceSumm />  commented out the performance summary*/} 
       <GetSolution />
       <ClassRoom data={subject?.classroom?.classMembership} />
       <div className={styles.recomendationmainwrapper}>
@@ -305,8 +305,11 @@ const Recommended = ({ recommend, unicefRecon, lessons }) => {
 
           <div className={`${styles.contai}`}>
             <section className="parnet-frag-color">
-              {unicefRecon?.map((recData) => (
-                <Recommendation recData={recData} />
+              {unicefRecon?.map((recData, index) => (
+                <Recommendation 
+                recData={recData}
+                recIndex={index}
+                 />
               ))}
             </section>
           </div>

@@ -11,6 +11,7 @@ import {
 } from 'chart.js';
 
 import { Doughnut } from "react-chartjs-2"
+import Permsumpiechart from './permsumpiechart';
 
 ChartJs.register(
     ArcElement,
@@ -62,7 +63,8 @@ const  data = {
          <div className={styles.parentcontainer}>
         
          <div className={styles.chartcard}>
-            <Doughnut data={data} width={300} height={300} options={options} />
+            {/* <Doughnut data={data} width={300} height={300} options={options} /> */}
+            <Permsumpiechart />
          </div>
          <div className={styles.bardetails}>
             <h5 className={styles.colorone}>Excelling In</h5>
