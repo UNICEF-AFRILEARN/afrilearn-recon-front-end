@@ -46,13 +46,7 @@ const Dashboard = () => {
   const { user, registerUser } = useSelector((state) => state.auth);
   // const { registerUser } = useSelector((state) => state.auth);
   const subject = useSelector((state) => state.mySubjectCourse);
-  console.log("subject, subject", subject);
 
-  console.log(
-    "Register registerUser from dashboard INDEX =====>",
-    registerUser.user,
-  );
-  console.log("unicefRecon from dashboard INDEX =====>", unicefRecon);
 
   const userId = "62a0bc984af2d90016b72096";
   const token = user.token;
@@ -98,8 +92,6 @@ const Dashboard = () => {
     fetchTopInClassInitiate,
     fetchClassMember,
   ]);
-
-  console.log("activities from Dashboard index call ====>", activities);
 
   return (
     <>
@@ -318,10 +310,21 @@ const MyFavs = ({ classData }) => {
 };
 
 const Recommended = ({ recommend, unicefRecon, lessons }) => {
+<<<<<<< HEAD
   // console.log("From recommendation COmponent ====>", recommend);
   // console.log("unicefRecon from recommendation COmponent ====>", unicefRecon);
   // console.log("lessons From recommendation COmponent ====>", lessons);
 
+=======
+  
+  // let reduceRecon = () => {
+  //   recommend?.forEach((recon, index) => {
+  //     if(index === 3) return
+  //   })
+  // }
+  
+  // console.log(" 3reduceRecon From recommendation COmponent ====>", reduceRecon());
+>>>>>>> dev
   const reconBucket = [];
   const finalReconLessons = [];
 
@@ -370,10 +373,15 @@ const ClassRoom = ({ data }) => {
   const dispatch = useDispatch();
   const token = user?.token;
 
+<<<<<<< HEAD
   console.log(token);
   const handleJoinClass = async () => {
+=======
+  //remove async and await
+  const handleJoinClass =  () => {
+>>>>>>> dev
     // e.preventDefault();
-    const { value: ipAddress } = await Swal.fire({
+    const { value: ipAddress } =  Swal.fire({
       title: "Enter the class code below",
       input: "text",
       inputLabel: "",

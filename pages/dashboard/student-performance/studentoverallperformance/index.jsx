@@ -20,14 +20,11 @@ import Becechart from '../bece';
 const Studentoverallperformance = ({studentPerformance, userId}) => {
     const { user} = useSelector((state) => state.auth)
     const {children} = useSelector(state => state.parentR);
-    // let pastQuestionPerformance = studentPerformance?.data?.examsList;
-    // let subjectPerformance = studentPerformance?.data?.subjectsList;
-  // const result = Object?.values(classDetails);
-  const [showPanel, setShowPanel] = useState(false);
-  const [data, setData] = useState([]);
-  const [dataTwo, setDataTwo] = useState([]);
-  const [panelId, setPanelId] = useState(1);
-  // const [subjectList, setSubjectList] = useState('')
+    const [showPanel, setShowPanel] = useState(false);
+    const [data, setData] = useState([]);
+    const [dataTwo, setDataTwo] = useState([]);
+    const [panelId, setPanelId] = useState(1);
+ 
 
 
   let subjectPerformance = studentPerformance?.data?.subjectsList
@@ -44,7 +41,6 @@ const Studentoverallperformance = ({studentPerformance, userId}) => {
   
   filterChild()
 
-  console.log("subjectPerformance from childPerformance ===>", subjectPerformance)
 
   const displayPanel = () => {
     if(panelId === 1){
@@ -96,13 +92,7 @@ const Studentoverallperformance = ({studentPerformance, userId}) => {
           </div>
         </div>
         <div >
-            {/* <div className={styles.innerwrapper}>
-              <div className={styles.studentnamewrapper}>
-                  <h2>{currentStudent[0]?.userId.fullName}</h2>
-                    <p>{currentStudent[0]?.userId.email}</p>
-                  <h3>JSS 1</h3>
-              </div>
-          </div> */}
+   
           <div className={styles.barinnerwrapper}>
             <div>
               <h3>Progress</h3>
@@ -155,7 +145,7 @@ const Studentoverallperformance = ({studentPerformance, userId}) => {
               </ul>
           </div>
             {/* { !subjectPerformance || !pastQuestionPerformance?  */}
-            { !user || !user? 
+            { !subjectPerformance? 
             <div className={styles.spinnerwrapper}>
                 <Spinner />
             </div> :

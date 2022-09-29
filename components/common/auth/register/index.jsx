@@ -11,9 +11,12 @@ import { Button, Modal } from 'react-bootstrap';
 import { fetchRoles, registerUserInitiate } from "../../../../redux/actions/auth";
 import Router, { useRouter } from 'next/router'
 import { fetchSubjectsInitiate } from '../../../../redux/actions/subjects';
+import {BsChevronDown} from 'react-icons/bs'
+import Registeralert from './registeralert'
+import Spinner from '../../../../components/widgets/spinner/index'
 
 const Register = (props) => {
-  const { user, registerUser } = useSelector(state => state.auth);
+  const { user, registerUser, error } = useSelector(state => state.auth);
   const { subjects} = useSelector(state => state.mySubject);
   const [roleSelected, setRoleSelected] = useState('');
   const [role, setRole] = useState('');
@@ -36,14 +39,13 @@ const Register = (props) => {
 
   const [fullscreen, setFullscreen] = useState(true);
   const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const rolesCollected = useSelector((state) => state.auth)
   const { allSubjects } = useSelector((state) => state.mySubject)
   const dispatch = useDispatch()
   
-  function handleShow(breakpoint) {
-    setFullscreen(breakpoint);
-    setShow(true);
-  }
   
   // const profile = {}
   const rolesContext = rolesCollected.roles.roles;
@@ -56,7 +58,7 @@ let filteredSub = []
   }
 
 
-console.log("Filtered ====>", allSubjects)
+// console.log("registerUser.message ====>", registerUser)
   const getRoleId = () => {
       if (roleSelected === "Student") {
          setRole("5fd08fba50964811309722d5")
@@ -113,11 +115,9 @@ console.log("Filtered ====>", allSubjects)
 
   //function to filter subjects:
 sortSubjects(allSubjects, courseId)
-console.log("courseId =======>", courseId)
 
   const handleRegisterRequest = (e) => {
     e.preventDefault()
-    console.log("courseCategoryId ===>", course, courseCategoryId)
      dispatch(registerUserInitiate(
       fullName, 
       email, 
@@ -131,18 +131,17 @@ console.log("courseId =======>", courseId)
       courseCategoryId,
       referral
       ))
-
-      if(role === "5fd08fba50964811309722d5" && Object.keys(registerUser).length > 0){
-         Router.push('/dashboard/student')
-      }else if(role === '602f3ce39b146b3201c2dc1d' && Object.keys(registerUser).length > 0){
-         Router.push('/dashboard/teacher' )
-      }else if(role === '606ed82e70f40e18e029165e' && Object.keys(registerUser).length > 0){
-         Router.push('/dashboard/parent')
-      }else if(role === '607ededa2712163504210684' && Object.keys(registerUser).length > 0){
-         Router.push('/school')
+      if(registerUser){
+         setShow(true)
+        // await Router.push('/login')
       }
+      if(!registerUser){
+         setShow(true)
+      }
+      
     
   }
+
 
 
   useEffect(() => {
@@ -156,11 +155,11 @@ console.log("courseId =======>", courseId)
 useEffect(() => {
   dispatch(fetchSubjectsInitiate())
   
-}, [])
+}, [registerUser])
 
-useEffect(() => {
-  dispatch(fetchSubjectsInitiate())
-}, [])
+// useEffect(() => {
+//   dispatch(fetchSubjectsInitiate())
+// }, [])
 
   useEffect(() => {
    getRoleId();
@@ -173,31 +172,28 @@ useEffect(() => {
   return (
 
     <>
-      <div className={styles.floatImg1}><Image alt={"design image"} src={'/assets/img/common/login/HalfCircleBlack.svg'} width={86} height={200}/></div>
+      {/* <div className={styles.floatImg1}><Image alt={"design image"} src={'/assets/img/common/login/HalfCircleBlack.svg'} width={86} height={200}/></div> */}
       <div className={styles.floatImg2}><Image alt={"design image"} src={'/assets/img/common/login/HalfCircleWhite.png'} width={150} height={90} /></div>
       <div className={styles.floatImg3}><Image alt={"design image"} src={'/assets/img/common/login/HalfCircleWhite.png'} width={150} height={90} /></div>
       <div className="container-fluid">
-      <Modal show={show}  onHide={() => setShow(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title className='modal-title-style'>Registration Successful</Modal.Title>
-        </Modal.Header>
-        <Modal.Body className='modal-body-style'>Your Afrilearn account has been created successfully</Modal.Body>
-      </Modal>
         <div className="row ">
-          {/* <div className={styles.logoregisterform}> <Image alt={"logo image"} src={'/assets/img/logo.PNG'} width={200} height={50}/> </div> */}
           <div className='card-container-form' >
             <span className={styles.card}>
               <h5 className="center">CREATE AN ACCOUNT</h5>
-              <form onSubmit={handleRegisterRequest}>
+              {!rolesCollected? 
+              <Spinner /> :
+                <form onSubmit={handleRegisterRequest}>
                   <select
                     value={roleSelected}
                     onChange={(e) => setRoleSelected(e.target.value)}
                     className={`${styles.pushDown} form-control form-control-sm`}
                     defaultValue={"default"}
                     >
+                    
                       <option value={"default"}>
                          Select a Role
                       </option>
+                      
            
                       {rolesContext && rolesContext.map((role) => 
                       <option  
@@ -249,7 +245,7 @@ useEffect(() => {
                   onChange={(e) => setFullName(e.target.value)} 
                   title='Full Name' 
                   placeholder='Full Name' 
-                  className={styles.pushDown} 
+                  className={`${styles.pushDown} ${styles.otherinputs}`}
                 />
                   { role === '607ededa2712163504210684' &&
                     <input 
@@ -259,14 +255,14 @@ useEffect(() => {
                     onChange={(e) => setSchoolName(e.target.value)} 
                     title='schoolName' 
                     placeholder='School Name' 
-                    className={styles.pushDown} 
+                    className={`${styles.pushDown} ${styles.otherinputs}`}
                   />
                   }
                    { role === '607ededa2712163504210684' &&
 
                       <select 
                           onChange={(e) => setCourse(e.target.value)}
-                          className={`${styles.pushDown} form-control form-control-sm`}
+                          className={`${styles.pushDown} ${styles.otherinputs}form-control form-control-sm`}
                           defaultValue={"default"}
                           >
                             <option value={"default"}>
@@ -290,7 +286,7 @@ useEffect(() => {
                   onChange={(e) => setPhoneNumber(e.target.value)} 
                   title='Phone Number' 
                   placeholder='Phone Number' 
-                  className={styles.pushDown} 
+                  className={`${styles.pushDown} ${styles.otherinputs}`}
                   
                 />
                 <input 
@@ -300,7 +296,7 @@ useEffect(() => {
                   onChange={(e) => setEmail(e.target.value)} 
                   title='Email' 
                   placeholder='Email' 
-                  className={styles.pushDown} 
+                  className={`${styles.pushDown} ${styles.otherinputs}`}
                   
                 />
                 <input 
@@ -310,6 +306,7 @@ useEffect(() => {
                   onChange={(e) => setPassword(e.target.value)} 
                   title='Password' 
                   placeholder='Password' 
+                  className={`${styles.pushDown} ${styles.otherinputs}`}
                 />
                 <input 
                   name={'confirmPassword'} 
@@ -317,6 +314,7 @@ useEffect(() => {
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)} title='Confirm Password' 
                   placeholder='Confirm Password' 
+                  className={`${styles.pushDown} ${styles.otherinputs}`} 
                 />
                 <input 
                   name={'referralCode'}
@@ -324,7 +322,7 @@ useEffect(() => {
                   type='text' 
                   onChange={(e) => setReferral(e.target.value)} title='Referral Code' 
                   placeholder='Referral Code (optional)' 
-                  className={`${styles.pushDown} ${styles.pushUp}`} 
+                  className={`${styles.pushDown} ${styles.pushUp} ${styles.otherinputs}`} 
                 />
                 <p>By signing up, you agree to our <Link passHref href='/'><b>Terms and Privacy Policy</b></Link></p>
                 <div className={`row ${styles.pushDown1}`}>
@@ -340,12 +338,18 @@ useEffect(() => {
                   </div>
                 </div>
                 
-              </form>
+              </form>}
             </span>
             <p className={`center ${styles.afterSocialText}`}>Already have an account? <Link passHref href='/login'><b>Log In</b></Link></p>
           </div>
           <div className="col-md-4">   </div>
         </div>
+        <Registeralert
+        handleClose={handleClose}
+        handleShow={handleShow}
+        error={error}
+        show={show}
+         />
       </div>
     </>
   )

@@ -5,20 +5,35 @@ import { useDispatch, useSelector } from "react-redux";
 import { Col, Container, Row } from "react-bootstrap";
 import { Heropage } from "../../../../components/features/dashboard/teacher";
 import styles from "../teacher.module.css";
-import { fetchClassAssignedContentInitiate } from "../../../../redux/actions/classes";
+import {
+  fetchClassAssignedContentInitiate,
+  deleteClassAssignedContentInitiate,
+} from "../../../../redux/actions/classes";
 
 const ClassWork = () => {
   const [swap, setSwap] = useState(0);
   const dispatch = useDispatch();
   const [classId, setClassId] = useState("");
-  const { classContents } = useSelector((state) => state.schoolClasses);
+  const { classContents, deletedContents } = useSelector(
+    (state) => state.schoolClasses,
+  );
   const { user } = useSelector((state) => state.auth);
 
-  console.log("classContents from classwork", classContents);
   console.log(
-    "classContents.subjectId from classwork",
+    "classContents from sidebar===> ",
     classContents?.assignedContents,
   );
+
+  let subjectTopics = [];
+  const mappedSubjects = () => {
+    classContents?.assignedContents?.map((subTopic) =>
+      subjectTopics.push(subTopic.subjectId.mainSubjectId.name),
+    );
+  };
+
+  mappedSubjects();
+
+  let subSets = [...new Set(subjectTopics)];
 
   useEffect(() => {
     setClassId(user?.user?.classOwnership[0]?.enrolledCourse.classId);
@@ -26,7 +41,8 @@ const ClassWork = () => {
 
   useEffect(() => {
     dispatch(fetchClassAssignedContentInitiate(classId));
-  }, [classId]);
+  }, [classId, deletedContents]);
+
   return (
     <>
       <div style={{ marginTop: "-40px" }}>
@@ -52,9 +68,12 @@ const ClassWork = () => {
                 }}
                 className={`text-secondary ${styles.scoreeffect1}`}
               >
-                <p style={swap === 1 ? { color: "#00d9b6" } : {}}>
-                  Mathematics
-                </p>
+                {subSets &&
+                  subSets.map((contenClass, index) => (
+                    <p style={swap === index + 1 ? { color: "#00d9b6" } : {}}>
+                      {contenClass}
+                    </p>
+                  ))}
               </Row>
             </div>
           </Col>
@@ -97,8 +116,20 @@ const ClassWork = () => {
 export default ClassWork;
 
 const AllSubject = ({ data }) => {
-  const { classContents } = useSelector((state) => state.schoolClasses);
+  const dispatch = useDispatch();
+  const { classContents, deletedContents } = useSelector(
+    (state) => state.schoolClasses,
+  );
   const { user } = useSelector((state) => state.auth);
+
+  const getFullContent = (id) => {
+    console.log("obje received", id);
+  };
+
+  //logic to delete class content:
+  const handleDelete = (classworkId) => {
+    dispatch(deleteClassAssignedContentInitiate(classworkId));
+  };
 
   return (
     <Col
@@ -124,12 +155,19 @@ const AllSubject = ({ data }) => {
               height={54}
             />
           </Col>
-          <Col>
+          <Col
+            className="d-flex justify-content-between"
+            onClick={() => getFullContent(content.id)}
+          >
             <Row>
               <p>{content.description}</p>
             </Row>
             <Row>
-              <p className="text-secondary">{content.createdAt}</p>
+              {content.dueDate ? (
+                <p className="text-secondary">Due {content.dueDate}</p>
+              ) : (
+                <p className="text-secondary">No Due Date</p>
+              )}
             </Row>
           </Col>
           <Col md={2}>
@@ -144,7 +182,7 @@ const AllSubject = ({ data }) => {
                   background: "#FFFFFF",
                   boxShadow: "0px 1px 7px rgba(0, 0, 0, 0.1)",
                   borderRadius: "10px",
-                  position: "absolute",
+                  // position: "absolute",
                   right: "150px",
                 }}
                 className={styles.displayNone}
@@ -152,11 +190,22 @@ const AllSubject = ({ data }) => {
                 <Col className={`p-3 ps-3 `}>
                   <Row className="ps-3 pb-2">
                     <Col md={3} className={`ps-2 ${styles.styleEdit}`}></Col>
-                    <Col className="m-auto">Edit</Col>
+                    <Col
+                      className="m-auto"
+                      onClick={() => handleEdit(content.id)}
+                    >
+                      Edit
+                    </Col>
                   </Row>
                   <Row className="ps-3 pb-2">
                     <Col md={3} className={`ps-2 ${styles.styleDelete}`}></Col>
-                    <Col className="m-auto">Delete</Col>
+                    <Col
+                      className="m-auto"
+                      onClick={() => handleDelete(content.id)}
+                      // handleDelete
+                    >
+                      Delete
+                    </Col>
                   </Row>
                 </Col>
               </div>

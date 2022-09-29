@@ -11,7 +11,12 @@ import { persistGate } from "redux-persist/integration/react";
 import Darkmode from 'darkmode-js';
  
 function MyApp({ Component, pageProps }) {
-  new Darkmode().showWidget();
+  const options = {
+    label: '🌓', // default: ''
+    autoMatchOsTheme: true // default: true
+  }
+  const darkmode = new Darkmode(options);
+  darkmode.showWidget();
   
   return (
     <Provider store={store}>

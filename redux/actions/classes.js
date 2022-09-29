@@ -69,6 +69,17 @@ export const fetchClassAssingedContentFail = (error) => ({
     type: types.FETCH_ASSINGED_CLASS_CONTENT_FAIL,
     payload: error
 });
+export const deleteClassAssingedContentStart = () => ({
+    type: types.DELETE_ASSINGED_CLASS_CONTENT_START
+});
+export const deleteClassAssingedContentSuccess = (payload) => ({
+    type: types.DELETE_ASSINGED_CLASS_CONTENT_SUCCESS,
+    payload
+});
+export const deleteClassAssingedContentFail = (error) => ({
+    type: types.DELETE_ASSINGED_CLASS_CONTENT_FAIL,
+    payload: error
+});
 export const fetchClassSubjectsStart = () => ({
     type: types.FETCH_CLASS_SUBJECTS_START
 });
@@ -230,7 +241,6 @@ export const fetchAnnouncementInitiate = (classId) =>  {
         axios
         .get(`https://afrilearn-backend-01.herokuapp.com/api/v1/classes/${classId}/announcements`)
         .then((res) => {
-            console.log("From Get announcement API =>", res.data.data)
             dispatch(fetchAnnouncementSuccess(res.data.data))
         })
         .catch((err) => {
@@ -300,11 +310,24 @@ export const fetchClassAssignedContentInitiate = (classId) =>  {
         axios
         .get(`https://afrilearn-backend-01.herokuapp.com/api/v1/classes/${classId}/assigned-contents`)
         .then((res) => {
-            console.log("From Get class members API =>", res.data.data)
             dispatch(fetchClassAssingedContentSuccess(res.data.data))
         })
         .catch((err) => {
-            dispatch(fetchClassAssingedContentFail(err))
+            dispatch(fetchClassAssingedContentFail(err.response.data))
+        } )
+    }
+
+}
+export const deleteClassAssignedContentInitiate = (classworkId) =>  {
+    return function (dispatch) {
+        dispatch(deleteClassAssingedContentStart())
+        axios
+        .delete(`https://afrilearn-backend-01.herokuapp.com/api/v1/classes/assigned-content/${classworkId}`)
+        .then((res) => {
+            dispatch(deleteClassAssingedContentSuccess(res.data.data))
+        })
+        .catch((err) => {
+            dispatch(deleteClassAssingedContentFail(err.response.data))
         } )
     }
 

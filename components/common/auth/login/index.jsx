@@ -12,7 +12,11 @@ import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth);
+  const { user, error } = useSelector((state) => state.auth);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const [errorCheck, setErrorCheck] = useState("");
 
@@ -20,18 +24,17 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const router = useRouter();
 
-  console.log("error", user);
+  // console.log("error", error.status);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const res = await signIn("credentials", {
-    //   email,
-    //   password,
-    //   redirect: false
-    // })
-
-    // console.log(res)
     dispatch(loginInitiate(email, password));
+    if (user) {
+      await setShow(true);
+    }
+    if (!user) {
+      await setShow(true);
+    }
   };
 
   useEffect(() => {
@@ -173,6 +176,12 @@ const Login = () => {
           </div>
           <div className="col-md-4"> </div>
         </div>
+        <Loginalert
+          handleClose={handleClose}
+          handleShow={handleShow}
+          show={show}
+          error={error}
+        />
       </div>
     </>
   );

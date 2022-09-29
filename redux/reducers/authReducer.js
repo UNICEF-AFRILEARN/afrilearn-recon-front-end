@@ -83,6 +83,7 @@ const initialState = {
     teachers: 0,
     allUsers: 0,
     registerUser: [],
+    error: []
 };
 
 
@@ -98,11 +99,6 @@ const authReducer = (state = initialState, {type, payload}) => {
                 user: payload
             }
             case types.LOGIN_USER_FAIL:
-          case types.LOGOUT_ACTION_SUCCESS:
-              return {
-
-                initialState
-              }
             return {
                 ...state,
                 error: payload

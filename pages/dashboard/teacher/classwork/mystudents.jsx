@@ -26,6 +26,7 @@ const MyStudent = () => {
 
   console.log("user",user.token)
   let token = user.token
+  
   //Navigate to performance:
   const goToPerformance = (id) => {
     setUserId(id)

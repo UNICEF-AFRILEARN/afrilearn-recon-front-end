@@ -135,8 +135,8 @@
 .leftwrapper {
     background-color: rgb(138, 128, 128);
     margin-bottom: 10%;
-    height: 50%;
-    padding-bottom: 20%;
+    /* height: 30%; */
+    padding-bottom: 5%;
     border-radius: 5%;
 }
 

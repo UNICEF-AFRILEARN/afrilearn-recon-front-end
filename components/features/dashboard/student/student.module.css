@@ -10,6 +10,30 @@
   margin: 0;
   border-radius: 5px 5px 0 0;
 }
+.corsedetailswrapper {
+  display: flex;
+  justify-content: space-around;
+  width: 90%;
+}
+
+.corsedetailswrappertwo{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.corsedetailswrappertwo .iconswrapper {
+  background-color: grey;
+  color: #fff;
+}
+
+.iconswrapper {
+  background-color: #fff;
+  color: #000;
+  border-radius: 50px;
+  padding: 10px;
+  margin-right: 5px;
+}
 
 .innerwrapperrecon {
   background-color: blue;
