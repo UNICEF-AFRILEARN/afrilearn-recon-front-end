@@ -3,24 +3,55 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { Navbar, Container, Nav } from "react-bootstrap";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
+import Toggle from "../../widgets/toggle/index";
 import { BsSearch, BsBell } from "react-icons/bs";
+
 import { BiDownArrow } from "react-icons/bi";
 import { AiOutlineSafetyCertificate } from "react-icons/ai";
 import styles from "./mainNavigation.module.css";
 import AppButton from "../../widgets/buttons/AppButton";
+import { persistor } from "../../../redux/store";
 
 import { BsPersonCircle } from "react-icons/bs";
 
 const Navigation = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [userRole, setUserRole] = useState("");
   const { user, registerUser } = useSelector((state) => state.auth);
 
-  const handleLogout = () => {};
+  let localData;
+  const checkoLocal = () => {
+    if (typeof window !== "undefined") {
+      localData = JSON.parse(localStorage.getItem("persist:root"));
+    }
+    return localData;
+  };
+  // const handleLogout = () => {
+  //   window.localStorage.removeItem('')
+  //   router.push('/login')
 
-  console.log("From main navebar", user?.user?.classOwnership);
+  // }
+
+  const handleLogout = async () => {
+    persistor.purge();
+    // router.push({
+    //   pathname: '/auth/login',
+    // },
+    // undefined, { shallow: true }
+    // )
+
+    let locals = checkoLocal();
+    // if(locals === null){
+    signIn();
+    window.history.pushState(null, "login", "/login");
+    // router.push('/login')
+    // }
+  };
+
   useEffect(() => {
     const roleId =
       user?.user?.role || registerUser?.user?.role || user?.user?.id;
@@ -29,11 +60,12 @@ const Navigation = () => {
 
   return (
     <Navbar
-      bg="light"
+      // bg="light"
       expand="lg"
       fixed="top"
       collapseOnSelect
-      style={{ backgroundColor: "#FDFDFD !important" }}
+      // style={{ backgroundColor: "#FDFDFD !important" }}
+      // className="mainNavbar"
     >
       <Navbar.Brand>
         <Link passHref href="/">
@@ -45,6 +77,9 @@ const Navigation = () => {
         </Link>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      {/* <Toggle /> */}
+
+      {/* <DarkModeToggle /> */}
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">
           {/* <div className='main-navbar-with-login'> */}
@@ -57,7 +92,7 @@ const Navigation = () => {
                 <Link passHref href="/dashboard/student">
                   <li>Dashboard</li>
                 </Link>
-                <Link passHref href="/dashboard/student">
+                <Link passHref href="/dashboard/student-performance">
                   <li>Performance Analysis</li>
                 </Link>
                 <Link passHref href="/payment">
@@ -93,9 +128,7 @@ const Navigation = () => {
                   </Link>
                   <div className={styles.linkswrapper}>
                     <a href="/payment">Add New class</a>
-                    <Link href="/dashboard/socialfeeds">
-                      <a>My Feeds</a>
-                    </Link>
+                    <a href="#">My Feeds</a>
                     <Link href="/dashboard/student/studentProfile">
                       <a>Manage Profile</a>
                     </Link>
@@ -293,6 +326,7 @@ const Navigation = () => {
             userRole !== "602f3ce39b146b3201c2dc1d" &&
             userRole !== "607ededa2712163504210684" && (
               <div>
+                {/* implementing next.auth */}
                 <Link href="/login">
                   <button className={styles.btnlogin}>Login</button>
                 </Link>

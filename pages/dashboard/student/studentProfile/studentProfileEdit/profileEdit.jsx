@@ -1,6 +1,5 @@
 import {
   useState,
-  // MouseEvent
 } from "react";
 import styles from "../../../../../components/common/homepage/homepage.module.css";
 import SelectionSection from "./selectionSection";

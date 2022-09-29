@@ -9,7 +9,11 @@
   position: relative;
   padding-bottom: 20px;
 }
-
+.subheadings {
+  position: absolute;
+  bottom: -100px;
+  left: 150px;
+}
 .heroheader {
   /* position: absolute; */
   text-align: start;
@@ -86,4 +90,12 @@
 .titlehoder {
   text-align: center;
   padding-left: 20%;
+}
+
+@media screen and (max-width: 768px) {
+  .maincotainer {
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+  }
 }

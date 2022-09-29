@@ -9,7 +9,7 @@ const recommendation = ({ dataRecon, recData }) => {
   const [show, setShow] = useState(false);
   const toggleModal = () => setShow(!show);
 
-  // console.log("From recommendation UI ===>", recData);
+  console.log("From recommendation UI ===>", recData);
 
   return (
     <>

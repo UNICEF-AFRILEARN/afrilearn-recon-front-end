@@ -130,6 +130,7 @@ export const HeropageWelcome = () => {
   return (
     <>
       <Row
+        className="middlebarforteacher"
         style={{
           position: "absolute",
           bottom: "38%",
@@ -138,9 +139,9 @@ export const HeropageWelcome = () => {
         }}
       >
         <Col>
-          <Row className={`mx-auto ${styles.studentProfileGrid}`}>
+          <Row className={`${styles.studentProfileGrid} mx-auto imager-row`}>
             <Col className={`m-auto ${styles.studentProfileAvatar}`}>
-              <Col className="mt-4 ms-2">
+              <Col className="mt-4 ms-2 image-class-teacher-middle">
                 <Image
                   alt={"afrilearn marketing video"}
                   src={`/assets/img/features/dashboard/teacher/teacherPix.png`}
@@ -294,7 +295,7 @@ export const TeacherAnnouncement = () => {
   return (
     <Container>
       <Col
-        className="mt-5"
+        className="mt-5 announcement"
         style={{
           background: "#FAFAFA",
           borderRadius: "10px",

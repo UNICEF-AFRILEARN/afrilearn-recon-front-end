@@ -9,6 +9,8 @@ import Middlebar from '../extra/middlebar';
 import Proaddvert from '../extra/proaddvert';
 import { fetchRoles } from '../../../../redux/actions/auth';
 import { signUpChildInitiate } from '../../../../redux/actions/parent';
+import Addchildmodal from './addchildmodal';
+import Errormodal from './errormodal';
 
 
 const Addmychild = () => {
@@ -20,26 +22,41 @@ const Addmychild = () => {
   const [email, setEmail] = useState("")
   const [courseId, setCourseId] = useState("")
   const [selectedCourse, setCourseSelected] = useState("")
-  const [parentId, setParentId] = useState("")
+  // const [parentId, setParentId] = useState("")
   const [myChildClass, setMyChildClass] = useState("")
+  const [show, setShow] = useState(false);
+  const [showError, setShowError] = useState(false);
+  const [clientError, setClientError] = useState("")
+  const [addedChildData, setAddedChildData] = useState("")
 
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const handleCloseError = () => setShowError(false);
+  const handleShowError = () => setShowError(true);
+
+  const {classes } = useSelector((state) => state.auth)
+  const childClasses = classes.courses
   const user_login = useSelector(state => state.auth);
+  const {user} = useSelector(state => state.auth);
   const rolesCollected = useSelector((state) => state.auth)
-  const {children} = useSelector(state => state.parentR);
+  const {children, childData, error} = useSelector(state => state.parentR);
 
+  const parentId = user?.user?.id
+  const showMyError = error
+  const newChildData = childData
   const token  = user_login.user.token;
-  const childrenCount  = children.children.length;
-  const childrenCourseCount = 0;
-  const myChildren = children.children;
-  const mappedCoursesCount = myChildren.map((children) =>  
+  const childrenCount  = children?.children?.length;
+  let childrenCourseCount = 0;
+  const myChildren = children?.children;
+  const mappedCoursesCount = myChildren?.map((children) =>  
     children.enrolledCourses.length)
 
-    childrenCourseCount = mappedCoursesCount.reduce((a,b) => a+b, 0)
+    childrenCourseCount = mappedCoursesCount?.reduce((a,b) => a+b, 0)
   
     let allClasses = rolesCollected?.roles?.courses
   
   
-    console.log("Add child component", rolesCollected?.roles?.courses)
+   
 
 
   const getCourseId = () => {
@@ -74,18 +91,33 @@ const Addmychild = () => {
     }
 }
 
+// const showNotification =() => {
+//   if(childData || error ){
+//     handleShow()
+//    }
+//    setClientError("")
+
+// }
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log("my child", fullName,password,confirmPassword,email,courseId,parentId,myChildClass, role, token)
-    setParentId(user_login.user.user?.id)
-    dispatch(signUpChildInitiate(fullName,password,confirmPassword,email,courseId,parentId,myChildClass, role, token))
+    setAddedChildData(childData)
+    console.log('Parent id', parentId)
+    dispatch(signUpChildInitiate(fullName,password,confirmPassword,email,courseId, parentId, courseId, role, token))
+    // if(error.status !== " "){
+    //   await setClientError(error)
+    // }
+    // if(newChildData) {
+    //   handleShow()
+    // }
+    // setClientError("")
+       
   }
 
  
-  const {classes } = useSelector((state) => state.auth)
-  const childClasses = classes.courses
+
+
 
 
   useEffect(() => {
@@ -111,7 +143,7 @@ const Addmychild = () => {
     <div className={styles.parentchildformwrapper}>
          <div className={styles.innerformwrapper}>
             <h3>Add My Child</h3>
-         <Form onClick={handleSubmit}>
+         <Form onSubmit={handleSubmit}>
             <Form.Label>Add your child to the league of world class learners on Afrilearn</Form.Label>
             <Form.Group>
                     <Form.Control 
@@ -174,11 +206,30 @@ const Addmychild = () => {
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button 
+              // onClick={handleShow}
+              disabled={!confirmPassword || !password || !email || !fullName || !selectedCourse}
+            variant="primary" type="submit">
                 Add my Child
             </Button>
             </Form>
-         </div>   
+         </div>
+         <Addchildmodal
+         show={show}
+         showMyError={showMyError}
+         setClientError={setClientError}
+         clientError={clientError}
+         error={error}
+         setAddedChildData={setAddedChildData}
+         newChildData={newChildData}
+         handleClose={handleClose}
+         handleShow={handleShow}
+         />
+         <Errormodal 
+          handleCloseError={handleCloseError}
+          handleShowError={handleShowError}
+          showError={showError}
+         />  
     </div>
   </div>
   )

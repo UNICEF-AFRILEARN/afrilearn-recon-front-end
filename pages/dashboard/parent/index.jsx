@@ -18,7 +18,7 @@ const Parent = ({ test_body }) => {
   const coursesCollected = useSelector((state) => state.auth);
   const { children } = useSelector((state) => state.parentR);
 
-  const courseContext = coursesCollected.roles.courses;
+  const courseContext = coursesCollected?.roles?.courses;
   const token = user_login.user.token;
   const childrenCount = children?.children?.length;
   let childrenCourseCount = 0;

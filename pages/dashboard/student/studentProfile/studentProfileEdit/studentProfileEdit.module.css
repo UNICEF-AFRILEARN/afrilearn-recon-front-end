@@ -48,3 +48,57 @@
   background-position: 50%;
   background-size: contain;
 }
+.profileBox input{
+  width: 42vw;
+  height: 8vh;
+  border: "1px solid #29465B";
+  border-radius: "5px";
+  color: "#828282";
+}
+.profilenumberBox{
+  width: 42vw;
+  height: 8vh;
+  border: "1px solid #29465B";
+  border-radius: "5px";
+}
+.selectHeading{
+  font-size: 25px;
+  text-align: auto;
+}
+/* .securityButton {
+  margin-left: "auto";
+  text-align: "center";
+  color: "white";
+  border:"none";
+  border-radius: "100px";
+  width: "10vw";
+  height: "4vh";
+  font-size: 20px;
+  background: "#00D9B6" !important
+} */
+
+@media screen and (max-width: 900px) {
+  .profileBox input{
+    width: 62vw !important;
+    height: "63px";
+  }
+  .profilenumberBox{
+    width: 62vw;
+    height: "63px";
+  }
+  .selectHeading{
+    font-size: 15px;
+    width:200px
+  }
+  /* .securityButton {
+    margin-left: "auto";
+    text-align: "center";
+    color: "white";
+    border:"none";
+    border-radius: "100px";
+    width: "10vw";
+    height: "4vh";
+    font-size: 20px;
+    background: "#00D9B6" !important
+  } */
+}

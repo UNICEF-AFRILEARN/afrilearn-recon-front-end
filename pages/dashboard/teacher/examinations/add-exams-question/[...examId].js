@@ -24,7 +24,7 @@ const Setupxamssidebar = () => {
     }
   
   }, [router.isReady, exam_id]);
-  // console.log("query from add-exams-questions", examId[0])
+  console.log("query from add-exams-questions", exam_id)
   return (
       <>
         <Heropage />

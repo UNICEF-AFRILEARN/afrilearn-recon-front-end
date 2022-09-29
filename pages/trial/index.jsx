@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { Button, Col, Row } from "react-bootstrap";
 
@@ -45,7 +46,9 @@ const trial = () => {
           <strong>Cancel any time.</strong> We'll remind you 3 days before your
           trial ends.
         </p>
+        <Link href='/payment'>
         <Button className="w-50">START FREE TRIAL</Button>
+        </Link>
       </Col>
       <Col>
         <div className="get-trial-pic"></div>

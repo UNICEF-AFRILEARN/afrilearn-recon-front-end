@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRoles } from '../../redux/actions/auth';
+import { useSession } from "next-auth/react"
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { 
@@ -14,8 +15,10 @@ import { usePaystackPayment } from 'react-paystack';
 
 import styles from "../../styles/payment.module.css"
 import PaymentDetails from './paymentModal';
+import Spinner from '../../components/widgets/spinner/index'
 
 const payment = ({test_body}) => {
+  const session = useSession();
   const priceElement = useRef();
   const [open, setOpen] = useState(false);
   const { classDetails } = useSelector((state) => state.schoolClasses)
@@ -43,12 +46,13 @@ const handleOpen = () => {
   setOpen(true);
 }
 
-console.log("selectedCourse from payment ====>", selectedCourse)
+
   let showPrice;
   const handleSelect = (price) => {
     setPriceSelected(price)
   }
   
+
   const config = {
     reference: new Date().getTime(),
     email: "text@gmail.com",
@@ -185,7 +189,11 @@ console.log("selectedCourse from payment ====>", selectedCourse)
   <h5>Step 3: Select Subscription Length</h5>
   <div className={`row ${styles.paymentdurationButtons}`}>
   <div className= {` col-md-3 ${styles.durationPayment}`}> 
-    {allPaymentPlans && allPaymentPlans.map((allPlans) =>
+    {!allPaymentPlans? 
+    <div>
+        <h4>Loading ......</h4>
+        <Spinner />
+    </div> : allPaymentPlans.map((allPlans) =>
         <button 
         className={`${styles.paymentwrapper} ${styles.btnpayment}`}
           ref={priceElement}
@@ -200,10 +208,10 @@ console.log("selectedCourse from payment ====>", selectedCourse)
   </div>
  <div className={`row ${styles.btnwrapper}`}>
   <div className= {` col-md-6 ${styles.paymenttypeButton}`}>
-    <div 
-    onClick={() => {
-                initializePayment(onSuccess, onClose)
-              }}>PAY WITH CARD</div>
+  <button 
+  onClick={() => {
+              initializePayment(onSuccess, onClose)
+            }}>PAY WITH CARD</button>
   </div>
     <div className={` col-md-6 ${styles.paymenttypeButton2}`}>
          <PaymentDetails
@@ -269,7 +277,11 @@ console.log("selectedCourse from payment ====>", selectedCourse)
   <h5>Step 3: Select Subscription Length</h5>
   <div className={`row ${styles.paymentdurationButtons}`}>
   <div className= {` col-md-3 ${styles.durationPayment}`}> 
-    {allPaymentPlans && allPaymentPlans.map((allPlans) =>
+    {!allPaymentPlans? 
+    <div>
+        <h4>Loading ......</h4>
+        <Spinner />
+    </div> : allPaymentPlans.map((allPlans) =>
         <button 
         className={`${styles.paymentwrapper} ${styles.btnpayment}`}
         ref={priceElement}
@@ -283,12 +295,12 @@ console.log("selectedCourse from payment ====>", selectedCourse)
   <div className= {` col-md-3 ${styles.durationPayment}`}> 
   </div>
  <div className='row'>
-  <div className= {` col-md-6 ${styles.paymenttypeButton}`}>
-    <button 
-    onClick={() => {
-                initializePayment(onSuccess, onClose)
-              }}>PAY WITH CARD</button>
-  </div>
+ <div className= {` col-md-6 ${styles.paymenttypeButton}`}>
+  <button 
+  onClick={() => {
+              initializePayment(onSuccess, onClose)
+            }}>PAY WITH CARD</button>
+    </div>  
     <div className={` col-md-6 ${styles.paymenttypeButton2}`}>
       {/* <button >BANK TRANSFER</button> */}
       <PaymentDetails
@@ -371,7 +383,11 @@ console.log("selectedCourse from payment ====>", selectedCourse)
   className= {` col-md-3 ${styles.durationPayment}`}
   
   > 
-    {teacher_plans && teacher_plans.map((teacherPlans) =>
+    {!teacher_plans? 
+    <div>
+        <h4>Loading ......</h4>
+        <Spinner />
+    </div> : teacher_plans.map((teacherPlans) =>
         <button 
         className={`${styles.paymentwrapper} ${styles.btnpayment}`}
         ref={priceElement}
@@ -444,7 +460,11 @@ console.log("selectedCourse from payment ====>", selectedCourse)
   <h5>Step 3: Select Subscription Length</h5>
   <div className={`row ${styles.paymentdurationButtons}`}>
   <div className= {` col-md-3 ${styles.durationPayment}`}> 
-    {teacher_plans && teacher_plans.map((teacherPlans) =>
+    {!teacher_plans? 
+    <div>
+        <h4>Loading ......</h4>
+        <Spinner />
+    </div> : teacher_plans.map((teacherPlans) =>
         <button 
           className={`${styles.paymentwrapper} ${styles.btnpayment}`}
           ref={priceElement}

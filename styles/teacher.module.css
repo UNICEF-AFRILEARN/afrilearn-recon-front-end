@@ -114,11 +114,17 @@
     padding: 20px 0;
 }
 
+.datepicker {
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+}
+
 .leftsideboxwrapper, .objleftsideboxwrapper {
     background-color: #FAFAFA;
     padding: 20px;
     width: 25%;
-    height: 60vh;
+    height: 70vh;
 }
 
 
@@ -551,8 +557,21 @@
     background-color: gray;
   }
 
+  .addbuttoninnermainwrapper{
+    align-self: center;
+    position: absolute;
+    right: 40%;
+    top: 20%;
+    background-color: red;
+  }
+
+  .littleaddbtnwrapper{
+      margin-top: 15%;
+      margin-left:10%;
+  }
+
   .examquestionwrapperinnner {
-      width: 65%;
+      width: 85%;
   }
 @media screen and (max-width: 768px) {
     .examsmainholder {

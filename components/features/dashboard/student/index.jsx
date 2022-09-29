@@ -126,11 +126,13 @@ const Dashboard = () => {
       <PerfomanceSumm />
       <GetSolution />
       <ClassRoom data={subject?.classroom?.classMembership} />
+      <div className={styles.recomendationmainwrapper}>
       <Recommended
         recommend={reconLesson?.recommendation}
         unicefRecon={unicefRecon}
         lessons={lessons}
       />
+      </div>
       <RecentActivity activities={activities?.recentActivities} />
     </>
   );
@@ -349,7 +351,7 @@ const Recommended = ({ recommend, unicefRecon, lessons }) => {
         <>
           <SubHeading title="Recommended For You" />
 
-          <div className={styles.contai}>
+          <div className={`${styles.contai}`}>
             <section className="parnet-frag-color">
               {unicefRecon?.map((recData) => (
                 <Recommendation recData={recData} />

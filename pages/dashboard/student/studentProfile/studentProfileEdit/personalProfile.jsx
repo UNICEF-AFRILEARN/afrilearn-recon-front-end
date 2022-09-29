@@ -9,6 +9,7 @@ import {
   InputGroup,
   Row,
 } from "react-bootstrap";
+import styles from "./studentProfileEdit.module.css";
 import { editTeacherProfileInitiate } from '../../../../../redux/actions/auth';
 import countryCodes from "country-codes-list";
 import { sendeditedprofileInitiate } from "../../../../../redux/actions/auth";
@@ -90,7 +91,7 @@ useEffect(() => {
               <Col md={3} className="ps-1">
                 <p className="p-3" type="text">Full Name:</p>
               </Col>
-              <Col md={7} className="">
+              <Col md={7} className={styles.profileBox}>
                 <input
                   btn-outline-light
                   className="p-4"
@@ -99,13 +100,6 @@ useEffect(() => {
                   onChange={(e) => setFullName(e.target.value)}
                   type="text"
                   placeholder={`fullname`}
-                  style={{
-                    width: "670px",
-                    height: "63px",
-                    border: "1px solid #29465B",
-                    borderRadius: "5px",
-                    color: "#828282",
-                  }}
                 />
               </Col>
             </Row>
@@ -115,20 +109,13 @@ useEffect(() => {
               <Col md={3} className="ps-1">
                 <p className="p-3">Email:</p>
               </Col>
-              <Col md={7}>
+              <Col md={7} className={styles.profileBox}>
                 <input
                   className="p-4"
                   disabled
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="email"
-                  style={{
-                    width: "670px",
-                    height: "63px",
-                    border: "1px solid #29465B",
-                    borderRadius: "5px",
-                    color: "#828282",
-                  }}
                 />
               </Col>
             </Row>
@@ -138,15 +125,10 @@ useEffect(() => {
               <Col md={3} className="ps-1">
                 <p className="p-3">Phone Number:</p>
               </Col>
-              <Col md={7} calassName="mx-auto">
+              <Col md={7} calassName="">
                 <InputGroup
+                className={styles.profilenumberBox}
                   outline="none"
-                  style={{
-                    width: "670px",
-                    height: "63px",
-                    border: "1px solid #29465B",
-                    borderRadius: "5px",
-                  }}
                   onChange={(e) => setphoneNumber(e.target.value)}
                 >
                   <DropdownButton
@@ -162,8 +144,8 @@ useEffect(() => {
                   </DropdownButton>
                   <Form.Control
                     aria-label="Text input with dropdown button"
-                    className="shadow-none"
                     value={phoneNumber}
+                    className={styles.profilenumberBox}
                     onChange={(e) => setphoneNumber(e.target.value)}
                   />
                 </InputGroup>
@@ -175,37 +157,25 @@ useEffect(() => {
               <Col md={3} className="ps-1">
                 <p className="p-3">Age:</p>
               </Col>
-              <Col md={7}> 
+              <Col md={7} className={styles.profileBox}> 
                 <input
                   className="p-4"
                   value={age}
                   onChange={(e) => setAge(e.target.value)}
-                  style={{
-                    width: "670px",
-                    height: "63px",
-                    border: "1px solid #29465B",
-                    borderRadius: "5px",
-                  }}
                 />
               </Col>
             </Row>
           </Col>
           <Col>
-            <Row className="d-flex justify-content-center">
+            <Row className="d-flex justify-content-center pt-3">
               <Col md={3} className="ps-1">
                 <p className="p-3">State:</p>
               </Col>
-              <Col md={7}>
+              <Col md={7} className={styles.profileBox}>
                 <input
                   value={stateCon}
                   onChange={(e) => setStateCon(e.target.value)}
                   className="p-4 shadow-none"
-                  style={{
-                    width: "670px",
-                    height: "63px",
-                    border: "1px solid #29465B",
-                    borderRadius: "5px",
-                  }}
                 />
               </Col>
             </Row>
@@ -215,17 +185,11 @@ useEffect(() => {
               <Col md={3} className="ps-1">
                 <p className="p-3">Gender:</p>
               </Col>
-              <Col md={7}>
+              <Col md={7} className={styles.profileBox}>
                 <input
                   value={gender}
                   onChange={(e) => setGender(e.target.value)}
                   className="p-4"
-                  style={{
-                    width: "670px",
-                    height: "63px",
-                    border: "1px solid #29465B",
-                    borderRadius: "5px",
-                  }}
                 />
               </Col>
             </Row>
@@ -235,18 +199,11 @@ useEffect(() => {
               <Col md={3} className="ps-1">
                 <p className="p-3">City:</p>
               </Col>
-              <Col md={7}>
+              <Col md={7} className={styles.profileBox}>
                 <input
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
                   className="p-4"
-                  style={{
-                    width: "670px",
-                    height: "63px",
-                    border: "1px solid #29465B",
-                    borderRadius: "5px",
-                  }}
-                  // onChange={(e) => set(e.target.value)}
                 />
               </Col>
             </Row>
@@ -256,17 +213,11 @@ useEffect(() => {
               <Col md={3} className="ps-1">
                 <p className="p-3">Country:</p>
               </Col>
-              <Col md={7}>
+              <Col md={7} className={styles.profileBox}>
                 <input
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}
                   className="p-4"
-                  style={{
-                    width: "670px",
-                    height: "63px",
-                    border: "1px solid #29465B",
-                    borderRadius: "5px",
-                  }}
                 />
               </Col>
               <Col className="">

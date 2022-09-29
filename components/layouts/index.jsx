@@ -2,8 +2,11 @@ import Navbar from "./mainNavigation";
 import styles from "./mainNavigation/mainNavigation.module.css";
 import Footer from "./footer";
 import Head from "next/head";
+// import Darkmode from 'darkmode-js';
+
 
 const Layout = ({ children }) => {
+  // new Darkmode().showWidget();
   return (
     <>
       <Head>
