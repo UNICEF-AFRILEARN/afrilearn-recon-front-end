@@ -13,6 +13,8 @@ import {
   fetchStudentDetailsInitiate,
   fetchStudentTeacherSubjInitiate,
 } from "../../../../../redux/actions/subject";
+import { ProfilePicture } from "../studentProfile";
+import { Row } from "react-bootstrap";
 
 const Classroomnav = () => {
   const dispatch = useDispatch();
@@ -40,13 +42,8 @@ const Classroomnav = () => {
   return (
     <div className={styles.maincontainer}>
       <div className={styles.maincontainer2}>
-        <div className={styles.subheadings}>
-          <Image
-            src="/assets/img/features/dashboard/student/person_2 1.png"
-            alt="teacher"
-            width={173.99}
-            height={173.99}
-          />
+        <div style={{ width: "210px", height: "210px" }}>
+          <ProfilePicture user={user} />
         </div>
         <div className={styles.navbar1}>
           <nav className={styles.navbar}>

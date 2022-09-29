@@ -1191,6 +1191,7 @@ figure img {
 .timer .btn {
   width: 100px !important;
 }
+
 @media screen and (max-width: 415px) {
   .innerHtml img {
     height: 200px !important;

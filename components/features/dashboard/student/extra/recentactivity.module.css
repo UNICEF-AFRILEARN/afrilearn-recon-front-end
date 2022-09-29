@@ -1,31 +1,32 @@
 .parentcontainer {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 110px;
 }
 
 .imagecontainer {
-    width: 15%;
+  width: 15%;
 }
 
 .quizcontainer h3 {
-    font-size: 20px;
+  font-size: 20px;
 }
 
-.subjectcontainer h4{
-    margin-top: 20px;
-    font-size: 20px;
+.subjectcontainer h4 {
+  margin-top: 20px;
+  font-size: 20px;
 }
 
 .datecontainer h3 {
-    margin-top: 20px;
-    font-size: 20px;
+  margin-top: 20px;
+  font-size: 20px;
 }
 
 .recenttitle {
-    padding-left: 10%;
-    font-size: 30px;
-    font-weight: 700;
-    font-family: "subHeading";
-    color: #29465B;
+  padding-left: 10%;
+  font-size: 30px;
+  font-weight: 700;
+  font-family: "subHeading";
+  color: #29465b;
 }
