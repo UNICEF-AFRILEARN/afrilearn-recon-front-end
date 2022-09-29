@@ -27,7 +27,7 @@ const AssignContent = () => {
     subject?.dashboardWeb?.enrolledCourse?.courseId.relatedSubjects;
   const lessons = subject.subjectDetails[1]?.relatedLessons;
 
-  const { classMembers } = useSelector((state) => state.schoolClasses);
+  const { classMembers, classContents } = useSelector((state) => state.schoolClasses);
 
   const dispatch = useDispatch();
   const terms = [
@@ -42,6 +42,8 @@ const AssignContent = () => {
     ? user.user?.enrolledCourses[0].classId
     : user.user?.enrolledCourses[1].classId;
 
+
+    console.log("user", user)
   const token = user?.token;
   useEffect(() => {
     subj !== "" &&
@@ -53,6 +55,11 @@ const AssignContent = () => {
   useEffect(() => {
     dispatch(fetchClassMembersInitiate(person_id));
   }, [person_id]);
+
+  useEffect(() => {
+    dispatch(fetchClassAssignedContentInitiate())
+  }, [])
+  
 
   const [addLes, setAddLes] = useState([]);
   const [addStu, setAddStu] = useState([]);

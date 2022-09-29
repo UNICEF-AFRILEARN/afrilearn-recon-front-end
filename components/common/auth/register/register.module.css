@@ -31,7 +31,15 @@
     margin-bottom: 20px;
 }
 .pushDown{
-    margin-bottom: 30px;    
+    margin-bottom: 30px;
+    border-top: none;
+    border-left: none;
+    border-right: none; 
+}
+
+.otherinputs {
+    width: 100%;
+    padding: 15px;
 }
 .pushUp{
     margin-top: 25px;
@@ -46,6 +54,7 @@
 }
 .afterSocialText {
    margin-top: 20px;
+   cursor: pointer;
 }
 .socialSection {
     margin-top: -21px;

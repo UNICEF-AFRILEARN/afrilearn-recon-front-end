@@ -8,10 +8,15 @@ import Image from "next/image";
 import AppButton from "../../../widgets/buttons/AppButton";
 import { loginInitiate } from "../../../../redux/actions/auth";
 import { signIn } from 'next-auth/react';
+import Loginalert from './loginalert'
 
 const Login = () => {
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth);
+  const { user, error } = useSelector((state) => state.auth);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const [errorCheck, setErrorCheck] = useState("");
 
@@ -19,18 +24,17 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const router = useRouter();
 
-  console.log("error", user);
+  // console.log("error", error.status);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const res = await signIn("credentials", {
-    //   email,
-    //   password,
-    //   redirect: false
-    // })
-
-    // console.log(res)
     dispatch(loginInitiate(email, password));
+    if(user){
+      await setShow(true)
+    }
+    if(!user){
+      await setShow(true)
+    }
   };
 
   useEffect(() => {
@@ -75,14 +79,16 @@ const Login = () => {
           <div className="col-xs-12 col-md-10 col-lg-6">
             <span className={styles.card}>
               <h5 className={`center `}>LOG IN</h5>
-              <Form onSubmit={handleSubmit}>
+              <Form onSubmit={handleSubmit}
+              className={styles.loginformsubmit}
+              >
                 <input
                   type="text"
                   value={email}
                   name="email"
                   onChange={(e) => setEmail(e.target.value)}
                   title="Email"
-                  placeholder="Email"
+                  placeholder="something@gmail.com"
                   className={styles.pushDown}
                 />
                 <input
@@ -92,6 +98,7 @@ const Login = () => {
                   name="password"
                   title="Password"
                   placeholder="Password"
+                  className={styles.pushDown}
                 />
                 <h5>{errorCheck}</h5>
                 <div className={`row ${styles.pushDown1}`}>
@@ -154,6 +161,12 @@ const Login = () => {
           </div>
           <div className="col-md-4"> </div>
         </div>
+        <Loginalert 
+        handleClose={handleClose}
+        handleShow={handleShow}
+        show={show}
+        error={error}
+        />
       </div>
     </>
   );

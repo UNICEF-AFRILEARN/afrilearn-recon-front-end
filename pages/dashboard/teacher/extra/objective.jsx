@@ -62,7 +62,7 @@ const Objectives = ({exam_id}) => {
         filteredExams.id === exam_id
     )
 
-        console.log("exams =====>", exams)
+        console.log("examType =====>", examType)
     
     const onClickExamsType = () => {
         setOpenQuestionType(!openQuestionType)
@@ -128,7 +128,6 @@ const Objectives = ({exam_id}) => {
         }
     }, [receivedQuestions, newExamQuestion, updatedExam, deletedExam])
     
-    console.log("deletedExam from objective", deletedExam)
     // useEffect(() => {
     //     if(examType[0]?.publish === true){
     //         setTheExamType('UNPUBLISH')
@@ -146,7 +145,7 @@ const Objectives = ({exam_id}) => {
                     <BsFillCircleFill 
                     color='#00D9B6'
                     /></span>Set Ups</li>
-                <li><span><BsCircle /></span>Examination Questions</li>
+                <li><span><BsFillCircleFill color='#00D9B6'/></span>Examination Questions</li>
             </ul>
             <div className={styles.bottombtnwrapper}>
                { showObjQuestions === 3 &&
@@ -154,7 +153,7 @@ const Objectives = ({exam_id}) => {
                }
                 <div className={styles.btnmainwrapper}>
                   
-                 <h4 onClick={() => setTheExamType(theExamType)}>Published</h4>
+                 <h4 onClick={() => setTheExamType(theExamType)}>{examType[0]?.publish === true? "PUBLISHED" : "UNPUBLISHED"}</h4>
                    
                     <h5>PREVIEW</h5>
                 </div>

@@ -38,7 +38,11 @@ const Performance = () => {
     })
   }
   
-  filterSTudent()
+
+  
+  useEffect(() => {
+    filterSTudent()
+  }, [])
   
   useEffect(() => {
     dispatch(fetchClassPerformanceInitiate(courseId, token))
@@ -51,14 +55,15 @@ const Performance = () => {
   }, [])
   
   // useEffect(() => {
-    //   if(userId){
-      //     dispatch(fetchStudentPerformanceInitiate(userId, courseId, token))
-      //   }
-      //    }, [userId, courseId])
+  //     if(userId){
+  //         dispatch(fetchStudentPerformanceInitiate(userId, courseId, token))
+  //       }
+  //        }, [userId, courseId])
       
       useEffect(() => {
         dispatch(fetchClassMembersInitiate(classId))
       },[classId]);
+      
       
       // console.log("classMembers", classMembers)
 

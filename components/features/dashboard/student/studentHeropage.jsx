@@ -61,8 +61,7 @@ export const StudentPage = ({ stuData }) => {
   const dispatch = useDispatch();
   // const {reconLesson } = useSelector(state => state.Mycourses);
 
-  console.log("User from UI ==>>>", registerUser.user);
-  // console.log("token from UI =>>>", token)
+
   console.log(
     "From student dashboard",
     user.user?.enrolledCourses.length > 1
