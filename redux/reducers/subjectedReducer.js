@@ -16,11 +16,8 @@ const initialState = {
   dashboardWeb: "",
   classMember: [],
   classroom: [],
-  motivations: [],
-  motivationItemNo: 0,
-  motivationInterval: 0,
-  motivateGoodPerformance: false,
   answers: [],
+  quizAnswers: [],
 };
 
 const subjectedReducer = (state = initialState, { type, payload }) => {
@@ -39,6 +36,16 @@ const subjectedReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         topInclass: payload,
+      };
+    case types.POPULATE_SUBMITTED_QUIZ:
+      return {
+        ...state,
+        quizAnswers: payload,
+      };
+    case types.POPULATE_SUBMITTED_ANSWER:
+      return {
+        ...state,
+        answers: payload,
       };
     case types.FETCH_Teacher_SINGLESUBJECT_SUCCESS:
       return {

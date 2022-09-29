@@ -1,15 +1,23 @@
-import React from 'react';
-import styles from '../../../../styles/search.module.css';
-import Feedcard from './feedcard';
-import Profilecard from './profilecard';
+import React from "react";
+import styles from "../../../../styles/search.module.css";
+import Feedcard from "./feedcard";
+import Profilecard from "./profilecard";
 
 const Feedholder = () => {
   return (
     <div className={styles.rightfeedholder}>
-       <Feedcard />
-       <Profilecard />
+      <Feedcard />
+      <Profilecard />
     </div>
-  )
-}
+  );
+};
 
-export default Feedholder
+export default Feedholder;
+
+// async getMyFollowersInFeed() {
+//   return axios({
+//     method: 'get',
+//     url: `${this.url}feeds/followers`,
+//     headers: await this.headers(),
+//   });
+// }

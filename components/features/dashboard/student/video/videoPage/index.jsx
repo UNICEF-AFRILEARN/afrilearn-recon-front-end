@@ -87,7 +87,8 @@ const VideoPage = () => {
 
   const videoId = (id) => {
     let dat;
-    for (let i = 0; i < lessons.length; i++) {
+    console.log(lessons);
+    for (let i = 0; i < lessons?.length; i++) {
       if (lessons[i].id === id) {
         dat = lessons[i];
       }
@@ -97,7 +98,7 @@ const VideoPage = () => {
   const term = () => {
     let dat;
     for (let i = 0; i < terms.length; i++) {
-      if (videoId(quary).termId === terms[i].id) {
+      if (videoId(quary)?.termId === terms[i].id) {
         dat = terms[i].term;
       }
     }
@@ -106,8 +107,9 @@ const VideoPage = () => {
   let lessonsNumber;
   const videoIds = (id) => {
     let dat;
-    const lesson = videoId(quary).videoUrls;
-    for (let i = 0; i < lesson.length; i++) {
+    const lesson = videoId(quary)?.videoUrls;
+
+    for (let i = 0; i < lesson?.length; i++) {
       if (lesson[i]._id === id) {
         lessonsNumber = i;
         dat = lesson[i];
@@ -115,9 +117,9 @@ const VideoPage = () => {
     }
     return dat;
   };
-  console.log(videoId(quary));
+  console.log(quary1);
   const data = {
-    topic: videoId(quary).title,
+    topic: videoId(quary)?.title,
     videoUrl: videoIds(quary1),
   };
   const [visibility, setVisibility] = useState("Show");
@@ -127,25 +129,25 @@ const VideoPage = () => {
   const iconData = {
     icon: "arrowhead",
     text: `Lesson ${+lessonsNumber + 1}`,
-    leng: videoId(quary).videoUrls.length,
+    leng: videoId(quary)?.videoUrls.length,
   };
-  const subjected = subject.subjectDetails[0].subject;
+  const subjected = subject.subjectDetails[0]?.subject;
   const secVidData = {
-    class: subjected.courseId.alias,
-    subject: subjected.mainSubjectId.name,
+    class: subjected?.courseId.alias,
+    subject: subjected?.mainSubjectId.name,
     term: term(),
-    date: moment(videoId(quary) && videoId(quary).createdAt).format("LL"),
+    date: moment(videoId(quary) && videoId(quary)?.createdAt).format("LL"),
   };
 
   const target = useRef(null);
 
   const datas = {
     userId: user.user._id,
-    courseId: videoId(quary).courseId,
-    subjectId: videoId(quary).subjectId,
-    lessonId: videoId(quary)._id,
-    termId: videoId(quary).termId,
-    videoId: videoIds(quary1)._id,
+    courseId: videoId(quary)?.courseId,
+    subjectId: videoId(quary)?.subjectId,
+    lessonId: videoId(quary)?._id,
+    termId: videoId(quary)?.termId,
+    videoId: videoIds(quary1)?._id,
     videoPosition: lessonsNumber,
   };
   const [audioState, setAudioState] = useState(false);
@@ -180,14 +182,14 @@ const VideoPage = () => {
   };
   const [faves, setfaves] = useState(favoury() ? true : false);
   let likey = () => {
-    let likes = videoId(quary).likes.find((fruit) => {
+    let likes = videoId(quary)?.likes.find((fruit) => {
       return fruit === datas.userId;
     });
     return likes;
   };
   const [show, setShow] = useState(likey() ? true : false);
 
-  const [liskes, setLiskes] = useState(videoId(quary).likes.length);
+  const [liskes, setLiskes] = useState(videoId(quary)?.likes.length);
   const showing = () => {
     if (show) {
       setLiskes(+liskes - 1);
@@ -258,7 +260,7 @@ const VideoPage = () => {
               fetchclearUnFinishedVideos(datas);
               toggleModal();
             }}
-            url={data?.videoUrl.videoUrl}
+            url={data?.videoUrl?.videoUrl}
             controls="true"
             width="100%"
             height="500px"
@@ -313,7 +315,7 @@ const VideoPage = () => {
               }}
             >
               <Speech
-                text={decodeEntities(videoId(quary).content)}
+                text={decodeEntities(videoId(quary)?.content)}
                 textAsButton={true}
                 stop={audioState}
                 displayText={
@@ -414,7 +416,7 @@ const VideoPage = () => {
                         </ul>
                       </Modal.Body>
                     </Modal>
-                    {user.user?.role === "602f3ce39b146b3201c2dc1d" && (
+                    {user.user?.role === "5fd08fba50964811309722d5" && (
                       <Row className="">
                         <Col
                           onClick={() => favouring()}
@@ -459,7 +461,7 @@ const VideoPage = () => {
             <Col className={styles.colSeen}>
               <div className={styles.seen}></div>
 
-              <div>{videoId(quary).views} Views</div>
+              <div>{videoId(quary)?.views} Views</div>
             </Col>
             <Col className={styles.colSeen}>
               <div className={styles.loved}></div>
@@ -525,7 +527,7 @@ const VideoPage = () => {
               <Col className="bg-light rounded-bottom ">
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: data?.videoUrl.transcript,
+                    __html: data?.videoUrl?.transcript,
                   }}
                 ></div>
               </Col>
@@ -540,7 +542,7 @@ const VideoPage = () => {
             </Col>
           </Row>
 
-          {videoId(quary).videoUrls.map((dater, i) => (
+          {videoId(quary)?.videoUrls.map((dater, i) => (
             <Row className="bg-light pt-0 pb-0" style={{ borderRadius: "0 0" }}>
               <Col className="bg-light rounded-bottom m-auto" md={4}>
                 <Row>
@@ -562,7 +564,7 @@ const VideoPage = () => {
                 </Row>
               </Col>
               <Col>
-                <Row className="bg-light">{videoId(quary).title}</Row>
+                <Row className="bg-light">{videoId(quary)?.title}</Row>
                 <Row
                   onClick={() => {
                     setQuary1(dater._id);
@@ -1148,11 +1150,11 @@ export const NextPrevPage = ({ datay }) => {
   };
   const handleNextPage = () => {
     datay(page + 1);
-    page + 1 < lesson.length && setPage(+page + 1);
+    page + 1 < lesson?.length && setPage(+page + 1);
   };
   return (
     <>
-      {/* {lesson.map((les, i) => ( */}
+      {/* {lesson?.map((les, i) => ( */}
       <Row className="pt-5">
         {page !== 0 ? (
           <Col
@@ -1184,11 +1186,11 @@ export const NextPrevPage = ({ datay }) => {
 
         <Col lg={4} md={4} xs={10} sm={10} className="m-auto text-center">
           <div className={`${styles.accordButtonLeftExtr2}`}>
-            {+page + 1} of {lesson.length}
+            {+page + 1} of {lesson?.length}
           </div>
         </Col>
 
-        {page + 1 !== lesson.length ? (
+        {page + 1 !== lesson?.length ? (
           <Col
             lg={4}
             md={4}
@@ -1201,7 +1203,7 @@ export const NextPrevPage = ({ datay }) => {
               <Col md={9} xs={9} className="p-0" style={{ textAlign: "right" }}>
                 <div className={styles.accordButtonLeftSide1}>Go to</div>
                 <div className={styles.accordButtonLeftSide2}>
-                  {truncate(lesson[page + 1].title, 15)}
+                  {lesson && truncate(lesson[page + 1].title, 15)}
                 </div>
               </Col>
               <Col md={1} xs={1} className="mt-2">
@@ -1241,7 +1243,7 @@ export function Amodal(props) {
     let message = `${subjectData.courseId.name}-${
       subjectData.mainSubjectId.name
     } ${classnote === 1 ? "class note" : "video lesson"} with title '${
-      lesson.title
+      lesson?.title
     }' has the following complaints:`;
 
     const data = {
@@ -1267,7 +1269,7 @@ export function Amodal(props) {
     // let message = `${subjectData.courseId.name}-${
     //   subjectData.mainSubjectId.name
     // } ${classnote === 1 ? "class note" : "video lesson"} with title '${
-    //   props.lesson.title
+    //   props.lesson?.title
     // }' has the following complaints:`;
 
     if (reportId === "report1") {

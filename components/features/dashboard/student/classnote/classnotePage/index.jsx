@@ -35,7 +35,7 @@ const ClassnotePage = () => {
   };
   const videoId = (id) => {
     let dat;
-    for (let i = 0; i < lessons.length; i++) {
+    for (let i = 0; i < lessons?.length; i++) {
       if (lessons[i].id === id) {
         dat = lessons[i];
       }
@@ -44,10 +44,10 @@ const ClassnotePage = () => {
   };
   const datas = {
     userId: user.user._id,
-    courseId: videoId(quary).courseId,
-    subjectId: videoId(quary).subjectId,
-    lessonId: videoId(quary)._id,
-    termId: videoId(quary).termId,
+    courseId: videoId(quary)?.courseId,
+    subjectId: videoId(quary)?.subjectId,
+    lessonId: videoId(quary)?._id,
+    termId: videoId(quary)?.termId,
   };
   const decodeEntities = (function () {
     // this prevents any overhead from creating the object each time
@@ -69,7 +69,7 @@ const ClassnotePage = () => {
   })();
   // const videoIds = (id) => {
   //   let dat;
-  //   const lesson = videoId(quary).videoUrls;
+  //   const lesson = videoId(quary)?.videoUrls;
   //   for (let i = 0; i < lesson.length; i++) {
   //     if (lesson[i]._id === id) {
   //       lessonsNumber = i;
@@ -79,14 +79,14 @@ const ClassnotePage = () => {
   //   return dat;
   // };
   let likey = () => {
-    let likes = videoId(quary).likes.find((fruit) => {
+    let likes = videoId(quary)?.likes.find((fruit) => {
       return fruit === datas.userId;
     });
     return likes;
   };
   const [show, setShow] = useState(likey() ? true : false);
 
-  const [liskes, setLiskes] = useState(videoId(quary).likes.length);
+  const [liskes, setLiskes] = useState(videoId(quary)?.likes.length);
   const showing = () => {
     if (show) {
       setLiskes(+liskes - 1);
@@ -98,7 +98,7 @@ const ClassnotePage = () => {
       dispatch(fetchStoreLikeLesson(datas, token));
     }
   };
-  const stuData = [{ subject: videoId(quary).title }];
+  const stuData = [{ subject: videoId(quary)?.title }];
 
   const iconData = [
     {
@@ -112,8 +112,8 @@ const ClassnotePage = () => {
   };
   const text = [
     {
-      topic: videoId(quary).title,
-      texts: videoId(quary).content,
+      topic: videoId(quary)?.title,
+      texts: videoId(quary)?.content,
     },
   ];
 
@@ -173,7 +173,7 @@ const ClassnotePage = () => {
               }}
             >
               <Speech
-                text={decodeEntities(videoId(quary).content)}
+                text={decodeEntities(videoId(quary)?.content)}
                 textAsButton={true}
                 stop={audioState}
                 displayText={
@@ -200,7 +200,7 @@ const ClassnotePage = () => {
               <div className={`pl-5 pr-5 ${styles2.seen}`}></div>
 
               <div className="text-secondary">
-                <div>{videoId(quary).views} Views</div>
+                <div>{videoId(quary)?.views} Views</div>
               </div>
             </Col>
             <Col className={styles2.colSeen}>
@@ -247,7 +247,7 @@ const ClassnotePage = () => {
                   <Accordion.Item eventKey={1}>
                     <Accordion.Header>First Term </Accordion.Header>
                     <Accordion.Body className="helo">
-                      {lessons.map((dats, i) => {
+                      {lessons?.map((dats, i) => {
                         return (
                           dats.termId === "5fc8d1b20fae0a06bc22db5c" && (
                             <div
@@ -265,7 +265,7 @@ const ClassnotePage = () => {
                   <Accordion.Item eventKey={2}>
                     <Accordion.Header>Second Term </Accordion.Header>
                     <Accordion.Body className="helo">
-                      {lessons.map((dats, i) => {
+                      {lessons?.map((dats, i) => {
                         return (
                           dats.termId === "600047f67cabf80f88f61735" && (
                             <div
@@ -283,7 +283,7 @@ const ClassnotePage = () => {
                   <Accordion.Item eventKey={3}>
                     <Accordion.Header>Third Term </Accordion.Header>
                     <Accordion.Body className="helo">
-                      {lessons.map((dats, i) => {
+                      {lessons?.map((dats, i) => {
                         return (
                           dats.termId === "600048197cabf80f88f61736" && (
                             <div

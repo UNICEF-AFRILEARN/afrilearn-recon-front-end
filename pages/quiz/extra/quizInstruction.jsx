@@ -7,19 +7,21 @@ import { useSelector } from "react-redux";
 
 const QuizInstruction = () => {
   const router = useRouter();
-  let quary = router.query.Exam;
-  console.log(quary);
+  let quary = router.query[0];
   const subject = useSelector((state) => state.mySubjectCourse);
   const user = useSelector((state) => state.auth);
 
-  const lessons = subject.subjectDetails[1]?.relatedLessons;
+  const lessons = subject.subjectDetails[1]?.relatedLessons.filter(
+    (data) => data.id === quary,
+  );
+  console.log(lessons);
   console.log(subject, lessons);
   const quizData = {
-    // heading: "Quiz:",
-    // topic: lessons[quary].title,
-    // name: user.user.user?.fullName,
-    // subject: subject.subjectDetails[0].subject.mainSubjectId.name,
-    // instruction: `You are about to that a ${lessons[quary].questions.length} question(s) quiz to test how much you understand ${lessons[quary].title}.`,
+    heading: "Quiz:",
+    topic: lessons[0].title,
+    name: user.user.user?.fullName,
+    subject: subject.subjectDetails[0].subject.mainSubjectId.name,
+    instruction: `You are about to that a ${lessons?.questions?.length} question(s) quiz to test how much you understand ${lessons[0]?.title}.`,
   };
 
   return (
@@ -74,7 +76,7 @@ const QuizInstruction = () => {
             passHref
             href={{
               pathname: "quiz/extra/quizPage",
-              query: { Exam: quary },
+              query: [quary],
             }}
           >
             <div className="buttonSection">
