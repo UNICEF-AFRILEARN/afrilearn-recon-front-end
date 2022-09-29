@@ -58,7 +58,7 @@ let filteredSub = []
   }
 
 
-console.log("registerUser.message ====>", registerUser)
+// console.log("registerUser.message ====>", registerUser)
   const getRoleId = () => {
       if (roleSelected === "Student") {
          setRole("5fd08fba50964811309722d5")
@@ -116,7 +116,7 @@ console.log("registerUser.message ====>", registerUser)
   //function to filter subjects:
 sortSubjects(allSubjects, courseId)
 
-  const handleRegisterRequest = async (e) => {
+  const handleRegisterRequest = (e) => {
     e.preventDefault()
      dispatch(registerUserInitiate(
       fullName, 
@@ -132,11 +132,11 @@ sortSubjects(allSubjects, courseId)
       referral
       ))
       if(registerUser){
-        await setShow(true)
+         setShow(true)
         // await Router.push('/login')
       }
       if(!registerUser){
-        await setShow(true)
+         setShow(true)
       }
       
     

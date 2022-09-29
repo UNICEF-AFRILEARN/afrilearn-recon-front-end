@@ -14,9 +14,18 @@ const ClassWork = () => {
   const { classContents, deletedContents } = useSelector((state) => state.schoolClasses);
   const { user } = useSelector((state) => state.auth);
 
+  console.log("classContents from sidebar===> ", classContents?.assignedContents)
+  
+  let subjectTopics = [];
+  const mappedSubjects = () => {
+    classContents?.assignedContents?.map((subTopic) => subjectTopics.push(subTopic.subjectId.mainSubjectId.name))
+  }
 
-  // console.log("classContents ===> ", classContents)
- 
+
+  mappedSubjects()
+  
+  let subSets = [...new Set(subjectTopics)]
+  
   useEffect(() => {
     setClassId(user?.user?.classOwnership[0]?.enrolledCourse.classId);
   }, []);
@@ -50,9 +59,11 @@ const ClassWork = () => {
                 }}
                 className={`text-secondary ${styles.scoreeffect1}`}
               >
-                <p style={swap === 1 ? { color: "#00d9b6" } : {}}>
-                Agricultural Science
-                </p>
+                {subSets && subSets.map((contenClass, index) => 
+                    <p style={swap === index + 1 ? { color: "#00d9b6" } : {}}>
+                   {contenClass}
+                  </p>
+                )}
               </Row>
             </div>
           </Col>
@@ -99,13 +110,14 @@ const AllSubject = ({ data }) => {
   const { classContents, deletedContents } = useSelector((state) => state.schoolClasses);
   const { user } = useSelector((state) => state.auth);
 
-  // const handleEdit = (id) => {
-  // }
-
-  console.log("deletedContents there", deletedContents)
   
+  const getFullContent = (id) => {
+    console.log("obje received", id)
+  }
+
+  
+  //logic to delete class content:
   const handleDelete = (classworkId) => {
-    console.log("Hello there", classworkId)
     dispatch(deleteClassAssignedContentInitiate(classworkId))
   }
 
@@ -135,12 +147,18 @@ const AllSubject = ({ data }) => {
               height={54}
             />
           </Col>
-          <Col>
+          <Col 
+            className="d-flex justify-content-between"
+            onClick={() => getFullContent(content.id)}
+          >
             <Row>
               <p>{content.description}</p>
             </Row>
             <Row>
-              <p className="text-secondary">{content.createdAt}</p>
+             { content.dueDate? 
+             <p className="text-secondary">Due {content.dueDate}</p>:
+             <p className="text-secondary">No Due Date</p>
+            }
             </Row>
           </Col>
           <Col md={2}>

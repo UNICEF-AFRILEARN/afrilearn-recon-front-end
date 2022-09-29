@@ -62,7 +62,6 @@ const Dashboard = () => {
   };
 
   filterTeacherSubjects();
-  console.log("filteredSubjects *****", filteredSubjects);
 
   useEffect(() => {
     dispatch(fetchGetWebInitiate(person_id, token, subId));
@@ -129,9 +128,10 @@ export const HeropageWelcome = () => {
       className='middlebarforteacher'
         style={{
           position: "absolute",
-          bottom: "38%",
+          bottom: "25%",
           width: "100%",
-          zIndex: "3",
+          marginTop: "-8%",
+          zIndex: "999",
         }}
       >
         <Col>
@@ -233,7 +233,7 @@ export const Heropage = () => {
     <>
       <div
         className={`container-fluid relative ${styles1.dashboardFirstSection3}`}
-        style={{ position: "relative" }}
+        style={{ position: "relative", zIndex: "0" }}
       ></div>
     </>
   );

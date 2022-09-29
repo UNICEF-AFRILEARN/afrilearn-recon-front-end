@@ -109,8 +109,8 @@ const Schoolclasses = () => {
         </div>
       </div>
     </Container>
-       <Subjects 
-       />
+       {/* <Subjects 
+       /> */}
     </div>
   )
 }

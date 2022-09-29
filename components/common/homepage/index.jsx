@@ -461,52 +461,59 @@ const QuickJoin = () => {
     })
   }
 
-  const getClassId =  () => {
-    if(classSelected === 'Primary One'){
-      setClassId('5fc8cfbb81a55b4c3c19737d')
-      setClassParamsm('primary-one')
-    }else if(classSelected === 'Primary Two'){
-      setClassId('5fd12c70e74b15663c5f4c6e')
-      setClassParamsm('primary-two')
-    }else if(classSelected === 'Primary Three'){
-      setClassId('5fff5a67de0bdb47f826fea8')
-      setClassParamsm('primary-three')
-    }else if(classSelected === 'Primary Four'){
-      setClassId('5fff5a7ede0bdb47f826fea9')
-      setClassParamsm('primary-four')
-    }else if(classSelected === 'Primary Five'){
-      setClassId('5fff5aaede0bdb47f826feaa')
-      setClassParamsm('primary-five')
-    }else if(classSelected === 'Primary Six'){
-      setClassId('5fff5abede0bdb47f826feab')
-      setClassParamsm('primary-six')
-    }else if(classSelected === 'JSS One'){
-      setClassId('5fff72b3de0bdb47f826feaf')
-      setClassParamsm('jss-one')
-    }else if(classSelected === 'JSS Two'){
-      setClassId('5fff7329de0bdb47f826feb0')
-      setClassParamsm('jss-two')
-    }else if(classSelected === 'Jss Three'){
-      setClassId('5fff734ade0bdb47f826feb1')
-      setClassParamsm('jss-three')
-    }else if(classSelected === 'SSS One'){
-      setClassId('5fff7371de0bdb47f826feb2')
-      setClassParamsm('sss-one')
-    }else if(classSelected === 'SSS Two'){
-      setClassId('5fff7380de0bdb47f826feb3')
-      setClassParamsm('sss-two')
-    }else if(classSelected === 'SSS Three'){
-      setClassId('5fff7399de0bdb47f826feb4')
-      setClassParamsm('sss-three')
-    }else if(classSelected === 'Afrilearn KidsCode'){
-      setClassId('629dbb4c5a5f270016033712')
-      setClassParamsm('kidscode')
-    }    
-}
+  console.log("classParams", classParams)
+
+//   const getClassId =  () => {
+    
+// }
+
 
 useEffect(() => {
-  getClassId()
-},[classSelected])
+  if(classSelected === 'Primary One'){
+    setClassParamsm('primary-one')
+    setClassId('5fc8cfbb81a55b4c3c19737d')
+  }else if(classSelected === 'Primary Two'){
+    setClassParamsm('primary-two')
+    setClassId('5fd12c70e74b15663c5f4c6e')
+  }else if(classSelected === 'Primary Three'){
+    setClassParamsm('primary-three')
+    setClassId('5fff5a67de0bdb47f826fea8')
+  }else if(classSelected === 'Primary Four'){
+    setClassParamsm('primary-four')
+    setClassId('5fff5a7ede0bdb47f826fea9')
+  }else if(classSelected === 'Primary Five'){
+    setClassParamsm('primary-five')
+    setClassId('5fff5aaede0bdb47f826feaa')
+  }else if(classSelected === 'Primary Six'){
+    setClassParamsm('primary-six')
+    setClassId('5fff5abede0bdb47f826feab')
+  }else if(classSelected === 'JSS One'){
+    setClassParamsm('jss-one')
+    setClassId('5fff72b3de0bdb47f826feaf')
+  }else if(classSelected === 'JSS Two'){
+    setClassParamsm('jss-two')
+    setClassId('5fff7329de0bdb47f826feb0')
+  }else if(classSelected === 'Jss Three'){
+    setClassParamsm('jss-three')
+    setClassId('5fff734ade0bdb47f826feb1')
+  }else if(classSelected === 'SSS One'){
+    setClassParamsm('sss-one')
+    setClassId('5fff7371de0bdb47f826feb2')
+  }else if(classSelected === 'SSS Two'){
+    setClassParamsm('sss-two')
+    setClassId('5fff7380de0bdb47f826feb3')
+  }else if(classSelected === 'SSS Three'){
+    setClassParamsm('sss-three')
+    setClassId('5fff7399de0bdb47f826feb4')
+  }else if(classSelected === 'Afrilearn KidsCode'){
+    setClassParamsm('kidscode')
+    setClassId('629dbb4c5a5f270016033712')
+  }   
+}, [classSelected])
+
+// useEffect(() => {
+//   getClassId()
+// },[classSelected])
 
   useEffect(() => {
     dispatch(fetchRoles())
@@ -583,7 +590,7 @@ const Partners = () => {
       },
       {
         position: 0,
-        logoURL: "/assets/img/common/partners/6.svg",
+        logoURL: "/partners/6.svg",
         name: "",
       },
       {

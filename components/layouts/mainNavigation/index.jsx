@@ -62,12 +62,12 @@ const Navigation = () => {
 
   return (
     <Navbar
-      bg="light"
+      // bg="light"
       expand="lg"
-      fixed="top"
+      // fixed="top"
       collapseOnSelect
       // style={{ backgroundColor: "#FDFDFD !important" }}
-      // className="mainNavbar"
+      className="mainNavbar mt-3"
     >
         <Navbar.Brand>
           <Link passHref href="/">

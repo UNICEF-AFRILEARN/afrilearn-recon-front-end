@@ -319,9 +319,10 @@ const Recommended = ({ recommend, unicefRecon, lessons }) => {
 const ClassRoom = ({ data }) => {
   const subject = useSelector((state) => state.mySubjectCourse);
 
-  const handleJoinClass = async () => {
+  //remove async and await
+  const handleJoinClass =  () => {
     // e.preventDefault();
-    const { value: ipAddress } = await Swal.fire({
+    const { value: ipAddress } =  Swal.fire({
       title: "Enter the class code below",
       input: "text",
       inputLabel: "",

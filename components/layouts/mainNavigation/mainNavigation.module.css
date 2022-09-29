@@ -66,7 +66,11 @@
   padding: 5px 20px;
   border-radius: 25px;
 }
-
+.mainNavbar {
+  /* padding: 30px !mportant; */
+  /* height: 20%; */
+  /* margin-top: 20px; */
+}
 .btnlogout {
   margin-left: 20px;
   margin-right: 10px;
