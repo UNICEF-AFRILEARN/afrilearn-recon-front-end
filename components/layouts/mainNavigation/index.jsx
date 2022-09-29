@@ -64,7 +64,7 @@ const Navigation = () => {
     <Navbar
       // bg="light"
       expand="lg"
-      // fixed="top"
+      fixed="top"
       collapseOnSelect
       // style={{ backgroundColor: "#FDFDFD !important" }}
       className="mainNavbar mt-3"
