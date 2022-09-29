@@ -104,7 +104,7 @@ const  data = {
                 <span>Basic Science</span> | */}
             </div>
             <div className={styles.topmath}>
-                | <span>Mathematics</span> |
+                <span>Mathematics</span> |
                 <span>Civic Education</span> |
                 <span>Computer Science </span> |
                 <span>Basic Science</span> |
