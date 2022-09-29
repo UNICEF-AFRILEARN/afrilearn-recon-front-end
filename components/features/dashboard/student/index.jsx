@@ -55,6 +55,9 @@ const Dashboard = () => {
   const reco_subject = "Agricultural Science";
   // To be changed later
 
+  console.log("activities ====>", activities)
+  // let userId = "62a0bc984af2d90016b72096"
+
   const personData = {
     personClass: user.user?.enrolledCourses[0]
       ? user.user?.enrolledCourses[0].courseId.name
@@ -72,7 +75,7 @@ const Dashboard = () => {
     // dispatch(fetchLessonsInitiate());
     dispatch(fetchSingleLessonInitiate(lessonId));
     dispatch(fetchLessonsInitiate());
-    dispatch(fetchActivitiesInitiate(token));
+    dispatch(fetchActivitiesInitiate(token, userId));
     dispatch(fetchUnicefReconInitiate(schoollevel, reco_subject, lessonId));
     dispatch(fetchReconLessonInitiate(userId, token));
     // dispatch(fetchSubjectInitiate(person_id, token));
@@ -91,6 +94,7 @@ const Dashboard = () => {
     fetchGetWebInitiate,
     fetchTopInClassInitiate,
     fetchClassMember,
+    activities
   ]);
 
   return (

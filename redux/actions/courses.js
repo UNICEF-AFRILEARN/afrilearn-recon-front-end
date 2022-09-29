@@ -180,11 +180,12 @@ export const fetchUnicefReconInitiate = (schoollevel, reco_subject, lessonId) =>
     }
 
 }
-export const fetchActivitiesInitiate = (token) =>  {
+export const fetchActivitiesInitiate = (token, userId) =>  {
     return function (dispatch) {
         dispatch(fetchActivitiesStart())
         axios
         .get('https://afrilearn-backend-01.herokuapp.com/api/v1/recents/activities',
+        {   userId  },
         {   
             headers: {
                 "token": token,
@@ -193,11 +194,10 @@ export const fetchActivitiesInitiate = (token) =>  {
         })
         .then((res) => {
             dispatch(fetchActivitiesSuccess(res.data.data))
-            console.log("Hello from Activities API after call ===>")
             console.log("From Activities API =>", res.data.data)
         })
         .catch((err) => {
-            dispatch(fetchActivitiesFail(err))
+            dispatch(fetchActivitiesFail(err.reponse))
         })
     }
 
