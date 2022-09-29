@@ -15,6 +15,7 @@ import AppButton from "../../widgets/buttons/AppButton";
 import { persistor } from "../../../redux/store";
 
 import { BsPersonCircle } from "react-icons/bs";
+import Image from "next/image";
 
 const Navigation = () => {
   const router = useRouter();
@@ -116,7 +117,20 @@ const Navigation = () => {
                   href="/dashboard/student/studentProfile"
                   className="btn-log-in-mobile"
                 >
-                  <BsPersonCircle size={30} className={styles.profileavatar} />
+                  {user?.user.profilePhotoUrl !== undefined ? (
+                    <Image
+                      alt={"afrilearn marketing video"}
+                      src={user?.user.profilePhotoUrl}
+                      width={40}
+                      height={40}
+                      className={styles.profileavatar1}
+                    />
+                  ) : (
+                    <BsPersonCircle
+                      size={35}
+                      className={styles.profileavatar}
+                    />
+                  )}
                 </Link>
                 <div className={styles.iconswrapper}>
                   <Link
@@ -124,7 +138,7 @@ const Navigation = () => {
                     href="/dashboard/student/studentProfile"
                     className="btn-log-in-mobile"
                   >
-                    <BiDownArrow size={20} className={styles.profileavatar} />
+                    <BiDownArrow size={15} className={styles.profileavatar2} />
                   </Link>
                   <div className={styles.linkswrapper}>
                     <a href="/payment">Add New class</a>
@@ -176,7 +190,20 @@ const Navigation = () => {
                   href="/dashboard/teacher/teacherProfile"
                   className="btn-log-in-mobile"
                 >
-                  <BsPersonCircle size={30} className={styles.profileavatar} />
+                  {user?.user.profilePhotoUrl !== undefined ? (
+                    <Image
+                      alt={"afrilearn marketing video"}
+                      src={user?.user.profilePhotoUrl}
+                      width={45}
+                      height={45}
+                      className={styles.profileavatar1}
+                    />
+                  ) : (
+                    <BsPersonCircle
+                      size={20}
+                      className={styles.profileavatar}
+                    />
+                  )}
                 </Link>
                 <div className={styles.iconswrapper}>
                   <Link
@@ -184,7 +211,7 @@ const Navigation = () => {
                     href="/dashboard/teacher/teacherProfile"
                     className="btn-log-in-mobile"
                   >
-                    <BiDownArrow size={20} className={styles.profileavatar} />
+                    <BiDownArrow size={20} className={styles.profileavatar2} />
                   </Link>
                   <div className={styles.linkswrapper}>
                     <a href="/payment">Add New class</a>
@@ -235,7 +262,20 @@ const Navigation = () => {
                   href="/dashboard/student/studentProfile"
                   className="btn-log-in-mobile"
                 >
-                  <BsPersonCircle size={30} className={styles.profileavatar} />
+                  {user?.user.profilePhotoUrl !== undefined ? (
+                    <Image
+                      alt={"afrilearn marketing video"}
+                      src={user?.user.profilePhotoUrl}
+                      width={45}
+                      height={45}
+                      className={styles.profileavatar1}
+                    />
+                  ) : (
+                    <BsPersonCircle
+                      size={20}
+                      className={styles.profileavatar}
+                    />
+                  )}
                 </Link>
                 <div className={styles.iconswrapper}>
                   <Link
@@ -243,7 +283,7 @@ const Navigation = () => {
                     href="/dashboard/student/studentProfile"
                     className="btn-log-in-mobile"
                   >
-                    <BiDownArrow size={20} className={styles.profileavatar} />
+                    <BiDownArrow size={20} className={styles.profileavatar2} />
                   </Link>
                   <div className={styles.linkswrapper}>
                     <a href="/payment">Add New class</a>
@@ -295,7 +335,20 @@ const Navigation = () => {
                   href="/school/schoolprofile"
                   className="btn-log-in-mobile"
                 >
-                  <BsPersonCircle size={30} className={styles.profileavatar} />
+                  {user?.user.profilePhotoUrl !== undefined ? (
+                    <Image
+                      alt={"afrilearn marketing video"}
+                      src={user?.user.profilePhotoUrl}
+                      width={45}
+                      height={45}
+                      className={styles.profileavatar1}
+                    />
+                  ) : (
+                    <BsPersonCircle
+                      size={20}
+                      className={styles.profileavatar}
+                    />
+                  )}
                 </Link>
                 <div className={styles.iconswrapper}>
                   <Link
@@ -303,7 +356,7 @@ const Navigation = () => {
                     href="/school/schoolProfile"
                     className="btn-log-in-mobile"
                   >
-                    <BiDownArrow size={20} className={styles.profileavatar} />
+                    <BiDownArrow size={20} className={styles.profileavatar2} />
                   </Link>
                   <div className={styles.linkswrapper}>
                     <a href="/payment">Add New class</a>

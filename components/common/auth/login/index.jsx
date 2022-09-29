@@ -9,6 +9,7 @@ import AppButton from "../../../widgets/buttons/AppButton";
 import { loginInitiate } from "../../../../redux/actions/auth";
 import { signIn } from "next-auth/react";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
+import Loginalert from "./loginalert";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -81,7 +82,7 @@ const Login = () => {
           <div className="col-xs-12 col-md-10 col-lg-6">
             <span className={styles.card}>
               <h5 className={`center `}>LOG IN</h5>
-              <Form onSubmit={signIn}>
+              <Form onSubmit={handleSubmit}>
                 <InputGroup className="mb-3">
                   <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
                   <Form.Control
