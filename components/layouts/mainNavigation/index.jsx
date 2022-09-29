@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { signIn } from 'next-auth/react';
 import Link from "next/link";
-import Toggle from "../../widgets/toggle/index"
+// import Toggle from "../../widgets/toggle/index"
 import { BsSearch, BsBell } from "react-icons/bs";
 
 import { BiDownArrow } from 'react-icons/bi';
@@ -46,10 +46,10 @@ const Navigation = () => {
     // undefined, { shallow: true }
     // )
     
-    let locals = checkoLocal()
+    // let locals = checkoLocal()
     // if(locals === null){
         signIn()
-      window.history.pushState(null, 'login', '/login')
+      // window.history.pushState(null, 'login', '/login')
       // router.push('/login')
     // }
 }

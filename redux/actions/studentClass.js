@@ -15,19 +15,7 @@ export const fetchStudentClassSubjectFail = (error) => ({
     type: types.FETCH_CLASS_SUBJECTS_FAIL,
     payload: error
 });
-export const fetchActivityStart = () => ({
-    type: types.FETCH_ACTIVITY_START
-});
 
-export const fetchActivitySuccess = (payload) => ({
-    type: types.FETCH_ACTIVITY_SUCCESS,
-    payload
-});
-
-export const fetchActivityFail = (error) => ({
-    type: types.FETCH_ACTIVITY_FAIL,
-    payload: error
-});
 
 
 export const fetchStudentClassSubjectInitiate = (classId) =>  {

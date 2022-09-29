@@ -323,9 +323,9 @@ const ClassRoom = ({ data }) => {
   const subject = useSelector((state) => state.mySubjectCourse);
 
   //remove async and await
-  const handleJoinClass =  () => {
+  const handleJoinClass = async () => {
     // e.preventDefault();
-    const { value: ipAddress } =  Swal.fire({
+    const { value: ipAddress } =  await Swal.fire({
       title: "Enter the class code below",
       input: "text",
       inputLabel: "",
@@ -342,7 +342,7 @@ const ClassRoom = ({ data }) => {
       dispatch(fetchSendClassRequest(ipAddress, token));
     }
     if (ipAddress && subject?.classRequestInfo) {
-      Swal.fire(subject?.classRequestInfo);
+      await Swal.fire(subject?.classRequestInfo);
     }
   };
   return (
