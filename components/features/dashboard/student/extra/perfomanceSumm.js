@@ -41,13 +41,6 @@ const PerfomanceSumm = () => {
     ],
   };
 
-  const options = {
-    maintainAspectRatio: false,
-    legend: {
-      display: false,
-    },
-  };
-
     const options = {
        maintainAspectRatio: false,
        legend: {

@@ -565,22 +565,22 @@ const Partners = () => {
     partners: [
       {
         position: 0,
-        logoURL: "/assets/img/common/partners/unicef.png",
+        logoURL: "/assets/img/common/partners/African-Union-Logo.svg",
         name: "",
       },
       {
         position: 1,
-        logoURL: "/assets/img/common/partners/unicef.png",
+        logoURL: "/assets/img/common/partners/download-1.svg",
         name: "",
       },
       {
         position: 3,
-        logoURL: "/assets/img/common/partners/unicef.png",
+        logoURL: "/assets/img/common/partners/UK-Nigeria-tech-hub.svg",
         name: "",
       },
       {
         position: 4,
-        logoURL: "/assets/img/common/partners/unicef.png",
+        logoURL: "/assets/img/common/partners/us-chambers.svg",
         name: "",
       },
       {
@@ -590,12 +590,12 @@ const Partners = () => {
       },
       {
         position: 6,
-        logoURL: "/assets/img/common/partners/unicef.png",
+        logoURL: "/assets/img/common/partners/BellaNaija-Logo_Black.svg",
         name: "",
       },
       {
         position: 7,
-        logoURL: "/assets/img/common/partners/unicef.png",
+        logoURL: "/assets/img/common/partners/netherland-kingdom.svg",
         name: "",
       },
     ],
