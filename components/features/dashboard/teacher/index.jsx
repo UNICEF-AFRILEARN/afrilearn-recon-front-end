@@ -128,7 +128,7 @@ export const HeropageWelcome = () => {
       className='middlebarforteacher'
         style={{
           position: "absolute",
-          bottom: "25%",
+          bottom: "35%",
           width: "100%",
           marginTop: "-8%",
           zIndex: "999",
