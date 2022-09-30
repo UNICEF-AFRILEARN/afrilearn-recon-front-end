@@ -12,7 +12,7 @@ const GetSolution = () => {
               <div className={`col-md-7 ${styles.LinkBox}`}>
                 <h5>Submit your Assignment for Instant Solutions 24/7</h5>
                 <div className={`${styles.LinkBoxxs}`}>
-                  <Link passHref href="/">
+                  <Link passHref href="/tutorhelp">
                     GET SOLUTION NOW
                   </Link>
                 </div>

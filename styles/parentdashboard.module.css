@@ -1,250 +1,253 @@
 .parentcomponentwrapper {
-    
 }
 
 .innerparentwrapper {
-    position: relative;
-    height: 90vh;
+  position: relative;
+  height: 90vh;
 }
 
 .headerwrapper {
-    background: url('../public/assets/img/parenthead.svg');
-    height: 65vh;
+  background: url("../public/assets/img/parenthead.svg");
+  height: 65vh;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  /* background-attachment: fixed; */
+  background-size: cover;
 }
 
 .avatarwrapper {
-    display: flex;
-    justify-content: space-between;
-    position: absolute;
-    bottom: 60px;
-    left: 90px;
-    gap: 30px;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 60px;
+  left: 90px;
+  gap: 30px;
 }
 
 .proaddwrapper {
-    position: absolute;
-    right: 130px;
-    bottom: 10px;
+  position: absolute;
+  right: 130px;
+  bottom: 10px;
 }
 
 .counterwrapper {
-    position:absolute;
-    display: flex;
-    justify-content: space-around;
-    background-color:#FFFFFF;
-    bottom: 45px;
-    left: 240px;
-    width: 65vw;
-    padding: 15px 0;
-    border-radius: 5px;
-    box-shadow: 3px 15px #FAFAFA;
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  background-color: #ffffff;
+  bottom: 45px;
+  left: 240px;
+  width: 65vw;
+  padding: 15px 0;
+  border-radius: 5px;
+  box-shadow: 3px 15px #fafafa;
 }
 
-.childrencounterwrapper, .classesncounterwrapper{
-    text-align: center;
+.childrencounterwrapper,
+.classesncounterwrapper {
+  text-align: center;
 }
-.childrencounterwrapper h4, .classesncounterwrapper h4 {
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 33px;
+.childrencounterwrapper h4,
+.classesncounterwrapper h4 {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 33px;
 }
-.childrencounterwrapper h5, .classesncounterwrapper h5 {
-    color: #A8A8A8;
+.childrencounterwrapper h5,
+.classesncounterwrapper h5 {
+  color: #a8a8a8;
 }
 
 .parentmaingeneratewrapper {
-    background-color: #FAFAFA;
-    width: 82%;
-    align-items: center;
-    margin: 0 auto;
-    padding: 25px 0;
+  background-color: #fafafa;
+  width: 82%;
+  align-items: center;
+  margin: 0 auto;
+  padding: 25px 0;
 }
 .innerheadingperfomwrapper {
-    width: 45%;
-    margin:  0 auto;
+  width: 45%;
+  margin: 0 auto;
 }
 .innerformwrapper {
-    width: 45%;
-    margin:  0 auto;
+  width: 45%;
+  margin: 0 auto;
 }
 .arrowparentwrapper {
-    position: relative;
+  position: relative;
 }
 
 .arrowdownwrapper {
-    position: absolute;
-    right : 10px;
-    top: 40px;
+  position: absolute;
+  right: 10px;
+  top: 40px;
 }
 
 .classcontentwrapper {
-    margin: 20px 0;
-
+  margin: 20px 0;
 }
 
 .contentheaderwrapper {
-    width: 80%;
-    margin-left: 95px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    border-bottom: 1px solid rgb(204, 197, 197);
+  width: 80%;
+  margin-left: 95px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-bottom: 1px solid rgb(204, 197, 197);
 }
 
 .contentheaderwrapper h3 {
-    margin: 0 10px;
+  margin: 0 10px;
 }
 
 .labelwrapper ul {
-    display: flex;
-    justify-content: space-between;
-    text-align: start;
+  display: flex;
+  justify-content: space-between;
+  text-align: start;
 }
 .labelwrapper ul li {
-    list-style-type: none;
-    margin: 0 10px;
-    border: rgb(190, 185, 185) solid 1px;
-    padding: 2px 15px;
-    border-radius: 30px;
+  list-style-type: none;
+  margin: 0 10px;
+  border: rgb(190, 185, 185) solid 1px;
+  padding: 2px 15px;
+  border-radius: 30px;
 }
 
 .contentmainwrapper {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-evenly;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .innercontentwrapper {
-    background-color: #A8A8A8;
-    margin-top: 30px;
-    padding: 10px;
+  background-color: #a8a8a8;
+  margin-top: 30px;
+  padding: 10px;
 }
 
 .innercontentwrapper ul {
-    display: flex;
-    align-items: flex-start;
-    text-align: start;
-    margin-bottom: 10px;
+  display: flex;
+  align-items: flex-start;
+  text-align: start;
+  margin-bottom: 10px;
 }
 
 .innercontentwrapper ul li {
-    list-style-type: none;
-    margin: 0 10px;
-    background-color: #f0ecec;
-    border-radius: 50px;
-    padding: 3px 10px;
-    cursor: pointer;
+  list-style-type: none;
+  margin: 0 10px;
+  background-color: #f0ecec;
+  border-radius: 50px;
+  padding: 3px 10px;
+  cursor: pointer;
 }
 
 .closeModal {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .cardcontentwrapper {
-    display: flex;
-    flex-direction: column;
-    width: 45%;
-    height: 30%;
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  height: 30%;
 }
 
 .contenthidewrapper {
-    display: none;
+  display: none;
 }
 
 .contentshow {
-    display: block;
+  display: block;
 }
 
 .contentquestionwrapper {
-    position: relative;
+  position: relative;
 }
 
 .contentquestionwrapper h4 {
-    font-size: 14.5259px;
-    
+  font-size: 14.5259px;
 }
 
-.contentquestionwrapper h4 span{
-   position: absolute;
-   right: 10px;
+.contentquestionwrapper h4 span {
+  position: absolute;
+  right: 10px;
 }
 
 .checkbg {
-    border-radius: 50px;
-    background-color: rgb(12, 14, 14);
+  border-radius: 50px;
+  background-color: rgb(12, 14, 14);
 }
 
 .contentinnernavwrapper ul li {
-    list-style-type: none;
-    margin-top: 20px;
+  list-style-type: none;
+  margin-top: 20px;
 }
 
 .parentchildformwrapper {
-    padding: 40px 0;
-    width: 50%;
-    background-color: #FAFAFA;
-    ;
-    margin: 0 auto;
+  padding: 40px 0;
+  width: 50%;
+  background-color: #fafafa;
+  margin: 0 auto;
 }
 
 .linkwrapper {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 
 .leftlinkswrapper {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
-.leftlinkswrapper span{
-    margin-left: 15px;
+.leftlinkswrapper span {
+  margin-left: 15px;
 }
 .unlinkwrapper {
-    margin-left: 5px;
-    border-bottom: 1px solid #A8A8A8;
-    cursor: pointer;
+  margin-left: 5px;
+  border-bottom: 1px solid #a8a8a8;
+  cursor: pointer;
 }
 
 .deletewrapper {
-    margin-left: 5px;
-    border-bottom: 1px solid red;
-    color: red;
-    cursor: pointer;
+  margin-left: 5px;
+  border-bottom: 1px solid red;
+  color: red;
+  cursor: pointer;
 }
 
 .tablewrapper {
-    background-color: #FAFAFA;
-    margin: 30px;
-    padding: 40px;
+  background-color: #fafafa;
+  margin: 30px;
+  padding: 40px;
 }
 
 .rightlinkswrapper {
-    display: flex;
-    gap: 5px;
-    cursor: pointer;
+  display: flex;
+  gap: 5px;
+  cursor: pointer;
 }
 
 .linkinchildwrapper {
-    border-bottom: 1px solid #00D9B6;
-    color: #00D9B6;
+  border-bottom: 1px solid #00d9b6;
+  color: #00d9b6;
 }
 .childrenheaderwrapper {
-    margin-bottom: 50px;
+  margin-bottom: 50px;
 }
 
 .modaltitle {
-    width: 100%;
+  width: 100%;
 }
 
 .modaltitle h5 {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .modalwrapperouter {
-    margin-top: 40px;
+  margin-top: 40px;
 }
 
 .modalbodywrapper {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }

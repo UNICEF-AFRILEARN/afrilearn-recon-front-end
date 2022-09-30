@@ -1,4 +1,3 @@
-
 .loginButton {
   /* border: solid 1px black;
     padding: 7px 16px !important;
@@ -15,7 +14,7 @@
   text-decoration: none;
 }
 .adjustTopNav {
-  margin-top: 86px;
+  /* margin-top: 86px; */
 }
 
 .main-navbar-with-login {
@@ -24,41 +23,44 @@
   flex-direction: column;
 }
 .loggedindash {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   width: 60vw;
-   padding: 5px;
-}
-
-.parentloggedindash{
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80vw;
+  width: 60vw;
   padding: 5px;
 }
 
+.parentloggedindash {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  width: 80vw;
+  padding: 5px;
+  margin-right: 65px;
+}
 
-.loggedindash ul, .parentloggedindash ul{
+.loggedindash ul,
+.parentloggedindash ul {
   display: flex;
   justify-content: space-evenly;
   gap: 80px;
   margin-right: 60px;
 }
 
-.loggedindash ul li, .parentloggedindash ul li {
+.loggedindash ul li,
+.parentloggedindash ul li {
   list-style-type: none;
   cursor: pointer;
 }
 
-.navicons{
-  display:flex;
+.navicons {
+  display: flex;
   justify-content: space-evenly;
   gap: 20px;
 }
 
-.btnlogin, .btnloginregister{
+.btnlogin,
+.btnloginregister {
   margin-right: 10px;
   background-color: #00d9b6;
   color: #fff;
@@ -83,10 +85,19 @@
 
 .profileavatar {
   cursor: pointer;
-  margin-right: 20px;
+  width: 43px;
+}
+.profileavatar2 {
+  cursor: pointer;
+  margin-top: 20px;
+  /* margin-right: -50px; */
+}
+.profileavatar1 {
+  cursor: pointer;
+  border-radius: 100px;
 }
 
-.avatarcontainer{
+.avatarcontainer {
   display: flex;
 }
 
@@ -94,7 +105,6 @@
   display: flex;
   flex-direction: column;
   position: absolute;
-
 }
 
 .ulmenuwrapper {
@@ -103,7 +113,7 @@
 .profilearrowdow {
   margin-left: 15px;
 }
-.avatarlist ul{
+.avatarlist ul {
   background-color: #0000;
 }
 
@@ -117,25 +127,26 @@
   right: 0;
   left: auto;
 }
-.iconswrapper:hover .iconswrapper {background-color: #3e8e41;}
-
+.iconswrapper:hover .iconswrapper {
+  background-color: #3e8e41;
+}
 
 .linkswrapper {
   display: none;
   position: absolute;
   background-color: #f1f1f1;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
-.linkswrapper a{
+.linkswrapper a {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
 
-.linkswrapper a:hover{
+.linkswrapper a:hover {
   background-color: gray;
 }

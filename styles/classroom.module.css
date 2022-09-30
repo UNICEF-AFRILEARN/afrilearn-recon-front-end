@@ -79,6 +79,10 @@
   margin: auto;
   align-items: center;
 }
+
+.maincontainer2 img {
+  margin-left: 18px !important;
+}
 .paddingbody {
   margin-top: 70px;
 }

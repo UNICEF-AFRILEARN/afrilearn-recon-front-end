@@ -26,7 +26,6 @@ function MyVerticallyCenteredModal(props) {
     </Modal>
   );
 }
-
 const StudentProfileEdit = () => {
   const [modalShow, setModalShow] = useState(false);
 

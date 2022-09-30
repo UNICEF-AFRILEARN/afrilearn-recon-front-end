@@ -1238,7 +1238,7 @@ a {
   background: #ffffff;
 }
 .get-trial > div {
-  margin: 1px;
+  margin: 12px;
   font-size: 30px;
 }
 
@@ -1265,7 +1265,7 @@ a {
 
 .get-trial ul {
   font-weight: 400;
-  font-size: 20px;
+  font-size: 15px;
   line-height: 26px;
   color: #333333;
   left: 112px;
@@ -1362,6 +1362,7 @@ figure img {
 .timer .btn {
   width: 100px !important;
 }
+
 @media screen and (max-width: 415px) {
   .innerHtml img {
     height: 200px !important;

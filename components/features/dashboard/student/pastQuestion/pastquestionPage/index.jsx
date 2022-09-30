@@ -14,14 +14,13 @@ const PastQuestion = () => {
   const dispatch = useDispatch();
   let quary = router.query.Exam;
   useEffect(() => {
-    console.log(quary);
     if (quary !== "") {
       dispatch(fetchPastQuestionQueInitiate(quary));
     }
   }, [quary]);
 
   const subject = useSelector((state) => state.mySubjectCourse);
-  console.log(subject);
+
   const subjectDat = subject.pastQuestionQue[0];
   const quizData = {
     heading: `${subjectDat?.subject_details?.exam_name}:`,
@@ -138,7 +137,11 @@ const PastQuestion = () => {
           <div className="buttonSection pt-4">
             <Link
               passHref
-              href="/dashboard/student/pastQuestion/pastQuestionPage/pastExamQue"
+              href={{
+                pathname:
+                  "/dashboard/student/pastQuestion/pastQuestionPage/pastExamQue",
+                query: [router.query.type, router.query.Exam],
+              }}
             >
               <button>GET STARTED</button>
             </Link>

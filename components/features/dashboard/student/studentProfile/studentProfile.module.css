@@ -4,8 +4,8 @@
   column-gap: 5%;
   max-width: 80%;
 }
-.classlink{
-  cursor:pointer;
+.classlink {
+  cursor: pointer;
 }
 .studentProfileAvatar {
   background: url("/assets/img/features/dashboard/student/Ellipse 1.png");
@@ -17,11 +17,16 @@
 }
 .studentProfileAvatar2 {
   background: url("/assets/img/features/dashboard/student/person_2 1.png");
-  height:210px;
+  height: 210px;
   width: 174px;
   background-repeat: no-repeat;
   background-position: 50%;
   background-size: contain;
+}
+
+.studentProfileAvatar img {
+  /* border: solid 1px red; */
+  margin-left: 8px !important;
 }
 
 .studentProfileInfo {
@@ -41,7 +46,7 @@
   background-repeat: no-repeat;
   background-position: 50%;
   background-size: contain;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .studentProfilePenIcon {
@@ -93,6 +98,6 @@
   margin: auto;
 }
 
-.text-dark h1{
+.text-dark h1 {
   background-color: red;
 }

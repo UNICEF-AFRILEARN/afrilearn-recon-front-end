@@ -3,10 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import Image from "next/image";
 import Link from "next/link";
 import { Col, Container, Row } from "react-bootstrap";
-// import PastQuestion from "../student/extra/PastQuestionaira";
+import PastQuestionaira from "../student/extra/PastQuestionaira";
 import Subjects from "../student/extra/subjects";
-
-
 import { AiOutlineSend } from "react-icons/ai";
 import styles1 from "../student/student.module.css";
 import styles from "../student/studentProfile/studentProfile.module.css";
@@ -26,7 +24,6 @@ import {
 } from "../../../../redux/actions/subject";
 
 const Dashboard = () => {
-  
   const dispatch = useDispatch();
   const { registerUser, user } = useSelector((state) => state.auth);
   const { allSubjects } = useSelector((state) => state.mySubject);
@@ -86,7 +83,14 @@ const Dashboard = () => {
           </Row>
           <Subjects subData={teachSubject} />
         </Col>
-        <Col>{/* <PastQuestion /> */}</Col>
+        <Col>
+          <PastQuestionaira
+            subData={
+              subject?.dashboardWeb?.enrolledCourse?.courseId
+                .relatedPastQuestions
+            }
+          />
+        </Col>
         <Col>{/* <PastQuestion /> */}</Col>
       </div>
       <TeacherAnnouncement />
@@ -125,7 +129,7 @@ export const HeropageWelcome = () => {
   return (
     <>
       <Row
-      className='middlebarforteacher'
+        className="middlebarforteacher"
         style={{
           position: "absolute",
           bottom: "35%",
@@ -143,7 +147,6 @@ export const HeropageWelcome = () => {
                   src={`/assets/img/features/dashboard/teacher/teacherPix.png`}
                   width={168}
                   height={168}
-                  
                 />
               </Col>
             </Col>

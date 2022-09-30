@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import styles1 from "../student.module.css";
 import styles from "./studentProfile.module.css";
@@ -7,40 +7,39 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchUserProfileInitiate } from "../../../../../redux/actions/dashboard";
 import { fetchSchoolProfileInitiate } from "../../../../../redux/actions/school";
-
+import Image from "next/image";
 
 const StudentProfile = () => {
   const { schoolProfile } = useSelector((state) => state.school);
-  const {user} = useSelector(state => state.auth);
-  const { userProfile } = useSelector(state => state.dashboard)
-  const [referal, setReferal] = useState(`https://myafrilearn.com/register?referralCode=${user.user?.id}`);
-  const [copyMessage, setCopyMessage] = useState("COPY LINK")
+  const { user } = useSelector((state) => state.auth);
+  const { userProfile } = useSelector((state) => state.dashboard);
+  const [referal, setReferal] = useState(
+    `https://myafrilearn.com/register?referralCode=${user.user?.id}`,
+  );
+  const [copyMessage, setCopyMessage] = useState("COPY LINK");
   const dispatch = useDispatch();
 
   const token = user.token;
   const userId = user.user?.id;
 
-  console.log("logged-in ==> schoolProfile", schoolProfile
-
-  )
-  console.log("logged-in ==> user profile", userId)
+  console.log("logged-in ==> schoolProfile", schoolProfile);
+  console.log("logged-in ==> user profile", userId);
   const coin = { amount: 345 };
   const number = "";
 
-
   const copyReferalCode = (link) => {
-    navigator.clipboard.writeText(link)
-    setCopyMessage("LINK COPIED")
-  }
+    navigator.clipboard.writeText(link);
+    setCopyMessage("LINK COPIED");
+  };
 
   useEffect(() => {
-    dispatch(fetchUserProfileInitiate(userId, token))
-  }, [])
+    dispatch(fetchUserProfileInitiate(userId, token));
+  }, []);
 
   // useEffect(() => {
   //   dispatch(fetchSchoolProfileInitiate(schoolId))
   // },[schoolId])
-  
+
   return (
     <>
       <div
@@ -57,9 +56,7 @@ const StudentProfile = () => {
       >
         <Col>
           <Row className={`mx-auto ${styles.studentProfileGrid}`}>
-            <Col className={`m-auto ${styles.studentProfileAvatar}`}>
-              <Col className={`m-auto ${styles.studentProfileAvatar2}`}></Col>
-            </Col>
+            <ProfilePicture user={user} />
             <Col className={styles.studentProfileInfo}>
               <Row className="p-4">
                 <Row>
@@ -155,28 +152,30 @@ const StudentProfile = () => {
               <p>Coin: {user.user?.afriCoins}</p>
             </Col>
           </Row>
-          <Row
-            className="mt-4"
-            style={{
-              width: "223px",
-              height: "53px",
-              background: "#00D9B6",
-              borderRadius: "100px",
-            }}
-          >
-            <p
+          <Link passHref href="/africoin">
+            <Row
+              className="mt-4 pointer"
               style={{
-                fontWeight: "500",
-                margin: "auto",
-                fontSize: "18px",
-                lineHeight: "24px",
-                color: "#FFFFFF",
-                width: "fit-content",
+                width: "223px",
+                height: "53px",
+                background: "#00D9B6",
+                borderRadius: "100px",
               }}
             >
-              BUY MORE COINS
-            </p>
-          </Row>
+              <p
+                style={{
+                  fontWeight: "500",
+                  margin: "auto",
+                  fontSize: "18px",
+                  lineHeight: "24px",
+                  color: "#FFFFFF",
+                  width: "fit-content",
+                }}
+              >
+                BUY MORE COINS
+              </p>
+            </Row>
+          </Link>
         </Col>
         <Col className="px-4">
           <Row>
@@ -358,21 +357,22 @@ const StudentProfile = () => {
                 border: "1px solid rgba(51, 51, 51, 0.35)",
                 boxShadow: "0px 1px 7px rgba(255, 255, 255, 0.25)",
               }}
-            >
-              
-            </Row>
-              <Row>
-                <ul >
-             { schoolProfile.schoolClassesData && schoolProfile.schoolClassesData.map((schoolClasses) => 
-                <li style={{
-                  listStyle: "none",
-                  marginTop: 10,
-                }}>{schoolClasses.className
-                }</li>
-             )
-              }
+            ></Row>
+            <Row>
+              <ul>
+                {schoolProfile.schoolClassesData &&
+                  schoolProfile.schoolClassesData.map((schoolClasses) => (
+                    <li
+                      style={{
+                        listStyle: "none",
+                        marginTop: 10,
+                      }}
+                    >
+                      {schoolClasses.className}
+                    </li>
+                  ))}
               </ul>
-              </Row>
+            </Row>
             {number !== "" ? (
               <Row className="p-5">
                 <p style={{ color: "#A6A6A6" }}>
@@ -483,7 +483,7 @@ const StudentProfile = () => {
           </Row>
           <Row className="mx-auto mb-5">
             <input
-            defaultValue={referal}
+              defaultValue={referal}
               // placeholder=""
               style={{
                 width: "751px",
@@ -498,7 +498,7 @@ const StudentProfile = () => {
               }}
             />
             <button
-            onClick={() => copyReferalCode(referal)}
+              onClick={() => copyReferalCode(referal)}
               style={{
                 width: "193px",
                 height: "71px",
@@ -508,7 +508,7 @@ const StudentProfile = () => {
                 position: "absolute",
                 left: "1015px",
                 border: "0",
-                marginLeft:"15px"
+                marginLeft: "15px",
               }}
             >
               {copyMessage}
@@ -521,3 +521,39 @@ const StudentProfile = () => {
 };
 
 export default StudentProfile;
+
+export const ProfilePicture = ({ user }) => {
+  return (
+    <Row>
+      <Col className={`m-auto ${styles.studentProfileAvatar}`}>
+        <Col>
+          <picture>
+            <source
+              srcSet={
+                user?.user.profilePhotoUrl
+                  ? user?.user.profilePhotoUrl
+                  : `/assets/img/features/dashboard/student/woman.png`
+              }
+              type="image/webp"
+            />
+            <img
+              src={
+                user?.user.profilePhotoUrl
+                  ? user?.user.profilePhotoUrl
+                  : `/assets/img/features/dashboard/student/woman.png`
+              }
+              alt="Flowers"
+              style={{
+                marginLeft: "6px",
+                marginTop: "18px",
+                width: "174px",
+                height: "174px",
+                borderRadius: "90px",
+              }}
+            />
+          </picture>
+        </Col>
+      </Col>
+    </Row>
+  );
+};
