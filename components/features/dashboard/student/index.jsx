@@ -32,18 +32,19 @@ import {
   // fetchCourseInitiate,
   fetchReconLessonInitiate,
   fetchUnicefReconInitiate,
-  fetchActivitiesInitiate,
   fetchSingleLessonInitiate,
   fetchLessonsInitiate,
 } from "../../../../redux/actions/courses";
+import { fetchRecentActivitiesInitiate } from '../../../../redux/actions/classes'
 import { Button, Col, Modal, Row, Tooltip } from "react-bootstrap";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
-  const { reconLesson, lessons, unicefRecon, activities } = useSelector(
+  const { reconLesson, lessons, unicefRecon } = useSelector(
     (state) => state.Mycourses,
   );
   const { user, registerUser } = useSelector((state) => state.auth);
+  const { activities } = useSelector((state) => state.Mycourses);
   // const { registerUser } = useSelector((state) => state.auth);
   const subject = useSelector((state) => state.mySubjectCourse);
 
@@ -54,7 +55,7 @@ const Dashboard = () => {
   const reco_subject = "Agricultural Science";
   // To be changed later
 
-  console.log("activities ====>", activities)
+  console.log("activities ==&&& ==>", activities)
   // let userId = "62a0bc984af2d90016b72096"
 
   const personData = {
@@ -74,7 +75,7 @@ const Dashboard = () => {
     // dispatch(fetchLessonsInitiate());
     dispatch(fetchSingleLessonInitiate(lessonId));
     dispatch(fetchLessonsInitiate());
-    dispatch(fetchActivitiesInitiate(token, userId));
+    dispatch(fetchRecentActivitiesInitiate(token, userId));
     dispatch(fetchUnicefReconInitiate(schoollevel, reco_subject, lessonId));
     dispatch(fetchReconLessonInitiate(userId, token));
     // dispatch(fetchSubjectInitiate(person_id, token));
@@ -86,7 +87,7 @@ const Dashboard = () => {
     // fetchCourseInitiate,
     fetchReconLessonInitiate,
     fetchUnicefReconInitiate,
-    fetchActivitiesInitiate,
+    fetchRecentActivitiesInitiate,
     fetchLessonsInitiate,
     // fetchSubjectInitiate,
     fetchGetUnfinishedVideosInitiate,
@@ -341,8 +342,7 @@ const Recommended = ({ recommend, unicefRecon, lessons }) => {
       }
     }
   };
-  console.log("Final answer", getFinalRecon());
-  // const unicefRecons = Object.values(unicefRecon);
+
   return (
     <>
       {unicefRecon !== 0 && (

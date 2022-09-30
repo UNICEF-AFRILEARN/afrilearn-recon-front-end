@@ -137,6 +137,18 @@ export const acceptRejectClassMemberFail = (error) => ({
     payload: error
 });
 
+export const fetchRecentActivitiesStart = () => ({
+    type: types.FETCH_RECENT_ACTIVITIES_START
+});
+export const fetchRecentActivitiesSuccess = (payload) => ({
+    type: types.FETCH_RECENT_ACTIVITIES_SUCCESS,
+    payload
+});
+export const fetchRecentActivitiesFail = (error) => ({
+    type: types.FETCH_RECENT_ACTIVITIES_FAIL,
+    payload: error
+});
+
 
 export const makeAnnouncementInitiate = (classId, text, token) =>  {
     return function (dispatch) {
@@ -370,6 +382,29 @@ export const acceptRejectClassMemberInitiate = (userId, classId, status, token) 
         .catch((err) => {
             dispatch(acceptRejectClassMemberFail(err))
         } )
+    }
+
+}
+
+export const fetchRecentActivitiesInitiate = (token, userId) =>  {
+    return function (dispatch) {
+        dispatch(fetchRecentActivitiesStart())
+        axios
+        .get('https://afrilearn-backend-01.herokuapp.com/api/v1/recents/activities',
+        {   userId  },
+        {   
+            headers: {
+                "token": token,
+                "Content-Type": "application/json",
+            }
+        })
+        .then((res) => {
+            dispatch(fetchRecentActivitiesSuccess(res.data.data))
+            console.log("From Activities API =>", res.data.data)
+        })
+        .catch((err) => {
+            dispatch(fetchRecentActivitiesFail(err.reponse))
+        })
     }
 
 }

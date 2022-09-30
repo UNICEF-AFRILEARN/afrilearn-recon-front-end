@@ -49,17 +49,7 @@ export const fetchUnicefRecoFail = (error) => ({
     type: types.FETCH_UNICEF_RECOMEND_FAIL,
     payload: error
 });
-export const fetchActivitiesStart = () => ({
-    type: types.FETCH_ACTIVITIES_START
-});
-export const fetchActivitiesSuccess = (payload) => ({
-    type: types.FETCH_ACTIVITIES_SUCCESS,
-    payload
-});
-export const fetchActivitiesFail = (error) => ({
-    type: types.FETCH_ACTIVITIES_FAIL,
-    payload: error
-});
+
 export const fetchSingleLessonStart = () => ({
     type: types.FETCH_SINGLE_LESSON_START
 });
@@ -176,28 +166,6 @@ export const fetchUnicefReconInitiate = (schoollevel, reco_subject, lessonId) =>
         })
         .catch((err) => {
             console.log(err)
-        })
-    }
-
-}
-export const fetchActivitiesInitiate = (token, userId) =>  {
-    return function (dispatch) {
-        dispatch(fetchActivitiesStart())
-        axios
-        .get('https://afrilearn-backend-01.herokuapp.com/api/v1/recents/activities',
-        {   userId  },
-        {   
-            headers: {
-                "token": token,
-                "Content-Type": "application/json",
-            }
-        })
-        .then((res) => {
-            dispatch(fetchActivitiesSuccess(res.data.data))
-            console.log("From Activities API =>", res.data.data)
-        })
-        .catch((err) => {
-            dispatch(fetchActivitiesFail(err.reponse))
         })
     }
 
