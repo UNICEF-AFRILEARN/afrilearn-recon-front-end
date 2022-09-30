@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
-import Toggle from "../../widgets/toggle/index";
+// import Toggle from "../../widgets/toggle/index"
 import { BsSearch, BsBell } from "react-icons/bs";
 
 import { BiDownArrow } from "react-icons/bi";
@@ -66,7 +66,7 @@ const Navigation = () => {
       // fixed="top"
       collapseOnSelect
       // style={{ backgroundColor: "#FDFDFD !important" }}
-      className="mainNavbar mt-3"
+      className="mainNavbar pt-3"
     >
       <Navbar.Brand>
         <Link passHref href="/">

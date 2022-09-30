@@ -58,11 +58,11 @@ const Objectives = ({exam_id}) => {
     //     dispatch(updateExamQuestionInitiate(questionId, data))
     // }
 
-    let examType = allExams?.filter((filteredExams) => 
+    let examType = exams?.exams?.filter((filteredExams) => 
         filteredExams.id === exam_id
     )
 
-        console.log("examType =====>", examType)
+        console.log("examType =+++++====>", exams)
     
     const onClickExamsType = () => {
         setOpenQuestionType(!openQuestionType)
@@ -153,7 +153,7 @@ const Objectives = ({exam_id}) => {
                }
                 <div className={styles.btnmainwrapper}>
                   
-                 <h4 onClick={() => setTheExamType(theExamType)}>{examType[0]?.publish === true? "PUBLISHED" : "UNPUBLISHED"}</h4>
+                 {/* <h4>{examType[0]?.publish === true? "PUBLISHED" : "UNPUBLISHED"}</h4> */}
                    
                     <h5>PREVIEW</h5>
                 </div>

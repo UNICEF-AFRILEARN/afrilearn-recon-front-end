@@ -45,7 +45,7 @@ const ClassWork = () => {
 
   return (
     <>
-      <div style={{ marginTop: "-40px" }}>
+      <div >
         <Heropage />
       </div>
       <Container className="pt-3 pb-3">

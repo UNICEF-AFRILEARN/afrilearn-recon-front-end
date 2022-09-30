@@ -41,6 +41,8 @@ const Childperformance = ({studentPerformance, userId}) => {
   
   filterChild()
 
+  console.log("children", children)
+
   const displayPanel = () => {
     if(panelId === 1){
       setShowPanel(true)
@@ -100,7 +102,7 @@ const Childperformance = ({studentPerformance, userId}) => {
               <p>Progress level per  subject</p>
             </div>
              <Piechart 
-              data={data}
+              data={subjectPerformance}
              />
           </div>
         </div>

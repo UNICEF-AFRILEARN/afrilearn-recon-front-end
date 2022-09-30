@@ -1,5 +1,7 @@
 import React from "react";
 import styles from "../extra/chart.module.css";
+import { Doughnut } from "react-chartjs-2"
+import Permsumpiechart from './permsumpiechart';
 
 import {
   Chart as ChartJs,
@@ -10,9 +12,14 @@ import {
   Legend,
 } from "chart.js";
 
-import { Doughnut } from "react-chartjs-2";
-import SubHeading from "./subHeading";
 
+ChartJs.register(
+    ArcElement,
+    CategoryScale,
+    LinearScale,
+    Tooltip,
+    Legend
+)
 ChartJs.register(ArcElement, CategoryScale, LinearScale, Tooltip, Legend);
 
 const PerfomanceSumm = () => {
@@ -34,89 +41,79 @@ const PerfomanceSumm = () => {
     ],
   };
 
-  const options = {
-    maintainAspectRatio: false,
-    legend: {
-      display: false,
-    },
-  };
+    const options = {
+       maintainAspectRatio: false,
+       legend: {
+        display: false,
+        
+    }
+    }
 
-  return (
-    <>
-      <div className={styles.overallcomp}>
-        <h1>Performance Summary</h1>
-      </div>
-      <div className={styles.parentcontainer}>
-        <div className={styles.chartcard}>
-          <Doughnut data={data} width={300} height={300} options={options} />
-        </div>
-        <div className={styles.bardetails}>
-          <h5 className={styles.colorone}>Excelling In</h5>
-          <h5 className={styles.colortwo}>Average In</h5>
-          <h5 className={styles.colorthree}>Below Average In</h5>
-          <h5 className={styles.colorfour}>No rating</h5>
-        </div>
-        <div>
-          <div className={styles.topmath}>
-            <ul>
-              <li>Mathematics</li>
-              <li>Civic Education</li>
-              <li>Computer Science </li>
-              <li>Basic Science</li>
-            </ul>
-            <ul>
-              <li>Mathematics</li>
-              <li>Civic Education</li>
-              <li>Computer Science </li>
-              <li>Basic Science</li>
-            </ul>
-          </div>
-          <div className={styles.topmath}>
-            <ul>
-              <li>Mathematics</li>
-              <li>Civic Education</li>
-              <li>Computer Science </li>
-              <li>Basic Science</li>
-            </ul>
-            <ul>
-              <li>Mathematics</li>
-              <li>Civic Education</li>
-              <li>Computer Science </li>
-              <li>Basic Science</li>
-            </ul>
-          </div>
-          <div className={styles.topmath}>
-            <ul>
-              <li>Mathematics</li>
-              <li>Civic Education</li>
-              <li>Computer Science </li>
-              <li>Basic Science</li>
-            </ul>
-            <ul>
-              <li>Mathematics</li>
-              <li>Civic Education</li>
-              <li>Computer Science </li>
-              <li>Basic Science</li>
-            </ul>
-          </div>
-          <div className={styles.topmath}>
-            <ul>
-              <li>Mathematics</li>
-              <li>Civic Education</li>
-              <li>Computer Science </li>
-              <li>Basic Science</li>
-            </ul>
-            <ul>
-              <li>Mathematics</li>
-              <li>Civic Education</li>
-              <li>Computer Science </li>
-              <li>Basic Science</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-};
+
+    return (
+        <>
+            <div className={styles.overallcomp}>
+                <h1>Performance Summary</h1>
+            </div>
+         <div className={styles.parentcontainer}>
+        
+         <div className={styles.chartcard}>
+            {/* <Doughnut data={data} width={300} height={300} options={options} /> */}
+            <Permsumpiechart />
+         </div>
+         <div className={styles.bardetails}>
+            <h5 className={styles.colorone}>Excelling In</h5>
+            <h5 className={styles.colortwo}>Average In</h5>
+            <h5 className={styles.colorthree}>Below Average In</h5>
+            <h5 className={styles.colorfour}>No rating</h5>
+         </div>
+         <div>
+         <div className={styles.topmath}>
+                {/* | <span>Mathematics</span> |
+                <span>Civic Education</span> |
+                <span>Computer Science </span> |
+                <span>Basic Science</span> |
+                <span>Mathematics</span> |
+                <span>Civic Education</span> |
+                <span>Computer Science </span> |
+                <span>Basic Science</span> | */}
+            </div>
+            <div className={styles.topmath}>
+                {/* | <span>Mathematics</span> |
+                <span>Civic Education</span> |
+                <span>Computer Science </span> |
+                <span>Basic Science</span> |
+                <span>Mathematics</span> |
+                <span>Civic Education</span> |
+                <span>Computer Science </span> |
+                <span>Basic Science</span> | */}
+            </div>
+            <div className={styles.topmath}>
+                {/* | <span>Mathematics</span> |
+                <span>Civic Education</span> |
+                <span>Computer Science </span> |
+                <span>Basic Science</span> |
+                <span>Mathematics</span> |
+                <span>Civic Education</span> |
+                <span>Computer Science </span> |
+                <span>Basic Science</span> | */}
+            </div>
+            <div className={styles.topmath}>
+                <span>Mathematics</span> |
+                <span>Civic Education</span> |
+                <span>Computer Science </span> |
+                <span>Basic Science</span> |
+                <span>Mathematics</span> |
+                <span>Civic Education</span> |
+                <span>Computer Science </span> |
+                <span>Basic Science</span> |
+            </div>
+           
+         </div>
+         
+     </div>
+     </>
+    )
+  }
 
 export default PerfomanceSumm;

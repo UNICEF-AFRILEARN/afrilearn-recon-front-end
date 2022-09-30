@@ -71,7 +71,6 @@ const ClassPerfomance = ({
               <p className={styles.invitewrapper}>Invite your friends</p>
             </>
           </div>
-          )}
         </div>
         <div>
           {/* <div className={styles.innerwrapper}>

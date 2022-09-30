@@ -52,20 +52,6 @@ const coursesReducer = (state = initialState, { type, payload} ) => {
             return {
                 error: payload
             }
-        case types.FETCH_ACTIVITIES_START:
-                return {
-                    ...state
-                };
-        case types.FETCH_ACTIVITIES_SUCCESS:
-                return {
-                    ...state,
-                    activities: payload
-                }
-        case types.FETCH_ACTIVITIES_FAIL:
-            return {
-                ...state,
-                error: payload
-            }
         case types.FETCH_SINGLE_LESSON_START:
                 return {
                     ...state

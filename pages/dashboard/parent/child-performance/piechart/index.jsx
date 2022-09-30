@@ -15,8 +15,7 @@ const Piechart = ({data}) => {
             radius={[20, 20, 20, 20]}
             barSize={28}
             // label={{ position: 'baseline'}}
-
-            
+      
           />
           
            <XAxis 

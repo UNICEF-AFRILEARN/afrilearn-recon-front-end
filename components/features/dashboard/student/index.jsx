@@ -32,18 +32,19 @@ import {
   // fetchCourseInitiate,
   fetchReconLessonInitiate,
   fetchUnicefReconInitiate,
-  fetchActivitiesInitiate,
   fetchSingleLessonInitiate,
   fetchLessonsInitiate,
 } from "../../../../redux/actions/courses";
+import { fetchRecentActivitiesInitiate } from '../../../../redux/actions/classes'
 import { Button, Col, Modal, Row, Tooltip } from "react-bootstrap";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
-  const { reconLesson, lessons, unicefRecon, activities } = useSelector(
+  const { reconLesson, lessons, unicefRecon } = useSelector(
     (state) => state.Mycourses,
   );
   const { user, registerUser } = useSelector((state) => state.auth);
+  const { activities } = useSelector((state) => state.Mycourses);
   // const { registerUser } = useSelector((state) => state.auth);
   const subject = useSelector((state) => state.mySubjectCourse);
 
@@ -53,6 +54,9 @@ const Dashboard = () => {
   const schoollevel = "Primary One";
   const reco_subject = "Agricultural Science";
   // To be changed later
+
+  console.log("activities ==&&& ==>", activities)
+  // let userId = "62a0bc984af2d90016b72096"
 
   const personData = {
     personClass: user.user?.enrolledCourses[0]
@@ -71,7 +75,7 @@ const Dashboard = () => {
     // dispatch(fetchLessonsInitiate());
     dispatch(fetchSingleLessonInitiate(lessonId));
     dispatch(fetchLessonsInitiate());
-    dispatch(fetchActivitiesInitiate(token));
+    dispatch(fetchRecentActivitiesInitiate(token, userId));
     dispatch(fetchUnicefReconInitiate(schoollevel, reco_subject, lessonId));
     dispatch(fetchReconLessonInitiate(userId, token));
     // dispatch(fetchSubjectInitiate(person_id, token));
@@ -83,13 +87,14 @@ const Dashboard = () => {
     // fetchCourseInitiate,
     fetchReconLessonInitiate,
     fetchUnicefReconInitiate,
-    fetchActivitiesInitiate,
+    fetchRecentActivitiesInitiate,
     fetchLessonsInitiate,
     // fetchSubjectInitiate,
     fetchGetUnfinishedVideosInitiate,
     fetchGetWebInitiate,
     fetchTopInClassInitiate,
     fetchClassMember,
+    activities
   ]);
 
   return (
@@ -114,7 +119,7 @@ const Dashboard = () => {
         classData={subject?.topInclass?.lessons}
         classed={personData.personClass}
       />
-      <PerfomanceSumm />
+      <PerfomanceSumm /> 
       <GetSolution />
       <ClassRoom data={subject?.classroom?.classMembership} />
       <div className={styles.recomendationmainwrapper}>
@@ -337,8 +342,7 @@ const Recommended = ({ recommend, unicefRecon, lessons }) => {
       }
     }
   };
-  console.log("Final answer", getFinalRecon());
-  // const unicefRecons = Object.values(unicefRecon);
+
   return (
     <>
       {unicefRecon !== 0 && (
@@ -347,8 +351,11 @@ const Recommended = ({ recommend, unicefRecon, lessons }) => {
 
           <div className={`${styles.contai}`}>
             <section className="parnet-frag-color">
-              {unicefRecon?.map((recData) => (
-                <Recommendation recData={recData} />
+              {unicefRecon?.map((recData, index) => (
+                <Recommendation 
+                recData={recData}
+                recIndex={index}
+                 />
               ))}
             </section>
           </div>
@@ -365,9 +372,9 @@ const ClassRoom = ({ data }) => {
   const token = user?.token;
 
   //remove async and await
-  const handleJoinClass = () => {
+  const handleJoinClass = async () => {
     // e.preventDefault();
-    const { value: ipAddress } = Swal.fire({
+    const { value: ipAddress } =  await Swal.fire({
       title: "Enter the class code below",
       input: "text",
       inputLabel: "",
@@ -384,7 +391,7 @@ const ClassRoom = ({ data }) => {
       dispatch(fetchSendClassRequest(ipAddress, token));
     }
     if (ipAddress && subject?.classRequestInfo) {
-      Swal.fire(subject?.classRequestInfo);
+      await Swal.fire(subject?.classRequestInfo);
     }
   };
   return (
