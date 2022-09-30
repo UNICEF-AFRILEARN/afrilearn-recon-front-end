@@ -5,11 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
-<<<<<<< HEAD
 // import Toggle from "../../widgets/toggle/index"
-=======
-import Toggle from "../../widgets/toggle/index";
->>>>>>> dev
 import { BsSearch, BsBell } from "react-icons/bs";
 
 import { BiDownArrow } from "react-icons/bi";
