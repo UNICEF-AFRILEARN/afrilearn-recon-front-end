@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 // import { useRouter } from "next/router";
 import React, { useState} from "react";
 import Modal from 'react-bootstrap/Modal';
-import { sendChangepasswordemail } from "../../../../redux/actions/auth";
+// import { sendChangepasswordemail } from "../../../../redux/actions/auth";
 
 const ResetPassword = () => {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const ResetPassword = () => {
   const changePasword = (e) => {
     e.preventDefault();
      setShowresponse(formConfirmPassword)
-    dispatch(sendChangepasswordemail(email, password));
+    // dispatch(sendChangepasswordemail(email, password));
    
   };
 

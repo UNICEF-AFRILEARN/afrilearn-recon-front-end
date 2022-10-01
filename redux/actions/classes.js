@@ -55,7 +55,7 @@ export const sendClassEmailInviteSuccess = (payload) => ({
     payload
 });
 export const sendClassEmailInviteFail = (error) => ({
-    type: types.SEND_SEND_CLASS_EMAIL_INVITE_FAIL,
+    type: types.SEND_CLASS_EMAIL_INVITE_FAIL,
     payload: error
 });
 export const fetchClassAssingedContentStart = () => ({

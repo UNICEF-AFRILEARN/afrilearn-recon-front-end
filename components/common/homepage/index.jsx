@@ -438,7 +438,6 @@ const QuickJoin = () => {
 
   //Extract school classes:
   const courseContext = roles.courses;
-  console.log("courseContext from homepage ==>", courseContext)
   // let classId = "5fff7371de0bdb47f826feb2"
 
   const data = {
