@@ -1,7 +1,7 @@
 import styles from "./student.module.css";
 import SubHeading from "./extra/subHeading";
 
-import PastQuestion from "./extra/PastQuestionaira";
+import PastQuestion from "./extra/PastQuestionaira.jsx";
 import TopInClass from "./extra/topInClass";
 import Recommendation from "./extra/recommendation";
 import Image from "next/image";
