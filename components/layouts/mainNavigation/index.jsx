@@ -46,11 +46,11 @@ const Navigation = () => {
     // )
 
     let locals = checkoLocal();
-    // if(locals === null){
+    if(locals === null){
     signIn();
-    // window.history.pushState(null, "login", "/login");
-    // router.push('/login')
-    // }
+    window.history.pushState(null, "login", "/login");
+    router.push('/login')
+    }
   };
 
   useEffect(() => {
