@@ -55,8 +55,6 @@ const Dashboard = () => {
   const reco_subject = "Agricultural Science";
   // To be changed later
 
-  console.log("activities ==&&& ==>", activities)
-  // let userId = "62a0bc984af2d90016b72096"
 
   const personData = {
     personClass: user.user?.enrolledCourses[0]
