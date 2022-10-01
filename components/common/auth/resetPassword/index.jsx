@@ -2,7 +2,7 @@ import Link from "next/link";
 import styles from "../forgotPassword/forgotPassword.module.css";
 import Image from "next/image";
 import { useDispatch, useSelector } from 'react-redux';
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import React, { useState} from "react";
 import Modal from 'react-bootstrap/Modal';
 import { sendChangepasswordemail } from "../../../../redux/actions/auth";
@@ -13,8 +13,8 @@ const ResetPassword = () => {
   console.log( "reset user", formConfirmPassword)
   const [password, setPassword] = useState(" ");
   const [email, setEmail] = useState(" ");
-  const [showresponse, setShowresponse] = useState(" ")
-  const router = useRouter();
+  // const [showresponse, setShowresponse] = useState(" ")
+  // const router = useRouter();
   const [show, setShow] = useState(false);
   const toggleModal = () => setShow(!show);
  
