@@ -7,7 +7,7 @@ import styles from "../../../../../../pages/dashboard/teacher/teacher.module.css
 import styles1 from "../../../student/student.module.css";
 import styles2 from "../../classnote/classnote.module.css";
 import { Comment, NextPrevPage } from "../../video/videoPage";
-import Speech from "react-speech";
+// import Speech from "react-speech";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -43,7 +43,7 @@ const ClassnotePage = () => {
     return dat;
   };
   const datas = {
-    userId: user.user._id,
+    userId: user?.user?._id,
     courseId: videoId(quary)?.courseId,
     subjectId: videoId(quary)?.subjectId,
     lessonId: videoId(quary)?._id,
@@ -51,7 +51,7 @@ const ClassnotePage = () => {
   };
   const decodeEntities = (function () {
     // this prevents any overhead from creating the object each time
-    var element = document.createElement("div");
+    // var element = document.createElement("div");
 
     function decodeHTMLEntities(str) {
       if (str && typeof str === "string") {
@@ -172,7 +172,7 @@ const ClassnotePage = () => {
                 cursor: "pointer",
               }}
             >
-              <Speech
+              {/* <Speech
                 text={decodeEntities(videoId(quary)?.content)}
                 textAsButton={true}
                 stop={audioState}
@@ -182,7 +182,7 @@ const ClassnotePage = () => {
                     <div className={styles2.micBottom}>Audio</div>
                   </div>
                 }
-              />
+              /> */}
             </Col>
             <Col onClick={() => showing()} style={{ cursor: "pointer" }}>
               <div

@@ -25,7 +25,7 @@ const Studenthelp = () => {
   const subject = useSelector((state) => state.mySubjectCourse);
   console.log(subject);
   const subjectDetails =
-    subject.dashboardWeb.enrolledCourse.courseId.relatedSubjects;
+    subject?.dashboardWeb?.enrolledCourse?.courseId?.relatedSubjects;
 
   console.log(image);
   console.log(createObjectURL);
@@ -158,7 +158,7 @@ const Studenthelp = () => {
                   className={`col-md-6 ${styles.input1}`}
                   type="text"
                   name="email"
-                  value={user?.user.email}
+                  value={user?.user?.email}
                 />
               </label>
             </div>
@@ -223,7 +223,7 @@ const Studenthelp = () => {
                   onChange={(e) => setSelectSubject(e.target.value)}
                 >
                   <option>Select subject</option>
-                  {subjectDetails.map((det, i) => (
+                  {subjectDetails?.map((det, i) => (
                     <option key={i} value={det.mainSubjectId.name}>
                       {det.mainSubjectId.name}
                     </option>

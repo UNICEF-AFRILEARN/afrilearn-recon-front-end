@@ -10,14 +10,14 @@ const Pastquestionchart = ({subjectList, outerIndex, pastQuestionPerformance}) =
 
 
   let dataTwo = [
-    ...pastQuestionPerformance,
+    // ...pastQuestionPerformance,
     {name: 'test', totalTests: 100 ?? 0},
   ]
 
   // let totalQuestion = subjectList.totalQuestions
   // let totalQuestionsCorrectAnswered = subjectList.totalQuestionsCorrect
   let data = [ 
-    { name: 'totalQuestionsCorrect', value: pastQuestionPerformance[outerIndex].performance ?? 0 , total: 0, fill: 'green' },
+    // { name: 'totalQuestionsCorrect', value: pastQuestionPerformance[outerIndex].performance ?? 0 , total: 0, fill: 'green' },
     { name: 'totalQuestionsCorrect', value: 100, fill: 'blue' },
 ];
 
@@ -44,8 +44,8 @@ const Pastquestionchart = ({subjectList, outerIndex, pastQuestionPerformance}) =
           dataKey="value"
         >
         <Label
-        value={`${pastQuestionPerformance[outerIndex].performance
-          ?? 0}%`}
+        // value={`${pastQuestionPerformance[outerIndex].performance
+        //   ?? 0}%`}
        position="center"
        fill="grey"
        style={{

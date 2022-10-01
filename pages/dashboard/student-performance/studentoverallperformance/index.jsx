@@ -8,7 +8,7 @@ import { FaRegCheckCircle } from 'react-icons/fa';
 import Spinner from '../../../../components/widgets/spinner';
 import Barchart from '../barchart/index';
 import Piechart from '../piechart/index';
-import OverallChart from '../overallchart/index';
+// import OverallChart from '../overallchart/index';
 // import Piechart from '../../../../../pages/dashboard/performance/piechart';
 // import OverallChart from '../../../../../pages/dashboard/performance/overallbarchart';
 import Pastquestionchart from '../pastquestionchart/index';

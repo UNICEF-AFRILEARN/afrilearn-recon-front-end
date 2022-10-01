@@ -4,7 +4,7 @@ import { fetchStudentClassSubjectInitiate } from "../../../../redux/actions/stud
 import { fetchCourseDetailsInitiate } from "../../../../redux/actions/subject";
 import styles from "../../../../styles/parentdashboard.module.css";
 import Classcontentcard from "./classcontentcard";
-import { dataContentNav } from "./classcontentmainData";
+// import { dataContentNav } from "./classcontentmainData";
 
 const Classcontentmain = ({ myChildren, course, classId }) => {
   const dispatch = useDispatch();

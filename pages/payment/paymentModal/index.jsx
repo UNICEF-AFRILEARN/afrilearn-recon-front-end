@@ -176,13 +176,13 @@ const PaymentDetails = ({handleOpen, handleClose, open, closeModal, priceSelecte
                
               </Typography>
             </Typography>
-            <MuiThemeProvider theme={theme}>
+            {/* <MuiThemeProvider theme={theme}> */}
               <Typography
               
               id="modal-modal-description" sx={{ mt: 3 }}>
               
               </Typography>
-            </MuiThemeProvider>
+            {/* </MuiThemeProvider> */}
             
             <Typography
              id="modal-modal-description" sx={{ mt: 2 }}>

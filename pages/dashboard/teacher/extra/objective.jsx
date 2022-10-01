@@ -284,8 +284,8 @@ const Objectives = ({exam_id}) => {
   )
 }
 
-export const getStaticProps =  wrapper.getStaticProps((store) => () => {
-    store.dispatch(fetchSingleExamQuestionsInitiate(examId))
-  })
+// export const getStaticProps =  wrapper.getStaticProps((store) => () => {
+//     store.dispatch(fetchSingleExamQuestionsInitiate(examId))
+//   })
 
 export default Objectives

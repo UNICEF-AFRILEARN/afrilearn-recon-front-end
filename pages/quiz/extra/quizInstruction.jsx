@@ -18,10 +18,10 @@ const QuizInstruction = () => {
   console.log(subject, lessons);
   const quizData = {
     heading: "Quiz:",
-    topic: lessons[0].title,
-    name: user.user.user?.fullName,
-    subject: subject.subjectDetails[0].subject.mainSubjectId.name,
-    instruction: `You are about to that a ${lessons?.questions?.length} question(s) quiz to test how much you understand ${lessons[0]?.title}.`,
+    // topic: lessons[0]?.title,
+    name: user?.user?.user?.fullName,
+    subject: subject?.subjectDetails[0]?.subject?.mainSubjectId?.name,
+    // instruction: `You are about to that a ${lessons?.questions?.length} question(s) quiz to test how much you understand ${lessons[0]?.title}.`,
   };
 
   return (

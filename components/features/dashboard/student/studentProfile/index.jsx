@@ -530,16 +530,16 @@ export const ProfilePicture = ({ user }) => {
           <picture>
             <source
               srcSet={
-                user?.user.profilePhotoUrl
-                  ? user?.user.profilePhotoUrl
+                user?.user?.profilePhotoUrl
+                  ? user?.user?.profilePhotoUrl
                   : `/assets/img/features/dashboard/student/woman.png`
               }
               type="image/webp"
             />
             <img
               src={
-                user?.user.profilePhotoUrl
-                  ? user?.user.profilePhotoUrl
+                user?.user?.profilePhotoUrl
+                  ? user?.user?.profilePhotoUrl
                   : `/assets/img/features/dashboard/student/woman.png`
               }
               alt="Flowers"

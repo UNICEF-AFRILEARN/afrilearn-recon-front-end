@@ -24,13 +24,13 @@ const QuizResult = () => {
   console.log(subject);
   const correct = quary
     ? subject.answers.results?.numberOfCorrectAnswers
-    : subject.quizAnswers.results.numberOfCorrectAnswers;
+    : subject?.quizAnswers?.results?.numberOfCorrectAnswers;
   const skip = quary
-    ? subject.answers.results?.numberOfSkippedQuestions
-    : subject.quizAnswers.results.numberOfSkippedQuestions;
+    ? subject?.answers?.results?.numberOfSkippedQuestions
+    : subject?.quizAnswers?.results?.numberOfSkippedQuestions;
   const inCorrect = quary
     ? subject.answers.results?.numberOfWrongAnswers
-    : subject.quizAnswers.results.numberOfWrongAnswers;
+    : subject?.quizAnswers?.results?.numberOfWrongAnswers;
   const data = [
     { name: `Correct: ${correct}`, value: correct },
     { name: `Incorrect: ${inCorrect}`, value: inCorrect },
@@ -52,13 +52,13 @@ const QuizResult = () => {
     grade: "Grade",
     score: quary
       ? `${subject.answers.results.score}%`
-      : `${subject.quizAnswers.results.score}%`,
-    percentage: quary
-      ? `${subject.answers.results.numberOfCorrectAnswers} out of ${subject.answers.results.results.length}`
-      : `${subject.quizAnswers.results.numberOfCorrectAnswers} out of ${subject.quizAnswers.results.results?.length}`,
+      : `${subject?.quizAnswers?.results?.score}%`,
+    // percentage: quary
+    //   ? `${subject?.answers?.results?.numberOfCorrectAnswers} out of ${subject?.answers?.results?.results?.length}`
+    //   : `${subject?.quizAnswers?.results?.numberOfCorrectAnswers} out of ${subject.quizAnswers.results.results?.length}`,
     remark: quary
       ? subject.answers.results.remark
-      : subject.quizAnswers.results.remark,
+      : subject.quizAnswers?.results?.remark,
   };
 
   return (
