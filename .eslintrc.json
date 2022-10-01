@@ -1,9 +1,5 @@
 {
-  "extends": ["eslint:recommended", "next", "prettier"],
-  "plugins": ["prettier"],
-  "rules": {
-    "prettier/prettier": "error"
-  },
+  "extends": ["eslint:recommended", "next"],
   "parserOptions": {
     "sourceType": "module"
 }
