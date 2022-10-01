@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Image from "next/image";
 import Link from "next/link";
 import { Col, Container, Row } from "react-bootstrap";
-import PastQuestionaira from "../student/extra/PastQuestionaira";
+import PastQuestion from "../student/extra/PastQuestionaira";
 import Subjects from "../student/extra/subjects";
 import { AiOutlineSend } from "react-icons/ai";
 import styles1 from "../student/student.module.css";
@@ -84,7 +84,7 @@ const Dashboard = () => {
           <Subjects subData={teachSubject} />
         </Col>
         <Col>
-          <PastQuestionaira
+          <PastQuestion
             subData={
               subject?.dashboardWeb?.enrolledCourse?.courseId
                 .relatedPastQuestions
