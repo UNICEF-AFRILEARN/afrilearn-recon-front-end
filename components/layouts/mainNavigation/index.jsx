@@ -25,12 +25,12 @@ const Navigation = () => {
   const { user, registerUser } = useSelector((state) => state.auth);
 
   let localData;
-  const checkoLocal = () => {
-    if (typeof window !== "undefined") {
-      localData = JSON.parse(localStorage.getItem("persist:root"));
-    }
-    return localData;
-  };
+  // const checkoLocal = () => {
+  //   if (typeof window !== "undefined") {
+  //     localData = JSON.parse(localStorage.getItem("persist:root"));
+  //   }
+  //   return localData;
+  // };
   // const handleLogout = () => {
   //   window.localStorage.removeItem('')
   //   router.push('/login')
@@ -48,7 +48,7 @@ const Navigation = () => {
     let locals = checkoLocal();
     // if(locals === null){
     signIn();
-    window.history.pushState(null, "login", "/login");
+    // window.history.pushState(null, "login", "/login");
     // router.push('/login')
     // }
   };
