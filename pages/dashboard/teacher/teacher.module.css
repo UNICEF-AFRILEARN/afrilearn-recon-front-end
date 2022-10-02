@@ -110,11 +110,11 @@
 
 } */
 
-.addexambuttonwrapper span{
+.addexambuttonwrapper span {
   padding: 15px;
   border: dotted 2px #000;
   border-radius: 20px;
-  background-color: #F4F4F4;
+  background-color: #f4f4f4;
 }
 .addexambuttonwrapper {
   /* border: dotted 2px #f4f4f4;
@@ -136,15 +136,14 @@
   align-items: center !important;
 }
 
-
-.addexamlistwrapper li{
+.addexamlistwrapper li {
   list-style-type: none;
   /* background-color: #00D9B6 !important; */
   width: 60% !important;
   margin-top: 10px;
   margin-left: 40px;
 }
-.addexamquestionbtn span{
+.addexamquestionbtn span {
   border: 1px solid black;
   border-radius: 10px;
 }

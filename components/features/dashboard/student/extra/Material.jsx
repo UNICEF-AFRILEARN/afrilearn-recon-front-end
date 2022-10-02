@@ -25,7 +25,7 @@ export const Material = ({ past }) => {
   const dispatch = useDispatch();
   const subject = useSelector((state) => state.mySubjectCourse);
   const subjectDat =
-    subject.dashboardWeb?.enrolledCourse.courseId.relatedPastQuestions;
+    subject?.dashboardWeb?.enrolledCourse.courseId.relatedPastQuestions;
   const lessons = subject?.stuTeacherSub[0]?.subjects;
   useEffect(() => {
     dispatch(fetchPastQuestionInitiate(1));

@@ -1,8 +1,9 @@
 .mainwrapper {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   padding: 15px;
   margin-top: 25px;
+  gap: 35px;
 }
 
 .detailscard {
@@ -20,6 +21,9 @@
   font-size: 15px;
   line-height: 26.2px;
 }
+.messagescontainer {
+  width: 100%;
+}
 
 .detailscard h2 {
   color: #29465b;
@@ -35,7 +39,7 @@
   font-weight: 400;
   font-size: 15px;
   line-height: 26px;
-  padding: 2px 25px;
+  /* padding: 2px 25px; */
   color: #00d9b6;
 }
 
@@ -156,12 +160,11 @@
 .dividerclass {
   position: relative;
   border-top: 1px solid rgba(51, 51, 51, 0.23);
-  margin-top: 20px;
 }
 
 .teachertitle p {
-  padding-top: 15px;
   margin-left: 25px;
+  margin-bottom: 0;
 }
 
 .teachertitle span {
@@ -186,4 +189,37 @@
 .teacherarticle {
   padding: 15px;
   background-color: #fafafa;
+}
+
+.commentAvatarMSide input {
+  border: 0;
+  width: 100%;
+  height: 50px;
+}
+
+.commentAvatarRight {
+  display: flex;
+}
+
+.commentAvatarRSide {
+  border-bottom: 1px solid #a8a8a8;
+}
+.commentAvatartop {
+  display: grid;
+  grid-template-columns: 85% 15%;
+  grid-row: 50px;
+  align-content: center;
+}
+
+.commentAvatarMRSide {
+  background-image: url("/assets/img/features/dashboard/student/Send.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 30px;
+  height: 30px;
+  /* margin: 5px auto; */
+  align-self: center;
+}
+.commentAvatarMSide input:focus {
+  outline: none;
 }

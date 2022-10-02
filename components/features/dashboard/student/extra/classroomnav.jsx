@@ -42,7 +42,7 @@ const Classroomnav = () => {
   return (
     <div className={styles.maincontainer}>
       <div className={styles.maincontainer2}>
-        <div style={{ width: "210px", height: "210px" }}>
+        <div className={styles.narbarAvatar}>
           <ProfilePicture user={user} />
         </div>
         <div className={styles.navbar1}>
@@ -85,7 +85,10 @@ const Classroomnav = () => {
       <div
         className={toggleState === 1 ? styles.activecontent : styles.content}
       >
-        <Announcesment goto={(number) => changeToClassWork(number)} />
+        <Announcesment
+          goto={(number) => changeToClassWork(number)}
+          classId={classId[0]}
+        />
       </div>
       <div
         className={toggleState === 2 ? styles.activecontent : styles.content}

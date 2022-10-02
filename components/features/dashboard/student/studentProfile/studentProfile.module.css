@@ -4,6 +4,18 @@
   column-gap: 5%;
   max-width: 80%;
 }
+.studentProfileGrid1 {
+  display: grid;
+  grid-template-columns: 20% 75%;
+  column-gap: 5%;
+  max-width: 80%;
+  top: -135px;
+  position: relative;
+}
+.studentProfileGrid1 img {
+  border: solid 1px red;
+  margin-left: 21px !important;
+}
 .classlink {
   cursor: pointer;
 }
@@ -26,7 +38,7 @@
 
 .studentProfileAvatar img {
   /* border: solid 1px red; */
-  margin-left: 8px !important;
+  margin-left: 8px;
 }
 
 .studentProfileInfo {

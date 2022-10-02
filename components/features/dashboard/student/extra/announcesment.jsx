@@ -1,18 +1,172 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "../../../../../styles/announcement.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
+import { Col, Row } from "react-bootstrap";
+import {
+  createComment,
+  fetchStudentDetailsInitiate,
+} from "../../../../../redux/actions/subject";
 
-const Announcesment = ({ goto }) => {
+const Announcesment = ({ goto, classId }) => {
   const { user } = useSelector((state) => state.auth);
   const subject = useSelector((state) => state.mySubjectCourse);
+  const dispatch = useDispatch();
+  const clazz = subject?.announcement[2];
   console.log(subject);
-  const clazz = "";
+  const TeacherAnnouncement = ({ subject }) => {
+    const dispatch = useDispatch();
+    const capitalizeFirst = (str) => {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    };
+
+    return subject?.announcement[0]?.announcements.length > 0 ? (
+      subject?.announcement[0]?.announcements.map((data, i) => {
+        const [comment, setComment] = useState("");
+        const sendComment = async (e, id) => {
+          e.preventDefault();
+          if (comment !== "") {
+            dispatch(createComment(id, comment, classId, user?.token));
+            setComment("");
+          }
+        };
+        return (
+          <div key={i} className={styles.seconmessage}>
+            <div className={styles.innermessage}>
+              <Image
+                src={
+                  data.teacher.profilePhotoUrl
+                    ? data.teacher.profilePhotoUrl
+                    : `/assets/img/messageavatar.svg`
+                }
+                alt="teacher"
+                width={50}
+                height={50}
+                style={{ borderRadius: "100px" }}
+              />
+              <div className={styles.teachertitle}>
+                <p style={{ color: "black" }}>
+                  Mr {data.teacher.fullName} (Teacher)
+                </p>
+                <span style={{ fontSize: "12px" }}>
+                  {moment(data.createdAt).fromNow()}
+                </span>
+              </div>
+            </div>
+            <div className={styles.teacherarticle}>
+              <p className="text-dark m-0">{capitalizeFirst(data.text)}</p>
+            </div>
+            <div className={styles.dividerclass}></div>
+            <div className="m-3">
+              <div>
+                <p style={{ color: "#00D9B6" }}>
+                  {data?.comments.length} class comment
+                </p>
+              </div>
+              {data?.comments.map((dts, i) =>
+                dts ? (
+                  <Row key={i} style={{ display: "flex", margin: "15px 20px" }}>
+                    <Col md={1} className="p-0">
+                      <Image
+                        src={
+                          dts.student.profilePhotoUrl
+                            ? dts.student.profilePhotoUrl
+                            : `/assets/img/messageavatar.svg`
+                        }
+                        alt="teacher"
+                        width={50}
+                        height={50}
+                        style={{
+                          borderRadius: "100px",
+                          objectPosition: "100%",
+                        }}
+                      />
+                    </Col>
+                    <Col className={`p-0 ${styles.commentimageconts}`}>
+                      <div key={i} className={` ${styles.teachertitle}`}>
+                        <p className="m-0 text-dark">
+                          <span
+                            style={{
+                              fontSize: "13px",
+                              marginLeft: "0",
+                            }}
+                          >
+                            {dts.student.id === data.teacher._id
+                              ? `Mr ${dts.student.fullName} (Teacher)`
+                              : dts.student.id === user?.user.id
+                              ? ` ${dts.student.fullName} (You)`
+                              : dts.student.fullName}
+                          </span>
+                          <span
+                            style={{
+                              fontSize: "12px",
+                              color: "gray",
+                              marginLeft: "15px",
+                            }}
+                          >
+                            {moment(dts.createdAt).fromNow()}
+                          </span>
+                        </p>
+                        <span className="m-0 text-dark">
+                          {capitalizeFirst(dts.text)}
+                        </span>
+                      </div>
+                    </Col>
+                  </Row>
+                ) : (
+                  <div key={i} className={styles.teachertitle}>
+                    <p>No Comment yet</p>
+                  </div>
+                ),
+              )}
+            </div>
+            <div className={styles.dividerclass}></div>
+            <Col className={styles.commentAvatarRSide}>
+              <div className={styles.commentAvatartop}>
+                <div className={styles.commentAvatarMSide}>
+                  <input
+                    placeholder="Add a public comment..."
+                    type="text"
+                    value={comment}
+                    onChange={(e) => setComment(e.target.value)}
+                    title="Comment"
+                  />
+                </div>
+                <div
+                  style={{ cursor: "pointer" }}
+                  className={`${styles.commentAvatarMRSide}`}
+                  onClick={(e) => sendComment(e, data._id)}
+                ></div>
+              </div>
+            </Col>
+            <div className={`mt-2 ${styles.dividerclass}`}></div>
+          </div>
+        );
+      })
+    ) : (
+      <h6>No Announcement list yet</h6>
+    );
+  };
+
+  const assignContent = () => {
+    console.log(
+      Math.min(
+        clazz.assignedContents
+          .filter((data) => {
+            return data.audience === "all" || data.userId?.id === user?.user.id;
+          })
+
+          .map((data) => {
+            return new Date(data.dueDate).getTime() - new Date().getTime();
+          }),
+      ),
+    );
+  };
   return (
     <div className={styles.mainwrapper}>
       <div className={styles.announcementcontainer}>
-        <div className="mx-5">
+        <div className="mx-3">
           <Image
             src="/assets/img/crown.svg"
             alt="teacher"
@@ -26,101 +180,41 @@ const Announcesment = ({ goto }) => {
           <h3>{subject?.dashboardWeb?.enrolledCourse.courseId.name}</h3>
         </div>
         <div className={styles.upcomingcard}>
-          {clazz.teacherAssignedContents &&
-          clazz.teacherAssignedContents.length === 0 &&
-          clazz.teacherAssignedContents[0].dueDate ? (
-            <>
-              <div className="item">
-                {/* <img src={event} alt="event"></img> */}
-                <div>
-                  <p>
-                    Posted:&nbsp;
-                    {clazz.teacherAssignedContents[0].createdAt}
-                  </p>
-                  <p>
-                    Due Date:&nbsp;
-                    {clazz.teacherAssignedContents[0].dueDate}
-                  </p>
-                </div>
-              </div>
-              <a onClick={() => goto(3)}>View All</a>
-            </>
-          ) : (
-            "Oh oh! No work due soon!"
-          )}
+          {clazz.assignedContents.length > 0 && assignContent()}
+          {/* // console.log(clazz)} */}
         </div>
       </div>
       <div className={styles.messagescontainer}>
         <div className={styles.firstmessage}>
-          <Image
-            src="/assets/img/messageavatar.svg"
-            alt="teacher"
-            width={50}
-            height={50}
-          />
-          <p>Announcements from teacher</p>
+          <p className="text-dark">Announcements from teacher</p>
         </div>
-
-        {subject?.announcement[0]?.announcements.map((data, i) => {
-          return (
-            <div key={i} className={styles.seconmessage}>
-              <div className={styles.innermessage}>
-                <Image
-                  src="/assets/img/messageavatar.svg"
-                  alt="teacher"
-                  width={50}
-                  height={50}
-                />
-                <div className={styles.teachertitle}>
-                  <p>{data.teacher.fullName}</p>
-                  <span>{moment(data.createdAt).format("LL")}</span>
-                </div>
-              </div>
-              <div className={styles.teacherarticle}>
-                <p>{data.text}</p>
-              </div>
-              <div className={styles.commentmessage}>
-                {/* <p>1 class comment</p> */}
-                <div className={styles.commentimagecont}>
-                  <Image
-                    src="/assets/img/messageavatar.svg"
-                    alt="teacher"
-                    width={50}
-                    height={50}
-                  />
-
-                  {data?.comments.map((dts, i) =>
-                    dts ? (
-                      <div key={i} className={styles.teachertitle}>
-                        <p>{dts.student.fullName}</p>
-                        <span>{dts.text}</span>
-                      </div>
-                    ) : (
-                      <div key={i} className={styles.teachertitle}>
-                        <p>No Comment</p>
-                      </div>
-                    ),
-                  )}
-                </div>
-                <div className={styles.dividerclass}>
-                  <div className={styles.addclasscomment}>
-                    <span>Add class comment</span>
-                    <Image
-                      src="/assets/img/arrow.svg"
-                      alt="teacher"
-                      width={20}
-                      height={20}
-                    />
-                  </div>
-                </div>
-              </div>
+        <TeacherAnnouncement subject={subject} />
+        {/* ? (
+        <>
+          <div className="item">
+            <Image
+              src="/assets/img/anounceImg.png"
+              alt="teacher"
+              width={50}
+              height={50}
+            />
+            <div>
+              <p>
+                Posted:&nbsp;
+                {clazz.assignedContents[0].createdAt}
+              </p>
+              <p>
+                Due Date:&nbsp;
+                {clazz.assignedContents[0].dueDate}
+              </p>
             </div>
-          );
-        })}
-
+          </div>
+          <a onClick={() => goto(3)}>View All</a>
+        </>
+        ) : ( "Oh oh! No work due soon!" ) */}
         <div className={styles.posttage} onClick={() => goto(3)}>
           <Image
-            src="/assets/img/annouceimg.svg"
+            src="/assets/img/anounceImg.png"
             alt="teacher"
             width={50}
             height={50}
