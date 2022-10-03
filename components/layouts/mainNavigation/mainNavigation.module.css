@@ -72,6 +72,8 @@
   /* padding: 30px !mportant; */
   /* height: 20%; */
   /* margin-top: 20px; */
+  padding-left: 6% !important;
+  padding-right: 4% !important;
 }
 .btnlogout {
   margin-left: 20px;
