@@ -115,6 +115,7 @@
 .profiles {
   margin-top: 60px;
   margin-bottom: 10px;
+  /* background-color: red; */
 }
 .exploreAfrilearnh3 {
   font-family: "heading";
@@ -152,7 +153,7 @@
   /* display: flex; */
   /* flex-direction: row; */
   /* width: 30%; */
-  background-color: red !important;
+  /* background-color: red !important; */
 }
 
 @media screen and (max-width: 514px) {
@@ -221,9 +222,13 @@
   padding-left: 2%;
 }
 
+.detailswrapper {
+  padding-top: 0.5%;
+}
+
 .joinbuttonwrap {
   background-color: #00D9B6;
-  width: 33%;
+  width: 28%;
   border-radius: 150px;
   border: none;
   color: #ffff;
@@ -232,7 +237,9 @@
 .profileImagePosition {
   text-align: right;
   margin: auto;
-  margin-top: 30px;
+  align-self: start;
+  /* height: %; */
+  /* margin-bottom: 10px; */
 }
 .exploreAfrilearn {
   padding: 70px 117px;
