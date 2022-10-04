@@ -4,10 +4,7 @@ import styles from "../../../../../styles/announcement.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import { Col, Row } from "react-bootstrap";
-import {
-  createComment,
-  fetchStudentDetailsInitiate,
-} from "../../../../../redux/actions/subject";
+import { createComment } from "../../../../../redux/actions/subject";
 
 const Announcesment = ({ goto, classId }) => {
   const { user } = useSelector((state) => state.auth);
@@ -149,18 +146,43 @@ const Announcesment = ({ goto, classId }) => {
     );
   };
 
-  const assignContent = () => {
-    console.log(
-      Math.min(
-        clazz.assignedContents
-          .filter((data) => {
-            return data.audience === "all" || data.userId?.id === user?.user.id;
-          })
-
-          .map((data) => {
-            return new Date(data.dueDate).getTime() - new Date().getTime();
-          }),
-      ),
+  const AssignContent = () => {
+    const minDigit = clazz?.assignedContents.filter((data) => {
+      return data.audience === "all" || data.userId?.id === user?.user.id;
+    });
+    const minsDigit = minDigit?.map((data) => {
+      return new Date(data.dueDate).getTime() - new Date().getTime();
+    });
+    const minAssign =
+      minDigit && minDigit[minsDigit?.indexOf(Math.min(...minsDigit))];
+    console.log(minAssign);
+    // return <p>ti moba tiri</p>;
+    return minAssign ? (
+      <>
+        <div className="item">
+          <Image
+            src="/assets/img/anounceImg.png"
+            alt="teacher"
+            width={50}
+            height={50}
+          />
+          <div>
+            <p>
+              Posted:&nbsp;
+              {moment(minAssign.createdAt).format("LL")}
+            </p>
+            <p>
+              Due Date:&nbsp;
+              {moment(minAssign.dueDate).format("LL")}
+            </p>
+          </div>
+        </div>
+        <a onClick={() => goto(3)} style={{ marginRigth: "auto" }}>
+          <u style={{ color: "#00D9B6", marginRigth: "0" }}>View All</u>
+        </a>
+      </>
+    ) : (
+      <p>"Oh oh! No work due soon!"</p>
     );
   };
   return (
@@ -180,8 +202,7 @@ const Announcesment = ({ goto, classId }) => {
           <h3>{subject?.dashboardWeb?.enrolledCourse.courseId.name}</h3>
         </div>
         <div className={styles.upcomingcard}>
-          {clazz.assignedContents.length > 0 && assignContent()}
-          {/* // console.log(clazz)} */}
+          <AssignContent />
         </div>
       </div>
       <div className={styles.messagescontainer}>
@@ -189,29 +210,7 @@ const Announcesment = ({ goto, classId }) => {
           <p className="text-dark">Announcements from teacher</p>
         </div>
         <TeacherAnnouncement subject={subject} />
-        {/* ? (
-        <>
-          <div className="item">
-            <Image
-              src="/assets/img/anounceImg.png"
-              alt="teacher"
-              width={50}
-              height={50}
-            />
-            <div>
-              <p>
-                Posted:&nbsp;
-                {clazz.assignedContents[0].createdAt}
-              </p>
-              <p>
-                Due Date:&nbsp;
-                {clazz.assignedContents[0].dueDate}
-              </p>
-            </div>
-          </div>
-          <a onClick={() => goto(3)}>View All</a>
-        </>
-        ) : ( "Oh oh! No work due soon!" ) */}
+
         <div className={styles.posttage} onClick={() => goto(3)}>
           <Image
             src="/assets/img/anounceImg.png"
