@@ -352,6 +352,11 @@ a {
   /* background-color: rgb(255, 0, 21); */
 }
 
+.dialogy-style {
+  max-width: 40vw !important;
+  border-radius: 10px !important;
+}
+
 .play-store-class {
   display: flex;
 }

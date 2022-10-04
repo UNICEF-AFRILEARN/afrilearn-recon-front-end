@@ -23,7 +23,6 @@ const [subject, setSubject] = useState([]);
 
 
 useEffect(() => {
-  // getSUbject(subjectPerformance)
   setSubject(subjectList)
 }, [])
 
