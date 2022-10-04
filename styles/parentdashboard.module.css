@@ -5,7 +5,9 @@
   position: relative;
   height: 90vh;
 }
-
+.viewwrapper {
+  cursor: pointer;
+}
 .headerwrapper {
   background: url("../public/assets/img/parenthead.svg");
   height: 65vh;

@@ -79,7 +79,8 @@ const Childtable = ({myChildren, handleCheckedBox, userId, handleViewChildDetail
                 <td>{myChild.fullName}</td>
                 <td>{myChild?.enrolledCourses[0]?.courseId.name? myChild?.enrolledCourses[0]?.courseId.name : "Not enrolled"}</td>
                 <td>{myChild.email}</td>
-                <td 
+                <td
+                className={styles.viewwrapper} 
                   onClick={() => {setModalShow(true), handleViewChildDetails(myChild.id)}}
                 >
                 view details
