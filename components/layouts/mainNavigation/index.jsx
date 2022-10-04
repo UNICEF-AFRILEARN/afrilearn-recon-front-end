@@ -45,12 +45,12 @@ const Navigation = () => {
     // undefined, { shallow: true }
     // )
 
-    let locals = checkoLocal();
-    if(locals === null){
+    // let locals = checkoLocal();
+
     signIn();
-    window.history.pushState(null, "login", "/login");
+    // window.history.pushState(null, "login", "/login");
     router.push('/login')
-    }
+    
   };
 
   useEffect(() => {
@@ -66,7 +66,7 @@ const Navigation = () => {
       // fixed="top"
       collapseOnSelect
       // style={{ backgroundColor: "#FDFDFD !important" }}
-      className="mainNavbar pt-3"
+      className={`${styles.mainNavbar} pt-3`}
     >
       <Navbar.Brand>
         <Link passHref href="/">

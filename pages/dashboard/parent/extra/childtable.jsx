@@ -68,8 +68,7 @@ const Childtable = ({myChildren, handleCheckedBox, userId, handleViewChildDetail
               <>
                 <td>
                   <input
-                   value={isSubscribed}
-                  //  onChange={}
+                  value={isSubscribed}
                   name='childId'
                   isChecked={isChecked}
                   onClick={(e) => {handleCheckedBox(myChild.id), handleCheckAll(e.target.name)}}
@@ -78,9 +77,10 @@ const Childtable = ({myChildren, handleCheckedBox, userId, handleViewChildDetail
                 </td>
                 <td>{myChild.fullName}</td>
                 <td>{myChild?.enrolledCourses[0]?.courseId.name? myChild?.enrolledCourses[0]?.courseId.name : "Not enrolled"}</td>
-                <td>{myChild.email}</td>
-                <td 
-                  onClick={() => {setModalShow(true), handleViewChildDetails(myChild.id)}}
+                <td>{myChild?.email}</td>
+                <td
+                className={styles.viewwrapper} 
+                  onClick={() => {setModalShow(true), handleViewChildDetails(myChild?.id)}}
                 >
                 view details
                    
