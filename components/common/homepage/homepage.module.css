@@ -4,6 +4,8 @@
   margin-top: 80px;
   color: #29465b;
 }
+
+
 .underHeadingP {
   margin-top: 30px;
   padding-right: 83px;
@@ -28,6 +30,9 @@
   border-radius: 39px;
   width: 180px !important;
   display: grid;
+}
+.mobileDownloadSection button {
+  
 }
 .experienceAfrilearn {
   border: solid 1px black;
@@ -144,9 +149,12 @@
 }
 
 .mobileDownloadSection .mobileDownloadSection1 {
-  display: flex;
-  flex-direction: row;
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* width: 30%; */
+  background-color: red !important;
 }
+
 @media screen and (max-width: 514px) {
   .profileshh3 {
     font-size: 25px;
@@ -207,7 +215,19 @@
 }
 
 .mobileDownloadSection {
-  margin-top: 39px;
+  margin-top: 7%;
+  display: flex;
+  gap: 5.5%;
+  padding-left: 2%;
+}
+
+.joinbuttonwrap {
+  background-color: #00D9B6;
+  width: 33%;
+  border-radius: 150px;
+  border: none;
+  color: #ffff;
+  
 }
 .profileImagePosition {
   text-align: right;
