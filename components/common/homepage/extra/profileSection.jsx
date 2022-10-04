@@ -2,13 +2,19 @@ import styles from '../homepage.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { BiCheckCircle} from 'react-icons/bi';
+
 const ProfileSection = ({data}) => {
    return (     
       <section className={`row other-style-added ${styles.profiles} `}>
         <div className={`${styles.detailswrapper} col-md-6`}>
           <h3 className={styles.profilesh3}>{data?.title}<br className="desktopOnly"/>{data?.titlePart2}</h3>
           {data?.description.map((item)=>{
-            return <p key={item}><Image alt={"design image"} src='/assets/img/common/homepage/Check.png' width={25} height={25}/><span className={styles.bulletText}>{item}</span></p>
+            return <p key={item}>
+              <BiCheckCircle
+              size={20}
+               />
+              <span className={styles.bulletText}>{item}</span></p>
           })}        
           <div className={`${styles.mobileDownloadSection}`}>
           {/* <div className={`${styles.joinfreebtn} join-btn-wrapper`}> */}

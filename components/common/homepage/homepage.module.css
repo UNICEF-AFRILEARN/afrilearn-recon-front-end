@@ -226,6 +226,10 @@
   padding-top: 0.5%;
 }
 
+.detailswrapper span {
+  margin-left: 3%;
+}
+
 .joinbuttonwrap {
   background-color: #00D9B6;
   width: 28%;
