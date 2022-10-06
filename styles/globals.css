@@ -1,18 +1,18 @@
 @font-face {
-  font-family: "heading";
-  src: url("/assets/fonts/Spoof-Black.ttf") format("opentype");
+  font-family: 'heading';
+  src: url('/assets/fonts/Spoof-Black.ttf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: "subHeading";
-  src: url("/assets/fonts/Spoof-Bold.ttf") format("opentype");
+  font-family: 'subHeading';
+  src: url('/assets/fonts/Spoof-Bold.ttf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: "content";
-  src: url("/assets/fonts/Spoof-Regular.ttf") format("opentype");
+  font-family: 'content';
+  src: url('/assets/fonts/Spoof-Regular.ttf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
@@ -39,11 +39,9 @@
   --color-anchor: #00ff4c;
 }
 
-
-
 body {
-  background-color: var(--color-background) ;
-  color: var(--color-primary) ;
+  background-color: var(--color-background);
+  color: var(--color-primary);
   font-size: 16px;
   font-family: 'Poppins', sans-serif;
 }
@@ -54,8 +52,6 @@ p {
   margin: 0;
   padding: 0;
 }
-
-
 
 /* swtich taken from W3 schools */
 
@@ -550,7 +546,7 @@ a {
   color: #29465b;
 }
 .quizImage {
-  background: url("/assets/img/common/quiz/animation.png");
+  background: url('/assets/img/common/quiz/animation.png');
   width: 500px;
   height: 500px;
   margin-left: auto;
@@ -633,7 +629,7 @@ a {
 }
 
 .list-payment {
-  list-style-image: ur("aa.png");
+  list-style-image: ur('aa.png');
 }
 
 .buttonPayment1 {
@@ -684,20 +680,20 @@ a {
   cursor: pointer;
 }
 @font-face {
-  font-family: "heading";
-  src: url("/assets/fonts/Spoof-Black.ttf") format("opentype");
+  font-family: 'heading';
+  src: url('/assets/fonts/Spoof-Black.ttf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: "subHeading";
-  src: url("/assets/fonts/Spoof-Bold.ttf") format("opentype");
+  font-family: 'subHeading';
+  src: url('/assets/fonts/Spoof-Bold.ttf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: "content";
-  src: url("/assets/fonts/Spoof-Regular.ttf") format("opentype");
+  font-family: 'content';
+  src: url('/assets/fonts/Spoof-Regular.ttf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
@@ -901,7 +897,7 @@ a {
     /* flex-direction: row; */
   }
 
-  .image-class-teacher-middle{
+  .image-class-teacher-middle {
     display: none;
   }
 
@@ -1096,7 +1092,7 @@ a {
   color: #29465b;
 }
 .quizImage {
-  background: url("/assets/img/common/quiz/animation.png");
+  background: url('/assets/img/common/quiz/animation.png');
   width: 500px;
   height: 500px;
   margin-left: auto;
@@ -1179,7 +1175,7 @@ a {
 }
 
 .list-payment {
-  list-style-image: ur("aa.png");
+  list-style-image: ur('aa.png');
 }
 
 .buttonPayment1 {
@@ -1272,7 +1268,7 @@ a {
 }
 
 .get-trial-pic {
-  background-image: url("/assets/img/Premium.png");
+  background-image: url('/assets/img/Premium.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50px, 50px;
@@ -1281,7 +1277,7 @@ a {
 }
 
 .get-trial-list-check {
-  list-style-image: url("/assets/img/Union.png");
+  list-style-image: url('/assets/img/Union.png');
 }
 
 .get-trial button {
@@ -1290,7 +1286,7 @@ a {
   height: 48px;
   color: #ffffff;
   border-color: #ffffff;
-  font-family: "Spoof";
+  font-family: 'Spoof';
 }
 
 .get-trial-messege {
@@ -1361,6 +1357,13 @@ figure img {
 
 .timer .btn {
   width: 100px !important;
+}
+.headedHeader .btn-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent url('/assets/img/common/homepage/Frame 1041.png')
+    center/2em auto no-repeat !important;
 }
 
 @media screen and (max-width: 415px) {
