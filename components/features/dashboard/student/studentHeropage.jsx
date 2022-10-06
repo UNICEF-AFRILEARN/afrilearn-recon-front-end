@@ -16,6 +16,7 @@ const studentHeropage = ({ data }) => {
       {
         linkdata: "#subjects",
         title: "My Subjects",
+        
       },
       {
         linkdata: "#pastQuestions",
@@ -85,7 +86,7 @@ export const StudentPage = ({ stuData }) => {
   // }, [fetchCourseInitiate]);
 
   return (
-    <Container fluid id="subjects" className="p-0">
+    <Container fluid className="p-0">
       <div
         id="subjects"
         className={`container-fluid relative ${styles.dashboardFirstSection}`}

@@ -42,7 +42,7 @@ const WhyAfrilearn = () => {
         title: 'Everything in',
         titlePart2: ' one place.',
         description: ['Discover how your students learn best, where to focus', 'Empower your school with advanced technologies', 'Improve enrollment & learning outcomes'],
-        imageURL: '/assets/img/common/homepage/school.png'
+        imageURL: '/assets/img/common/homepage/school.jpg'
       }
     }
   ]

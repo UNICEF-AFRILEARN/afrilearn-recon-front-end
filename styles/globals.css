@@ -324,28 +324,33 @@ a {
 }
 
 .join-btn-wrapper {
-  background-color: #00d9b6;
-  text-align: center;
+  /* background-color: #00d9b6; */
+  /* text-align: center; */
   /* margin-right: 5%; */
-  width: 100%;
-  border-radius: 25px;
-  padding: 3px 0.52px !important;
-  color: #ffffff;
+  /* width: 100%; */
+  /* border-radius: 25px; */
+  /* padding: 3px 0.52px !important; */
+  /* color: #ffffff; */
 }
 
 .btn-class-corrected {
   /* padding: 0.10rem .5rem  !important; */
   /* text-align: start !important; */
   /* font-size: 15px; */
-  margin-right: 1rem;
+  /* margin-right: 1rem; */
 }
 
 .button-setions {
-  display: flex !important;
-  justify-content: center;
+  /* display: flex !important; */
+  /* justify-content: space-around; */
   /* flex-direction: row !important; */
   /* width: 80vw !important; */
   /* background-color: rgb(255, 0, 21); */
+}
+
+.dialogy-style {
+  max-width: 40vw !important;
+  border-radius: 10px !important;
 }
 
 .play-store-class {
@@ -381,10 +386,10 @@ a {
     padding: 0px !important;
   }
 
-  .join-btn-wrapper {
+  /* .join-btn-wrapper {
     width: 90% !important;
     padding: 8px 3px !important;
-  }
+  } */
 
   .navbar-nav {
     background-color: #e5e5e5;
@@ -852,12 +857,13 @@ a {
 }
 
 .join-btn-wrapper {
-  background-color: #00d9b6;
-  text-align: center;
+  /* background-color: #00d9b6; */
+  /* text-align: center; */
   /* margin-right: 5%; */
-  width: 100%;
+  /* width: 35%; */
   border-radius: 25px;
-  padding: 3px 0.52px !important;
+  text-align: center;
+  /* padding: 0.52px !important; */
   color: #ffffff;
 }
 
@@ -865,12 +871,12 @@ a {
   /* padding: 0.10rem .5rem  !important; */
   /* text-align: start !important; */
   /* font-size: 15px; */
-  margin-right: 1rem;
+  /* margin-right: 1rem; */
 }
 
 .button-setions {
-  display: flex !important;
-  justify-content: center;
+  /* display: flex !important;
+  justify-content: center; */
   /* flex-direction: row !important; */
   /* width: 80vw !important; */
   /* background-color: rgb(255, 0, 21); */
@@ -923,10 +929,10 @@ a {
     padding: 0px !important;
   }
 
-  .join-btn-wrapper {
-    width: 90% !important;
+  /* .join-btn-wrapper {
+    width: 40% !important;
     padding: 8px 3px !important;
-  }
+  } */
 
   .navbar-nav {
     background-color: #e5e5e5;

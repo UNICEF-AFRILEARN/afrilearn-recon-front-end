@@ -10,20 +10,19 @@ const [subject, setSubject] = useState([]);
 
 
   let dataTwo = [
-    // ...subjectPerformance,
+    ...subjectPerformance,
     {name: 'test', totalTests: 100 ?? 0},
   ]
 
   let data = [ 
-    // { name: 'totalQuestionsCorrect', value: subjectPerformance[outerIndex].performance
-    // ?? 0 , total: 0, fill: 'green' },
+    { name: 'totalQuestionsCorrect', value: subjectPerformance[outerIndex].performance
+    ?? 0 , total: 0, fill: 'green' },
     { name: 'totalQuestionsCorrect', value: 100, fill: 'blue' },
 ];
 
 
 
 useEffect(() => {
-  // getSUbject(subjectPerformance)
   setSubject(subjectList)
 }, [])
 
@@ -70,7 +69,7 @@ useEffect(() => {
       
     })}
        <Label
-        // value={`${subjectPerformance[outerIndex].performance?? 0}%`}
+        value={`${subjectPerformance[outerIndex].performance?? 0}%`}
        position="center"
        fill="grey"
        style={{
