@@ -17,15 +17,19 @@
 .joinForFree {
   /* border: solid 1px black; */
   background-color: #00d9b6;
-  color: white !important;
+  color: #000 !important;
   padding: 10px 20px !important;
   border-radius: 39px;
+}
+
+.gamebtnwrapper {
+  color: #000 !important;
 }
 
 .joinForGames {
   border: solid 1px #00d9b6;
   background-color: #00d9b6;
-  color: white !important;
+  color: #000 !important;
   padding: 10px 30px !important;
   border-radius: 39px;
   width: 180px !important;
@@ -110,7 +114,7 @@
 }
 .activeOption {
   background: #f4f5f7;
-  color: #00d9b6 !important;
+  color: #000 !important;
 }
 .profiles {
   margin-top: 60px;
@@ -235,7 +239,7 @@
   width: 28%;
   border-radius: 150px;
   border: none;
-  color: #ffff;
+  color: #000;
   
 }
 .profileImagePosition {
