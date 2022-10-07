@@ -51,6 +51,7 @@
 .parentloggedindash ul li {
   list-style-type: none;
   cursor: pointer;
+  /* color: #000; */
 }
 
 .navicons {
@@ -72,6 +73,7 @@
   /* padding: 30px !mportant; */
   /* height: 20%; */
   /* margin-top: 20px; */
+  /* color: #000; */
   padding-left: 6% !important;
   padding-right: 4% !important;
 }
