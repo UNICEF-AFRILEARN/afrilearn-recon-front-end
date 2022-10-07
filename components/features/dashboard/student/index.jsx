@@ -1,21 +1,21 @@
-import styles from "./student.module.css";
-import SubHeading from "./extra/subHeading";
+import styles from './student.module.css'
+import SubHeading from './extra/subHeading'
 
-import PastQuestion from "./extra/pastQuestionaira";
-import TopInClass from "./extra/topInClass";
-import Recommendation from "./extra/recommendation";
-import Image from "next/image";
-import Slider from "react-slick";
-import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
-import Subjects from "./extra/subjects";
-import GetSolution from "./extra/getSolution";
-import PerfomanceSumm from "./extra/PerfomanceSumm";
-import RecentActivity from "./extra/recentActivity";
-import Q from "./extra/recentActivity";
-import _ from "lodash";
-import StudentHeropage from "./studentHeropage";
-import { useSelector, useDispatch } from "react-redux";
+import PastQuestion from './extra/pastQuestionaira'
+import TopInClass from './extra/topInClass'
+import Recommendation from './extra/recommendation'
+import Image from 'next/image'
+import Slider from 'react-slick'
+import { useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
+import Subjects from './extra/subjects'
+import GetSolution from './extra/getSolution'
+import PerfomanceSumm from './extra/PerfomanceSumm'
+import RecentActivity from './extra/recentActivity'
+import Q from './extra/recentActivity'
+import _ from 'lodash'
+import StudentHeropage from './studentHeropage'
+import { useSelector, useDispatch } from 'react-redux'
 import {
   fetchClassMember,
   fetchCoursesInitiate,
@@ -26,61 +26,60 @@ import {
   fetchstoreSubject,
   fetchSubjectInitiate,
   fetchTopInClassInitiate,
-} from "../../../../redux/actions/subject";
-import Swal from "sweetalert2";
+} from '../../../../redux/actions/subject'
+import Swal from 'sweetalert2'
 import {
   // fetchCourseInitiate,
   fetchReconLessonInitiate,
   fetchUnicefReconInitiate,
   fetchSingleLessonInitiate,
   fetchLessonsInitiate,
-} from "../../../../redux/actions/courses";
+} from '../../../../redux/actions/courses'
 import { fetchRecentActivitiesInitiate } from '../../../../redux/actions/classes'
-import { Button, Col, Modal, Row, Tooltip } from "react-bootstrap";
+import { Button, Col, Modal, Row, Tooltip } from 'react-bootstrap'
 
 const Dashboard = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const { reconLesson, lessons, unicefRecon } = useSelector(
-    (state) => state.Mycourses,
-  );
-  const { user, registerUser } = useSelector((state) => state.auth);
-  const { activities } = useSelector((state) => state.Mycourses);
+    (state) => state.Mycourses
+  )
+  const { user, registerUser } = useSelector((state) => state.auth)
+  const { activities } = useSelector((state) => state.Mycourses)
   // const { registerUser } = useSelector((state) => state.auth);
-  const subject = useSelector((state) => state.mySubjectCourse);
+  const subject = useSelector((state) => state.mySubjectCourse)
 
-  const userId = "62a0bc984af2d90016b72096";
-  const token = user.token;
-  const lessonId = "6012c2a7cfe09249249f7f9c";
-  const schoollevel = "Primary One";
-  const reco_subject = "Agricultural Science";
+  const userId = '62a0bc984af2d90016b72096'
+  const token = user.token
+  const lessonId = '6012c2a7cfe09249249f7f9c'
+  const schoollevel = 'Primary One'
+  const reco_subject = 'Agricultural Science'
   // To be changed later
-
 
   const personData = {
     personClass: user.user?.enrolledCourses[0]
       ? user.user?.enrolledCourses[0].courseId.name
       : user.user?.enrolledCourses[1].courseId.name,
     personName: user.user?.fullName,
-  };
+  }
   const person_id = user.user?.enrolledCourses[0]
     ? user.user?.enrolledCourses[0].id
-    : user.user?.enrolledCourses[1].id;
+    : user.user?.enrolledCourses[1].id
   const user_id = user.user?.enrolledCourses[0]
     ? user.user?.enrolledCourses[0].userId
-    : user.user?.enrolledCourses[1].userId;
+    : user.user?.enrolledCourses[1].userId
   useEffect(() => {
-    dispatch(fetchGetWebInitiate(person_id, token));
+    dispatch(fetchGetWebInitiate(person_id, token))
     // dispatch(fetchLessonsInitiate());
-    dispatch(fetchSingleLessonInitiate(lessonId));
-    dispatch(fetchLessonsInitiate());
-    dispatch(fetchRecentActivitiesInitiate(token, userId));
-    dispatch(fetchUnicefReconInitiate(schoollevel, reco_subject, lessonId));
-    dispatch(fetchReconLessonInitiate(userId, token));
+    dispatch(fetchSingleLessonInitiate(lessonId))
+    dispatch(fetchLessonsInitiate())
+    dispatch(fetchRecentActivitiesInitiate(token, userId))
+    dispatch(fetchUnicefReconInitiate(schoollevel, reco_subject, lessonId))
+    dispatch(fetchReconLessonInitiate(userId, token))
     // dispatch(fetchSubjectInitiate(person_id, token));
-    dispatch(fetchGetFavouriteInitiate(token));
-    dispatch(fetchGetUnfinishedVideosInitiate(token));
-    dispatch(fetchTopInClassInitiate(person_id, token));
-    dispatch(fetchClassMember(person_id, token));
+    dispatch(fetchGetFavouriteInitiate(token))
+    dispatch(fetchGetUnfinishedVideosInitiate(token))
+    dispatch(fetchTopInClassInitiate(person_id, token))
+    dispatch(fetchClassMember(person_id, token))
   }, [
     // fetchCourseInitiate,
     fetchReconLessonInitiate,
@@ -92,8 +91,8 @@ const Dashboard = () => {
     fetchGetWebInitiate,
     fetchTopInClassInitiate,
     fetchClassMember,
-    activities
-  ]);
+    activities,
+  ])
 
   return (
     <>
@@ -117,7 +116,7 @@ const Dashboard = () => {
         classData={subject?.topInclass?.lessons}
         classed={personData.personClass}
       />
-      <PerfomanceSumm /> 
+      <PerfomanceSumm />
       <GetSolution />
       <ClassRoom data={subject?.classroom?.classMembership} />
       <div className={styles.recomendationmainwrapper}>
@@ -129,11 +128,11 @@ const Dashboard = () => {
       </div>
       <RecentActivity activities={activities?.recentActivities} />
     </>
-  );
-};
+  )
+}
 
 const TopInClasses = ({ classData, classed }) => {
-  const customeSlider = useRef();
+  const customeSlider = useRef()
 
   const settings = {
     infinite: true,
@@ -142,11 +141,11 @@ const TopInClasses = ({ classData, classed }) => {
     autoplay: true,
     speed: 1500,
     autoplaySpeed: 1000,
-    cssEase: "linear",
+    cssEase: 'linear',
     initialSlide: 0,
     arrows: false,
-    rows: "1",
-  };
+    rows: '1',
+  }
   return (
     classData?.length > 0 && (
       <section>
@@ -155,7 +154,7 @@ const TopInClasses = ({ classData, classed }) => {
           <section
             className="parnet-frag-color"
             style={{
-              marginLeft: "25px",
+              marginLeft: '25px',
             }}
           >
             {classData?.length > 4 ? (
@@ -167,9 +166,9 @@ const TopInClasses = ({ classData, classed }) => {
             ) : (
               <div
                 style={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: "15px",
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: '15px',
                 }}
               >
                 {classData?.map((data, i) => (
@@ -181,10 +180,10 @@ const TopInClasses = ({ classData, classed }) => {
         </div>
       </section>
     )
-  );
-};
+  )
+}
 const UnfinshedVideos = ({ classData }) => {
-  const customeSlider = useRef();
+  const customeSlider = useRef()
 
   const settings = {
     infinite: true,
@@ -193,11 +192,11 @@ const UnfinshedVideos = ({ classData }) => {
     autoplay: true,
     speed: 1500,
     autoplaySpeed: 1000,
-    cssEase: "linear",
+    cssEase: 'linear',
     initialSlide: 0,
     arrows: false,
-    rows: "1",
-  };
+    rows: '1',
+  }
   return (
     classData?.length > 0 && (
       <>
@@ -206,7 +205,7 @@ const UnfinshedVideos = ({ classData }) => {
           <section
             className="parnet-frag-color"
             style={{
-              marginLeft: "25px",
+              marginLeft: '25px',
             }}
           >
             {classData?.length > 4 ? (
@@ -218,9 +217,9 @@ const UnfinshedVideos = ({ classData }) => {
             ) : (
               <div
                 style={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: "15px",
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: '15px',
                 }}
               >
                 {classData?.map((data, i) => (
@@ -232,10 +231,10 @@ const UnfinshedVideos = ({ classData }) => {
         </div>
       </>
     )
-  );
-};
+  )
+}
 const MyFavs = ({ classData }) => {
-  const customeSlider = useRef();
+  const customeSlider = useRef()
 
   const settings = {
     infinite: true,
@@ -244,7 +243,7 @@ const MyFavs = ({ classData }) => {
     autoplay: true,
     speed: 1500,
     autoplaySpeed: 1000,
-    cssEase: "linear",
+    cssEase: 'linear',
     initialSlide: 0,
     arrows: false,
     responsive: [
@@ -273,7 +272,7 @@ const MyFavs = ({ classData }) => {
         },
       },
     ],
-  };
+  }
   return (
     classData?.length > 0 && (
       <>
@@ -282,7 +281,7 @@ const MyFavs = ({ classData }) => {
           <section
             className="parnet-frag-color"
             style={{
-              marginLeft: "25px",
+              marginLeft: '25px',
             }}
           >
             {classData?.length > 4 ? (
@@ -294,9 +293,9 @@ const MyFavs = ({ classData }) => {
             ) : (
               <div
                 style={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: "15px",
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: '15px',
                 }}
               >
                 {classData?.map((data, i) => (
@@ -308,8 +307,8 @@ const MyFavs = ({ classData }) => {
         </div>
       </>
     )
-  );
-};
+  )
+}
 
 const Recommended = ({ recommend, unicefRecon, lessons }) => {
   // let reduceRecon = () => {
@@ -319,27 +318,27 @@ const Recommended = ({ recommend, unicefRecon, lessons }) => {
   // }
 
   // console.log(" 3reduceRecon From recommendation COmponent ====>", reduceRecon());
-  const reconBucket = [];
-  const finalReconLessons = [];
+  const reconBucket = []
+  const finalReconLessons = []
 
   const extractRecon = (buckets) => {
-    const unicefRecons = Object.values(buckets);
+    const unicefRecons = Object.values(buckets)
     for (let i = 0; i < unicefRecons.length; i++) {
-      _.forEach(unicefRecons[i], (recon) => reconBucket.push(recon));
+      _.forEach(unicefRecons[i], (recon) => reconBucket.push(recon))
     }
-    return reconBucket;
-  };
+    return reconBucket
+  }
 
   const getFinalRecon = () => {
-    const myBucket = extractRecon(unicefRecon);
-    const myLessons = Object.values(lessons);
+    const myBucket = extractRecon(unicefRecon)
+    const myLessons = Object.values(lessons)
 
     for (let i = 0; i < myLessons.length; i++) {
       if (myLessons[i].id !== myBucket[i]) {
-        return myLessons[i];
+        return myLessons[i]
       }
     }
-  };
+  }
 
   return (
     <>
@@ -350,48 +349,49 @@ const Recommended = ({ recommend, unicefRecon, lessons }) => {
           <div className={`${styles.contai}`}>
             <section className="parnet-frag-color">
               {unicefRecon?.map((recData, index) => (
-                <Recommendation 
-                recData={recData}
-                recIndex={index}
-                 />
+                <Recommendation recData={recData} recIndex={index} />
               ))}
             </section>
           </div>
         </>
       )}
     </>
-  );
-};
+  )
+}
 
 const ClassRoom = ({ data }) => {
-  const { user } = useSelector((state) => state.auth);
-  const subject = useSelector((state) => state.mySubjectCourse);
-  const dispatch = useDispatch();
-  const token = user?.token;
+  const { user } = useSelector((state) => state.auth)
+  const subject = useSelector((state) => state.mySubjectCourse)
+  const dispatch = useDispatch()
+  const token = user?.token
 
   //remove async and await
   const handleJoinClass = async () => {
     // e.preventDefault();
-    const { value: ipAddress } =  await Swal.fire({
-      title: "Enter the class code below",
-      input: "text",
-      inputLabel: "",
-      inputValue: "",
+    const { value: ipAddress } = await Swal.fire({
+      title: 'Enter the class code below',
+      input: 'text',
+      inputLabel: '',
+      inputValue: '',
       showCancelButton: true,
       inputValidator: (value) => {
         if (!value) {
-          return "Enter class code!";
+          return 'Enter class code!'
         }
       },
-    });
+    })
 
     if (ipAddress) {
-      dispatch(fetchSendClassRequest(ipAddress, token));
+      dispatch(fetchSendClassRequest(ipAddress, token))
     }
     if (ipAddress && subject?.classRequestInfo) {
-      await Swal.fire(subject?.classRequestInfo);
+      await Swal.fire(subject?.classRequestInfo)
     }
-  };
+  }
+
+  const capitalize = (str) => {
+    return str.charAt(0).toUpperCase() + str.slice(1)
+  }
   return (
     <>
       <Row>
@@ -415,7 +415,7 @@ const ClassRoom = ({ data }) => {
             className={` ${styles.joinClass}`}
           >
             JOIN A CLASSROOM
-          </button>{" "}
+          </button>{' '}
           {/* </Tooltip> */}
         </Col>
       </Row>
@@ -432,20 +432,22 @@ const ClassRoom = ({ data }) => {
           data?.map((dta, i) => {
             return (
               <Row key={i} className="pb-5">
-                <Col>
-                  <p>{`${dta.classId?.name} - ${dta.classId?.classCode}`}</p>
-                </Col>
-                <Col>
-                  <p>{`Instructor: ${
-                    dta?.classId?.userId && dta?.classId?.userId.fullName
+                <Col lg={5}>
+                  <p>{`${capitalize(dta.classId?.name)} - ${
+                    dta.classId?.classCode
                   }`}</p>
                 </Col>
-                <Col>
-                  {dta?.status === "approved" ? (
+                <Col lg={5}>
+                  <p>{`Instructor: ${capitalize(
+                    dta?.classId?.userId && dta?.classId?.userId.fullName
+                  )}`}</p>
+                </Col>
+                <Col md={4} lg={2}>
+                  {dta?.status === 'approved' && (
                     <Link
                       passHref
                       href={{
-                        pathname: "/classroom",
+                        pathname: '/classroom',
                         query: dta?.classId._id,
                       }}
                     >
@@ -453,18 +455,20 @@ const ClassRoom = ({ data }) => {
                       <Button clasName="w-25">Enter Classroom</Button>
                       {/* </Row> */}
                     </Link>
-                  ) : (
-                    <Row style={{ width: "250px", margin: "auto" }}>
-                      <Button className="w-25">{dta?.status}</Button>
-                    </Row>
                   )}
+                  {/* // : ( //{' '}
+                  <Row style={{ width: '250px', margin: 'auto' }}>
+                    // <Button className="w-25">{dta?.status}</Button>
+                    //{' '}
+                  </Row>
+                  // )} */}
                 </Col>
               </Row>
-            );
+            )
           })
         )}
       </div>
     </>
-  );
-};
-export default Dashboard;
+  )
+}
+export default Dashboard
