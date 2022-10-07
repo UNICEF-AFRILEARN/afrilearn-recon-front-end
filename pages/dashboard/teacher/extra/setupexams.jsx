@@ -254,7 +254,7 @@ console.log("questionTypeId", questionTypeId)
         </Form.Group>
         <Button 
           disabled={!deadline || !startDate || !duration || !totalNumberOfQuestions || !termSelected}
-        className="w-25" type="submit">
+        className="w-25 exambtn-wrapper" type="submit">
           PROCEED
         </Button>
       </Form>}

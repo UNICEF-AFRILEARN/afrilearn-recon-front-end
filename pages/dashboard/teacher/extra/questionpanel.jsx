@@ -79,13 +79,13 @@ const Questionpanel = ({
   // }
 
 
-  console.log("updatedQuestion from question panel", updatedQuestion)
+
 
   const handleSubmit = (e) => {
       e.preventDefault()
        let options = [singleQuestion.optionOne, singleQuestion.optionTwo, singleQuestion.optionThree, singleQuestion.optionFour]
       let question = singleQuestion.question
-      console.log("questionId, question , options", questionId, question , options)
+
         dispatch(updateExamQuestionInitiate(questionId, question , options))
         handleUpdateShow()
     }
@@ -212,7 +212,7 @@ const Questionpanel = ({
                       }
                       <Button 
                         onClick={handleUpdateShow}
-                      className="w-50 mt-3" type="submit">
+                      className="w-50 mt-3 exambtn-wrapper" type="submit">
                     Save changes
                   </Button>
           </Form>
