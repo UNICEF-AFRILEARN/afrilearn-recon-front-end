@@ -23,7 +23,7 @@ const Classnote = () => {
   return (
     <>
       <HeaderHeropage
-        classes={subject.dashboardWeb.enrolledCourse.courseId.name}
+        classes={subject?.dashboardWeb?.enrolledCourse?.courseId?.name}
       />
       <div className={styles.classs}>
         <ClassNoteVideoHeader />

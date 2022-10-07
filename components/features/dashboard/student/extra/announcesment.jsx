@@ -199,7 +199,7 @@ const Announcesment = ({ goto, classId }) => {
         <div className={styles.detailscard}>
           <h2>{user.user?.fullName}</h2>
           <p>{user.user?.email}</p>
-          <h3>{subject?.dashboardWeb?.enrolledCourse.courseId.name}</h3>
+          <h3>{subject?.dashboardWeb?.enrolledCourse?.courseId?.name}</h3>
         </div>
         <div className={styles.upcomingcard}>
           <AssignContent />

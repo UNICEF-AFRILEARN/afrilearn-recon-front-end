@@ -10,79 +10,76 @@ import { Children } from 'react';
 const ChildDetails = (props)  => {
 
   let filteredChild = props.myChildren?.filter((singleChild) => singleChild.id === props.userId)
-  console.log("myChildren from child details modal", filteredChild)
+  
+    //Format date to string:
+    const formatDate = (string) => {
+      var options = { year: 'numeric', month: 'long', day: 'numeric' };
+      return new Date(string).toLocaleDateString([],options);
+  }
   return (
     <Modal
       {...props}
       size="md"
       aria-labelledby="contained-modal-title-vcenter"
       centered
+      dialogClassName="dialogy-style"
       className='text-center'
     >
       {
       
       filteredChild && filteredChild.map((mappedChild) => 
       <>
-         <div className='text-center d-flex mx-3'>          
+        <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+        <h5 className='text-start m-4'>Other Details</h5>
+        </Modal.Title>
+      </Modal.Header>
+    <div className='d-flex justify-content-between mx-5'>     
         <p className='m-3'>
        Email:
-      </p> 
-        <p className='m-3 px-5'>
-         {mappedChild.email} 
-      </p> 
-      
-    </div>
-    <div className='text-center d-flex mx-3'>          
-        <p className='m-3'>
-       Password:
-      </p> 
+      </p>
         <p className='m-3 px-2'>
          {mappedChild.email} 
       </p> 
       
     </div>
-    <div>
-    <h5 className='text-start mx-4'>{mappedChild.enrolledCourses[0].courseId.name}</h5>     
+    <div className='text-center d-flex mx-3'>
+    <h5 className='text-start mx-5'>{mappedChild.enrolledCourses[0].courseId.name}</h5>     
     </div>
-    <div className='text-center d-flex mx-3'>     
-        <p className='m-3'>
-       Password:
-      </p> 
-        <p className='m-3 px-2'>
-         {mappedChild.email} 
-      </p> 
-      
-    </div>
-    <div>
-    <h5 className='text-start mx-4'>{mappedChild.enrolledCourses[0].courseId.name}</h5>     
-    </div>
-    <div className='text-center d-flex'>     
+    <div className=' d-flex justify-content-between mx-5'>     
         <p className='m-3'>
        Subscription:
       </p> 
-        <p className='m-3 px-2'>
-         {mappedChild.email} 
-      </p> 
+       { mappedChild?.enrolledCourses[0]?.status === "trial"?
+       <p className='m-3'>
+         No Payment plan
+      </p>:
+
+      <p className='m-3 px-2 align-self-center'>
+        {mappedChild?.enrolledCourses[0]?.status}
+      </p>
+      
+    }
       
     </div>
-    <div className='text-center d-flex'>     
+    <div className='d-flex justify-content-between mx-5'>     
         <p className='m-3'>
        Expiration Date:
       </p> 
         <p className='m-3'>
-         {mappedChild.email} 
+         {formatDate(mappedChild?.enrolledCourses[0]?.endDate)} 
       </p> 
       
     </div>
 
     <Modal.Body className='d-flex justify-center p-3'>
 
-      <div className="d-flex align-items-center justify-content-center w-100 mx-5">
+      {/* <div className="d-flex align-items-center justify-content-center w-100 mx-5">
         <Button 
        onClick={props.onHide}
        className='w-100 mx-5' 
       >Ok</Button>
-      </div>
+      </div> */}
     </Modal.Body>
     </>
       )}

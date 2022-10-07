@@ -35,9 +35,9 @@ const QuizReview = () => {
 
   React.useEffect(() => {
     setOptionSelected(
-      !quary ? hata[0].option_selected : jata[0].option_selected,
+      // !quary ? hata[0].option_selected : jata[0].option_selected,
     );
-    setCorrectOption(!quary ? hata[0].correct_option : jata[0].correct_option);
+    // setCorrectOption(!quary ? hata[0].correct_option : jata[0].correct_option);
   }, [nextQues]);
   const Quizdata = {
     subject: quary ? `${quary} Past Qustion Result` : gata,
@@ -82,7 +82,7 @@ const QuizReview = () => {
               </div>
               <div>{Quizdata?.diagram}</div>
               <div className={styles.options}>
-                {Quizdata?.option[0] && (
+                {Quizdata && (
                   <div className={styles.quizOption}>
                     <button
                       style={{
@@ -94,11 +94,11 @@ const QuizReview = () => {
                             : "#FFFFFF",
                       }}
                     >
-                      A . {Quizdata?.option[0]}
+                      {/* A . {Quizdata?.option[0]} */}
                     </button>
                   </div>
                 )}
-                {Quizdata?.option[1] && (
+                {Quizdata && (
                   <div className={styles.quizOption}>
                     <button
                       style={{
@@ -110,11 +110,11 @@ const QuizReview = () => {
                             : "#FFFFFF",
                       }}
                     >
-                      B . {Quizdata?.option[1]}
+                      {/* B . {Quizdata?.option[1]} */}
                     </button>
                   </div>
                 )}
-                {Quizdata?.option[2] && (
+                {Quizdata && (
                   <div className={styles.quizOption}>
                     <button
                       style={{
@@ -126,11 +126,11 @@ const QuizReview = () => {
                             : "#FFFFFF",
                       }}
                     >
-                      C . {Quizdata?.option[2]}
+                      {/* C . {Quizdata?.option[2]} */}
                     </button>
                   </div>
                 )}
-                {Quizdata?.option[3] && (
+                {Quizdata && (
                   <div className={styles.quizOption}>
                     <button
                       style={{
@@ -142,11 +142,11 @@ const QuizReview = () => {
                             : "#FFFFFF",
                       }}
                     >
-                      D . {Quizdata?.option[3]}
+                      {/* D . {Quizdata?.option[3]} */}
                     </button>
                   </div>
                 )}
-                {Quizdata?.option[4] && (
+                {Quizdata && (
                   <div className={styles.quizOption}>
                     <button
                       style={{
@@ -158,7 +158,7 @@ const QuizReview = () => {
                             : "#FFFFFF",
                       }}
                     >
-                      E . {Quizdata?.option[4]}
+                      {/* E . {Quizdata?.option[4]} */}
                     </button>
                   </div>
                 )}
@@ -175,7 +175,7 @@ const QuizReview = () => {
             <div>
               {" "}
               <div className={`col-md-6 ${styles.Nextbutton} `}>
-                {nextQues < questions.length && (
+                {nextQues < questions?.length && (
                   <button onClick={() => setNextQues(nextQues + 1)}>
                     NEXT
                   </button>
@@ -223,14 +223,14 @@ const QuizReview = () => {
                 <div
                   key={i}
                   className={`col-md-3 ${styles.Quiznumber}`}
-                  style={{
-                    background:
-                      allAnswers[i].status === "correct"
-                        ? "#00D9B6"
-                        : allAnswers[i].status === "incorrect"
-                        ? "#FF4939"
-                        : "#FFB600",
-                  }}
+                  // style={{
+                  //   background:
+                  //     allAnswers[i]?.status === "correct"
+                  //       ? "#00D9B6"
+                  //       : allAnswers[i].status === "incorrect"
+                  //       ? "#FF4939"
+                  //       : "#FFB600",
+                  // }}
                   onClick={() => {
                     setNextQues(no);
                   }}

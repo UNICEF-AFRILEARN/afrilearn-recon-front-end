@@ -22,7 +22,7 @@ import ReactPlayer from "react-player/lazy";
 import { FcLike } from "react-icons/fc";
 import { FcLikePlaceholder } from "react-icons/fc";
 import moment from "moment";
-import Speech from "react-speech";
+// import Speech from "react-speech";
 import TimeAgo from "javascript-time-ago";
 
 import en from "javascript-time-ago/locale/en.json";
@@ -142,7 +142,7 @@ const VideoPage = () => {
   const target = useRef(null);
 
   const datas = {
-    userId: user.user._id,
+    userId: user?.user?._id,
     courseId: videoId(quary)?.courseId,
     subjectId: videoId(quary)?.subjectId,
     lessonId: videoId(quary)?._id,
@@ -156,7 +156,7 @@ const VideoPage = () => {
   };
   const decodeEntities = (function () {
     // this prevents any overhead from creating the object each time
-    var element = document.createElement("div");
+    // var element = document.createElement("div");
 
     function decodeHTMLEntities(str) {
       if (str && typeof str === "string") {
@@ -314,7 +314,7 @@ const VideoPage = () => {
                 cursor: "pointer",
               }}
             >
-              <Speech
+              {/* <Speech
                 text={decodeEntities(videoId(quary)?.content)}
                 textAsButton={true}
                 stop={audioState}
@@ -324,7 +324,7 @@ const VideoPage = () => {
                     <div className={styles.micBottom}>Audio</div>
                   </div>
                 }
-              />
+              /> */}
             </Col>
 
             <Col onClick={() => showing()} style={{ cursor: "pointer" }}>

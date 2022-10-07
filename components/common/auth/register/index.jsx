@@ -3,28 +3,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 import styles from './register.module.css';
 import Image from 'next/image';
-import TextInput from '../../../widgets/appTextInput';
 import AppButton from "../../../widgets/buttons/AppButton";
-import Selectitem from '../../../widgets/appSelect/appSelect';
-import ReactModal from 'react-modal'
 import { Button, Modal } from 'react-bootstrap';
 import { fetchRoles, registerUserInitiate } from "../../../../redux/actions/auth";
-import Router, { useRouter } from 'next/router'
 import { fetchSubjectsInitiate } from '../../../../redux/actions/subjects';
-import {BsChevronDown} from 'react-icons/bs'
+// import {BsChevronDown} from 'react-icons/bs'
 import Registeralert from './registeralert'
 import Spinner from '../../../../components/widgets/spinner/index'
 
 const Register = (props) => {
-  const { user, registerUser, error } = useSelector(state => state.auth);
-  const { subjects} = useSelector(state => state.mySubject);
+  const {registerUser, error } = useSelector(state => state.auth);
+  // const { subjects} = useSelector(state => state.mySubject);
   const [roleSelected, setRoleSelected] = useState('');
   const [role, setRole] = useState('');
-  const [classCategory, setClassCategory] = useState('');
+  // const [classCategory, setClassCategory] = useState('');
   const [courseCategoryId, setCourseCategoryId] = useState('');
-  const [subject, setSubject] = useState('');
   // const [subject, setSubject] = useState('');
-  const [subjectSelected, setSubjectSelected] = useState('');
+  // const [subject, setSubject] = useState('');
+  // const [subjectSelected, setSubjectSelected] = useState('');
   const [course, setCourse] = useState('');
   const [courseId, setCourseId] = useState('');
   const [fullName, setFullName] = useState('');
@@ -37,7 +33,7 @@ const Register = (props) => {
 
 
 
-  const [fullscreen, setFullscreen] = useState(true);
+  // const [fullscreen, setFullscreen] = useState(true);
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -355,33 +351,33 @@ useEffect(() => {
   )
 }
 
-function RegisterModal() {
-  const values = [true, 'sm-down', 'md-down', 'lg-down', 'xl-down', 'xxl-down'];
-  const [fullscreen, setFullscreen] = useState(true);
-  const [show, setShow] = useState(false);
+// function RegisterModal() {
+//   const values = [true, 'sm-down', 'md-down', 'lg-down', 'xl-down', 'xxl-down'];
+//   const [fullscreen, setFullscreen] = useState(true);
+//   const [show, setShow] = useState(false);
 
-  function handleShow(breakpoint) {
-    setFullscreen(breakpoint);
-    setShow(true);
-  }
+//   function handleShow(breakpoint) {
+//     setFullscreen(breakpoint);
+//     setShow(true);
+//   }
 
-  return (
-    <>
-      {values.map((v, idx) => (
-        <Button key={idx} className="me-2 mb-2" onClick={() => handleShow(v)}>
-          Full screen
-          {typeof v === 'string' && `below ${v.split('-')[0]}`}
-        </Button>
-      ))}
-      <Modal show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Modal body content</Modal.Body>
-      </Modal>
-    </>
-  );
-}
+//   return (
+//     <>
+//       {values.map((v, idx) => (
+//         <Button key={idx} className="me-2 mb-2" onClick={() => handleShow(v)}>
+//           Full screen
+//           {typeof v === 'string' && `below ${v.split('-')[0]}`}
+//         </Button>
+//       ))}
+//       <Modal show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
+//         <Modal.Header closeButton>
+//           <Modal.Title>Modal</Modal.Title>
+//         </Modal.Header>
+//         <Modal.Body>Modal body content</Modal.Body>
+//       </Modal>
+//     </>
+//   );
+// }
 
 
 

@@ -1,6 +1,6 @@
 import PersonalProfile from "./personalProfile";
 import PersonalSelectionClass from "./personalSelectionClass";
-import SecurityProfile from "./SecurityProfile";
+import SecurityProfile from "./securityProfile";
 
 const selectionSection = ({ data }) => {
   console.log(data);

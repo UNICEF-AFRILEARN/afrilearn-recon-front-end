@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import Image from "next/image";
-import styles from "../../../../../styles/material.module.css";
-import styles2 from "../classnote/classnote.module.css";
+import React, { useEffect, useState } from 'react'
+import Image from 'next/image'
+import styles from '../../../../../styles/material.module.css'
+import styles2 from '../classnote/classnote.module.css'
 // import PastQuestion from "./pastQuestionaira";
 // import Mathematics from "./Mathematics";
 // import EnglishLanguage from "./EnglishLanguage";
@@ -13,33 +13,33 @@ import styles2 from "../classnote/classnote.module.css";
 // import French from "./French";
 // import BasicScience from "./BasicScience";
 // import Yoruba from "./Yoruba";
-import { useDispatch, useSelector } from "react-redux";
-import { Accordion, Col, Container, Dropdown, Row } from "react-bootstrap";
-import Link from "next/link";
+import { useDispatch, useSelector } from 'react-redux'
+import { Accordion, Col, Container, Dropdown, Row } from 'react-bootstrap'
+import Link from 'next/link'
 import {
   fetchPastQuestionInitiate,
   fetchPastQuestionSubjInitiate,
-} from "../../../../../redux/actions/subject";
+} from '../../../../../redux/actions/subject'
 
 export const Material = ({ past }) => {
-  const dispatch = useDispatch();
-  const subject = useSelector((state) => state.mySubjectCourse);
+  const dispatch = useDispatch()
+  const subject = useSelector((state) => state.mySubjectCourse)
   const subjectDat =
-    subject?.dashboardWeb?.enrolledCourse.courseId.relatedPastQuestions;
-  const lessons = subject?.stuTeacherSub[0]?.subjects;
+    subject.dashboardWeb?.enrolledCourse?.courseId?.relatedPastQuestions
+  const lessons = subject?.stuTeacherSub[0]?.subjects
   useEffect(() => {
-    dispatch(fetchPastQuestionInitiate(1));
+    dispatch(fetchPastQuestionInitiate(1))
     //   if (subData && subData.length > 0) {
     //     dispatch(
     //       fetchPastQuestionInitiate(subData[0].pastQuestionTypes[0].categoryId),
     //     );
     //   }
-  }, []);
-  const [toggleState, setToggleState] = useState(0);
+  }, [])
+  const [toggleState, setToggleState] = useState(0)
 
   const toggleTabs = (index) => {
-    setToggleState(index);
-  };
+    setToggleState(index)
+  }
   return (
     <div className={styles.classworkwrapper}>
       <Row>
@@ -58,7 +58,7 @@ export const Material = ({ past }) => {
                   >
                     {data?.mainSubjectId.name}
                   </li>
-                );
+                )
               })}
               <li
                 onClick={() => toggleTabs(-1)}
@@ -90,24 +90,24 @@ export const Material = ({ past }) => {
         </Col>
       </Row>
     </div>
-  );
-};
+  )
+}
 
 const ClassNoteVideo = ({ lessons }) => {
   const terms = [
-    "5fc8d1b20fae0a06bc22db5c",
-    "600047f67cabf80f88f61735",
-    "600048197cabf80f88f61736",
-  ];
+    '5fc8d1b20fae0a06bc22db5c',
+    '600047f67cabf80f88f61735',
+    '600048197cabf80f88f61736',
+  ]
   const termsNumber = (number) => {
-    let lessonNum = [];
+    let lessonNum = []
     lessons?.map((lesson) => {
       if (lesson.termId === terms[number] && lesson.videoUrls[0]) {
-        lessonNum.push(lesson);
+        lessonNum.push(lesson)
       }
-    });
-    return lessonNum.length;
-  };
+    })
+    return lessonNum.length
+  }
   const FirstTerm = () => {
     return (
       <Accordion className={styles2.accord}>
@@ -115,10 +115,10 @@ const ClassNoteVideo = ({ lessons }) => {
           <Accordion.Header className={styles2.accordHead}>
             <Row md={8}>
               <Col md={5}>
-                <h5 style={{ colour: "#00d9b6 !important" }}>First Term</h5>
+                <h5 style={{ colour: '#00d9b6 !important' }}>First Term</h5>
               </Col>
               <Col>
-                <h6 style={{ colour: "#00d9b6 !important" }}>
+                <h6 style={{ colour: '#00d9b6 !important' }}>
                   {termsNumber(0)} lessons available
                 </h6>
               </Col>
@@ -135,7 +135,7 @@ const ClassNoteVideo = ({ lessons }) => {
                       className={styles2.accord_button}
                     >
                       <Accordion.Header className={styles2.accordHead}>
-                        <span className={styles2.accordance}></span>{" "}
+                        <span className={styles2.accordance}></span>{' '}
                         {lesson.title}
                       </Accordion.Header>
                       <Accordion.Body className={styles2.accordLeft}>
@@ -145,21 +145,21 @@ const ClassNoteVideo = ({ lessons }) => {
                               <Link
                                 href={{
                                   pathname:
-                                    "/dashboard/student/video/videoPage/",
+                                    '/dashboard/student/video/videoPage/',
                                   query: {
                                     Exam: j,
                                     Lesson: i,
-                                    term: "First Term",
+                                    term: 'First Term',
                                   },
                                 }}
                               >
                                 <div
                                   className={styles2.buttonStyle}
-                                  style={{ cursor: "pointer" }}
+                                  style={{ cursor: 'pointer' }}
                                 >
                                   <div className={styles2.buttonStyleImage}>
                                     <Image
-                                      alt={"afrilearn marketing video"}
+                                      alt={'afrilearn marketing video'}
                                       src={`/assets/img/features/dashboard/student/arrowhead.png`}
                                       width={13}
                                       height={13}
@@ -169,17 +169,17 @@ const ClassNoteVideo = ({ lessons }) => {
                                 </div>
                               </Link>
                             </div>
-                          );
+                          )
                         })}
                         <div className={styles2.accordButtonLeft}>
                           <Link href="/quiz">
                             <div
                               className={styles2.buttonStyle}
-                              style={{ cursor: "pointer" }}
+                              style={{ cursor: 'pointer' }}
                             >
                               <div className={styles2.buttonStyleImage}>
                                 <Image
-                                  alt={"afrilearn marketing video"}
+                                  alt={'afrilearn marketing video'}
                                   src={`/assets/img/features/dashboard/student/Activity.png`}
                                   width={13}
                                   height={13}
@@ -192,14 +192,14 @@ const ClassNoteVideo = ({ lessons }) => {
                       </Accordion.Body>
                     </Accordion.Item>
                   </Accordion>
-                );
+                )
               }
             })}
           </Accordion.Body>
         </Accordion.Item>
       </Accordion>
-    );
-  };
+    )
+  }
   const SecondTerm = () => {
     return (
       <Accordion className={styles2.accord}>
@@ -207,10 +207,10 @@ const ClassNoteVideo = ({ lessons }) => {
           <Accordion.Header className={styles2.accordHead}>
             <Row md={8}>
               <Col md={5}>
-                <h5 style={{ colour: "#00d9b6 !important" }}>Second Term</h5>
+                <h5 style={{ colour: '#00d9b6 !important' }}>Second Term</h5>
               </Col>
               <Col>
-                <h6 style={{ colour: "#00d9b6 !important" }}>
+                <h6 style={{ colour: '#00d9b6 !important' }}>
                   {termsNumber(1)} lessons available
                 </h6>
               </Col>
@@ -227,7 +227,7 @@ const ClassNoteVideo = ({ lessons }) => {
                       className={styles2.accord_button}
                     >
                       <Accordion.Header className={styles2.accordHead}>
-                        <span className={styles2.accordance}></span>{" "}
+                        <span className={styles2.accordance}></span>{' '}
                         {lesson.title}
                       </Accordion.Header>
                       <Accordion.Body className={styles2.accordLeft}>
@@ -237,21 +237,21 @@ const ClassNoteVideo = ({ lessons }) => {
                               <Link
                                 href={{
                                   pathname:
-                                    "/dashboard/student/video/videoPage/",
+                                    '/dashboard/student/video/videoPage/',
                                   query: {
                                     Exam: j,
                                     Lesson: i,
-                                    term: "Second Term",
+                                    term: 'Second Term',
                                   },
                                 }}
                               >
                                 <div
                                   className={styles2.buttonStyle}
-                                  style={{ cursor: "pointer" }}
+                                  style={{ cursor: 'pointer' }}
                                 >
                                   <div className={styles2.buttonStyleImage}>
                                     <Image
-                                      alt={"afrilearn marketing video"}
+                                      alt={'afrilearn marketing video'}
                                       src={`/assets/img/features/dashboard/student/arrowhead.png`}
                                       width={13}
                                       height={13}
@@ -261,17 +261,17 @@ const ClassNoteVideo = ({ lessons }) => {
                                 </div>
                               </Link>
                             </div>
-                          );
+                          )
                         })}
                         <div className={styles2.accordButtonLeft}>
                           <Link href="/dashboard/student/classnote/classnotePage">
                             <div
                               className={styles2.buttonStyle}
-                              style={{ cursor: "pointer" }}
+                              style={{ cursor: 'pointer' }}
                             >
                               <div className={styles2.buttonStyleImage}>
                                 <Image
-                                  alt={"afrilearn marketing video"}
+                                  alt={'afrilearn marketing video'}
                                   src={`/assets/img/features/dashboard/student/Activity.png`}
                                   width={13}
                                   height={13}
@@ -284,14 +284,14 @@ const ClassNoteVideo = ({ lessons }) => {
                       </Accordion.Body>
                     </Accordion.Item>
                   </Accordion>
-                );
+                )
               }
             })}
           </Accordion.Body>
         </Accordion.Item>
       </Accordion>
-    );
-  };
+    )
+  }
   const ThirdTerm = () => {
     return (
       <Accordion className={styles2.accord}>
@@ -299,10 +299,10 @@ const ClassNoteVideo = ({ lessons }) => {
           <Accordion.Header className={styles2.accordHead}>
             <Row md={8}>
               <Col md={5}>
-                <h5 style={{ colour: "#00d9b6 !important" }}>Third Term</h5>
+                <h5 style={{ colour: '#00d9b6 !important' }}>Third Term</h5>
               </Col>
               <Col>
-                <h6 style={{ colour: "#00d9b6 !important" }}>
+                <h6 style={{ colour: '#00d9b6 !important' }}>
                   {termsNumber(2)} lessons available
                 </h6>
               </Col>
@@ -319,16 +319,16 @@ const ClassNoteVideo = ({ lessons }) => {
                       className={styles2.accord_button}
                     >
                       <Accordion.Header className={styles2.accordHead}>
-                        <span className={styles2.accordance}></span>{" "}
+                        <span className={styles2.accordance}></span>{' '}
                         {lesson.title}
                       </Accordion.Header>
                       <Accordion.Body className={styles2.accordLeft}>
                         <div
                           style={{
-                            width: "800px",
-                            height: "50px",
-                            display: "flex",
-                            flexWrap: "wrap",
+                            width: '800px',
+                            height: '50px',
+                            display: 'flex',
+                            flexWrap: 'wrap',
                           }}
                         >
                           {lesson.videoUrls.map((data, i) => {
@@ -337,17 +337,17 @@ const ClassNoteVideo = ({ lessons }) => {
                                 <Link
                                   href={{
                                     pathname:
-                                      "/dashboard/student/video/videoPage/",
+                                      '/dashboard/student/video/videoPage/',
                                     query: { Exam: i },
                                   }}
                                 >
                                   <div
                                     className={styles2.buttonStyle}
-                                    style={{ cursor: "pointer" }}
+                                    style={{ cursor: 'pointer' }}
                                   >
                                     <div className={styles2.buttonStyleImage}>
                                       <Image
-                                        alt={"afrilearn marketing video"}
+                                        alt={'afrilearn marketing video'}
                                         src={`/assets/img/features/dashboard/student/arrowhead.png`}
                                         width={13}
                                         height={13}
@@ -357,17 +357,17 @@ const ClassNoteVideo = ({ lessons }) => {
                                   </div>
                                 </Link>
                               </div>
-                            );
+                            )
                           })}
                           <div className={styles2.accordButtonLeft}>
                             <Link href="/dashboard/student/classnote/classnotePage">
                               <div
                                 className={styles2.buttonStyle}
-                                style={{ cursor: "pointer" }}
+                                style={{ cursor: 'pointer' }}
                               >
                                 <div className={styles2.buttonStyleImage}>
                                   <Image
-                                    alt={"afrilearn marketing video"}
+                                    alt={'afrilearn marketing video'}
                                     src={`/assets/img/features/dashboard/student/Activity.png`}
                                     width={13}
                                     height={13}
@@ -381,14 +381,14 @@ const ClassNoteVideo = ({ lessons }) => {
                       </Accordion.Body>
                     </Accordion.Item>
                   </Accordion>
-                );
+                )
               }
             })}
           </Accordion.Body>
         </Accordion.Item>
       </Accordion>
-    );
-  };
+    )
+  }
   return (
     <Container>
       <Row className="mt-3">
@@ -401,14 +401,14 @@ const ClassNoteVideo = ({ lessons }) => {
         <ThirdTerm />
       </Row>
     </Container>
-  );
-};
+  )
+}
 
 const PastQuestionFace = ({ pastQue }) => {
   // const dispatch = useDispatch();
-  const subject = useSelector((state) => state.mySubjectCourse);
-  const subjData = subject.pastQuestion[0]?.subjects;
-  console.log(pastQue);
+  const subject = useSelector((state) => state.mySubjectCourse)
+  const subjData = subject.pastQuestion[0]?.subjects
+  console.log(pastQue)
   return (
     <div>
       {/* {pastQue?.map((data, i) => { */}
@@ -441,7 +441,7 @@ const PastQuestionFace = ({ pastQue }) => {
                           passHref
                           href={{
                             pathname:
-                              "/dashboard/student/pastQuestion/pastQuestionPage",
+                              '/dashboard/student/pastQuestion/pastQuestionPage',
                             query: { Exam: data.subject_id },
                           }}
                         >
@@ -479,7 +479,7 @@ const PastQuestionFace = ({ pastQue }) => {
       </Row>
       {/* })} */}
     </div>
-  );
-};
+  )
+}
 
-export default Material;
+export default Material

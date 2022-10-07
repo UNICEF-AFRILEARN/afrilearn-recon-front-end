@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
-import Toggle from "../../widgets/toggle/index";
+// import Toggle from "../../widgets/toggle/index"
 import { BsSearch, BsBell } from "react-icons/bs";
 
 import { BiDownArrow } from "react-icons/bi";
@@ -25,12 +25,12 @@ const Navigation = () => {
   const { user, registerUser } = useSelector((state) => state.auth);
 
   let localData;
-  const checkoLocal = () => {
-    if (typeof window !== "undefined") {
-      localData = JSON.parse(localStorage.getItem("persist:root"));
-    }
-    return localData;
-  };
+  // const checkoLocal = () => {
+  //   if (typeof window !== "undefined") {
+  //     localData = JSON.parse(localStorage.getItem("persist:root"));
+  //   }
+  //   return localData;
+  // };
   // const handleLogout = () => {
   //   window.localStorage.removeItem('')
   //   router.push('/login')
@@ -45,12 +45,12 @@ const Navigation = () => {
     // undefined, { shallow: true }
     // )
 
-    let locals = checkoLocal();
-    // if(locals === null){
+    // let locals = checkoLocal();
+
     signIn();
-    window.history.pushState(null, "login", "/login");
-    // router.push('/login')
-    // }
+    // window.history.pushState(null, "login", "/login");
+    router.push('/login')
+    
   };
 
   useEffect(() => {
@@ -66,7 +66,7 @@ const Navigation = () => {
       // fixed="top"
       collapseOnSelect
       // style={{ backgroundColor: "#FDFDFD !important" }}
-      className="mainNavbar mt-3"
+      className={`${styles.mainNavbar} pt-3`}
     >
       <Navbar.Brand>
         <Link passHref href="/">

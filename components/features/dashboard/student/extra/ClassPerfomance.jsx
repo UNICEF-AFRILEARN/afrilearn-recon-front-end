@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import styles from "../../../../../styles/performance.module.css";
-import { FiCheckCircle } from "react-icons/fi";
-import { AiOutlineExclamationCircle } from "react-icons/ai";
-import { MdLocationOn } from "react-icons/md";
-import { FaRegCheckCircle } from "react-icons/fa";
-import Spinner from "../../../../widgets/spinner";
-import Barchart from "../../../../../pages/dashboard/performance/barchart";
-import Piechart from "../../../../../pages/dashboard/performance/piechart";
-import OverallChart from "../../../../../pages/dashboard/performance/overallbarchart";
-import Pastquestionchart from "../../../../../pages/dashboard/performance/pastquestionchart";
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import styles from '../../../../../styles/performance.module.css'
+import { FiCheckCircle } from 'react-icons/fi'
+import { AiOutlineExclamationCircle } from 'react-icons/ai'
+import { MdLocationOn } from 'react-icons/md'
+import { FaRegCheckCircle } from 'react-icons/fa'
+import Spinner from '../../../../widgets/spinner'
+import Barchart from '../../../../../pages/dashboard/performance/barchart'
+import Piechart from '../../../../../pages/dashboard/performance/piechart'
+import OverallChart from '../../../../../pages/dashboard/performance/overallbarchart'
+import Pastquestionchart from '../../../../../pages/dashboard/performance/pastquestionchart'
 // import BarChartSect from './BarChartSect';
 // import PieChartSection from './PieChartSection';
 
@@ -19,43 +19,43 @@ const ClassPerfomance = ({
   studentPerformance,
   classPerformance,
 }) => {
-  const { user } = useSelector((state) => state.auth);
-  let pastQuestionPerformance = classPerformance?.data?.examsList;
-  let subjectPerformance = classPerformance?.data?.subjectsList;
+  const { user } = useSelector((state) => state.auth)
+  let pastQuestionPerformance = classPerformance?.data?.examsList
+  let subjectPerformance = classPerformance?.data?.subjectsList
 
   // const result = Object?.values(classDetails);
-  const [showPanel, setShowPanel] = useState(false);
-  const [data, setData] = useState([]);
-  const [student, setStudent] = useState();
-  const [panelId, setPanelId] = useState(1);
+  const [showPanel, setShowPanel] = useState(false)
+  const [data, setData] = useState([])
+  const [student, setStudent] = useState()
+  const [panelId, setPanelId] = useState(1)
 
   const displayPanel = () => {
     if (panelId === 1) {
-      setShowPanel(true);
+      setShowPanel(true)
     } else {
-      setShowPanel(false);
+      setShowPanel(false)
     }
-  };
+  }
 
   const createPanelId = (id) => {
-    setPanelId(id);
-  };
+    setPanelId(id)
+  }
 
   useEffect(() => {
     if (subjectPerformance) {
-      setData(subjectPerformance);
+      setData(subjectPerformance)
     }
-  }, [subjectPerformance]);
+  }, [subjectPerformance])
 
   useEffect(() => {
     if (currentStudent) {
-      setStudent(currentStudent);
+      setStudent(currentStudent)
     }
-  }, []);
+  }, [])
 
   useEffect(() => {
-    displayPanel();
-  }, [panelId]);
+    displayPanel()
+  }, [panelId])
 
   return (
     <div className={styles.performancemainwrapper}>
@@ -64,7 +64,9 @@ const ClassPerfomance = ({
           <div className={styles.innerwrapper}>
             <>
               <div className={styles.studentnamewrapper}>
-                <h2>{currentStudent && currentStudent[0]?.userId?.fullName}</h2>
+                {currentStudent && (
+                  <h2>{currentStudent[0]?.userId?.fullName}</h2>
+                )}
                 {user && <p>{user?.user?.email}</p>}
                 {user && <h3>{user?.user?.classOwnership[0]?.name}</h3>}
               </div>
@@ -249,7 +251,7 @@ const ClassPerfomance = ({
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ClassPerfomance;
+export default ClassPerfomance

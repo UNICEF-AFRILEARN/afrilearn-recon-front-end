@@ -4,6 +4,7 @@
   margin-top: 80px;
   color: #29465b;
 }
+
 .underHeadingP {
   margin-top: 30px;
   padding-right: 83px;
@@ -23,12 +24,13 @@
 .joinForGames {
   border: solid 1px #00d9b6;
   background-color: #00d9b6;
-  color: white !important;
+  color: black !important;
   padding: 10px 30px !important;
   border-radius: 39px;
   width: 180px !important;
   display: grid;
 }
+
 .experienceAfrilearn {
   border: solid 1px black;
   padding: 10px 20px !important;
@@ -37,6 +39,9 @@
   background: white;
 }
 
+.explorePart2 img {
+  border-radius: 30px;
+}
 @media screen and (max-width: 1199px) {
   .afterSubHeading_button {
     width: 250px !important;
@@ -66,21 +71,24 @@
   .experienceAfrilearnImg {
     top: 167px !important;
   }
-  /* .imageTag {
-    position: absolute;
-    top: -16px;
-    right: 17px;
-  } */
+  .exploreAfrilearn {
+    padding: 70px 50px !important;
+  }
+  .explorePart2 img {
+    cursor: pointer;
+    margin: 35px 0 !important;
+  }
 }
 .joinForFree:hover,
 .experienceAfrilearn:hover {
   cursor: pointer;
 }
 .homepageSecondSectionh2 {
-  font-family: "heading";
+  font-family: 'heading';
   font-size: 40px;
   margin-top: 50px;
   text-align: center;
+  color: #29465b;
 }
 .secondSectionul {
   text-align: center;
@@ -110,20 +118,22 @@
 .profiles {
   margin-top: 60px;
   margin-bottom: 10px;
+  /* background-color: red; */
 }
 .exploreAfrilearnh3 {
-  font-family: "heading";
+  font-family: 'heading';
   font-size: 39px;
   padding-right: 0px;
   margin-bottom: 54px;
 }
 .profileshh3 {
-  font-family: "heading";
+  font-family: 'heading';
   width: 120%;
   font-size: 48px;
   font-weight: 500;
   color: #29465b;
   margin-bottom: 4%;
+  margin-top: 70px;
 }
 .landingpageg {
   margin-left: 5%;
@@ -143,9 +153,10 @@
   margin-top: 5%;
 }
 
-.mobileDownloadSection .mobileDownloadSection1 {
-  display: flex;
-  flex-direction: row;
+.grided {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
 }
 @media screen and (max-width: 514px) {
   .profileshh3 {
@@ -178,11 +189,17 @@
     display: inline-flex !important;
     margin-top: -10px !important;
   }
-  .last .lastttt {
-    display: flex !important;
+  /* .last .lastttt { */
+  /* display: flex !important;
     flex-direction: row !important;
     margin-top: 5%;
     padding-left: 2%;
+  } */
+
+  .grided {
+    margin-left: 10px;
+    margin-top: 20px;
+    width: 70%;
   }
   .last .lastt {
     margin-top: 5%;
@@ -191,9 +208,7 @@
   .last .lasttt {
     padding-left: 2%;
   }
-  .footerlogo {
-    margin-left: 5%;
-  }
+
   .last {
     padding-left: 25px !important;
   }
@@ -207,12 +222,33 @@
 }
 
 .mobileDownloadSection {
-  margin-top: 39px;
+  margin-top: 7%;
+  display: flex;
+  gap: 5.5%;
+  padding-left: 2%;
+}
+
+.detailswrapper {
+  padding-top: 0.5%;
+}
+
+.detailswrapper span {
+  margin-left: 3%;
+}
+
+.joinbuttonwrap {
+  background-color: #00d9b6;
+  width: 28%;
+  border-radius: 150px;
+  border: none;
+  color: #ffff;
 }
 .profileImagePosition {
   text-align: right;
   margin: auto;
-  margin-top: 30px;
+  align-self: start;
+  /* height: %; */
+  /* margin-bottom: 10px; */
 }
 .exploreAfrilearn {
   padding: 70px 117px;
@@ -287,9 +323,15 @@
   background-color: rgba(0, 0, 0, 0.1) !important;
 }
 
+.trendingModalClass .btn-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
 .trendingModalClass .modal-content {
   padding: 0px;
-  background-color: white;
+  background-color: transparent;
   color: #222222;
 }
 .trendingModalClass p {
@@ -372,7 +414,7 @@
   margin-bottom: 10px;
 }
 .crossPlatform h3 {
-  font-family: "heading";
+  font-family: 'heading';
   width: 120%;
   line-height: 63px;
   font-size: 48px;
@@ -399,7 +441,7 @@
 }
 .testimonials .heroText {
   position: absolute;
-  font-family: "heading";
+  font-family: 'heading';
   padding-top: 15px;
   left: 134px;
   font-style: normal;
@@ -412,7 +454,7 @@
 .testimonials .mark {
   position: absolute !important;
   left: 0px !important;
-  opacity: 0.3 !important;
+  /* opacity: 0.3 !important; */
   margin-top: 0px !important;
 }
 
@@ -478,9 +520,8 @@
 }
 
 .faq h2 {
-  font-family: "heading";
+  font-family: 'heading';
   font-size: 40px;
-  /* margin-top: 50px; */
   text-align: center;
   color: #29465b;
 }
@@ -500,11 +541,10 @@
 .quickJoin {
   background: #f5f5f5;
   padding: 45px 0 0px;
-  /* height: 500px; */
 }
 .quickJoin h2 {
   color: #29465b;
-  font-family: "heading";
+  font-family: 'heading';
   font-size: 40px;
   margin-top: 50px;
   text-align: center;
@@ -516,7 +556,6 @@
 
 .quickJoin .container {
   cursor: pointer;
-  /* position: absolute; */
   width: 791.11px;
 }
 
@@ -610,8 +649,8 @@
   padding-left: 0 !important;
 }
 
-.paddingLeftOff input[type="submit"] {
-  color: #fff;
+.paddingLeftOff input[type='submit'] {
+  /* color: #fff; */
   font-size: 17px;
   /* width: 100%; */
   padding: 14.4px 13px;
@@ -630,7 +669,7 @@
     height: 53px;
     width: 247px;
   }
-  .paddingLeftOff input[type="submit"] {
+  .paddingLeftOff input[type='submit'] {
     height: 53px;
     width: 147px;
   }
@@ -644,10 +683,14 @@
     height: 33px;
     width: 197px;
   }
-  .paddingLeftOff input[type="submit"] {
+  .quickJoin h6 {
+    text-align: center;
+    margin-bottom: 13px;
+  }
+  .paddingLeftOff input[type='submit'] {
     height: 33px;
     width: 97px;
-
+    padding: 0;
     font-size: 10px !important;
   }
   .myPlaceholder {
@@ -669,7 +712,7 @@
   .quickJoin {
     height: 400px;
   }
-  .paddingLeftOff input[type="submit"] {
+  .paddingLeftOff input[type='submit'] {
     height: 33px;
     width: 90px;
     position: absolute;
@@ -688,7 +731,6 @@
 }
 
 .partners section {
-  margin: 0px 0 50px;
   overflow: auto;
   white-space: nowrap;
   padding: 50px 50px 120px;
@@ -700,7 +742,7 @@
 }
 
 .partners h2 {
-  font-family: "heading";
+  font-family: 'heading';
   font-size: 40px;
   margin-top: 50px;
   text-align: center;
@@ -745,9 +787,9 @@
   display: inline-block;
   position: relative;
   width: 170px;
-  height: 90px;
+  height: 160px;
   background: #ffffff;
-  box-shadow: 0px 30px 40px rgba(171, 172, 175, 0.2);
+  /* box-shadow: 0px 30px 40px rgba(171, 172, 175, 0.2); */
   border-radius: 16px;
   margin: 14px;
   text-align: center;
@@ -760,29 +802,41 @@
   padding: 10px !important;
 }
 
+.footerright {
+  display: grid;
+  grid-template-columns: repeat(3, 30%);
+}
+
 .footer {
+  /* width: 91%;*/
+  /* height: 40px; */
   background: #0b0d17;
-  background-image: url("../../../public/assets/img/White.svg");
+  background-image: url('../../../public/assets/img/White.svg');
   background-repeat: no-repeat;
-  margin-top: 70px;
-  padding-left: 5%;
+  /* margin-top: 70px; */
+  /* padding: 0 5%; */
   /* padding-right: 2%; */
-  padding-bottom: 3%;
-  padding-top: 5%;
-  position: relative;
+  /* padding-bottom: 3%; */
+  /* padding-top: 3%;
+  display: grid;
+  grid-template-columns: 20% auto;
+  gap: 20px; */
+  /* position: relative; */
 }
 
 .footerText li {
   color: #eeeff4;
   text-decoration: none;
   list-style-type: none;
-  height: 46px;
-  font-size: 18px;
+  /* height: 46px; */
+  width: fit-content;
+  font-size: 16px;
   font-weight: 400;
+  padding: 10px;
 }
 
 .footerText h3 {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 50;
   line-height: 30px;
   letter-spacing: 0em;
@@ -807,11 +861,11 @@
 .last .lasttt {
   margin-left: 16px;
 }
-.last .lastttt {
+/* .last .lastttt {
   display: flex !important;
   flex-direction: row !important;
   margin-left: 10px;
-}
+} */
 
 .footer .last li {
   color: #eeeff4;

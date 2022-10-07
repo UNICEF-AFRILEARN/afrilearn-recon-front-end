@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import Timer from "react-compound-timer";
 import { Progress } from "reactstrap";
 import Swal from "sweetalert2";
-import Speech from "react-speech";
+//import Speech from "react-speech";
 import {
   inputChange,
   submitLessonQuizResult,
@@ -84,7 +84,7 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
   const ansNumber = Object.keys(allAnswers).length;
 
   useEffect(() => {
-    for (let i = 0; i < sub_dat.questions.length; i++) {
+    for (let i = 0; i < sub_dat?.questions?.length; i++) {
       let response = {
         question_id: sub_dat.questions[i].question_id
           ? sub_dat.questions[i].question_id
@@ -103,7 +103,6 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
       });
     }
   }, []);
-  console.log(submittedAnswer);
   const handleNextQuestion = async (answer) => {
     if (sub_dat.motivation?.length) {
       const CheckPoint25Percent = Math.round(0.25 * +sub_dat.questionNo);
@@ -172,7 +171,7 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
   };
   const decodeEntities = (function () {
     // this prevents any overhead from creating the object each time
-    const element = document.createElement("div");
+    // const element = document.createElement("div");
 
     function decodeHTMLEntities(str) {
       if (str && typeof str === "string") {
@@ -703,14 +702,14 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
                   justifyContent: "space-around",
                 }}
               >
-                <Speech
+                {/* <Speech
                   id="audio"
                   text={handleTextToSpeech()}
                   textAsButton={true}
                   displayText={
                     <div className={`pointer ${styles.pastExamRec}`}></div>
                   }
-                />
+                /> */}
 
                 <div
                   className={`pointer ${styles.pastExamFlag}`}

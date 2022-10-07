@@ -16,6 +16,7 @@ const initialState = {
     classSubjects: [],
     classPerformance: [],
     announcementComment:[],
+    recentActivities:[],
     error: [],
 }
 
@@ -232,6 +233,20 @@ export const classesReducer = (state = initialState, { type, payload} ) => {
                   loading: false,
                 error: payload
             };
+            case types.FETCH_RECENT_ACTIVITIES_START:
+                return {
+                    ...state
+                };
+        case types.FETCH_RECENT_ACTIVITIES_SUCCESS:
+                return {
+                    ...state,
+                    recentActivities: payload
+                }
+        case types.FETCH_RECENT_ACTIVITIES_FAIL:
+            return {
+                ...state,
+                error: payload
+            }
     
         default:
             return state;

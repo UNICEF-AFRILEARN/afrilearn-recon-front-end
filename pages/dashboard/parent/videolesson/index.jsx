@@ -40,20 +40,20 @@ const VideoDetailPage = (
 
 
     let sorted_term_videos = [];
-    let sorting_courses = filtered_course_term()
+    // let sorting_courses = filtered_course_term()
 
     const share_course_to_term = (obj, id) => {
       for(let i = 0; i < obj.length; i++){
           for(let j = 0; j < obj[i].length; j++){
             if(obj[i][j].termId === id){
-              sorted_term_videos.push(obj[i][j])
+              // sorted_term_videos.push(obj[i][j])
             }
           }
       }
     }
 
     
-    share_course_to_term(sorting_courses, sortTermId)
+    // share_course_to_term(sorting_courses, sortTermId)
     console.log("sorted_term_videos from video ++++", sorted_term_videos)
     
     
@@ -61,7 +61,7 @@ const VideoDetailPage = (
     <div>
       <Button onClick={handleOpen}></Button>
       <Modal
-        open={open}
+        // open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
