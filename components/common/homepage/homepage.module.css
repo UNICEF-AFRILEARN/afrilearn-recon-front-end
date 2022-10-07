@@ -24,7 +24,7 @@
 .joinForGames {
   border: solid 1px #00d9b6;
   background-color: #00d9b6;
-  color: white !important;
+  color: black !important;
   padding: 10px 30px !important;
   border-radius: 39px;
   width: 180px !important;
@@ -88,6 +88,7 @@
   font-size: 40px;
   margin-top: 50px;
   text-align: center;
+  color: #29465b;
 }
 .secondSectionul {
   text-align: center;
@@ -649,7 +650,7 @@
 }
 
 .paddingLeftOff input[type='submit'] {
-  color: #fff;
+  /* color: #fff; */
   font-size: 17px;
   /* width: 100%; */
   padding: 14.4px 13px;
