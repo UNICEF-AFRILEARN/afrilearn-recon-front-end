@@ -47,10 +47,10 @@ border: 1px solid #333333
 }
 .studentButton{
   height: 58px;
-width: 75%;
-border: none;
-color: #ffffff;
-border-radius: 100px;
-margin-top: 8%;
-background-color: #00D9B6;
+  width: 75%;
+  border: none;
+  color: #000;
+  border-radius: 100px;
+  margin-top: 8%;
+  background-color: #00D9B6;
 }
