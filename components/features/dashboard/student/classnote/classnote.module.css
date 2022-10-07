@@ -9,7 +9,7 @@
 }
 
 .accordance {
-  background-image: url("/assets/img/features/dashboard/student/button2.png");
+  background-image: url('/assets/img/features/dashboard/student/button2.png');
   background-repeat: no-repeat;
   background-size: contain;
   width: 15px;
@@ -29,23 +29,23 @@
 }
 
 .document {
-  background-image: url("/assets/img/features/dashboard/student/Document.png");
+  background-image: url('/assets/img/features/dashboard/student/Document.png');
 }
 
 .moreIcon {
-  background-image: url("/assets/img/features/dashboard/student/Group2121.png");
+  background-image: url('/assets/img/features/dashboard/student/Group2121.png');
   width: 7px;
   height: 25px;
 }
 .love {
-  background-image: url("/assets/img/features/dashboard/student/Heart.png");
+  background-image: url('/assets/img/features/dashboard/student/Heart.png');
   background-repeat: no-repeat;
   background-size: contain;
   width: 32px;
   height: 32px;
 }
 .seen {
-  background-image: url("/assets/img/features/dashboard/student/Show.png");
+  background-image: url('/assets/img/features/dashboard/student/Show.png');
   background-repeat: no-repeat;
   background-size: contain;
   width: 20px;
@@ -71,7 +71,7 @@
 }
 
 .loved {
-  background-image: url("/assets/img/features/dashboard/student/Heart2.png");
+  background-image: url('/assets/img/features/dashboard/student/Heart2.png');
   background-repeat: no-repeat;
   background-size: contain;
   width: 20px;
@@ -86,7 +86,7 @@
 }
 
 .mic {
-  background-image: url("/assets/img/features/dashboard/student/Voice.png");
+  background-image: url('/assets/img/features/dashboard/student/Voice.png');
 }
 .documentBottom,
 .micBottom,
@@ -158,14 +158,14 @@
 }
 
 .headerTopRightMid {
-  background-image: url("/assets/img/features/dashboard/student/Ellipse 111.png");
+  background-image: url('/assets/img/features/dashboard/student/Ellipse 111.png');
   background-repeat: no-repeat;
   background-size: fill;
   align-items: center;
   margin-top: 10px;
 }
 .headerTopRight {
-  background-image: url("/assets/img/features/dashboard/student/iconDown.png");
+  background-image: url('/assets/img/features/dashboard/student/iconDown.png');
   background-repeat: no-repeat;
   background-size: fill;
   justify-self: end;
@@ -179,7 +179,7 @@
   font-weight: 500;
   font-size: 25px;
   line-height: 33px;
-  color: #00d9b6;
+  color: #fff;
   margin-left: 20px;
 }
 
@@ -219,7 +219,7 @@
 }
 
 .commentAvatarMRSide {
-  background-image: url("/assets/img/features/dashboard/student/Send.png");
+  background-image: url('/assets/img/features/dashboard/student/Send.png');
   background-repeat: no-repeat;
   background-size: contain;
   width: 30px;
@@ -242,7 +242,7 @@
 }
 
 .accordButtonLeft1 {
-  background-image: url("/assets/img/features/dashboard/student/Stroke 1.png");
+  background-image: url('/assets/img/features/dashboard/student/Stroke 1.png');
   background-repeat: no-repeat;
   background-size: contain;
   width: 13px;
@@ -252,7 +252,7 @@
   align-self: center;
 }
 .accordButtonLeft22 {
-  background-image: url("/assets/img/features/dashboard/student/Stroke 11.png");
+  background-image: url('/assets/img/features/dashboard/student/Stroke 11.png');
   background-repeat: no-repeat;
   background-size: contain;
   width: 13px;
@@ -262,7 +262,7 @@
 }
 
 .accordButtonLeft2 {
-  background-image: url("/assets/img/features/dashboard/student/Line 95.png");
+  background-image: url('/assets/img/features/dashboard/student/Line 95.png');
   background-repeat: no-repeat;
   background-size: contain;
   width: 2px;
@@ -287,7 +287,7 @@
 .lovedtext {
   color: #00d9b6;
   font-size: 20px;
-  cursor: "pointer";
+  cursor: 'pointer';
 }
 
 .highlightText:hover {
@@ -295,7 +295,7 @@
 }
 
 .colSeentext {
-  cursor: "pointer";
+  cursor: 'pointer';
 }
 
 @media screen and (max-width: 1000px) {

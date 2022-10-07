@@ -16,7 +16,7 @@
   width: 90%;
 }
 
-.corsedetailswrappertwo{
+.corsedetailswrappertwo {
   display: flex;
   justify-content: space-around;
   width: 100%;
@@ -40,32 +40,31 @@
   display: flex;
   flex-direction: row;
   /* width: 0%; */
-
 }
 
 .dashboardFirstSection {
   background-image: radial-gradient(rgba(0, 0, 0, 0.17), rgba(0, 0, 0, 0.99)),
-    url("./../../../../public/assets/img/features/dashboard/student/dashboard.png");
+    url('./../../../../public/assets/img/features/dashboard/student/dashboard.png');
   height: 637px;
 }
 .dashboardFirstSection1 {
   background-image: radial-gradient(rgba(0, 0, 0, 0.17), rgba(0, 0, 0, 0.99)),
-    url("./../../../../public/assets/img/features/dashboard/student/student.png");
+    url('./../../../../public/assets/img/features/dashboard/student/student.png');
   height: 60vh;
 }
 .dashboardFirstSection2 {
   background-image: radial-gradient(rgba(0, 0, 0, 0.17), rgba(0, 0, 0, 0.99)),
-    url("./../../../../public/assets/img/features/dashboard/student/student.png");
+    url('./../../../../public/assets/img/features/dashboard/student/student.png');
   height: 280px;
 }
 .dashboardFirstSection3 {
   background-image: radial-gradient(rgba(0, 0, 0, 0.17), rgba(0, 0, 0, 0.99)),
-    url("./../../../../public/assets/img/features/dashboard/teacher/classroom-2787754_1920 1.png");
+    url('./../../../../public/assets/img/features/dashboard/teacher/classroom-2787754_1920 1.png');
   height: 280px;
 }
 .dashboardFirstSection4 {
   background-image: radial-gradient(rgba(0, 0, 0, 0.17), rgba(0, 0, 0, 0.99)),
-    url("./../../../../public/assets/img/features/dashboard/student/dashboard.png");
+    url('./../../../../public/assets/img/features/dashboard/student/dashboard.png');
   height: 500px;
 }
 
@@ -79,7 +78,7 @@
 
 /* .modal-content {border-radius: 40px;} */
 .dashboardFirstSection h1 {
-  font-family: "heading";
+  font-family: 'heading';
   text-align: center;
   font-size: 125px;
   margin-top: 50px;
@@ -91,7 +90,7 @@
 }
 
 .push2e {
-  background: url("./../../../../public/assets/img/features/dashboard/student/crownTheme.png");
+  background: url('./../../../../public/assets/img/features/dashboard/student/crownTheme.png');
   width: 280px;
   height: 50px;
   background-repeat: no-repeat;
@@ -105,7 +104,7 @@
 }
 .subHeadingTitle {
   padding: 40px 100px;
-  font-family: "subHeading";
+  font-family: 'subHeading';
 }
 .subjectBox {
   display: block;
@@ -143,10 +142,20 @@
   border-radius: 30px;
   border: none;
 }
+.mySubjectt button p {
+  width: 100px;
+  margin: auto;
+}
 .mySubjectt :hover {
   background-color: #ffffff !important;
   /* border: 1px solid #f1f2f4; */
   box-shadow: 0 0.5pt 20pt rgb(0 0 0 / 10%);
+}
+
+.mySubjectt p :hover {
+  background-color: none !important;
+  /* border: 1px solid #f1f2f4; */
+  box-shadow: none;
 }
 .mySubjecttt {
   margin-bottom: 2%;
@@ -167,12 +176,12 @@
   padding-top: 30px;
 }
 .LinkBox2 {
-  background: url("/assets/img/features/dashboard/student/Getsolution.png");
+  background: url('/assets/img/features/dashboard/student/Getsolution.png');
   background-repeat: no-repeat;
   height: 220px;
 }
 .mySolutionBox2 {
-  background: url("/assets/img/features/dashboard/student/Backgroundd.png");
+  background: url('/assets/img/features/dashboard/student/Backgroundd.png');
   background-repeat: no-repeat;
   color: #ffffff;
   padding: 2%;
@@ -221,7 +230,7 @@
 
 .modalHero {
   background-image: radial-gradient(rgba(0, 0, 0, 0.17), rgba(0, 0, 0, 0.99)),
-    url("./../../../../public/assets/img/features/dashboard/student/dashboard.png");
+    url('./../../../../public/assets/img/features/dashboard/student/dashboard.png');
   background-repeat: no-repeat;
   background-position: 50%;
   background-size: cover;
@@ -277,7 +286,7 @@
 .modalThird h6 {
   background: #00d9b6;
   border-radius: 100px;
-  color: #ffffff;
+  color: #29465b;
   height: 35px;
   width: fit-content;
   border-radius: 100px;
@@ -307,7 +316,7 @@
   margin-bottom: 70px;
 }
 .classCommentRight {
-  background: url("/assets/img/features/dashboard/student/Ellipse.png");
+  background: url('/assets/img/features/dashboard/student/Ellipse.png');
   height: 14px;
   width: 14px;
   align-self: center;

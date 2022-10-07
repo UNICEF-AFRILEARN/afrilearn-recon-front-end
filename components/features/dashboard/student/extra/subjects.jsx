@@ -1,45 +1,45 @@
-import Image from "next/image";
-import styles from "./../../student/student.module.css";
-import { useEffect, useState } from "react";
-import Link from "next/link";
+import Image from 'next/image'
+import styles from './../../student/student.module.css'
+import { useEffect, useState } from 'react'
+import Link from 'next/link'
 
-import { Modal, Container, Row, Col } from "react-bootstrap";
+import { Modal, Container, Row, Col } from 'react-bootstrap'
 
-import "bootstrap/dist/css/bootstrap.min.css";
-import { StudentPage } from "./../studentHeropage";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchCourseDetailsInitiate } from "../../../../../redux/actions/subject";
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { StudentPage } from './../studentHeropage'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchCourseDetailsInitiate } from '../../../../../redux/actions/subject'
 import FullpageLoader from '../../../../widgets/fullpageLoader/index'
 
-let subj;
+let subj
 const Subjects = ({ subData }) => {
-  const [subjCourId, setsubjCourId] = useState({});
+  const [subjCourId, setsubjCourId] = useState({})
 
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false)
   const toggleModal = async (data) => {
-    setShow(!show);
-    subj = data;
-  };
-  const { user } = useSelector((state) => state.auth);
-  const subject = useSelector((state) => state.mySubjectCourse);
+    setShow(!show)
+    subj = data
+  }
+  const { user } = useSelector((state) => state.auth)
+  const subject = useSelector((state) => state.mySubjectCourse)
   // console.log(subjCourId);
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   const dataIntro = async () => {
     if (Object.keys(subjCourId).length !== 0) {
       dispatch(
         fetchCourseDetailsInitiate(
           subjCourId.courseId.id ? subjCourId.courseId.id : subjCourId.courseId,
-          subjCourId.id,
-        ),
-      );
+          subjCourId.id
+        )
+      )
     }
-  };
+  }
 
   useEffect(() => {
-    dataIntro();
-  }, [subjCourId]);
+    dataIntro()
+  }, [subjCourId])
 
   const SubDataJsx = () => {
     return subData ? (
@@ -53,25 +53,26 @@ const Subjects = ({ subData }) => {
                   <button
                     className="modalButton"
                     onClick={() => {
-                      console.log(dta);
                       setsubjCourId(() => ({
                         id: dta.id,
                         courseId: dta.courseId,
-                      }));
-                      toggleModal(dta.mainSubjectId.name);
+                      }))
+                      toggleModal(dta.mainSubjectId.name)
                     }}
                   >
                     <Image
-                      alt={"design image"}
+                      alt={'design image'}
                       src={dta.mainSubjectId.imageUrl}
                       width={70}
                       height={70}
                     />
-                    <p>{dta.mainSubjectId.name}</p>
+                    <p style={{ width: '100px', margin: 'auto' }}>
+                      {dta.mainSubjectId.name}
+                    </p>
                   </button>
                 </div>
               )
-            );
+            )
             //   );
             // });
           })
@@ -80,13 +81,13 @@ const Subjects = ({ subData }) => {
             <button
               className="modalButton"
               onClick={() => {
-                console.log(dta);
-                setsubjCourId(() => ({ id: dta.id, courseId: dta.courseId }));
-                toggleModal(dta.mainSubjectId.name);
+                console.log(dta)
+                setsubjCourId(() => ({ id: dta.id, courseId: dta.courseId }))
+                toggleModal(dta.mainSubjectId.name)
               }}
             >
               <Image
-                alt={"design image"}
+                alt={'design image'}
                 src={dta.mainSubjectId.imageUrl}
                 width={70}
                 height={70}
@@ -94,13 +95,15 @@ const Subjects = ({ subData }) => {
               <p>{dta.mainSubjectId.name}</p>
             </button>
           </div>
-        );
+        )
       })
     ) : (
-      <div>Loading...</div>
+      <div>
+        Loading... <FullpageLoader />
+      </div>
       // <FullpageLoader />
-    );
-  };
+    )
+  }
 
   const SubjectModal = () => {
     // console.log(subData[0]);
@@ -117,10 +120,10 @@ const Subjects = ({ subData }) => {
               <div className={`row ${styles.modalThird}`}>
                 <div className="col-md-2">
                   <Image
-                    alt={"design image"}
-                    src={"/assets/img/features/dashboard/student/user 3.png"}
-                    width={"72.4px"}
-                    height={"72.4px"}
+                    alt={'design image'}
+                    src={'/assets/img/features/dashboard/student/user 3.png'}
+                    width={'72.4px'}
+                    height={'72.4px'}
                   />
                 </div>
                 <div className="col-md-7">
@@ -131,24 +134,24 @@ const Subjects = ({ subData }) => {
                   </p>
                 </div>
                 <div className="col-md-3">
-                  {" "}
+                  {' '}
                   <Link passHref href="/dashboard/student/classnote">
                     <h6>FREE</h6>
                   </Link>
                 </div>
               </div>
             </div>
-            <div className="p-5 pt-0" style={{ cursor: "pointer" }}>
+            <div className="p-5 pt-0" style={{ cursor: 'pointer' }}>
               <Link passHref href="/dashboard/student/video">
                 <div className={`row ${styles.modalThird}`}>
                   <div className="col-md-2">
                     <Image
-                      alt={"design image"}
+                      alt={'design image'}
                       src={
-                        "/assets/img/features/dashboard/student/GroupVideo.png"
+                        '/assets/img/features/dashboard/student/GroupVideo.png'
                       }
-                      width={"72.4px"}
-                      height={"72.4px"}
+                      width={'72.4px'}
+                      height={'72.4px'}
                     />
                   </div>
                   <div className="col-md-7">
@@ -161,8 +164,8 @@ const Subjects = ({ subData }) => {
           </Row>
         </Container>
       </>
-    );
-  };
+    )
+  }
 
   return (
     <>
@@ -178,13 +181,13 @@ const Subjects = ({ subData }) => {
         </Modal.Body>
       </Modal>
     </>
-  );
-};
+  )
+}
 
-export default Subjects;
+export default Subjects
 
 export const HeaderHeropage = ({ classes }) => {
-  const personClass = classes;
+  const personClass = classes
   return (
     <>
       <Col className="p-0">
@@ -195,11 +198,11 @@ export const HeaderHeropage = ({ classes }) => {
       </Col>
       <div className="p-5">{<StudentHeropageBase />}</div>
     </>
-  );
-};
+  )
+}
 const StudentHeropageBase = () => {
-  const subject = useSelector((state) => state.mySubjectCourse);
-  const subjectDetails = subject.subjectDetails[0]?.subject;
+  const subject = useSelector((state) => state.mySubjectCourse)
+  const subjectDetails = subject.subjectDetails[0]?.subject
   const data = {
     subject: subjectDetails?.courseId.name,
     title: subj,
@@ -207,7 +210,7 @@ const StudentHeropageBase = () => {
     class: subjectDetails?.courseId.alias,
     lessons: `${subject.subjectDetails[1]?.relatedLessons.length} Lessons`,
     students: `${subject.subjectDetails[2]?.numOfUsers} Registered Students`,
-  };
+  }
 
   return (
     <>
@@ -229,5 +232,5 @@ const StudentHeropageBase = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
