@@ -4,31 +4,31 @@ import Box from '@mui/material/Box';
 // import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-// import { createTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import { createTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import styles from '../../../styles/payment.module.css';
 
 
 import Modal from '@mui/material/Modal';
 
-// const theme = createTheme({
-//   typography: {
-//     h1: {
-//       fontFamily: "Montserrat"
-//     },
-//     h2: {
-//       fontFamily: "Montserrat"
-//     },
-//     h3: {
-//       fontFamily: "Montserrat"
-//     },
-//     h4: {
-//       fontFamily: "Montserrat"
-//     },
-//     button: {
-//       fontFamily: "Montserrat"
-//     }
-//   }
-// });
+const theme = createTheme({
+  typography: {
+    h1: {
+      fontFamily: "Montserrat"
+    },
+    h2: {
+      fontFamily: "Montserrat"
+    },
+    h3: {
+      fontFamily: "Montserrat"
+    },
+    h4: {
+      fontFamily: "Montserrat"
+    },
+    button: {
+      fontFamily: "Montserrat"
+    }
+  }
+});
 const style_s = {
   position: 'absolute',
   top: '50%',
