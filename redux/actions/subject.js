@@ -450,7 +450,6 @@ export const fetchPastQuestionInitiate = (id) => {
           "F0c7ljTmi25e7LMIF0Wz01lZlkHX9b57DFTqUHFyWeVOlKAsKR0E5JdBOvdunpqv",
       },
     }).then((res) => {
-      console.log(res);
       dispatch(fetchPastQuestionSubjSuccess(res.data));
     });
   };
@@ -475,13 +474,35 @@ export const fetchPastQuestionQueInitiate = (sub_id) => {
           const responseOne = await responses[0].data;
           // use/access the results
           const response = [responseOne];
-          console.log(response);
-
           dispatch(fetchPastQuestionQueSuccess(response));
         }),
       )
-      .then((error) => {
-        console.log(error);
-      });
+      .then((error) => {});
   };
 };
+
+export const createComment = (announcementId, text, classId, token) => {
+  return function (dispatch) {
+    axios({
+      method: "post",
+      url: `${url}classes/${announcementId}/comment`,
+      headers: headers(token),
+      data: { text },
+    }).then((res) => {
+      dispatch(fetchStudentDetailsInitiate(classId));
+    });
+  };
+};
+
+// export const fetchclearUnFinishedVideos = (data, token) => {
+//   return function (dispatch) {
+//     axios({
+//       method: "delete",
+//       url: `${url}lessons/clearUnFinishedVideos`,
+//       headers: headers(token),
+//       data,
+//     }).then((res) => {
+//       // dispatch((res.data.data));
+//     });
+//   };
+// };

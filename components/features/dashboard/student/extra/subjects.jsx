@@ -98,9 +98,7 @@ const Subjects = ({ subData }) => {
         )
       })
     ) : (
-      <div>
-        Loading... <FullpageLoader />
-      </div>
+      <div>Loading...</div>
       // <FullpageLoader />
     )
   }

@@ -59,7 +59,7 @@
     "react-swipeable": "^7.0.0",
     "react-time-ago": "^7.2.1",
     "reactstrap": "^9.1.4",
-    "recharts": "2.1.12",
+    "recharts": "^2.1.14",
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-logger": "^3.0.6",
