@@ -20,15 +20,16 @@
   cursor: pointer;
 }
 .studentProfileAvatar {
-  background: url("/assets/img/features/dashboard/student/Ellipse 1.png");
+  background: url('/assets/img/features/dashboard/student/Ellipse 1.png');
   height: 210px;
   width: 210px;
   background-repeat: no-repeat;
   background-position: 50%;
   background-size: contain;
+  text-align: center;
 }
 .studentProfileAvatar2 {
-  background: url("/assets/img/features/dashboard/student/person_2 1.png");
+  background: url('/assets/img/features/dashboard/student/person_2 1.png');
   height: 210px;
   width: 174px;
   background-repeat: no-repeat;
@@ -38,7 +39,7 @@
 
 .studentProfileAvatar img {
   /* border: solid 1px red; */
-  margin-left: 8px;
+  /* margin-left: 8px; */
 }
 
 .studentProfileInfo {
@@ -52,7 +53,7 @@
 }
 
 .studentProfileCrownTheme {
-  background: url("/assets/img/features/dashboard/student/crownTheme.png");
+  background: url('/assets/img/features/dashboard/student/crownTheme.png');
   height: 50px;
   width: 277px;
   background-repeat: no-repeat;
@@ -62,7 +63,7 @@
 }
 
 .studentProfilePenIcon {
-  background: url("/assets/img/features/dashboard/student/Edit.png");
+  background: url('/assets/img/features/dashboard/student/Edit.png');
   height: 18px;
   width: 18px;
   background-repeat: no-repeat;
@@ -70,7 +71,7 @@
   background-size: contain;
 }
 .studentProfilePenIcon1 {
-  background: url("/assets/img/features/dashboard/teacher/Add User.png");
+  background: url('/assets/img/features/dashboard/teacher/Add User.png');
   height: 25px;
   width: 25px;
   background-repeat: no-repeat;
@@ -79,7 +80,7 @@
 }
 
 .studentProfileCoinIcon {
-  background: url("/assets/img/features/dashboard/student/Group 2417.png");
+  background: url('/assets/img/features/dashboard/student/Group 2417.png');
   height: 38px;
   width: 43px;
   background-repeat: no-repeat;
@@ -90,7 +91,7 @@
 }
 
 .stateComponent {
-  background: url("/assets/img/features/dashboard/student/Location.png");
+  background: url('/assets/img/features/dashboard/student/Location.png');
   height: 24px;
   width: 24px;
   background-repeat: no-repeat;
@@ -100,7 +101,7 @@
   margin: auto;
 }
 .stateComponent1 {
-  background: url("/assets/img/features/dashboard/teacher/link 1.png");
+  background: url('/assets/img/features/dashboard/teacher/link 1.png');
   height: 24px;
   width: 24px;
   background-repeat: no-repeat;

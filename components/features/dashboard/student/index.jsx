@@ -432,12 +432,12 @@ const ClassRoom = ({ data }) => {
           data?.map((dta, i) => {
             return (
               <Row key={i} className="pb-5">
-                <Col lg={5}>
+                <Col md={4} lg={5}>
                   <p>{`${capitalize(dta.classId?.name)} - ${
                     dta.classId?.classCode
                   }`}</p>
                 </Col>
-                <Col lg={5}>
+                <Col md={4} lg={5}>
                   <p>{`Instructor: ${capitalize(
                     dta?.classId?.userId && dta?.classId?.userId.fullName
                   )}`}</p>

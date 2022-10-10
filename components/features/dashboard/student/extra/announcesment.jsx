@@ -42,7 +42,7 @@ const Announcesment = ({ goto, classId }) => {
                 height={50}
                 style={{ borderRadius: '100px' }}
               />
-              <div className={styles.teachertitled}>
+              <div className={`ms-3 ${styles.teachertitled}`}>
                 <p style={{ color: 'black', margin: '0' }}>
                   Mr {data.teacher.fullName} (Teacher)
                 </p>
@@ -209,7 +209,7 @@ const Announcesment = ({ goto, classId }) => {
   return (
     <Row className={styles.mainwrappers}>
       <Col lg={4} md={12} className={styles.announcementcontainers}>
-        <div className="mx-3">
+        <div className={`mx-lg-5 mx-3 ${styles.crownPic}`}>
           <Image
             src="/assets/img/crown.svg"
             alt="teacher"
@@ -226,7 +226,7 @@ const Announcesment = ({ goto, classId }) => {
           <AssignContent />
         </div>
       </Col>
-      <Col lg={8} md={12} className={styles.messagescontainers}>
+      <Col lg={8} md={12} className="mb-5">
         <div className={styles.firstmessage}>
           <p className="text-dark">Announcements from teacher</p>
         </div>

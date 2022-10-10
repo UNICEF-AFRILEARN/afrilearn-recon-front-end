@@ -1,5 +1,5 @@
 .videoheropage {
-  background-image: url("../public/assets/img/classroomheroimg.svg");
+  background-image: url('../public/assets/img/classroomheroimg.svg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 10% 20%;
@@ -43,6 +43,7 @@
   width: 100%;
   background: #ffffff;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
   color: #a6a6a6;

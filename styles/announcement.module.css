@@ -227,9 +227,30 @@
   outline: none;
 }
 
+@media screen and (max-width: 821px) {
+  .crownPic {
+    position: relative;
+    top: -142px;
+    right: -197px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .crownPic {
+    position: relative;
+    top: -190px;
+    right: -38px;
+  }
+}
+
 @media screen and (max-width: 415px) {
   .commentPic {
     width: 50px;
+  }
+  .detailscard {
+    width: 280px;
+  }
+  .upcomingcard {
+    width: 280px;
   }
   .teachertitle {
     height: 30px;

@@ -1,51 +1,51 @@
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import styles from "../../../../../styles/classroom.module.css";
-import Announcesment from "./announcesment";
-import Material from "./Material";
-import Classwork from "./Classwork";
-import People from "./People";
-import ClassPerfomance from "./ClassPerfomance";
-import Image from "next/image";
-import { useDispatch, useSelector } from "react-redux";
-import { useRouter } from "next/router";
+import Link from 'next/link'
+import React, { useEffect, useState } from 'react'
+import styles from '../../../../../styles/classroom.module.css'
+import Announcesment from './announcesment'
+import Material from './Material'
+import Classwork from './Classwork'
+import People from './People'
+import ClassPerfomance from './ClassPerfomance'
+import Image from 'next/image'
+import { useDispatch, useSelector } from 'react-redux'
+import { useRouter } from 'next/router'
 import {
   fetchStudentDetailsInitiate,
   fetchStudentTeacherSubjInitiate,
-} from "../../../../../redux/actions/subject";
-import { ProfilePicture } from "../studentProfile";
-import { Row } from "react-bootstrap";
+} from '../../../../../redux/actions/subject'
+import { ProfilePicture } from '../studentProfile'
+import { Col, Row } from 'react-bootstrap'
 
 const Classroomnav = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const router = useRouter();
-  let classId = Object.keys(router.query);
-  const { user } = useSelector((state) => state.auth);
+  const router = useRouter()
+  let classId = Object.keys(router.query)
+  const { user } = useSelector((state) => state.auth)
 
-  const token = user.token;
+  const token = user.token
 
-  const [toggleState, setToggleState] = useState(1);
+  const [toggleState, setToggleState] = useState(1)
 
   const toggleTab = (index) => {
-    setToggleState(index);
-  };
+    setToggleState(index)
+  }
   const changeToClassWork = (index) => {
-    setToggleState(index);
-  };
+    setToggleState(index)
+  }
 
   useEffect(() => {
-    dispatch(fetchStudentDetailsInitiate(classId[0]));
-    dispatch(fetchStudentTeacherSubjInitiate(classId[0]));
-  }, [fetchStudentDetailsInitiate, fetchStudentTeacherSubjInitiate]);
+    dispatch(fetchStudentDetailsInitiate(classId[0]))
+    dispatch(fetchStudentTeacherSubjInitiate(classId[0]))
+  }, [fetchStudentDetailsInitiate, fetchStudentTeacherSubjInitiate])
 
   return (
     <div className={styles.maincontainer}>
-      <div className={styles.maincontainer2}>
-        <div className={styles.narbarAvatar}>
+      <Row className={styles.maincontainerRow}>
+        <Col lg={3} className={styles.narbarAvatar}>
           <ProfilePicture user={user} />
-        </div>
-        <div className={styles.navbar1}>
+        </Col>
+        <Col className={styles.navbar1} style={{ marginTop: '53px' }}>
           <nav className={styles.navbar}>
             <ul>
               <li
@@ -80,8 +80,8 @@ const Classroomnav = () => {
               </li>
             </ul>
           </nav>
-        </div>
-      </div>
+        </Col>
+      </Row>
       <div
         className={toggleState === 1 ? styles.activecontent : styles.content}
       >
@@ -111,7 +111,7 @@ const Classroomnav = () => {
         <ClassPerfomance />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Classroomnav;
+export default Classroomnav

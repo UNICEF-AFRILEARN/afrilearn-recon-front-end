@@ -1,40 +1,40 @@
-import { useState } from "react";
-import { Col, Row } from "react-bootstrap";
-import styles1 from "../student.module.css";
-import styles from "./studentProfile.module.css";
-import Link from "next/link";
-import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { fetchUserProfileInitiate } from "../../../../../redux/actions/dashboard";
-import { fetchSchoolProfileInitiate } from "../../../../../redux/actions/school";
-import Image from "next/image";
+import { useState } from 'react'
+import { Col, Row } from 'react-bootstrap'
+import styles1 from '../student.module.css'
+import styles from './studentProfile.module.css'
+import Link from 'next/link'
+import { useSelector, useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { fetchUserProfileInitiate } from '../../../../../redux/actions/dashboard'
+import { fetchSchoolProfileInitiate } from '../../../../../redux/actions/school'
+import Image from 'next/image'
 
 const StudentProfile = () => {
-  const { schoolProfile } = useSelector((state) => state.school);
-  const { user } = useSelector((state) => state.auth);
-  const { userProfile } = useSelector((state) => state.dashboard);
+  const { schoolProfile } = useSelector((state) => state.school)
+  const { user } = useSelector((state) => state.auth)
+  const { userProfile } = useSelector((state) => state.dashboard)
   const [referal, setReferal] = useState(
-    `https://myafrilearn.com/register?referralCode=${user.user?.id}`,
-  );
-  const [copyMessage, setCopyMessage] = useState("COPY LINK");
-  const dispatch = useDispatch();
+    `https://myafrilearn.com/register?referralCode=${user.user?.id}`
+  )
+  const [copyMessage, setCopyMessage] = useState('COPY LINK')
+  const dispatch = useDispatch()
 
-  const token = user.token;
-  const userId = user.user?.id;
+  const token = user.token
+  const userId = user.user?.id
 
-  console.log("logged-in ==> schoolProfile", schoolProfile);
-  console.log("logged-in ==> user profile", userId);
-  const coin = { amount: 345 };
-  const number = "";
+  console.log('logged-in ==> schoolProfile', schoolProfile)
+  console.log('logged-in ==> user profile', userId)
+  const coin = { amount: 345 }
+  const number = ''
 
   const copyReferalCode = (link) => {
-    navigator.clipboard.writeText(link);
-    setCopyMessage("LINK COPIED");
-  };
+    navigator.clipboard.writeText(link)
+    setCopyMessage('LINK COPIED')
+  }
 
   useEffect(() => {
-    dispatch(fetchUserProfileInitiate(userId, token));
-  }, []);
+    dispatch(fetchUserProfileInitiate(userId, token))
+  }, [])
 
   // useEffect(() => {
   //   dispatch(fetchSchoolProfileInitiate(schoolId))
@@ -44,14 +44,14 @@ const StudentProfile = () => {
     <>
       <div
         className={`container-fluid relative ${styles1.dashboardFirstSection2}`}
-        style={{ position: "relative" }}
+        style={{ position: 'relative' }}
       ></div>
       <Row
         style={{
-          position: "absolute",
-          bottom: "33%",
-          width: "100%",
-          zIndex: "3",
+          position: 'absolute',
+          bottom: '33%',
+          width: '100%',
+          zIndex: '3',
         }}
       >
         <Col>
@@ -101,7 +101,7 @@ const StudentProfile = () => {
                               ></Col>
                               <Col
                                 className={`p-0 ${styles.studentProfileColorText}`}
-                                style={{ color: "#00D9B6" }}
+                                style={{ color: '#00D9B6' }}
                               >
                                 <u>Edit Profile</u>
                               </Col>
@@ -123,21 +123,21 @@ const StudentProfile = () => {
         <Col md={3}>
           <Row
             style={{
-              fontWeight: "500",
-              fontSize: "25px",
-              lineHeight: "33px",
-              color: "#333333",
+              fontWeight: '500',
+              fontSize: '25px',
+              lineHeight: '33px',
+              color: '#333333',
             }}
           >
             Wallet Balance:
           </Row>
           <Row
             style={{
-              backgroundColor: "#f1f2f4",
-              width: "214px",
-              height: "58px",
-              borderRadius: "9px",
-              marginTop: "20px",
+              backgroundColor: '#f1f2f4',
+              width: '214px',
+              height: '58px',
+              borderRadius: '9px',
+              marginTop: '20px',
               //   marginLeft:"10px"
             }}
           >
@@ -147,7 +147,7 @@ const StudentProfile = () => {
             ></Col>
             <Col
               className="pt-3"
-              style={{ fontWeight: "700", fontSize: "15px", color: "#333333" }}
+              style={{ fontWeight: '700', fontSize: '15px', color: '#333333' }}
             >
               <p>Coin: {user.user?.afriCoins}</p>
             </Col>
@@ -156,20 +156,20 @@ const StudentProfile = () => {
             <Row
               className="mt-4 pointer"
               style={{
-                width: "223px",
-                height: "53px",
-                background: "#00D9B6",
-                borderRadius: "100px",
+                width: '223px',
+                height: '53px',
+                background: '#00D9B6',
+                borderRadius: '100px',
               }}
             >
               <p
                 style={{
-                  fontWeight: "500",
-                  margin: "auto",
-                  fontSize: "18px",
-                  lineHeight: "24px",
-                  color: "#FFFFFF",
-                  width: "fit-content",
+                  fontWeight: '500',
+                  margin: 'auto',
+                  fontSize: '18px',
+                  lineHeight: '24px',
+                  color: '#FFFFFF',
+                  width: 'fit-content',
                 }}
               >
                 BUY MORE COINS
@@ -181,10 +181,10 @@ const StudentProfile = () => {
           <Row>
             <p
               style={{
-                fontWeight: "500",
-                fontSize: "25px",
-                lineHeight: "33px",
-                color: "#333333",
+                fontWeight: '500',
+                fontSize: '25px',
+                lineHeight: '33px',
+                color: '#333333',
               }}
             >
               Personal Details
@@ -192,8 +192,8 @@ const StudentProfile = () => {
           </Row>
           <Row
             style={{
-              border: "1px solid rgba(51, 51, 51, 0.35)",
-              boxShadow: "0px 1px 7px rgba(255, 255, 255, 0.25)",
+              border: '1px solid rgba(51, 51, 51, 0.35)',
+              boxShadow: '0px 1px 7px rgba(255, 255, 255, 0.25)',
             }}
           ></Row>
           <Row>
@@ -201,18 +201,18 @@ const StudentProfile = () => {
               <Row className="pt-2">
                 <p
                   style={{
-                    fontWeight: "300",
-                    fontSize: "20px",
-                    color: "#333333",
+                    fontWeight: '300',
+                    fontSize: '20px',
+                    color: '#333333',
                   }}
                 >
-                  Phone Number:{" "}
+                  Phone Number:{' '}
                   <span
                     className="p-2 text-bold text-dark"
                     style={{
-                      fontWeight: "600",
-                      fontSize: "20px",
-                      textDecoration: "",
+                      fontWeight: '600',
+                      fontSize: '20px',
+                      textDecoration: '',
                     }}
                   >
                     {user.user?.phoneNumber}
@@ -222,40 +222,40 @@ const StudentProfile = () => {
               <Row className="pt-2">
                 <p
                   style={{
-                    fontWeight: "300",
-                    fontSize: "20px",
-                    color: "#333333",
+                    fontWeight: '300',
+                    fontSize: '20px',
+                    color: '#333333',
                   }}
                 >
-                  State:{" "}
+                  State:{' '}
                   <span
                     className="p-2 text-bold text-dark"
                     style={{
-                      fontWeight: "600",
-                      fontSize: "20px",
+                      fontWeight: '600',
+                      fontSize: '20px',
                     }}
                   >
-                    {user?.user?.state !== "" ? user?.user?.state : "--"}
+                    {user?.user?.state !== '' ? user?.user?.state : '--'}
                   </span>
                 </p>
               </Row>
               <Row className="pt-2">
                 <p
                   style={{
-                    fontWeight: "300",
-                    fontSize: "20px",
-                    color: "#333333",
+                    fontWeight: '300',
+                    fontSize: '20px',
+                    color: '#333333',
                   }}
                 >
-                  Gender:{" "}
+                  Gender:{' '}
                   <span
                     className="p-2 text-bold text-dark"
                     style={{
-                      fontWeight: "600",
-                      fontSize: "20px",
+                      fontWeight: '600',
+                      fontSize: '20px',
                     }}
                   >
-                    {user?.user?.gender !== "" ? user?.user?.gender : "--"}
+                    {user?.user?.gender !== '' ? user?.user?.gender : '--'}
                   </span>
                 </p>
               </Row>
@@ -264,60 +264,60 @@ const StudentProfile = () => {
               <Row className="pt-2">
                 <p
                   style={{
-                    fontWeight: "300",
-                    fontSize: "20px",
-                    color: "#333333",
+                    fontWeight: '300',
+                    fontSize: '20px',
+                    color: '#333333',
                   }}
                 >
-                  Age:{" "}
+                  Age:{' '}
                   <span
                     className="p-2 text-bold text-dark"
                     style={{
-                      fontWeight: "600",
-                      fontSize: "20px",
+                      fontWeight: '600',
+                      fontSize: '20px',
                     }}
                   >
-                    {number !== "" ? { number } : "--"}
+                    {number !== '' ? { number } : '--'}
                   </span>
                 </p>
               </Row>
               <Row className="pt-2">
                 <p
                   style={{
-                    fontWeight: "300",
-                    fontSize: "20px",
-                    color: "#333333",
+                    fontWeight: '300',
+                    fontSize: '20px',
+                    color: '#333333',
                   }}
                 >
-                  City:{" "}
+                  City:{' '}
                   <span
                     className="p-2 text-bold text-dark"
                     style={{
-                      fontWeight: "600",
-                      fontSize: "20px",
+                      fontWeight: '600',
+                      fontSize: '20px',
                     }}
                   >
-                    {number !== "" ? { number } : "--"}
+                    {number !== '' ? { number } : '--'}
                   </span>
                 </p>
               </Row>
               <Row className="pt-2">
                 <p
                   style={{
-                    fontWeight: "300",
-                    fontSize: "20px",
-                    color: "#333333",
+                    fontWeight: '300',
+                    fontSize: '20px',
+                    color: '#333333',
                   }}
                 >
-                  Role:{" "}
+                  Role:{' '}
                   <span
                     className="p-2 text-bold text-dark"
                     style={{
-                      fontWeight: "600",
-                      fontSize: "20px",
+                      fontWeight: '600',
+                      fontSize: '20px',
                     }}
                   >
-                    {number !== "" ? { number } : "--"}
+                    {number !== '' ? { number } : '--'}
                   </span>
                 </p>
               </Row>
@@ -327,10 +327,10 @@ const StudentProfile = () => {
                 <Row>
                   <p
                     style={{
-                      fontWeight: "500",
-                      fontSize: "25px",
-                      lineHeight: "33px",
-                      color: "#333333",
+                      fontWeight: '500',
+                      fontSize: '25px',
+                      lineHeight: '33px',
+                      color: '#333333',
                     }}
                   >
                     Class(es)
@@ -341,10 +341,10 @@ const StudentProfile = () => {
                 <Row>
                   <p
                     style={{
-                      fontWeight: "500",
-                      fontSize: "25px",
-                      lineHeight: "33px",
-                      color: "#333333",
+                      fontWeight: '500',
+                      fontSize: '25px',
+                      lineHeight: '33px',
+                      color: '#333333',
                     }}
                   >
                     Status
@@ -354,8 +354,8 @@ const StudentProfile = () => {
             </Row>
             <Row
               style={{
-                border: "1px solid rgba(51, 51, 51, 0.35)",
-                boxShadow: "0px 1px 7px rgba(255, 255, 255, 0.25)",
+                border: '1px solid rgba(51, 51, 51, 0.35)',
+                boxShadow: '0px 1px 7px rgba(255, 255, 255, 0.25)',
               }}
             ></Row>
             <Row>
@@ -364,7 +364,7 @@ const StudentProfile = () => {
                   schoolProfile.schoolClassesData.map((schoolClasses) => (
                     <li
                       style={{
-                        listStyle: "none",
+                        listStyle: 'none',
                         marginTop: 10,
                       }}
                     >
@@ -373,19 +373,19 @@ const StudentProfile = () => {
                   ))}
               </ul>
             </Row>
-            {number !== "" ? (
+            {number !== '' ? (
               <Row className="p-5">
-                <p style={{ color: "#A6A6A6" }}>
-                  You have not added a class:{" "}
+                <p style={{ color: '#A6A6A6' }}>
+                  You have not added a class:{' '}
                   <Link
                     passHref
                     href="/dashboard/student/studentProfile"
-                    style={{ color: "#333333", cursor: "pointer" }}
+                    style={{ color: '#333333', cursor: 'pointer' }}
                   >
-                    <u style={{ color: "#333333", cursor: "pointer" }}>
+                    <u style={{ color: '#333333', cursor: 'pointer' }}>
                       Add A New Class
                     </u>
-                  </Link>{" "}
+                  </Link>{' '}
                   here
                 </p>
               </Row>
@@ -395,9 +395,9 @@ const StudentProfile = () => {
                   <Row className="pt-2">
                     <p
                       style={{
-                        fontWeight: "300",
-                        fontSize: "20px",
-                        color: "#333333",
+                        fontWeight: '300',
+                        fontSize: '20px',
+                        color: '#333333',
                       }}
                     >
                       {user.user?.enrolledCourses[0]?.courseId?.name}
@@ -405,23 +405,23 @@ const StudentProfile = () => {
                   </Row>
                 </Col>
                 <Col>
-                  {number === "" ? (
+                  {number === '' ? (
                     <Row
                       className="pt-2"
                       style={{
-                        width: "189px",
-                        height: "40px",
-                        background: "#00D9B6",
-                        borderRadius: "20px",
+                        width: '189px',
+                        height: '40px',
+                        background: '#00D9B6',
+                        borderRadius: '20px',
                       }}
                     >
                       <p
                         style={{
-                          fontWeight: "300",
-                          fontSize: "15px",
-                          color: "white",
-                          padding: "auto",
-                          textAlign: "center",
+                          fontWeight: '300',
+                          fontSize: '15px',
+                          color: 'white',
+                          padding: 'auto',
+                          textAlign: 'center',
                         }}
                       >
                         Subscribed
@@ -431,20 +431,20 @@ const StudentProfile = () => {
                     <Row
                       className="pt-2"
                       style={{
-                        width: "189px",
-                        height: "40px",
-                        background: "white",
-                        borderRadius: "20px",
-                        border: "1px solid #333333",
+                        width: '189px',
+                        height: '40px',
+                        background: 'white',
+                        borderRadius: '20px',
+                        border: '1px solid #333333',
                       }}
                     >
                       <p
                         style={{
-                          fontWeight: "300",
-                          fontSize: "15px",
-                          color: "#333333",
-                          padding: "auto",
-                          textAlign: "center",
+                          fontWeight: '300',
+                          fontSize: '15px',
+                          color: '#333333',
+                          padding: 'auto',
+                          textAlign: 'center',
                         }}
                       >
                         Not Subscribed
@@ -458,10 +458,10 @@ const StudentProfile = () => {
           <Row className="pt-4">
             <p
               style={{
-                fontWeight: "500",
-                fontSize: "25px",
-                lineHeight: "33px",
-                color: "#333333",
+                fontWeight: '500',
+                fontSize: '25px',
+                lineHeight: '33px',
+                color: '#333333',
               }}
             >
               Referral
@@ -469,13 +469,13 @@ const StudentProfile = () => {
           </Row>
           <Row
             style={{
-              border: "1px solid rgba(51, 51, 51, 0.35)",
-              boxShadow: "0px 1px 7px rgba(255, 255, 255, 0.25)",
+              border: '1px solid rgba(51, 51, 51, 0.35)',
+              boxShadow: '0px 1px 7px rgba(255, 255, 255, 0.25)',
             }}
           ></Row>
           <Row className="p-5">
             <p
-              style={{ fontWeight: "400", fontSize: "18px", color: "#A6A6A6" }}
+              style={{ fontWeight: '400', fontSize: '18px', color: '#A6A6A6' }}
             >
               Copy and share your referral code with friends and stand a chance
               to have access to free study materials
@@ -486,29 +486,29 @@ const StudentProfile = () => {
               defaultValue={referal}
               // placeholder=""
               style={{
-                width: "751px",
-                height: "71px",
-                border: "1px solid #00D9B6",
-                borderRadius: "100px",
-                fontWeight: "400",
-                fontSize: "20px",
-                color: "#333333",
-                marginLeft: "15px",
-                position: "relative",
+                width: '751px',
+                height: '71px',
+                border: '1px solid #00D9B6',
+                borderRadius: '100px',
+                fontWeight: '400',
+                fontSize: '20px',
+                color: '#333333',
+                marginLeft: '15px',
+                position: 'relative',
               }}
             />
             <button
               onClick={() => copyReferalCode(referal)}
               style={{
-                width: "193px",
-                height: "71px",
-                color: "white",
-                background: "#00D9B6",
-                borderRadius: "0px 100px 100px 0px",
-                position: "absolute",
-                left: "1015px",
-                border: "0",
-                marginLeft: "15px",
+                width: '193px',
+                height: '71px',
+                color: 'white',
+                background: '#00D9B6',
+                borderRadius: '0px 100px 100px 0px',
+                position: 'absolute',
+                left: '1015px',
+                border: '0',
+                marginLeft: '15px',
               }}
             >
               {copyMessage}
@@ -517,10 +517,10 @@ const StudentProfile = () => {
         </Col>
       </Row>
     </>
-  );
-};
+  )
+}
 
-export default StudentProfile;
+export default StudentProfile
 
 export const ProfilePicture = ({ user }) => {
   return (
@@ -544,16 +544,16 @@ export const ProfilePicture = ({ user }) => {
               }
               alt="Flowers"
               style={{
-                marginLeft: "6px",
-                marginTop: "18px",
-                width: "174px",
-                height: "174px",
-                borderRadius: "90px",
+                // marginLeft: "6px",
+                marginTop: '18px',
+                width: '174px',
+                height: '174px',
+                borderRadius: '90px',
               }}
             />
           </picture>
         </Col>
       </Col>
     </Row>
-  );
-};
+  )
+}
