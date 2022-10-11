@@ -285,9 +285,7 @@ const JoinLeague = () => {
                       ))}
                     </ul>
                   </div>
-                  <button 
-                    className={styles.gamebtnwrapper}
-                  onClick={registerUser}>{examp.button}</button>
+                  <button onClick={registerUser}>{examp.button}</button>
                 </div>
               </>
             )

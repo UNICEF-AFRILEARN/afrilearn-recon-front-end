@@ -206,8 +206,7 @@ const Addmychild = () => {
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     />
             </Form.Group>
-            <Button
-            className={styles.addbtnwrapper} 
+            <Button 
               // onClick={handleShow}
               disabled={!confirmPassword || !password || !email || !fullName || !selectedCourse}
             variant="primary" type="submit">

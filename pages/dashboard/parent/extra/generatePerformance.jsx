@@ -134,9 +134,7 @@ const GeneratePerformance = ({children, courseContext}) => {
                         )}
                     </select>
                 </Form.Group>
-            <Button 
-            className={styles.generatebtn}
-            variant="primary" type="submit">
+            <Button variant="primary" type="submit">
                  GENERATE PERFORMANCE
             </Button>
         </Form>
