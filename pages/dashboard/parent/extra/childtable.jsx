@@ -32,7 +32,6 @@ const Childtable = ({myChildren, handleCheckedBox, userId, handleViewChildDetail
       setChildEmail(email)
       setChildName(name)
       setChildClass(myChildclass)
-      console.log("I am studentId clicked", studentId)
     }
 
     const handleCheckAll = (e) => {

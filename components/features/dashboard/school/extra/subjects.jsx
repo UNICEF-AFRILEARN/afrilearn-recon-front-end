@@ -36,7 +36,9 @@ const Schoolsubject = () => {
                 setCourseIndex(e.target.value);
               }}
             >
-              <option value={"default"}>Select a Class</option>
+              <option 
+              value={"default"}>Select a Class
+              </option>
               {schoolClasses &&
                 schoolClasses.map((schoolClass, i) => (
                   <option value={i}>{schoolClass.className}</option>

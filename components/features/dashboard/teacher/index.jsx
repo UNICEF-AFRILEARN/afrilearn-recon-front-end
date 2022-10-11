@@ -352,7 +352,7 @@ export const TeacherAnnouncement = () => {
           }}
         >
           <p
-            className="text-light m-0"
+            className="text-dark m-0"
             style={{ textAlign: "center", padding: "12px", cursor: "pointer" }}
             onClick={handleSubmit}
           >
