@@ -92,13 +92,12 @@
     display: flex;
     gap: 30px;
     cursor: pointer;
-    color: #000;
 }
 
 .lastcolon h5 {
     background-color: #00D9B6;
     font-size: 15px;
-    color: #000;
+    color: #FFFFFF;
     font-weight: 500;
     padding: 10px;
     border-radius: 20px;

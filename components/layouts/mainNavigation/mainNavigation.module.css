@@ -51,7 +51,6 @@
 .parentloggedindash ul li {
   list-style-type: none;
   cursor: pointer;
-  /* color: #000; */
 }
 
 .navicons {
@@ -64,7 +63,7 @@
 .btnloginregister {
   margin-right: 10px;
   background-color: #00d9b6;
-  color: #000;
+  color: #333;
   border: none;
   padding: 5px 20px;
   border-radius: 25px;
@@ -73,7 +72,6 @@
   /* padding: 30px !mportant; */
   /* height: 20%; */
   /* margin-top: 20px; */
-  /* color: #000; */
   padding-left: 6% !important;
   padding-right: 4% !important;
 }

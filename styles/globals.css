@@ -357,10 +357,6 @@ a {
   display: flex;
 }
 
-.linkingbtn, .exambtn-wrapper, .headingSelect-sele {
-  color: #000 !important;
-}
-
 .class-play-store {
   margin-left: 1rem;
 }

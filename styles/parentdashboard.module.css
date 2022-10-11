@@ -8,10 +8,6 @@
 .viewwrapper {
   cursor: pointer;
 }
-
-.generatebtn, .addbtnwrapper{
-  color: #000 !important;
-}
 .headerwrapper {
   background: url("../public/assets/img/parenthead.svg");
   height: 65vh;
