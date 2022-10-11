@@ -22,6 +22,7 @@ import {
   fetchGetWebInitiate,
   fetchTeaSubsStart,
 } from "../../../../redux/actions/subject";
+import { ProfilePicture } from "../student/studentProfile";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -139,16 +140,19 @@ export const HeropageWelcome = () => {
         }}
       >
         <Col>
-          <Row className={`${styles.studentProfileGrid} mx-auto imager-row`}>
-            <Col className={`m-auto ${styles.studentProfileAvatar}`}>
-              <Col className="mt-4 ms-2 image-class-teacher-middle">
-                <Image
+          <Row className={`${styles.studentProfileGrid1} mx-auto imager-row`}>
+            {/* <Col className={`m-auto ${styles.studentProfileAvatar}`}>
+              {/* <Col className="mt-4 ms-2 image-class-teacher-middle">
+                {/* <Image
                   alt={"afrilearn marketing video"}
                   src={`/assets/img/features/dashboard/teacher/teacherPix.png`}
                   width={168}
                   height={168}
-                />
+                /> 
               </Col>
+            </Col> */}
+            <Col>
+              <ProfilePicture user={user} />
             </Col>
             <Col className={styles.studentProfileInfo}>
               <Row className="p-4">

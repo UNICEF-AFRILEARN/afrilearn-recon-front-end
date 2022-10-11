@@ -47,9 +47,14 @@
   border-top-right-radius: 10px;
 }
 
+.sidenavbar {
+  display: block;
+}
+
 .sidenavbar ul li {
   list-style-type: none;
   margin-top: 20px;
+  cursor: pointer;
 }
 .activetab {
   color: #00d9b6;

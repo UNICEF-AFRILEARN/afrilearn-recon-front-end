@@ -1,4 +1,4 @@
-import styles from "./button.module.css";
+import styles from './button.module.css'
 
 const AppButton = ({
   fullWidth,
@@ -27,9 +27,9 @@ const AppButton = ({
       {IconComponent ? (
         <div style={{ marginRight: 10 }}>{IconComponent}</div>
       ) : null}
-      <div>{title}</div>
+      <div style={{ color: '#333' }}>{title}</div>
     </button>
-  );
-};
+  )
+}
 
-export default AppButton;
+export default AppButton

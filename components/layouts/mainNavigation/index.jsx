@@ -1,30 +1,30 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState, useEffect } from "react";
-import { useRouter } from "next/router";
-import { useDispatch, useSelector } from "react-redux";
-import { Navbar, Container, Nav } from "react-bootstrap";
-import { signIn } from "next-auth/react";
-import Link from "next/link";
+import React, { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
+import { useDispatch, useSelector } from 'react-redux'
+import { Navbar, Container, Nav } from 'react-bootstrap'
+import { signIn } from 'next-auth/react'
+import Link from 'next/link'
 // import Toggle from "../../widgets/toggle/index"
-import { BsSearch, BsBell } from "react-icons/bs";
+import { BsSearch, BsBell } from 'react-icons/bs'
 
-import { BiDownArrow } from "react-icons/bi";
-import { AiOutlineSafetyCertificate } from "react-icons/ai";
-import styles from "./mainNavigation.module.css";
-import AppButton from "../../widgets/buttons/AppButton";
-import { persistor } from "../../../redux/store";
+import { BiDownArrow } from 'react-icons/bi'
+import { AiOutlineSafetyCertificate } from 'react-icons/ai'
+import styles from './mainNavigation.module.css'
+import AppButton from '../../widgets/buttons/AppButton'
+import { persistor } from '../../../redux/store'
 
-import { BsPersonCircle } from "react-icons/bs";
-import Image from "next/image";
+import { BsPersonCircle } from 'react-icons/bs'
+import Image from 'next/image'
 
 const Navigation = () => {
-  const router = useRouter();
-  const dispatch = useDispatch();
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [userRole, setUserRole] = useState("");
-  const { user, registerUser } = useSelector((state) => state.auth);
+  const router = useRouter()
+  const dispatch = useDispatch()
+  const [isLoggedIn, setIsLoggedIn] = useState(true)
+  const [userRole, setUserRole] = useState('')
+  const { user, registerUser } = useSelector((state) => state.auth)
 
-  let localData;
+  let localData
   // const checkoLocal = () => {
   //   if (typeof window !== "undefined") {
   //     localData = JSON.parse(localStorage.getItem("persist:root"));
@@ -38,7 +38,7 @@ const Navigation = () => {
   // }
 
   const handleLogout = async () => {
-    persistor.purge();
+    persistor.purge()
     // router.push({
     //   pathname: '/auth/login',
     // },
@@ -47,17 +47,16 @@ const Navigation = () => {
 
     // let locals = checkoLocal();
 
-    signIn();
+    signIn()
     // window.history.pushState(null, "login", "/login");
     router.push('/login')
-    
-  };
+  }
 
   useEffect(() => {
     const roleId =
-      user?.user?.role || registerUser?.user?.role || user?.user?.id;
-    setUserRole(roleId);
-  }, [user]);
+      user?.user?.role || registerUser?.user?.role || user?.user?.id
+    setUserRole(roleId)
+  }, [user])
 
   return (
     <Navbar
@@ -84,10 +83,10 @@ const Navigation = () => {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">
           {/* <div className='main-navbar-with-login'> */}
-          {userRole === "not_login" && (
+          {userRole === 'not_login' && (
             <div className="our-story-frag">Our Story</div>
           )}
-          {userRole === "5fd08fba50964811309722d5" && (
+          {userRole === '5fd08fba50964811309722d5' && (
             <div className={styles.parentloggedindash}>
               <ul>
                 <Link passHref href="/dashboard/student">
@@ -119,7 +118,7 @@ const Navigation = () => {
                 >
                   {user?.user.profilePhotoUrl !== undefined ? (
                     <Image
-                      alt={"afrilearn marketing video"}
+                      alt={'afrilearn marketing video'}
                       src={user?.user.profilePhotoUrl}
                       width={40}
                       height={40}
@@ -154,7 +153,7 @@ const Navigation = () => {
             </div>
           )}
 
-          {userRole === "602f3ce39b146b3201c2dc1d" && (
+          {userRole === '602f3ce39b146b3201c2dc1d' && (
             <div className={styles.parentloggedindash}>
               <ul>
                 <Link passHref href="/dashboard/teacher">
@@ -192,7 +191,7 @@ const Navigation = () => {
                 >
                   {user?.user.profilePhotoUrl !== undefined ? (
                     <Image
-                      alt={"afrilearn marketing video"}
+                      alt={'afrilearn marketing video'}
                       src={user?.user.profilePhotoUrl}
                       width={45}
                       height={45}
@@ -229,7 +228,7 @@ const Navigation = () => {
             </div>
           )}
 
-          {userRole === "606ed82e70f40e18e029165e" && (
+          {userRole === '606ed82e70f40e18e029165e' && (
             <div className={styles.parentloggedindash}>
               <ul>
                 <Link passHref href="/dashboard/parent">
@@ -264,7 +263,7 @@ const Navigation = () => {
                 >
                   {user?.user.profilePhotoUrl !== undefined ? (
                     <Image
-                      alt={"afrilearn marketing video"}
+                      alt={'afrilearn marketing video'}
                       src={user?.user.profilePhotoUrl}
                       width={45}
                       height={45}
@@ -302,7 +301,7 @@ const Navigation = () => {
             </div>
           )}
 
-          {userRole === "607ededa2712163504210684" && (
+          {userRole === '607ededa2712163504210684' && (
             <div className={styles.parentloggedindash}>
               <ul>
                 <Link passHref href="/school">
@@ -337,7 +336,7 @@ const Navigation = () => {
                 >
                   {user?.user.profilePhotoUrl !== undefined ? (
                     <Image
-                      alt={"afrilearn marketing video"}
+                      alt={'afrilearn marketing video'}
                       src={user?.user.profilePhotoUrl}
                       width={45}
                       height={45}
@@ -374,10 +373,10 @@ const Navigation = () => {
             </div>
           )}
 
-          {userRole !== "606ed82e70f40e18e029165e" &&
-            userRole !== "5fd08fba50964811309722d5" &&
-            userRole !== "602f3ce39b146b3201c2dc1d" &&
-            userRole !== "607ededa2712163504210684" && (
+          {userRole !== '606ed82e70f40e18e029165e' &&
+            userRole !== '5fd08fba50964811309722d5' &&
+            userRole !== '602f3ce39b146b3201c2dc1d' &&
+            userRole !== '607ededa2712163504210684' && (
               <div>
                 {/* implementing next.auth */}
                 <Link href="/login">
@@ -391,6 +390,6 @@ const Navigation = () => {
         </Nav>
       </Navbar.Collapse>
     </Navbar>
-  );
-};
-export default Navigation;
+  )
+}
+export default Navigation
