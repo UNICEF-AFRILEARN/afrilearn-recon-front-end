@@ -47,7 +47,7 @@ const Navigation = () => {
 
     // let locals = checkoLocal();
 
-    signIn()
+    // signIn()
     window.history.pushState(null, "login", "/login");
     router.push('/login')
   }
