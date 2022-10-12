@@ -1,26 +1,26 @@
-.classworkwrapper {
+/* .classworkwrapper {
   display: flex;
   /* justify-content: space-evenly; */
-  /* padding: 15px; */
-  margin-top: 25px;
-}
+/* padding: 15px; */
+/* margin-top: 25px; 
+} */
 
-.innersubject {
+/* .innersubject {
   display: flex;
   position: relative;
   margin-top: 25px;
-}
+} */
 
 .innersubject p {
   padding-left: 10px;
   color: #333;
 }
 .subjectdetails {
-  display: flex;
-  flex-direction: column;
+  /* display: flex; */
+  /* flex-direction: column; */
   /* padding-left: 5%; */
   background-color: #fafafa;
-  margin-left: 4%;
+  /* margin-left: 4%; */
   /* width: 70vw; */
 }
 .activetab {
@@ -31,7 +31,7 @@
   color: #a6a6a6;
 }
 .classworkwrappers {
-  margin-top: 40px;
+  margin: 40px 0;
 }
 .classworkwrappers nav {
   display: block;
@@ -46,7 +46,7 @@
 .subjectwrapper {
   /* width: 70vw; */
   margin-left: 4%;
-  border-bottom: 1px solid rgba(51, 51, 51, 0.23);
+  border-bottom: 1px solid #cccccc;
   background-color: #fafafa;
   padding: 10px;
   padding-top: 25px;
@@ -70,8 +70,8 @@
   list-style-type: none;
   margin-top: 20px;
 }
-.posted {
+/* .posted {
   position: absolute;
   top: 23px;
   left: -27px;
-}
+} */

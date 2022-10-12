@@ -2,25 +2,25 @@
   margin-top: 7%;
   padding-left: 10%;
 }
-.paymentContainer  h4{
-    font-weight: 600;
+.paymentContainer h4 {
+  font-weight: 600;
   color: #29465b;
   margin-bottom: 5%;
-  }
-  .paymentContainer  h5{
-    font-weight: 600;
+}
+.paymentContainer h5 {
+  font-weight: 600;
   color: #29465b;
   margin-bottom: 5%;
-  }
+}
 .paymentfirstContainer {
   background-color: #fafafa;
   padding: 5% 0 5% 5%;
   height: 60%;
 }
 .divPoint {
-  height: 21px;
+  /* height: 21px; */
   width: 21px;
-  margin: 1.5rem;
+  margin: 1.3rem;
   border-radius: 130px;
   background-color: #29465b;
 }
@@ -29,8 +29,8 @@
   margin: 15px;
 }
 .paymentfirstContainer p {
-  height: 24px;
-  margin: 6%;
+  /* height: 24px; */
+  margin: 4%;
   font-weight: 500;
   color: #333333;
   font-size: 16px;
@@ -43,7 +43,7 @@
   margin: 5% 0 15% 0;
   font-weight: 600;
   font-size: 18px;
-  background: url("../public/assets/img/downarrow.svg");
+  background: url('../public/assets/img/downarrow.svg');
   background-repeat: no-repeat;
   background-position-y: 50%;
   background-position-x: 98%;
@@ -61,94 +61,95 @@
   width: 100%;
   gap: 15px;
 }
-.durationPayment button{
-border: none;
-box-shadow: 13px 14px 14px 3px rgba(0,0,0,0.82);
--webkit-box-shadow: 13px 14px 14px 3px rgba(0,0,0,0.82);
--moz-box-shadow: 13px 14px 14px 3px rgba(0,0,0,0.82);
-background-color: white;
-padding: 20%;
-border-radius: 20px;
+.durationPayment button {
+  border: none;
+  box-shadow: 13px 14px 40px -16px rgba(0, 0, 0, 0.82);
+  -webkit-box-shadow: 13px 14px 40px -16px rgba(0, 0, 0, 0.82);
+  -moz-box-shadow: 13px 14px 40px -16px rgba(0, 0, 0, 0.82);
+  background-color: white;
+  padding: 20%;
+  border-radius: 20px;
 }
-.durationBold{
-    font-weight: 600;
-    margin-bottom: 20px;
+.durationBold {
+  font-weight: 600;
+  margin-bottom: 20px;
 }
 
 .paymentwrapper:focus {
-  background-color: #00D9B6;;
+  background-color: #00d9b6;
 }
 
-.paymentwrapper::before{
+.paymentwrapper::before {
   content: icon;
 }
 
-.paymentdurationButtons{
-    margin-bottom: 15%;
-    margin-top: 13%;
+.paymentdurationButtons {
+  margin-bottom: 15%;
+  margin-top: 13%;
 }
-.paymentSecondContainer{
-    padding-top: 5%;
-    padding-left: 5%;
+.paymentSecondContainer {
+  padding-top: 5%;
+  padding-left: 5%;
 }
-.paymenttypeButton button{
-border-radius: 100px;
-width: 80%;
-height: 50px;
-margin-bottom: 5%;
-background: url("../public/assets/img/forwardarrow1.png");
-background-color: #00D9B6;
-background-repeat: no-repeat;
-border: none;
-background-position-y: 50%;
+.paymenttypeButton button {
+  border-radius: 100px;
+  width: 80%;
+  height: 50px;
+  margin-bottom: 5%;
+  background: url('../public/assets/img/forwardarrow1.png');
+  background-color: #00d9b6;
+  background-repeat: no-repeat;
+  border: none;
+  background-position-y: 50%;
   background-position-x: 90%;
   color: #fff;
 }
-.paymenttypeButton2 button{
-    border-radius: 100px;
+.paymenttypeButton2 button {
+  border-radius: 100px;
+  width: 80%;
+  height: 50px;
+  margin-bottom: 5%;
+  background: url('../public/assets/img/forwardarrow2.png');
+  background-color: #fff;
+  background-repeat: no-repeat;
+  border: 1px solid #00d9b6;
+  background-position-y: 50%;
+  background-position-x: 90%;
+  color: #00d9b6;
+}
+
+.paymentmodal {
+  background-color: green;
+}
+
+@media screen and (max-width: 768px) {
+  .durationPayment {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .paymentdurationButtons {
+    margin-right: 28px;
+  }
+  .paymenttypeButton,
+  .paymenttypeButton2 {
+    margin-left: 20px;
+  }
+
+  .pushDown {
     width: 80%;
-    height: 50px;
-    margin-bottom: 5%;
-    background: url("../public/assets/img/forwardarrow2.png");
-    background-color: #fff;
-    background-repeat: no-repeat;
-    border: 1px solid #00D9B6;
-    background-position-y: 50%;
-    background-position-x: 90%;
-    color: #00D9B6;
-    }
+  }
+  .divPoint {
+    height: 20px;
+    width: 20px;
+    margin-right: 0.1rem;
+    border-radius: 130px;
+    background-color: #44708f;
+  }
 
-    .paymentmodal {
-      background-color: green;
-    }
-
-    @media screen and (max-width: 768px) {
-      .durationPayment {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-      }
-      .paymentdurationButtons {
-        margin-right: 28px;
-      }
-      .paymenttypeButton, .paymenttypeButton2{
-        margin-left: 20px;
-      }
-
-      .pushDown {
-        width: 80%;
-      }
-      .divPoint {
-        height: 20px;
-        width: 20px;
-        margin-right: 0.1rem;
-        border-radius: 130px;
-        background-color: #44708f;
-      }
-      
-      .divPoint2 {
-        width: 84%;
-      }
-      .btnwrapper{
-        background-color: red;
-      }
-    }
+  .divPoint2 {
+    width: 84%;
+  }
+  .btnwrapper {
+    background-color: red;
+  }
+}

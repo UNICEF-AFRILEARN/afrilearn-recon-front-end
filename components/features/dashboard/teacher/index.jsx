@@ -1,70 +1,70 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import Image from "next/image";
-import Link from "next/link";
-import { Col, Container, Row } from "react-bootstrap";
-import PastQuestion from "../student/extra/pastQuestionaira";
-import Subjects from "../student/extra/subjects";
-import { AiOutlineSend } from "react-icons/ai";
-import styles1 from "../student/student.module.css";
-import styles from "../student/studentProfile/studentProfile.module.css";
-import styles2 from "../../../../pages/dashboard/teacher/teacher.module.css";
-import CommentBlock from "./commentblock";
+import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import Image from 'next/image'
+import Link from 'next/link'
+import { Col, Container, Row } from 'react-bootstrap'
+import PastQuestion from '../student/extra/pastQuestionaira'
+import Subjects from '../student/extra/subjects'
+import { AiOutlineSend } from 'react-icons/ai'
+import styles1 from '../student/student.module.css'
+import styles from '../student/studentProfile/studentProfile.module.css'
+import styles2 from '../../../../pages/dashboard/teacher/teacher.module.css'
+import CommentBlock from './commentblock'
 
-import { fetchSubjectsInitiate } from "../../../../redux/actions/subjects";
+import { fetchSubjectsInitiate } from '../../../../redux/actions/subjects'
 import {
   makeAnnouncementInitiate,
   fetchAnnouncementInitiate,
   addCommentToTeacherAnnouncementInitiate,
-} from "../../../../redux/actions/classes";
+} from '../../../../redux/actions/classes'
 
 import {
   fetchGetWebInitiate,
   fetchTeaSubsStart,
-} from "../../../../redux/actions/subject";
-import { ProfilePicture } from "../student/studentProfile";
+} from '../../../../redux/actions/subject'
+import { ProfilePicture } from '../student/studentProfile'
 
 const Dashboard = () => {
-  const dispatch = useDispatch();
-  const { registerUser, user } = useSelector((state) => state.auth);
-  const { allSubjects } = useSelector((state) => state.mySubject);
-  const { classMembers } = useSelector((state) => state.schoolClasses);
-  const subject = useSelector((state) => state.mySubjectCourse);
+  const dispatch = useDispatch()
+  const { registerUser, user } = useSelector((state) => state.auth)
+  const { allSubjects } = useSelector((state) => state.mySubject)
+  const { classMembers } = useSelector((state) => state.schoolClasses)
+  const subject = useSelector((state) => state.mySubjectCourse)
   // console.log(classMembers);
   const teachSubject =
-    subject?.dashboardWeb?.enrolledCourse?.courseId.relatedSubjects;
+    subject?.dashboardWeb?.enrolledCourse?.courseId.relatedSubjects
 
-  const token = user?.token;
+  const token = user?.token
   const person_id = user.user?.enrolledCourses[0]
     ? user.user?.enrolledCourses[0].id
-    : user.user?.enrolledCourses[1].id;
+    : user.user?.enrolledCourses[1].id
   const teacherSubjectId =
-    user?.user?.classOwnership[0]?.subjectIds[0]?.subjectId;
+    user?.user?.classOwnership[0]?.subjectIds[0]?.subjectId
   //set teacher's enrolled subjects
-  let teacherEnrolledSubjectId = [];
+  let teacherEnrolledSubjectId = []
   const teacherEnrolledSubjects = () => {
     teacherEnrolledSubjectId = user?.user?.classOwnership.filter(
-      (enrolledSubjectId) => enrolledSubjectId.subjectIds,
-    );
-    return teacherEnrolledSubjectId;
-  };
-  teacherEnrolledSubjects();
-  const subId = user?.user?.classOwnership[0];
+      (enrolledSubjectId) => enrolledSubjectId.subjectIds
+    )
+    return teacherEnrolledSubjectId
+  }
+  teacherEnrolledSubjects()
+  const subId = user?.user?.classOwnership[0]
 
-  let filteredSubjects = [];
+  let filteredSubjects = []
   const filterTeacherSubjects = () => {
     filteredSubjects = allSubjects.filter(
-      (filterSubject) => filterSubject.id === teacherSubjectId,
-    );
-    return filteredSubjects;
-  };
+      (filterSubject) => filterSubject.id === teacherSubjectId
+    )
+    return filteredSubjects
+  }
 
-  filterTeacherSubjects();
+  filterTeacherSubjects()
 
   useEffect(() => {
-    dispatch(fetchGetWebInitiate(person_id, token, subId));
-    dispatch(fetchSubjectsInitiate());
-  }, [token]);
+    dispatch(fetchGetWebInitiate(person_id, token, subId))
+    dispatch(fetchSubjectsInitiate())
+  }, [token])
   return (
     <div>
       <Heropage />
@@ -74,10 +74,10 @@ const Dashboard = () => {
           <Row
             className="ms-5 p-5 "
             style={{
-              fontWeight: "700",
-              fontSize: "30px",
-              textAlign: "center",
-              color: "#29465B",
+              fontWeight: '700',
+              fontSize: '30px',
+              textAlign: 'center',
+              color: '#29465B',
             }}
           >
             My Subject
@@ -96,24 +96,24 @@ const Dashboard = () => {
       </div>
       <TeacherAnnouncement />
     </div>
-  );
-};
+  )
+}
 
-export default Dashboard;
+export default Dashboard
 
 export const HeropageWelcome = () => {
-  const { registerUser, user } = useSelector((state) => state.auth);
+  const { registerUser, user } = useSelector((state) => state.auth)
 
-  const [classId, setClassId] = useState("");
-  const [copyMessage, setCopyMessage] = useState("Copy Class Link");
+  const [classId, setClassId] = useState('')
+  const [copyMessage, setCopyMessage] = useState('Copy Class Link')
   const [referal, setReferal] = useState(
-    `https://myafrilearn.com/register?referralCode=${user.user?.id}`,
-  );
+    `https://myafrilearn.com/register?referralCode=${user.user?.id}`
+  )
 
   const copyReferalCode = (link) => {
-    navigator.clipboard.writeText(link);
-    setCopyMessage("Class Link Copied");
-  };
+    navigator.clipboard.writeText(link)
+    setCopyMessage('Class Link Copied')
+  }
 
   // handleCopy = () => {
   //   const assignURL = invitationLink
@@ -124,22 +124,22 @@ export const HeropageWelcome = () => {
 
   // }
   useEffect(() => {
-    setClassId(user.user.enrolledCourses[0]?.classId);
-  }, [classId]);
+    setClassId(user.user.enrolledCourses[0]?.classId)
+  }, [classId])
 
   return (
     <>
       <Row
         className="middlebarforteacher"
         style={{
-          position: "absolute",
-          bottom: "35%",
-          width: "100%",
-          marginTop: "-8%",
-          zIndex: "999",
+          position: 'absolute',
+          bottom: '35%',
+          width: '100%',
+          marginTop: '-8%',
+          zIndex: '999',
         }}
       >
-        <Col>
+        <Col className={styles.teacherProfileGrid1}>
           <Row className={`${styles.studentProfileGrid1} mx-auto imager-row`}>
             {/* <Col className={`m-auto ${styles.studentProfileAvatar}`}>
               {/* <Col className="mt-4 ms-2 image-class-teacher-middle">
@@ -163,14 +163,14 @@ export const HeropageWelcome = () => {
                         <div
                           className="text-dark"
                           style={{
-                            fontWeight: "500",
-                            fontSize: "10px",
-                            textAlign: "center",
-                            color: "#333333",
+                            fontWeight: '500',
+                            fontSize: '10px',
+                            textAlign: 'center',
+                            color: '#333333',
                           }}
                         >
                           <h1 className="name-tag-holder">
-                            Welcome{" "}
+                            Welcome{' '}
                             {registerUser.user?.fullName || user.user?.fullName}
                           </h1>
                         </div>
@@ -186,7 +186,7 @@ export const HeropageWelcome = () => {
                 <Row className="">
                   <Col md={2}>
                     <p className="text-dark">
-                      Class code:{" "}
+                      Class code:{' '}
                       {registerUser.user?.classOwnership[0].classCode ||
                         user.user?.classOwnership[0].classCode}
                     </p>
@@ -197,7 +197,7 @@ export const HeropageWelcome = () => {
                       <Col>
                         <p
                           className={`${styles.classlink} m-auto`}
-                          style={{ color: "#00D9B6" }}
+                          style={{ color: '#00D9B6' }}
                         >
                           <u onClick={() => copyReferalCode(referal)}>
                             {copyMessage}
@@ -216,7 +216,7 @@ export const HeropageWelcome = () => {
                           ></Col>
                           <Col
                             className={`p-0 ${styles.studentProfileColorText}`}
-                            style={{ color: "#00D9B6" }}
+                            style={{ color: '#00D9B6' }}
                           >
                             <u>Add Students</u>
                           </Col>
@@ -233,78 +233,78 @@ export const HeropageWelcome = () => {
         </Col>
       </Row>
     </>
-  );
-};
+  )
+}
 export const Heropage = () => {
   return (
     <>
       <div
         className={`container-fluid relative ${styles1.dashboardFirstSection3}`}
-        style={{ position: "relative", zIndex: "0" }}
+        style={{ position: 'relative', zIndex: '0' }}
       ></div>
     </>
-  );
-};
+  )
+}
 
 export const TeacherAnnouncement = () => {
   const { classAnnouncement, postAnnouncement, announcementComment } =
-    useSelector((state) => state.schoolClasses);
-  const { user } = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
-  const [text, setText] = useState("");
-  const [announcement, setAnnouncement] = useState("");
+    useSelector((state) => state.schoolClasses)
+  const { user } = useSelector((state) => state.auth)
+  const dispatch = useDispatch()
+  const [text, setText] = useState('')
+  const [announcement, setAnnouncement] = useState('')
   // const [comment, setComment] = useState("");
-  const [announcementCount, setAnnouncementCount] = useState(0);
+  const [announcementCount, setAnnouncementCount] = useState(0)
 
   console.log(
-    "announcementComment from Teacher announcement",
-    announcementComment,
-  );
+    'announcementComment from Teacher announcement',
+    announcementComment
+  )
 
-  let token = user?.token;
-  let classId = user?.user?.classOwnership[0]?.enrolledCourse?.classId;
+  let token = user?.token
+  let classId = user?.user?.classOwnership[0]?.enrolledCourse?.classId
 
   //Convert created at to dateTime:
-  const formatter = new Intl.DateTimeFormat("en-GB", {
-    year: "numeric",
-    month: "long",
-    day: "2-digit",
-  });
+  const formatter = new Intl.DateTimeFormat('en-GB', {
+    year: 'numeric',
+    month: 'long',
+    day: '2-digit',
+  })
 
   // const handleChange = (e) => {
   //   setText( e.target.value);
   // };
 
-  console.log("token, classId textEdit", user);
+  console.log('token, classId textEdit', user)
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    setText(announcement);
+    e.preventDefault()
+    setText(announcement)
     // console.log(text)
-    dispatch(makeAnnouncementInitiate(classId, text, token));
-    setText("");
-  };
+    dispatch(makeAnnouncementInitiate(classId, text, token))
+    setText('')
+  }
 
   const handleCommentSubmit = (announcementId) => {
     dispatch(
-      addCommentToTeacherAnnouncementInitiate(announcementId, text, token),
-    );
+      addCommentToTeacherAnnouncementInitiate(announcementId, text, token)
+    )
     // window.location.reload();
-  };
+  }
 
   useEffect(() => {
-    dispatch(fetchAnnouncementInitiate(classId));
-  }, [postAnnouncement, announcementComment]);
+    dispatch(fetchAnnouncementInitiate(classId))
+  }, [postAnnouncement, announcementComment])
 
   return (
     <Container>
       <Col
         className="mt-5 announcement"
         style={{
-          background: "#FAFAFA",
-          borderRadius: "10px",
+          background: '#FAFAFA',
+          borderRadius: '10px',
 
-          position: "relative",
+          position: 'relative',
         }}
       >
         <textarea
@@ -313,13 +313,13 @@ export const TeacherAnnouncement = () => {
           rows="3"
           cols="105"
           style={{
-            background: "#FAFAFA",
-            border: "none",
-            padding: "20px 0",
-            marginLeft: "100px",
-            marginRight: "100px",
-            outline: "none",
-            height: "227px",
+            background: '#FAFAFA',
+            border: 'none',
+            padding: '20px 0',
+            marginLeft: '100px',
+            marginRight: '100px',
+            outline: 'none',
+            height: '227px',
           }}
           placeholder="Announce something to your class"
           value={text}
@@ -327,14 +327,14 @@ export const TeacherAnnouncement = () => {
         ></textarea>
         <div
           style={{
-            position: "absolute",
-            top: "0px",
-            zIndex: "2",
-            margin: "20px",
+            position: 'absolute',
+            top: '0px',
+            zIndex: '2',
+            margin: '20px',
           }}
         >
           <Image
-            alt={"assign content placeholder"}
+            alt={'assign content placeholder'}
             src={`/assets/img/features/dashboard/teacher/teacherPix.png`}
             width={54}
             height={54}
@@ -342,18 +342,18 @@ export const TeacherAnnouncement = () => {
         </div>
         <div
           style={{
-            width: "173px",
-            height: "46px",
-            background: "#00D9B6",
-            borderRadius: "100px",
-            position: "absolute",
-            right: "60px",
-            bottom: "20px",
+            width: '173px',
+            height: '46px',
+            background: '#00D9B6',
+            borderRadius: '100px',
+            position: 'absolute',
+            right: '60px',
+            bottom: '20px',
           }}
         >
           <p
             className="text-light m-0"
-            style={{ textAlign: "center", padding: "12px", cursor: "pointer" }}
+            style={{ textAlign: 'center', padding: '12px', cursor: 'pointer' }}
             onClick={handleSubmit}
           >
             POST
@@ -366,15 +366,15 @@ export const TeacherAnnouncement = () => {
           <Row
             className="mt-4 "
             style={{
-              border: "1px solid #A6A6A6",
-              borderRadius: "7px",
-              padding: "20px",
+              border: '1px solid #A6A6A6',
+              borderRadius: '7px',
+              padding: '20px',
             }}
           >
             <Row className="border-bottom mb-4 pb-4">
               <Col className="p-0 ps-5 ">
                 <Image
-                  alt={"assign content placeholder"}
+                  alt={'assign content placeholder'}
                   src={`/assets/img/features/dashboard/teacher/teacherPix.png`}
                   width={45}
                   height={45}
@@ -390,13 +390,13 @@ export const TeacherAnnouncement = () => {
                 <div className={styles2.moreIcon}>
                   <div
                     style={{
-                      width: "123px",
-                      height: "91px",
-                      background: "#FFFFFF",
-                      boxShadow: "0px 1px 7px rgba(0, 0, 0, 0.1)",
-                      borderRadius: "10px",
-                      position: "absolute",
-                      right: "150px",
+                      width: '123px',
+                      height: '91px',
+                      background: '#FFFFFF',
+                      boxShadow: '0px 1px 7px rgba(0, 0, 0, 0.1)',
+                      borderRadius: '10px',
+                      position: 'absolute',
+                      right: '150px',
                     }}
                     className={styles2.displayNone}
                   >
@@ -435,7 +435,7 @@ export const TeacherAnnouncement = () => {
                   <Row className="">
                     <Col className="p-0 ps-5 mt-4">
                       <Image
-                        alt={"assign content placeholder"}
+                        alt={'assign content placeholder'}
                         src={`/assets/img/features/dashboard/teacher/teacherPix.png`}
                         width={46}
                         height={45}
@@ -458,7 +458,7 @@ export const TeacherAnnouncement = () => {
               <Row>
                 <Col className="p-0 ps-5 mt-4">
                   <Image
-                    alt={"assign content placeholder"}
+                    alt={'assign content placeholder'}
                     src={`/assets/img/features/dashboard/teacher/teacherPix.png`}
                     width={46}
                     height={45}
@@ -491,5 +491,5 @@ export const TeacherAnnouncement = () => {
           </Row>
         ))}
     </Container>
-  );
-};
+  )
+}

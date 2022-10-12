@@ -197,7 +197,7 @@
   } */
 
   .grided {
-    margin-left: 10px;
+    /* margin-left: 10px; */
     margin-top: 20px;
     width: 70%;
   }
@@ -863,9 +863,7 @@
 .last li {
   list-style: none;
 }
-.last .lastt {
-  margin-left: 20px;
-}
+
 .last .lasttt {
   margin-left: 16px;
 }
@@ -900,6 +898,9 @@
     justify-content: center;
   }
 
+  /* .last .lastt {
+    margin-left: 20px;
+  } */
   .partners {
     margin: 5px;
     position: relative;
