@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import DatePicker from "react-datepicker";
+import DatePicker from "react-datepicker";
 import Router, { useRouter } from "next/router";
 import styles from "../../../../styles/teacher.module.css";
 import { BsFillCircleFill, BsCircle } from "react-icons/bs";
@@ -229,7 +229,7 @@ console.log("questionTypeId", questionTypeId)
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Set Start Date: </Form.Label>
-          <input 
+          <DatePicker 
           className={styles.datepicker}
           selected={startDate}
           onChange={(date) => setStartDate(date)}
@@ -237,7 +237,7 @@ console.log("questionTypeId", questionTypeId)
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Set Deadline: </Form.Label>
-          <input 
+          <DatePicker 
           className={styles.datepicker}
           selected={deadline}
           onChange={(date) => setDeadline(date)}
@@ -254,7 +254,7 @@ console.log("questionTypeId", questionTypeId)
         </Form.Group>
         <Button 
           disabled={!deadline || !startDate || !duration || !totalNumberOfQuestions || !termSelected}
-        className="w-25" type="submit">
+        className="w-25 exambtn-wrapper" type="submit">
           PROCEED
         </Button>
       </Form>}

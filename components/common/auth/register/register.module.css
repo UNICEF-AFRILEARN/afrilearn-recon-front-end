@@ -47,6 +47,9 @@
 .pushDown1{
     margin-top: 37px;
 }
+.pushDown1 button {
+    color: #000;
+}
 .socialText {
     display: inline-block;
     vertical-align: top;

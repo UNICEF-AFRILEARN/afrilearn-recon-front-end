@@ -171,7 +171,7 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
   };
   const decodeEntities = (function () {
     // this prevents any overhead from creating the object each time
-    // const element = document.createElement("div");
+    const element = document.createElement("div");
 
     function decodeHTMLEntities(str) {
       if (str && typeof str === "string") {

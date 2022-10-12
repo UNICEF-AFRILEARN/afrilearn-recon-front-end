@@ -21,7 +21,7 @@ const ChildModal = ({show, myChildren, studentId}) => {
         <Container className={styles.modalbodywrapper}>
                   { myChildren && myChildren.filter(student => student.id === studentId).map((filteredStudent) => 
                   <>
-                      {console.log("filteredStudent from modal", filteredStudent)}
+                      {}
                      {/* <Col xs={12} md={8}>Name: {filteredStudent.studentName}</Col> 
                      <Col xs={12} md={8}>Email: {filteredStudent.studentName}</Col>
 

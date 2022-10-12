@@ -57,9 +57,9 @@ const Linkachildmodal = (props) => {
         <div className="d-flex align-items-center justify-content-center w-100 ">
           <Button 
          onClick={props.onHide}
-         className='w-30 mx-3' 
+         className="linkingbtn w-30 mx-3"
         >Cancel</Button>
-        <Button className='w-30 mx-3' 
+        <Button className="linkingbtn w-30 mx-3"
         onClick={() => {props.onHide(), handleSendLink()}}>Send Request</Button>
         </div>
       </Modal.Body>
