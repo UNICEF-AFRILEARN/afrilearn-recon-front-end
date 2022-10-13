@@ -17,8 +17,8 @@ const QuizReview = () => {
     (data) => data.id === subject.quizAnswers.results.lessonId
   )
 
-  console.log(subject)
-  console.log(fata)
+  // console.log(subject)
+  // console.log(fata)
   const pastQuestions = subject.pastQuestionQue[0]?.questions
   const gata = fata && fata[0]?.title
   const questions = fata ? fata[0]?.questions : pastQuestions
@@ -56,8 +56,8 @@ const QuizReview = () => {
     )
     return jata[0]
   }
-  console.log(optionSelected)
-  console.log(correctOption)
+  // console.log(optionSelected)
+  // console.log(correctOption)
   return (
     <>
       <div className={`row ${styles.QuizreviewContainer}`}>
