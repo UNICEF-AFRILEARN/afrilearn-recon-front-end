@@ -1,79 +1,77 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react'
 
-import Link from "next/link";
-import styles from "./student.module.css";
-import { fetchCourseInitiate } from "../../../../redux/actions/courses";
-import { fetchReconLessonInitiate } from "../../../../redux/actions/courses";
-import { useDispatch, useSelector } from "react-redux";
-import { Container } from "react-bootstrap";
+import Link from 'next/link'
+import styles from './student.module.css'
+import { fetchCourseInitiate } from '../../../../redux/actions/courses'
+import { fetchReconLessonInitiate } from '../../../../redux/actions/courses'
+import { useDispatch, useSelector } from 'react-redux'
+import { Container } from 'react-bootstrap'
 
 const studentHeropage = ({ data }) => {
-  const subject = useSelector((state) => state.mySubjectCourse);
+  const subject = useSelector((state) => state.mySubjectCourse)
 
   const studentdata = [
     { classData: data?.personClass, firstName: data?.personName },
     [
       {
-        linkdata: "#subjects",
-        title: "My Subjects",
-        
+        linkdata: '#subjects',
+        title: 'My Subjects',
       },
       {
-        linkdata: "#pastQuestions",
-        title: "Past Questions",
+        linkdata: '#pastQuestions',
+        title: 'Past Questions',
       },
       {
-        linkdata: "#resumePlaying",
-        title: "Resume Watching",
+        linkdata: '#resumePlaying',
+        title: 'Resume Watching',
       },
       {
-        linkdata: "#topTen",
-        title: "Top Ten Video",
+        linkdata: '#topTen',
+        title: 'Top Ten Video',
       },
       {
-        linkdata: "#performance",
-        title: "Performance Summary",
+        linkdata: '#performance',
+        title: 'Performance Summary',
       },
       {
-        linkdata: "#classroom",
-        title: "Classroom",
+        linkdata: '#classroom',
+        title: 'Classroom',
       },
       {
-        linkdata: "#favourite",
-        title: "My Favourite",
+        linkdata: '#favourite',
+        title: 'My Favourite',
       },
       {
-        linkdata: "#recommendations",
-        title: "Recommendations",
+        linkdata: '#recommendations',
+        title: 'Recommendations',
       },
       {
-        linkdata: "#recentActivities",
-        title: "Recent Activities",
+        linkdata: '#recentActivities',
+        title: 'Recent Activities',
       },
     ],
-  ];
+  ]
 
-  return <StudentPage stuData={studentdata} />;
-};
+  return <StudentPage stuData={studentdata} />
+}
 
-export default studentHeropage;
+export default studentHeropage
 
 export const StudentPage = ({ stuData }) => {
-  const { user, registerUser } = useSelector((state) => state.auth);
+  const { user, registerUser } = useSelector((state) => state.auth)
   // const courses = useSelector(state => state.Mycourses);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   // const {reconLesson } = useSelector(state => state.Mycourses);
 
-
   console.log(
-    "From student dashboard",
+    'From student dashboard',
     user.user?.enrolledCourses.length > 1
       ? user.user?.enrolledCourses[1]?.courseId?.name
-      : user.user?.enrolledCourses[0]?.courseId?.name,
-  );
+      : user.user?.enrolledCourses[0]?.courseId?.name
+  )
   const greetings = (firstName) => {
-    return `Welcome ${firstName}!`;
-  };
+    return `Welcome ${firstName}!`
+  }
 
   // console.log("Lesson from recon ==>", reconLesson);
 
@@ -101,7 +99,7 @@ export const StudentPage = ({ stuData }) => {
         <div className={`row ps-3 ${styles.pus}`}>
           <div className="col-md-12">
             {stuData[0].firstName && (
-              <h2>{greetings(stuData[0].firstName.split(" ")[0])}</h2>
+              <h2>{greetings(stuData[0].firstName.split(' ')[0])}</h2>
             )}
             {stuData[0].subject && <h2>{stuData[0].subject}</h2>}
             <p>Explore the fun in learning💃</p>
@@ -110,7 +108,7 @@ export const StudentPage = ({ stuData }) => {
         <Link passHref href="/trial">
           <div
             className={`row ms-3 ${styles.push2e}`}
-            style={{ cursor: "pointer" }}
+            style={{ cursor: 'pointer' }}
           ></div>
         </Link>
         <div className={`row pt-5 ${styles.pointers}`}>
@@ -118,12 +116,12 @@ export const StudentPage = ({ stuData }) => {
             {stuData[0].firstName &&
               stuData[1].map((data, i) => (
                 <Link key={i} href={data.linkdata}>
-                  <a>{data.title}| </a>
+                  <a style={{ marginRight: '12px' }}>{`${data.title} `} | </a>
                 </Link>
               ))}
           </div>
         </div>
       </div>
     </Container>
-  );
-};
+  )
+}

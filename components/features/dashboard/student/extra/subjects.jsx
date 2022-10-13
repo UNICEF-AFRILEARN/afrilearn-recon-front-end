@@ -10,6 +10,7 @@ import { StudentPage } from './../studentHeropage'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchCourseDetailsInitiate } from '../../../../../redux/actions/subject'
 import FullpageLoader from '../../../../widgets/fullpageLoader/index'
+import SubHeading from './subHeading'
 
 let subj
 const Subjects = ({ subData }) => {
@@ -107,7 +108,7 @@ const Subjects = ({ subData }) => {
     // console.log(subData[0]);
     return (
       <>
-        <Container fluid id="subject" className="p-0">
+        <Container fluid className="p-0">
           <Row>
             <div>
               <HeaderHeropage
@@ -167,6 +168,7 @@ const Subjects = ({ subData }) => {
 
   return (
     <>
+      <SubHeading title="My Subject" />
       <div className="container">
         <div className={`row ${styles.mySubjecttt}`}>
           <SubDataJsx />

@@ -1,19 +1,19 @@
-import Image from "next/image";
-import SubHeading from "./subHeading";
-import styles from "./../../student/pastQuetion.module.css";
-import { useEffect, useState, useRef } from "react";
-import Slider from "react-slick";
-import Link from "next/link";
-import { useDispatch } from "react-redux";
-import { fetchPastQuestionInitiate } from "../../../../../redux/actions/subject";
+import Image from 'next/image'
+import SubHeading from './subHeading'
+import styles from './../../student/pastQuetion.module.css'
+import { useEffect, useState, useRef } from 'react'
+import Slider from 'react-slick'
+import Link from 'next/link'
+import { useDispatch } from 'react-redux'
+import { fetchPastQuestionInitiate } from '../../../../../redux/actions/subject'
 
 const PastQuestion = ({ subData }) => {
-  console.log(subData);
-  const dispatch = useDispatch();
-  const [subId, setSubId] = useState("");
+  console.log(subData)
+  const dispatch = useDispatch()
+  const [subId, setSubId] = useState('')
 
   const Slidery = () => {
-    const customeSlider = useRef();
+    const customeSlider = useRef()
 
     const settings = {
       infinite: true,
@@ -22,7 +22,7 @@ const PastQuestion = ({ subData }) => {
       autoplay: true,
       speed: 1500,
       autoplaySpeed: 1500,
-      cssEase: "linear",
+      cssEase: 'linear',
       initialSlide: 1,
       arrows: false,
       responsive: [
@@ -49,18 +49,18 @@ const PastQuestion = ({ subData }) => {
             initialSlide: 0,
             autoplay: true,
             speed: 5500,
-            cssEase: "linear",
+            cssEase: 'linear',
             infinite: true,
           },
         },
       ],
-    };
+    }
     useEffect(() => {
-      console.log(subId);
-      if (subId !== "") {
-        dispatch(fetchPastQuestionInitiate(subId));
+      console.log(subId)
+      if (subId !== '') {
+        dispatch(fetchPastQuestionInitiate(subId))
       }
-    }, [subId]);
+    }, [subId])
 
     return (
       <>
@@ -72,13 +72,13 @@ const PastQuestion = ({ subData }) => {
                 <Link
                   passHref
                   href={{
-                    pathname: "/dashboard/student/pastQuestion",
+                    pathname: '/dashboard/student/pastQuestion',
                     query: { Exam: data.pastQuestionTypes[0].name },
                   }}
                 >
                   <div
                     key={i}
-                    style={{ cursor: "pointer" }}
+                    style={{ cursor: 'pointer' }}
                     className={`pointer ${
                       data.pastQuestionTypes[0].categoryId % 2 !== 0
                         ? styles.containerList1
@@ -96,7 +96,7 @@ const PastQuestion = ({ subData }) => {
                       }`}
                     >
                       <Image
-                        alt={"logo image"}
+                        alt={'logo image'}
                         src={data.pastQuestionTypes[0].imageUrl}
                         width="100%"
                         height="100%"
@@ -112,24 +112,24 @@ const PastQuestion = ({ subData }) => {
                     </div>
                   </div>
                 </Link>
-              );
+              )
             })}
           </Slider>
         ) : (
-          <div style={{ display: "flex", flexWrap: "wrap" }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap' }}>
             {subData?.map((data, i) => {
               // console.log(data.pastQuestionTypes[0]);
               return (
                 <Link
                   passHref
                   href={{
-                    pathname: "/dashboard/student/pastQuestion",
+                    pathname: '/dashboard/student/pastQuestion',
                     query: { Exam: data.pastQuestionTypes[0].name },
                   }}
                 >
                   <div
                     key={i}
-                    style={{ cursor: "pointer" }}
+                    style={{ cursor: 'pointer' }}
                     className={`pointer ${
                       data.pastQuestionTypes[0].categoryId % 2 !== 0
                         ? styles.containerList1
@@ -147,7 +147,7 @@ const PastQuestion = ({ subData }) => {
                       }`}
                     >
                       <Image
-                        alt={"logo image"}
+                        alt={'logo image'}
                         src={data.pastQuestionTypes[0].imageUrl}
                         width="100%"
                         height="100%"
@@ -163,16 +163,16 @@ const PastQuestion = ({ subData }) => {
                     </div>
                   </div>
                 </Link>
-              );
+              )
             })}
           </div>
         )}
       </>
-    );
-  };
+    )
+  }
 
   return (
-    <div id="pastQuestions">
+    <div>
       <SubHeading title="Past Questions" />
       <div className={styles.container}>
         <section className="parnet-frag-color">
@@ -180,7 +180,7 @@ const PastQuestion = ({ subData }) => {
         </section>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default PastQuestion;
+export default PastQuestion
