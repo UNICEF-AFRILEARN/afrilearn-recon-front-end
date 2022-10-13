@@ -767,14 +767,16 @@ const Footer = () => {
               </Link>
             </li>
           </div>
-          <div className={`col-md-2 ${styles.lastt}`}>
+          <div className={`col-md-2 ms-lg-5 ${styles.lastt}`}>
             <li>
               <Link passHref href="/">
                 Terms of Service
               </Link>
             </li>
           </div>
-          <div className={`col-lg-2 col-md-4 col-sm-2 row ${styles.grided}`}>
+          <div
+            className={`col-lg-2 col-md-4 col-sm-2 ms-lg-5 ms-md-0 row ${styles.grided}`}
+          >
             <div style={{ width: '45px', padding: '0' }}>
               <Link passHref href="https://web.facebook.com/myAfrilearn">
                 <Image

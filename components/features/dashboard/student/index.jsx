@@ -67,6 +67,7 @@ const Dashboard = () => {
   const user_id = user.user?.enrolledCourses[0]
     ? user.user?.enrolledCourses[0].userId
     : user.user?.enrolledCourses[1].userId
+  console.log(reconLesson)
   useEffect(() => {
     dispatch(fetchGetWebInitiate(person_id, token))
     // dispatch(fetchLessonsInitiate());
@@ -97,36 +98,52 @@ const Dashboard = () => {
   return (
     <>
       <StudentHeropage data={personData} />
-      <div>
-        <SubHeading title="My Subject" />
+      <div id="subject">
         <Subjects
           subData={
             subject?.dashboardWeb?.enrolledCourse?.courseId.relatedSubjects
           }
         />
       </div>
-      <PastQuestion
-        subData={
-          subject?.dashboardWeb?.enrolledCourse?.courseId.relatedPastQuestions
-        }
-      />
-      <UnfinshedVideos classData={subject?.unfinishedStore?.unFinishedVideos} />
-      <MyFavs classData={subject?.favourite?.favouriteVideos} />
-      <TopInClasses
-        classData={subject?.topInclass?.lessons}
-        classed={personData.personClass}
-      />
-      <PerfomanceSumm />
+      <div id="pastQuestions">
+        <PastQuestion
+          subData={
+            subject?.dashboardWeb?.enrolledCourse?.courseId.relatedPastQuestions
+          }
+        />
+      </div>
+      <div id="resumePlaying">
+        <UnfinshedVideos
+          classData={subject?.unfinishedStore?.unFinishedVideos}
+        />
+      </div>
+      <div id="favourite">
+        <MyFavs classData={subject?.favourite?.favouriteVideos} />
+      </div>
+      <div id="topTen">
+        {' '}
+        <TopInClasses
+          classData={subject?.topInclass?.lessons}
+          classed={personData.personClass}
+        />
+      </div>
+      <div id="performance">
+        <PerfomanceSumm />
+      </div>
       <GetSolution />
-      <ClassRoom data={subject?.classroom?.classMembership} />
-      <div className={styles.recomendationmainwrapper}>
+      <div id="classroom">
+        <ClassRoom data={subject?.classroom?.classMembership} />
+      </div>
+      <div id="recommendations" className={styles.recomendationmainwrapper}>
         <Recommended
           recommend={reconLesson?.recommendation}
           unicefRecon={unicefRecon}
           lessons={lessons}
         />
       </div>
-      <RecentActivity activities={activities?.recentActivities} />
+      <div id="recentActivities">
+        <RecentActivity activities={activities?.recentActivities} />
+      </div>
     </>
   )
 }
