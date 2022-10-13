@@ -95,8 +95,8 @@ export const fetchLessonsInitiate = () =>  {
     return function (dispatch) {
         dispatch(fetchLessonStart())
         axios
-        // .get('https://afrilearn-backend-01.herokuapp.com/api/v1/lessons')
-        .get('http://localhost:5000/api/v1/lessons')
+        .get('https://afrilearn-backend-01.herokuapp.com/api/v1/lessons')
+        // .get('http://localhost:5000/api/v1/lessons')
         .then((res) => {
             console.log("Hello from Lessons API")
             console.log("From Lessons API =>", res.data.data)
@@ -159,7 +159,8 @@ export const fetchUnicefReconInitiate = (schoollevel, reco_subject, lessonId) =>
         {   
             schoollevel: "Primary One",
             subject: "Agricultural Science",
-            lesson: "6012bdcecfe09249249f7e9c" 
+            lesson: "6012bdcecfe09249249f7e9c",
+            length: 3
         })
         .then((res) => {
             dispatch(fetchUnicefRecoSuccess(res.data))

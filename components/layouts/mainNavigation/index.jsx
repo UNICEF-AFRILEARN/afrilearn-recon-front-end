@@ -20,6 +20,7 @@ import Image from 'next/image'
 const Navigation = () => {
   const router = useRouter()
   const dispatch = useDispatch()
+  const [showList, setShowList] = useState(true)
   const [isLoggedIn, setIsLoggedIn] = useState(true)
   const [userRole, setUserRole] = useState('')
   const { user, registerUser } = useSelector((state) => state.auth)
@@ -357,7 +358,7 @@ const Navigation = () => {
                   >
                     <BiDownArrow size={15} className={styles.profileavatar2} />
                   </Link>
-                  <div className={styles.linkswrapper}>
+                  {showList === true && <div className={styles.linkswrapper}>
                     <a href="/payment">Add New class</a>
                     <Link href="/dashboard/socialfeeds">
                       <a>My Feeds</a>
@@ -367,7 +368,7 @@ const Navigation = () => {
                     </Link>
                     <a href="#">Share Feedback</a>
                     <a onClick={handleLogout}>Log out</a>
-                  </div>
+                  </div>}
                 </div>
               </div>
             </div>

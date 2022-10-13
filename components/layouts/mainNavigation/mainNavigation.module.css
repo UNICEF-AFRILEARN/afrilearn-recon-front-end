@@ -121,20 +121,22 @@
 
 .iconswrapper {
   position: relative;
-  display: inline-block;
+  display: block;
 }
 
-.iconswrapper:hover .linkswrapper {
+/* .iconswrapper:hover .linkswrapper {
   display: block;
   right: 0;
   left: auto;
-}
+} */
 .iconswrapper:hover .iconswrapper {
   background-color: #3e8e41;
 }
 
 .linkswrapper {
-  display: none;
+  display: block;
+  right: 0;
+  left: auto;
   position: absolute;
   background-color: #f1f1f1;
   min-width: 160px;
