@@ -111,7 +111,7 @@ const Subjects = ({ subData }) => {
           <Row>
             <div>
               <HeaderHeropage
-                classes={subject.dashboardWeb.enrolledCourse.courseId.name}
+                classes={subject.dashboardWeb.enrolledCourse?.courseId.name}
               />
             </div>
             <div className="p-5 pt-0 pb-1">

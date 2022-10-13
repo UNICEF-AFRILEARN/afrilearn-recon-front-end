@@ -1,26 +1,25 @@
-import Image from "next/image";
-import styles from "./../../student/topInClass.module.css";
-import { useState, useEffect } from "react";
-import { Modal, Button } from "react-bootstrap";
-import Link from "next/link";
-import { useSelector } from "react-redux";
+import Image from 'next/image'
+import styles from './../../student/topInClass.module.css'
+import { useState, useEffect } from 'react'
+import { Modal, Button } from 'react-bootstrap'
+import Link from 'next/link'
+import { useSelector } from 'react-redux'
 
 const recommendation = ({ dataRecon, recData, recIndex }) => {
-  const [show, setShow] = useState(false);
-  const toggleModal = () => setShow(!show);
+  const [show, setShow] = useState(false)
+  const toggleModal = () => setShow(!show)
 
   // const filterRecon = () => {
 
   // }
 
-  
   return (
     <>
       {recData?.videourl !== undefined && (
         <div className={`${styles.contList} ${styles.contRec}`}>
           <div className={`${styles.contList}`}>
             <Image
-              alt={"afrilearn marketing video"}
+              alt={'afrilearn marketing video'}
               src="/assets/img/thumbnail.jpg"
               width={240}
               height={160}
@@ -28,7 +27,7 @@ const recommendation = ({ dataRecon, recData, recIndex }) => {
             />
             <div className={styles.rect}>
               <Image
-                alt={"afrilearn marketing video"}
+                alt={'afrilearn marketing video'}
                 src={`/assets/img/features/dashboard/student/Rectangle 7862.png`}
                 width={240}
                 height={160}
@@ -37,7 +36,7 @@ const recommendation = ({ dataRecon, recData, recIndex }) => {
 
             <div className={styles.play_pause} onClick={toggleModal}>
               <Image
-                alt={"afrilearn marketing video"}
+                alt={'afrilearn marketing video'}
                 src={`/assets/img/features/dashboard/student/Play.png`}
                 width={35}
                 height={35}
@@ -54,7 +53,7 @@ const recommendation = ({ dataRecon, recData, recIndex }) => {
               <button className={styles.buttonStyle} onClick={toggleModal}>
                 <div className={styles.buttonStyleImage}>
                   <Image
-                    alt={"afrilearn marketing video"}
+                    alt={'afrilearn marketing video'}
                     src={`/assets/img/features/dashboard/student/arrowhead.png`}
                     width={13}
                     height={13}
@@ -131,7 +130,7 @@ const recommendation = ({ dataRecon, recData, recIndex }) => {
         </div>
       )} */}
     </>
-  );
-};
+  )
+}
 
-export default recommendation;
+export default recommendation

@@ -199,7 +199,7 @@ const Navigation = () => {
                     />
                   ) : (
                     <BsPersonCircle
-                      size={20}
+                      size={35}
                       className={styles.profileavatar}
                     />
                   )}
@@ -210,7 +210,7 @@ const Navigation = () => {
                     href="/dashboard/teacher/teacherProfile"
                     className="btn-log-in-mobile"
                   >
-                    <BiDownArrow size={20} className={styles.profileavatar2} />
+                    <BiDownArrow size={15} className={styles.profileavatar2} />
                   </Link>
                   <div className={styles.linkswrapper}>
                     <a href="/payment">Add New class</a>
@@ -271,7 +271,7 @@ const Navigation = () => {
                     />
                   ) : (
                     <BsPersonCircle
-                      size={20}
+                      size={35}
                       className={styles.profileavatar}
                     />
                   )}
@@ -282,7 +282,7 @@ const Navigation = () => {
                     href="/dashboard/student/studentProfile"
                     className="btn-log-in-mobile"
                   >
-                    <BiDownArrow size={20} className={styles.profileavatar2} />
+                    <BiDownArrow size={15} className={styles.profileavatar2} />
                   </Link>
                   <div className={styles.linkswrapper}>
                     <a href="/payment">Add New class</a>
@@ -344,7 +344,7 @@ const Navigation = () => {
                     />
                   ) : (
                     <BsPersonCircle
-                      size={20}
+                      size={35}
                       className={styles.profileavatar}
                     />
                   )}
@@ -355,7 +355,7 @@ const Navigation = () => {
                     href="/school/schoolProfile"
                     className="btn-log-in-mobile"
                   >
-                    <BiDownArrow size={20} className={styles.profileavatar2} />
+                    <BiDownArrow size={15} className={styles.profileavatar2} />
                   </Link>
                   <div className={styles.linkswrapper}>
                     <a href="/payment">Add New class</a>

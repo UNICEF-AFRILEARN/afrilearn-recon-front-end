@@ -12,9 +12,16 @@
   top: -135px;
   position: relative;
 }
+.teacherProfileGrid1 .studentProfileGrid1 {
+  top: -26px;
+  position: relative;
+}
+
 .studentProfileGrid1 img {
-  border: solid 1px red;
   margin-left: 21px !important;
+}
+.teacherProfileGrid1 .studentProfileGrid1 img {
+  margin-left: 0px !important;
 }
 .classlink {
   cursor: pointer;
