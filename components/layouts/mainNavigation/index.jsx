@@ -20,11 +20,13 @@ import Image from 'next/image'
 const Navigation = () => {
   const router = useRouter()
   const dispatch = useDispatch()
-  const [showList, setShowList] = useState(true)
+  const [showList, setShowList] = useState(false)
   const [isLoggedIn, setIsLoggedIn] = useState(true)
   const [userRole, setUserRole] = useState('')
   const { user, registerUser } = useSelector((state) => state.auth)
 
+
+  
   let localData
   // const checkoLocal = () => {
   //   if (typeof window !== "undefined") {
@@ -38,6 +40,10 @@ const Navigation = () => {
 
   // }
 
+  const handleShow = () => {
+    setShowList(!showList)
+    // console.log("I am click")
+  }
   const handleLogout = async () => {
     persistor.purge()
     // router.push({
@@ -133,22 +139,28 @@ const Navigation = () => {
                   )}
                 </Link>
                 <div className={styles.iconswrapper}>
-                  <Link
-                    passHref
-                    href="/dashboard/student/studentProfile"
+                  {/* <Link
+                    // passHref
+                    // href="/dashboard/student/studentProfile"
                     className="btn-log-in-mobile"
-                  >
-                    <BiDownArrow size={15} className={styles.profileavatar2} />
-                  </Link>
-                  <div className={styles.linkswrapper}>
-                    <a href="/payment">Add New class</a>
+                    
+                  > */}
+                    <BiDownArrow 
+                    size={15} 
+                    className={styles.profileavatar2}
+                    onClick={handleShow} 
+                    />
+                  {/* </Link> */}
+                  {showList === true && <div className={styles.linkswrapper}>
+                    <a 
+                    href="/payment">Add New class</a>
                     <a href="#">My Feeds</a>
                     <Link href="/dashboard/student/studentProfile">
                       <a>Manage Profile</a>
                     </Link>
                     <a href="#">Share Feedback</a>
                     <a onClick={handleLogout}>Log out</a>
-                  </div>
+                  </div>}
                 </div>
               </div>
             </div>
@@ -206,14 +218,18 @@ const Navigation = () => {
                   )}
                 </Link>
                 <div className={styles.iconswrapper}>
-                  <Link
-                    passHref
-                    href="/dashboard/teacher/teacherProfile"
+                  {/* <Link
+                    // passHref
+                    // href="/dashboard/teacher/teacherProfile"
                     className="btn-log-in-mobile"
-                  >
-                    <BiDownArrow size={15} className={styles.profileavatar2} />
-                  </Link>
-                  <div className={styles.linkswrapper}>
+                  > */}
+                    <BiDownArrow 
+                    size={15}
+                    onClick={handleShow}
+                    className={styles.profileavatar2} 
+                    />
+                  {/* </Link> */}
+                  {showList === true && <div className={styles.linkswrapper}>
                     <a href="/payment">Add New class</a>
                     <Link href="/dashboard/socialfeeds">
                       <a>My Feeds</a>
@@ -223,7 +239,7 @@ const Navigation = () => {
                     </Link>
                     <a href="#">Share Feedback</a>
                     <a onClick={handleLogout}>Log out</a>
-                  </div>
+                  </div>}
                 </div>
               </div>
             </div>
@@ -278,14 +294,18 @@ const Navigation = () => {
                   )}
                 </Link>
                 <div className={styles.iconswrapper}>
-                  <Link
-                    passHref
-                    href="/dashboard/student/studentProfile"
+                  {/* <Link
+                    // passHref
+                    // href="/dashboard/student/studentProfile"
                     className="btn-log-in-mobile"
-                  >
-                    <BiDownArrow size={15} className={styles.profileavatar2} />
-                  </Link>
-                  <div className={styles.linkswrapper}>
+                  > */}
+                    <BiDownArrow 
+                    size={15} 
+                    className={styles.profileavatar2}
+                    onClick={handleShow} 
+                    />
+                  {/* </Link> */}
+                  {showList === true && <div className={styles.linkswrapper}>
                     <a href="/payment">Add New class</a>
 
                     <Link href="/dashboard/socialfeeds">
@@ -296,7 +316,7 @@ const Navigation = () => {
                     </Link>
                     <a href="#">Share Feedback</a>
                     <a onClick={handleLogout}>Log out</a>
-                  </div>
+                  </div>}
                 </div>
               </div>
             </div>
@@ -351,13 +371,17 @@ const Navigation = () => {
                   )}
                 </Link>
                 <div className={styles.iconswrapper}>
-                  <Link
-                    passHref
-                    href="/school/schoolProfile"
+                  {/* <Link
+                    // passHref
+                    // href="/school/schoolProfile"
                     className="btn-log-in-mobile"
-                  >
-                    <BiDownArrow size={15} className={styles.profileavatar2} />
-                  </Link>
+                  > */}
+                    <BiDownArrow 
+                    size={15} 
+                    className={styles.profileavatar2}
+                    onClick={handleShow}
+                    />
+                  {/* </Link> */}
                   {showList === true && <div className={styles.linkswrapper}>
                     <a href="/payment">Add New class</a>
                     <Link href="/dashboard/socialfeeds">

@@ -134,7 +134,7 @@
 }
 
 .linkswrapper {
-  display: block;
+  /* display: block; */
   right: 0;
   left: auto;
   position: absolute;
