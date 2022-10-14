@@ -82,7 +82,7 @@ const QuizReview = () => {
               </div>
               <div>{Quizdata?.diagram}</div>
               <div className={styles.options}>
-                {Quizdata?.option[0] && (
+                {Quizdata?.option && Quizdata?.option[0] && (
                   <div className={styles.quizOption}>
                     <button
                       style={{
@@ -98,7 +98,7 @@ const QuizReview = () => {
                     </button>
                   </div>
                 )}
-                {Quizdata?.option[1] && (
+                {Quizdata?.option && Quizdata?.option[1] && (
                   <div className={styles.quizOption}>
                     <button
                       style={{
@@ -114,7 +114,7 @@ const QuizReview = () => {
                     </button>
                   </div>
                 )}
-                {Quizdata?.option[2] && (
+                {Quizdata?.option && Quizdata?.option[2] && (
                   <div className={styles.quizOption}>
                     <button
                       style={{
@@ -130,7 +130,7 @@ const QuizReview = () => {
                     </button>
                   </div>
                 )}
-                {Quizdata?.option[3] && (
+                {Quizdata?.option && Quizdata?.option[3] && (
                   <div className={styles.quizOption}>
                     <button
                       style={{
@@ -146,7 +146,7 @@ const QuizReview = () => {
                     </button>
                   </div>
                 )}
-                {Quizdata?.option[4] && (
+                {Quizdata?.option && Quizdata?.option[4] && (
                   <div className={styles.quizOption}>
                     <button
                       style={{
