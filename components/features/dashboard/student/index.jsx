@@ -475,9 +475,12 @@ const ClassRoom = ({ data }) => {
                   ) : (
                     <Button
                       clasName="w-25"
-                      style={{ background: 'gray !important' }}
+                      style={{
+                        background: 'gray !important',
+                        cursor: 'not-allowed',
+                      }}
                     >
-                      Rejected
+                      {capitalize(dta?.status)}
                     </Button>
                   )}
                   {/* // : ( //{' '}
