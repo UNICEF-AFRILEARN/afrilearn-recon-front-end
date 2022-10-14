@@ -26,37 +26,37 @@ const QuizReview = () => {
   const [nextQues, setNextQues] = React.useState(1)
   const [optionSelected, setOptionSelected] = React.useState(null)
   const [correctOption, setCorrectOption] = React.useState(null)
-  const hata = subject.quizAnswers.results?.results.filter(
+  const hata = subject?.quizAnswers.results?.results.filter(
     (data) => data.question_id === questions[+nextQues - 1]?.id
   )
-  const jata = subject.answers.results?.results.filter(
-    (data) => data.question_id === questions[+nextQues - 1]?.question_id
+  const jata = subject?.answers?.results?.results.filter(
+    (data) => data?.question_id === questions[+nextQues - 1]?.question_id
   )
 
   React.useEffect(() => {
-    setOptionSelected(
-      !quary ? hata[0].option_selected : jata[0].option_selected
-    ),
-      setCorrectOption(!quary ? hata[0].correct_option : jata[0].correct_option)
+    // setOptionSelected(
+    //   !quary ? hata[0]?.option_selected : jata[0]?.option_selected
+    // ),
+      // setCorrectOption(!quary ? hata[0]?.correct_option : jata[0]?.correct_option)
   }, [nextQues])
-  const Quizdata = {
-    subject: quary ? `${quary} Past Qustion Result` : gata,
-    questionNum: `Question ${nextQues}`,
-    question: questions && questions[+nextQues - 1].question,
-    option: questions && questions[+nextQues - 1].options,
-  }
+  // const Quizdata = {
+  //   subject: quary ? `${quary} Past Qustion Result` : gata,
+  //   questionNum: `Question ${nextQues}`,
+  //   question: questions && questions[+nextQues - 1]?.question,
+  //   option: questions && questions[+nextQues - 1]?.options,
+  // }
   const NoArray = Array.from(Array(questions?.length).keys(), (n) => n + 1)
   const allAnswers = !quary
-    ? subject.quizAnswers.results?.results
-    : subject.answers.results.results
+    ? subject?.quizAnswers?.results?.results
+    : subject?.answers?.results?.results
   const markOptions = (i) => {
-    const jata = subject.answers.results?.results.filter(
+    const jata = subject?.answers?.results?.results.filter(
       (data) =>
-        subject.pastQuestionQue[0].question[i].question_id === data.question_id
+        subject?.pastQuestionQue[0]?.question[i]?.question_id === data?.question_id
     )
     return jata[0]
   }
-  // console.log(optionSelected)
+  // console.log("optionSelected", Quizdata)
   // console.log(correctOption)
   return (
     <>
@@ -72,17 +72,17 @@ const QuizReview = () => {
           <>
             <div className={`row ${styles.QuizNumber}`}>
               <div className={styles.QuizNumberSubject}>
-                <h4>{Quizdata?.subject}</h4>
+                {/* <h4>{Quizdata?.subject}</h4> */}
               </div>
               <div className={styles.QuizNumberQuestionNum}>
-                <p>{Quizdata?.questionNum}</p>
+                {/* <p>{Quizdata?.questionNum}</p> */}
               </div>
               <div className={styles.QuizNumberQuestion}>
-                <p dangerouslySetInnerHTML={{ __html: Quizdata?.question }}></p>
+                {/* <p dangerouslySetInnerHTML={{ __html: Quizdata?.question }}></p> */}
               </div>
-              <div>{Quizdata?.diagram}</div>
+              {/* <div>{Quizdata?.diagram}</div> */}
               <div className={styles.options}>
-                {Quizdata?.option[0] && (
+                {/* {Quizdata?.option && Quizdata?.option[0] && ( */}
                   <div className={styles.quizOption}>
                     <button
                       style={{
@@ -94,11 +94,11 @@ const QuizReview = () => {
                             : '#FFFFFF',
                       }}
                     >
-                      A . {Quizdata?.option[0]}
+                      {/* A . {Quizdata?.option[0]} */}
                     </button>
                   </div>
-                )}
-                {Quizdata?.option[1] && (
+                {/* )} */}
+                {/* {Quizdata?.option && Quizdata?.option[1] && ( */}
                   <div className={styles.quizOption}>
                     <button
                       style={{
@@ -110,11 +110,11 @@ const QuizReview = () => {
                             : '#FFFFFF',
                       }}
                     >
-                      B . {Quizdata?.option[1]}
+                      {/* B . {Quizdata?.option[1]} */}
                     </button>
                   </div>
-                )}
-                {Quizdata?.option[2] && (
+                {/* )} */}
+                {/* {Quizdata?.option && Quizdata?.option[2] && ( */}
                   <div className={styles.quizOption}>
                     <button
                       style={{
@@ -126,11 +126,11 @@ const QuizReview = () => {
                             : '#FFFFFF',
                       }}
                     >
-                      C . {Quizdata?.option[2]}
+                      {/* C . {Quizdata?.option[2]} */}
                     </button>
                   </div>
-                )}
-                {Quizdata?.option[3] && (
+                {/* )} */}
+                {/* {Quizdata?.option && Quizdata?.option[3] && ( */}
                   <div className={styles.quizOption}>
                     <button
                       style={{
@@ -142,11 +142,11 @@ const QuizReview = () => {
                             : '#FFFFFF',
                       }}
                     >
-                      D . {Quizdata?.option[3]}
+                      {/* D . {Quizdata?.option[3]} */}
                     </button>
                   </div>
-                )}
-                {Quizdata?.option[4] && (
+                {/* )} */}
+                {/* {Quizdata?.option && Quizdata?.option[4] && ( */}
                   <div className={styles.quizOption}>
                     <button
                       style={{
@@ -158,10 +158,10 @@ const QuizReview = () => {
                             : '#FFFFFF',
                       }}
                     >
-                      E . {Quizdata?.option[4]}
+                      {/* E . {Quizdata?.option[4]} */}
                     </button>
                   </div>
-                )}
+                {/* )} */}
               </div>
             </div>
           </>
@@ -223,14 +223,14 @@ const QuizReview = () => {
                 <div
                   key={i}
                   className={`col-md-3 ${styles.Quiznumber}`}
-                  style={{
-                    background:
-                      allAnswers[i]?.status === 'correct'
-                        ? '#00D9B6'
-                        : allAnswers[i].status === 'incorrect'
-                        ? '#FF4939'
-                        : '#FFB600',
-                  }}
+                  // style={{
+                  //   background:
+                  //     allAnswers[i]?.status === 'correct'
+                  //       ? '#00D9B6'
+                  //       : allAnswers[i].status === 'incorrect'
+                  //       ? '#FF4939'
+                  //       : '#FFB600',
+                  // }}
                   onClick={() => {
                     setNextQues(no)
                   }}
