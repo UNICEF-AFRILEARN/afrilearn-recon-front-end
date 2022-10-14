@@ -473,13 +473,7 @@ const ClassRoom = ({ data }) => {
                       {/* </Row> */}
                     </Link>
                   ) : (
-                    <Button
-                      clasName="w-25"
-                      style={{
-                        background: 'gray !important',
-                        cursor: 'not-allowed',
-                      }}
-                    >
+                    <Button className={` ${styles.graybutton}`}>
                       {capitalize(dta?.status)}
                     </Button>
                   )}

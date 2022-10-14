@@ -21,7 +21,7 @@ const QuizResult = () => {
   let quary = router.query[0]
   // console.log(user);
   // console.log(quary ? true : false);
-  // console.log(subject);
+  console.log(subject)
   const correct = quary
     ? subject.answers.results?.numberOfCorrectAnswers
     : subject?.quizAnswers?.results?.numberOfCorrectAnswers

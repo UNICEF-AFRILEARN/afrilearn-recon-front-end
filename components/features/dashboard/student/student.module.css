@@ -364,6 +364,11 @@
   border-radius: 9.72141px;
 }
 
+.graybutton {
+  background: gray !important;
+  cursor: not-allowed;
+}
+
 @media screen and (min-width: 1200px) {
   .dashboardFirstSection,
   .dashboardFirstSection4,

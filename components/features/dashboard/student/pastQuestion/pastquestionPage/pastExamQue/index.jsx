@@ -1,32 +1,32 @@
-import Image from "next/image";
-import { Button, Col, Container, Form, Modal, Row } from "react-bootstrap";
-import styles from "./passtExamQue.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import React, { useEffect, useState } from "react";
-import Timer from "react-compound-timer";
-import { Progress } from "reactstrap";
-import Swal from "sweetalert2";
+import Image from 'next/image'
+import { Button, Col, Container, Form, Modal, Row } from 'react-bootstrap'
+import styles from './passtExamQue.module.css'
+import { useDispatch, useSelector } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import Timer from 'react-compound-timer'
+import { Progress } from 'reactstrap'
+import Swal from 'sweetalert2'
 //import Speech from "react-speech";
 import {
   inputChange,
   submitLessonQuizResult,
   submitPastQuestionProgress,
   submitPastQuestionResult,
-} from "../../../../../../../redux/actions/subject";
-import { useRouter } from "next/router";
-import Link from "next/link";
+} from '../../../../../../../redux/actions/subject'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 const ExamQuestion = () => {
-  const subject = useSelector((state) => state.mySubjectCourse);
+  const subject = useSelector((state) => state.mySubjectCourse)
 
-  const router = useRouter();
+  const router = useRouter()
   const fata =
     subject.dashboardWeb.enrolledCourse?.courseId.relatedPastQuestions.filter(
-      (data) => data.pastQuestionTypes[0].name === router.query[0],
-    );
-  const gata = fata && fata[0]?.pastQuestionTypes[0].categoryId;
+      (data) => data.pastQuestionTypes[0].name === router.query[0]
+    )
+  const gata = fata && fata[0]?.pastQuestionTypes[0].categoryId
 
-  subject.pastQuestionQue[0]?.subject_details.exam_year;
+  subject.pastQuestionQue[0]?.subject_details.exam_year
   const sub_data = {
     questions: subject.pastQuestionQue[0]?.questions,
     subject: subject.pastQuestionQue[0]?.subject_details.subject,
@@ -37,51 +37,51 @@ const ExamQuestion = () => {
     motivation: subject.pastQuestionQue[0]?.motivations,
     category: gata,
     pastQuestion: true,
-  };
-  return <ExamQuestionPassage sub_dat={sub_data} />;
-};
-export default ExamQuestion;
+  }
+  return <ExamQuestionPassage sub_dat={sub_data} />
+}
+export default ExamQuestion
 export const ExamQuestionPassage = ({ sub_dat }) => {
-  const router = useRouter();
-  const dispatch = useDispatch();
-  const subject = useSelector((state) => state.mySubjectCourse);
-  const { user } = useSelector((state) => state.auth);
-  const token = user?.token;
-  const tot_numb = sub_dat.questions?.length;
+  const router = useRouter()
+  const dispatch = useDispatch()
+  const subject = useSelector((state) => state.mySubjectCourse)
+  const { user } = useSelector((state) => state.auth)
+  const token = user?.token
+  const tot_numb = sub_dat.questions?.length
   const NoArray = Array.from(
     Array(sub_dat.questions?.length).keys(),
-    (n) => n + 1,
-  );
+    (n) => n + 1
+  )
 
-  const [nextQues, setNextQues] = useState(1);
-  const [nextAns, setNextAns] = useState({});
-  const [show, setShow] = useState(false);
-  const sub_que = sub_dat.questions && sub_dat.questions[+nextQues - 1];
-  const queNumber = +nextQues - 1;
-  const handleClose = () => setShow(false);
+  const [nextQues, setNextQues] = useState(1)
+  const [nextAns, setNextAns] = useState({})
+  const [show, setShow] = useState(false)
+  const sub_que = sub_dat.questions && sub_dat.questions[+nextQues - 1]
+  const queNumber = +nextQues - 1
+  const handleClose = () => setShow(false)
   const handleOpen = () => {
-    setNextQues(nextQues);
-    setShow(true);
-  };
-  const timed = sub_dat.duration * 1000 * 60;
-  const speedRange1 = timed / 4;
-  const speedRange2 = (timed / 4) * 2;
-  const speedRange3 = (timed / 4) * 3;
-  const speed = ((timed / 4) * 1) / 60000;
+    setNextQues(nextQues)
+    setShow(true)
+  }
+  const timed = sub_dat.duration * 1000 * 60
+  const speedRange1 = timed / 4
+  const speedRange2 = (timed / 4) * 2
+  const speedRange3 = (timed / 4) * 3
+  const speed = ((timed / 4) * 1) / 60000
 
-  const [Amodals, setAModal] = useState(false);
-  const [cray, setCray] = useState(false);
-  const [modal1, setModal1] = useState(false);
-  const [motivationItemNo, setMotivationItemNo] = useState(0);
-  const [motivationInterval, setMotivationInterval] = useState(0);
-  const [motivateGoodPerformance, setMotivateGoodPerformance] = useState(false);
-  const [correctAnswers, setCorrectAnswers] = useState([]);
+  const [Amodals, setAModal] = useState(false)
+  const [cray, setCray] = useState(false)
+  const [modal1, setModal1] = useState(false)
+  const [motivationItemNo, setMotivationItemNo] = useState(0)
+  const [motivationInterval, setMotivationInterval] = useState(0)
+  const [motivateGoodPerformance, setMotivateGoodPerformance] = useState(false)
+  const [correctAnswers, setCorrectAnswers] = useState([])
   // const [inCorrectAnswers, setInCorrectAnswers] = useState([]);
-  const [skipQue, setSkipQue] = useState([]);
-  const [allAnswers, setAllAnswers] = useState({});
-  const [submittedAnswer, setSubmittedAnswer] = useState([]);
-  const [aveSpeed, setAveSpeed] = useState([]);
-  const ansNumber = Object.keys(allAnswers).length;
+  const [skipQue, setSkipQue] = useState([])
+  const [allAnswers, setAllAnswers] = useState({})
+  const [submittedAnswer, setSubmittedAnswer] = useState([])
+  const [aveSpeed, setAveSpeed] = useState([])
+  const ansNumber = Object.keys(allAnswers).length
 
   useEffect(() => {
     for (let i = 0; i < sub_dat?.questions?.length; i++) {
@@ -91,244 +91,244 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
           : sub_dat.questions[i].id,
         option_selected: -1,
         correct_option: sub_dat.questions[i].correct_option,
-        status: "skipped",
-      };
+        status: 'skipped',
+      }
       setSubmittedAnswer((prev) => {
-        prev[i] = response;
-        return [...prev];
-      });
+        prev[i] = response
+        return [...prev]
+      })
       setSkipQue((prev) => {
-        prev[i] = i;
-        return [...prev];
-      });
+        prev[i] = i
+        return [...prev]
+      })
     }
-  }, []);
+  }, [])
   const handleNextQuestion = async (answer) => {
     if (sub_dat.motivation?.length) {
-      const CheckPoint25Percent = Math.round(0.25 * +sub_dat.questionNo);
-      const CheckPoint50Percent = Math.round(0.5 * +sub_dat.questionNo);
-      const CheckPoint75Percent = Math.round(0.75 * +sub_dat.questionNo);
-      const performanceCheckPoint = Math.round(CheckPoint50Percent / 2);
+      const CheckPoint25Percent = Math.round(0.25 * +sub_dat.questionNo)
+      const CheckPoint50Percent = Math.round(0.5 * +sub_dat.questionNo)
+      const CheckPoint75Percent = Math.round(0.75 * +sub_dat.questionNo)
+      const performanceCheckPoint = Math.round(CheckPoint50Percent / 2)
 
       if (ansNumber === CheckPoint25Percent) {
-        setMotivationInterval(0);
-        setMotivateGoodPerformance(false);
-        let itemNo = Math.floor(Math.random() * 5 + 1) - 1;
-        setMotivationItemNo(itemNo);
-        setModal1(true);
+        setMotivationInterval(0)
+        setMotivateGoodPerformance(false)
+        let itemNo = Math.floor(Math.random() * 5 + 1) - 1
+        setMotivationItemNo(itemNo)
+        setModal1(true)
         setTimeout(function () {
-          setModal1(false);
-        }, 4000);
+          setModal1(false)
+        }, 4000)
       }
 
       if (
         ansNumber === CheckPoint50Percent &&
         correctAnswers.length >= performanceCheckPoint
       ) {
-        setMotivationInterval(1);
-        setMotivateGoodPerformance(true);
-        let itemNo = Math.floor(Math.random() * 5 + 1) - 1;
-        setMotivationItemNo(itemNo);
-        setModal1(true);
+        setMotivationInterval(1)
+        setMotivateGoodPerformance(true)
+        let itemNo = Math.floor(Math.random() * 5 + 1) - 1
+        setMotivationItemNo(itemNo)
+        setModal1(true)
         setTimeout(function () {
-          setModal1(false);
-        }, 4000);
+          setModal1(false)
+        }, 4000)
       } else if (ansNumber === CheckPoint50Percent) {
-        setMotivationInterval(1);
-        setMotivateGoodPerformance(false);
-        let itemNo = Math.floor(Math.random() * 5 + 1) - 1;
-        setMotivationItemNo(itemNo);
-        setModal1(true);
+        setMotivationInterval(1)
+        setMotivateGoodPerformance(false)
+        let itemNo = Math.floor(Math.random() * 5 + 1) - 1
+        setMotivationItemNo(itemNo)
+        setModal1(true)
         setTimeout(function () {
-          setModal1(false);
-        }, 4000);
+          setModal1(false)
+        }, 4000)
       }
 
       if (ansNumber === CheckPoint75Percent) {
-        dispatch(inputChange("motivationInterval", 2));
-        setMotivateGoodPerformance(false);
-        let itemNo = Math.floor(Math.random() * 5 + 1) - 1;
-        dispatch(inputChange("motivationItemNo", itemNo));
-        setModal1(true);
+        dispatch(inputChange('motivationInterval', 2))
+        setMotivateGoodPerformance(false)
+        let itemNo = Math.floor(Math.random() * 5 + 1) - 1
+        dispatch(inputChange('motivationItemNo', itemNo))
+        setModal1(true)
         setTimeout(function () {
-          setModal1(false);
-        }, 4000);
+          setModal1(false)
+        }, 4000)
       }
     }
 
     // await handleCorrectAnswerCheck(answer);
-    await handleSaveAnswer(answer);
-    await prepareSubmittedAnswer(answer);
+    await handleSaveAnswer(answer)
+    await prepareSubmittedAnswer(answer)
     // if (handleLastQuestionCheck()) {
     //
     // }
     if (nextQues < sub_dat.questions.length) {
-      setNextQues(nextQues + 1);
+      setNextQues(nextQues + 1)
     } else {
-      handleClosure();
+      handleClosure()
     }
-    return true;
-  };
+    return true
+  }
   const decodeEntities = (function () {
     // this prevents any overhead from creating the object each time
     // const element = document.createElement("div");
 
     function decodeHTMLEntities(str) {
-      if (str && typeof str === "string") {
+      if (str && typeof str === 'string') {
         // strip script/html tags
-        str = str.replace(/<script[^>]*>([\S\s]*?)<\/script>/gim, "");
-        str = str.replace(/<\/?\w(?:[^"'>]|"[^"]*"|'[^']*')*>/gim, "");
-        element.innerHTML = str;
-        str = element.textContent;
-        element.textContent = "";
+        str = str.replace(/<script[^>]*>([\S\s]*?)<\/script>/gim, '')
+        str = str.replace(/<\/?\w(?:[^"'>]|"[^"]*"|'[^']*')*>/gim, '')
+        element.innerHTML = str
+        str = element.textContent
+        element.textContent = ''
       }
 
-      return str;
+      return str
     }
-    return decodeHTMLEntities;
-  })();
+    return decodeHTMLEntities
+  })()
   const handleGrade = (getEmoji = false, getDefinition = false) => {
     let average = Math.round(
-      (correctAnswers.length / sub_dat.questions?.length) * 100,
-    );
+      (correctAnswers.length / sub_dat.questions?.length) * 100
+    )
     //    let grade = 'Unknown';
-    let definition = "Unknown Comment";
-    let remark = "Unknown Remark";
+    let definition = 'Unknown Comment'
+    let remark = 'Unknown Remark'
     let emoji = (
       <Image
-        src={"/assets/img/features/dashboard/student/f9.gif"}
+        src={'/assets/img/features/dashboard/student/f9.gif'}
         alt="logo"
         width={26}
         height={26}
       />
-    );
+    )
 
     if (average >= 75) {
       // grade = 'A1'
-      definition = "Excellent";
+      definition = 'Excellent'
       remark =
-        "Congrats, genius, that was excellent! Your Test Grade Result is A1, and we’re super proud of you. Practice more to remain ahead of the pack!";
+        'Congrats, genius, that was excellent! Your Test Grade Result is A1, and we’re super proud of you. Practice more to remain ahead of the pack!'
       emoji = (
         <Image
-          src={"/assets/img/features/dashboard/student/a1.gif"}
+          src={'/assets/img/features/dashboard/student/a1.gif'}
           alt="logo"
           width={26}
           height={26}
         />
-      );
+      )
     } else if (average >= 70) {
       // grade = 'B2'
-      definition = "Very Good";
+      definition = 'Very Good'
       remark =
-        "Awesome! Your Test Grade Result is B2. You’re very smart and we’re rooting for you! Practice more to stay ahead of the pack!";
+        'Awesome! Your Test Grade Result is B2. You’re very smart and we’re rooting for you! Practice more to stay ahead of the pack!'
       emoji = (
         <Image
-          src={"/assets/img/features/dashboard/student/b2.gif"}
+          src={'/assets/img/features/dashboard/student/b2.gif'}
           alt="logo"
           width={26}
           height={26}
         />
-      );
+      )
     } else if (average >= 65) {
       // grade = 'B3'
-      definition = "Good";
+      definition = 'Good'
       remark =
-        "Great! Your Test Grade Result is B3. You did very well and can do even better, with more practice.";
+        'Great! Your Test Grade Result is B3. You did very well and can do even better, with more practice.'
       emoji = (
         <Image
-          src={"/assets/img/features/dashboard/student/b3.gif"}
+          src={'/assets/img/features/dashboard/student/b3.gif'}
           alt="logo"
           width={26}
           height={26}
         />
-      );
+      )
     } else if (average >= 60) {
       // grade = 'C4'
-      definition = "Credit";
+      definition = 'Credit'
       remark =
-        "Very good! Your Test Grade Result is C4. You did well and can do much better, with more practice. ";
+        'Very good! Your Test Grade Result is C4. You did well and can do much better, with more practice. '
       emoji = (
         <Image
-          src={"/assets/img/features/dashboard/student/c4.gif"}
+          src={'/assets/img/features/dashboard/student/c4.gif'}
           alt="logo"
           width={26}
           height={26}
         />
-      );
+      )
     } else if (average >= 55) {
       // grade = 'C5'
-      definition = "Credit";
+      definition = 'Credit'
       remark =
-        "Good! Your Test Grade Result is C5. You did quite well and can do even better, with more practice. We believe in you.";
+        'Good! Your Test Grade Result is C5. You did quite well and can do even better, with more practice. We believe in you.'
       emoji = (
         <Image
-          src={"/assets/img/features/dashboard/student/c5.gif"}
+          src={'/assets/img/features/dashboard/student/c5.gif'}
           alt="logo"
           width={26}
           height={26}
         />
-      );
+      )
     } else if (average >= 50) {
       // grade = 'C6'
-      definition = "Credit";
+      definition = 'Credit'
       remark =
-        "Fair attempt! Your Test Grade Result is C6. You did fairly well and you can improve, with more practice. ";
+        'Fair attempt! Your Test Grade Result is C6. You did fairly well and you can improve, with more practice. '
       emoji = (
         <Image
-          src={"/assets/img/features/dashboard/student/c6.gif"}
+          src={'/assets/img/features/dashboard/student/c6.gif'}
           alt="logo"
           width={26}
           height={26}
         />
-      );
+      )
     } else if (average >= 45) {
       // grade = 'D7'
-      definition = "Pass";
+      definition = 'Pass'
       remark =
-        "Oops! Your Test Grade Result is D7. To ace your exam, please practice more. We strongly believe you can do better, with more practice.";
+        'Oops! Your Test Grade Result is D7. To ace your exam, please practice more. We strongly believe you can do better, with more practice.'
       emoji = (
         <Image
-          src={"/assets/img/features/dashboard/student/d7.gif"}
+          src={'/assets/img/features/dashboard/student/d7.gif'}
           alt="logo"
           width={26}
           height={26}
         />
-      );
+      )
     } else if (average >= 40) {
       // grade = 'E8'
-      definition = "Pass";
+      definition = 'Pass'
       remark =
-        "Oops! Your Test Grade Result is E8. To ace your exam, please practice more. We strongly believe you can do better, with more practice. Let’s do this!";
+        'Oops! Your Test Grade Result is E8. To ace your exam, please practice more. We strongly believe you can do better, with more practice. Let’s do this!'
       emoji = (
         <Image
-          src={"/assets/img/features/dashboard/student/e8.gif"}
+          src={'/assets/img/features/dashboard/student/e8.gif'}
           alt="logo"
           width={26}
           height={26}
         />
-      );
+      )
     } else {
       // grade = 'F9'
-      definition = "Fail";
+      definition = 'Fail'
       remark =
-        "Ouch! We strongly advice you study better and retake the test. We know you can do a lot better, with more practice. Yes, it is possible!";
+        'Ouch! We strongly advice you study better and retake the test. We know you can do a lot better, with more practice. Yes, it is possible!'
       emoji = (
         <Image
-          src={"/assets/img/features/dashboard/student/f9.gif"}
+          src={'/assets/img/features/dashboard/student/f9.gif'}
           alt="logo"
           width={26}
           height={26}
         />
-      );
+      )
     }
     if (getEmoji) {
-      return emoji;
+      return emoji
     }
     if (getDefinition) {
-      return definition;
+      return definition
     }
-    return grade;
-  };
+    return grade
+  }
   const submitData = {
     results: submittedAnswer,
     userId: user?.user?._id,
@@ -336,8 +336,8 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
     subjectCategoryId: subject.pastQuestionQue[0]?.subject_details?.subject_id,
     subjectName: subject.pastQuestionQue[0]?.subject_details?.subject,
     pastQuestionCategoryId: sub_dat.category,
-    pastQuestionTypeId: "5fc8e7134bfe993c34a9689c", //not needed
-    subjectId: "5fc8e7134bfe993c34a9689c", //not needed
+    pastQuestionTypeId: '5fc8e7134bfe993c34a9689c', //not needed
+    subjectId: '5fc8e7134bfe993c34a9689c', //not needed
     timeSpent: `${speed}`,
     ////////
     numberOfCorrectAnswers: correctAnswers.length,
@@ -347,9 +347,9 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
 
     remark: handleGrade(false, true),
     score: Math.round(
-      (correctAnswers.length / sub_dat.questions?.length) * 100,
+      (correctAnswers.length / sub_dat.questions?.length) * 100
     ),
-  };
+  }
   const submitQuiz = {
     results: submittedAnswer,
     userId: user?.user?._id,
@@ -357,8 +357,8 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
     subjectId: subject.subjectDetails[0]?.subject.mainSubjectId.id,
     lessonId: sub_dat.quizLessonId,
     subjectName: subject.subjectDetails[0]?.subject.mainSubjectId.name,
-    pastQuestionTypeId: "5fc8e7134bfe993c34a9689c", //not needed
-    subjectId: "5fc8e7134bfe993c34a9689c", //not needed
+    pastQuestionTypeId: '5fc8e7134bfe993c34a9689c', //not needed
+    subjectId: '5fc8e7134bfe993c34a9689c', //not needed
     timeSpent: `${speed}`,
     ////////
     numberOfCorrectAnswers: correctAnswers.length,
@@ -368,131 +368,131 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
 
     remark: handleGrade(false, true),
     score: Math.round(
-      (correctAnswers.length / sub_dat.questions?.length) * 100,
+      (correctAnswers.length / sub_dat.questions?.length) * 100
     ),
-  };
+  }
   const progress = {
     subjectCategoryId: subject.pastQuestionQue[0]?.subject_details?.subject_id,
     pastQuestionCategoryId: sub_dat.category,
     courseId: subject?.dashboardWeb?.enrolledCourse?.id,
-  };
-  const quizLessonId = sub_dat.quizLessonId;
-  const submitttedData = sub_dat.pastQuestion ? "pastQue" : "Quiz";
-  const content = sub_dat.pastQuestion && router.query[0];
-  const content1 = sub_dat.pastQuestion ? router.query[1] : sub_dat.quary;
+  }
+  const quizLessonId = sub_dat.quizLessonId
+  const submitttedData = sub_dat.pastQuestion ? 'pastQue' : 'Quiz'
+  const content = sub_dat.pastQuestion && router.query[0]
+  const content1 = sub_dat.pastQuestion ? router.query[1] : sub_dat.quary
   ////////////////////////////////////////////////////////////////////////
   const SubmitFunc = (analysis) => {
-    if (analysis === "pastQue") {
-      dispatch(submitPastQuestionResult(submitData, token));
-      dispatch(submitPastQuestionProgress(progress, token));
+    if (analysis === 'pastQue') {
+      dispatch(submitPastQuestionResult(submitData, token))
+      dispatch(submitPastQuestionProgress(progress, token))
     } else {
-      dispatch(submitLessonQuizResult(submitQuiz, quizLessonId, token));
-      console.log(submitQuiz);
+      dispatch(submitLessonQuizResult(submitQuiz, quizLessonId, token))
+      // console.log(submitQuiz);
     }
-  };
+  }
   const handleClosure = async () => {
     Swal.fire({
-      title: "Do you want to submit?",
-      text: "Sure you’re ready to submit?",
-      icon: "warning",
+      title: 'Do you want to submit?',
+      text: 'Sure you’re ready to submit?',
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: "Yes, Submit!",
-      cancelButtonText: "No, cancel",
+      confirmButtonText: 'Yes, Submit!',
+      cancelButtonText: 'No, cancel',
     }).then((result) => {
       if (result.value) {
         Swal.fire(
-          "Submitted!",
-          "Your test details are been recorded.",
-          "success",
-        );
+          'Submitted!',
+          'Your test details are been recorded.',
+          'success'
+        )
 
-        SubmitFunc(submitttedData);
+        SubmitFunc(submitttedData)
         router.push({
-          pathname: "/quiz/extra/quizResult",
+          pathname: '/quiz/extra/quizResult',
           query: [content, content1],
-        });
+        })
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire(
-          "Cancelled",
+          'Cancelled',
           "That's the last question, you cannot continue",
-          "error",
-        );
+          'error'
+        )
       }
-    });
-  };
+    })
+  }
   //////////////////////////////////////////////////////////
   const handleTextToSpeech = () => {
-    let options = "";
+    let options = ''
     for (let index = 0; index < sub_que?.options.length; ++index) {
-      let symbol = "A. ";
+      let symbol = 'A. '
       if (index === 0) {
-        symbol = "A.  ";
+        symbol = 'A.  '
       } else if (index === 1) {
-        symbol = "B.  ";
+        symbol = 'B.  '
       } else if (index === 2) {
-        symbol = "C.  ";
+        symbol = 'C.  '
       } else if (index === 3) {
-        symbol = "D.  ";
+        symbol = 'D.  '
       } else if (index === 4) {
-        symbol = "E.  ";
+        symbol = 'E.  '
       }
-      if (sub_que.options[index] !== "") {
-        options += symbol + sub_que.options[index];
+      if (sub_que.options[index] !== '') {
+        options += symbol + sub_que.options[index]
       }
     }
-    return decodeEntities(sub_que?.question) + options;
-  };
+    return decodeEntities(sub_que?.question) + options
+  }
   ////////////////////////////////////////////
   const handleSaveAnswer = async (answer) => {
     // props.saveUserAnswer(answer);
-    let answers = [];
+    let answers = []
 
     setAllAnswers((prevState) => {
       {
-        prevState[+nextQues - 1] = answer;
+        prevState[+nextQues - 1] = answer
       }
-      return { ...prevState };
-    });
+      return { ...prevState }
+    })
     setSkipQue((prev) => {
-      let pre = prev.filter((lin) => lin !== +nextQues - 1);
+      let pre = prev.filter((lin) => lin !== +nextQues - 1)
       if (answer === -1) {
-        return [...pre, +nextQues - 1];
+        return [...pre, +nextQues - 1]
       } else {
-        return [...pre];
+        return [...pre]
       }
-    });
+    })
 
     // if (answer === +sub_que.correct_option) {
     setCorrectAnswers((prev) => {
-      let pre = prev.filter((lin) => lin !== +nextQues - 1);
+      let pre = prev.filter((lin) => lin !== +nextQues - 1)
       if (answer === +sub_que.correct_option) {
-        return [...pre, +nextQues - 1];
+        return [...pre, +nextQues - 1]
       } else {
-        return [...pre];
+        return [...pre]
       }
-    });
-  };
+    })
+  }
 
   const prepareSubmittedAnswer = async (answer) => {
-    let status = null;
+    let status = null
     if (answer === -1) {
-      status = "skipped";
+      status = 'skipped'
     } else if (answer === +sub_que.correct_option) {
-      status = "correct";
+      status = 'correct'
     } else {
-      status = "incorrect";
+      status = 'incorrect'
     }
     let response = {
       question_id: sub_que.question_id ? sub_que.question_id : sub_que.id,
       option_selected: answer,
       correct_option: sub_que.correct_option,
       status,
-    };
+    }
     setSubmittedAnswer((prev) => {
-      prev[queNumber] = response;
-      return [...prev];
-    });
-  };
+      prev[queNumber] = response
+      return [...prev]
+    })
+  }
 
   return (
     <Container className="pt-3">
@@ -504,7 +504,7 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
         <Col className={styles.lineSeperator}>
           <Row className="p-3">
             <h3
-              style={{ fontWeight: "700", fontSize: "30px", color: "#29465B" }}
+              style={{ fontWeight: '700', fontSize: '30px', color: '#29465B' }}
             >
               {`${sub_dat.subject} ${sub_dat.year}`}
             </h3>
@@ -519,21 +519,21 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
           </Row>
           <Row
             style={{
-              fontWeight: "700",
-              fontSize: "20px",
-              marginLeft: "30px",
-              color: "#333333",
+              fontWeight: '700',
+              fontSize: '20px',
+              marginLeft: '30px',
+              color: '#333333',
             }}
           >
             Question {nextQues}
           </Row>
           <Row
             style={{
-              fontWeight: "400",
-              fontSize: "24px",
-              marginLeft: "30px",
-              marginTop: "30px",
-              color: "#333333",
+              fontWeight: '400',
+              fontSize: '24px',
+              marginLeft: '30px',
+              marginTop: '30px',
+              color: '#333333',
             }}
           >
             <div dangerouslySetInnerHTML={{ __html: sub_que?.question }}></div>
@@ -545,7 +545,7 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
                   <img
                     src={`https:${sub_que.question_image}`}
                     alt="Landscape picture"
-                    style={{ width: "50%", heigt: "50%" }}
+                    style={{ width: '50%', heigt: '50%' }}
                   />
                 </picture>
                 {/* <picture>
@@ -569,20 +569,20 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
               {sub_que?.options[0] ? (
                 <Row
                   style={{
-                    background: "#FFFFFF",
-                    boxShadow: "0px 1px 7px rgba(0, 0, 0, 0.15)",
-                    borderRadius: "15.4996px",
-                    padding: "15px",
-                    cursor: "pointer",
+                    background: '#FFFFFF',
+                    boxShadow: '0px 1px 7px rgba(0, 0, 0, 0.15)',
+                    borderRadius: '15.4996px',
+                    padding: '15px',
+                    cursor: 'pointer',
                   }}
                   onClick={() => handleNextQuestion(0)}
                 >
                   <p
                     style={{
-                      fontWeight: "500",
-                      fontSize: "18px",
-                      color: "#333333",
-                      margin: "0",
+                      fontWeight: '500',
+                      fontSize: '18px',
+                      color: '#333333',
+                      margin: '0',
                     }}
                   >
                     A. {sub_que?.options[0]}
@@ -592,21 +592,21 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
               {sub_que?.options[1] ? (
                 <Row
                   style={{
-                    background: "#FFFFFF",
-                    boxShadow: "0px 1px 7px rgba(0, 0, 0, 0.15)",
-                    borderRadius: "15.4996px",
-                    padding: "15px",
-                    cursor: "pointer",
-                    marginTop: "20px",
+                    background: '#FFFFFF',
+                    boxShadow: '0px 1px 7px rgba(0, 0, 0, 0.15)',
+                    borderRadius: '15.4996px',
+                    padding: '15px',
+                    cursor: 'pointer',
+                    marginTop: '20px',
                   }}
                   onClick={() => handleNextQuestion(1)}
                 >
                   <p
                     style={{
-                      fontWeight: "500",
-                      fontSize: "18px",
-                      color: "#333333",
-                      margin: "0",
+                      fontWeight: '500',
+                      fontSize: '18px',
+                      color: '#333333',
+                      margin: '0',
                     }}
                   >
                     B. {sub_que?.options[1]}
@@ -616,21 +616,21 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
               {sub_que?.options[2] ? (
                 <Row
                   style={{
-                    background: "#FFFFFF",
-                    boxShadow: "0px 1px 7px rgba(0, 0, 0, 0.15)",
-                    borderRadius: "15.4996px",
-                    padding: "15px",
-                    marginTop: "20px",
-                    cursor: "pointer",
+                    background: '#FFFFFF',
+                    boxShadow: '0px 1px 7px rgba(0, 0, 0, 0.15)',
+                    borderRadius: '15.4996px',
+                    padding: '15px',
+                    marginTop: '20px',
+                    cursor: 'pointer',
                   }}
                   onClick={() => handleNextQuestion(2)}
                 >
                   <p
                     style={{
-                      fontWeight: "500",
-                      fontSize: "18px",
-                      color: "#333333",
-                      margin: "0",
+                      fontWeight: '500',
+                      fontSize: '18px',
+                      color: '#333333',
+                      margin: '0',
                     }}
                   >
                     C. {sub_que?.options[2]}
@@ -640,21 +640,21 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
               {sub_que?.options[3] ? (
                 <Row
                   style={{
-                    background: "#FFFFFF",
-                    boxShadow: "0px 1px 7px rgba(0, 0, 0, 0.15)",
-                    borderRadius: "15.4996px",
-                    padding: "15px",
-                    marginTop: "20px",
-                    cursor: "pointer",
+                    background: '#FFFFFF',
+                    boxShadow: '0px 1px 7px rgba(0, 0, 0, 0.15)',
+                    borderRadius: '15.4996px',
+                    padding: '15px',
+                    marginTop: '20px',
+                    cursor: 'pointer',
                   }}
                   onClick={() => handleNextQuestion(3)}
                 >
                   <p
                     style={{
-                      fontWeight: "500",
-                      fontSize: "18px",
-                      color: "#333333",
-                      margin: "0",
+                      fontWeight: '500',
+                      fontSize: '18px',
+                      color: '#333333',
+                      margin: '0',
                     }}
                   >
                     D. {sub_que?.options[3]}
@@ -664,21 +664,21 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
               {sub_que?.options[4] ? (
                 <Row
                   style={{
-                    background: "#FFFFFF",
-                    boxShadow: "0px 1px 7px rgba(0, 0, 0, 0.15)",
-                    borderRadius: "15.4996px",
-                    padding: "15px",
-                    marginTop: "20px",
-                    cursor: "pointer",
+                    background: '#FFFFFF',
+                    boxShadow: '0px 1px 7px rgba(0, 0, 0, 0.15)',
+                    borderRadius: '15.4996px',
+                    padding: '15px',
+                    marginTop: '20px',
+                    cursor: 'pointer',
                   }}
                   onClick={() => handleNextQuestion(4)}
                 >
                   <p
                     style={{
-                      fontWeight: "500",
-                      fontSize: "18px",
-                      color: "#333333",
-                      margin: "0",
+                      fontWeight: '500',
+                      fontSize: '18px',
+                      color: '#333333',
+                      margin: '0',
                     }}
                   >
                     E. {sub_que?.options[4]}
@@ -687,7 +687,7 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
               ) : null}
             </Col>
           </Row>
-          <Row className="mt-3 mb-3 px-5" style={{ height: "43px" }}>
+          <Row className="mt-3 mb-3 px-5" style={{ height: '43px' }}>
             <Col
               className={`pointer ${styles.pastExamButton}`}
               onClick={() => handleClosure()}
@@ -695,11 +695,11 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
             <Col>
               <div
                 style={{
-                  display: "flex",
-                  height: "30px",
-                  marginTop: "5px",
-                  alignItems: "center",
-                  justifyContent: "space-around",
+                  display: 'flex',
+                  height: '30px',
+                  marginTop: '5px',
+                  alignItems: 'center',
+                  justifyContent: 'space-around',
                 }}
               >
                 {/* <Speech
@@ -745,52 +745,52 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
                     {
                       time: 600000,
                       callback: () =>
-                        Swal.fire("Time Left!", "You have 10 mins left"),
+                        Swal.fire('Time Left!', 'You have 10 mins left'),
                     },
                     {
                       time: speedRange3,
-                      callback: () => setAveSpeed("speed", speedRange3 / 60000),
+                      callback: () => setAveSpeed('speed', speedRange3 / 60000),
                     },
                     {
                       time: speedRange2,
-                      callback: () => setAveSpeed("speed", speedRange2 / 60000),
+                      callback: () => setAveSpeed('speed', speedRange2 / 60000),
                     },
                     {
                       time: speedRange1,
-                      callback: () => setAveSpeed("speed", speedRange1 / 60000),
+                      callback: () => setAveSpeed('speed', speedRange1 / 60000),
                     },
                     {
                       time: 0,
                       callback: () => {
                         Swal.fire(
-                          "Time Up!",
-                          "Thanks for attempting the test",
+                          'Time Up!',
+                          'Thanks for attempting the test'
                         ).then(() => {
                           // if (isAuthenticated) {
                           Swal.fire(
-                            "Submitted!",
-                            "Your test details are recorded successfully!",
-                            "success",
-                          );
+                            'Submitted!',
+                            'Your test details are recorded successfully!',
+                            'success'
+                          )
                           // }
                           // props.inputChange("currentQuestion", 0);
                           // props.inputChange("speed", questionTime / 60000);
-                        });
+                        })
                       },
                     },
                   ]}
                 >
                   {() => (
                     <React.Fragment>
-                      Time Left{" "}
+                      Time Left{' '}
                       <span
                         style={{
-                          width: "120px",
-                          padding: "0 8px",
-                          background: cray ? "#EDB68B" : "#29465B",
-                          boxShadow: "0px 1px 7px rgba(0, 0, 0, 0.1)",
-                          borderRadius: "5px",
-                          color: "white",
+                          width: '120px',
+                          padding: '0 8px',
+                          background: cray ? '#EDB68B' : '#29465B',
+                          boxShadow: '0px 1px 7px rgba(0, 0, 0, 0.1)',
+                          borderRadius: '5px',
+                          color: 'white',
                         }}
                       >
                         <Timer.Minutes />:<Timer.Seconds />
@@ -812,18 +812,18 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
                     style={{
                       background:
                         allAnswers[i] > -1
-                          ? "#00D9B6"
+                          ? '#00D9B6'
                           : allAnswers[i] === -1
-                          ? "#FFB600"
-                          : "#FFFFFF",
+                          ? '#FFB600'
+                          : '#FFFFFF',
                     }}
                     onClick={() => {
-                      setNextQues(no);
+                      setNextQues(no)
                     }}
                   >
                     {no}
                   </div>
-                );
+                )
               })}
             </div>
           </div>
@@ -861,20 +861,20 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
                         <source
                           srcSet={
                             sub_dat.motivation && motivationInterval === 0
-                              ? "https:" +
+                              ? 'https:' +
                                 sub_dat.motivation[motivationItemNo]
                                   .section25Image
                               : sub_dat.motivation &&
                                 motivationInterval === 1 &&
                                 motivateGoodPerformance
-                              ? "https:" +
+                              ? 'https:' +
                                 sub_dat.motivation[motivationItemNo]
                                   .section50AccuracyImage
                               : sub_dat.motivation && motivationInterval === 1
-                              ? "https:" +
+                              ? 'https:' +
                                 sub_dat.motivation[motivationItemNo]
                                   .section50Image
-                              : "https:" +
+                              : 'https:' +
                                 sub_dat.motivation[motivationItemNo]
                                   .section75Image
                           }
@@ -883,25 +883,25 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
                         <img
                           src={
                             sub_dat.motivation && motivationInterval === 0
-                              ? "https:" +
+                              ? 'https:' +
                                 sub_dat.motivation[motivationItemNo]
                                   .section25Image
                               : sub_dat.motivation &&
                                 motivationInterval === 1 &&
                                 motivateGoodPerformance
-                              ? "https:" +
+                              ? 'https:' +
                                 sub_dat.motivation[motivationItemNo]
                                   .section50AccuracyImage
                               : sub_dat.motivation && motivationInterval === 1
-                              ? "https:" +
+                              ? 'https:' +
                                 sub_dat.motivation[motivationItemNo]
                                   .section50Image
-                              : "https:" +
+                              : 'https:' +
                                 sub_dat.motivation[motivationItemNo]
                                   .section75Image
                           }
                           alt="Motivation picture"
-                          style={{ width: "100px", heigt: "100px" }}
+                          style={{ width: '100px', heigt: '100px' }}
                         />
                       </picture>
                     </div>
@@ -924,51 +924,51 @@ export const ExamQuestionPassage = ({ sub_dat }) => {
           </Modal.Body>
         </Modal>
       ) : (
-        ""
+        ''
       )}
     </Container>
     //     micheaol@gmail.com
     // test123456
-  );
-};
+  )
+}
 
 export function Amodal(props) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const { user } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth)
 
-  const token = user?.token;
+  const token = user?.token
   // const [modal, setModal] = useState(false);
 
   // const toggle = (e) => {
   //   e.preventDefault();
   //   setModal(!modal);
   // };
-  const [valued, setValued] = useState("");
-  const [messages, setMessages] = useState([]);
+  const [valued, setValued] = useState('')
+  const [messages, setMessages] = useState([])
   const handleReport = () => {
     // let questionId = questions[currentQuestion].question_id;
-    let message = `The question with id ${props.questionId} has the following complaints:`;
+    let message = `The question with id ${props.questionId} has the following complaints:`
 
     const data = {
       message: `${message} ${
         messages > 1
           ? messages?.map((dat) => {
-              return dat;
+              return dat
             }) +
-            "," +
+            ',' +
             valued
-          : messages + "," + valued
+          : messages + ',' + valued
       }`,
-    };
+    }
     // dispatch(flagQuestion(data, token));
-    setValued("");
-    props.onHide();
-    setMessages("");
-  };
+    setValued('')
+    props.onHide()
+    setMessages('')
+  }
 
   const changeHandle = (e) => {
-    const reportId = e.target.id;
+    const reportId = e.target.id
 
     // let message = `${subjectData.courseId.name}-${
     //   subjectData.mainSubjectId.name
@@ -976,28 +976,28 @@ export function Amodal(props) {
     //   props.lesson.title
     // }' has the following complaints:`;
 
-    if (reportId === "report1") {
-      setMessages((mes) => [...mes, "Typographical error, "]);
+    if (reportId === 'report1') {
+      setMessages((mes) => [...mes, 'Typographical error, '])
     }
-    if (reportId === "report2") {
-      setMessages((mes) => [...mes, "Incomplete question and answer, "]);
+    if (reportId === 'report2') {
+      setMessages((mes) => [...mes, 'Incomplete question and answer, '])
     }
-    if (reportId === "report3") {
-      setMessages((mes) => [...mes, "Images does not look quite well, "]);
+    if (reportId === 'report3') {
+      setMessages((mes) => [...mes, 'Images does not look quite well, '])
     }
-    if (reportId === "report4") {
-      setMessages((mes) => [...mes, "No Image, "]);
+    if (reportId === 'report4') {
+      setMessages((mes) => [...mes, 'No Image, '])
     }
-    if (reportId === "report5") {
-      setMessages((mes) => [...mes, "Duplicate Options, "]);
+    if (reportId === 'report5') {
+      setMessages((mes) => [...mes, 'Duplicate Options, '])
     }
-    if (reportId === "report6") {
-      setMessages((mes) => [...mes, "Wrong Answer, "]);
+    if (reportId === 'report6') {
+      setMessages((mes) => [...mes, 'Wrong Answer, '])
     }
-    if (reportId === "report7") {
-      setValued(e.target.value);
+    if (reportId === 'report7') {
+      setValued(e.target.value)
     }
-  };
+  }
 
   return (
     <>
@@ -1073,7 +1073,7 @@ export function Amodal(props) {
                 <div className="row relative">
                   <Link
                     href={{
-                      pathname: "/quiz/extra/quizResult",
+                      pathname: '/quiz/extra/quizResult',
                       query: [props.content],
                     }}
                     className="col-12"
@@ -1087,5 +1087,5 @@ export function Amodal(props) {
         </Modal.Body>
       </Modal>
     </>
-  );
+  )
 }
