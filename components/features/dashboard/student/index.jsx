@@ -56,12 +56,12 @@ const Dashboard = () => {
   // To be changed later
 
   const personData = {
-    personClass: user.user?.enrolledCourses[0]
-      ? user.user?.enrolledCourses[0].courseId.name
+    personClass: user.user?.enrolledCourses[0].courseId
+      ? user.user?.enrolledCourses[0].courseId?.name
       : user.user?.enrolledCourses[1].courseId.name,
     personName: user.user?.fullName,
   }
-  const person_id = user.user?.enrolledCourses[0]
+  const person_id = user.user?.enrolledCourses[0].courseId
     ? user.user?.enrolledCourses[0].id
     : user.user?.enrolledCourses[1].id
   const user_id = user.user?.enrolledCourses[0]
@@ -101,7 +101,7 @@ const Dashboard = () => {
       <div id="subject">
         <Subjects
           subData={
-            subject?.dashboardWeb?.enrolledCourse?.courseId.relatedSubjects
+            subject?.dashboardWeb?.enrolledCourse?.courseId?.relatedSubjects
           }
         />
       </div>
@@ -460,7 +460,7 @@ const ClassRoom = ({ data }) => {
                   )}`}</p>
                 </Col>
                 <Col md={4} lg={2}>
-                  {dta?.status === 'approved' && (
+                  {dta?.status === 'approved' ? (
                     <Link
                       passHref
                       href={{
@@ -472,6 +472,13 @@ const ClassRoom = ({ data }) => {
                       <Button clasName="w-25">Enter Classroom</Button>
                       {/* </Row> */}
                     </Link>
+                  ) : (
+                    <Button
+                      clasName="w-25"
+                      style={{ background: 'gray !important' }}
+                    >
+                      Rejected
+                    </Button>
                   )}
                   {/* // : ( //{' '}
                   <Row style={{ width: '250px', margin: 'auto' }}>

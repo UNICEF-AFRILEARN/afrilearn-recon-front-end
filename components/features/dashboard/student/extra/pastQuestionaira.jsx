@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux'
 import { fetchPastQuestionInitiate } from '../../../../../redux/actions/subject'
 
 const PastQuestion = ({ subData }) => {
-  console.log(subData)
+  // console.log(subData)
   const dispatch = useDispatch()
   const [subId, setSubId] = useState('')
 
@@ -56,7 +56,7 @@ const PastQuestion = ({ subData }) => {
       ],
     }
     useEffect(() => {
-      console.log(subId)
+      // console.log(subId)
       if (subId !== '') {
         dispatch(fetchPastQuestionInitiate(subId))
       }
@@ -172,14 +172,16 @@ const PastQuestion = ({ subData }) => {
   }
 
   return (
-    <div>
-      <SubHeading title="Past Questions" />
-      <div className={styles.container}>
-        <section className="parnet-frag-color">
-          <Slidery />
-        </section>
+    subData?.length > 0 && (
+      <div>
+        <SubHeading title="Past Questions" />
+        <div className={styles.container}>
+          <section className="parnet-frag-color">
+            <Slidery />
+          </section>
+        </div>
       </div>
-    </div>
+    )
   )
 }
 
