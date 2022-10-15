@@ -1,11 +1,11 @@
 import Link from 'next/link'
-import * as React from 'react'
 import Image from 'next/image'
 import QuizNumber from '../extra/quizNumberr'
 import QuizQuestion from '../extra/quizQuestion'
 import styles from '../../../styles/quiz.module.css'
 import { useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 
 // import QuizNumber from "./quizNumberr";
 
@@ -23,9 +23,9 @@ const QuizReview = () => {
   const gata = fata && fata[0]?.title
   const questions = fata ? fata[0]?.questions : pastQuestions
 
-  const [nextQues, setNextQues] = React.useState(1)
-  const [optionSelected, setOptionSelected] = React.useState(null)
-  const [correctOption, setCorrectOption] = React.useState(null)
+  const [nextQues, setNextQues] = useState(1)
+  const [optionSelected, setOptionSelected] = useState(null)
+  const [correctOption, setCorrectOption] = useState(null)
   const hata = subject.quizAnswers.results?.results.filter(
     (data) => data.question_id === questions[+nextQues - 1]?.id
   )
@@ -33,7 +33,7 @@ const QuizReview = () => {
     (data) => data.question_id === questions[+nextQues - 1]?.question_id
   )
 
-  React.useEffect(() => {
+  useEffect(() => {
     setOptionSelected(
       !quary ? hata[0].option_selected : jata[0].option_selected
     ),

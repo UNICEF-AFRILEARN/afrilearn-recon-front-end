@@ -366,7 +366,7 @@
 
 .graybutton {
   background: gray !important;
-  cursor: not-allowed;
+  cursor: not-allowed !important;
 }
 
 @media screen and (min-width: 1200px) {
