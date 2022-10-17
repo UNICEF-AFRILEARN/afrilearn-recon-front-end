@@ -13,11 +13,12 @@ const QuizReview = () => {
   const subject = useSelector((state) => state.mySubjectCourse)
   const router = useRouter()
   let quary = router.query[0]
+  let quary1 = router.query[1]
   const fata = subject.subjectDetails[1]?.relatedLessons.filter(
     (data) => data.id === subject.quizAnswers.results.lessonId
   )
 
-  // console.log(subject)
+  console.log(subject?.quizAnswers)
   // console.log(fata)
   const pastQuestions = subject.pastQuestionQue[0]?.questions
   const gata = fata && fata[0]?.title
@@ -37,52 +38,55 @@ const QuizReview = () => {
     // setOptionSelected(
     //   !quary ? hata[0]?.option_selected : jata[0]?.option_selected
     // ),
-      // setCorrectOption(!quary ? hata[0]?.correct_option : jata[0]?.correct_option)
+    // setCorrectOption(!quary ? hata[0]?.correct_option : jata[0]?.correct_option)
   }, [nextQues])
-  // const Quizdata = {
-  //   subject: quary ? `${quary} Past Qustion Result` : gata,
-  //   questionNum: `Question ${nextQues}`,
-  //   question: questions && questions[+nextQues - 1]?.question,
-  //   option: questions && questions[+nextQues - 1]?.options,
-  // }
-  const NoArray = Array.from(Array(questions?.length).keys(), (n) => n + 1)
-  const allAnswers = !quary
-    ? subject?.quizAnswers?.results?.results
-    : subject?.answers?.results?.results
-  const markOptions = (i) => {
-    const jata = subject?.answers?.results?.results.filter(
-      (data) =>
-        subject?.pastQuestionQue[0]?.question[i]?.question_id === data?.question_id
-    )
-    return jata[0]
-  }
-  // console.log("optionSelected", Quizdata)
-  // console.log(correctOption)
-  return (
-    <>
-      <div className={`row ${styles.QuizreviewContainer}`}>
-        <div className={`col-md-3 ${styles.FirstQuizDiv}`}>
-          <div className={styles.leftDivv}>
-            <Link passHref href="/">
-              <p>Dashboard</p>
-            </Link>
+
+  const Review = () => {
+    const Quizdata = {
+      subject: quary ? `${quary} Past Qustion Result` : gata,
+      questionNum: `Question ${nextQues}`,
+      question: questions && questions[+nextQues - 1]?.question,
+      option: questions && questions[+nextQues - 1]?.options,
+    }
+    const NoArray = Array.from(Array(questions?.length).keys(), (n) => n + 1)
+    const allAnswers = !quary
+      ? subject?.quizAnswers?.results?.results
+      : subject?.answers?.results?.results
+    const markOptions = (i) => {
+      const jata = subject?.answers?.results?.results.filter(
+        (data) =>
+          subject?.pastQuestionQue[0]?.question[i]?.question_id ===
+          data?.question_id
+      )
+      return jata[0]
+    }
+    // console.log("optionSelected", Quizdata)
+    // console.log(correctOption)
+    return (
+      <>
+        <div className={`row ${styles.QuizreviewContainer}`}>
+          <div className={`col-md-3 ${styles.FirstQuizDiv}`}>
+            <div className={styles.leftDivv}>
+              <Link passHref href="/">
+                <p>Dashboard</p>
+              </Link>
+            </div>
           </div>
-        </div>
-        <div className={`col-md-6 ${styles.QuizquestionDiv}`}>
-          <>
-            <div className={`row ${styles.QuizNumber}`}>
-              <div className={styles.QuizNumberSubject}>
-                {/* <h4>{Quizdata?.subject}</h4> */}
-              </div>
-              <div className={styles.QuizNumberQuestionNum}>
-                {/* <p>{Quizdata?.questionNum}</p> */}
-              </div>
-              <div className={styles.QuizNumberQuestion}>
-                {/* <p dangerouslySetInnerHTML={{ __html: Quizdata?.question }}></p> */}
-              </div>
-              {/* <div>{Quizdata?.diagram}</div> */}
-              <div className={styles.options}>
-                {/* {Quizdata?.option && Quizdata?.option[0] && ( */}
+          <div className={`col-md-6 ${styles.QuizquestionDiv}`}>
+            <>
+              <div className={`row ${styles.QuizNumber}`}>
+                <div className={styles.QuizNumberSubject}>
+                  {/* <h4>{Quizdata?.subject}</h4> */}
+                </div>
+                <div className={styles.QuizNumberQuestionNum}>
+                  {/* <p>{Quizdata?.questionNum}</p> */}
+                </div>
+                <div className={styles.QuizNumberQuestion}>
+                  {/* <p dangerouslySetInnerHTML={{ __html: Quizdata?.question }}></p> */}
+                </div>
+                {/* <div>{Quizdata?.diagram}</div> */}
+                <div className={styles.options}>
+                  {/* {Quizdata?.option && Quizdata?.option[0] && ( */}
                   <div className={styles.quizOption}>
                     <button
                       style={{
@@ -97,8 +101,8 @@ const QuizReview = () => {
                       {/* A . {Quizdata?.option[0]} */}
                     </button>
                   </div>
-                {/* )} */}
-                {/* {Quizdata?.option && Quizdata?.option[1] && ( */}
+                  {/* )} */}
+                  {/* {Quizdata?.option && Quizdata?.option[1] && ( */}
                   <div className={styles.quizOption}>
                     <button
                       style={{
@@ -113,8 +117,8 @@ const QuizReview = () => {
                       {/* B . {Quizdata?.option[1]} */}
                     </button>
                   </div>
-                {/* )} */}
-                {/* {Quizdata?.option && Quizdata?.option[2] && ( */}
+                  {/* )} */}
+                  {/* {Quizdata?.option && Quizdata?.option[2] && ( */}
                   <div className={styles.quizOption}>
                     <button
                       style={{
@@ -129,8 +133,8 @@ const QuizReview = () => {
                       {/* C . {Quizdata?.option[2]} */}
                     </button>
                   </div>
-                {/* )} */}
-                {/* {Quizdata?.option && Quizdata?.option[3] && ( */}
+                  {/* )} */}
+                  {/* {Quizdata?.option && Quizdata?.option[3] && ( */}
                   <div className={styles.quizOption}>
                     <button
                       style={{
@@ -145,8 +149,8 @@ const QuizReview = () => {
                       {/* D . {Quizdata?.option[3]} */}
                     </button>
                   </div>
-                {/* )} */}
-                {/* {Quizdata?.option && Quizdata?.option[4] && ( */}
+                  {/* )} */}
+                  {/* {Quizdata?.option && Quizdata?.option[4] && ( */}
                   <div className={styles.quizOption}>
                     <button
                       style={{
@@ -161,37 +165,39 @@ const QuizReview = () => {
                       {/* E . {Quizdata?.option[4]} */}
                     </button>
                   </div>
-                {/* )} */}
+                  {/* )} */}
+                </div>
               </div>
-            </div>
-          </>
-          <div className={styles.prevSection}>
-            <div className={`col-md-6 ${styles.PrevLink} `}>
-              {nextQues - 1 > 0 && (
-                <button onClick={() => setNextQues(nextQues - 1)}>Prev</button>
-              )}
-            </div>
-
-            <div>
-              {' '}
-              <div className={`col-md-6 ${styles.Nextbutton} `}>
-                {nextQues < questions?.length && (
-                  <button onClick={() => setNextQues(nextQues + 1)}>
-                    NEXT
+            </>
+            <div className={styles.prevSection}>
+              <div className={`col-md-6 ${styles.PrevLink} `}>
+                {nextQues - 1 > 0 && (
+                  <button onClick={() => setNextQues(nextQues - 1)}>
+                    Prev
                   </button>
                 )}
               </div>
+
+              <div>
+                {' '}
+                <div className={`col-md-6 ${styles.Nextbutton} `}>
+                  {nextQues < questions?.length && (
+                    <button onClick={() => setNextQues(nextQues + 1)}>
+                      NEXT
+                    </button>
+                  )}
+                </div>
+              </div>
+            </div>
+            <div>
+              <QuizSolution />
+              <div className={styles.recommendation}>
+                <h4>Recommendations for you</h4>
+              </div>
             </div>
           </div>
-          <div>
-            <QuizSolution />
-            <div className={styles.recommendation}>
-              <h4>Recommendations for you</h4>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-3">
-          {/* {quary && (
+          <div className="col-md-3">
+            {/* {quary && (
             <div className="row">
               {NoArray.map((no, i) => {
                 return (
@@ -216,45 +222,56 @@ const QuizReview = () => {
               })}
             </div>
           )} */}
-          {/* {!quary && ( */}
-          <div className="row">
-            {NoArray.map((no, i) => {
-              return (
-                <div
-                  key={i}
-                  className={`col-md-3 ${styles.Quiznumber}`}
-                  // style={{
-                  //   background:
-                  //     allAnswers[i]?.status === 'correct'
-                  //       ? '#00D9B6'
-                  //       : allAnswers[i].status === 'incorrect'
-                  //       ? '#FF4939'
-                  //       : '#FFB600',
-                  // }}
-                  onClick={() => {
-                    setNextQues(no)
-                  }}
-                >
-                  {no}
-                </div>
-              )
-            })}
-          </div>
-          {/* )} */}
-          <div className={styles.attempts}>
-            <div className={styles.correctionButton3}>
-              <button></button>
-              <p> Correct</p>
+            {/* {!quary && ( */}
+            <div className="row">
+              {NoArray.map((no, i) => {
+                return (
+                  <div
+                    key={i}
+                    className={`col-md-3 ${styles.Quiznumber}`}
+                    // style={{
+                    //   background:
+                    //     allAnswers[i]?.status === 'correct'
+                    //       ? '#00D9B6'
+                    //       : allAnswers[i].status === 'incorrect'
+                    //       ? '#FF4939'
+                    //       : '#FFB600',
+                    // }}
+                    onClick={() => {
+                      setNextQues(no)
+                    }}
+                  >
+                    {no}
+                  </div>
+                )
+              })}
             </div>
-            <div className={styles.correctionButton1}>
-              <button></button> Wrong
-            </div>
-            <div className={styles.correctionButton2}>
-              <button></button>Skipped
+            {/* )} */}
+            <div className={styles.attempts}>
+              <div className={styles.correctionButton3}>
+                <button></button>
+                <p> Correct</p>
+              </div>
+              <div className={styles.correctionButton1}>
+                <button></button> Wrong
+              </div>
+              <div className={styles.correctionButton2}>
+                <button></button>Skipped
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </>
+    )
+  }
+  return (
+    <>
+      {(quary && subject?.quizAnswers.length) ||
+      (quary1 && subject?.quizAnswers.length) ? (
+        <Review />
+      ) : (
+        <div>you dont have access to this page</div>
+      )}
     </>
   )
 }
