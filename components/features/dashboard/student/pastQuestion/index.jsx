@@ -1,21 +1,21 @@
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { useState } from "react";
-import { Button, Col, Modal, Row } from "react-bootstrap";
-import styles1 from "../student.module.css";
-import { useSelector } from "react-redux";
+import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useState } from 'react'
+import { Button, Col, Modal, Row } from 'react-bootstrap'
+import styles1 from '../student.module.css'
+import { useSelector } from 'react-redux'
 
 const PastQuestion = () => {
-  const router = useRouter();
-  let quary = router.query.Exam;
-  const subject = useSelector((state) => state.mySubjectCourse);
+  const router = useRouter()
+  let quary = router.query.Exam
+  const subject = useSelector((state) => state.mySubjectCourse)
 
-  const subjectDat = subject.pastQuestionSub.subjects;
-  console.log(subject);
-  const [show, setShow] = useState(false);
-  const [list, setList] = useState([]);
-  const toggleModal = () => setShow(!show);
+  const subjectDat = subject.pastQuestionSub.subjects
+  console.log(subject)
+  const [show, setShow] = useState(false)
+  const [list, setList] = useState([])
+  const toggleModal = () => setShow(!show)
   return (
     <>
       <div
@@ -38,14 +38,13 @@ const PastQuestion = () => {
         {subjectDat?.map((subjectData, i) => (
           <div key={i} className={`col-md-2 ${styles1.MySubjectt}`}>
             <div
-              className=""
               onClick={() => {
-                toggleModal();
-                setList(() => subjectData.years);
+                toggleModal()
+                setList(() => subjectData.years)
               }}
-              style={{ width: "100%", textAlign: "center" }}
+              style={{ width: '100%', textAlign: 'center' }}
             >
-              <picture style={{ width: "100%" }}>
+              <picture style={{ width: '100%' }}>
                 <source
                   srcSet={`https:${subjectData.subject_image}`}
                   type="image/webp"
@@ -54,15 +53,16 @@ const PastQuestion = () => {
                   src={`https:${subjectData.subject_image}`}
                   alt="Landscape picture"
                   style={{
-                    width: "100px",
-                    heigt: "100px",
+                    width: '100px',
+                    heigt: '100px',
                     // margin: "auto",
                     // padding: "auto",
-                    textAlign: "center",
+                    textAlign: 'center',
                   }}
+                  className="pointer"
                 />
               </picture>
-              <p>{subjectData.subject}</p>
+              <p className="w-50 m-auto">{subjectData.subject}</p>
             </div>
           </div>
         ))}
@@ -70,7 +70,7 @@ const PastQuestion = () => {
       <Modal size="lg" className="pt-5 mt-5" show={show} onHide={toggleModal}>
         <Modal.Title
           className="text-center pt-5"
-          style={{ fontSize: "30px", color: "#000000" }}
+          style={{ fontSize: '30px', color: '#000000' }}
         >
           Select Year
         </Modal.Title>
@@ -81,17 +81,17 @@ const PastQuestion = () => {
               key={i}
               passHref
               href={{
-                pathname: "/dashboard/student/pastQuestion/pastQuestionPage",
+                pathname: '/dashboard/student/pastQuestion/pastQuestionPage',
                 query: { Exam: exam_year.subject_id, type: quary },
               }}
             >
               <a>
                 <Button
                   style={{
-                    width: "90px",
-                    background: "#FFFFFF",
-                    boxShadow: "0px 0.648094px 4.53666px rgba(0, 0, 0, 0.15)",
-                    borderRadius: "9.72141px",
+                    width: '90px',
+                    background: '#FFFFFF',
+                    boxShadow: '0px 0.648094px 4.53666px rgba(0, 0, 0, 0.15)',
+                    borderRadius: '9.72141px',
                   }}
                   className={`mx-4 mt-3 mb-3 ${styles1.modalBodyButton}`}
                   variant=""
@@ -104,7 +104,7 @@ const PastQuestion = () => {
         </Modal.Body>
       </Modal>
     </>
-  );
-};
+  )
+}
 
-export default PastQuestion;
+export default PastQuestion

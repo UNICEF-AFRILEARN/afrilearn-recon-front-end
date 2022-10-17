@@ -19,18 +19,28 @@ const QuizResult = () => {
   const { user } = useSelector((state) => state.auth)
   const router = useRouter()
   let quary = router.query[0]
-  // console.log(user);
-  // console.log(quary ? true : false);
-  // console.log(subject);
+
   const correct = quary
-    ? subject.answers.results?.numberOfCorrectAnswers
-    : subject?.quizAnswers?.results?.numberOfCorrectAnswers
+    ? subject?.answers?.results?.results.filter(
+        (data) => data?.status === 'correct'
+      ).length
+    : subject?.quizAnswers?.results?.results.filter(
+        (data) => data?.status === 'correct'
+      ).length
   const skip = quary
-    ? subject?.answers?.results?.numberOfSkippedQuestions
-    : subject?.quizAnswers?.results?.numberOfSkippedQuestions
+    ? subject?.answers?.results?.results.filter(
+        (data) => data?.status === 'skipped'
+      ).length
+    : subject?.quizAnswers?.results?.results.filter(
+        (data) => data?.status === 'skipped'
+      ).length
   const inCorrect = quary
-    ? subject.answers.results?.numberOfWrongAnswers
-    : subject?.quizAnswers?.results?.numberOfWrongAnswers
+    ? subject?.answers?.results?.results.filter(
+        (data) => data?.status === 'incorrect'
+      ).length
+    : subject?.quizAnswers?.results?.results.filter(
+        (data) => data?.status === 'incorrect'
+      ).length
   const data = [
     { name: `Correct: ${correct}`, value: correct },
     { name: `Incorrect: ${inCorrect}`, value: inCorrect },
@@ -41,6 +51,150 @@ const QuizResult = () => {
   const fata = subject.subjectDetails[1]?.relatedLessons.filter(
     (data) => data.id === subject.quizAnswers.results?.lessonId
   )
+  const handleGrade = (getEmoji = false, getDefinition = false) => {
+    let average = quary
+      ? Math.round((correct / subject?.answers?.results?.results.length) * 100)
+      : Math.round(
+          (correct / subject?.quizAnswers?.results?.results.length) * 100
+        )
+    //    let grade = 'Unknown';
+    let definition = 'Unknown Comment'
+    let remark = 'Unknown Remark'
+    let emoji = (
+      <Image
+        src={'/assets/img/features/dashboard/student/f9.gif'}
+        alt="logo"
+        width={26}
+        height={26}
+      />
+    )
+
+    if (average >= 75) {
+      // grade = 'A1'
+      definition = 'Excellent'
+      remark =
+        'Congrats, genius, that was excellent! Your Test Grade Result is A1, and we’re super proud of you. Practice more to remain ahead of the pack!'
+      emoji = (
+        <Image
+          src={'/assets/img/features/dashboard/student/a1.gif'}
+          alt="logo"
+          width={26}
+          height={26}
+        />
+      )
+    } else if (average >= 70) {
+      // grade = 'B2'
+      definition = 'Very Good'
+      remark =
+        'Awesome! Your Test Grade Result is B2. You’re very smart and we’re rooting for you! Practice more to stay ahead of the pack!'
+      emoji = (
+        <Image
+          src={'/assets/img/features/dashboard/student/b2.gif'}
+          alt="logo"
+          width={26}
+          height={26}
+        />
+      )
+    } else if (average >= 65) {
+      // grade = 'B3'
+      definition = 'Good'
+      remark =
+        'Great! Your Test Grade Result is B3. You did very well and can do even better, with more practice.'
+      emoji = (
+        <Image
+          src={'/assets/img/features/dashboard/student/b3.gif'}
+          alt="logo"
+          width={26}
+          height={26}
+        />
+      )
+    } else if (average >= 60) {
+      // grade = 'C4'
+      definition = 'Credit'
+      remark =
+        'Very good! Your Test Grade Result is C4. You did well and can do much better, with more practice. '
+      emoji = (
+        <Image
+          src={'/assets/img/features/dashboard/student/c4.gif'}
+          alt="logo"
+          width={26}
+          height={26}
+        />
+      )
+    } else if (average >= 55) {
+      // grade = 'C5'
+      definition = 'Credit'
+      remark =
+        'Good! Your Test Grade Result is C5. You did quite well and can do even better, with more practice. We believe in you.'
+      emoji = (
+        <Image
+          src={'/assets/img/features/dashboard/student/c5.gif'}
+          alt="logo"
+          width={26}
+          height={26}
+        />
+      )
+    } else if (average >= 50) {
+      // grade = 'C6'
+      definition = 'Credit'
+      remark =
+        'Fair attempt! Your Test Grade Result is C6. You did fairly well and you can improve, with more practice. '
+      emoji = (
+        <Image
+          src={'/assets/img/features/dashboard/student/c6.gif'}
+          alt="logo"
+          width={26}
+          height={26}
+        />
+      )
+    } else if (average >= 45) {
+      // grade = 'D7'
+      definition = 'Pass'
+      remark =
+        'Oops! Your Test Grade Result is D7. To ace your exam, please practice more. We strongly believe you can do better, with more practice.'
+      emoji = (
+        <Image
+          src={'/assets/img/features/dashboard/student/d7.gif'}
+          alt="logo"
+          width={26}
+          height={26}
+        />
+      )
+    } else if (average >= 40) {
+      // grade = 'E8'
+      definition = 'Pass'
+      remark =
+        'Oops! Your Test Grade Result is E8. To ace your exam, please practice more. We strongly believe you can do better, with more practice. Let’s do this!'
+      emoji = (
+        <Image
+          src={'/assets/img/features/dashboard/student/e8.gif'}
+          alt="logo"
+          width={26}
+          height={26}
+        />
+      )
+    } else {
+      // grade = 'F9'
+      definition = 'Fail'
+      remark =
+        'Ouch! We strongly advice you study better and retake the test. We know you can do a lot better, with more practice. Yes, it is possible!'
+      emoji = (
+        <Image
+          src={'/assets/img/features/dashboard/student/f9.gif'}
+          alt="logo"
+          width={26}
+          height={26}
+        />
+      )
+    }
+    if (getEmoji) {
+      return emoji
+    }
+    if (getDefinition) {
+      return definition
+    }
+    return grade
+  }
   const gata = fata && fata[0]?.title
   const resultData = {
     subject: quary ? `${quary} Past Qustion Result` : gata,
@@ -49,15 +203,17 @@ const QuizResult = () => {
     }. That was a nice try, you can do better next time! Keep up learning and do not stop practicing too `,
     matric: 'Metrics',
     grade: 'Grade',
+    percentage: quary
+      ? `${Math.round(
+          (correct / subject?.answers?.results?.results.length) * 100
+        )}%`
+      : `${Math.round(
+          (correct / subject?.quizAnswers?.results?.results.length) * 100
+        )}%`,
     score: quary
-      ? `${subject.answers.results.score}%`
-      : `${subject?.quizAnswers?.results?.score}%`,
-    // percentage: quary
-    //   ? `${subject?.answers?.results?.numberOfCorrectAnswers} out of ${subject?.answers?.results?.results?.length}`
-    //   : `${subject?.quizAnswers?.results?.numberOfCorrectAnswers} out of ${subject.quizAnswers.results.results?.length}`,
-    remark: quary
-      ? subject.answers.results.remark
-      : subject.quizAnswers?.results?.remark,
+      ? `${correct} out of ${subject?.answers?.results?.results.length}`
+      : `${correct} out of ${subject?.quizAnswers?.results?.results.length}`,
+    remark: handleGrade(false, true),
   }
 
   return (
