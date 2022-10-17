@@ -76,17 +76,17 @@ const QuizReview = () => {
             <>
               <div className={`row ${styles.QuizNumber}`}>
                 <div className={styles.QuizNumberSubject}>
-                  {/* <h4>{Quizdata?.subject}</h4> */}
+                  <h4>{Quizdata?.subject}</h4>
                 </div>
                 <div className={styles.QuizNumberQuestionNum}>
-                  {/* <p>{Quizdata?.questionNum}</p> */}
+                  <p>{Quizdata?.questionNum}</p>
                 </div>
                 <div className={styles.QuizNumberQuestion}>
-                  {/* <p dangerouslySetInnerHTML={{ __html: Quizdata?.question }}></p> */}
+                  <p dangerouslySetInnerHTML={{ __html: Quizdata?.question }}></p>
                 </div>
-                {/* <div>{Quizdata?.diagram}</div> */}
+                <div>{Quizdata?.diagram}</div>
                 <div className={styles.options}>
-                  {/* {Quizdata?.option && Quizdata?.option[0] && ( */}
+                  {Quizdata?.option && Quizdata?.option[0] && (
                   <div className={styles.quizOption}>
                     <button
                       style={{
@@ -98,11 +98,11 @@ const QuizReview = () => {
                             : '#FFFFFF',
                       }}
                     >
-                      {/* A . {Quizdata?.option[0]} */}
+                      A . {Quizdata?.option[0]}
                     </button>
                   </div>
-                  {/* )} */}
-                  {/* {Quizdata?.option && Quizdata?.option[1] && ( */}
+                  )} 
+                  {Quizdata?.option && Quizdata?.option[1] && (
                   <div className={styles.quizOption}>
                     <button
                       style={{
@@ -114,11 +114,11 @@ const QuizReview = () => {
                             : '#FFFFFF',
                       }}
                     >
-                      {/* B . {Quizdata?.option[1]} */}
+                      B . {Quizdata?.option[1]}
                     </button>
                   </div>
-                  {/* )} */}
-                  {/* {Quizdata?.option && Quizdata?.option[2] && ( */}
+                  )}
+                  {Quizdata?.option && Quizdata?.option[2] && (
                   <div className={styles.quizOption}>
                     <button
                       style={{
@@ -130,11 +130,11 @@ const QuizReview = () => {
                             : '#FFFFFF',
                       }}
                     >
-                      {/* C . {Quizdata?.option[2]} */}
+                      C . {Quizdata?.option[2]}
                     </button>
                   </div>
-                  {/* )} */}
-                  {/* {Quizdata?.option && Quizdata?.option[3] && ( */}
+                  )}
+                  {Quizdata?.option && Quizdata?.option[3] && (
                   <div className={styles.quizOption}>
                     <button
                       style={{
@@ -146,11 +146,11 @@ const QuizReview = () => {
                             : '#FFFFFF',
                       }}
                     >
-                      {/* D . {Quizdata?.option[3]} */}
+                      D . {Quizdata?.option[3]}
                     </button>
                   </div>
-                  {/* )} */}
-                  {/* {Quizdata?.option && Quizdata?.option[4] && ( */}
+                   )}
+                  {Quizdata?.option && Quizdata?.option[4] && (
                   <div className={styles.quizOption}>
                     <button
                       style={{
@@ -162,10 +162,10 @@ const QuizReview = () => {
                             : '#FFFFFF',
                       }}
                     >
-                      {/* E . {Quizdata?.option[4]} */}
+                      E . {Quizdata?.option[4]}
                     </button>
                   </div>
-                  {/* )} */}
+                   )}
                 </div>
               </div>
             </>
