@@ -62,6 +62,7 @@
   }
 }
 
+
 .experienceAfrilearnImg {
   top: 2px !important;
   left: -7px !important;
@@ -927,5 +928,24 @@
   }
   .profileImagePosition {
     margin-right: 0px;
+  }
+}
+
+@media screen and (max-width: 730px) {
+  .mobileDownloadSection {
+    flex-direction: column;
+    margin-top: 2%;
+    padding-left: 2px;
+  }
+  .mobileDownloadSection img {
+    min-width: 66% !important;
+    min-height: 66% !important;
+    /* margin-bottom: 8px !important; */
+  }
+  .joinbuttonwrap {
+    width: 66%;
+    padding: 13px 0;
+    margin-bottom: 8px;
+    margin-left: 17%;
   }
 }
