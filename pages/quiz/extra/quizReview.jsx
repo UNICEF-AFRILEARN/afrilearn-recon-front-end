@@ -275,8 +275,8 @@ const QuizReview = () => {
   }
   return (
     <>
-      {(quary && subject?.answers.results.courseId) ||
-      (quary1 && subject?.quizAnswers.results.courseId) ? (
+      {(quary && subject?.answers?.results?.courseId) ||
+      (quary1 && subject?.quizAnswers?.results?.courseId) ? (
         <Review />
       ) : (
         <div className="m-5">

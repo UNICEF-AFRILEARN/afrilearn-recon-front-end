@@ -26,7 +26,7 @@ const ExamQuestion = () => {
     )
   const gata = fata && fata[0]?.pastQuestionTypes[0].categoryId
 
-  subject.pastQuestionQue[0]?.subject_details.exam_year
+  subject.pastQuestionQue[0]?.subject_details?.exam_year
   const sub_data = {
     questions: subject.pastQuestionQue[0]?.questions,
     subject: subject.pastQuestionQue[0]?.subject_details.subject,
