@@ -1,49 +1,49 @@
-import React, { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
-import { Col, Row } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchPastQuestionQueInitiate } from "../../../../../../redux/actions/subject";
+import React, { useState } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
+import { Col, Row } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchPastQuestionQueInitiate } from '../../../../../../redux/actions/subject'
 // import pastQuestion from "../../extra/pastQuestionaira";
-import styles from "./pastQuestion.module.css";
+import styles from './pastQuestion.module.css'
 
 const PastQuestion = () => {
-  const router = useRouter();
-  const dispatch = useDispatch();
-  let quary = router.query.Exam;
+  const router = useRouter()
+  const dispatch = useDispatch()
+  let quary = router.query.Exam
   useEffect(() => {
-    if (quary !== "") {
-      dispatch(fetchPastQuestionQueInitiate(quary));
+    if (quary !== '') {
+      dispatch(fetchPastQuestionQueInitiate(quary))
     }
-  }, [quary]);
+  }, [quary])
 
-  const subject = useSelector((state) => state.mySubjectCourse);
+  const subject = useSelector((state) => state.mySubjectCourse)
 
-  const subjectDat = subject.pastQuestionQue[0];
+  const subjectDat = subject.pastQuestionQue[0]
   const quizData = {
     heading: `${subjectDat?.subject_details?.exam_name}:`,
     topic: `${subjectDat?.subject_details?.subject} ${subjectDat?.subject_details?.exam_year}`,
     subject: subjectDat?.subject_details?.subject,
     questionNo: subjectDat?.subject_details?.no_of_questions,
-  };
-
+  }
+  console.log(subject)
   return (
     <>
       <div className="quizContainer">
         <div className="Image1" id="">
           <Image
-            alt={"design image"}
-            src={"/assets/img/common/login/HalfCircleBlackk.png"}
+            alt={'design image'}
+            src={'/assets/img/common/login/HalfCircleBlackk.png'}
             width={86}
             height={100}
           />
         </div>
         <div className="image2" id="">
           <Image
-            alt={"design image"}
-            src={"/assets/img/common/login/HalfCircleWhite.png"}
+            alt={'design image'}
+            src={'/assets/img/common/login/HalfCircleWhite.png'}
             width={150}
             height={90}
           />
@@ -52,8 +52,8 @@ const PastQuestion = () => {
           <div className="quizz">
             <h6
               style={{
-                textAlign: "center",
-                color: "#29465b",
+                textAlign: 'center',
+                color: '#29465b',
               }}
             >
               {quizData?.heading}
@@ -62,10 +62,10 @@ const PastQuestion = () => {
           <div className="quizzTopic">
             <p
               style={{
-                fontWeight: "400",
-                fontSize: "30px",
-                textAlign: "center",
-                color: "#29465b",
+                fontWeight: '400',
+                fontSize: '30px',
+                textAlign: 'center',
+                color: '#29465b',
               }}
             >
               {quizData?.topic}
@@ -130,7 +130,7 @@ const PastQuestion = () => {
             </Row>
           </Row>
           <Row className="mt-3 ps-5">
-            <Col className="" style={{ color: "#00D9B6" }}>
+            <Col className="" style={{ color: '#00D9B6' }}>
               You’ve got this, and we wish you the very best!
             </Col>
           </Row>
@@ -139,7 +139,7 @@ const PastQuestion = () => {
               passHref
               href={{
                 pathname:
-                  "/dashboard/student/pastQuestion/pastQuestionPage/pastExamQue",
+                  '/dashboard/student/pastQuestion/pastQuestionPage/pastExamQue',
                 query: [router.query.type, router.query.Exam],
               }}
             >
@@ -149,14 +149,14 @@ const PastQuestion = () => {
         </div>
         <div className="image3">
           <Image
-            alt={"design image"}
-            src={"/assets/img/common/login/HalfCircleWhite.png"}
+            alt={'design image'}
+            src={'/assets/img/common/login/HalfCircleWhite.png'}
             width={150}
             height={90}
           />
         </div>
       </div>
     </>
-  );
-};
-export default PastQuestion;
+  )
+}
+export default PastQuestion

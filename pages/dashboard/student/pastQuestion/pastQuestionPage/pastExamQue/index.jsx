@@ -1,5 +1,5 @@
-import Head from "next/head";
-import PastExamQueComponent from "../../../../../../components/features/dashboard/student/pastQuestion/pastquestionPage/pastExamQue";
+import Head from 'next/head'
+import PastExamQueComponent from '../../../../../../components/features/dashboard/student/pastQuestion/pastquestionPage/pastExamQue'
 
 const PastExamQue = () => {
   return (
@@ -13,7 +13,7 @@ const PastExamQue = () => {
       </Head>
       {/* <PastExamQueComponent /> */}
     </>
-  );
-};
+  )
+}
 
-export default PastExamQue;
+export default PastExamQue

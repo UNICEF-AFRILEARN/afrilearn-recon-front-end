@@ -12,7 +12,7 @@ const PastQuestion = () => {
   const subject = useSelector((state) => state.mySubjectCourse)
 
   const subjectDat = subject.pastQuestionSub.subjects
-  console.log(subject)
+  // console.log(subject)
   const [show, setShow] = useState(false)
   const [list, setList] = useState([])
   const toggleModal = () => setShow(!show)

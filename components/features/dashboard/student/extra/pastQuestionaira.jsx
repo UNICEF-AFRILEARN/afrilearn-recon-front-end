@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux'
 import { fetchPastQuestionInitiate } from '../../../../../redux/actions/subject'
 
 const PastQuestion = ({ subData }) => {
-  console.log(subData)
+  // console.log(subData)
   const dispatch = useDispatch()
   const [subId, setSubId] = useState('')
 
@@ -56,7 +56,7 @@ const PastQuestion = ({ subData }) => {
       ],
     }
     useEffect(() => {
-      console.log(subId)
+      // console.log(subId)
       if (subId !== '') {
         dispatch(fetchPastQuestionInitiate(subId))
       }
