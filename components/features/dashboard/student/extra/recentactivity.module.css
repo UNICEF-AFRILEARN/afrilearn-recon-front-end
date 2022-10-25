@@ -1,12 +1,20 @@
 .parentcontainer {
+  width: 90%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 110px;
+  margin: auto;
 }
 
+@media screen and (max-width: 415px) {
+  .parentcontainer {
+    display: block;
+    width: 250px;
+  }
+}
 .imagecontainer {
-  width: 15%;
+  width: 250px;
+  margin: auto;
 }
 
 .quizcontainer h3 {
@@ -27,6 +35,6 @@
   padding-left: 10%;
   font-size: 30px;
   font-weight: 700;
-  font-family: "subHeading";
+  font-family: 'subHeading';
   color: #29465b;
 }
