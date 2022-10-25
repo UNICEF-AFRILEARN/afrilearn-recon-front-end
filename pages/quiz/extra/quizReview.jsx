@@ -6,6 +6,7 @@ import QuizQuestion from '../extra/quizQuestion'
 import styles from '../../../styles/quiz.module.css'
 import { useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
+import Swal from 'sweetalert2'
 
 // import QuizNumber from "./quizNumberr";
 
@@ -18,8 +19,8 @@ const QuizReview = () => {
     (data) => data.id === subject.quizAnswers.results.lessonId
   )
 
-  console.log(subject?.quizAnswers)
-  // console.log(fata)
+  console.log(subject?.quizAnswers.length ? true : false)
+  console.log(subject)
   const pastQuestions = subject.pastQuestionQue[0]?.questions
   const gata = fata && fata[0]?.title
   const questions = fata ? fata[0]?.questions : pastQuestions
@@ -34,14 +35,15 @@ const QuizReview = () => {
     (data) => data?.question_id === questions[+nextQues - 1]?.question_id
   )
 
-  React.useEffect(() => {
-    // setOptionSelected(
-    //   !quary ? hata[0]?.option_selected : jata[0]?.option_selected
-    // ),
-    // setCorrectOption(!quary ? hata[0]?.correct_option : jata[0]?.correct_option)
-  }, [nextQues])
-
   const Review = () => {
+    React.useEffect(() => {
+      setOptionSelected(
+        !quary ? hata[0]?.option_selected : jata[0]?.option_selected
+      ),
+        setCorrectOption(
+          !quary ? hata[0]?.correct_option : jata[0]?.correct_option
+        )
+    }, [nextQues])
     const Quizdata = {
       subject: quary ? `${quary} Past Qustion Result` : gata,
       questionNum: `Question ${nextQues}`,
@@ -82,90 +84,92 @@ const QuizReview = () => {
                   <p>{Quizdata?.questionNum}</p>
                 </div>
                 <div className={styles.QuizNumberQuestion}>
-                  <p dangerouslySetInnerHTML={{ __html: Quizdata?.question }}></p>
+                  <p
+                    dangerouslySetInnerHTML={{ __html: Quizdata?.question }}
+                  ></p>
                 </div>
                 <div>{Quizdata?.diagram}</div>
                 <div className={styles.options}>
                   {Quizdata?.option && Quizdata?.option[0] && (
-                  <div className={styles.quizOption}>
-                    <button
-                      style={{
-                        background:
-                          +correctOption === 0
-                            ? '#00D9B6'
-                            : +optionSelected === 0
-                            ? '#FF4939'
-                            : '#FFFFFF',
-                      }}
-                    >
-                      A . {Quizdata?.option[0]}
-                    </button>
-                  </div>
-                  )} 
+                    <div className={styles.quizOption}>
+                      <button
+                        style={{
+                          background:
+                            +correctOption === 0
+                              ? '#00D9B6'
+                              : +optionSelected === 0
+                              ? '#FF4939'
+                              : '#FFFFFF',
+                        }}
+                      >
+                        A . {Quizdata?.option[0]}
+                      </button>
+                    </div>
+                  )}
                   {Quizdata?.option && Quizdata?.option[1] && (
-                  <div className={styles.quizOption}>
-                    <button
-                      style={{
-                        background:
-                          +correctOption === 1
-                            ? '#00D9B6'
-                            : +optionSelected === 1
-                            ? '#FF4939'
-                            : '#FFFFFF',
-                      }}
-                    >
-                      B . {Quizdata?.option[1]}
-                    </button>
-                  </div>
+                    <div className={styles.quizOption}>
+                      <button
+                        style={{
+                          background:
+                            +correctOption === 1
+                              ? '#00D9B6'
+                              : +optionSelected === 1
+                              ? '#FF4939'
+                              : '#FFFFFF',
+                        }}
+                      >
+                        B . {Quizdata?.option[1]}
+                      </button>
+                    </div>
                   )}
                   {Quizdata?.option && Quizdata?.option[2] && (
-                  <div className={styles.quizOption}>
-                    <button
-                      style={{
-                        background:
-                          +correctOption === 2
-                            ? '#00D9B6'
-                            : +optionSelected === 2
-                            ? '#FF4939'
-                            : '#FFFFFF',
-                      }}
-                    >
-                      C . {Quizdata?.option[2]}
-                    </button>
-                  </div>
+                    <div className={styles.quizOption}>
+                      <button
+                        style={{
+                          background:
+                            +correctOption === 2
+                              ? '#00D9B6'
+                              : +optionSelected === 2
+                              ? '#FF4939'
+                              : '#FFFFFF',
+                        }}
+                      >
+                        C . {Quizdata?.option[2]}
+                      </button>
+                    </div>
                   )}
                   {Quizdata?.option && Quizdata?.option[3] && (
-                  <div className={styles.quizOption}>
-                    <button
-                      style={{
-                        background:
-                          +correctOption === 3
-                            ? '#00D9B6'
-                            : +optionSelected === 3
-                            ? '#FF4939'
-                            : '#FFFFFF',
-                      }}
-                    >
-                      D . {Quizdata?.option[3]}
-                    </button>
-                  </div>
-                   )}
+                    <div className={styles.quizOption}>
+                      <button
+                        style={{
+                          background:
+                            +correctOption === 3
+                              ? '#00D9B6'
+                              : +optionSelected === 3
+                              ? '#FF4939'
+                              : '#FFFFFF',
+                        }}
+                      >
+                        D . {Quizdata?.option[3]}
+                      </button>
+                    </div>
+                  )}
                   {Quizdata?.option && Quizdata?.option[4] && (
-                  <div className={styles.quizOption}>
-                    <button
-                      style={{
-                        background:
-                          +correctOption === 4
-                            ? '#00D9B6'
-                            : +optionSelected === 4
-                            ? '#FF4939'
-                            : '#FFFFFF',
-                      }}
-                    >
-                      E . {Quizdata?.option[4]}
-                    </button>
-                  </div>
-                   )}
+                    <div className={styles.quizOption}>
+                      <button
+                        style={{
+                          background:
+                            +correctOption === 4
+                              ? '#00D9B6'
+                              : +optionSelected === 4
+                              ? '#FF4939'
+                              : '#FFFFFF',
+                        }}
+                      >
+                        E . {Quizdata?.option[4]}
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
             </>
@@ -222,31 +226,31 @@ const QuizReview = () => {
               })}
             </div>
           )} */}
-            {/* {!quary && ( */}
-            <div className="row">
-              {NoArray.map((no, i) => {
-                return (
-                  <div
-                    key={i}
-                    className={`col-md-3 ${styles.Quiznumber}`}
-                    // style={{
-                    //   background:
-                    //     allAnswers[i]?.status === 'correct'
-                    //       ? '#00D9B6'
-                    //       : allAnswers[i].status === 'incorrect'
-                    //       ? '#FF4939'
-                    //       : '#FFB600',
-                    // }}
-                    onClick={() => {
-                      setNextQues(no)
-                    }}
-                  >
-                    {no}
-                  </div>
-                )
-              })}
-            </div>
-            {/* )} */}
+            {!quary && (
+              <div className="row">
+                {NoArray.map((no, i) => {
+                  return (
+                    <div
+                      key={i}
+                      className={`col-md-3 ${styles.Quiznumber}`}
+                      style={{
+                        background:
+                          allAnswers[i]?.status === 'correct'
+                            ? '#00D9B6'
+                            : allAnswers[i].status === 'incorrect'
+                            ? '#FF4939'
+                            : '#FFB600',
+                      }}
+                      onClick={() => {
+                        setNextQues(no)
+                      }}
+                    >
+                      {no}
+                    </div>
+                  )
+                })}
+              </div>
+            )}
             <div className={styles.attempts}>
               <div className={styles.correctionButton3}>
                 <button></button>
@@ -264,13 +268,20 @@ const QuizReview = () => {
       </>
     )
   }
+
+  const Alert = async () => {
+    // return alert('You dont have access to this page go back to the Dashboard')
+    Swal.fire('You dont have access to this page go back to the Dashboard')
+  }
   return (
     <>
-      {(quary && subject?.quizAnswers.length) ||
-      (quary1 && subject?.quizAnswers.length) ? (
+      {(quary && subject?.answers?.results?.courseId) ||
+      (quary1 && subject?.quizAnswers?.results?.courseId) ? (
         <Review />
       ) : (
-        <div>you dont have access to this page</div>
+        <div className="m-5">
+          You dont have access to this page go back to the Dashboard!
+        </div>
       )}
     </>
   )

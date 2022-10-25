@@ -1,5 +1,5 @@
-import Head from "next/head";
-import PastExamQueComponent from "../../../../../../components/features/dashboard/student/pastQuestion/pastquestionPage/pastExamQue";
+import Head from 'next/head'
+import PastExamQueComponent from '../../../../../../components/features/dashboard/student/pastQuestion/pastquestionPage/pastExamQue'
 
 const PastExamQue = () => {
   return (
@@ -11,9 +11,9 @@ const PastExamQue = () => {
           content="Afrilearn is on a mission to provide affordable, world-class education for Africans, anywhere."
         />
       </Head>
-      {/* <PastExamQueComponent /> */}
+      <PastExamQueComponent />
     </>
-  );
-};
+  )
+}
 
-export default PastExamQue;
+export default PastExamQue

@@ -1,12 +1,12 @@
-import React from "react";
-import Image from "next/image";
-import styles from "../extra/recentactivity.module.css";
-import SubHeading from "./subHeading";
+import React from 'react'
+import Image from 'next/image'
+import styles from '../extra/recentactivity.module.css'
+import SubHeading from './subHeading'
 
 const RecentActivity = ({ activities }) => {
-  console.log("activities from activities UI ====>", activities);
+  console.log('activities from activities UI ====>', activities)
   return (
-    <div>
+    <div className="mb-5">
       <SubHeading title={`Recent Activities`} />
 
       <div className={` ${styles.parentcontainer}`}>
@@ -50,7 +50,7 @@ const RecentActivity = ({ activities }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default RecentActivity;
+export default RecentActivity

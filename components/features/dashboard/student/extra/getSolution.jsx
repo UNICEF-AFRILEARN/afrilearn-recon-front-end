@@ -1,17 +1,19 @@
-import Image from "next/image";
-import styles from "./../../student/student.module.css";
-import Link from "next/link";
+import Image from 'next/image'
+import styles from './../../student/student.module.css'
+import Link from 'next/link'
 
 const GetSolution = () => {
   return (
     <>
       <div className="container">
         <div className="row">
-          <div className={`col-md-6 ${styles.mySolutionBox}`}>
+          <div
+            className={`col-lg-6 col-md-10 m-md-auto col-xs-8 ${styles.mySolutionBox}`}
+          >
             <div className="row">
-              <div className={`col-md-7 ${styles.LinkBox}`}>
+              <div className={`col-md-7 m-auto ${styles.LinkBox}`}>
                 <h5>Submit your Assignment for Instant Solutions 24/7</h5>
-                <div className={`${styles.LinkBoxxs}`}>
+                <div className={`mb-md-4 m-auto ${styles.LinkBoxxs}`}>
                   <Link passHref href="/tutorhelp">
                     GET SOLUTION NOW
                   </Link>
@@ -21,28 +23,30 @@ const GetSolution = () => {
             </div>
           </div>
 
-          <Link passHref href={"/dashboard/student/afrilearnFC"}>
-            <div className={`col-md-5 ${styles.mySolutionBox2}`}>
+          <Link passHref href={'/dashboard/student/afrilearnFC'}>
+            <div
+              className={`col-lg-5 col-md-10 mt-md-5 m-md-auto mb-md-4 ${styles.mySolutionBox2}`}
+            >
               <div className={`row ${styles.mySolutionBox22}`}>
                 <div className={` ${styles.mySolutionBoxCoin}`}>
                   <Image
-                    alt={"design image"}
-                    src={"/assets/img/features/dashboard/student/Group.png"}
-                    width={"20.36 px"}
-                    height={"20.36 px"}
-                  />{" "}
+                    alt={'design image'}
+                    src={'/assets/img/features/dashboard/student/Group.png'}
+                    width={'20.36 px'}
+                    height={'20.36 px'}
+                  />{' '}
                   100
                 </div>
                 <div className={` ${styles.mySolutionBoxSword}`}>
                   <p>Battle with others to win</p>
                 </div>
                 <div className={` ${styles.mySolutionBoxWord}`}>
-                  <p>J1 Combat</p>{" "}
+                  <p>J1 Combat</p>{' '}
                   <Image
-                    alt={"design image"}
-                    src={"/assets/img/features/dashboard/student/sword.png"}
-                    width={"31.13px"}
-                    height={"31.13px px"}
+                    alt={'design image'}
+                    src={'/assets/img/features/dashboard/student/sword.png'}
+                    width={'31.13px'}
+                    height={'31.13px px'}
                   />
                 </div>
                 <div className={` ${styles.mySolutionBoxMin}`}>
@@ -54,7 +58,7 @@ const GetSolution = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default GetSolution;
+export default GetSolution
