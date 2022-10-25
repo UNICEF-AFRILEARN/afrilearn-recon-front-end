@@ -11,6 +11,8 @@
 @media screen and (max-width: 415px) {
   .contList {
     display: block !important;
+    width: 250px;
+    margin: auto;
   }
 }
 .rectBox {

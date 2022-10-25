@@ -11,10 +11,13 @@
     display: block;
     width: 250px;
   }
+  .imagecontainer {
+    width: 250px !important;
+    margin: auto;
+  }
 }
 .imagecontainer {
-  width: 250px;
-  margin: auto;
+  width: 18%;
 }
 
 .quizcontainer h3 {

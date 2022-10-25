@@ -17,7 +17,7 @@ const recommendation = ({ dataRecon, recData, recIndex }) => {
     <>
       {recData?.videourl !== undefined && (
         <div className={`${styles.contList} ${styles.contRec}`}>
-          <div className={`${styles.contList}`}>
+          <div className={`${styles.contList} `}>
             <Image
               alt={'afrilearn marketing video'}
               src="/assets/img/thumbnail.jpg"
