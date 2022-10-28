@@ -55,6 +55,7 @@
     "react-router-dom": "^6.3.0",
     "react-share": "^4.4.0",
     "react-slick": "^0.29.0",
+    "react-speech": "^1.0.2",
     "react-spinners": "^0.13.4",
     "react-swipeable": "^7.0.0",
     "react-time-ago": "^7.2.1",

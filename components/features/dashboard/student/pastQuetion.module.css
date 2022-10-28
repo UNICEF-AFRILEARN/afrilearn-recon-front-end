@@ -1,9 +1,6 @@
 .container {
-  width: 1250px;
-  margin: auto;
-  justify-content: center;
-  margin-bottom: 30px;
-  column-gap: 20px;
+  width: 1200px;
+  margin: 0 auto;
 }
 
 .containerList1 {
@@ -60,7 +57,11 @@
   font-weight: 300;
   color: #ffffff;
 }
-@media screen and (max-width: 820px) {
+@media screen and (max-width: 1200px) {
+  .container {
+    width: 720px;
+    margin: 0 auto;
+  }
   .containerList1 {
     width: 360px;
   }
@@ -68,7 +69,19 @@
     width: 360px;
   }
 }
+@media screen and (max-width: 740px) {
+  .container {
+    width: 360px;
+    margin: 0 auto;
+  }
+}
 @media screen and (max-width: 745px) {
+  .allContainer {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 793px) {
   .allContainer {
     display: block;
   }

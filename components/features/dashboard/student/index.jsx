@@ -162,6 +162,36 @@ const TopInClasses = ({ classData, classed }) => {
     initialSlide: 0,
     arrows: false,
     rows: '1',
+    responsive: [
+      {
+        breakpoint: 1300,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 1070,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 790,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 560,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   }
   return (
     classData?.length > 0 && (
@@ -171,7 +201,7 @@ const TopInClasses = ({ classData, classed }) => {
           <section
             className="parnet-frag-color"
             style={{
-              marginLeft: '25px',
+              margin: '0 auto',
             }}
           >
             {classData?.length > 4 ? (
@@ -213,6 +243,36 @@ const UnfinshedVideos = ({ classData }) => {
     initialSlide: 0,
     arrows: false,
     rows: '1',
+    responsive: [
+      {
+        breakpoint: 1300,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 1070,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 790,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 560,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   }
   return (
     classData?.length > 0 && (
@@ -265,24 +325,28 @@ const MyFavs = ({ classData }) => {
     arrows: false,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1300,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 1070,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
+          slidesToScroll: 1,
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 790,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
+          slidesToScroll: 1,
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 560,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -415,7 +479,7 @@ const ClassRoom = ({ data }) => {
         <Col>
           <SubHeading title="Classroom" />
         </Col>
-        <Col className="m-5 d-flex flex-row justify-content-end pe-5">
+        <Col className="d-flex flex-row justify-content-end pe-5 mt-5 mb-5">
           {/* <Tooltip
             placement="top"
             trigger={["hover"]}

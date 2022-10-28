@@ -134,6 +134,7 @@
   display: flex;
   flex-wrap: wrap;
 }
+
 .mySubjectt button {
   background: #f1f2f4;
   height: 100%;
@@ -160,6 +161,11 @@
 .mySubjecttt {
   margin-bottom: 2%;
 }
+@media screen and (max-width: 415px) {
+  .mySubjecttt {
+    justify-content: center;
+  }
+}
 .mySolutionBox {
   background: linear-gradient(90.02deg, #33334f 0.02%, #171738 113.01%);
   border-radius: 17.1661px;
@@ -169,11 +175,22 @@
   padding-right: 2%;
   margin-right: 3%;
 }
+@media screen and (max-width: 415px) {
+  .mySolutionBox,
+  .mySolutionBox2 {
+    width: 80%;
+    margin: 0 auto 35px;
+  }
+  .mySolutionBoxCoin {
+    margin-left: 67% !important;
+  }
+}
 .mySolutionBox h5 {
   line-height: 30px;
   width: 300px;
   padding-bottom: 60px;
   padding-top: 30px;
+  margin: auto;
 }
 .LinkBox2 {
   background: url('/assets/img/features/dashboard/student/Getsolution.png');
@@ -186,7 +203,7 @@
   color: #ffffff;
   padding: 2%;
   height: 272px;
-  width: 606.26513671875px;
+  /* width: 606.26513671875px; */
   border-radius: 16.385547637939453px;
 
   border-radius: 17.1661px;
@@ -364,7 +381,13 @@
   border-radius: 9.72141px;
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (max-width: 1300px) {
+  .contai {
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 1300px) {
   .dashboardFirstSection,
   .dashboardFirstSection4,
   .dashboardFirstSection1 {
@@ -387,6 +410,22 @@
     display: none;
   }
 }
+@media screen and (max-width: 1070px) {
+  /* .contai {
+    width: 765px;
+  } */
+}
+/* @media screen and (max-width: 790px) {
+  /* .contai {
+    width: 510px;
+  } 
+}
+@media screen and (max-width: 560px) {
+  .contai {
+    width: 255px;
+  }
+} */
+
 @media screen and (max-width: 415px) {
   .fontSize {
     font-size: 60px !important;

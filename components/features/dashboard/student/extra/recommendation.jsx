@@ -17,7 +17,7 @@ const recommendation = ({ dataRecon, recData, recIndex }) => {
     <>
       {recData?.videourl !== undefined && (
         <div className={`${styles.contList} ${styles.contRec}`}>
-          <div className={`${styles.contList}`}>
+          <div className={`${styles.contList} `}>
             <Image
               alt={'afrilearn marketing video'}
               src="/assets/img/thumbnail.jpg"
@@ -43,7 +43,10 @@ const recommendation = ({ dataRecon, recData, recIndex }) => {
               />
             </div>
           </div>
-          <div className={styles.play_textRec}>
+          <div
+            className={styles.play_textRec}
+            style={{ width: '85%', margin: 'auto' }}
+          >
             <h6>Because "{recData.reason}"</h6>
             <p className={styles.play_textRecFirstp}>Recommended:</p>
             <p className={styles.play_textRecsecondp}>

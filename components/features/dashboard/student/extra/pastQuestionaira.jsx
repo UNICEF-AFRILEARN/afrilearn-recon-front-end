@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux'
 import { fetchPastQuestionInitiate } from '../../../../../redux/actions/subject'
 
 const PastQuestion = ({ subData }) => {
-  console.log(subData)
+  // console.log(subData)
   const dispatch = useDispatch()
   const [subId, setSubId] = useState('')
 
@@ -16,47 +16,38 @@ const PastQuestion = ({ subData }) => {
     const customeSlider = useRef()
 
     const settings = {
+      // className: 'center',
       infinite: true,
       slidesToShow: 3,
       slidesToScroll: 1,
       autoplay: true,
       speed: 1500,
-      autoplaySpeed: 1500,
+      autoplaySpeed: 1000,
       cssEase: 'linear',
-      initialSlide: 1,
+      initialSlide: 0,
       arrows: false,
+      centerPadding: '60px',
       responsive: [
         {
-          breakpoint: 1024,
+          breakpoint: 1200,
           settings: {
-            slidesToShow: 3,
+            slidesToShow: 2,
             slidesToScroll: 1,
           },
         },
         {
-          breakpoint: 600,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2,
-            initialSlide: 0,
-          },
-        },
-        {
-          breakpoint: 415,
+          breakpoint: 740,
           settings: {
             slidesToShow: 1,
             slidesToScroll: 1,
-            initialSlide: 0,
-            autoplay: true,
-            speed: 5500,
-            cssEase: 'linear',
-            infinite: true,
+            speed: 2500,
+            autoplaySpeed: 1500,
           },
         },
       ],
     }
     useEffect(() => {
-      console.log(subId)
+      // console.log(subId)
       if (subId !== '') {
         dispatch(fetchPastQuestionInitiate(subId))
       }
@@ -175,9 +166,11 @@ const PastQuestion = ({ subData }) => {
     <div>
       <SubHeading title="Past Questions" />
       <div className={styles.container}>
-        <section className="parnet-frag-color">
-          <Slidery />
-        </section>
+        {/* <section className="parnet-frag-color"> */}
+        {/* <div style={{ margin: '0 10em' }}> */}
+        <Slidery />
+        {/* </div> */}
+        {/* </section> */}
       </div>
     </div>
   )

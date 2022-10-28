@@ -5,17 +5,20 @@
 }
 .contList {
   position: relative;
-  border-bottom: 1px solid #F4F4F4;
+  border-bottom: 1px solid #f4f4f4;
 }
 
-
-
-.topInClass {
-  width: 1250px;
+@media screen and (max-width: 415px) {
+  .contList {
+    display: block !important;
+    width: 250px;
+    margin: auto;
+  }
 }
 .rectBox {
   color: rgba(0, 0, 0, 0.4);
   border-radius: 7px;
+  position: relative;
 }
 
 .rect {
@@ -53,7 +56,8 @@
 .contRec {
   display: grid;
   margin-bottom: 25px;
-  grid-template-columns: 21% 79%;
+  grid-template-columns: 20% 75%;
+  gap: 5%;
 }
 
 .play_textRecFirstp {
