@@ -33,7 +33,7 @@
 }
 
 .card h5 {
-  font-family: "subHeading";
+  font-family: 'subHeading';
   margin-bottom: 20px;
 }
 .pushDown {
@@ -50,7 +50,7 @@
 .socialText {
   display: inline-block;
   vertical-align: top;
-  margin-left: 3px;
+  margin-left: 0px;
   cursor: pointer;
 }
 .afterSocialText {
@@ -90,9 +90,9 @@
     margin: 0 auto;
   }
   .card h5 {
-      font-size: 15px;
+    font-size: 15px;
   }
-  .pushDown14{
-      display: none;
+  .pushDown14 {
+    display: none;
   }
 }

@@ -62,7 +62,6 @@
   }
 }
 
-
 .experienceAfrilearnImg {
   top: 2px !important;
   left: -7px !important;
@@ -504,10 +503,11 @@
   }
 }
 
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 415px) {
   .testimonials {
     margin: 15px !important;
     position: relative;
+    margin-top: 40px !important;
   }
 
   .homepage .mark {
@@ -687,10 +687,13 @@
   }
 }
 
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 415px) {
   .myPlaceholder {
     height: 33px;
     width: 197px;
+  }
+  .quickJoin h2 {
+    font-size: 30px !important;
   }
   .quickJoin h6 {
     text-align: center;

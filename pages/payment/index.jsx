@@ -479,7 +479,9 @@ const payment = ({ test_body }) => {
               </div>
               <div className={` col-md-3 ${styles.durationPayment}`}></div>
               <div className="row">
-                <div className={` col-md-6 ${styles.paymenttypeButton}`}>
+                <div
+                  className={` col-lg-6 col-md-12 ${styles.paymenttypeButton}`}
+                >
                   <button
                     onClick={() => {
                       initializePayment(onSuccess, onClose)
@@ -488,7 +490,9 @@ const payment = ({ test_body }) => {
                     PAY WITH CARD
                   </button>
                 </div>
-                <div className={` col-md-6 ${styles.paymenttypeButton2}`}>
+                <div
+                  className={` col-lg-6 col-md-12 ${styles.paymenttypeButton2}`}
+                >
                   {/* <button >BANK TRANSFER</button> */}
                   <PaymentDetails
                     handleClose={handleClose}

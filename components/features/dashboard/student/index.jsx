@@ -56,18 +56,18 @@ const Dashboard = () => {
   // To be changed later
 
   const personData = {
-    personClass: user.user?.enrolledCourses[0]
+    personClass: user.user?.enrolledCourses[0].courseId?.name
       ? user.user?.enrolledCourses[0].courseId.name
       : user.user?.enrolledCourses[1].courseId.name,
     personName: user.user?.fullName,
   }
-  const person_id = user.user?.enrolledCourses[0]
+  const person_id = user.user?.enrolledCourses[0].id
     ? user.user?.enrolledCourses[0].id
     : user.user?.enrolledCourses[1].id
   const user_id = user.user?.enrolledCourses[0]
     ? user.user?.enrolledCourses[0].userId
     : user.user?.enrolledCourses[1].userId
-  console.log(reconLesson)
+  console.log(subject)
   useEffect(() => {
     dispatch(fetchGetWebInitiate(person_id, token))
     // dispatch(fetchLessonsInitiate());
@@ -101,14 +101,15 @@ const Dashboard = () => {
       <div id="subject">
         <Subjects
           subData={
-            subject?.dashboardWeb?.enrolledCourse?.courseId.relatedSubjects
+            subject?.dashboardWeb?.enrolledCourse?.courseId?.relatedSubjects
           }
         />
       </div>
       <div id="pastQuestions">
         <PastQuestion
           subData={
-            subject?.dashboardWeb?.enrolledCourse?.courseId.relatedPastQuestions
+            subject?.dashboardWeb?.enrolledCourse?.courseId
+              ?.relatedPastQuestions
           }
         />
       </div>

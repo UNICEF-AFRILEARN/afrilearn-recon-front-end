@@ -34,7 +34,7 @@
   display: flex;
   justify-content: right;
   align-items: center;
-  width: 80vw;
+  width: 75vw;
   padding: 5px;
   margin-right: 65px;
 }
@@ -59,6 +59,24 @@
   gap: 20px;
 }
 
+@media screen and (max-width: 821px) {
+  .loggedindash ul,
+  .parentloggedindash ul {
+    display: block;
+    text-align: start;
+    padding: 0%;
+  }
+  .parentloggedindash {
+    display: block;
+  }
+  .navicons {
+    display: none;
+  }
+  /* .parentloggedindash ul li {
+    font-size: 25px;
+  } */
+}
+
 .btnlogin,
 .btnloginregister {
   margin-right: 10px;
@@ -69,10 +87,10 @@
   border-radius: 25px;
 }
 .mainNavbar {
-  /* padding: 30px !mportant; */
+  /* padding: 30px !important; */
   /* height: 20%; */
   /* margin-top: 20px; */
-  padding-left: 6% !important;
+  padding-left: 4% !important;
   padding-right: 4% !important;
 }
 .btnlogout {
@@ -144,6 +162,11 @@
   z-index: 1;
 }
 
+@media screen and (max-width: 821px) {
+  .linkswrapper {
+    right: -101px;
+  }
+}
 .linkswrapper a {
   color: black;
   padding: 12px 16px;
