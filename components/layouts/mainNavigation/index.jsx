@@ -25,8 +25,6 @@ const Navigation = () => {
   const [userRole, setUserRole] = useState('')
   const { user, registerUser } = useSelector((state) => state.auth)
 
-
-  
   let localData
   // const checkoLocal = () => {
   //   if (typeof window !== "undefined") {
@@ -55,7 +53,7 @@ const Navigation = () => {
     // let locals = checkoLocal();
 
     signIn()
-    window.history.pushState(null, "login", "/login");
+    window.history.pushState(null, 'login', '/login')
     router.push('/login')
   }
 
@@ -76,10 +74,12 @@ const Navigation = () => {
     >
       <Navbar.Brand>
         <Link passHref href="/">
-          <img
-            src="https://myafrilearn.com/static/media/logonew.4424f4df.png"
+          <Image
+            src="/assets/img/logonew.png"
             alt="logo"
             className="brand-logo"
+            width="250px"
+            height="100px"
           />
         </Link>
       </Navbar.Brand>
@@ -88,7 +88,7 @@ const Navigation = () => {
 
       {/* <DarkModeToggle /> */}
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="me-auto">
+        <Nav className="me-aut">
           {/* <div className='main-navbar-with-login'> */}
           {userRole === 'not_login' && (
             <div className="our-story-frag">Our Story</div>
@@ -145,22 +145,23 @@ const Navigation = () => {
                     className="btn-log-in-mobile"
                     
                   > */}
-                    <BiDownArrow 
-                    size={15} 
+                  <BiDownArrow
+                    size={15}
                     className={styles.profileavatar2}
-                    onClick={handleShow} 
-                    />
+                    onClick={handleShow}
+                  />
                   {/* </Link> */}
-                  {showList === true && <div className={styles.linkswrapper}>
-                    <a 
-                    href="/payment">Add New class</a>
-                    <a href="#">My Feeds</a>
-                    <Link href="/dashboard/student/studentProfile">
-                      <a>Manage Profile</a>
-                    </Link>
-                    <a href="#">Share Feedback</a>
-                    <a onClick={handleLogout}>Log out</a>
-                  </div>}
+                  {showList === true && (
+                    <div className={styles.linkswrapper}>
+                      <a href="/payment">Add New class</a>
+                      <Link href="/dashboard/socialfeeds">My Feeds</Link>
+                      <Link href="/dashboard/student/studentProfile">
+                        <a>Manage Profile</a>
+                      </Link>
+                      <a href="#">Share Feedback</a>
+                      <a onClick={handleLogout}>Log out</a>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -223,23 +224,23 @@ const Navigation = () => {
                     // href="/dashboard/teacher/teacherProfile"
                     className="btn-log-in-mobile"
                   > */}
-                    <BiDownArrow 
+                  <BiDownArrow
                     size={15}
                     onClick={handleShow}
-                    className={styles.profileavatar2} 
-                    />
+                    className={styles.profileavatar2}
+                  />
                   {/* </Link> */}
-                  {showList === true && <div className={styles.linkswrapper}>
-                    <a href="/payment">Add New class</a>
-                    <Link href="/dashboard/socialfeeds">
-                      <a>My Feeds</a>
-                    </Link>
-                    <Link href="/dashboard/student/studentProfile">
-                      <a>Manage Profile</a>
-                    </Link>
-                    <a href="#">Share Feedback</a>
-                    <a onClick={handleLogout}>Log out</a>
-                  </div>}
+                  {showList === true && (
+                    <div className={styles.linkswrapper}>
+                      <a href="/payment">Add New class</a>
+                      <Link href="/dashboard/socialfeeds">My Feeds</Link>
+                      <Link href="/dashboard/student/studentProfile">
+                        <a>Manage Profile</a>
+                      </Link>
+                      <a href="#">Share Feedback</a>
+                      <a onClick={handleLogout}>Log out</a>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -299,24 +300,24 @@ const Navigation = () => {
                     // href="/dashboard/student/studentProfile"
                     className="btn-log-in-mobile"
                   > */}
-                    <BiDownArrow 
-                    size={15} 
+                  <BiDownArrow
+                    size={15}
                     className={styles.profileavatar2}
-                    onClick={handleShow} 
-                    />
+                    onClick={handleShow}
+                  />
                   {/* </Link> */}
-                  {showList === true && <div className={styles.linkswrapper}>
-                    <a href="/payment">Add New class</a>
+                  {showList === true && (
+                    <div className={styles.linkswrapper}>
+                      <a href="/payment">Add New class</a>
 
-                    <Link href="/dashboard/socialfeeds">
-                      <a>My Feeds</a>
-                    </Link>
-                    <Link href="/dashboard/student/studentProfile">
-                      <a>Manage Profile</a>
-                    </Link>
-                    <a href="#">Share Feedback</a>
-                    <a onClick={handleLogout}>Log out</a>
-                  </div>}
+                      <Link href="/dashboard/socialfeeds">My Feeds</Link>
+                      <Link href="/dashboard/student/studentProfile">
+                        <a>Manage Profile</a>
+                      </Link>
+                      <a href="#">Share Feedback</a>
+                      <a onClick={handleLogout}>Log out</a>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -376,23 +377,23 @@ const Navigation = () => {
                     // href="/school/schoolProfile"
                     className="btn-log-in-mobile"
                   > */}
-                    <BiDownArrow 
-                    size={15} 
+                  <BiDownArrow
+                    size={15}
                     className={styles.profileavatar2}
                     onClick={handleShow}
-                    />
+                  />
                   {/* </Link> */}
-                  {showList === true && <div className={styles.linkswrapper}>
-                    <a href="/payment">Add New class</a>
-                    <Link href="/dashboard/socialfeeds">
-                      <a>My Feeds</a>
-                    </Link>
-                    <Link href="/dashboard/student/studentProfile">
-                      <a>Manage Profile</a>
-                    </Link>
-                    <a href="#">Share Feedback</a>
-                    <a onClick={handleLogout}>Log out</a>
-                  </div>}
+                  {showList === true && (
+                    <div className={styles.linkswrapper}>
+                      <a href="/payment">Add New class</a>
+                      <Link href="/dashboard/socialfeeds">My Feeds</Link>
+                      <Link href="/dashboard/student/studentProfile">
+                        <a>Manage Profile</a>
+                      </Link>
+                      <a href="#">Share Feedback</a>
+                      <a onClick={handleLogout}>Log out</a>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

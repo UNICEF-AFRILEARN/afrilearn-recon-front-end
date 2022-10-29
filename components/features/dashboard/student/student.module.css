@@ -56,6 +56,7 @@
   background-image: radial-gradient(rgba(0, 0, 0, 0.17), rgba(0, 0, 0, 0.99)),
     url('./../../../../public/assets/img/features/dashboard/student/student.png');
   height: 280px;
+  position: relative;
 }
 .dashboardFirstSection3 {
   background-image: radial-gradient(rgba(0, 0, 0, 0.17), rgba(0, 0, 0, 0.99)),
@@ -332,6 +333,16 @@
   align-content: center;
   margin-bottom: 70px;
 }
+@media screen and (max-width: 415px) {
+  .classComment {
+    margin-left: 10px;
+    margin-bottom: 30px;
+    gap: 5px;
+  }
+  .join {
+    margin: auto 20px;
+  }
+}
 .classCommentRight {
   background: url('/assets/img/features/dashboard/student/Ellipse.png');
   height: 14px;
@@ -434,7 +445,7 @@
     margin-top: 20px;
   }
 }
-@media screen and (max-width: 376px) {
+@media screen and (max-width: 415px) {
   .dashboardFirstSection h1 {
     font-size: 50px !important;
     margin-top: 100px;
