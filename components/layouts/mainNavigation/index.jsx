@@ -25,6 +25,9 @@ const Navigation = () => {
   const [userRole, setUserRole] = useState('')
   const { user, registerUser } = useSelector((state) => state.auth)
 
+  // const { enrolledCourses } = user.user
+  console.log("enrolledCourses==", user?.user?.enrolledCourses[0]?.courseId?.name)
+  
   let localData
   // const checkoLocal = () => {
   //   if (typeof window !== "undefined") {
@@ -153,6 +156,9 @@ const Navigation = () => {
                   {/* </Link> */}
                   {showList === true && (
                     <div className={styles.linkswrapper}>
+                       <div>
+                      <a href="/payment">{user?.user?.enrolledCourses[0]?.courseId?.name}</a>
+                      </div>
                       <a href="/payment">Add New class</a>
                       <Link href="/dashboard/socialfeeds">My Feeds</Link>
                       <Link href="/dashboard/student/studentProfile">
@@ -232,6 +238,9 @@ const Navigation = () => {
                   {/* </Link> */}
                   {showList === true && (
                     <div className={styles.linkswrapper}>
+                       <div>
+                      <a href="/payment">{user?.user?.enrolledCourses[0]?.courseId?.name}</a>
+                      </div>
                       <a href="/payment">Add New class</a>
                       <Link href="/dashboard/socialfeeds">My Feeds</Link>
                       <Link href="/dashboard/student/studentProfile">
@@ -308,6 +317,9 @@ const Navigation = () => {
                   {/* </Link> */}
                   {showList === true && (
                     <div className={styles.linkswrapper}>
+                       <div>
+                      <a href="/payment">{user?.user?.enrolledCourses[0]?.courseId?.name}</a>
+                      </div>
                       <a href="/payment">Add New class</a>
 
                       <Link href="/dashboard/socialfeeds">My Feeds</Link>
@@ -385,6 +397,9 @@ const Navigation = () => {
                   {/* </Link> */}
                   {showList === true && (
                     <div className={styles.linkswrapper}>
+                      <div>
+                      <a href="/payment">{user?.user?.enrolledCourses[0]?.courseId?.name}</a>
+                      </div>
                       <a href="/payment">Add New class</a>
                       <Link href="/dashboard/socialfeeds">My Feeds</Link>
                       <Link href="/dashboard/student/studentProfile">
