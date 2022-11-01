@@ -78,8 +78,8 @@ const Navigation = () => {
             src="/assets/img/logonew.png"
             alt="logo"
             className="brand-logo"
-            width="250px"
-            height="100px"
+            width="170px"
+            height="60px"
           />
         </Link>
       </Navbar.Brand>

@@ -496,7 +496,7 @@ const StudentProfile = () => {
                 }}
               />
             </Col>
-            <Col md={4} xs={5} className="p-0">
+            <Col md={2} xs={5} className="p-0">
               <button
                 onClick={() => copyReferalCode(referal)}
                 style={{
