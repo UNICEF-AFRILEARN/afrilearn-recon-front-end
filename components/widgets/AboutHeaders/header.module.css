@@ -1,0 +1,14 @@
+.aboutheaderwrapper {
+    background-image: url('../../../public/assets/img/about.jpg');
+    background-size: cover;
+    height: 65vh;
+    /* position: relative; */
+}
+
+.innercontainer {
+    color: #fff;
+    margin: auto;
+    /* position: absolute; */
+    display: flex;
+    background-color: red;
+}
