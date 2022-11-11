@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from './header.module.css';
+import ImageSlider from './../../ImageSlider/index';
+import { sliderData } from './../../ImageSlider/sliderData';
 
 const AboutHeaders = () => {
   return (
@@ -11,7 +13,7 @@ const AboutHeaders = () => {
                   <h3>Delivering affordable, world-class education for Africans, anywhere.</h3>
               </div>
               <div className={styles.slidderwrapper}>
-                  Image slider
+                 <ImageSlider slides={sliderData}/>
               </div>
         </div>
     </div>
