@@ -3,10 +3,10 @@ import Cards from '../Cards';
 
 import styles from './flipable.module.css';
 
-const FlipableCard = () => {
+const FlipableCard = ({flippers}) => {
   return (
     <div className={styles.flippablecardcontainer}>
-        <Cards />
+        <Cards flippers={flippers}/>
     </div>
   )
 }

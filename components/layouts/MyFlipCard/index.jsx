@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import FlipCard from 'flip-card-react';
-import { flipData } from './flipData';
+import { flipData } from '../../common/OurLeader/flipData';
 import styles from './flip.module.css';
 
 

@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from './leadership.module.css';
 import MyFlipCard from '../../layouts/MyFlipCard'
-import { flipData } from '../../layouts/MyFlipCard/flipData';
+import { flipData } from './flipData';
 import FlipableCard from '../../FlipableCard';
 
 const OurLeader = () => {
@@ -13,11 +13,13 @@ const OurLeader = () => {
             <h1>Our Leadership Team</h1>
         </div>
        <div className={styles.flipperswrapper}>
-            <FlipableCard />
-            {/* <FlipableCard />
-            <FlipableCard />
-            <FlipableCard />
-            <FlipableCard /> */}
+           {
+            flipData.map((flippers, index) => {
+              return (
+                <FlipableCard  flippers={flippers}/>
+              )
+            })
+           }
        </div>
         
     </div>
