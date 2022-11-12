@@ -1,0 +1,22 @@
+.aboutuswrapper {
+    display: flex;
+    padding: 3em 4em;
+    gap: 4em;
+}
+.aboutusmain {
+    padding: 0 1em;
+
+}
+
+.aboutusmain h1 {
+    margin-bottom: 1em;
+}
+
+.valuesmain h1 {
+    margin-bottom: 1em;
+}
+.slidingimage {
+    width: 100%;
+    height: 380px;
+    border-radius: 10px;
+}

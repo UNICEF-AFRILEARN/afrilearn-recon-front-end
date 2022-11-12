@@ -1,7 +1,7 @@
 .aboutheaderwrapper {
     background-image: url('../../../public/assets/img/about.jpg');
     background-size: cover;
-    height: 65vh;
+    height: 85vh;
     text-align: center;
     display: flex;
     justify-content: center;

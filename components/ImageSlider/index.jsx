@@ -10,7 +10,7 @@ import { FaArrowAltCircleLeft, FaArrowAltCircleRight} from 'react-icons/fa'
 
 const ImageSlider = ({slides}) => {
   const [index, setIndex] = useState(0);
-  const length = slides.length
+ 
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);

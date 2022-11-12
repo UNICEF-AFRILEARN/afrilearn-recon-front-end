@@ -26,7 +26,7 @@ const Navigation = () => {
   const { user, registerUser } = useSelector((state) => state.auth)
 
   // const { enrolledCourses } = user.user
-  console.log("enrolledCourses==", user?.user?.enrolledCourses[0]?.courseId?.name)
+
   
   let localData
   // const checkoLocal = () => {
@@ -81,8 +81,8 @@ const Navigation = () => {
             src="/assets/img/logonew.png"
             alt="logo"
             className="brand-logo"
-            width="250px"
-            height="100px"
+            width="150px"
+            height="50px"
           />
         </Link>
       </Navbar.Brand>

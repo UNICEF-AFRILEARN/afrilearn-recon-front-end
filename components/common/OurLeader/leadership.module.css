@@ -1,0 +1,13 @@
+.leadershipmainwrapper {
+    padding: 1.5em 4.5em;
+    text-align: center;
+}
+.headerwrapper {
+    margin-bottom: 2.5em;
+}
+
+.flipperswrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
