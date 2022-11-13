@@ -1,0 +1,32 @@
+.sliderwrapper {
+    position: relative;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.slidingimage {
+    width: 700px;
+    height: 380px;
+    border-radius: 10px;
+}
+.rightarrow {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    font-size: 3rem;
+    color: #fff;
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
+}
+.leftarrow {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    font-size: 3rem;
+    color: #fff;
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
+}
