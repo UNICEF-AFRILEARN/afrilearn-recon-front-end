@@ -1,0 +1,36 @@
+.journeymain {
+    padding: 0 4.5em;
+}
+.journeyheader {
+    text-align: center;
+    margin: 2em 0;
+}
+
+.innerrightcontent {
+    display: flex;
+}
+
+.rightfilled {
+    align-self: flex-end;
+    width: 50%;
+    padding: 0 2em;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 2em;
+
+}
+.rightempty {
+    background-color: #fff;
+    width: 50%;
+}
+
+.rightfilledcontent {
+    width: 50%;
+    padding: 1em;
+    border: solid #fff 1px;
+    margin-bottom: 1em;
+    box-shadow: 2px 3px 17px 3px rgba(0,0,0,0.43);
+    -webkit-box-shadow: 2px 3px 17px 3px rgba(0,0,0,0.43);
+    -moz-box-shadow: 2px 3px 17px 3px rgba(0,0,0,0.43);
+}
