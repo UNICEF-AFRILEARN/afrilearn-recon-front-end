@@ -92,6 +92,7 @@ const Navigation = () => {
       {/* <DarkModeToggle /> */}
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-aut">
+            
           {/* <div className='main-navbar-with-login'> */}
           {userRole === 'not_login' && (
             <div className="our-story-frag">Our Story</div>
@@ -107,6 +108,9 @@ const Navigation = () => {
                 </Link>
                 <Link passHref href="/payment">
                   <li>Subscribe</li>
+                </Link>
+                <Link passHref href="/about">
+                  <li>About Us</li>
                 </Link>
                 <div className={styles.navicons}>
                   <span>
@@ -191,6 +195,9 @@ const Navigation = () => {
                 <Link passHref href="/dashboard/teacher/classwork">
                   <li>Classwork</li>
                 </Link>
+                <Link passHref href="/about">
+                  <li>About Us</li>
+                </Link>
                 <div className={styles.navicons}>
                   <span>
                     <BsSearch />
@@ -269,6 +276,9 @@ const Navigation = () => {
                 </Link>
                 <Link passHref href="/payment">
                   <li>Subscribe</li>
+                </Link>
+                <Link passHref href="/about">
+                  <li>About Us</li>
                 </Link>
                 <div className={styles.navicons}>
                   <span>
@@ -350,6 +360,9 @@ const Navigation = () => {
                 <Link passHref href="/school/schoolpeople">
                   <li>People</li>
                 </Link>
+                <Link passHref href="/about">
+                  <li>About Us</li>
+                </Link>
                 <div className={styles.navicons}>
                   <span>
                     <BsSearch />
@@ -418,8 +431,11 @@ const Navigation = () => {
             userRole !== '5fd08fba50964811309722d5' &&
             userRole !== '602f3ce39b146b3201c2dc1d' &&
             userRole !== '607ededa2712163504210684' && (
-              <div>
+              <div className={styles.nologinmenu}>
                 {/* implementing next.auth */}
+                <Link href="/about">
+                  <h5 className={styles.aboutmenu}>About Us</h5>
+                </Link>
                 <Link href="/login">
                   <button className={styles.btnlogin}>Login</button>
                 </Link>
@@ -428,6 +444,7 @@ const Navigation = () => {
                 </Link>
               </div>
             )}
+           
         </Nav>
       </Navbar.Collapse>
     </Navbar>
