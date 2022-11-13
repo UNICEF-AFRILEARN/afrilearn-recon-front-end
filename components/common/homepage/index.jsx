@@ -710,7 +710,7 @@ export const Footer = () => {
               <h3>Company</h3>
               <ul>
                 <li>
-                  <Link passHref href="https://myafrilearn.com/about">
+                  <Link passHref href="/about">
                     About
                   </Link>
                 </li>
@@ -720,7 +720,7 @@ export const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link passHref href="https://myafrilearn.com/about#team">
+                  <Link passHref href="/about">
                     Team
                   </Link>
                 </li>
