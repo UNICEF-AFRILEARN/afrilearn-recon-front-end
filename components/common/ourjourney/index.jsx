@@ -1,4 +1,5 @@
 import React from 'react';
+import { TbArrowBigRightLines, TbArrowBigLeftLines } from 'react-icons/tb'
 
 import styles from './journey.module.css';
 
@@ -13,7 +14,7 @@ const OurJourney = () => {
 
             <div className={styles.rightfilled}>
                 <div>
-                    <h4>Apr 2019</h4>
+                    <h4>Apr 2019 <span><TbArrowBigRightLines /></span></h4>
                 </div>
                 <div className={styles.rightfilledcontent}>
                     <p> We’re incorporated as Afrilearn International Limited</p>
@@ -29,7 +30,7 @@ const OurJourney = () => {
                     </p>
                 </div>
                 <div>
-                    <h4>Feb 2020</h4>
+                    <h4> <span><TbArrowBigLeftLines /></span> Feb 2020 </h4>
                 </div>
             </div>
 
@@ -42,7 +43,7 @@ const OurJourney = () => {
 
             <div className={styles.rightfilled}>
                 <div>
-                    <h4>Mar 2020</h4>
+                    <h4>Mar 2020 <span><TbArrowBigRightLines /></span></h4>
                 </div>
                 <div className={styles.rightfilledcontent}>
                     <p> We emerge 1st of 20,200 businesses in Friends of Prof. Osinbajo SME Competition
@@ -58,7 +59,7 @@ const OurJourney = () => {
                     <p> Our MVP ClassNotes.ng launches, listed #1 Education Platform in Nigeria</p>
                 </div>
                 <div>
-                    <h4>Apr 2020</h4>
+                    <h4> <span><TbArrowBigLeftLines /></span> Apr 2020 </h4>
                 </div>
             </div>
 
@@ -71,7 +72,7 @@ const OurJourney = () => {
 
             <div className={styles.rightfilled}>
                 <div className={styles.rightfilleddate}>
-                    <h4>Jun 2020</h4>
+                    <h4>Jun 2020 <span><TbArrowBigRightLines /></span></h4>
                 </div>
                 <div className={styles.rightfilledcontent}>
                     <p> We win the Netherland’s Business Innovation Fund</p>
@@ -87,7 +88,7 @@ const OurJourney = () => {
                     </p>
                 </div>
                 <div>
-                    <h4>Nov 2020</h4>
+                    <h4><span><TbArrowBigLeftLines /></span> Nov 2020 </h4>
                 </div>
             </div>
 
@@ -100,7 +101,7 @@ const OurJourney = () => {
 
             <div className={styles.rightfilled}>
                 <div>
-                    <h4>Dec 2020</h4>
+                    <h4>Dec 2020 <span><TbArrowBigRightLines /></span></h4>
                 </div>
                 <div className={styles.rightfilledcontent}>
                     <p > 
@@ -118,7 +119,7 @@ const OurJourney = () => {
                     </p>
                 </div>
                 <div>
-                    <h4>Mar 2021</h4>
+                    <h4> <span><TbArrowBigLeftLines /></span> Mar 2021 </h4>
                 </div>
             </div>
 
@@ -131,7 +132,7 @@ const OurJourney = () => {
 
             <div className={styles.rightfilled}>
                 <div>
-                    <h4>Apr 2021</h4>
+                    <h4>Apr 2021 <span><TbArrowBigRightLines /></span></h4>
                 </div>
                 <div className={styles.rightfilledcontent}>
                     <p> 
@@ -149,7 +150,7 @@ const OurJourney = () => {
                     </p>
                 </div>
                 <div>
-                    <h4>May 2021</h4>
+                    <h4> <span><TbArrowBigLeftLines /></span> May 2021 </h4>
                 </div>
             </div>
 
@@ -162,7 +163,7 @@ const OurJourney = () => {
 
             <div className={styles.rightfilled}>
                 <div>
-                    <h4>Sept 2021</h4>
+                    <h4>Sept 2021 <span><TbArrowBigRightLines /></span></h4>
                 </div>
                 <div className={styles.rightfilledcontent}>
                     <p> 

@@ -653,7 +653,7 @@ const Partners = () => {
     </>
   )
 }
-const Footer = () => {
+export const Footer = () => {
   const data = {
     imageURL: [
       '/assets/img/common/homepage/facebook.svg',
