@@ -4,6 +4,7 @@
 }
 .headerwrapper {
     margin-bottom: 2.5em;
+    color: #00d9b6;
 }
 
 .flipperswrapper {
@@ -11,4 +12,15 @@
     grid-template-columns: repeat(4, 1fr);
     flex-direction: row;
     gap: 10px;
+}
+
+/* mobile lg 425 */
+@media screen and (max-width:767px){
+    .flipperswrapper {
+        grid-template-columns: repeat(1, 1fr);
+
+    }
+    .leadershipmainwrapper {
+    padding: 1.5em 2.5em;
+    }
 }

@@ -5,18 +5,32 @@
 }
 .aboutusmain {
     padding: 0 1em;
-
 }
+ 
 
 .aboutusmain h1 {
     margin-bottom: 1em;
+    color: #00d9b6;
 }
 
 .valuesmain h1 {
     margin-bottom: 1em;
+    color: #00d9b6;
 }
 .slidingimage {
     width: 100%;
     height: 380px;
     border-radius: 10px;
+}
+
+/* mobile lg 425 */
+@media screen and (max-width:767px){
+    .aboutuswrapper {
+        flex-direction: column;
+        padding: 3em 2em;
+    }
+    .slidingimage {
+        height: 300px;
+    }
+
 }

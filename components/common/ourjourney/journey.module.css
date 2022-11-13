@@ -4,6 +4,7 @@
 .journeyheader {
     text-align: center;
     margin: 2em 0;
+    color: #00d9b6;
 }
 
 .innerrightcontent {
@@ -17,7 +18,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    gap: 2em;
+    gap: 1em;
 
 }
 .rightempty {
@@ -27,10 +28,28 @@
 
 .rightfilledcontent {
     width: 50%;
+    border-radius: 10px;
     padding: 1em;
     border: solid #fff 1px;
     margin-bottom: 1em;
     box-shadow: 2px 3px 17px 3px rgba(0,0,0,0.43);
     -webkit-box-shadow: 2px 3px 17px 3px rgba(0,0,0,0.43);
     -moz-box-shadow: 2px 3px 17px 3px rgba(0,0,0,0.43);
+}
+
+
+@media screen and (max-width:767px){
+    .rightfilledcontent {
+        width: 120%;
+    }
+    .journeymain {
+        padding: 0 1em;
+    }
+    .rightempty {
+        width: 10%;
+    }
+    .rightfilled {
+        width: 100%;
+        padding: 0 1em;   
+    }
 }
