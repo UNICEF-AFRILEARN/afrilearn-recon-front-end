@@ -57,12 +57,12 @@ const index = () => {
         <h5>Our FAQs</h5>
         <h2>Have any Questions?</h2>
         <div className={styles.innernavbar}>
-            <ul>
+            {/* <ul>
                 <li>GENERAL</li>
                 <li>SERVICES</li>
                 <li>CLASSES</li>
                 <li>PAYMENT</li>
-            </ul>
+            </ul> */}
         </div>
         <section>
           {faqQuestions.map((faq, i) => {
