@@ -46,15 +46,8 @@ const StudentProfile = () => {
         className={`container-fluid relative ${styles1.dashboardFirstSection2}`}
         style={{ position: 'relative' }}
       ></div>
-      <Row
-        style={{
-          position: 'absolute',
-          bottom: '33%',
-          width: '100%',
-          zIndex: '3',
-        }}
-      >
-        <Col>
+      <Row className={styles.topContainer}>
+        <Col className="p-0">
           <Row className={`mx-auto ${styles.studentProfileGrid}`}>
             <ProfilePicture user={user} />
             <Col className={styles.studentProfileInfo}>
@@ -71,13 +64,13 @@ const StudentProfile = () => {
                     </Row>
                   </Col>
                 </Row>
-                <Row className="p-4">
+                <Row className="p-3">
                   <Col>
                     <Row>
                       <Col>
                         <p className="text-dark">{user.user?.email}</p>
                       </Col>
-                      <Col>
+                      <Col md={4} xs={12}>
                         <Row>
                           <Col
                             md={2}
@@ -88,15 +81,15 @@ const StudentProfile = () => {
                           </Col>
                         </Row>
                       </Col>
-                      <Col md={2} className="">
+                      <Col md={3} xs={8} className="">
                         <Link
                           passHref
                           href="/dashboard/student/studentProfile/studentProfileEdit"
                         >
                           <a>
-                            <Row className="px-auto">
+                            <Row className="px-auto mt-md-0 mt-3">
                               <Col
-                                md={2}
+                                md={3}
                                 className={`${styles.studentProfilePenIcon}`}
                               ></Col>
                               <Col
@@ -119,8 +112,10 @@ const StudentProfile = () => {
       </Row>
       <Row className="m-3 p-3"></Row>
       <Row className="m-5"></Row>
-      <Row className="m-5 p-5">
-        <Col md={3}>
+      <Row
+        className={`m-lg-5 p-lg-5 m-md-5 p-xs-4 p-xs-0 ${styles.walletContainer}`}
+      >
+        <Col lg={3} md={12} className={``}>
           <Row
             style={{
               fontWeight: '500',
@@ -177,7 +172,7 @@ const StudentProfile = () => {
             </Row>
           </Link>
         </Col>
-        <Col className="px-4">
+        <Col lg={9} md={12} className="px-4 mt-md-4 mt-4">
           <Row>
             <p
               style={{
@@ -197,7 +192,7 @@ const StudentProfile = () => {
             }}
           ></Row>
           <Row>
-            <Col className="p-2">
+            <Col className="p-2 " md={6} xs={12}>
               <Row className="pt-2">
                 <p
                   style={{
@@ -260,7 +255,7 @@ const StudentProfile = () => {
                 </p>
               </Row>
             </Col>
-            <Col>
+            <Col md={6} xs={12}>
               <Row className="pt-2">
                 <p
                   style={{
@@ -474,7 +469,7 @@ const StudentProfile = () => {
               boxShadow: '0px 1px 7px rgba(255, 255, 255, 0.25)',
             }}
           ></Row>
-          <Row className="p-5">
+          <Row className="p-lg-5 px-md-0 px-0 p-5 ">
             <p
               style={{ fontWeight: '400', fontSize: '18px', color: '#A6A6A6' }}
             >
@@ -483,37 +478,43 @@ const StudentProfile = () => {
             </p>
           </Row>
           <Row className="mx-auto mb-5">
-            <input
-              defaultValue={referal}
-              // placeholder=""
-              style={{
-                width: '751px',
-                height: '71px',
-                border: '1px solid #00D9B6',
-                borderRadius: '100px',
-                fontWeight: '400',
-                fontSize: '20px',
-                color: '#333333',
-                marginLeft: '15px',
-                position: 'relative',
-              }}
-            />
-            <button
-              onClick={() => copyReferalCode(referal)}
-              style={{
-                width: '193px',
-                height: '71px',
-                color: 'white',
-                background: '#00D9B6',
-                borderRadius: '0px 100px 100px 0px',
-                position: 'absolute',
-                left: '1015px',
-                border: '0',
-                marginLeft: '15px',
-              }}
-            >
-              {copyMessage}
-            </button>
+            <Col md={8} xs={6}>
+              {' '}
+              <input
+                defaultValue={referal}
+                // placeholder=""
+                style={{
+                  width: '100%',
+                  height: '45px',
+                  border: '1px solid #00D9B6',
+                  borderRadius: '50px 0px 0 50px ',
+                  fontWeight: '400',
+                  fontSize: '20px',
+                  color: '#333333',
+                  marginLeft: '15px',
+                  // position: 'relative',
+                  padding: '20px',
+                }}
+              />
+            </Col>
+            <Col md={4} xs={5} className="p-0">
+              <button
+                onClick={() => copyReferalCode(referal)}
+                style={{
+                  width: '100%',
+                  height: '45px',
+                  color: 'white',
+                  background: '#00D9B6',
+                  borderRadius: '0px 100px 100px 0px',
+                  // position: 'absolute',
+                  left: '1015px',
+                  border: '0',
+                  // marginLeft: '15px',
+                }}
+              >
+                {copyMessage}
+              </button>
+            </Col>
           </Row>
         </Col>
       </Row>

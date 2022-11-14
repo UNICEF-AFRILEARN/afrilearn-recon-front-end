@@ -4,6 +4,7 @@
   column-gap: 5%;
   max-width: 80%;
 }
+
 .studentProfileGrid1 {
   display: grid;
   grid-template-columns: 20% 75%;
@@ -35,6 +36,36 @@
   background-size: contain;
   text-align: center;
 }
+.topContainer {
+  position: absolute;
+  bottom: 33%;
+  width: 100%;
+  z-index: 1;
+}
+@media screen and (max-width: 1200px) {
+  .topContainer {
+    bottom: 44%;
+    --bs-gutter-x: 0 rem;
+  }
+  .walletContainer {
+    margin-top: 200px !important;
+  }
+  .studentProfileGrid {
+    grid-template-columns: 100%;
+    /* --bs-gutter-x: 0rem !important; */
+  }
+  .studentProfileColorText {
+  }
+}
+@media screen and (max-width: 415px) {
+  .topContainer {
+    top: 37%;
+  }
+  .walletContainer {
+    margin-top: 330px !important;
+    padding: 2.5rem;
+  }
+}
 .studentProfileAvatar2 {
   background: url('/assets/img/features/dashboard/student/person_2 1.png');
   height: 210px;
@@ -52,7 +83,7 @@
 .studentProfileInfo {
   background-color: white;
   width: 100%;
-  height: 148px;
+  /* height: 148px; */
   box-shadow: 0px 30px 40px rgba(212, 217, 232, 0.5);
   border-radius: 10px;
   align-content: center;

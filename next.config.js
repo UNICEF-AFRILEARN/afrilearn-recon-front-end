@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
   images: {
-    domains: ['afrilearn-media.s3.eu-west-3.amazonaws.com'],
+    domains: ['afrilearn-media.s3.eu-west-3.amazonaws.com']
   },
   reactStrictMode: true,
   webpack(config) {

@@ -74,10 +74,12 @@ const Navigation = () => {
     >
       <Navbar.Brand>
         <Link passHref href="/">
-          <img
-            src="https://myafrilearn.com/static/media/logonew.4424f4df.png"
+          <Image
+            src="/assets/img/logonew.png"
             alt="logo"
             className="brand-logo"
+            width="150px"
+            height="50px"
           />
         </Link>
       </Navbar.Brand>
@@ -86,7 +88,7 @@ const Navigation = () => {
 
       {/* <DarkModeToggle /> */}
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="me-auto">
+        <Nav className="me-aut">
           {/* <div className='main-navbar-with-login'> */}
           {userRole === 'not_login' && (
             <div className="our-story-frag">Our Story</div>
@@ -102,6 +104,9 @@ const Navigation = () => {
                 </Link>
                 <Link passHref href="/payment">
                   <li>Subscribe</li>
+                </Link>
+                <Link passHref href="/about">
+                  <li>About Us</li>
                 </Link>
                 <div className={styles.navicons}>
                   <span>
@@ -155,6 +160,9 @@ const Navigation = () => {
                     ></Dropdown.Toggle>
 
                     <Dropdown.Menu className={styles.dropdown}>
+                      <Dropdown.Item href="#">
+                        {user?.user?.enrolledCourses[0]?.courseId?.name}
+                      </Dropdown.Item>
                       <Dropdown.Item href="#">Add New class</Dropdown.Item>
                       <Dropdown.Item href="/dashboard/socialfeeds">
                         My Feeds
@@ -169,17 +177,17 @@ const Navigation = () => {
                     </Dropdown.Menu>
                   </Dropdown>
                   {/* </Link> */}
-                  {/* {showList === true && (
+                  {showList === true && (
                     <div className={styles.linkswrapper}>
                       <a href="/payment">Add New class</a>
-                      <Link href="/dashboard/socialfeeds">My Feeds</Link>
+                      <a href="#">My Feeds</a>
                       <Link href="/dashboard/student/studentProfile">
                         <a>Manage Profile</a>
                       </Link>
                       <a href="#">Share Feedback</a>
                       <a onClick={handleLogout}>Log out</a>
                     </div>
-                  )} */}
+                  )}
                 </div>
               </div>
             </div>
@@ -202,6 +210,9 @@ const Navigation = () => {
                 </Link>
                 <Link passHref href="/dashboard/teacher/classwork">
                   <li>Classwork</li>
+                </Link>
+                <Link passHref href="/about">
+                  <li>About Us</li>
                 </Link>
                 <div className={styles.navicons}>
                   <span>
@@ -246,6 +257,8 @@ const Navigation = () => {
                     size={15}
                     onClick={handleShow}
                     className={styles.profileavatar2}
+                  />
+                    className={styles.profileavatar2}
                   /> */}
                   <Dropdown>
                     <Dropdown.Toggle
@@ -254,6 +267,9 @@ const Navigation = () => {
                     ></Dropdown.Toggle>
 
                     <Dropdown.Menu className={styles.dropdown}>
+                      <Dropdown.Item href="#">
+                        {user?.user?.enrolledCourses[0]?.courseId?.name}
+                      </Dropdown.Item>
                       <Dropdown.Item href="#">Add New class</Dropdown.Item>
                       <Dropdown.Item href="/dashboard/socialfeeds">
                         My Feeds
@@ -299,6 +315,9 @@ const Navigation = () => {
                 <Link passHref href="/payment">
                   <li>Subscribe</li>
                 </Link>
+                <Link passHref href="/about">
+                  <li>About Us</li>
+                </Link>
                 <div className={styles.navicons}>
                   <span>
                     <BsSearch />
@@ -342,6 +361,8 @@ const Navigation = () => {
                     size={15}
                     className={styles.profileavatar2}
                     onClick={handleShow}
+                  />
+                    onClick={handleShow}
                   /> */}
                   <Dropdown>
                     <Dropdown.Toggle
@@ -383,6 +404,9 @@ const Navigation = () => {
                 </Link>
                 <Link passHref href="/school/schoolpeople">
                   <li>People</li>
+                </Link>
+                <Link passHref href="/about">
+                  <li>About Us</li>
                 </Link>
                 <div className={styles.navicons}>
                   <span>
@@ -427,6 +451,7 @@ const Navigation = () => {
                     size={15}
                     className={styles.profileavatar2}
                     onClick={handleShow}
+                  />
                   /> */}
                   <Dropdown>
                     <Dropdown.Toggle
@@ -435,6 +460,9 @@ const Navigation = () => {
                     ></Dropdown.Toggle>
 
                     <Dropdown.Menu className={styles.dropdown}>
+                      <Dropdown.Item href="#">
+                        {user?.user?.enrolledCourses[0]?.courseId?.name}
+                      </Dropdown.Item>
                       <Dropdown.Item href="#">Add New class</Dropdown.Item>
                       <Dropdown.Item href="/dashboard/socialfeeds">
                         My Feeds
@@ -469,8 +497,11 @@ const Navigation = () => {
             userRole !== '5fd08fba50964811309722d5' &&
             userRole !== '602f3ce39b146b3201c2dc1d' &&
             userRole !== '607ededa2712163504210684' && (
-              <div>
+              <div className={styles.nologinmenu}>
                 {/* implementing next.auth */}
+                <Link href="/about">
+                  <h5 className={styles.aboutmenu}>About Us</h5>
+                </Link>
                 <Link href="/login">
                   <button className={styles.btnlogin}>Login</button>
                 </Link>
