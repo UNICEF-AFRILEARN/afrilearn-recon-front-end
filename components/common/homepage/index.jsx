@@ -344,7 +344,7 @@ const Testimonials = () => {
   )
 }
 
-const Faq = () => {
+export const Faq = () => {
   const [currentModal, openModal] = useState(null)
   const [answerId, setAnswerId] = useState(null)
   const data = {
@@ -371,22 +371,32 @@ const Faq = () => {
     {
       id: 1,
       faq: 'What is Afrilearn?',
-      answ: 'Subscription includes unlimited access to all video lessons',
+      answ: "Afrilearn is an education streaming service that provides Nigerian and West African Secondary School Students (JSS1-SS3) freedom to learn complete curriculum-relevant subjects and topics anytime, anywhere. With Afrilearn, there's always something exciting to learn as new contents are added weekly!",
     },
     {
       id: 2,
       faq: 'What is included in Afrilearn subscription?',
-      answ: 'audio lessons, class notes, practice quizzes, live classes',
+      answ: "Subscription includes unlimited access to all video lessons, audio lessons, class notes, practice quizzes, live classes and more, covering all subjects and topics, in your chosen class. Brace yourself for a profoundly life-changing experience.",
     },
     {
       id: 3,
-      faq: 'How do I cancel?',
-      answ: 'and more, covering all subjects and topics, in your chosen',
+      faq: 'How much does Afrilearn cost?',
+      answ: "Afrilearn has a variety of plans to suit your learning goals. Subscription Plans include Monthly - ₦999 ($2.99), Quarterly - ₦2499 ($6.99), Bi-Annual - ₦4999 ($13.99), Annual - ₦9999 ($26.99).",
     },
     {
       id: 4,
       faq: 'Where can I watch?',
-      answ: 'Subscription includes unlimited access to all video lessons',
+      answ: "You can learn on Afrilearn via your smartphone, tablet, Smart TV, laptop, or streaming device. Learn as much as you want, whenever you want without a single commercial – all for one low monthly price.",
+    },
+    {
+      id: 5,
+      faq: 'How do I cancel?',
+      answ: "Our focus is to transform users into ambassadors through the best learning experience possible. You can easily cancel your subscription in two clicks. If you have more questions, please click",
+    },
+    {
+      id: 6,
+      faq: 'Got more Question?',
+      answ: 'We’ve got you! Simply visit our COMPLETE FAQ PAGE, which regularly gets updated based on new data and insights from our awesome users.',
     },
   ]
 
