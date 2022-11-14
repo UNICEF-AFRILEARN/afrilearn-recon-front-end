@@ -344,7 +344,7 @@ const Testimonials = () => {
   )
 }
 
-const Faq = () => {
+export const Faq = () => {
   const [currentModal, openModal] = useState(null)
   const [answerId, setAnswerId] = useState(null)
   const data = {
