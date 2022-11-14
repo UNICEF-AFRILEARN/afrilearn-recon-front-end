@@ -30,6 +30,10 @@
   padding: 5px;
 }
 
+.dropDown {
+  --bs-btn-border-width: 0px !important;
+  left: -132px !important;
+}
 .parentloggedindash {
   display: flex;
   justify-content: right;

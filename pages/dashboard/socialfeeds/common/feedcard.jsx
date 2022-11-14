@@ -1,6 +1,10 @@
 import React from 'react'
 
-import { BsShieldFillCheck, BsFillEyeSlashFill } from 'react-icons/bs'
+import {
+  BsShieldFillCheck,
+  BsFillEyeSlashFill,
+  BsFillEyeFill,
+} from 'react-icons/bs'
 import { MdCheckBoxOutlineBlank } from 'react-icons/md'
 import { RiCheckboxBlankFill } from 'react-icons/ri'
 import { AiOutlineUsergroupAdd } from 'react-icons/ai'
@@ -34,7 +38,8 @@ const Feedcard = () => {
               color: '#A8A8A8',
             }}
           >
-            <BsFillEyeSlashFill /> <span className="ms-2">Post Visibility</span>
+            {clicks === 1 ? <BsFillEyeFill /> : <BsFillEyeSlashFill />}{' '}
+            <span className="ms-2">Post Visibility</span>
           </li>
           <li onClick={() => setClicks(1)} className="pointer d-flex">
             {' '}

@@ -1,12 +1,11 @@
-import PersonalProfile from "./personalProfile";
-import PersonalSelectionClass from "./personalSelectionClass";
-import SecurityProfile from "./securityProfile";
+import PersonalProfile from './personalProfile'
+import PersonalSelectionClass from './personalSelectionClass'
+import SecurityProfile from './securityProfile'
 
 const selectionSection = ({ data }) => {
-  console.log(data);
   return (
     <div className="mb-5">
-      {data === "undefined" || data === 1 ? (
+      {data === 'undefined' || data === 1 ? (
         <PersonalProfile />
       ) : data === 2 ? (
         <PersonalSelectionClass />
@@ -14,7 +13,7 @@ const selectionSection = ({ data }) => {
         <SecurityProfile />
       )}
     </div>
-  );
-};
+  )
+}
 
-export default selectionSection;
+export default selectionSection

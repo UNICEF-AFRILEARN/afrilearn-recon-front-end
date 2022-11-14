@@ -671,11 +671,20 @@ a {
   background-position-y: 50%;
 }
 
+.btn:focus {
+  color: #333;
+  background-color: var(--bs-btn-hover-bg);
+  border-color: var(--bs-btn-hover-border-color);
+  outline: 0;
+  /* box-shadow: var(--bs-btn-focus-box-shadow); */
+}
+
 .btn-primary {
   background-color: #00d9b6 !important;
   border: none !important;
   border-radius: 100px !important;
   width: 100% !important;
+  --bs-btn-color: #333 !important;
 }
 .form-check-input:checked {
   background-color: #00d9b6 !important;
