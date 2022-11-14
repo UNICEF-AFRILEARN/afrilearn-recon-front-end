@@ -54,3 +54,29 @@
 .childcontentsecond img {
     width: 100%;
 }
+
+/* mobile lg 425 */
+@media screen and (max-width:767px){
+    .innerheader {
+        text-align: start;
+        padding: 1.5em 2em;
+        width: 90%;
+    }
+    .partnerinnercontent {
+        flex-direction: column-reverse;
+        padding: 3em 2em;
+    }
+    
+    .investorinnercontent {
+        flex-direction: column;
+        padding: 3em 2em;
+    }
+    .childcontent {
+        padding: 1em;
+        width: 100%;
+    }
+    .childcontentsecond {
+        width: 100%;
+        padding: 1em;
+    }
+}
