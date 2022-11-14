@@ -1,0 +1,21 @@
+.headerwrapper {
+    background-image: url('../../public/assets/img/faqBg.png'),linear-gradient(rgba(0, 0, 0, 0.63), rgba(0, 0, 0, 0.63));
+    background-size: cover;
+    height: 50vh;
+    background-position: 30% 95%;
+    text-align: center;
+    align-items: center;
+
+}
+
+.innerheader {
+    text-align: start;
+    padding: 1.5em 8em;
+    width: 60%;
+}
+
+.innerheader h1, .innerheader h4{
+    color: #fff;
+    margin-top: 1.5em;
+
+}
