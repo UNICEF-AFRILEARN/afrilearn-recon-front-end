@@ -19,3 +19,38 @@
     margin-top: 1.5em;
 
 }
+
+.partnerinnercontent {
+    display: flex;
+    justify-content: space-between;
+    padding: 3em 6em;
+}
+
+.investorinnercontent {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    padding: 3em 6em;
+}
+
+.childcontent {
+    padding: 4em;
+    width: 60%;
+    box-shadow: 0px 1px 5px 6px rgba(0,0,0,0.11);
+    -webkit-box-shadow: 0px 1px 5px 6px rgba(0,0,0,0.11);
+    -moz-box-shadow: 0px 1px 5px 6px rgba(0,0,0,0.11);
+}
+.childcontentsecond {
+    width: 30%;
+    padding: 1em;
+    text-align: center;
+    box-shadow: 0px 1px 5px 6px rgba(0,0,0,0.11);
+    -webkit-box-shadow: 0px 1px 5px 6px rgba(0,0,0,0.11);
+    -moz-box-shadow: 0px 1px 5px 6px rgba(0,0,0,0.11);
+}
+.childcontentsecond p {
+    padding: 0 1em;
+}
+.childcontentsecond img {
+    width: 100%;
+}
