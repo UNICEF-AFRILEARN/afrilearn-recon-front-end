@@ -22,8 +22,8 @@ const StudentProfile = () => {
   const token = user.token
   const userId = user.user?.id
 
-  console.log('logged-in ==> schoolProfile', schoolProfile)
-  console.log('logged-in ==> user profile', userId)
+  // console.log('logged-in ==> schoolProfile', schoolProfile)
+  // console.log('logged-in ==> user profile', userId)
   const coin = { amount: 345 }
   const number = ''
 
@@ -395,7 +395,8 @@ const StudentProfile = () => {
                         color: '#333333',
                       }}
                     >
-                      {user.user?.enrolledCourses[0]?.courseId?.name}
+                      {user.user?.enrolledCourses &&
+                        user.user?.enrolledCourses[0]?.courseId?.name}
                     </p>
                   </Row>
                 </Col>
@@ -524,6 +525,7 @@ const StudentProfile = () => {
 export default StudentProfile
 
 export const ProfilePicture = ({ user }) => {
+  console.log(user?.user?.profilePhotoUrl)
   return (
     <Row>
       <Col className={`m-auto ${styles.studentProfileAvatar}`}>
@@ -543,7 +545,7 @@ export const ProfilePicture = ({ user }) => {
                   ? user?.user?.profilePhotoUrl
                   : `/assets/img/features/dashboard/student/woman.png`
               }
-              alt="Flowers"
+              alt="ProfilePix"
               style={{
                 // marginLeft: "6px",
                 marginTop: '18px',

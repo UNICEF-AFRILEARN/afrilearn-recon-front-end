@@ -1,14 +1,14 @@
-import Image from "next/image";
-import Link from "next/link";
-import React, { useState, useRef, useEffect } from "react";
-import { Col, Container, Modal, Row, Button, Form } from "react-bootstrap";
+import Image from 'next/image'
+import Link from 'next/link'
+import React, { useState, useRef, useEffect } from 'react'
+import { Col, Container, Modal, Row, Button, Form } from 'react-bootstrap'
 // import Video from "..";
-import styles from "../../classnote/classnote.module.css";
-import styles1 from "../../../../../../pages/dashboard/teacher/teacher.module.css";
-import styles2 from "../../topInClass.module.css";
-import { useRouter } from "next/router";
-import { useDispatch, useSelector } from "react-redux";
-import ReactTimeAgo from "react-time-ago";
+import styles from '../../classnote/classnote.module.css'
+import styles1 from '../../../../../../pages/dashboard/teacher/teacher.module.css'
+import styles2 from '../../topInClass.module.css'
+import { useRouter } from 'next/router'
+import { useDispatch, useSelector } from 'react-redux'
+import ReactTimeAgo from 'react-time-ago'
 import {
   fetchClearLikeLesson,
   fetchclearUnFinishedVideos,
@@ -17,16 +17,16 @@ import {
   fetchsaveFavouriteVideo,
   fetchStoreLikeLesson,
   fetchstoreUnFinishedVideos,
-} from "../../../../../../redux/actions/subject";
-import ReactPlayer from "react-player/lazy";
-import { FcLike } from "react-icons/fc";
-import { FcLikePlaceholder } from "react-icons/fc";
-import moment from "moment";
+} from '../../../../../../redux/actions/subject'
+import ReactPlayer from 'react-player/lazy'
+import { FcLike } from 'react-icons/fc'
+import { FcLikePlaceholder } from 'react-icons/fc'
+import moment from 'moment'
 // import Speech from "react-speech";
-import TimeAgo from "javascript-time-ago";
+import TimeAgo from 'javascript-time-ago'
 
-import en from "javascript-time-ago/locale/en.json";
-import ru from "javascript-time-ago/locale/ru.json";
+import en from 'javascript-time-ago/locale/en.json'
+import ru from 'javascript-time-ago/locale/ru.json'
 import {
   addLessonComment,
   addLessonCommentReply,
@@ -36,7 +36,7 @@ import {
   reportLesson,
   unlikeLessonComment,
   updateLessonComment,
-} from "../../../../../../redux/actions/comment";
+} from '../../../../../../redux/actions/comment'
 
 import {
   EmailShareButton,
@@ -51,95 +51,92 @@ import {
   TelegramIcon,
   TwitterIcon,
   WhatsappIcon,
-} from "react-share";
+} from 'react-share'
 
 // import { Modal, ModalHeader, ModalBody } from "reactstrap";
 
-TimeAgo.addDefaultLocale(en);
-TimeAgo.addLocale(ru);
+TimeAgo.addDefaultLocale(en)
+TimeAgo.addLocale(ru)
 
 const VideoPage = () => {
-  let shareLink = `Transform your life through world-class education. Download the Afrilearn App for free now at https://play.google.com/store/apps/details?id=com.afrilearn or visit https://myafrilearn.com/`;
-  const dispatch = useDispatch();
-  const ref = useRef("");
-  const router = useRouter();
-  let quarie = router.query[0];
-  let quarie1 = router.query[1];
-  const { user } = useSelector((state) => state.auth);
-  const subject = useSelector((state) => state.mySubjectCourse);
-  const lessons = subject.subjectDetails[1]?.relatedLessons;
-  console.log(lessons);
-  console.log(subject);
-  const token = user?.token;
-  const terms = [
-    { id: "5fc8d1b20fae0a06bc22db5c", term: "First Term" },
-    { id: "600047f67cabf80f88f61735", term: "Second Term" },
-    { id: "600048197cabf80f88f61736", term: "Third Term" },
-  ];
+  let shareLink = `Transform your life through world-class education. Download the Afrilearn App for free now at https://play.google.com/store/apps/details?id=com.afrilearn or visit https://myafrilearn.com/`
+  const dispatch = useDispatch()
+  const ref = useRef('')
+  const router = useRouter()
+  let quarie = router.query[0]
+  let quarie1 = router.query[1]
+  const { user } = useSelector((state) => state.auth)
+  const subject = useSelector((state) => state.mySubjectCourse)
+  const lessons = subject.subjectDetails[1]?.relatedLessons
 
-  const [quary, setQuary] = useState(quarie);
-  const [quary1, setQuary1] = useState(quarie1);
+  const token = user?.token
+  const terms = [
+    { id: '5fc8d1b20fae0a06bc22db5c', term: 'First Term' },
+    { id: '600047f67cabf80f88f61735', term: 'Second Term' },
+    { id: '600048197cabf80f88f61736', term: 'Third Term' },
+  ]
+
+  const [quary, setQuary] = useState(quarie)
+  const [quary1, setQuary1] = useState(quarie1)
 
   const idSetter = (first) => {
-    setQuary(lessons[first].id);
-    setQuary1(lessons[first].videoUrls[0]._id);
-  };
+    setQuary(lessons[first].id)
+    setQuary1(lessons[first].videoUrls[0]._id)
+  }
 
   const videoId = (id) => {
-    let dat;
-    console.log(lessons);
+    let dat
     for (let i = 0; i < lessons?.length; i++) {
       if (lessons[i].id === id) {
-        dat = lessons[i];
+        dat = lessons[i]
       }
     }
-    return dat;
-  };
+    return dat
+  }
   const term = () => {
-    let dat;
+    let dat
     for (let i = 0; i < terms.length; i++) {
       if (videoId(quary)?.termId === terms[i].id) {
-        dat = terms[i].term;
+        dat = terms[i].term
       }
     }
-    return dat;
-  };
-  let lessonsNumber;
+    return dat
+  }
+  let lessonsNumber
   const videoIds = (id) => {
-    let dat;
-    const lesson = videoId(quary)?.videoUrls;
+    let dat
+    const lesson = videoId(quary)?.videoUrls
 
     for (let i = 0; i < lesson?.length; i++) {
       if (lesson[i]._id === id) {
-        lessonsNumber = i;
-        dat = lesson[i];
+        lessonsNumber = i
+        dat = lesson[i]
       }
     }
-    return dat;
-  };
-  console.log(quary1);
+    return dat
+  }
   const data = {
     topic: videoId(quary)?.title,
     videoUrl: videoIds(quary1),
-  };
-  const [visibility, setVisibility] = useState("Show");
+  }
+  const [visibility, setVisibility] = useState('Show')
 
-  const [modal, setModal] = useState(false);
-  const toggleModal = () => setModal(!modal);
+  const [modal, setModal] = useState(false)
+  const toggleModal = () => setModal(!modal)
   const iconData = {
-    icon: "arrowhead",
+    icon: 'arrowhead',
     text: `Lesson ${+lessonsNumber + 1}`,
     leng: videoId(quary)?.videoUrls.length,
-  };
-  const subjected = subject.subjectDetails[0]?.subject;
+  }
+  const subjected = subject.subjectDetails[0]?.subject
   const secVidData = {
     class: subjected?.courseId.alias,
     subject: subjected?.mainSubjectId.name,
     term: term(),
-    date: moment(videoId(quary) && videoId(quary)?.createdAt).format("LL"),
-  };
+    date: moment(videoId(quary) && videoId(quary)?.createdAt).format('LL'),
+  }
 
-  const target = useRef(null);
+  const target = useRef(null)
 
   const datas = {
     userId: user?.user?._id,
@@ -149,116 +146,106 @@ const VideoPage = () => {
     termId: videoId(quary)?.termId,
     videoId: videoIds(quary1)?._id,
     videoPosition: lessonsNumber,
-  };
-  const [audioState, setAudioState] = useState(false);
+  }
+  const [audioState, setAudioState] = useState(false)
   const handleClick = () => {
-    setAudioState(!audioState);
-  };
+    setAudioState(!audioState)
+  }
   const decodeEntities = (function () {
     // this prevents any overhead from creating the object each time
     // var element = document.createElement("div");
 
     function decodeHTMLEntities(str) {
-      if (str && typeof str === "string") {
+      if (str && typeof str === 'string') {
         // strip script/html tags
-        str = str.replace(/<script[^>]*>([\S\s]*?)<\/script>/gim, "");
-        str = str.replace(/<\/?\w(?:[^"'>]|"[^"]*"|'[^']*')*>/gim, "");
-        element.innerHTML = str;
-        str = element.textContent;
-        element.textContent = "";
+        str = str.replace(/<script[^>]*>([\S\s]*?)<\/script>/gim, '')
+        str = str.replace(/<\/?\w(?:[^"'>]|"[^"]*"|'[^']*')*>/gim, '')
+        element.innerHTML = str
+        str = element.textContent
+        element.textContent = ''
       }
 
-      return str;
+      return str
     }
-    return decodeHTMLEntities;
-  })();
+    return decodeHTMLEntities
+  })()
 
-  const fave = subject.favourite?.favouriteVideos;
+  const fave = subject.favourite?.favouriteVideos
   let favoury = () => {
     let likes = fave?.find((fruit) => {
-      return fruit.lessonId.id === datas.lessonId;
-    });
-    return likes;
-  };
-  const [faves, setfaves] = useState(favoury() ? true : false);
+      return fruit.lessonId.id === datas.lessonId
+    })
+    return likes
+  }
+  const [faves, setfaves] = useState(favoury() ? true : false)
   let likey = () => {
     let likes = videoId(quary)?.likes.find((fruit) => {
-      return fruit === datas.userId;
-    });
-    return likes;
-  };
-  const [show, setShow] = useState(likey() ? true : false);
+      return fruit === datas.userId
+    })
+    return likes
+  }
+  const [show, setShow] = useState(likey() ? true : false)
 
-  const [liskes, setLiskes] = useState(videoId(quary)?.likes.length);
+  const [liskes, setLiskes] = useState(videoId(quary)?.likes.length)
   const showing = () => {
     if (show) {
-      setLiskes(+liskes - 1);
-      setShow(!show);
-      dispatch(fetchClearLikeLesson(datas, token));
+      setLiskes(+liskes - 1)
+      setShow(!show)
+      dispatch(fetchClearLikeLesson(datas, token))
     } else {
-      setShow(!show);
-      setLiskes(+liskes + 1);
-      dispatch(fetchStoreLikeLesson(datas, token));
+      setShow(!show)
+      setLiskes(+liskes + 1)
+      dispatch(fetchStoreLikeLesson(datas, token))
     }
-  };
+  }
   const favouring = () => {
     if (faves) {
-      setfaves(!faves);
-      dispatch(fetchremoveFavouriteVideo(datas, token));
+      setfaves(!faves)
+      dispatch(fetchremoveFavouriteVideo(datas, token))
     } else {
-      setfaves(!faves);
-      dispatch(fetchsaveFavouriteVideo(datas, token));
+      setfaves(!faves)
+      dispatch(fetchsaveFavouriteVideo(datas, token))
     }
-  };
+  }
   // const [refresh, setRefresh] = useState();
   const refref = () => {
     dispatch(
-      fetchgetLessonComments(
-        datas.lessonId,
-        { commentSection: "video" },
-        token,
-      ),
-    );
-  };
-  // console.log(refresh);
+      fetchgetLessonComments(datas.lessonId, { commentSection: 'video' }, token)
+    )
+  }
 
   useEffect(() => {
     dispatch(
-      fetchgetLessonComments(
-        datas.lessonId,
-        { commentSection: "video" },
-        token,
-      ),
-    );
-  }, []);
+      fetchgetLessonComments(datas.lessonId, { commentSection: 'video' }, token)
+    )
+  }, [])
 
-  const img = ["Group 2323", "Group 2324", "Group 2327", "Group 2328"];
+  const img = ['Group 2323', 'Group 2324', 'Group 2327', 'Group 2328']
   const randomise = () => {
-    const num = Math.floor(Math.random() * 4);
-    return img[num];
-  };
-  const [modal1, setModal1] = useState(false);
+    const num = Math.floor(Math.random() * 4)
+    return img[num]
+  }
+  const [modal1, setModal1] = useState(false)
   const toggle1 = () => {
-    setModal1(!modal1);
-    console.log(modal1);
-  };
+    setModal1(!modal1)
+  }
 
-  const [Amodals, setAModal] = useState(false);
+  const [Amodals, setAModal] = useState(false)
 
-  const [classnote, setClassnote] = useState(1);
+  const [classnote, setClassnote] = useState(1)
 
   return (
     <Container fluid id="videoPlay">
       <Row>
-        <Col className="p-0" style={{ cursor: "pointer" }}>
+        <Col className="p-0" style={{ cursor: 'pointer' }}>
           <ReactPlayer
             className="react-player"
             onStart={fetchstoreUnFinishedVideos(datas)}
-            config={{ file: { attributes: { controlsList: "nodownload" } } }}
+            config={{ file: { attributes: { controlsList: 'nodownload' } } }}
             onContextMenu={(e) => e.preventDefault()}
             onEnded={(e) => {
-              fetchclearUnFinishedVideos(datas);
-              toggleModal();
+              fetchclearUnFinishedVideos(datas)
+              toggleModal()
             }}
             url={data?.videoUrl?.videoUrl}
             controls="true"
@@ -274,13 +261,13 @@ const VideoPage = () => {
         <Col lg={6} md={7} sm={4} className="">
           <Row>
             <Col>
-              {" "}
+              {' '}
               <div className={styles.accordButtonLeft}>
                 <Link href="/dashboard/student/video/videoPage">
                   <div className={styles.buttonStyle}>
                     <div className={styles.buttonStyleImage}>
                       <Image
-                        alt={"afrilearn marketing video"}
+                        alt={'afrilearn marketing video'}
                         src={`/assets/img/features/dashboard/student/${iconData.icon}.png`}
                         width={13}
                         height={13}
@@ -294,7 +281,7 @@ const VideoPage = () => {
             <Col>
               <Link
                 href={{
-                  pathname: "/dashboard/student/classnote/classnotePage",
+                  pathname: '/dashboard/student/classnote/classnotePage',
                   query: [quary],
                 }}
               >
@@ -309,9 +296,9 @@ const VideoPage = () => {
               className="w-100"
               onClick={handleClick}
               style={{
-                position: "relative",
-                margin: "auto",
-                cursor: "pointer",
+                position: 'relative',
+                margin: 'auto',
+                cursor: 'pointer',
               }}
             >
               {/* <Speech
@@ -327,36 +314,36 @@ const VideoPage = () => {
               /> */}
             </Col>
 
-            <Col onClick={() => showing()} style={{ cursor: "pointer" }}>
+            <Col onClick={() => showing()} style={{ cursor: 'pointer' }}>
               <div
                 className="m-auto p-auto"
-                style={{ cursor: "pointer", width: "32px", height: "32px" }}
+                style={{ cursor: 'pointer', width: '32px', height: '32px' }}
               >
                 {show ? <FcLike size={32} /> : <FcLikePlaceholder size={32} />}
               </div>
               <div className={styles.loveBottom}>I Love This</div>
             </Col>
 
-            <Col md={1} className="p-2" style={{ position: "relative" }}>
+            <Col md={1} className="p-2" style={{ position: 'relative' }}>
               <div className={`m-auto ${styles1.moreIcon}`}>
                 <div
                   style={{
-                    width: "150px",
-                    background: "#FFFFFF",
-                    boxShadow: "0px 1px 7px rgba(0, 0, 0, 0.1)",
-                    borderRadius: "10px",
-                    position: "absolute",
-                    top: "-84px",
-                    left: "-45px",
+                    width: '150px',
+                    background: '#FFFFFF',
+                    boxShadow: '0px 1px 7px rgba(0, 0, 0, 0.1)',
+                    borderRadius: '10px',
+                    position: 'absolute',
+                    top: '-84px',
+                    left: '-45px',
                   }}
                   className={`moreIcon ${styles1.displayNone}`}
                 >
                   <Col className={`p-3 ps-3`}>
-                    {user.user?.role === "602f3ce39b146b3201c2dc1d" && (
+                    {user.user?.role === '602f3ce39b146b3201c2dc1d' && (
                       <Link passHref href="/dashboard/teacher/assignContent">
                         <Row className="">
                           <Col className={`m-auto ${styles.highlightText}`}>
-                            <p style={{ fontSize: "12px", margin: "2px" }}>
+                            <p style={{ fontSize: '12px', margin: '2px' }}>
                               Assign Content
                             </p>
                           </Col>
@@ -365,7 +352,7 @@ const VideoPage = () => {
                     )}
                     <Row className="" onClick={() => toggle1()}>
                       <Col className={`m-auto ${styles.highlightText}`}>
-                        <p style={{ fontSize: "12px", margin: "2px" }}>Share</p>
+                        <p style={{ fontSize: '12px', margin: '2px' }}>Share</p>
                       </Col>
                     </Row>
                     <Modal
@@ -376,7 +363,7 @@ const VideoPage = () => {
                     >
                       <Modal.Header closeButton>&nbsp;</Modal.Header>
                       <Modal.Body>
-                        <ul style={{ listStyleType: "none", padding: "0" }}>
+                        <ul style={{ listStyleType: 'none', padding: '0' }}>
                           <li className={`m-3 ${styles.highlightText}`}>
                             <WhatsappShareButton url={shareLink}>
                               <WhatsappIcon size={30} round={true} />
@@ -416,18 +403,18 @@ const VideoPage = () => {
                         </ul>
                       </Modal.Body>
                     </Modal>
-                    {user.user?.role === "5fd08fba50964811309722d5" && (
+                    {user.user?.role === '5fd08fba50964811309722d5' && (
                       <Row className="">
                         <Col
                           onClick={() => favouring()}
                           className={`m-auto ${styles.highlightText}`}
                         >
                           {faves ? (
-                            <p style={{ fontSize: "12px", margin: "2px" }}>
+                            <p style={{ fontSize: '12px', margin: '2px' }}>
                               Remove from Favourites
                             </p>
                           ) : (
-                            <p style={{ fontSize: "12px", margin: "2px" }}>
+                            <p style={{ fontSize: '12px', margin: '2px' }}>
                               Add to Favourites
                             </p>
                           )}
@@ -439,7 +426,7 @@ const VideoPage = () => {
                         className={`m-auto ${styles.highlightText}`}
                         onClick={() => setAModal(true)}
                       >
-                        <p style={{ fontSize: "12px", margin: "2px" }}>
+                        <p style={{ fontSize: '12px', margin: '2px' }}>
                           Report Lesson
                         </p>
                       </Col>
@@ -492,7 +479,7 @@ const VideoPage = () => {
             data={subject.comments}
             datas={datas}
             deta={refref}
-            commentSection={"video"}
+            commentSection={'video'}
           />
 
           <NextPrevPage datay={idSetter} className="mx-sm-5" />
@@ -503,18 +490,18 @@ const VideoPage = () => {
             <Col className="bg-light rounded-top mt-5 ml-5 border-bottom">
               <Row>
                 <Col>
-                  <p style={{ fontSize: "20px" }} className="font-weight-bold">
+                  <p style={{ fontSize: '20px' }} className="font-weight-bold">
                     Transcript
                   </p>
                 </Col>
                 <Col></Col>
                 <Col
                   sm={5}
-                  style={{ cursor: "pointer" }}
+                  style={{ cursor: 'pointer' }}
                   onClick={
-                    visibility === "Show"
-                      ? () => setVisibility("Hide")
-                      : () => setVisibility("Show")
+                    visibility === 'Show'
+                      ? () => setVisibility('Hide')
+                      : () => setVisibility('Show')
                   }
                 >
                   <u>{visibility} Transcript</u>
@@ -522,8 +509,8 @@ const VideoPage = () => {
               </Row>
             </Col>
           </Row>
-          {visibility === "Show" && (
-            <Row style={{ borderRadius: "20px" }}>
+          {visibility === 'Show' && (
+            <Row style={{ borderRadius: '20px' }}>
               <Col className="bg-light rounded-bottom ">
                 <div
                   dangerouslySetInnerHTML={{
@@ -537,25 +524,25 @@ const VideoPage = () => {
           <Row className="ml-5">
             <Col className="bg-light rounded-top mt-5 ml-5 border-bottom">
               <Row className="">
-                <Col style={{ fontSize: "20px" }}>Recommended for you</Col>
+                <Col style={{ fontSize: '20px' }}>Recommended for you</Col>
               </Row>
             </Col>
           </Row>
 
           {videoId(quary)?.videoUrls.map((dater, i) => (
-            <Row className="bg-light pt-0 pb-0" style={{ borderRadius: "0 0" }}>
+            <Row className="bg-light pt-0 pb-0" style={{ borderRadius: '0 0' }}>
               <Col className="bg-light rounded-bottom m-auto" md={4}>
                 <Row>
                   {dater?.thumbnailUrl ? (
                     <Image
-                      alt={"afrilearn marketing video"}
+                      alt={'afrilearn marketing video'}
                       src={dater.thumbnailUrl}
                       width={200}
                       height={110}
                     />
                   ) : (
                     <Image
-                      alt={"afrilearn marketing video"}
+                      alt={'afrilearn marketing video'}
                       src={`/assets/img/features/dashboard/student/random/${randomise()}.png`}
                       width={200}
                       height={110}
@@ -567,16 +554,16 @@ const VideoPage = () => {
                 <Row className="bg-light">{videoId(quary)?.title}</Row>
                 <Row
                   onClick={() => {
-                    setQuary1(dater._id);
+                    setQuary1(dater._id)
                   }}
                 >
                   <a href="#videoPlay">
-                    {" "}
+                    {' '}
                     <div className={styles2.buttonPlay}>
                       <button className={styles2.buttonStyle}>
                         <div className={styles2.buttonStyleImage}>
                           <Image
-                            alt={"afrilearn marketing video"}
+                            alt={'afrilearn marketing video'}
                             src={`/assets/img/features/dashboard/student/arrowhead.png`}
                             width={13}
                             height={13}
@@ -593,119 +580,108 @@ const VideoPage = () => {
         </Col>
       </Row>
     </Container>
-  );
-};
+  )
+}
 
-export default VideoPage;
+export default VideoPage
 
 export const Comment = ({ data, datas, deta, commentSection }) => {
-  const { user } = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
-  const token = user?.token;
+  const { user } = useSelector((state) => state.auth)
+  const dispatch = useDispatch()
+  const token = user?.token
 
-  const [comment, setComment] = useState("");
+  const [comment, setComment] = useState('')
 
-  const lenComment = data?.length;
+  const lenComment = data?.length
   const pix =
     data?.comments?.userId?.profilePhotoUrl !== undefined
       ? data?.comment.userId.profilePhotoUrl
-      : `/assets/img/profile.svg`;
+      : `/assets/img/profile.svg`
 
   const commentData = {
     userId: datas.userId,
     lessonId: datas?.lessonId,
     text: comment,
     commentSection: commentSection,
-  };
+  }
 
   const handleSubmit = (e) => {
-    e.preventDefault;
-    if (comment !== "") {
-      dispatch(addLessonComment(commentData, token));
-      comment !== "" && console.log(comment);
-      setComment("");
-      deta();
+    e.preventDefault
+    if (comment !== '') {
+      dispatch(addLessonComment(commentData, token))
+      setComment('')
+      deta()
     }
-  };
-  const comLik = true;
-  const [inite, setInite] = useState("");
-  const [commentEdit, setCommentEdit] = useState("");
+  }
+  const comLik = true
+  const [inite, setInite] = useState('')
+  const [commentEdit, setCommentEdit] = useState('')
   const handleEdit = (rey, ray) => {
-    // console.log(commentEdit);
-    rey === inite ? setInite("") : setInite(rey);
-    setCommentEdit(ray);
-  };
-  const [comRep, setComRep] = useState("");
+    rey === inite ? setInite('') : setInite(rey)
+    setCommentEdit(ray)
+  }
+  const [comRep, setComRep] = useState('')
   const handleReply = (rey) => {
-    // console.log(rey);
-    rey === comRep ? setComRep("") : setComRep(rey);
-  };
-  console.log(comRep);
+    rey === comRep ? setComRep('') : setComRep(rey)
+  }
   let likery = (e) => {
     let likes = data?.comments[e]?.likes?.find((fruit) => {
-      return fruit === datas.userId;
-    });
-    return likes;
-  };
-  const [commentReply, setCommentReply] = useState("");
-  console.log(commentReply);
-
+      return fruit === datas.userId
+    })
+    return likes
+  }
+  const [commentReply, setCommentReply] = useState('')
   const handleReplySubmit = (e, i) => {
     const commentReplyData = {
       userId: datas.userId,
       text: commentReply,
       lessonCommentId: data?.comments[i]?.id,
-    };
-    e.preventDefault;
-    if (commentReply !== "") {
-      dispatch(addResponse(commentReplyData, token));
-      commentReply !== "" && console.log(commentReply);
-      setCommentReply("");
-      deta();
     }
-  };
+    e.preventDefault
+    if (commentReply !== '') {
+      dispatch(addResponse(commentReplyData, token))
+      setCommentReply('')
+      deta()
+    }
+  }
   // const [commentEdit, setCommentEdit] = useState("");
-  // console.log(commentEdit);
 
   const handleSubmitEdit = (e, commentId) => {
     const commentEditData = {
       text: commentEdit,
-    };
-    e.preventDefault;
-    console.log(commentEdit);
-    if (commentEdit !== "") {
-      dispatch(updateLessonComment(commentEditData, commentId, token));
-      commentEdit !== "" && console.log(commentEdit);
-      setCommentEdit("");
-      setInite("");
-      deta();
     }
-  };
+    e.preventDefault
+    if (commentEdit !== '') {
+      dispatch(updateLessonComment(commentEditData, commentId, token))
+      setCommentEdit('')
+      setInite('')
+      deta()
+    }
+  }
   const handleDelete = (e, commentId) => {
-    e.preventDefault;
-    console.log(commentId);
-    dispatch(deleteLessonComment(commentId, token));
-    deta();
-  };
+    e.preventDefault
+    dispatch(deleteLessonComment(commentId, token))
+    deta()
+  }
 
   const CommentFunc = ({ num, comment, main, rep }) => {
-    const [show, setShow] = useState(likery(num) ? true : false);
+    const [show, setShow] = useState(likery(num) ? true : false)
     const dtas = {
       userId: datas.userId,
       lessonCommentId: data?.comments[num]?.id,
-    };
-    const [liskes, setLiskes] = useState(data?.comments[num]?.likes?.length);
+    }
+    const [liskes, setLiskes] = useState(data?.comments[num]?.likes?.length)
     const showing = () => {
       if (show) {
-        setLiskes(+liskes - 1);
-        setShow(!show);
-        dispatch(likeLessonComment(dtas, token));
+        setLiskes(+liskes - 1)
+        setShow(!show)
+        dispatch(likeLessonComment(dtas, token))
       } else {
-        setShow(!show);
-        setLiskes(+liskes + 1);
-        dispatch(unlikeLessonComment(dtas, token));
+        setShow(!show)
+        setLiskes(+liskes + 1)
+        dispatch(unlikeLessonComment(dtas, token))
       }
-    };
+    }
 
     return (
       <>
@@ -715,7 +691,7 @@ export const Comment = ({ data, datas, deta, commentSection }) => {
             <Row className="pt-4 px-3 ms-5 ps-5" key={comment.id}>
               <Col className="" md={2}>
                 <Image
-                  alt={"afrilearn marketing video"}
+                  alt={'afrilearn marketing video'}
                   src={
                     comment?.userId?.profilePhotoUrl !== undefined
                       ? comment?.userId.profilePhotoUrl
@@ -727,9 +703,9 @@ export const Comment = ({ data, datas, deta, commentSection }) => {
               </Col>
               <Col>
                 <Row>
-                  <p style={{ fontSize: "16px", color: "#CBCBCB" }}>
+                  <p style={{ fontSize: '16px', color: '#CBCBCB' }}>
                     {comment.userId.fullName}
-                    {" . "}{" "}
+                    {' . '}{' '}
                     {comment.createdAt ? (
                       <ReactTimeAgo
                         date={comment.createdAt}
@@ -737,7 +713,7 @@ export const Comment = ({ data, datas, deta, commentSection }) => {
                         timeStyle="twitter"
                       />
                     ) : (
-                      "Not Known"
+                      'Not Known'
                     )}
                   </p>
                 </Row>
@@ -754,7 +730,7 @@ export const Comment = ({ data, datas, deta, commentSection }) => {
           <Row className="pt-4 px-3" key={comment.id}>
             <Col className="" md={2}>
               <Image
-                alt={"afrilearn marketing video"}
+                alt={'afrilearn marketing video'}
                 src={
                   comment?.userId?.profilePhotoUrl !== undefined
                     ? comment?.userId.profilePhotoUrl
@@ -766,9 +742,9 @@ export const Comment = ({ data, datas, deta, commentSection }) => {
             </Col>
             <Col>
               <Row>
-                <p style={{ fontSize: "16px", color: "#CBCBCB" }}>
+                <p style={{ fontSize: '16px', color: '#CBCBCB' }}>
                   {comment.userId.fullName}
-                  {" . "}{" "}
+                  {' . '}{' '}
                   {comment.createdAt ? (
                     <ReactTimeAgo
                       date={comment.createdAt}
@@ -776,7 +752,7 @@ export const Comment = ({ data, datas, deta, commentSection }) => {
                       timeStyle="twitter"
                     />
                   ) : (
-                    "Not Known"
+                    'Not Known'
                   )}
                 </p>
               </Row>
@@ -790,38 +766,38 @@ export const Comment = ({ data, datas, deta, commentSection }) => {
           <Row className={`ms-5 ms-xs-0 ps-xs-0 ps-5 ${styles.commentRows}`}>
             <Col onClick={() => showing()}>
               <Image
-                alt={"afrilearn marketing video"}
+                alt={'afrilearn marketing video'}
                 src={`/assets/img/features/dashboard/student/${
-                  liskes ? "Dark Heart" : "Heart"
+                  liskes ? 'Dark Heart' : 'Heart'
                 }.png`}
                 width={13}
                 height={13}
-              />{" "}
+              />{' '}
               {liskes}
             </Col>
-            <Col onClick={() => handleReply(num)} style={{ cursor: "pointer" }}>
+            <Col onClick={() => handleReply(num)} style={{ cursor: 'pointer' }}>
               <Image
-                alt={"afrilearn marketing video"}
+                alt={'afrilearn marketing video'}
                 src={`/assets/img/features/dashboard/student/Chat.png`}
                 width={13}
                 height={13}
-              />{" "}
+              />{' '}
               {data?.comments[num]?.commentReplies?.length}
             </Col>
-            <Col onClick={() => handleReply(num)} style={{ cursor: "pointer" }}>
+            <Col onClick={() => handleReply(num)} style={{ cursor: 'pointer' }}>
               REPLY
             </Col>
-            <Col md={1} xs={1} className="p-2" style={{ position: "relative" }}>
+            <Col md={1} xs={1} className="p-2" style={{ position: 'relative' }}>
               <div className={`m-auto ${styles1.moreIcon}`}>
                 <div
                   style={{
-                    width: "150px",
-                    background: "#FFFFFF",
-                    boxShadow: "0px 1px 7px rgba(0, 0, 0, 0.1)",
-                    borderRadius: "10px",
-                    position: "absolute",
-                    top: "-65px",
-                    left: "-45px",
+                    width: '150px',
+                    background: '#FFFFFF',
+                    boxShadow: '0px 1px 7px rgba(0, 0, 0, 0.1)',
+                    borderRadius: '10px',
+                    position: 'absolute',
+                    top: '-65px',
+                    left: '-45px',
                   }}
                   className={styles1.displayNone}
                 >
@@ -831,7 +807,7 @@ export const Comment = ({ data, datas, deta, commentSection }) => {
                       onClick={() => handleEdit(num, comment.text)}
                     >
                       <Col className={`m-auto ${styles.highlightText}`}>
-                        <p style={{ fontSize: "13px", margin: "2px" }}>
+                        <p style={{ fontSize: '13px', margin: '2px' }}>
                           Edit Comment
                         </p>
                       </Col>
@@ -841,10 +817,10 @@ export const Comment = ({ data, datas, deta, commentSection }) => {
                       <Col
                         className={`m-auto ${styles.highlightText}`}
                         onClick={(e) => {
-                          handleDelete(e, comment.id);
+                          handleDelete(e, comment.id)
                         }}
                       >
-                        <p style={{ fontSize: "13px", margin: "2px" }}>
+                        <p style={{ fontSize: '13px', margin: '2px' }}>
                           Delete Comment
                         </p>
                       </Col>
@@ -856,13 +832,11 @@ export const Comment = ({ data, datas, deta, commentSection }) => {
           </Row>
         )}
       </>
-    );
-  };
-  const [seeMore, setSeeMore] = useState(false);
-  const spliced = data?.comments?.slice(0, 3);
+    )
+  }
+  const [seeMore, setSeeMore] = useState(false)
+  const spliced = data?.comments?.slice(0, 3)
 
-  console.log(seeMore);
-  console.log(spliced);
   return (
     <section>
       <Row>
@@ -875,7 +849,7 @@ export const Comment = ({ data, datas, deta, commentSection }) => {
         <Col md={2}>
           <div className={styles.commentAvatarLSide}>
             <Image
-              alt={"afrilearn marketing video"}
+              alt={'afrilearn marketing video'}
               src={
                 data?.comments?.userId?.profilePhotoUrl !== undefined
                   ? data?.comments.userId.profilePhotoUrl
@@ -898,7 +872,7 @@ export const Comment = ({ data, datas, deta, commentSection }) => {
               />
             </div>
             <div
-              style={{ cursor: "pointer" }}
+              style={{ cursor: 'pointer' }}
               className={`${styles.commentAvatarMRSide}`}
               onClick={(e) => handleSubmit(e)}
             ></div>
@@ -923,7 +897,7 @@ export const Comment = ({ data, datas, deta, commentSection }) => {
                         <Col md={2}>
                           <div className={styles.commentAvatarLSide}>
                             <Image
-                              alt={"afrilearn marketing video"}
+                              alt={'afrilearn marketing video'}
                               src={
                                 comment?.userId?.profilePhotoUrl !== undefined
                                   ? comment?.userId.profilePhotoUrl
@@ -949,7 +923,7 @@ export const Comment = ({ data, datas, deta, commentSection }) => {
                               />
                             </div>
                             <div
-                              style={{ cursor: "pointer" }}
+                              style={{ cursor: 'pointer' }}
                               className={`${styles.commentAvatarMRSide}`}
                               onClick={(e) => handleReplySubmit(e, i)}
                             ></div>
@@ -965,8 +939,8 @@ export const Comment = ({ data, datas, deta, commentSection }) => {
                       ))
                     ) : (
                       <h6 className="text-center mt-4">
-                        {" "}
-                        Be the first to respond🥳{" "}
+                        {' '}
+                        Be the first to respond🥳{' '}
                       </h6>
                     )}
                   </>
@@ -977,7 +951,7 @@ export const Comment = ({ data, datas, deta, commentSection }) => {
                   <Col md={2}>
                     <div className={styles.commentAvatarLSide}>
                       <Image
-                        alt={"afrilearn marketing video"}
+                        alt={'afrilearn marketing video'}
                         src={
                           data?.comments?.userId?.profilePhotoUrl !== undefined
                             ? data?.comments.userId.profilePhotoUrl
@@ -1000,7 +974,7 @@ export const Comment = ({ data, datas, deta, commentSection }) => {
                         />
                       </div>
                       <div
-                        style={{ cursor: "pointer" }}
+                        style={{ cursor: 'pointer' }}
                         className={`${styles.commentAvatarMRSide}`}
                         onClick={(e) => handleSubmitEdit(e, data.id)}
                       ></div>
@@ -1021,7 +995,7 @@ export const Comment = ({ data, datas, deta, commentSection }) => {
                         <Col md={2}>
                           <div className={styles.commentAvatarLSide}>
                             <Image
-                              alt={"afrilearn marketing video"}
+                              alt={'afrilearn marketing video'}
                               src={
                                 comment?.userId?.profilePhotoUrl !== undefined
                                   ? comment?.userId.profilePhotoUrl
@@ -1046,7 +1020,7 @@ export const Comment = ({ data, datas, deta, commentSection }) => {
                               />
                             </div>
                             <div
-                              style={{ cursor: "pointer" }}
+                              style={{ cursor: 'pointer' }}
                               className={`${styles.commentAvatarMRSide}`}
                               onClick={(e) => handleReplySubmit(e, i)}
                             ></div>
@@ -1062,8 +1036,8 @@ export const Comment = ({ data, datas, deta, commentSection }) => {
                       ))
                     ) : (
                       <h6 className="text-center mt-4">
-                        {" "}
-                        Be the first to respond🥳{" "}
+                        {' '}
+                        Be the first to respond🥳{' '}
                       </h6>
                     )}
                   </>
@@ -1074,7 +1048,7 @@ export const Comment = ({ data, datas, deta, commentSection }) => {
                   <Col md={2}>
                     <div className={styles.commentAvatarLSide}>
                       <Image
-                        alt={"afrilearn marketing video"}
+                        alt={'afrilearn marketing video'}
                         src={
                           data?.comments?.userId?.profilePhotoUrl !== undefined
                             ? data?.comments.userId.profilePhotoUrl
@@ -1097,7 +1071,7 @@ export const Comment = ({ data, datas, deta, commentSection }) => {
                         />
                       </div>
                       <div
-                        style={{ cursor: "pointer" }}
+                        style={{ cursor: 'pointer' }}
                         className={`${styles.commentAvatarMRSide}`}
                         onClick={(e) => handleSubmitEdit(e, data.id)}
                       ></div>
@@ -1114,9 +1088,9 @@ export const Comment = ({ data, datas, deta, commentSection }) => {
             <div
               onClick={() => setSeeMore(!seeMore)}
               className={` ${styles.accordButtonLeft} ${styles.accordButtonLeftExtra}`}
-              style={{ cursor: "pointer" }}
+              style={{ cursor: 'pointer' }}
             >
-              {!seeMore ? "See More" : "See Less"}
+              {!seeMore ? 'See More' : 'See Less'}
             </div>
           </Col>
         </Row>
@@ -1127,31 +1101,30 @@ export const Comment = ({ data, datas, deta, commentSection }) => {
         </Col>
       </Row>
     </section>
-  );
-};
+  )
+}
 
 export const NextPrevPage = ({ datay }) => {
-  const subject = useSelector((state) => state.mySubjectCourse);
-  const lesson = subject.subjectDetails[1]?.relatedLessons;
+  const subject = useSelector((state) => state.mySubjectCourse)
+  const lesson = subject.subjectDetails[1]?.relatedLessons
 
   const truncate = (str, max) => {
     if (str.length > max) {
-      return str.slice(0, max) + "...";
+      return str.slice(0, max) + '...'
     } else {
-      return str;
+      return str
     }
-  };
+  }
 
-  const [page, setPage] = useState(0);
-  // console.log(page);
+  const [page, setPage] = useState(0)
   const handlePrevPage = () => {
-    datay(page - 1);
-    page > 0 && setPage(+page - 1);
-  };
+    datay(page - 1)
+    page > 0 && setPage(+page - 1)
+  }
   const handleNextPage = () => {
-    datay(page + 1);
-    page + 1 < lesson?.length && setPage(+page + 1);
-  };
+    datay(page + 1)
+    page + 1 < lesson?.length && setPage(+page + 1)
+  }
   return (
     <>
       {/* {lesson?.map((les, i) => ( */}
@@ -1166,13 +1139,13 @@ export const NextPrevPage = ({ datay }) => {
             onClick={() => handlePrevPage()}
           >
             <Row className={` ${styles.accordButtonLeftExtr}`}>
-              <Col className="" style={{ padding: "0", margin: "auto 0" }}>
+              <Col className="" style={{ padding: '0', margin: 'auto 0' }}>
                 <Row className={`${styles.accordButtonLeft1}`}></Row>
               </Col>
               <Col md={1} xs={1} className="mt-2">
                 <div className={`mx-0 ${styles.accordButtonLeft2}`}></div>
               </Col>
-              <Col md={9} xs={9} className="p-0" style={{ textAlign: "left" }}>
+              <Col md={9} xs={9} className="p-0" style={{ textAlign: 'left' }}>
                 <div className={styles.accordButtonLeftSide1}>Go to</div>
                 <div className={styles.accordButtonLeftSide2}>
                   {truncate(lesson[page - 1].title, 15)}
@@ -1200,7 +1173,7 @@ export const NextPrevPage = ({ datay }) => {
             onClick={() => handleNextPage()}
           >
             <Row className={` ${styles.accordButtonLeftExtr}`}>
-              <Col md={9} xs={9} className="p-0" style={{ textAlign: "right" }}>
+              <Col md={9} xs={9} className="p-0" style={{ textAlign: 'right' }}>
                 <div className={styles.accordButtonLeftSide1}>Go to</div>
                 <div className={styles.accordButtonLeftSide2}>
                   {lesson && truncate(lesson[page + 1].title, 15)}
@@ -1209,7 +1182,7 @@ export const NextPrevPage = ({ datay }) => {
               <Col md={1} xs={1} className="mt-2">
                 <div className={`mx-0 ${styles.accordButtonLeft2}`}></div>
               </Col>
-              <Col className="" style={{ padding: "0", margin: "auto 0" }}>
+              <Col className="" style={{ padding: '0', margin: 'auto 0' }}>
                 <div className={` ${styles.accordButtonLeft22}`}></div>
               </Col>
             </Row>
@@ -1220,51 +1193,51 @@ export const NextPrevPage = ({ datay }) => {
       </Row>
       {/* ))} */}
     </>
-  );
-};
+  )
+}
 
 export function Amodal(props) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const { user } = useSelector((state) => state.auth);
-  const classnote = props.classnote;
-  const subjectData = props.subjectDetails;
-  const lesson = props.lesson;
-  const token = user?.token;
+  const { user } = useSelector((state) => state.auth)
+  const classnote = props.classnote
+  const subjectData = props.subjectDetails
+  const lesson = props.lesson
+  const token = user?.token
   // const [modal, setModal] = useState(false);
 
   // const toggle = (e) => {
   //   e.preventDefault();
   //   setModal(!modal);
   // };
-  const [valued, setValued] = useState("");
-  const [messages, setMessages] = useState([]);
+  const [valued, setValued] = useState('')
+  const [messages, setMessages] = useState([])
   const handleReport = () => {
     let message = `${subjectData.courseId.name}-${
       subjectData.mainSubjectId.name
-    } ${classnote === 1 ? "class note" : "video lesson"} with title '${
+    } ${classnote === 1 ? 'class note' : 'video lesson'} with title '${
       lesson?.title
-    }' has the following complaints:`;
+    }' has the following complaints:`
 
     const data = {
       message: `${message} ${
         messages > 1
           ? messages?.map((dat) => {
-              return dat;
+              return dat
             }) +
-            "," +
+            ',' +
             valued
-          : messages + "," + valued
+          : messages + ',' + valued
       }`,
-    };
-    dispatch(reportLesson(data, token));
-    setValued("");
-    props.onHide();
-    setMessages("");
-  };
+    }
+    dispatch(reportLesson(data, token))
+    setValued('')
+    props.onHide()
+    setMessages('')
+  }
 
   const changeHandle = (e) => {
-    const reportId = e.target.id;
+    const reportId = e.target.id
 
     // let message = `${subjectData.courseId.name}-${
     //   subjectData.mainSubjectId.name
@@ -1272,41 +1245,41 @@ export function Amodal(props) {
     //   props.lesson?.title
     // }' has the following complaints:`;
 
-    if (reportId === "report1") {
+    if (reportId === 'report1') {
       setMessages((mes) => [
         ...mes,
-        `${classnote === 1 ? "Typographic error " : "Video not clear "}`,
-      ]);
+        `${classnote === 1 ? 'Typographic error ' : 'Video not clear '}`,
+      ])
     }
-    if (reportId === "report2") {
+    if (reportId === 'report2') {
       setMessages((mes) => [
         ...mes,
-        `${classnote === 1 ? "Incomplete text " : "Grammatical error "}`,
-      ]);
+        `${classnote === 1 ? 'Incomplete text ' : 'Grammatical error '}`,
+      ])
     }
-    if (reportId === "report3") {
+    if (reportId === 'report3') {
       setMessages((mes) => [
         ...mes,
         `${
           classnote === 1
-            ? "Images does not look quite right "
-            : "Wrong title or transcript "
+            ? 'Images does not look quite right '
+            : 'Wrong title or transcript '
         }`,
-      ]);
+      ])
     }
-    if (reportId === "report4") {
+    if (reportId === 'report4') {
       setMessages((mes) => [
         ...mes,
-        `${classnote === 1 ? "An image is missing " : "Video not loading "}`,
-      ]);
+        `${classnote === 1 ? 'An image is missing ' : 'Video not loading '}`,
+      ])
     }
-    if (reportId === "report5") {
-      setMessages((mes) => [...mes, "Spam, repulsive or abusive content"]);
+    if (reportId === 'report5') {
+      setMessages((mes) => [...mes, 'Spam, repulsive or abusive content'])
     }
-    if (reportId === "report7") {
-      setValued(e.target.value);
+    if (reportId === 'report7') {
+      setValued(e.target.value)
     }
-  };
+  }
 
   return (
     <>
@@ -1325,8 +1298,8 @@ export function Amodal(props) {
                           id="report1"
                           label={
                             classnote === 1
-                              ? "Typographic error"
-                              : "Video not clear"
+                              ? 'Typographic error'
+                              : 'Video not clear'
                           }
                           onChange={(e) => changeHandle(e)}
                         />
@@ -1337,8 +1310,8 @@ export function Amodal(props) {
                           id="report2"
                           label={
                             classnote === 1
-                              ? "Incomplete text"
-                              : "Grammatical error"
+                              ? 'Incomplete text'
+                              : 'Grammatical error'
                           }
                           onChange={(e) => changeHandle(e)}
                         />
@@ -1349,8 +1322,8 @@ export function Amodal(props) {
                           id="report3"
                           label={
                             classnote === 1
-                              ? "Images does not look quite right"
-                              : "Wrong title or transcript"
+                              ? 'Images does not look quite right'
+                              : 'Wrong title or transcript'
                           }
                           onChange={(e) => changeHandle(e)}
                         />
@@ -1361,8 +1334,8 @@ export function Amodal(props) {
                           id="report4"
                           label={
                             classnote === 1
-                              ? "An image is missing "
-                              : "Video not loading"
+                              ? 'An image is missing '
+                              : 'Video not loading'
                           }
                           onChange={(e) => changeHandle(e)}
                         />
@@ -1371,7 +1344,7 @@ export function Amodal(props) {
                         <Form.Check
                           type="checkbox"
                           id="report5"
-                          label={"Spam, repulsive or abusive content"}
+                          label={'Spam, repulsive or abusive content'}
                           onChange={(e) => changeHandle(e)}
                         />
                       </div>
@@ -1398,5 +1371,5 @@ export function Amodal(props) {
         </Modal.Body>
       </Modal>
     </>
-  );
+  )
 }
