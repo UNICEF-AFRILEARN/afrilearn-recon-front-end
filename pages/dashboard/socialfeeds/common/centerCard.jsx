@@ -17,6 +17,8 @@ import {
 } from '../../../../redux/actions/subject'
 import { Col, Dropdown, Row } from 'react-bootstrap'
 import styles1 from '../../../../pages/dashboard/teacher/teacher.module.css'
+import moment from 'moment'
+import ReactPaginate from 'react-paginate'
 
 // import dynamic from 'next/dynamic'
 
@@ -34,7 +36,7 @@ const CenterCard = () => {
   const [send, setSend] = useState(false)
   const [message, setMessage] = useState(false)
 
-  const [likePost, setLikePost] = useState(false)
+  const [numPost, setNumPost] = useState(false)
   const [commentPost, setCommentPost] = useState('')
   const inputRef = useRef()
   const dispatch = useDispatch()
@@ -100,263 +102,27 @@ const CenterCard = () => {
       setAddCommentImage('')
     }
   }
+  const [pageNumber, setPageNumber] = useState(0)
 
+  const usersPerPage = 10
+  const pagesVisited = pageNumber * usersPerPage
   const Post = () => {
-    return feedPost?.slice(0, 10).map((data, i) => {
-      return (
-        <Row
-          key={i}
-          className={styles.centercardwrapper}
-          style={{ padding: '0' }}
-        >
-          <Col md={10}>
-            <Row style={{ display: 'flex', margin: '10px' }}>
-              <div style={{ width: 'fit-content' }}>
-                {data?.userId?.profilePhotoUrl !== undefined ? (
-                  <Image
-                    alt={'afrilearn marketing video'}
-                    src={data?.userId?.profilePhotoUrl}
-                    width={35}
-                    height={35}
-                    className={styles.profileavatar1}
-                  />
-                ) : (
-                  <BsPersonCircle size={35} className={styles.profileavatar} />
-                )}
-              </div>
-              <div style={{ width: '250px' }} className="mt-2 p-0">
-                {data?.userId?.fullName}
-              </div>
-            </Row>
-          </Col>
-          {/* --------------------DeletePost and EditPost--------------------- */}
-          <Col
-            md={1}
-            xs={1}
-            className="ps-5 mt-4"
-            style={{ position: 'relative' }}
-          >
-            <div className={`m-auto ${styles1.moreIcon}`}>
-              <div
-                style={{
-                  width: '70px',
-                  background: '#FFFFFF',
-                  boxShadow: '0px 1px 7px rgba(0, 0, 0, 0.1)',
-                  borderRadius: '10px',
-                  position: 'absolute',
-                  top: '20px',
-                  left: '-10px',
-                }}
-                className={styles1.displayNone}
-              >
-                <Col className={`p-3 ps-3 `}>
-                  <Row
-                    className=""
-                    onClick={() => handleEdit(num, comment.text)}
-                  >
-                    <Col className={`m-auto ${styles.highlightText}`}>
-                      <p style={{ fontSize: '13px', margin: '2px' }}>Edit</p>
-                    </Col>
-                  </Row>
-
-                  <Row className="">
-                    <Col
-                      className={`m-auto ${styles.highlightText}`}
-                      onClick={(e) => {
-                        handleDelete(e, comment.id)
-                      }}
-                    >
-                      <p style={{ fontSize: '13px', margin: '2px' }}>Delete</p>
-                    </Col>
-                  </Row>
-                </Col>
-              </div>
-            </div>
-          </Col>
-          {/* ----------------------------------------- */}
-
-          <Row className="mx-4 mb-3" style={{ width: '90%' }}>
-            {data.text}
-          </Row>
-          {data?.imageUrl && (
-            <Row style={{ marginLeft: '20px' }}>
-              <Image
-                alt={'Feeds pictures'}
-                src={data.imageUrl}
-                width={290}
-                height={180}
-              />
-            </Row>
-          )}
+    return feedPost
+      ?.slice(pagesVisited, pagesVisited + usersPerPage)
+      .map((data, i) => {
+        return (
           <Row
-            className="mx-4 mb-3 mt-4"
-            style={{ display: 'flex', color: '#00D9B6' }}
+            key={i}
+            className={styles.centercardwrapper}
+            style={{ padding: '0' }}
           >
-            {data.courseName && (
-              <div style={{ width: 'fit-content' }}>#{data.courseName}</div>
-            )}
-            {data.subjectName && (
-              <div style={{ width: 'fit-content' }}>#{data.subjectName}</div>
-            )}
-            {data.lessonName && (
-              <div style={{ width: 'fit-content' }}>#{data.lessonName}</div>
-            )}
-          </Row>
-          <Row className="ms-5 w-50">
-            <Col md={3} className="pointer">
-              <Row>
-                <Col md={3} className="p-0">
-                  <HandleLikes
-                    data={data?.likes}
-                    likesClick={() => {
-                      dispatch(likeAPostToFeed(data.id, token))
-                    }}
-                    unlikesClick={() => {
-                      dispatch(unLikeAPostToFeed(data.id, token))
-                    }}
-                  />
-                </Col>
-                <Col md={1} className="ps-2">
-                  {' '}
-                  {<p>{data?.likes.length}</p>}
-                </Col>
-              </Row>
-            </Col>
-            <Col md={3}>
-              <Row>
-                <Col
-                  md={3}
-                  className="p-0 pointer"
-                  onClick={() => {
-                    setMessage(i)
-                  }}
-                >
-                  <Image
-                    alt={'Feeds pictures'}
-                    src={'/assets/img/Chat (1).png'}
-                    width="25px"
-                    height="25px"
-                  />
-                </Col>
-                <Col md={1} className="ps-2">
-                  {' '}
-                  {<p>{data?.comments.length}</p>}
-                </Col>
-              </Row>
-            </Col>
-            <Col
-              md={2}
-              className="ps-2 pointer"
-              onClick={() => {
-                setCommentPost(i)
-              }}
-            >
-              <p>Reply</p>
-            </Col>
-          </Row>
-          {message === i && data?.comments.length > 0 && (
-            <>
-              <Row
-                style={{ borderBottom: '1px solid #a8a8a8', marginLeft: '0px' }}
-              ></Row>
-              <Row>
-                <p style={{ color: '#00D9B6' }}>Comments</p>
-              </Row>
-              {data?.comments.map((dat, j) => {
-                return (
-                  <Row key={j} className="mx-4 mb-3">
-                    <Row
-                      style={{
-                        display: 'flex',
-                        margin: '10px 0',
-                        padding: '0',
-                      }}
-                    >
-                      <div style={{ width: 'fit-content' }}>
-                        {data?.userId?.profilePhotoUrl !== undefined ? (
-                          <Image
-                            alt={'afrilearn marketing video'}
-                            src={dat?.userId?.profilePhotoUrl}
-                            width={35}
-                            height={35}
-                            className={styles.profileavatar1}
-                          />
-                        ) : (
-                          <BsPersonCircle
-                            size={35}
-                            className={styles.profileavatar}
-                          />
-                        )}
-                      </div>
-                      <div style={{ width: '250px' }} className="mt-2 p-0">
-                        {dat?.userId?.fullName}
-                      </div>
-                    </Row>
-                    <Row className="mx-4 ps-5 mb-3">{dat.text}</Row>
-                    <Row className="ms-5 ps-4 w-50 ">
-                      {/* <Col md={4}>
-                        <Row className="p-0"> */}
-                      <Col md={2} className="pointer">
-                        <HandleLikes
-                          data={dat?.likes}
-                          likesClick={() => {
-                            dispatch(likeACommentPostToFeed(dat.id, token))
-                          }}
-                          unlikesClick={() => {
-                            dispatch(unLikeACommentPostToFeed(dat.id, token))
-                          }}
-                        />
-                      </Col>
-                      <Col md={1} className="ps-0">
-                        {' '}
-                        {<p>{dat?.likes.length}</p>}
-                      </Col>
-                      {/* </Row>
-                      </Col> */}
-                    </Row>
-                  </Row>
-                )
-              })}
-            </>
-          )}
-          {commentPost === i && (
-            <>
-              <Row
-                style={{
-                  borderBottom: '1px solid #a8a8a8',
-                  marginLeft: '0px',
-                }}
-              ></Row>
-              <Row>
-                {commentImage && (
-                  <input
-                    type="file"
-                    id="inputGroupFile02"
-                    onChange={(e) => {
-                      handleChangeImage(e)
-                      // const data = new FormData()
-                      // data.append('profilePhotoUrl', e.target.files[0])
-                      // props.updateProfilePicture(data)
-                      // console.log(e.target.files[0])
-                      // EditPhoto(formData.append('profilePhotoUrl', e.target.files[0]))
-                    }}
-                    // style={{ width: '200px' }}
-                  />
-                )}
-              </Row>
-
-              <Row
-                style={{
-                  display: 'flex',
-                  margin: '10px',
-                  position: 'relative',
-                }}
-              >
+            <Col md={10} xs={9}>
+              <Row style={{ display: 'flex', margin: '10px' }}>
                 <div style={{ width: 'fit-content' }}>
-                  {user?.user?.profilePhotoUrl !== undefined ? (
+                  {data?.userId?.profilePhotoUrl !== undefined ? (
                     <Image
                       alt={'afrilearn marketing video'}
-                      src={user?.user?.profilePhotoUrl}
+                      src={data?.userId?.profilePhotoUrl}
                       width={35}
                       height={35}
                       className={styles.profileavatar1}
@@ -368,51 +134,321 @@ const CenterCard = () => {
                     />
                   )}
                 </div>
-                {/* <div style={{ width: '250px' }} className="mt-2 p-0">
-              {data?.userId?.fullName}
-            </div> */}
-                <input
-                  type="text"
-                  placeholder="Post a comment"
-                  value={inputComment}
-                  ref={(input) => input && input.focus()}
-                  onChange={(e) => {
-                    setInputComment(e.target.value)
-                  }}
+                <div style={{ width: 'fit-content' }} className="mt-0 p-0">
+                  {data?.userId?.fullName}
+                  <p style={{ fontSize: '12px' }}>
+                    {moment(data?.createdAt).fromNow()}
+                  </p>
+                </div>
+              </Row>
+            </Col>
+            {/* --------------------DeletePost and EditPost--------------------- */}
+            <Col
+              md={1}
+              xs={1}
+              className="ps-5 mt-4"
+              style={{ position: 'relative' }}
+            >
+              <div className={`m-auto ${styles1.moreIcon}`}>
+                <div
                   style={{
-                    width: '70%',
-                    borderRadius: '50px',
-                    marginRight: '10px',
+                    width: '70px',
+                    background: '#FFFFFF',
+                    boxShadow: '0px 1px 7px rgba(0, 0, 0, 0.1)',
+                    borderRadius: '10px',
+                    position: 'absolute',
+                    top: '20px',
+                    left: '-10px',
                   }}
-                />
+                  className={styles1.displayNone}
+                >
+                  <Col className={`p-3 ps-3 `}>
+                    <Row
+                      className=""
+                      onClick={() => handleEdit(num, comment.text)}
+                    >
+                      <Col className={`m-auto ${styles.highlightText}`}>
+                        <p style={{ fontSize: '13px', margin: '2px' }}>Edit</p>
+                      </Col>
+                    </Row>
+
+                    <Row className="">
+                      <Col
+                        className={`m-auto ${styles.highlightText}`}
+                        onClick={(e) => {
+                          handleDelete(e, comment.id)
+                        }}
+                      >
+                        <p style={{ fontSize: '13px', margin: '2px' }}>
+                          Delete
+                        </p>
+                      </Col>
+                    </Row>
+                  </Col>
+                </div>
+              </div>
+            </Col>
+            {/* ----------------------------------------- */}
+
+            <Row className="mx-4 mb-3" style={{ width: '90%' }}>
+              {data.text}
+            </Row>
+            {data?.imageUrl && (
+              <Row style={{ margin: '0 20px', width: '90%' }}>
                 <Image
-                  alt={'afrilearn marketing video'}
-                  src="/assets/img/iconly.svg"
-                  width={20}
-                  height={20}
-                  className={styles.profileavatared}
-                  onClick={() => {
-                    setCommentImage(!commentImage)
-                  }}
-                />
-                <Image
-                  alt={'afrilearn marketing video'}
-                  src="/assets/img/features/dashboard/student/Send.png"
-                  width="35px"
-                  height="10px"
-                  className={styles.profileavatared2}
-                  onClick={() => {
-                    postComment(data.id)
-                  }}
+                  alt={'Feeds pictures'}
+                  src={data.imageUrl}
+                  width={600}
+                  height={450}
                 />
               </Row>
-            </>
-          )}
-        </Row>
-      )
-    })
-  }
+            )}
+            <Row
+              className="mx-4 mb-3 mt-4"
+              style={{ display: 'flex', color: '#00D9B6' }}
+            >
+              {data.courseName && (
+                <div style={{ width: 'fit-content' }}>#{data.courseName}</div>
+              )}
+              {data.subjectName && (
+                <div style={{ width: 'fit-content' }}>#{data.subjectName}</div>
+              )}
+              {data.lessonName && (
+                <div style={{ width: 'fit-content' }}>#{data.lessonName}</div>
+              )}
+            </Row>
+            <Row className="ms-5 w-50 ">
+              <Col md={3} xs={3} className="pointer">
+                <Row>
+                  <Col md={3} xs={3} className="p-0">
+                    <HandleLikes
+                      data={data?.likes}
+                      likesClick={() => {
+                        dispatch(likeAPostToFeed(data.id, token))
+                      }}
+                      unlikesClick={() => {
+                        dispatch(unLikeAPostToFeed(data.id, token))
+                      }}
+                    />
+                  </Col>
+                  <Col md={1} xs={1} className="ps-2">
+                    {' '}
+                    {<p>{data?.likes.length}</p>}
+                  </Col>
+                </Row>
+              </Col>
+              <Col md={3} xs={3}>
+                <Row>
+                  <Col
+                    md={3}
+                    xs={3}
+                    className="p-0 pointer"
+                    onClick={() => {
+                      setMessage(message === i ? '' : i)
+                    }}
+                  >
+                    <Image
+                      alt={'Feeds pictures'}
+                      src={'/assets/img/Chat (1).png'}
+                      width="25px"
+                      height="25px"
+                    />
+                  </Col>
+                  <Col md={1} xs={1} className="ps-2">
+                    {' '}
+                    {<p>{data?.comments.length}</p>}
+                  </Col>
+                </Row>
+              </Col>
+              <Col
+                md={2}
+                xs={2}
+                className="ps-2 pointer"
+                onClick={() => {
+                  setCommentPost(commentPost === i ? '' : i)
+                }}
+              >
+                <p>Reply</p>
+              </Col>
+            </Row>
+            {message === i && data?.comments.length > 0 && (
+              <>
+                <Row
+                  style={{
+                    borderBottom: '1px solid #a8a8a8',
+                    marginLeft: '0px',
+                  }}
+                ></Row>
+                <Row>
+                  <p style={{ color: '#00D9B6' }}>Comments</p>
+                </Row>
+                {data?.comments.map((dat, j) => {
+                  return (
+                    <Row
+                      key={j}
+                      className="mx-1 mx-md-4 mb-3 p-md-2 p-1"
+                      style={{ width: '90%' }}
+                    >
+                      <Row
+                        style={{
+                          display: 'flex',
+                          margin: '10px 0',
+                          padding: '0',
+                        }}
+                      >
+                        <div style={{ width: 'fit-content' }}>
+                          {data?.userId?.profilePhotoUrl !== undefined ? (
+                            <Image
+                              alt={'afrilearn marketing video'}
+                              src={dat?.userId?.profilePhotoUrl}
+                              width={35}
+                              height={35}
+                              className={styles.profileavatar1}
+                            />
+                          ) : (
+                            <BsPersonCircle
+                              size={35}
+                              className={styles.profileavatar}
+                            />
+                          )}
+                        </div>
+                        <div
+                          style={{ width: 'fit-content' }}
+                          className="mt-0 p-0"
+                        >
+                          {dat?.userId?.fullName}
+                          <p style={{ fontSize: '12px' }}>
+                            {moment(dat?.createdAt).fromNow()}
+                          </p>
+                        </div>
+                      </Row>
+                      <Row className="mx-0 ps-3 mb-3 mx-md-4 ps-md-5 ">
+                        {dat.text}
+                      </Row>
+                      <Row className="ms-0 ps-3 ms-md-5 ps-md-4 w-50  ">
+                        {/* <Col md={4}>
+                        <Row className="p-0"> */}
+                        <Col lg={2} md={2} xs={3} className="pointer">
+                          <HandleLikes
+                            data={dat?.likes}
+                            likesClick={() => {
+                              dispatch(likeACommentPostToFeed(dat.id, token))
+                            }}
+                            unlikesClick={() => {
+                              dispatch(unLikeACommentPostToFeed(dat.id, token))
+                            }}
+                          />
+                        </Col>
+                        <Col md={1} xs={1} className="ps-0">
+                          {' '}
+                          {<p>{dat?.likes.length}</p>}
+                        </Col>
+                        {/* </Row>
+                      </Col> */}
+                      </Row>
+                    </Row>
+                  )
+                })}
+              </>
+            )}
+            {commentPost === i && (
+              <>
+                <Row
+                  style={{
+                    borderBottom: '1px solid #a8a8a8',
+                    marginLeft: '0px',
+                  }}
+                ></Row>
+                <Row>
+                  {commentImage && (
+                    <input
+                      type="file"
+                      id="inputGroupFile02"
+                      onChange={(e) => {
+                        handleChangeImage(e)
+                        // const data = new FormData()
+                        // data.append('profilePhotoUrl', e.target.files[0])
+                        // props.updateProfilePicture(data)
+                        // console.log(e.target.files[0])
+                        // EditPhoto(formData.append('profilePhotoUrl', e.target.files[0]))
+                      }}
+                      // style={{ width: '200px' }}
+                    />
+                  )}
+                </Row>
 
+                <Row
+                  style={{
+                    display: 'flex',
+                    margin: '10px',
+                    position: 'relative',
+                  }}
+                >
+                  <div style={{ width: 'fit-content' }}>
+                    {user?.user?.profilePhotoUrl !== undefined ? (
+                      <Image
+                        alt={'afrilearn marketing video'}
+                        src={user?.user?.profilePhotoUrl}
+                        width={35}
+                        height={35}
+                        className={styles.profileavatar1}
+                      />
+                    ) : (
+                      <BsPersonCircle
+                        size={35}
+                        className={styles.profileavatar}
+                      />
+                    )}
+                  </div>
+                  {/* <div style={{ width: '250px' }} className="mt-2 p-0">
+              {data?.userId?.fullName}
+            </div> */}
+                  <input
+                    type="text"
+                    placeholder="Post a comment"
+                    value={inputComment}
+                    ref={(input) => input && input.focus()}
+                    onChange={(e) => {
+                      setInputComment(e.target.value)
+                    }}
+                    style={{
+                      width: '70%',
+                      borderRadius: '50px',
+                      marginRight: '10px',
+                    }}
+                  />
+                  <Image
+                    alt={'afrilearn marketing video'}
+                    src="/assets/img/iconly.svg"
+                    width={20}
+                    height={20}
+                    className={styles.profileavatared}
+                    onClick={() => {
+                      setCommentImage(!commentImage)
+                    }}
+                  />
+                  <Image
+                    alt={'afrilearn marketing video'}
+                    src="/assets/img/features/dashboard/student/Send.png"
+                    width="35px"
+                    height="10px"
+                    className={styles.profileavatared2}
+                    onClick={() => {
+                      postComment(data.id)
+                    }}
+                  />
+                </Row>
+              </>
+            )}
+          </Row>
+        )
+      })
+  }
+  const pageCount = Math.ceil(feedPost?.length / usersPerPage)
+
+  const changePage = ({ selected }) => {
+    setPageNumber(selected)
+  }
   const onEmojiClick = (emojiData, event) => {
     setInputStr((prevInput) => prevInput + emojiData.emoji)
     // setShowPicker(false)
@@ -460,6 +496,7 @@ const CenterCard = () => {
       SendFunc()
     }
   }
+
   return (
     <>
       <div className={styles.centercardwrapper}>
@@ -627,8 +664,26 @@ const CenterCard = () => {
           </div>
         )}
       </div>
-      <div>
+      <div className="App">
         <Post />
+        <ReactPaginate
+          previousLabel={'Previous'}
+          nextLabel={'Next'}
+          pageCount={pageCount}
+          onPageChange={changePage}
+          pageClassName="page-item"
+          pageLinkClassName="page-link"
+          previousClassName="page-item"
+          previousLinkClassName="page-link"
+          nextClassName="page-item"
+          nextLinkClassName="page-link"
+          breakLabel="..."
+          breakClassName="page-item"
+          breakLinkClassName="page-link"
+          containerClassName="pagination"
+          activeClassName="active"
+          style={{ margin: 'auto', textAlign: 'center', marginTop: '20px' }}
+        />
       </div>
     </>
   )

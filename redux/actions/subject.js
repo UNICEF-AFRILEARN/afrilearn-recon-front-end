@@ -308,11 +308,12 @@ export const searchForPostsInFeed = (searchQuery, token) => {
       url: `${url}feeds/search/${searchQuery}`,
       headers: headers(token),
     }).then((res) => {
+      console.log(res)
       // dispatch(getMyPostsInFeed(token))
       dispatch(
         storeAPostToFeed(
           res.data.data.posts.sort(function (a, b) {
-            return new Date(b.updatedAt) - new Date(a.updatedAt)
+            return new Date(b.createdAt) - new Date(a.createdAt)
           })
         )
       )
@@ -346,7 +347,7 @@ export const getMyPostsInFeed = (token) => {
       dispatch(
         storeAPostToFeed(
           res.data.data.posts.sort(function (a, b) {
-            return new Date(b.updatedAt) - new Date(a.updatedAt)
+            return new Date(b.createdAt) - new Date(a.createdAt)
           })
         )
       )

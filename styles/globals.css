@@ -872,6 +872,14 @@ a {
   color: #ffffff;
 }
 
+.pagination {
+  --bs-pagination-hover-bg: none;
+  --bs-pagination-active-bg: #00d9b6 !important;
+
+  justify-content: center;
+  margin-top: 50px !important;
+}
+
 .btn-class-corrected {
   /* padding: 0.10rem .5rem  !important; */
   /* text-align: start !important; */
