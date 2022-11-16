@@ -500,7 +500,7 @@ const Navigation = () => {
               <div className={styles.nologinmenu}>
                 {/* implementing next.auth */}
                 <Link href="/about">
-                  <h5 className={styles.aboutmenu}>About Us</h5>
+                  <button className={styles.aboutmenu}>About Us</button>
                 </Link>
                 <Link href="/login">
                   <button className={styles.btnlogin}>Login</button>
