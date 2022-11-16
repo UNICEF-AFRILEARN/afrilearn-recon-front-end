@@ -47,13 +47,15 @@ const Dashboard = () => {
   const { activities } = useSelector((state) => state.Mycourses)
   // const { registerUser } = useSelector((state) => state.auth);
   const subject = useSelector((state) => state.mySubjectCourse)
+  // const { unFinishedVideos } = useSelector((state) => state.mySubjectCourse)
 
-  const userId = '62a0bc984af2d90016b72096'
+  const userId = '62a0bc984af2d90016b72096' //user.user.id
   const token = user.token
-  const lessonId = '6012c2a7cfe09249249f7f9c'
-  const schoollevel = 'Primary One'
+  const lessonId = '6012c2a7cfe09249249f7f9c' //
+  const schoollevel = 'Primary One' //user.user.enrolledCourses.courseId.name
   const reco_subject = 'Agricultural Science'
   // To be changed later
+
 
   const personData = {
     personClass: user.user?.enrolledCourses[0].courseId?.name
@@ -67,7 +69,7 @@ const Dashboard = () => {
   const user_id = user.user?.enrolledCourses[0]
     ? user.user?.enrolledCourses[0].userId
     : user.user?.enrolledCourses[1].userId
-  console.log(subject)
+
   useEffect(() => {
     dispatch(fetchGetWebInitiate(person_id, token))
     // dispatch(fetchLessonsInitiate());
