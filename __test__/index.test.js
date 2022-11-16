@@ -8,10 +8,7 @@ describe('Home', () => {
   it('renders a heading', () => {
     render(<Provider store={store}><Home /></Provider>)
 
-    const heading = screen.getByRole('heading', {
-      name: /Get ahead with Afrilearn!\.js!/i,
-    })
-
+    const heading = screen.getByText(/Get ahead with Afrilearn!/)
     expect(heading).toBeInTheDocument()
   })
 });
