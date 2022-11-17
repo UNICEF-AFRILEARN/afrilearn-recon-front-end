@@ -697,12 +697,12 @@ export const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link passHref href="https://web.facebook.com/myAfrilearn">
+                  <Link passHref href="/contact">
                     Media
                   </Link>
                 </li>
                 <li>
-                  <Link passHref href="https://myafrilearn.com/join-the-team">
+                  <Link passHref href="/join-the-team">
                     Teach on Afrilearn
                   </Link>
                 </li>
@@ -725,7 +725,7 @@ export const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link passHref href="https://myafrilearn.com/impact-stories">
+                  <Link passHref href="/impact-stories">
                     Impact Stories
                   </Link>
                 </li>
@@ -735,17 +735,17 @@ export const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link passHref href="https://myafrilearn.com/faculty">
+                  <Link passHref href="/faculty">
                     Faculty
                   </Link>
                 </li>
                 <li>
-                  <Link passHref href="https://myafrilearn.com/join-the-team">
+                  <Link passHref href="/join-the-team">
                     Career
                   </Link>
                 </li>
                 <li>
-                  <Link passHref href="https://myafrilearn.com/partnership">
+                  <Link passHref href="/partnership">
                     Paternership
                   </Link>
                 </li>
