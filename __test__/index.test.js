@@ -20,12 +20,3 @@ describe('Home', () => {
     expect(subheading).toBeInTheDocument()
   })
 });
-
-describe('Dashboard', () => {
-      it('Render recomendation to the screen', () => {
-          render(<Provider store={store}><Dashboard /></Provider>)
-
-          const recommendationElement = screen.getByText(/Recommended For You/)
-          expect(recommendationElement).toBeInTheDocument()
-      })
-});

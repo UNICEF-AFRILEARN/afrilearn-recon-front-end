@@ -5,7 +5,7 @@ import { Modal, Button } from 'react-bootstrap'
 import Link from 'next/link'
 import { useSelector } from 'react-redux'
 
-const recommendation = ({ dataRecon, recData, recIndex }) => {
+const Recommendation = ({ dataRecon, recData, recIndex }) => {
   const [show, setShow] = useState(false)
   const toggleModal = () => setShow(!show)
 
@@ -16,7 +16,7 @@ const recommendation = ({ dataRecon, recData, recIndex }) => {
   return (
     <>
       {recData?.videourl !== undefined && (
-        <div className={`${styles.contList} ${styles.contRec}`}>
+        <div className={`${styles.contList} ${styles.contRec}`} data-testid='reconlist'>
           <div className={`${styles.contList} `}>
             <Image
               alt={'afrilearn marketing video'}
@@ -136,4 +136,4 @@ const recommendation = ({ dataRecon, recData, recIndex }) => {
   )
 }
 
-export default recommendation
+export default Recommendation

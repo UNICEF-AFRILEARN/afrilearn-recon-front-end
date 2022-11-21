@@ -707,6 +707,11 @@ export const Footer = () => {
                   </Link>
                 </li>
                 <li>
+                  <Link passHref href="/acquisition-agent-network">
+                    We are hiring
+                  </Link>
+                </li>
+                <li>
                   <Link
                     passHref
                     href="https://play.google.com/store/apps/details?id=com.afrilearn"

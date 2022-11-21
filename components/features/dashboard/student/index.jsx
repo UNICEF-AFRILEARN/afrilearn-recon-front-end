@@ -45,9 +45,9 @@ const Dashboard = () => {
   )
   const { user, registerUser } = useSelector((state) => state.auth)
   const { activities } = useSelector((state) => state.Mycourses)
-  // const { registerUser } = useSelector((state) => state.auth);
+  const { singleLesson } = useSelector((state) => state.Mycourses);
   const subject = useSelector((state) => state.mySubjectCourse)
-  // const { unFinishedVideos } = useSelector((state) => state.mySubjectCourse)
+  const { unfinishedStore } = useSelector((state) => state.mySubjectCourse)
 
   const userId = '62a0bc984af2d90016b72096' //user.user.id
   const token = user.token
@@ -56,6 +56,13 @@ const Dashboard = () => {
   const reco_subject = 'Agricultural Science'
   // To be changed later
 
+  useEffect(() => {
+    if(unfinishedStore){
+      // console.log("UNICEF =>", unfinishedStore?.unFinishedVideos[0])
+      // console.log("UNICEF =>", unfinishedStore?.unFinishedVideos[0].lessonId)
+      // console.log("UNICEF =>", unfinishedStore?.unFinishedVideos[0]?.subjectId?.mainSubjectId?.name)
+    }
+  }, [unfinishedStore])
 
   const personData = {
     personClass: user.user?.enrolledCourses[0].courseId?.name
@@ -394,7 +401,7 @@ const MyFavs = ({ classData }) => {
   )
 }
 
-const Recommended = ({ recommend, unicefRecon, lessons }) => {
+export const Recommended = ({ recommend, unicefRecon, lessons }) => {
   // let reduceRecon = () => {
   //   recommend?.forEach((recon, index) => {
   //     if(index === 3) return
@@ -430,7 +437,7 @@ const Recommended = ({ recommend, unicefRecon, lessons }) => {
         <>
           <SubHeading title="Recommended For You" />
 
-          <div className={`${styles.contai}`}>
+          <div className={`${styles.contai}`} data-testid='recon'>
             <section className="parnet-frag-color">
               {unicefRecon?.map((recData, index) => (
                 <Recommendation recData={recData} recIndex={index} />

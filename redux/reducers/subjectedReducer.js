@@ -12,7 +12,7 @@ const initialState = {
   pastQuestionSub: [],
   pastQuestionQue: [],
   classRequestInfo: "",
-  unfinishedStore: "",
+  unfinishedStore: [],
   dashboardWeb: "",
   classMember: [],
   classroom: [],
