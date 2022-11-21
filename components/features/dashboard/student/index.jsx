@@ -40,6 +40,7 @@ import { Button, Col, Modal, Row, Tooltip } from 'react-bootstrap'
 
 const Dashboard = () => {
   const dispatch = useDispatch()
+  const [testLessonsId, setTestLessonsId] = useState('')
   const { reconLesson, lessons, unicefRecon } = useSelector(
     (state) => state.Mycourses
   )
@@ -49,20 +50,41 @@ const Dashboard = () => {
   const subject = useSelector((state) => state.mySubjectCourse)
   const { unfinishedStore } = useSelector((state) => state.mySubjectCourse)
 
+
+
   const userId = '62a0bc984af2d90016b72096' //user.user.id
   const token = user.token
-  const lessonId = '6012c2a7cfe09249249f7f9c' //
-  const schoollevel = 'Primary One' //user.user.enrolledCourses.courseId.name
-  const reco_subject = 'Agricultural Science'
-  // To be changed later
+  let lessonId;  //= '6012c2a7cfe09249249f7f9c' //
+  let schoollevel; //= 'Primary One' //user.user.enrolledCourses.courseId.name
+  let reco_subject; //= 'Agricultural Science'
 
-  useEffect(() => {
-    if(unfinishedStore){
-      // console.log("UNICEF =>", unfinishedStore?.unFinishedVideos[0])
-      // console.log("UNICEF =>", unfinishedStore?.unFinishedVideos[0].lessonId)
-      // console.log("UNICEF =>", unfinishedStore?.unFinishedVideos[0]?.subjectId?.mainSubjectId?.name)
+
+
+  // func to iterate the unfinished videos:
+  // let testLessonId;
+  const checkUnfinished = () => {
+    unfinishedStore?.unFinishedVideos?.filter((unfinished, index) => {
+      if(index === 0){
+        schoollevel = unfinished?.courseId?.name
+        reco_subject = unfinished?.subjectId?.mainSubjectId?.name
+        lessonId = unfinished.lessonId.id
+      }
     }
-  }, [unfinishedStore])
+  )}
+
+
+
+
+  checkUnfinished();
+  console.log("testLessonId", lessonId, schoollevel, reco_subject)
+  
+ useEffect(() => {
+    if(lessonId !== undefined && reco_subject !== undefined && schoollevel !== undefined){
+      dispatch(fetchUnicefReconInitiate(schoollevel, reco_subject, lessonId))
+    }
+ }, [lessonId, reco_subject, schoollevel])
+
+  
 
   const personData = {
     personClass: user.user?.enrolledCourses[0].courseId?.name
@@ -83,7 +105,6 @@ const Dashboard = () => {
     dispatch(fetchSingleLessonInitiate(lessonId))
     dispatch(fetchLessonsInitiate())
     dispatch(fetchRecentActivitiesInitiate(token, userId))
-    dispatch(fetchUnicefReconInitiate(schoollevel, reco_subject, lessonId))
     dispatch(fetchReconLessonInitiate(userId, token))
     // dispatch(fetchSubjectInitiate(person_id, token));
     dispatch(fetchGetFavouriteInitiate(token))
@@ -149,6 +170,7 @@ const Dashboard = () => {
           recommend={reconLesson?.recommendation}
           unicefRecon={unicefRecon}
           lessons={lessons}
+          unfinishedStore={unfinishedStore}
         />
       </div>
       <div id="recentActivities">
@@ -401,14 +423,15 @@ const MyFavs = ({ classData }) => {
   )
 }
 
-export const Recommended = ({ recommend, unicefRecon, lessons }) => {
+export const Recommended = ({ recommend, unicefRecon, lessons, unfinishedStore }) => {
   // let reduceRecon = () => {
   //   recommend?.forEach((recon, index) => {
   //     if(index === 3) return
   //   })
   // }
 
-  // console.log(" 3reduceRecon From recommendation COmponent ====>", reduceRecon());
+  // console.log("unfinishedStore", unfinishedStore?.unFinishedVideos[0]?.lessonId?.id);
+
   const reconBucket = []
   const finalReconLessons = []
 
