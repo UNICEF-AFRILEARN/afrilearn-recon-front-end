@@ -459,12 +459,13 @@ export const Recommended = ({ recommend, unicefRecon, lessons, unfinishedStore }
       {unicefRecon !== 0 && (
         <>
           <SubHeading title="Recommended For You" />
-
           <div className={`${styles.contai}`} data-testid='recon'>
             <section className="parnet-frag-color">
               {unicefRecon?.map((recData, index) => (
-                <Recommendation recData={recData} recIndex={index} />
-              ))}
+                  <Recommendation recData={recData} recIndex={index} />
+                ))
+
+              }
             </section>
           </div>
         </>

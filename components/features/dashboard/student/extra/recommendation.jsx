@@ -92,46 +92,6 @@ const Recommendation = ({ dataRecon, recData, recIndex }) => {
         </div>
       )}
 
-      {/* {dataRecon?.recommended.videoUrls[0]?.videoUrl === undefined && (
-        <div className={`${styles.contList} ${styles.contRec}`}>
-          <Link href="/dashboard/student">
-            <div className={styles.contListRead}>
-              <Image
-                alt={"afrilearn marketing video"}
-                src={dataRecon?.recommended.thumbnailUrl}
-                width={65}
-                height={52}
-                className={styles.rectBox}
-              />
-              <div className={styles.contList}>
-                <p>{dataRecon?.subjectRecommended}</p>
-              </div>
-            </div>
-          </Link>
-          <div className={styles.play_textRec}>
-            <h6>Because you read "{dataRecon?.reason.title}"</h6>
-            <p className={styles.play_textRecFirstp}>Recommended:</p>
-            <p className={styles.play_textRecsecondp}>
-              {dataRecon?.recommended.title}
-            </p>
-            <div className={styles.buttonPlay}>
-              <Link href="/dashboard/student">
-                <button className={styles.buttonStyle}>
-                  <div className={styles.buttonStyleImage}>
-                    <Image
-                      alt={"afrilearn marketing video"}
-                      src={`/assets/img/features/dashboard/student/Document.png`}
-                      width={13}
-                      height={13}
-                    />
-                  </div>
-                  Class note
-                </button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      )} */}
     </>
   )
 }
