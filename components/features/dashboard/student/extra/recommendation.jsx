@@ -12,6 +12,7 @@ const Recommendation = ({ dataRecon, recData, recIndex }) => {
   // const filterRecon = () => {
 
   // }
+  console.log("recData from test", recData)
 
   return (
     <>
@@ -91,7 +92,12 @@ const Recommendation = ({ dataRecon, recData, recIndex }) => {
           </Modal>
         </div>
       )}
-
+      {recData?.videourl === undefined && (
+        <div>
+          <h5>Testing</h5>
+        </div>
+      )
+      }
     </>
   )
 }
