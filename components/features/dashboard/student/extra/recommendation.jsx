@@ -92,12 +92,6 @@ const Recommendation = ({ dataRecon, recData, recIndex }) => {
           </Modal>
         </div>
       )}
-      {recData?.videourl === undefined && (
-        <div>
-          <h5>Testing</h5>
-        </div>
-      )
-      }
     </>
   )
 }
