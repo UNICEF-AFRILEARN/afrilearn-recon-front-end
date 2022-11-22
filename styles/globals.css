@@ -305,8 +305,8 @@ a {
   border: none !important;
 }
 
-.accordion-button {
-  width: 125% !important;
+.homepageAcc .accordion-button {
+  width: 100% !important;
   background-color: #fafafa !important;
   padding: 1.7rem 1.25rem !important;
   border: none !important;
@@ -314,7 +314,7 @@ a {
 
 .accordion-body-com {
   background-color: #fafafa !important;
-  width: 125% !important;
+  width: 100% !important;
   border: none !important;
   margin-top: 15px;
 }
@@ -880,6 +880,15 @@ a {
   margin-top: 50px !important;
 }
 
+.searchModal .modal-dialog {
+  position: relative;
+  width: 259px;
+  margin: var(--bs-modal-margin);
+  pointer-events: none;
+  top: -185px;
+  left: 915px;
+}
+
 .btn-class-corrected {
   /* padding: 0.10rem .5rem  !important; */
   /* text-align: start !important; */
@@ -1060,11 +1069,14 @@ a {
 
 .accordion-body-com {
   background-color: #fafafa !important;
-  width: 125% !important;
+  width: 100% !important;
   border: none !important;
   margin-top: 15px;
 }
 
+.accordion-button:not(.collapsed) {
+  color: #00d9b6 !important;
+}
 .logo-login-seg {
   padding-top: 20px;
   text-align: center;

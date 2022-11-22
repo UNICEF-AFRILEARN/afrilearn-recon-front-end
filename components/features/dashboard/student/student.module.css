@@ -333,6 +333,11 @@
   align-content: center;
   margin-bottom: 70px;
 }
+
+.loadingStyle {
+  width: fit-content !important;
+}
+
 @media screen and (max-width: 415px) {
   .classComment {
     margin-left: 10px;

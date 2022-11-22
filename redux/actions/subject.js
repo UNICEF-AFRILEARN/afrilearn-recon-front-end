@@ -130,6 +130,10 @@ export const storeProfilePicture = (data) => ({
   type: types.FETCH_CHANGE_PROFILEPIX,
   payload: data,
 })
+export const storeSearchResult = (data) => ({
+  type: types.FETCH_SEARCH_RESULT,
+  payload: data,
+})
 
 export const fetchAllFeedUsers = () => {
   return function (dispatch) {
@@ -391,6 +395,29 @@ export const submitLessonQuizResult = (data, lessonId, token) => {
     }).then((res) => {
       console.log(res)
       dispatch(storeSubmitLessonQuizResult({ results: data }))
+    })
+  }
+}
+
+// getSearchResults(searchQuery, data = null) {
+//     return axios({
+//       method: "post",
+//       url: `${this.url}lessons/search/${searchQuery}`,
+//       data,
+//     });
+//   },
+
+export const getSearchResults = (searchQuery, data = null, token) => {
+  return function (dispatch) {
+    dispatch(fetchSubjectsStart())
+    axios({
+      method: 'post',
+      url: `${url}lessons/search/${searchQuery}`,
+      headers: headers(token),
+      data,
+    }).then((res) => {
+      console.log(res)
+      dispatch(storeSearchResult(res.data.data))
     })
   }
 }

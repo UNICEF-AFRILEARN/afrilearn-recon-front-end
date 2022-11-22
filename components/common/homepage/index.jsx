@@ -338,7 +338,6 @@ const Testimonials = () => {
         </div>
         <CommentPage />
         {/* </section> */}
-        
       </div>
     </>
   )
@@ -376,22 +375,22 @@ export const Faq = () => {
     {
       id: 2,
       faq: 'What is included in Afrilearn subscription?',
-      answ: "Subscription includes unlimited access to all video lessons, audio lessons, class notes, practice quizzes, live classes and more, covering all subjects and topics, in your chosen class. Brace yourself for a profoundly life-changing experience.",
+      answ: 'Subscription includes unlimited access to all video lessons, audio lessons, class notes, practice quizzes, live classes and more, covering all subjects and topics, in your chosen class. Brace yourself for a profoundly life-changing experience.',
     },
     {
       id: 3,
       faq: 'How much does Afrilearn cost?',
-      answ: "Afrilearn has a variety of plans to suit your learning goals. Subscription Plans include Monthly - ₦999 ($2.99), Quarterly - ₦2499 ($6.99), Bi-Annual - ₦4999 ($13.99), Annual - ₦9999 ($26.99).",
+      answ: 'Afrilearn has a variety of plans to suit your learning goals. Subscription Plans include Monthly - ₦999 ($2.99), Quarterly - ₦2499 ($6.99), Bi-Annual - ₦4999 ($13.99), Annual - ₦9999 ($26.99).',
     },
     {
       id: 4,
       faq: 'Where can I watch?',
-      answ: "You can learn on Afrilearn via your smartphone, tablet, Smart TV, laptop, or streaming device. Learn as much as you want, whenever you want without a single commercial – all for one low monthly price.",
+      answ: 'You can learn on Afrilearn via your smartphone, tablet, Smart TV, laptop, or streaming device. Learn as much as you want, whenever you want without a single commercial – all for one low monthly price.',
     },
     {
       id: 5,
       faq: 'How do I cancel?',
-      answ: "Our focus is to transform users into ambassadors through the best learning experience possible. You can easily cancel your subscription in two clicks. If you have more questions, please click",
+      answ: 'Our focus is to transform users into ambassadors through the best learning experience possible. You can easily cancel your subscription in two clicks. If you have more questions, please click',
     },
     {
       id: 6,
@@ -416,13 +415,14 @@ export const Faq = () => {
         <section>
           {faqQuestions.map((faq, i) => {
             return (
-              <Accordion key={i}>
+              <Accordion key={i} className="homepageAcc">
                 <Accordion.Item eventKey={i}>
                   <Accordion.Header>{faq.faq}</Accordion.Header>
 
                   <Accordion.Body
                     key={i}
                     className="border-0 accordion-body-com"
+                    // style={{ width: '125%' }}
                   >
                     {faq.answ}
                   </Accordion.Body>

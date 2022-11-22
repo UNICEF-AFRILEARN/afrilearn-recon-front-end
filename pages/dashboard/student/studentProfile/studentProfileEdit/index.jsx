@@ -26,12 +26,6 @@ const StudentProfileEdit = () => {
         confirmButtonText: 'OK',
       }).then((result) => {
         if (result.value) {
-          Swal.fire(
-            'Submitted!',
-            'Your test details are been recorded.',
-            'success'
-          )
-
           const data = new FormData()
           data.append('profilePhotoUrl', profilePix)
           dispatch(updateProfilePicture(data, token))

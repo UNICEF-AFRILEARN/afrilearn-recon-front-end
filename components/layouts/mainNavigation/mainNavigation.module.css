@@ -17,6 +17,16 @@
   /* margin-top: 86px; */
 }
 
+.searchBox {
+  margin-right: -102px;
+  border-radius: 10px;
+  padding-left: 10px;
+}
+
+.searchRes li:hover {
+  color: #00d9b6;
+}
+
 .main-navbar-with-login {
   display: flex;
   background-color: brown;
