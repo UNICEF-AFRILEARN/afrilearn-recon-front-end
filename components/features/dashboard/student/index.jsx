@@ -424,13 +424,6 @@ const MyFavs = ({ classData }) => {
 }
 
 export const Recommended = ({ recommend, unicefRecon, lessons, unfinishedStore }) => {
-  // let reduceRecon = () => {
-  //   recommend?.forEach((recon, index) => {
-  //     if(index === 3) return
-  //   })
-  // }
-
-  // console.log("unfinishedStore", unfinishedStore?.unFinishedVideos[0]?.lessonId?.id);
 
   const reconBucket = []
   const finalReconLessons = []
@@ -455,22 +448,27 @@ export const Recommended = ({ recommend, unicefRecon, lessons, unfinishedStore }
   }
 
   return (
-    <>
-      {unicefRecon !== 0 && (
-        <>
-          <SubHeading title="Recommended For You" />
-          <div className={`${styles.contai}`} data-testid='recon'>
-            <section className="parnet-frag-color">
-              {unicefRecon?.map((recData, index) => (
-                  <Recommendation recData={recData} recIndex={index} />
-                ))
-
-              }
-            </section>
-          </div>
-        </>
-      )}
-    </>
+    unicefRecon.length > 0?
+      <>
+        {unicefRecon !== 0 && (
+          <>
+            <SubHeading title="Recommended For You" />
+            <div className={`${styles.contai}`} data-testid='recon'>
+              <section className="parnet-frag-color">
+                {unicefRecon?.map((recData, index) => (
+                    <Recommendation recData={recData} recIndex={index} />
+                  ))
+  
+                }
+              </section>
+            </div>
+          </>
+        )}
+      </> : 
+      <div >
+        <SubHeading title="Recommended For You" />
+          <h5 className={styles.alternativerecon}>There is no recommendation for you yet</h5>
+      </div>
   )
 }
 
