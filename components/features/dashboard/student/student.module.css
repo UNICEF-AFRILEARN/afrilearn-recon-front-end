@@ -15,7 +15,9 @@
   justify-content: space-around;
   width: 90%;
 }
-
+.recomendationmainwrapper{
+  padding: 1.3em 5.5em;
+}
 .corsedetailswrappertwo {
   display: flex;
   justify-content: space-around;
@@ -109,7 +111,7 @@
   bottom: 10px;
 }
 .subHeadingTitle {
-  padding: 40px 100px;
+  padding: 1.5em 2em;
   font-family: 'subHeading';
 }
 .subjectBox {
@@ -123,7 +125,7 @@
 .contai {
   /* display: grid; */
   /* grid-t: repeat(10, 1fr); */
-  width: 1300px;
+  width: 85vw;
   /* background-color: yellow; */
   /* height: 500px; */
   margin: auto;

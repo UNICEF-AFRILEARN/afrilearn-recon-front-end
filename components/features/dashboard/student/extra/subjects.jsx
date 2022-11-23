@@ -82,7 +82,6 @@ const Subjects = ({ subData }) => {
             <button
               className="modalButton"
               onClick={() => {
-                console.log(dta)
                 setsubjCourId(() => ({ id: dta.id, courseId: dta.courseId }))
                 toggleModal(dta.mainSubjectId.name)
               }}
