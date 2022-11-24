@@ -134,6 +134,10 @@ export const storeSearchResult = (data) => ({
   type: types.FETCH_SEARCH_RESULT,
   payload: data,
 })
+export const storeUserRoles = (data) => ({
+  type: types.FETCH_USER_ROLES,
+  payload: data,
+})
 
 export const fetchAllFeedUsers = () => {
   return function (dispatch) {
@@ -143,6 +147,19 @@ export const fetchAllFeedUsers = () => {
       .then((res) => {
         dispatch(fetchFeedUsers(res.data.data))
       })
+  }
+}
+
+export const fetchUserRoles = () => {
+  return function (dispatch) {
+    axios({
+      method: 'get',
+      url: `${url}auth/roles`,
+    }).then((res) => {
+      // console.log(res)
+      // dispatch((res.data.data));
+      dispatch(storeUserRoles(res.data.data))
+    })
   }
 }
 export const fetchFollowingsFeedUsers = (token) => {

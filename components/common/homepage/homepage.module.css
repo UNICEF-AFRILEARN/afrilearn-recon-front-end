@@ -389,6 +389,10 @@
 .afterExplore {
   margin-top: 90px;
 }
+.afterExplore div {
+  width: 260px !important;
+  margin: 0 auto;
+}
 
 .afterExplore span {
   display: block;
@@ -396,6 +400,8 @@
   background: #365469;
   padding: 23px 10px;
   border-radius: 5px;
+  margin-bottom: 15px;
+  height: 127px !important;
 }
 .afterExplore span p {
   margin-bottom: 0;
@@ -440,34 +446,28 @@
   position: relative;
 }
 .testimonials .heroText {
-  position: absolute;
+  /* position: absolute; */
   font-family: 'heading';
   padding-top: 15px;
-  left: 134px;
+  /* left: 134px; */
   font-style: normal;
-  font-size: 100px;
-  line-height: 63px;
+  font-size: 40px;
+  font-weight: 600;
+  /* line-height: 63px; */
   padding-right: 0px;
   color: #29465b;
 }
 
 .testimonials .mark {
-  position: absolute !important;
-  left: 0px !important;
-  /* opacity: 0.3 !important; */
-  margin-top: 0px !important;
+  width: 100px;
 }
 
-.testimonials p {
-  position: absolute;
-  width: 340px;
-  height: 72px;
-  left: 134px;
-  margin-top: 30px;
-  padding-top: 100px;
+.testimonials_p {
+  width: 580px;
+  margin-left: 89px;
   font-style: normal;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 24px;
   color: #333333;
 }
@@ -779,7 +779,7 @@
 
 .cardstylling ul li {
   text-align: start;
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 .cardstylling ul li span {

@@ -25,6 +25,7 @@ const initialState = {
   feedPost: [],
   changeProfilePix: [],
   searchRecord: [],
+  userRoles: [],
 }
 
 const subjectedReducer = (state = initialState, { type, payload }) => {
@@ -43,6 +44,11 @@ const subjectedReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         feedPost: payload,
+      }
+    case types.FETCH_USER_ROLES:
+      return {
+        ...state,
+        userRoles: payload,
       }
     case types.FETCH_CHANGE_PROFILEPIX:
       return {
