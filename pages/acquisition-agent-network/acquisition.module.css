@@ -127,9 +127,47 @@
     background-color: #fbfbfb;
 }
 .callfinal button{
-    width: 16%;
+    /* width: 16%; */
     background-color: #00d9b6;
     border: none;
     border-radius: 30px;
     padding: 0.5em 3em;
+}
+
+/* mobile lg 425 */
+@media screen and (max-width:767px){
+    .acquisitionmainwrapper {
+        flex-direction: column;
+        height: 75vh;
+        padding: 0.3em 1.5em;
+    }
+    .rightimagewrapper{
+        background-position: 105% 50%;
+        width: 80%;
+    }
+    .leftcontentwrapper {
+        width: 70%;
+    }
+    .leftcontentwrapper h1 {
+        margin-top: 1.2em;
+        font-size: 2em;
+        line-height: 1.2em;
+        font-weight: bold;
+    }
+    .breifmainwrapper {
+        /* height: 95vh; */
+        padding: 3.3em 2.5em;
+    }
+    .detailswrapper {
+        flex-direction: column;
+        gap: 1.2em;
+    }
+    .innerdetails {
+        width: 95%;
+    }
+
+    .innerrolecontent {
+        flex-direction: column;
+    
+    }
 }
