@@ -1,0 +1,17 @@
+.facultymainwrapper {
+    padding: 2em 6.5em;
+}
+
+.inspirewrapper {
+    margin-top: 2em;
+}
+
+
+
+
+/* mobile lg 425 */
+@media screen and (max-width:767px){
+    .facultymainwrapper {
+        padding: 1.5em 2em;
+    }
+}
