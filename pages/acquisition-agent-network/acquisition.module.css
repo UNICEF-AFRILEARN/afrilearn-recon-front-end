@@ -157,6 +157,7 @@
     .breifmainwrapper {
         /* height: 95vh; */
         padding: 3.3em 2.5em;
+        margin-bottom: 140%;
     }
     .detailswrapper {
         flex-direction: column;
@@ -169,5 +170,34 @@
     .innerrolecontent {
         flex-direction: column;
     
+    }
+    .jobrolewrapper {
+        display: flex;
+        flex-direction: column;
+        /* margin-top: 140%; */
+        padding: 2.3em 2em;
+    }
+    .jobroleheader {
+        width: 100%;
+        padding: 0 1.6em;
+        
+    }
+    .innermaincontent {
+        display: flex;
+        width: 85%;
+        gap: 1.2em;
+        flex-direction: column;
+        margin-bottom: 3em;
+    }
+    .innermaincontent button{
+        width: 75%;
+        padding: 0.5em 3em;
+    }
+    .innerrolecontentrequire{
+        flex-direction: column;
+    }
+    .callfinal {
+        padding: 5.3em 2.5em;
+        margin-top: 0.5em;
     }
 }
