@@ -1,0 +1,135 @@
+.acquisitionmainwrapper {
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+    align-items: center;
+    height: 75vh;
+    padding: 0.3em 11.5em;
+    background-color: #fbfbfb;
+}
+
+.rightimagewrapper{
+    background-image: url('../../public/assets/img/agent.png');
+    background-size: cover;
+    background-position: 100% 20%;
+    height: 70vh;
+    width: 50vw;
+    align-self: flex-end;
+}
+.leftcontentwrapper {
+    text-align: start;
+    width: 43%;
+}
+
+.leftcontentwrapper h1 {
+    font-size: 3em;
+    line-height: 1.2em;
+    font-weight: bold;
+}
+.leftcontentwrapper p {
+    font-size: 1.2em;
+}
+.leftcontentwrapper button {
+    background-color: #00d9b6;
+    border: none;
+    border-radius: 30px;
+    padding: 0.5em 3em;
+}
+
+.breifmainwrapper {
+    height: 75vh;
+    padding: 3.3em 11.5em;
+}
+
+.breifheaderwrapper {
+    text-align: center;
+}
+
+.detailswrapper {
+    display: flex;
+    margin-top: 2em;
+    justify-content: space-between;
+}
+
+.innerdetails {
+    width: 31%;
+    border-radius: 5px;
+    padding: 2em 1.9em;
+    padding-bottom: 3.5em;
+    box-shadow: -4px 12px 83px -26px rgba(0,0,0,0.75);
+    -webkit-box-shadow: -4px 12px 83px -26px rgba(0,0,0,0.75);
+    -moz-box-shadow: -4px 12px 83px -26px rgba(0,0,0,0.75);
+}
+
+.jobrolewrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 2.3em 11.5em;
+}
+
+.innerrolecontent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.innerrolecontentrequire{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.jobroleheader {
+    width: 50%;
+    margin-bottom: 3em;
+    
+}
+.jobroleheader h1 {
+    font-weight: bold;
+}
+.jobroleheaderrequire {
+    width: 80%;
+    margin-bottom: 3em;
+    
+}
+
+.jobroleheaderrequire h1 {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.innermaincontent {
+    display: flex;
+    width: 50%;
+    gap: 1.2em;
+    flex-direction: column;
+}
+.rolecontent {
+    display: flex;
+    gap: 1em;
+    align-items: flex-start;
+    font-size: 1.3em;
+}
+.innermaincontent button{
+    width: 35%;
+    background-color: #00d9b6;
+    border: none;
+    border-radius: 30px;
+    padding: 0.5em 3em;
+}
+
+.callfinal {
+    padding: 5.3em 11.5em;
+    text-align: center;
+    margin-top: 1.5em;
+    background-color: #fbfbfb;
+}
+.callfinal button{
+    width: 16%;
+    background-color: #00d9b6;
+    border: none;
+    border-radius: 30px;
+    padding: 0.5em 3em;
+}
