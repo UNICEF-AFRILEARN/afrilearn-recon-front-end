@@ -150,7 +150,6 @@ sortSubjects(allSubjects, courseId)
 
 useEffect(() => {
   dispatch(fetchSubjectsInitiate())
-  
 }, [registerUser])
 
 // useEffect(() => {

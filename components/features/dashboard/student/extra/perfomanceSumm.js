@@ -59,41 +59,22 @@ const PerfomanceSumm = () => {
           <h5 className={styles.colorfour}>No rating</h5>
         </Col>
         <Col lg={5} md={12}>
-          {/* <div className={styles.topmath}>
-            {/* | <span>Mathematics</span> |
-                <span>Civic Education</span> |
-                <span>Computer Science </span> |
-                <span>Basic Science</span> |
-                <span>Mathematics</span> |
-                <span>Civic Education</span> |
-                <span>Computer Science </span> |
-                <span>Basic Science</span> | }
+          <div className={styles.listlinewrapper}>
+          <div className={styles.topmath}>
+            
           </div>
           <div className={styles.topmath}>
-            {/* | <span>Mathematics</span> |
-                <span>Civic Education</span> |
-                <span>Computer Science </span> |
-                <span>Basic Science</span> |
-                <span>Mathematics</span> |
-                <span>Civic Education</span> |
-                <span>Computer Science </span> |
-                <span>Basic Science</span> | 
+           
           </div>
           <div className={styles.topmath}>
-           | <span>Mathematics</span> |
-                <span>Civic Education</span> |
-                <span>Computer Science </span> |
-                <span>Basic Science</span> |
-                <span>Mathematics</span> |
-                <span>Civic Education</span> |
-                <span>Computer Science </span> |
-                <span>Basic Science</span> |
-          </div> */}
+           
+          </div>
           <div className={styles.topmath}>
             <span>Mathematics</span> |<span>Civic Education</span> |
             <span>Computer Science </span> |<span>Basic Science</span> |
             <span>Mathematics</span> |<span>Civic Education</span> |
             <span>Computer Science </span> |<span>Basic Science</span> |
+          </div>
           </div>
         </Col>
       </Row>
