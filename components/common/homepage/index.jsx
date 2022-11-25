@@ -7,25 +7,36 @@ import Slider from 'react-slick'
 import Image from 'next/image'
 import WhyAfrilearn from './extra/whyAfrilearn'
 import ExploreAfrilearn from './extra/exploreAfrilearn'
-import CommentPage from './extra/commentPage'
+// import Testimonials from './extra/testimonial'
+import CommentPage from './extra/testimonial'
 import { BsCheck2All } from 'react-icons/bs'
 import { Accordion, Col, Row } from 'react-bootstrap'
 import { useRouter } from 'next/router'
 import { getCourseInitiate } from '../../../redux/actions/course'
 import { fetchRoles } from '../../../redux/actions/auth'
 import Spinner from '../../widgets/spinner/index'
+import { fetchUserRoles } from '../../../redux/actions/subject'
 
 const HomePage = () => {
+  const { userRoles } = useSelector((state) => state.mySubjectCourse)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchUserRoles())
+  }, [fetchUserRoles])
+
   return (
     <>
       <div className="container">
         <div id="homepageFirstSection" className="row">
           <div className="col-md-6" id="homepageFirstSectionText">
-            <h1 className={styles.mainheading}>Get ahead with Afrilearn!</h1>
+            <h1 className={styles.mainheading}>
+              Buy the future with Afrilearn!
+            </h1>
 
             <p className={styles.underHeadingP}>
-              Access free, world-class Primary and Secondary Education (Ages
-              6-18) for Best Grades and Success in life.
+              We provide African primary and secondary school learners with
+              complete curriculum-relevant education anytime, anywhere.
             </p>
             <div className={`row ${styles.afterSubHeading}`}>
               <div className={`col-md-4 ${styles.afterSubHeading_button}`}>
@@ -67,12 +78,19 @@ const HomePage = () => {
         </div>
       </div>
       <WhyAfrilearn />
-      <ExploreAfrilearn />
+      <ExploreAfrilearn userRole={userRoles} />
       <GameIntro />
       <CrossPlatform />
       <JoinLeague />
-      <Testimonials />
+      <Row className="m-auto mt-5 mb-5 w-50 pt-5 pb-5">
+        {/* <Col md={6}>  */}
+        <Testimonials />
+      </Row>
+      {/* </Col>
+        <Col md={6}> */}
       <Faq />
+      {/* </Col>
+      </Row> */}
       <QuickJoin />
       <Partners />
 
@@ -220,7 +238,7 @@ const JoinLeague = () => {
       button: 'JOIN FOR FREE',
       details: [
         '50,000+ Official Past Questions & Solutions',
-        '5000+ Curriculum-Relevant Class Notes2',
+        '5000+ Curriculum-Relevant Class Notes',
         '3000+ Curriculum-Relevant Video Lessons',
         'Gamified competitions with weekly cash prizes',
         'Discover your strength with insightful analytics',
@@ -313,18 +331,10 @@ const Testimonials = () => {
         <div
           id="landingpage-testimonials"
           className={`row ${styles.testimonials}`}
-          style={{ margin: '93px' }}
         >
           <section className={styles.container}>
-            <div
-              className={`col-xl-6 col-lg-7 col-md-8 col-sm-9 ${styles.heroText}`}
-            >
-              <h1 className={styles.heroTextHone}>{`${data.title}`}</h1>
-            </div>
-            {/* <div className='col-lg-7 '></div> */}
-            <p>{data.description[0]}</p>
-            <section className={`row`}>
-              <div className={`col-md-12`}>
+            <Row>
+              <Col md={2}>
                 <Image
                   alt={'design image'}
                   className={styles.mark}
@@ -332,13 +342,16 @@ const Testimonials = () => {
                   width={'70%'}
                   height={'70%'}
                 />
-              </div>
-            </section>
+              </Col>
+              <Col md={10}>
+                <h1 className={styles.heroText}>{`${data.title}`}</h1>
+              </Col>
+            </Row>
+            <Row className={styles.testimonials_p}>{data.description[0]}</Row>
           </section>
         </div>
         <CommentPage />
         {/* </section> */}
-        
       </div>
     </>
   )
@@ -376,22 +389,22 @@ export const Faq = () => {
     {
       id: 2,
       faq: 'What is included in Afrilearn subscription?',
-      answ: "Subscription includes unlimited access to all video lessons, audio lessons, class notes, practice quizzes, live classes and more, covering all subjects and topics, in your chosen class. Brace yourself for a profoundly life-changing experience.",
+      answ: 'Subscription includes unlimited access to all video lessons, audio lessons, class notes, practice quizzes, live classes and more, covering all subjects and topics, in your chosen class. Brace yourself for a profoundly life-changing experience.',
     },
     {
       id: 3,
       faq: 'How much does Afrilearn cost?',
-      answ: "Afrilearn has a variety of plans to suit your learning goals. Subscription Plans include Monthly - ₦999 ($2.99), Quarterly - ₦2499 ($6.99), Bi-Annual - ₦4999 ($13.99), Annual - ₦9999 ($26.99).",
+      answ: 'Afrilearn has a variety of plans to suit your learning goals. Subscription Plans include Monthly - ₦999 ($2.99), Quarterly - ₦2499 ($6.99), Bi-Annual - ₦4999 ($13.99), Annual - ₦9999 ($26.99).',
     },
     {
       id: 4,
       faq: 'Where can I watch?',
-      answ: "You can learn on Afrilearn via your smartphone, tablet, Smart TV, laptop, or streaming device. Learn as much as you want, whenever you want without a single commercial – all for one low monthly price.",
+      answ: 'You can learn on Afrilearn via your smartphone, tablet, Smart TV, laptop, or streaming device. Learn as much as you want, whenever you want without a single commercial – all for one low monthly price.',
     },
     {
       id: 5,
       faq: 'How do I cancel?',
-      answ: "Our focus is to transform users into ambassadors through the best learning experience possible. You can easily cancel your subscription in two clicks. If you have more questions, please click",
+      answ: 'Our focus is to transform users into ambassadors through the best learning experience possible. You can easily cancel your subscription in two clicks. If you have more questions, please click',
     },
     {
       id: 6,
@@ -416,13 +429,14 @@ export const Faq = () => {
         <section>
           {faqQuestions.map((faq, i) => {
             return (
-              <Accordion key={i}>
+              <Accordion key={i} className="homepageAcc">
                 <Accordion.Item eventKey={i}>
                   <Accordion.Header>{faq.faq}</Accordion.Header>
 
                   <Accordion.Body
                     key={i}
                     className="border-0 accordion-body-com"
+                    // style={{ width: '125%' }}
                   >
                     {faq.answ}
                   </Accordion.Body>
@@ -466,7 +480,7 @@ const QuickJoin = () => {
     })
   }
 
-  console.log('classParams', classParams)
+  // console.log('classParams', classParams)
 
   //   const getClassId =  () => {
 

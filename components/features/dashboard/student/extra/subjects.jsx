@@ -3,7 +3,7 @@ import styles from './../../student/student.module.css'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
-import { Modal, Container, Row, Col } from 'react-bootstrap'
+import { Modal, Container, Row, Col, Spinner, Button } from 'react-bootstrap'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { StudentPage } from './../studentHeropage'
@@ -99,8 +99,7 @@ const Subjects = ({ subData }) => {
         )
       })
     ) : (
-      <div>Loading...</div>
-      // <FullpageLoader />
+      <Loading />
     )
   }
 
@@ -185,6 +184,21 @@ const Subjects = ({ subData }) => {
 }
 
 export default Subjects
+
+export const Loading = () => {
+  return (
+    <Button variant="primary" disabled className={styles.loadingStyle}>
+      Loading...{' '}
+      <Spinner
+        as="span"
+        animation="border"
+        size="sm"
+        role="status"
+        aria-hidden="true"
+      />{' '}
+    </Button>
+  )
+}
 
 export const HeaderHeropage = ({ classes }) => {
   const personClass = classes

@@ -1,12 +1,25 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
-import { Navbar, Container, Nav, Dropdown } from 'react-bootstrap'
+import {
+  Navbar,
+  Container,
+  Nav,
+  Dropdown,
+  Modal,
+  Spinner,
+} from 'react-bootstrap'
 import { signIn } from 'next-auth/react'
 import Link from 'next/link'
 // import Toggle from "../../widgets/toggle/index"
-import { BsSearch, BsBell } from 'react-icons/bs'
+import {
+  BsSearch,
+  BsBell,
+  BsBookmarkFill,
+  BsFillBookmarkFill,
+  BsBookmark,
+} from 'react-icons/bs'
 
 import { BiDownArrow } from 'react-icons/bi'
 import { AiOutlineSafetyCertificate } from 'react-icons/ai'
@@ -16,6 +29,11 @@ import { persistor } from '../../../redux/store'
 
 import { BsPersonCircle } from 'react-icons/bs'
 import Image from 'next/image'
+import {
+  fetchCourseDetailsInitiate,
+  getSearchResults,
+} from '../../../redux/actions/subject'
+import Swal from 'sweetalert2'
 
 const Navigation = () => {
   const router = useRouter()
@@ -24,7 +42,13 @@ const Navigation = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(true)
   const [userRole, setUserRole] = useState('')
   const { user, registerUser } = useSelector((state) => state.auth)
-
+  const inputRef = useRef()
+  const [isHovered, setHovered] = useState(false)
+  const [notif, setNotif] = useState(false)
+  const [keyword, setKeyword] = useState('')
+  const [modalShowed, setModalShowed] = useState(false)
+  const [searchIds, setSearchIds] = useState('')
+  // const [searchResult, setSearchResult] = useState('')
   let localData
   // const checkoLocal = () => {
   //   if (typeof window !== "undefined") {
@@ -37,6 +61,13 @@ const Navigation = () => {
   //   router.push('/login')
 
   // }
+  console.log(modalShowed)
+
+  const { searchRecord } = useSelector((state) => state.mySubjectCourse)
+  console.log(searchRecord)
+  useEffect(() => {
+    inputRef.current?.focus()
+  }, [isHovered])
 
   const handleShow = () => {
     setShowList(!showList)
@@ -62,6 +93,103 @@ const Navigation = () => {
       user?.user?.role || registerUser?.user?.role || user?.user?.id
     setUserRole(roleId)
   }, [user])
+
+  // useEffect(() => {
+  //   setSearchResult(searchRecord)
+  // }, [searchResult])
+
+  const [subjCourId, setsubjCourId] = useState({})
+  const toggleModal = (cour, subj) => {
+    // setShow(!show);
+    setsubjCourId({ courId: cour, subjId: subj })
+  }
+
+  useEffect(() => {
+    // console.log(subjCourId)
+    if (Object.keys(subjCourId).length !== 0) {
+      dispatch(fetchCourseDetailsInitiate(subjCourId.courId, subjCourId.subjId))
+    }
+  }, [subjCourId])
+  const token = user?.token
+  function MyVerticallyCenteredModal(props) {
+    return (
+      <Modal
+        {...props}
+        size="xs"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+        className="searchModa"
+      >
+        {props.notClassNote ? (
+          <>
+            <Modal.Header closeButton>
+              <Modal.Title id="contained-modal-title-vcenter">
+                <p style={{ color: 'red', margin: '0' }}>ERROR!</p>
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <p style={{ textAlign: 'center', fontSize: '14px' }}>
+                Unfortunately! this class content is not part of the content you
+                subscribed for you can add a class by clicking on this{' '}
+                <Link passHref href="/payment">
+                  <u
+                    style={{ color: '#00d9b6', cursor: 'pointer' }}
+                    onClick={props.onHide}
+                  >
+                    Link
+                  </u>
+                </Link>
+              </p>
+            </Modal.Body>
+          </>
+        ) : (
+          <>
+            <Modal.Header closeButton>
+              <Modal.Title id="contained-modal-title-vcenter">
+                <p style={{ color: '#00d9b6', margin: '0' }}>
+                  Redirecting!
+                  <Spinner animation="border" size="sm" />
+                </p>
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <p style={{ textAlign: 'center', fontSize: '14px' }}>
+                You will now be redirected to ClassNote, when you click on this{' '}
+                <Link
+                  passHref
+                  href={{
+                    pathname: '/dashboard/student/classnote/classnotePage',
+                    query: [searchIds && searchIds],
+                  }}
+                >
+                  <u
+                    style={{ color: '#00d9b6', cursor: 'pointer' }}
+                    onClick={props.onHide}
+                  >
+                    Link
+                  </u>
+                </Link>
+              </p>
+            </Modal.Body>
+          </>
+        )}
+      </Modal>
+    )
+  }
+
+  const sentenceCase = (str) => {
+    let s = str.toLowerCase()
+    return s.charAt(0).toUpperCase() + s.slice(1)
+  }
+
+  console.log(user)
+
+  const searchFunc = (id, ids) => {
+    console.log(ids)
+    user?.user?.enrolledCourses[0].courseId.id === id
+      ? (setSearchIds(ids), setModalShowed(true))
+      : (setSearchIds(''), setModalShowed(true))
+  }
 
   return (
     <Navbar
@@ -105,19 +233,165 @@ const Navigation = () => {
                 <Link passHref href="/payment">
                   <li>Subscribe</li>
                 </Link>
-                <Link passHref href="/about">
-                  <li>About Us</li>
-                </Link>
+                <div>
+                  {isHovered === false ? (
+                    <Link passHref href="/about" className={styles.aboutUs}>
+                      <li>About Us</li>
+                    </Link>
+                  ) : (
+                    <>
+                      <input
+                        type="text"
+                        placeholder="Search Topics"
+                        className={styles.searchBox}
+                        value={keyword}
+                        // name="keyword"
+                        ref={inputRef}
+                        onChange={(e) => {
+                          setKeyword(e.target.value)
+                          e.target.value.length > 0 &&
+                            dispatch(
+                              getSearchResults(
+                                e.target.value,
+                                { details: true },
+                                token
+                              )
+                            )
+                        }}
+                        onMouseEnter={() => {
+                          setHovered(true)
+                        }}
+                        onMouseLeave={() => {
+                          setHovered(false)
+                          // setKeyword('')
+                        }}
+                      />
+
+                      <div
+                        style={{
+                          background: 'white',
+                          width: '230px',
+                          maxHeight: '500px',
+                          position: 'absolute',
+                          zIndex: '3',
+                          top: '57px',
+                          borderRadius: '0 0 10px 10px',
+                          left: '994px',
+                          overflow: 'auto',
+                        }}
+                        onMouseEnter={() => {
+                          setHovered(true)
+                        }}
+                        onMouseLeave={() => {
+                          setHovered(false)
+                          setKeyword('')
+                        }}
+                        className={styles.searchRes}
+                      >
+                        <ul
+                          style={{
+                            display: 'block',
+                            margin: '5px',
+                            padding: '0',
+                          }}
+                        >
+                          {searchRecord?.result?.map((data, i) => (
+                            <li
+                              key={i}
+                              style={{
+                                fontSize: '14px',
+                                paddingBottom: '10px',
+                              }}
+                              onClick={() => {
+                                searchFunc(data.courseId.id, data.id)
+                                toggleModal(data.courseId.id, data.subjectId.id)
+                              }}
+                            >
+                              {sentenceCase(data.title.substr(0, 23))}
+                              {data.title.length > 23 ? '...' : null}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      {/* )} */}
+                    </>
+                  )}
+                </div>
+                {searchIds !== '' ? (
+                  <MyVerticallyCenteredModal
+                    show={modalShowed}
+                    onHide={() => setModalShowed(false)}
+                    notClassNote={false}
+                  />
+                ) : (
+                  <MyVerticallyCenteredModal
+                    show={modalShowed}
+                    onHide={() => setModalShowed(false)}
+                    notClassNote={true}
+                  />
+                )}
                 <div className={styles.navicons}>
-                  <span>
-                    <BsSearch />
+                  <span className={`pointer ${styles.searchIcons}`}>
+                    <BsSearch
+                      onMouseEnter={() => {
+                        setHovered(true)
+                      }}
+                      onMouseLeave={() => {
+                        setHovered(false)
+                        // setKeyword('')
+                      }}
+                    />
                   </span>
                   <span>
-                    <BsBell />
+                    <BsBell
+                      className="pointer"
+                      onClick={() => setNotif(!notif)}
+                    />
                   </span>
-                  <span>
-                    <AiOutlineSafetyCertificate />
-                  </span>
+                  {notif && (
+                    <div
+                      style={{
+                        background: 'white',
+                        width: '400px',
+                        height: '400px',
+                        position: 'absolute',
+                        zIndex: '3',
+                        top: '93px',
+                        borderRadius: '0 0 10px 10px',
+                        left: '979px',
+                        overflow: 'auto',
+                        border: '1px solid black',
+                      }}
+                      // onMouseEnter={() => {
+                      //   setHovered(true)
+                      // }}
+                      onMouseLeave={() => {
+                        setNotif(false)
+                        // setKeyword('')
+                      }}
+                      className={styles.searchRes}
+                    >
+                      <h3
+                        style={{
+                          textAlign: 'center',
+                          weigth: '700px',
+                          marginTop: '20px',
+                        }}
+                      >
+                        Notifications
+                      </h3>
+                      <p
+                        style={{
+                          textAlign: 'center',
+                        }}
+                      >
+                        You have no notification at the moment
+                      </p>
+                    </div>
+                  )}
+                  {/* <span>
+                    <BsBookmark name="role" />
+                  </span> */}
                 </div>
               </ul>
               <div className={styles.avatarcontainer}>

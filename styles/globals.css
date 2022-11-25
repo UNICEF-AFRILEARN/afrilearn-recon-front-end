@@ -16,7 +16,7 @@
   font-weight: normal;
   font-style: normal;
 }
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,500;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;1,700&display=swap');
 
 /* declaring the css variables colors */
 :root {
@@ -305,8 +305,8 @@ a {
   border: none !important;
 }
 
-.accordion-button {
-  width: 125% !important;
+.homepageAcc .accordion-button {
+  width: 100% !important;
   background-color: #fafafa !important;
   padding: 1.7rem 1.25rem !important;
   border: none !important;
@@ -314,7 +314,7 @@ a {
 
 .accordion-body-com {
   background-color: #fafafa !important;
-  width: 125% !important;
+  width: 100% !important;
   border: none !important;
   margin-top: 15px;
 }
@@ -472,6 +472,7 @@ a {
 
   .video-corrected-responsive {
     margin-top: 20px !important;
+    width: 250px !important;
   }
 
   .play-store-class {
@@ -689,24 +690,7 @@ a {
 .btn-log-in-mobile {
   cursor: pointer;
 }
-@font-face {
-  font-family: 'heading';
-  src: url('/assets/fonts/Spoof-Black.ttf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'subHeading';
-  src: url('/assets/fonts/Spoof-Bold.ttf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'content';
-  src: url('/assets/fonts/Spoof-Regular.ttf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
+
 .bg-light {
   padding: 23px 20px !important;
 }
@@ -878,6 +862,15 @@ a {
 
   justify-content: center;
   margin-top: 50px !important;
+}
+
+.searchModal .modal-dialog {
+  position: relative;
+  width: 259px;
+  margin: var(--bs-modal-margin);
+  pointer-events: none;
+  top: -185px;
+  left: 915px;
 }
 
 .btn-class-corrected {
@@ -1060,11 +1053,14 @@ a {
 
 .accordion-body-com {
   background-color: #fafafa !important;
-  width: 125% !important;
+  width: 100% !important;
   border: none !important;
   margin-top: 15px;
 }
 
+.accordion-button:not(.collapsed) {
+  color: #00d9b6 !important;
+}
 .logo-login-seg {
   padding-top: 20px;
   text-align: center;
@@ -1306,7 +1302,6 @@ a {
   height: 48px;
   color: #ffffff;
   border-color: #ffffff;
-  font-family: 'Spoof';
 }
 
 .get-trial-messege {

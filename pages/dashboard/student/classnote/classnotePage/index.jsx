@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic'
 
 const ClassnotePage = () => {
   const ClassnotePageComponents = dynamic(
-    () =>
+    (e) =>
       import(
         '../../../../../components/features/dashboard/student/classnote/classnotePage'
       ),

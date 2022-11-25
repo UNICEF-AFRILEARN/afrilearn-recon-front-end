@@ -1,6 +1,6 @@
-import React from "react";
-import styles from "../comment.module.css";
-import Image from "next/image";
+import React from 'react'
+import styles from '../comment.module.css'
+import Image from 'next/image'
 
 const commentPage = () => {
   return (
@@ -9,9 +9,9 @@ const commentPage = () => {
         <div className={styles.commentwrapper}>
           <div className={styles.comment}>
             <Image
-              alt={"design image"}
+              alt={'design image'}
               className={styles.commentImg}
-              src={"/assets/img/common/homepage/Comment.png"}
+              src={'/assets/img/common/homepage/Comment.png'}
               width={15}
               height={15}
             />
@@ -28,9 +28,9 @@ const commentPage = () => {
         <div className={styles.commentwrapper}>
           <div className={styles.comment}>
             <Image
-              alt={"design image"}
+              alt={'design image'}
               className={styles.commentImg}
-              src={"/assets/img/common/homepage/Comment.png"}
+              src={'/assets/img/common/homepage/Comment.png'}
               width={15}
               height={15}
             />
@@ -47,9 +47,9 @@ const commentPage = () => {
         <div className={styles.commentwrapper}>
           <div className={styles.comment}>
             <Image
-              alt={"design image"}
+              alt={'design image'}
               className={styles.commentImg}
-              src={"/assets/img/common/homepage/Comment.png"}
+              src={'/assets/img/common/homepage/Comment.png'}
               width={15}
               height={15}
             />
@@ -66,9 +66,9 @@ const commentPage = () => {
         <div className={styles.commentwrapper}>
           <div className={styles.comment}>
             <Image
-              alt={"design image"}
+              alt={'design image'}
               className={styles.commentImg}
-              src={"/assets/img/common/homepage/Comment.png"}
+              src={'/assets/img/common/homepage/Comment.png'}
               width={15}
               height={15}
             />
@@ -85,9 +85,9 @@ const commentPage = () => {
         <div className={styles.commentwrapper}>
           <div className={styles.comment}>
             <Image
-              alt={"design image"}
+              alt={'design image'}
               className={styles.commentImg}
-              src={"/assets/img/common/homepage/Comment.png"}
+              src={'/assets/img/common/homepage/Comment.png'}
               width={15}
               height={15}
             />
@@ -103,9 +103,9 @@ const commentPage = () => {
         <div className={styles.commentwrapper}>
           <div className={styles.comment}>
             <Image
-              alt={"design image"}
+              alt={'design image'}
               className={styles.commentImg}
-              src={"/assets/img/common/homepage/Comment.png"}
+              src={'/assets/img/common/homepage/Comment.png'}
               width={15}
               height={15}
             />
@@ -121,9 +121,9 @@ const commentPage = () => {
         <div className={styles.commentwrapper}>
           <div className={styles.comment}>
             <Image
-              alt={"design image"}
+              alt={'design image'}
               className={styles.commentImg}
-              src={"/assets/img/common/homepage/Comment.png"}
+              src={'/assets/img/common/homepage/Comment.png'}
               width={15}
               height={15}
             />
@@ -137,7 +137,7 @@ const commentPage = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default commentPage;
+export default commentPage

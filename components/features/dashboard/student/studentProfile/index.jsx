@@ -525,7 +525,6 @@ const StudentProfile = () => {
 export default StudentProfile
 
 export const ProfilePicture = ({ user }) => {
-  console.log(user?.user?.profilePhotoUrl)
   return (
     <Row>
       <Col className={`m-auto ${styles.studentProfileAvatar}`}>

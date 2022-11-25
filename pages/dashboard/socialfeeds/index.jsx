@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import SearchBar from './common/serchBar'
 
 import styles from '../../../styles/search.module.css'
@@ -8,6 +8,12 @@ import LeftFeeds from './common/leftFeeds'
 import { Col, Row } from 'react-bootstrap'
 
 const SocialFeeds = () => {
+  const [switched, setSwitched] = useState(true)
+
+  const handleSwitch = () => {
+    setSwitched(!switched)
+  }
+
   return (
     <div className={styles.socialfeedwrapper}>
       <div className={styles.searchbarinnerwrapper}>
