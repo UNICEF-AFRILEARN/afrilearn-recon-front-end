@@ -82,7 +82,7 @@ const HomePage = () => {
       <GameIntro />
       <CrossPlatform />
       <JoinLeague />
-      <Row className="m-5">
+      <Row className="m-auto mt-5 mb-5 w-50 pt-5 pb-5">
         {/* <Col md={6}>  */}
         <Testimonials />
       </Row>
