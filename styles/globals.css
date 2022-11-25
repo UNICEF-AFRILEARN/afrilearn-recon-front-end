@@ -16,7 +16,7 @@
   font-weight: normal;
   font-style: normal;
 }
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,500;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;1,700&display=swap');
 
 /* declaring the css variables colors */
 :root {
@@ -690,24 +690,7 @@ a {
 .btn-log-in-mobile {
   cursor: pointer;
 }
-@font-face {
-  font-family: 'heading';
-  src: url('/assets/fonts/Spoof-Black.ttf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'subHeading';
-  src: url('/assets/fonts/Spoof-Bold.ttf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'content';
-  src: url('/assets/fonts/Spoof-Regular.ttf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
+
 .bg-light {
   padding: 23px 20px !important;
 }
@@ -1319,7 +1302,6 @@ a {
   height: 48px;
   color: #ffffff;
   border-color: #ffffff;
-  font-family: 'Spoof';
 }
 
 .get-trial-messege {

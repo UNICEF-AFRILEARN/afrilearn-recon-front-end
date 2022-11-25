@@ -25,8 +25,6 @@ const HomePage = () => {
     dispatch(fetchUserRoles())
   }, [fetchUserRoles])
 
-  console.log(userRoles)
-
   return (
     <>
       <div className="container">
@@ -85,13 +83,14 @@ const HomePage = () => {
       <CrossPlatform />
       <JoinLeague />
       <Row className="m-5">
-        <Col md={6}>
-          <Testimonials />
-        </Col>
-        <Col md={6}>
-          <Faq />
-        </Col>
+        {/* <Col md={6}>  */}
+        <Testimonials />
       </Row>
+      {/* </Col>
+        <Col md={6}> */}
+      <Faq />
+      {/* </Col>
+      </Row> */}
       <QuickJoin />
       <Partners />
 
