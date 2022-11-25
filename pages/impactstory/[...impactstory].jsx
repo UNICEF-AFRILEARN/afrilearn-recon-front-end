@@ -60,7 +60,7 @@ useEffect(() => {
   if(router.isReady){
     setStoryId(router.query.impactstory[0])
   }
-}, [])
+}, [router])
 
 
 return (
