@@ -45,10 +45,8 @@
 .cardback {
     background-color: #444;
     transform: rotateY(180deg);
-    overflow: auto;
-    
+    overflow: auto; 
 }
-
 
 .cardback p {
     padding-top: 10em;
