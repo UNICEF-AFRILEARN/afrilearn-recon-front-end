@@ -390,7 +390,7 @@
   margin-top: 90px;
 }
 .afterExplore div {
-  width: 260px !important;
+  width: 230px !important;
   margin: 0 auto;
 }
 
@@ -406,6 +406,7 @@
 .afterExplore span p {
   margin-bottom: 0;
   margin-top: 4px;
+  font-size: 14px;
 }
 
 /* @media screen and (max-width: 374px) {

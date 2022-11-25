@@ -8,6 +8,12 @@ import LeftFeeds from './common/leftFeeds'
 import { Col, Row } from 'react-bootstrap'
 
 const SocialFeeds = () => {
+  const [switched, setSwitched] = useState(true)
+
+  const handleSwitch = () => {
+    setSwitched(!switched)
+  }
+
   return (
     <div className={styles.socialfeedwrapper}>
       <div className={styles.searchbarinnerwrapper}>
