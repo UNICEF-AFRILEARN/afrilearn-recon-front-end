@@ -1,0 +1,12 @@
+.videowrapper, .headerwrapper, .summarywrapper {
+    padding: 1em 5.6em;
+}
+
+
+.headerwrapper h1 {
+    font-weight: bold;
+}
+
+.summarywrapper {
+    margin-bottom: 5em;
+}

@@ -90,7 +90,7 @@ const InpactStories = () => {
                         <p>When it comes to the gamified learning challenge on the Afrilearn App, Fathia Bakare...</p>
                         <small className={styles.miniinner}>Oct 8, 2021
                           <small>
-                            <Link href='/impactstory/1'>
+                            <Link href='/impactstory/3'>
                               <b>Read More</b>
                             </Link>
                           </small>
