@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
-import { Navbar, Container, Nav } from 'react-bootstrap'
+import { Navbar, Container, Nav, Dropdown } from 'react-bootstrap'
 import { signIn } from 'next-auth/react'
 import Link from 'next/link'
 // import Toggle from "../../widgets/toggle/index"
@@ -25,9 +25,6 @@ const Navigation = () => {
   const [userRole, setUserRole] = useState('')
   const { user, registerUser } = useSelector((state) => state.auth)
 
-  // const { enrolledCourses } = user.user
-
-  
   let localData
   // const checkoLocal = () => {
   //   if (typeof window !== "undefined") {
@@ -92,7 +89,6 @@ const Navigation = () => {
       {/* <DarkModeToggle /> */}
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-aut">
-            
           {/* <div className='main-navbar-with-login'> */}
           {userRole === 'not_login' && (
             <div className="our-story-frag">Our Story</div>
@@ -152,19 +148,39 @@ const Navigation = () => {
                     className="btn-log-in-mobile"
                     
                   > */}
-                  <BiDownArrow
+                  {/* <BiDownArrow
                     size={15}
                     className={styles.profileavatar2}
                     onClick={handleShow}
-                  />
+                  /> */}
+                  <Dropdown>
+                    <Dropdown.Toggle
+                      variant="green"
+                      id="dropdown-basic"
+                    ></Dropdown.Toggle>
+
+                    <Dropdown.Menu className={styles.dropdown}>
+                      <Dropdown.Item href="#">
+                        {user?.user?.enrolledCourses[0]?.courseId?.name}
+                      </Dropdown.Item>
+                      <Dropdown.Item href="#">Add New class</Dropdown.Item>
+                      <Dropdown.Item href="/dashboard/socialfeeds">
+                        My Feeds
+                      </Dropdown.Item>
+                      <Dropdown.Item href="/dashboard/student/studentProfile">
+                        Manage Profile
+                      </Dropdown.Item>
+                      <Dropdown.Item href="#">Share Feedback</Dropdown.Item>
+                      <Dropdown.Item onClick={handleLogout}>
+                        Log out
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
                   {/* </Link> */}
                   {showList === true && (
                     <div className={styles.linkswrapper}>
-                       <div>
-                      <a href="/payment">{user?.user?.enrolledCourses[0]?.courseId?.name}</a>
-                      </div>
                       <a href="/payment">Add New class</a>
-                      <Link href="/dashboard/socialfeeds">My Feeds</Link>
+                      <a href="#">My Feeds</a>
                       <Link href="/dashboard/student/studentProfile">
                         <a>Manage Profile</a>
                       </Link>
@@ -237,17 +253,39 @@ const Navigation = () => {
                     // href="/dashboard/teacher/teacherProfile"
                     className="btn-log-in-mobile"
                   > */}
-                  <BiDownArrow
+                  {/* <BiDownArrow
                     size={15}
                     onClick={handleShow}
                     className={styles.profileavatar2}
                   />
+                    className={styles.profileavatar2}
+                  /> */}
+                  <Dropdown>
+                    <Dropdown.Toggle
+                      variant="green"
+                      id="dropdown-basic"
+                    ></Dropdown.Toggle>
+
+                    <Dropdown.Menu className={styles.dropdown}>
+                      <Dropdown.Item href="#">
+                        {user?.user?.enrolledCourses[0]?.courseId?.name}
+                      </Dropdown.Item>
+                      <Dropdown.Item href="#">Add New class</Dropdown.Item>
+                      <Dropdown.Item href="/dashboard/socialfeeds">
+                        My Feeds
+                      </Dropdown.Item>
+                      <Dropdown.Item href="/dashboard/student/studentProfile">
+                        Manage Profile
+                      </Dropdown.Item>
+                      <Dropdown.Item href="#">Share Feedback</Dropdown.Item>
+                      <Dropdown.Item onClick={handleLogout}>
+                        Log out
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
                   {/* </Link> */}
-                  {showList === true && (
+                  {/* {showList === true && (
                     <div className={styles.linkswrapper}>
-                       <div>
-                      <a href="/payment">{user?.user?.enrolledCourses[0]?.courseId?.name}</a>
-                      </div>
                       <a href="/payment">Add New class</a>
                       <Link href="/dashboard/socialfeeds">My Feeds</Link>
                       <Link href="/dashboard/student/studentProfile">
@@ -256,7 +294,7 @@ const Navigation = () => {
                       <a href="#">Share Feedback</a>
                       <a onClick={handleLogout}>Log out</a>
                     </div>
-                  )}
+                  )} */}
                 </div>
               </div>
             </div>
@@ -319,27 +357,34 @@ const Navigation = () => {
                     // href="/dashboard/student/studentProfile"
                     className="btn-log-in-mobile"
                   > */}
-                  <BiDownArrow
+                  {/* <BiDownArrow
                     size={15}
                     className={styles.profileavatar2}
                     onClick={handleShow}
                   />
-                  {/* </Link> */}
-                  {showList === true && (
-                    <div className={styles.linkswrapper}>
-                       <div>
-                      <a href="/payment">{user?.user?.enrolledCourses[0]?.courseId?.name}</a>
-                      </div>
-                      <a href="/payment">Add New class</a>
+                    onClick={handleShow}
+                  /> */}
+                  <Dropdown>
+                    <Dropdown.Toggle
+                      variant="green"
+                      id="dropdown-basic"
+                    ></Dropdown.Toggle>
 
-                      <Link href="/dashboard/socialfeeds">My Feeds</Link>
-                      <Link href="/dashboard/student/studentProfile">
-                        <a>Manage Profile</a>
-                      </Link>
-                      <a href="#">Share Feedback</a>
-                      <a onClick={handleLogout}>Log out</a>
-                    </div>
-                  )}
+                    <Dropdown.Menu className={styles.dropdown}>
+                      <Dropdown.Item href="#">Add New class</Dropdown.Item>
+                      <Dropdown.Item href="/dashboard/socialfeeds">
+                        My Feeds
+                      </Dropdown.Item>
+                      <Dropdown.Item href="/dashboard/student/studentProfile">
+                        Manage Profile
+                      </Dropdown.Item>
+                      <Dropdown.Item href="#">Share Feedback</Dropdown.Item>
+                      <Dropdown.Item onClick={handleLogout}>
+                        Log out
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                  {/* </Link> */}
                 </div>
               </div>
             </div>
@@ -402,17 +447,38 @@ const Navigation = () => {
                     // href="/school/schoolProfile"
                     className="btn-log-in-mobile"
                   > */}
-                  <BiDownArrow
+                  {/* <BiDownArrow
                     size={15}
                     className={styles.profileavatar2}
                     onClick={handleShow}
                   />
+                  /> */}
+                  <Dropdown>
+                    <Dropdown.Toggle
+                      variant="green"
+                      id="dropdown-basic"
+                    ></Dropdown.Toggle>
+
+                    <Dropdown.Menu className={styles.dropdown}>
+                      <Dropdown.Item href="#">
+                        {user?.user?.enrolledCourses[0]?.courseId?.name}
+                      </Dropdown.Item>
+                      <Dropdown.Item href="#">Add New class</Dropdown.Item>
+                      <Dropdown.Item href="/dashboard/socialfeeds">
+                        My Feeds
+                      </Dropdown.Item>
+                      <Dropdown.Item href="/dashboard/student/studentProfile">
+                        Manage Profile
+                      </Dropdown.Item>
+                      <Dropdown.Item href="#">Share Feedback</Dropdown.Item>
+                      <Dropdown.Item onClick={handleLogout}>
+                        Log out
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
                   {/* </Link> */}
-                  {showList === true && (
+                  {/* {showList === true && (
                     <div className={styles.linkswrapper}>
-                      <div>
-                      <a href="/payment">{user?.user?.enrolledCourses[0]?.courseId?.name}</a>
-                      </div>
                       <a href="/payment">Add New class</a>
                       <Link href="/dashboard/socialfeeds">My Feeds</Link>
                       <Link href="/dashboard/student/studentProfile">
@@ -421,7 +487,7 @@ const Navigation = () => {
                       <a href="#">Share Feedback</a>
                       <a onClick={handleLogout}>Log out</a>
                     </div>
-                  )}
+                  )} */}
                 </div>
               </div>
             </div>
@@ -444,7 +510,6 @@ const Navigation = () => {
                 </Link>
               </div>
             )}
-           
         </Nav>
       </Navbar.Collapse>
     </Navbar>

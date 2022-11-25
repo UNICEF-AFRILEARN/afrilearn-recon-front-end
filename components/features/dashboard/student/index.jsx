@@ -98,7 +98,6 @@ const Dashboard = () => {
   const user_id = user.user?.enrolledCourses[0]
     ? user.user?.enrolledCourses[0].userId
     : user.user?.enrolledCourses[1].userId
-
   useEffect(() => {
     dispatch(fetchGetWebInitiate(person_id, token))
     // dispatch(fetchLessonsInitiate());
