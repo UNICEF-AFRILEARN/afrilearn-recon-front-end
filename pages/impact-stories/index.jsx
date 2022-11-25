@@ -5,6 +5,7 @@ import styles from'./impact.module.css';
 
 // import Impact from '../../public/assets/img/impact.jpg'
 import {Footer} from './../../components/common/homepage';
+import Link from 'next/link';
 
 const InpactStories = () => {
 
@@ -50,7 +51,11 @@ const InpactStories = () => {
                         <h1>AFRICHALLENGE IMP...</h1>
                         <p>In a world where humans are quick to move on from people and places, the consistent ...</p>
                         <small className={styles.miniinner}>Oct 14, 2021
-                          <small><b>Read More</b></small>
+                          <small>
+                            <Link href='/impactstory/1'>
+                              <b>Read More</b>
+                            </Link>
+                          </small>
                         </small>
                       </div>
                   </div>
@@ -65,7 +70,11 @@ const InpactStories = () => {
                         <h1>Teachers' Impact ...</h1>
                         <p>When you think you have heard it all from the students, the teachers shared how impa...</p>
                         <small className={styles.miniinner}>Oct 8, 2021
-                          <small><b>Read More</b></small>
+                          <small>
+                          <Link href='/impactstory/2'>
+                              <b>Read More</b>
+                            </Link>
+                          </small>
                         </small>
                       </div>
                   </div>
@@ -80,7 +89,11 @@ const InpactStories = () => {
                         <h1>AFRILEARN CHALLEN...</h1>
                         <p>When it comes to the gamified learning challenge on the Afrilearn App, Fathia Bakare...</p>
                         <small className={styles.miniinner}>Oct 8, 2021
-                          <small><b>Read More</b></small>
+                          <small>
+                            <Link href='/impactstory/1'>
+                              <b>Read More</b>
+                            </Link>
+                          </small>
                         </small>
                       </div>
                   </div>
