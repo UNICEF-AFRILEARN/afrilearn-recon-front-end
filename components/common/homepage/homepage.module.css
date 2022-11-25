@@ -550,7 +550,7 @@
 
 .quickJoin {
   background: #f5f5f5;
-  padding: 45px 0 0px;
+  /* padding: 45px 0 0px; */
 }
 .quickJoin h2 {
   color: #29465b;
