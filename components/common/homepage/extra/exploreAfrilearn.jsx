@@ -113,7 +113,6 @@ const ExploreAfrilearn = ({ userRole }) => {
           title="Video and Audio Lessons"
           value={userRole.numberOfClassNote}
         />
-        <StatsBox title="Learning Minutes" value={1500} />
       </section>
     </div>
   )

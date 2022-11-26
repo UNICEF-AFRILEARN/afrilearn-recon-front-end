@@ -430,9 +430,10 @@ const Recommended = ({ recommend, unicefRecon, lessons }) => {
 
           <div className={`${styles.contai}`}>
             <section className="parnet-frag-color">
-              {unicefRecon?.map((recData, index) => (
-                <Recommendation recData={recData} recIndex={index} />
-              ))}
+              {unicefRecon?.map((recData, index) => {
+                console.log(recData, index)
+                return <Recommendation recData={recData} recIndex={index} />
+              })}
             </section>
           </div>
         </>
