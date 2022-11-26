@@ -1,0 +1,19 @@
+.videowrapper, .headerwrapper, .summarywrapper {
+    padding: 1em 5.6em;
+}
+
+
+.headerwrapper h1 {
+    font-weight: bold;
+}
+
+.summarywrapper {
+    margin-bottom: 5em;
+}
+
+/* mobile lg 425 */
+@media screen and (max-width:767px){
+    .videowrapper, .headerwrapper, .summarywrapper {
+        padding: 1em 2.6em;
+    }
+}

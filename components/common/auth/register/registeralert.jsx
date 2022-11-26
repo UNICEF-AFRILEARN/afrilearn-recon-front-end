@@ -5,6 +5,7 @@ import Router, { useRouter } from 'next/router'
 
 const Registeralert = ({handleClose, handleShow, show, error}) => {
     const [registerError, setRegisterError] = useState("");
+    const [loginError, setLoginError] = useState("");
 
 
 useEffect(() => {
@@ -39,7 +40,7 @@ if(error) {
         <Modal.Header closeButton>
           <Modal.Title> Registration not Successfull</Modal.Title>
         </Modal.Header>
-        <Modal.Body>{registerError}</Modal.Body>
+        <Modal.Body>Please ensure that all fields are filled correctly</Modal.Body>
         <Modal.Footer>
    
           <Button 

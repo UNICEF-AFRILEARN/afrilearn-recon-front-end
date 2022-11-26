@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,500;1,600&display=swap');
+
+
+.impactheaderwrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2em 5em;
+}
+.challengewrapper {
+    margin-top: 2em;
+}
+.leftcontentwrappercon {
+    width: 35%;
+}
+
+.leftcontentwrappercon h1 {
+    font-size: 3em;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.rightimagewrapper {
+    width: 60%;
+    padding-top: 1em;
+}
+.rightimagewrapper img {
+    width: 100%;
+}
+
+.headervideo {
+    padding: 1.5em 4em;
+}
+
+.headervideo h1 {
+    font-size: 1.7em;
+}
+
+.headervideo p {
+    font-size: 0.8em;
+}
+
+.videowrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    padding: 2em 4em;
+}
+.videocontent {
+    width: 31.6%;
+    border-radius: 5px;
+    box-shadow: -3px 4px 30px -1px rgba(0,0,0,0.87);
+    -webkit-box-shadow: -3px 4px 30px -1px rgba(0,0,0,0.87);
+    -moz-box-shadow: -3px 4px 30px -1px rgba(0,0,0,0.87);
+}
+.innercontent {
+    padding: 1em 3em;
+}
+
+.innercontent h1 {
+    font-size: 1.2em;
+}
+
+.miniinner {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2em;
+    cursor: pointer;
+}
+
+
+/* mobile lg 425 */
+@media screen and (max-width:767px){
+    .impactheaderwrapper {
+        flex-direction: column;
+        padding: 2em 0.5em;
+    }
+    .leftcontentwrappercon {
+        width: 75%;
+    }
+    .rightimagewrapper {
+        width: 73%;
+        padding-top: 1em;
+    }
+    .headervideo {
+        padding: 1.5em 2.8em;
+    }
+    .videowrapper {
+        display: flex;
+        flex-direction: column;
+        padding: 2em 1.5em;
+    }
+    .videocontent {
+        width: 128%;
+        margin-bottom: 1.8em;
+    }
+}
