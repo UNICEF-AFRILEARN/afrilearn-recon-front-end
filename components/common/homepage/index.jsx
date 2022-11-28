@@ -792,7 +792,7 @@ export const Footer = () => {
           </div>
           <div className={`col-md-2 ${styles.lastt}`}>
             <li>
-              <Link passHref href="">
+              <Link passHref href="/privacy_policy">
                 Privacy Policy
               </Link>
             </li>
