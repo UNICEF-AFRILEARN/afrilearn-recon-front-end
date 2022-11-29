@@ -57,7 +57,7 @@ const HomePage = () => {
                     width={15}
                     height={15}
                   />
-                  <Link passHref href="/">
+                  <Link passHref href="/register">
                     Experience Afrilearn
                   </Link>
                 </span>
@@ -334,7 +334,8 @@ const Testimonials = () => {
         >
           <section className={styles.container}>
             <Row>
-              <Col md={2}>
+
+              {/* <Col md={2}>
                 <Image
                   alt={'design image'}
                   className={styles.mark}
@@ -342,10 +343,11 @@ const Testimonials = () => {
                   width={'70%'}
                   height={'70%'}
                 />
+              </Col> */}
+              <Col md={12}>
+                <h3 className={styles.heroText}>{`"${data.title}"`}</h3>
               </Col>
-              <Col md={10}>
-                <h1 className={styles.heroText}>{`${data.title}`}</h1>
-              </Col>
+            
             </Row>
             <Row className={styles.testimonials_p}>{data.description[0]}</Row>
           </section>

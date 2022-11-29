@@ -455,10 +455,9 @@
   padding-top: 15px;
   /* left: 134px; */
   font-style: normal;
-  font-size: 40px;
-  font-weight: 600;
+  font-size: 29.9px;
+  font-weight: 900;
   /* line-height: 63px; */
-  padding-right: 0px;
   color: #29465b;
 }
 
@@ -467,7 +466,8 @@
 }
 
 .testimonials_p {
-  width: 580px;
+  text-align: center;
+  width: 70%;
   margin-left: 89px;
   font-style: normal;
   font-weight: 500;
@@ -500,6 +500,7 @@
     margin: 0;
     width: 277px;
   }
+
 
   .homepage .mark {
     width: 15px;
@@ -572,6 +573,8 @@
   cursor: pointer;
   width: 791.11px;
 }
+
+
 
 .quickJoinSec {
   align-items: flex-start;
