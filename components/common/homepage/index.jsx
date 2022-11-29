@@ -316,7 +316,7 @@ const JoinLeague = () => {
 
 const Testimonials = () => {
   const data = {
-    title: 'What people are saying about Afrilearn?',
+    title: 'What people are saying about Afrilearn',
     description: [
       'Our greatest advertisement are the\ntestimonials of successful learners!',
     ],
@@ -401,7 +401,7 @@ export const Faq = () => {
     {
       id: 4,
       faq: 'Where can I watch?',
-      answ: 'You can learn on Afrilearn via your smartphone, tablet, Smart TV, laptop, or streaming device. Learn as much as you want, whenever you want without a single commercial – all for one low monthly price.',
+      answ: 'You can learn on Afrilearn via your smartphone, tablet, smart TV, laptop, or streaming device. Learn as much as you want, whenever you want without a single commercial – all for one low monthly price.',
     },
     {
       id: 5,
@@ -465,7 +465,7 @@ const QuickJoin = () => {
   // let classId = "5fff7371de0bdb47f826feb2"
 
   const data = {
-    title: 'Ready for success?',
+    title: 'Set for success?',
     description: ['Join the league of high-flying learners'],
     courses: ['1', '2', '3'],
     imageURL: [
