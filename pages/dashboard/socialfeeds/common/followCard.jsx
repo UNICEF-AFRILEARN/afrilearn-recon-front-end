@@ -38,8 +38,6 @@ const FollowCard = () => {
   const { feedUsers, followings, follower } = useSelector(
     (state) => state.mySubjectCourse
   )
-  // console.log(feedUsers)
-  // console.log(followings, follower)
 
   return (
     <div className={styles.followcardwrapper}>
@@ -66,7 +64,7 @@ const FollowCard = () => {
             )}
 
             <span>
-              {data?.fullName ? capitalizeWords(data?.fullName) : 'Anonymous'}
+              {data?.fullName ? capitalizeWords(data?.fullName) : 'Anonymous'}{' '}
               {data?.role === '5fd08fba50964811309722d5' ? (
                 <BsShieldFillCheck color="green" size={12} />
               ) : data?.role === '602f3ce39b146b3201c2dc1d' ? (

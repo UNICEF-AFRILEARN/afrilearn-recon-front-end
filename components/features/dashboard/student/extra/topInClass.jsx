@@ -15,7 +15,7 @@ const topInClass = ({ data }) => {
   const subject = useSelector((state) => state.mySubjectCourse)
   const lessons = subject.subjectDetails[1]?.relatedLessons
 
-  // console.log(data);
+  // console.log(data)
   // const [show, setShow] = useState(false);
   const [subjCourId, setsubjCourId] = useState({})
   const toggleModal = (cour, subj) => {

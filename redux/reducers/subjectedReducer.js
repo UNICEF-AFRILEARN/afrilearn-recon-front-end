@@ -11,9 +11,9 @@ const initialState = {
   pastQuestion: [],
   pastQuestionSub: [],
   pastQuestionQue: [],
-  classRequestInfo: "",
+  classRequestInfo: '',
   unfinishedStore: [],
-  dashboardWeb: "",
+  dashboardWeb: '',
   classMember: [],
   classroom: [],
   answers: [],
@@ -26,6 +26,10 @@ const initialState = {
   changeProfilePix: [],
   searchRecord: [],
   userRoles: [],
+  searchUser: [],
+  changeText: '',
+  filterRole: '',
+  switched: 1,
 }
 
 const subjectedReducer = (state = initialState, { type, payload }) => {
@@ -35,10 +39,20 @@ const subjectedReducer = (state = initialState, { type, payload }) => {
         ...state,
       }
 
+    case types.FETCH_INPUT_CHANGE:
+      return {
+        ...state,
+        [payload.name]: payload.value,
+      }
     case types.PAST_QUESTIONS_INPUT_CHANGE:
       return {
         ...state,
         [payload.name]: payload.value,
+      }
+    case types.FETCH_SEARCH_USER:
+      return {
+        ...state,
+        searchUser: payload,
       }
     case types.FETCH_POST_TO_FEED:
       return {
