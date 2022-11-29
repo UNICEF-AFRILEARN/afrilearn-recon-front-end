@@ -106,7 +106,7 @@ const GameIntro = () => {
   }
   const router = useRouter()
   const data = {
-    title: 'Gamified experience with rewards.',
+    title: 'Gamified experience with rewards',
     description: [
       'Fun practice to ace JSSCE, WASSCE, UTME, GCE, NECO and more in one sitting',
     ],
@@ -157,7 +157,7 @@ const GameIntro = () => {
 }
 const CrossPlatform = () => {
   const data = {
-    title: 'Learn on any device.',
+    title: 'Learn on any device',
     description: ['Anywhere, everywhere. Cancel anytime.'],
     imageURLs: ['/assets/img/common/homepage/learn.png'],
   }

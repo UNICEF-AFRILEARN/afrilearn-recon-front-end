@@ -21,6 +21,25 @@
     gap: 1em;
 
 }
+.imageleftwrapper {
+    /* right: 1em; */
+    background-color: #00d9b6;
+    padding: 0.6em 0.4em;
+    border-radius: 50%;
+    text-align: center;
+    margin-right: 1.5em;
+}
+.innerimageleftwrapper{
+    padding: 0.3em;
+}
+.imagelrightwrapper {
+    /* right: 1em; */
+    background-color: #00d9b6;
+    padding: 0.6em 0.4em;
+    border-radius: 50%;
+    text-align: center;
+    margin-left: 1.5em;
+}
 .rightempty {
     background-color: #fff;
     width: 50%;
@@ -31,7 +50,7 @@
     border-radius: 10px;
     padding: 1em;
     border: solid #fff 1px;
-    margin-bottom: 1em;
+    margin-bottom: 0.6em;
     box-shadow: 2px 3px 17px 3px rgba(0,0,0,0.43);
     -webkit-box-shadow: 2px 3px 17px 3px rgba(0,0,0,0.43);
     -moz-box-shadow: 2px 3px 17px 3px rgba(0,0,0,0.43);

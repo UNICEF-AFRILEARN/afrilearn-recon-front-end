@@ -1,6 +1,7 @@
 import React, { useState} from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import { aboutData } from './aboutData';
+import { MdOutlineNoteAlt } from 'react-icons/md'
 
 import styles from './aboutus.module.css';
 
