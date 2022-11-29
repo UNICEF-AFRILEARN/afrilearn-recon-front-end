@@ -5,6 +5,8 @@ import ContactHeaders from '../../components/widgets/contactHeader/ContactHeader
 
 import styles from './contact.module.css'
 import ContactForm from '../../components/common/contactForm';
+import { Footer } from '../../components/common/homepage'
+import Press from '../../components/common/press';
 
 const Contact = () => {
   return (
@@ -15,6 +17,8 @@ const Contact = () => {
         </Head>
         <ContactHeaders />
         <ContactForm />
+        <Press />
+        <Footer />
     </div>
   )
 }
