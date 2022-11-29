@@ -1,0 +1,22 @@
+.contactformwrapper {
+    padding: 3em 5em;
+    display: flex;
+    justify-content: space-around;
+}
+.leftwrapper {
+    width: 20%;
+}
+.rightformwrapper {
+    width: 55%;
+}
+.rightformwrapper input {
+    width: 40%;
+    margin-right: 2em;
+    padding: 0.6em 0.1em;
+    border-radius: 5px;
+}
+.rightformwrapper textarea {
+    width: 83.6%;
+    margin-top: 1em;
+    border-radius: 5px;
+}
