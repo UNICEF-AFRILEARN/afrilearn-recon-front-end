@@ -207,7 +207,7 @@ const Profilecard = () => {
         <div>
           {show === 2 &&
             followings &&
-            (followings?.followings.length > 0 ? (
+            (followings?.followings?.length > 0 ? (
               <FollowerFunc follow={followings?.followings} unFollow={true} />
             ) : (
               <div>
