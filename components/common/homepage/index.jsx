@@ -31,12 +31,12 @@ const HomePage = () => {
         <div id="homepageFirstSection" className="row">
           <div className="col-md-6" id="homepageFirstSectionText">
             <h1 className={styles.mainheading}>
-              Buy the future with Afrilearn!
+            Get ahead with Afrilearn
             </h1>
 
             <p className={styles.underHeadingP}>
               We provide African primary and secondary school learners with
-              complete curriculum-relevant education anytime, anywhere.
+              complete curriculum-relevant education anytime, anywhere
             </p>
             <div className={`row ${styles.afterSubHeading}`}>
               <div className={`col-md-4 ${styles.afterSubHeading_button}`}>

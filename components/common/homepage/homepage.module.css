@@ -224,8 +224,11 @@
 .mobileDownloadSection {
   margin-top: 7%;
   display: flex;
-  gap: 5.5%;
+  gap: 2.5%;
   padding-left: 2%;
+}
+.storeimage {
+  width: 10%;
 }
 
 .detailswrapper {
