@@ -461,6 +461,10 @@
   color: #29465b;
 }
 
+.heroText span {
+  margin-bottom: 1em;
+}
+
 .testimonials .mark {
   width: 100px;
 }
