@@ -161,6 +161,7 @@ const CrossPlatform = () => {
     description: ['Anywhere, everywhere. Cancel anytime.'],
     imageURLs: ['/assets/img/common/homepage/learn.png'],
   }
+  
   return (
     <>
       <div className={`row ${styles.crossPlatform}`}>
@@ -195,7 +196,7 @@ const CrossPlatform = () => {
                   >
                     <Image
                       alt={'design image'}
-                      src="/assets/img/common/homepage/Google Play Badge.png"
+                      src="/assets/img/google-play.png"
                       width={'241.28px'}
                       height={'71.49px'}
                     />
@@ -208,7 +209,7 @@ const CrossPlatform = () => {
                   >
                     <Image
                       alt={'design image'}
-                      src="/assets/img/common/homepage/App Store Badge.png"
+                      src="/assets/img/apple-store.png"
                       width={'241.28px'}
                       height={'71.49px'}
                     />
@@ -283,7 +284,7 @@ const JoinLeague = () => {
   return (
     <>
       <div className={`${styles.faq}`}>
-        <h2>Join league of world-class learners</h2>
+        <h2>Join the league of highly successful learners</h2>
         <div className={styles.cardstylling}>
           {example.map((examp) => {
             return (
@@ -349,7 +350,9 @@ const Testimonials = () => {
               </Col>
             
             </Row>
-            <Row className={styles.testimonials_p}>{data.description[0]}</Row>
+            <Row className={styles.testimonials_p}>
+              <p>{data.description[0]}</p>
+            </Row>
           </section>
         </div>
         <CommentPage />
