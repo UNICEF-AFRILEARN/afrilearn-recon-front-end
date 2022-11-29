@@ -2,8 +2,8 @@ import React, { useState} from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import { aboutData } from './aboutData';
 import { MdOutlineNoteAlt } from 'react-icons/md'
-import { BsEmojiSmileFill } from 'react-icons/bs'
-import { FaAward } from 'react-icons/fa'
+import { BsEmojiSmileFill, BsFillPersonFill } from 'react-icons/bs'
+import { FaAward, FaBomb } from 'react-icons/fa'
 
 import styles from './aboutus.module.css';
 
@@ -71,7 +71,7 @@ const AboutUs = () => {
                 </div>
                 <div className={styles.maincontentwrapper}>
                     <div className={styles.iconwrapper}>
-                      <BsEmojiSmileFill size={30} color='#00d9b6'/>
+                      <FaBomb size={30} color='#00d9b6'/>
                   </div>
                     <div>
                     <h2>Disruption…</h2>
@@ -85,7 +85,7 @@ const AboutUs = () => {
                 </div>
                 <div className={styles.maincontentwrapper}>
                 <div className={styles.iconwrapper}>
-                      <BsEmojiSmileFill size={30} color='#00d9b6'/>
+                      <BsFillPersonFill size={30} color='#00d9b6'/>
                   </div>
                     <div>
                     <h2>Customer Obsession…</h2>
