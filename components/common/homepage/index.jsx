@@ -31,12 +31,12 @@ const HomePage = () => {
         <div id="homepageFirstSection" className="row">
           <div className="col-md-6" id="homepageFirstSectionText">
             <h1 className={styles.mainheading}>
-              Buy the future with Afrilearn!
+            Get ahead with Afrilearn
             </h1>
 
             <p className={styles.underHeadingP}>
               We provide African primary and secondary school learners with
-              complete curriculum-relevant education anytime, anywhere.
+              complete curriculum-relevant education anytime, anywhere
             </p>
             <div className={`row ${styles.afterSubHeading}`}>
               <div className={`col-md-4 ${styles.afterSubHeading_button}`}>
@@ -57,7 +57,7 @@ const HomePage = () => {
                     width={15}
                     height={15}
                   />
-                  <Link passHref href="/">
+                  <Link passHref href="/register">
                     Experience Afrilearn
                   </Link>
                 </span>
@@ -106,7 +106,7 @@ const GameIntro = () => {
   }
   const router = useRouter()
   const data = {
-    title: 'Gamified experience with rewards.',
+    title: 'Gamified experience with rewards',
     description: [
       'Fun practice to ace JSSCE, WASSCE, UTME, GCE, NECO and more in one sitting',
     ],
@@ -157,10 +157,11 @@ const GameIntro = () => {
 }
 const CrossPlatform = () => {
   const data = {
-    title: 'Learn on any device.',
+    title: 'Learn on any device',
     description: ['Anywhere, everywhere. Cancel anytime.'],
     imageURLs: ['/assets/img/common/homepage/learn.png'],
   }
+  
   return (
     <>
       <div className={`row ${styles.crossPlatform}`}>
@@ -195,7 +196,7 @@ const CrossPlatform = () => {
                   >
                     <Image
                       alt={'design image'}
-                      src="/assets/img/common/homepage/Google Play Badge.png"
+                      src="/assets/img/google-play.png"
                       width={'241.28px'}
                       height={'71.49px'}
                     />
@@ -208,7 +209,7 @@ const CrossPlatform = () => {
                   >
                     <Image
                       alt={'design image'}
-                      src="/assets/img/common/homepage/App Store Badge.png"
+                      src="/assets/img/apple-store.png"
                       width={'241.28px'}
                       height={'71.49px'}
                     />
@@ -283,7 +284,7 @@ const JoinLeague = () => {
   return (
     <>
       <div className={`${styles.faq}`}>
-        <h2>Join league of world-class learners</h2>
+        <h2>Join the league of highly successful learners</h2>
         <div className={styles.cardstylling}>
           {example.map((examp) => {
             return (
@@ -316,7 +317,7 @@ const JoinLeague = () => {
 
 const Testimonials = () => {
   const data = {
-    title: 'What people are saying about Afrilearn?',
+    title: 'What people are saying about Afrilearn',
     description: [
       'Our greatest advertisement are the\ntestimonials of successful learners!',
     ],
@@ -334,7 +335,8 @@ const Testimonials = () => {
         >
           <section className={styles.container}>
             <Row>
-              <Col md={2}>
+
+              {/* <Col md={2}>
                 <Image
                   alt={'design image'}
                   className={styles.mark}
@@ -342,12 +344,15 @@ const Testimonials = () => {
                   width={'70%'}
                   height={'70%'}
                 />
+              </Col> */}
+              <Col md={12}>
+                <h3 className={styles.heroText}>{`"${data.title}"`}</h3>
               </Col>
-              <Col md={10}>
-                <h1 className={styles.heroText}>{`${data.title}`}</h1>
-              </Col>
+            
             </Row>
-            <Row className={styles.testimonials_p}>{data.description[0]}</Row>
+            <Row className={styles.testimonials_p}>
+              <p>{data.description[0]}</p>
+            </Row>
           </section>
         </div>
         <CommentPage />
@@ -399,7 +404,7 @@ export const Faq = () => {
     {
       id: 4,
       faq: 'Where can I watch?',
-      answ: 'You can learn on Afrilearn via your smartphone, tablet, Smart TV, laptop, or streaming device. Learn as much as you want, whenever you want without a single commercial – all for one low monthly price.',
+      answ: 'You can learn on Afrilearn via your smartphone, tablet, smart TV, laptop, or streaming device. Learn as much as you want, whenever you want without a single commercial – all for one low monthly price.',
     },
     {
       id: 5,
@@ -463,7 +468,7 @@ const QuickJoin = () => {
   // let classId = "5fff7371de0bdb47f826feb2"
 
   const data = {
-    title: 'Ready for success?',
+    title: 'Set for success?',
     description: ['Join the league of high-flying learners'],
     courses: ['1', '2', '3'],
     imageURL: [

@@ -20,7 +20,11 @@
   font-weight: 700;
   font-size: 14px;
 }
-
+.h3 {
+  display: flex;
+  gap: 2em;
+  padding-left: 2.5em;
+}
 .commentCont > .p {
   color: #969bab;
   font-weight: 500;
@@ -28,6 +32,17 @@
   font-feature-settings: 'salt' on, 'liga' off;
   color: #969bab;
   margin-bottom: 20px;
+}
+.commentCont > small {
+  color: #969bab;
+  font-weight: 500;
+  font-size: 14px;
+  font-feature-settings: 'salt' on, 'liga' off;
+  color: #969bab;
+  margin-bottom: 20px;
+}
+.commentCont {
+  margin-top: 1em;
 }
 
 .commentImg {

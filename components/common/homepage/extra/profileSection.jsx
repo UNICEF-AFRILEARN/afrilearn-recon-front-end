@@ -21,10 +21,12 @@ const ProfileSection = ({data}) => {
                 <button className={` ${styles.joinbuttonwrap} btn-class-corrected`}><Link passHref href='/register'>JOIN FOR FREE</Link></button>
    
                 <Link passHref href="https://play.google.com/store/apps/details?id=com.afrilearn">
-                  <Image alt={"design image"} src='/assets/img/common/homepage/Google Play Badge.png' width={150} height={55}/> 
+                  <Image alt={"design image"} src='/assets/img/google-play.png' width={150} height={55}/> 
                 </Link>             
               <Link passHref href="https://apps.apple.com/ng/app/afrilearn/id1587978653">
-                <Image alt={"design image"} src='/assets/img/common/homepage/App Store Badge.png' width={150} height={55}/> 
+                <Image 
+                className={styles.storeimage}
+                alt={"design image"} src='/assets/img/apple-store.png' width={150} height={55}/> 
               </Link>
             {/* </div> */}
           {/* </div> */}

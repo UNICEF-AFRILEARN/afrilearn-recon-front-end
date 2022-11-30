@@ -180,9 +180,8 @@ const Testimonials = () => {
                     width={15}
                     height={15}
                   />{' '}
-                  {data.content}
-                  <div className={styles.h3}>{data.name}</div>
-                  <div className={styles.p}>{data.dClass}</div>
+                  {data.content} -  <small>{data.name}</small> <small> ({data.dClass})</small>
+           
                 </div>
               </Row>
             </div>

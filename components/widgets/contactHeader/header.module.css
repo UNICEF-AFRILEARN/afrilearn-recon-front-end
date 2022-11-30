@@ -1,0 +1,53 @@
+.aboutheaderwrapper {
+    background-image: url('../../../public/assets/img/about.jpg');
+    background-size: cover;
+    height: 55vh;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.innercontainer {
+    width: 80%;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1em;
+}
+.contentwrapper {
+    display: flex;
+    flex-direction: column;
+    gap:2em;
+    text-align: start;
+    width: 60%;
+}
+
+.slidderwrapper {
+    width: 50%;
+}
+
+/* mobile lg 425 */
+@media screen and (max-width:767px){
+    .innercontainer {
+        flex-direction: column;
+        padding: 0 1.5em;
+    }
+    .contentwrapper {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding-top: 2em;
+    }
+    .slidderwrapper {
+        width: 100%;
+        height: 80%;
+        margin-top: 2em;
+    }
+
+    .slidderwrapper img {
+        width: 100%;
+        height: 70%;
+        
+    }
+}

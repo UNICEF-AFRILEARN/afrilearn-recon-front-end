@@ -1,0 +1,63 @@
+.contactformwrapper {
+    padding: 3em 5em;
+    display: flex;
+    justify-content: space-around;
+}
+.leftwrapper {
+    width: 30%;
+    background-color: #00d9b6;
+    padding: 2em 1.5em;;
+}
+.leftwrapper p {
+    margin-bottom: 1.5em;
+}
+.rightformwrapper {
+    width: 55%;
+}
+.rightformwrapper input {
+    width: 40%;
+    margin-right: 2em;
+    padding: 0.6em 0.1em;
+    border-radius: 5px;
+}
+.rightformwrapper textarea {
+    width: 83.9%;
+    margin-top: 1em;
+    border-radius: 5px;
+}
+.addresswrapper, .telephonewrapper, .emailwrapper {
+    display: flex;
+}
+.iconwrapper {
+    margin-right: 1em;
+}
+.rightformwrapper button {
+    border: none;
+    padding: 0.6em 1.5em;
+    border-radius: 5px;
+    background-color: #00d9b6;
+}
+
+/* mobile lg 425 */
+@media screen and (max-width:767px){
+    .contactformwrapper {
+        padding: 3em 2em;
+        flex-direction: column;
+    }
+    .leftwrapper {
+        width: 100%;
+    }
+    .rightformwrapper {
+        width: 98%;
+        margin-top: 1em;
+    }
+    .rightformwrapper input {
+        width: 100%;
+        margin-top: 1em;
+    }
+    .rightformwrapper textarea {
+        width: 100%;
+        margin-top: 1em;
+        border-radius: 5px;
+    }
+}

@@ -1,0 +1,37 @@
+.pressmainwrapper{
+    display: flex;
+    justify-content: space-around;
+    margin: 2.5em;
+}
+.careerwrapper, .presswrapper {
+    width: 35%;
+    border-radius: 5px;
+    padding: 1.5em 2.5em;
+    box-shadow: 2px 7px 17px 3px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 2px 7px 17px 3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 7px 17px 3px rgba(0,0,0,0.75);
+}
+
+.curouselwrapper {
+    width: 110%;
+    height: 115%;
+    text-align: center;
+
+}
+.slidingimage {
+    width: 250px;
+    height: 150px;
+}
+
+/* mobile lg 425 */
+@media screen and (max-width:767px){
+    .pressmainwrapper{
+        flex-direction: column;
+    }
+    .careerwrapper, .presswrapper {
+        width: 100%;
+        border-radius: 5px;
+        padding: 1.5em 2.5em;
+        margin-top: 1em;
+    }
+}

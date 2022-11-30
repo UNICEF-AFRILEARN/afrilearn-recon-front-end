@@ -172,6 +172,9 @@
     font-weight: 600;
     padding-left: 5%;
   }
+  .crossPlatformTextPosition {
+    background-color: red;
+  }
   .crossPlatform .crossPlatformTextPosition h3 {
     font-size: 25px;
     font-weight: 500;
@@ -224,8 +227,10 @@
 .mobileDownloadSection {
   margin-top: 7%;
   display: flex;
-  gap: 5.5%;
-  padding-left: 2%;
+  gap: 2.5%;
+}
+.storeimage {
+  width: 10%;
 }
 
 .detailswrapper {
@@ -328,6 +333,7 @@
   top: 10px;
   right: 10px;
 }
+
 
 .trendingModalClass .modal-content {
   padding: 0px;
@@ -446,11 +452,14 @@
   padding-top: 15px;
   /* left: 134px; */
   font-style: normal;
-  font-size: 40px;
-  font-weight: 600;
+  font-size: 29.9px;
+  font-weight: 900;
   /* line-height: 63px; */
-  padding-right: 0px;
   color: #29465b;
+}
+
+.heroText span {
+  margin-bottom: 1em;
 }
 
 .testimonials .mark {
@@ -458,7 +467,8 @@
 }
 
 .testimonials_p {
-  width: 580px;
+  text-align: center;
+  width: 70%;
   margin-left: 89px;
   font-style: normal;
   font-weight: 500;
@@ -472,6 +482,12 @@
     margin: 0%;
     margin-top: 93px;
   }
+  .testimonials_p {
+    text-align: center;
+    width: 200%;
+    margin-left: 0.3px;
+  }
+
 
   .quickJoin h2 {
     color: #29465b;
@@ -491,6 +507,7 @@
     margin: 0;
     width: 277px;
   }
+
 
   .homepage .mark {
     width: 15px;
@@ -564,6 +581,8 @@
   width: 791.11px;
 }
 
+
+
 .quickJoinSec {
   align-items: flex-start;
   margin-bottom: 60px;
@@ -602,12 +621,12 @@
   background: #fff !important;
   /* width: 100%; */
   display: block;
-  padding: 15px 28px;
+  padding: 10px 28px;
   color: #787878 !important;
   border-radius: 5px 0 0 5px;
-  margin-top: 12px;
+  /* margin-top: 6px; */
   width: 501.11px;
-  height: 90.9px;
+  height: 50.9px;
   border-radius: 45.0005px 0 0 45.0005px;
   font-size: 20px !important;
   border: none;
@@ -660,10 +679,10 @@
   /* width: 100%; */
   padding: 14.4px 13px;
   border: none;
-  margin-top: 12px;
+  /* margin-top: 12px; */
   height: 53px;
   width: 247.5px;
-  height: 90.9px;
+  height: 50.9px;
   background: #00d9b6;
   border-radius: 0px 45.0005px 45.0005px 0px;
   z-index: 3;
@@ -681,6 +700,7 @@
   .inputImage {
     display: none;
   }
+
 }
 
 @media screen and (max-width: 415px) {
