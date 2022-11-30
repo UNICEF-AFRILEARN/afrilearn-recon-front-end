@@ -17,7 +17,7 @@ const Contact = () => {
         </Head>
         <ContactHeaders />
         <ContactForm />
-        <Press id='press'/>
+        <Press />
         <Footer />
     </div>
   )
