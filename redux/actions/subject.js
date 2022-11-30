@@ -138,6 +138,14 @@ export const storeUserRoles = (data) => ({
   type: types.FETCH_USER_ROLES,
   payload: data,
 })
+export const storeSearchUser = (data) => ({
+  type: types.FETCH_SEARCH_USER,
+  payload: data,
+})
+export const storeInputChange = (name, value) => ({
+  type: types.FETCH_INPUT_CHANGE,
+  payload: { name, value },
+})
 
 export const fetchAllFeedUsers = () => {
   return function (dispatch) {
@@ -150,6 +158,29 @@ export const fetchAllFeedUsers = () => {
   }
 }
 
+export const searchForUserInFeed = (searchQuery) => {
+  return function (dispatch) {
+    axios({
+      method: 'post',
+      url: `${url}feeds/users/${searchQuery}`,
+    }).then((res) => {
+      console.log(res)
+      // dispatch((res.data.data));
+      dispatch(storeSearchUser(res.data.data))
+    })
+  }
+}
+export const allUserInFeed = () => {
+  return function (dispatch) {
+    axios({
+      method: 'get',
+      url: `${url}feeds/users`,
+    }).then((res) => {
+      console.log(res)
+      dispatch(storeSearchUser(res.data.data))
+    })
+  }
+}
 export const fetchUserRoles = () => {
   return function (dispatch) {
     axios({

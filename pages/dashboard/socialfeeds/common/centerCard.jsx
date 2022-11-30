@@ -35,7 +35,6 @@ const CenterCard = () => {
   const [commentImage, setCommentImage] = useState(false)
   const [send, setSend] = useState(false)
   const [message, setMessage] = useState(false)
-
   const [numPost, setNumPost] = useState(false)
   const [commentPost, setCommentPost] = useState('')
   const inputRef = useRef()
@@ -106,6 +105,10 @@ const CenterCard = () => {
 
   const usersPerPage = 10
   const pagesVisited = pageNumber * usersPerPage
+  const pageCount = Math.ceil(feedPost?.length / usersPerPage)
+  const changePage = ({ selected }) => {
+    setPageNumber(selected)
+  }
   const Post = () => {
     return feedPost
       ?.slice(pagesVisited, pagesVisited + usersPerPage)
@@ -444,11 +447,7 @@ const CenterCard = () => {
         )
       })
   }
-  const pageCount = Math.ceil(feedPost?.length / usersPerPage)
 
-  const changePage = ({ selected }) => {
-    setPageNumber(selected)
-  }
   const onEmojiClick = (emojiData, event) => {
     setInputStr((prevInput) => prevInput + emojiData.emoji)
     // setShowPicker(false)

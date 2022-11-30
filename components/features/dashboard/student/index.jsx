@@ -46,45 +46,40 @@ const Dashboard = () => {
   )
   const { user, registerUser } = useSelector((state) => state.auth)
   const { activities } = useSelector((state) => state.Mycourses)
-  const { singleLesson } = useSelector((state) => state.Mycourses);
+  const { singleLesson } = useSelector((state) => state.Mycourses)
   const subject = useSelector((state) => state.mySubjectCourse)
   const { unfinishedStore } = useSelector((state) => state.mySubjectCourse)
 
-
-
   const userId = '62a0bc984af2d90016b72096' //user.user.id
   const token = user.token
-  let lessonId;  //= '6012c2a7cfe09249249f7f9c' //
-  let schoollevel; //= 'Primary One' //user.user.enrolledCourses.courseId.name
-  let reco_subject; //= 'Agricultural Science'
-
-
+  let lessonId //= '6012c2a7cfe09249249f7f9c' //
+  let schoollevel //= 'Primary One' //user.user.enrolledCourses.courseId.name
+  let reco_subject //= 'Agricultural Science'
 
   // func to iterate the unfinished videos:
   // let testLessonId;
   const checkUnfinished = () => {
     unfinishedStore?.unFinishedVideos?.filter((unfinished, index) => {
-      if(index === 0){
+      if (index === 0) {
         schoollevel = unfinished?.courseId?.name
         reco_subject = unfinished?.subjectId?.mainSubjectId?.name
         lessonId = unfinished.lessonId.id
       }
-    }
-  )}
+    })
+  }
 
+  checkUnfinished()
+  console.log('testLessonId', lessonId, schoollevel, reco_subject)
 
-
-
-  checkUnfinished();
-  console.log("testLessonId", lessonId, schoollevel, reco_subject)
-  
- useEffect(() => {
-    if(lessonId !== undefined && reco_subject !== undefined && schoollevel !== undefined){
+  useEffect(() => {
+    if (
+      lessonId !== undefined &&
+      reco_subject !== undefined &&
+      schoollevel !== undefined
+    ) {
       dispatch(fetchUnicefReconInitiate(schoollevel, reco_subject, lessonId))
     }
- }, [lessonId, reco_subject, schoollevel])
-
-  
+  }, [lessonId, reco_subject, schoollevel])
 
   const personData = {
     personClass: user.user?.enrolledCourses[0].courseId?.name
@@ -422,8 +417,12 @@ const MyFavs = ({ classData }) => {
   )
 }
 
-export const Recommended = ({ recommend, unicefRecon, lessons, unfinishedStore }) => {
-
+export const Recommended = ({
+  recommend,
+  unicefRecon,
+  lessons,
+  unfinishedStore,
+}) => {
   const reconBucket = []
   const finalReconLessons = []
 
@@ -447,28 +446,22 @@ export const Recommended = ({ recommend, unicefRecon, lessons, unfinishedStore }
   }
 
   return (
-    unicefRecon.length > 0?
-      <>
-        {unicefRecon !== 0 && (
-          <>
-            <SubHeading 
-            title="Recommended For You" />
-            <div className={`${styles.contai}`} data-testid='recon'>
-              <section className="parnet-frag-color">
-                {unicefRecon?.map((recData, index) => (
-                    <Recommendation recData={recData} recIndex={index} />
-                  ))
-  
-                }
-              </section>
-            </div>
-          </>
-        )}
-      </> : 
-      <div >
-        <SubHeading title="Recommended For You" />
-          <h5 className={styles.alternativerecon}>There is no recommendation for you yet</h5>
-      </div>
+    <>
+      {unicefRecon !== 0 && (
+        <>
+          <SubHeading title="Recommended For You" />
+
+          <div className={`${styles.contai}`}>
+            <section className="parnet-frag-color">
+              {unicefRecon?.map((recData, index) => {
+                console.log(recData, index)
+                return <Recommendation recData={recData} recIndex={index} />
+              })}
+            </section>
+          </div>
+        </>
+      )}
+    </>
   )
 }
 

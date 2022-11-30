@@ -7,8 +7,12 @@
     border-top-right-radius: 25px;
 } */
 .fullNameAvatar {
-  padding: 5px !important;
+  padding: 8px !important;
   border-radius: 50% !important;
+  background-color: #00d9b6;
+  width: 38px;
+  height: 38px;
+  margin: 0;
 }
 
 .searchwrapper {
@@ -204,6 +208,7 @@
 
 .innerfeedonewrapper {
   padding-top: 15px;
+  cursor: pointer;
 }
 
 .innerfeedonewrapper h4 {

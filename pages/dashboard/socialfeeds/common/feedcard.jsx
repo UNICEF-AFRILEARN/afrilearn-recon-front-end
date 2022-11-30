@@ -10,15 +10,32 @@ import { RiCheckboxBlankFill } from 'react-icons/ri'
 import { AiOutlineUsergroupAdd } from 'react-icons/ai'
 import styles from '../../../../styles/search.module.css'
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { storeInputChange } from '../../../../redux/actions/subject'
 
 const Feedcard = () => {
   const [clicks, setClicks] = useState(1)
+  const dispatch = useDispatch()
+  const { switched } = useSelector((state) => state.mySubjectCourse)
 
   return (
     <div className={styles.feedcardwrapper}>
       <div className={styles.innerfeedonewrapper}>
-        <h4>My Feeds</h4>
-        <ul>
+        {switched === 1 ? (
+          <h4>My Feeds</h4>
+        ) : (
+          <h5 onClick={() => dispatch(storeInputChange('switched', 1))}>
+            My Feeds
+          </h5>
+        )}
+        {switched === 2 ? (
+          <h4>Connections</h4>
+        ) : (
+          <h5 onClick={() => dispatch(storeInputChange('switched', 2))}>
+            Connections
+          </h5>
+        )}
+        {/* <ul>
           <li
             style={{
               fontWeight: '500',
@@ -29,7 +46,7 @@ const Feedcard = () => {
           >
             Connections
           </li>
-        </ul>
+        </ul> */}
       </div>
       <div className={styles.innerfeedtwowrapper}>
         <ul>
