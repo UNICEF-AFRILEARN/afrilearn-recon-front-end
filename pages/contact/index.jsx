@@ -12,12 +12,12 @@ const Contact = () => {
   return (
     <div className={styles.contactmainwrapper}>
         <Head>
-            <title>About Us | Future of learning</title>
+            <title>Contact Us | Future of learning</title>
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         </Head>
         <ContactHeaders />
         <ContactForm />
-        <Press />
+        <Press id='press'/>
         <Footer />
     </div>
   )
