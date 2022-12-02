@@ -30,13 +30,11 @@ const HomePage = () => {
       <div className="container">
         <div id="homepageFirstSection" className="row">
           <div className="col-md-6" id="homepageFirstSectionText">
-            <h1 className={styles.mainheading}>
-            Get ahead with Afrilearn
-            </h1>
+            <h1 className={styles.mainheading}>Get ahead with Afrilearn</h1>
 
             <p className={styles.underHeadingP}>
-              We provide African primary and secondary school learners with
-              complete curriculum-relevant education anytime, anywhere
+              The personal teacher for secondary school children to learn
+              anytime, pass exams in one sitting and succes academically.
             </p>
             <div className={`row ${styles.afterSubHeading}`}>
               <div className={`col-md-4 ${styles.afterSubHeading_button}`}>
@@ -46,7 +44,7 @@ const HomePage = () => {
                   </Link>
                 </span>
               </div>
-              <div className={`col-md-6 ${styles.afterSubHeading_button2}`}>
+              {/* <div className={`col-md-6 ${styles.afterSubHeading_button2}`}>
                 <span className={styles.experienceAfrilearn}>
                   <Image
                     alt={'design image'}
@@ -57,11 +55,11 @@ const HomePage = () => {
                     width={15}
                     height={15}
                   />
-                  <Link passHref href="/register">
+                  {/* <Link passHref href="/register">
                     Experience Afrilearn
-                  </Link>
+                  </Link> 
                 </span>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="col-md-6 center">
@@ -161,7 +159,7 @@ const CrossPlatform = () => {
     description: ['Anywhere, everywhere. Cancel anytime.'],
     imageURLs: ['/assets/img/common/homepage/learn.png'],
   }
-  
+
   return (
     <>
       <div className={`row ${styles.crossPlatform}`}>
@@ -317,10 +315,11 @@ const JoinLeague = () => {
 
 const Testimonials = () => {
   const data = {
-    title: 'What people are saying about Afrilearn',
-    description: [
-      'Our greatest advertisement are the\ntestimonials of successful learners!',
-    ],
+    title:
+      'Our greatest advertisement are the testimonials of successful learners!',
+    // description: [
+    //   'Our greatest advertisement are the\ntestimonials of successful learners!',
+    // ],
     imageURLs: [
       '/assets/img/common/homepage/Quote Mark.png',
       '/assets/img/common/homepage/group.svg',
@@ -335,7 +334,6 @@ const Testimonials = () => {
         >
           <section className={styles.container}>
             <Row>
-
               {/* <Col md={2}>
                 <Image
                   alt={'design image'}
@@ -348,10 +346,9 @@ const Testimonials = () => {
               <Col md={12}>
                 <h3 className={styles.heroText}>{`"${data.title}"`}</h3>
               </Col>
-            
             </Row>
             <Row className={styles.testimonials_p}>
-              <p>{data.description[0]}</p>
+              {/* <p>{data.description[0]}</p> */}
             </Row>
           </section>
         </div>
@@ -770,7 +767,7 @@ export const Footer = () => {
                 </li>
                 <li>
                   <Link passHref href="/partnership">
-                    Paternership
+                    Partnership
                   </Link>
                 </li>
               </ul>
