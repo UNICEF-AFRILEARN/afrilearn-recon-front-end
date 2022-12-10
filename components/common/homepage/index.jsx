@@ -35,6 +35,9 @@ const HomePage = () => {
             </h1>
 
             <p className={styles.underHeadingP}>
+             The personal teacher for secondary school children to learn anytime, pass exams in one sitting and succeed academically.
+            </p>
+            <p className={styles.underHeadingP}>
               We provide African primary and secondary school learners with
               complete curriculum-relevant education anytime, anywhere
             </p>
@@ -47,7 +50,7 @@ const HomePage = () => {
                 </span>
               </div>
               <div className={`col-md-6 ${styles.afterSubHeading_button2}`}>
-                <span className={styles.experienceAfrilearn}>
+                {/* <span className={styles.experienceAfrilearn}>
                   <Image
                     alt={'design image'}
                     className={styles.experienceAfrilearnImg}
@@ -60,7 +63,7 @@ const HomePage = () => {
                   <Link passHref href="/register">
                     Experience Afrilearn
                   </Link>
-                </span>
+                </span> */}
               </div>
             </div>
           </div>
@@ -346,13 +349,13 @@ const Testimonials = () => {
                 />
               </Col> */}
               <Col md={12}>
-                <h3 className={styles.heroText}>{`"${data.title}"`}</h3>
+                <h3 className={styles.heroText}>{`"${data.description}"`}</h3>
               </Col>
             
             </Row>
-            <Row className={styles.testimonials_p}>
+            {/* <Row className={styles.testimonials_p}>
               <p>{data.description[0]}</p>
-            </Row>
+            </Row> */}
           </section>
         </div>
         <CommentPage />
@@ -637,7 +640,6 @@ const Partners = () => {
     autoplay: true,
     speed: 2000,
     autoplaySpeed: 1000,
-    // cssEase: 'linear',
     initialSlide: 0,
     arrows: false,
     responsive: [
@@ -770,7 +772,7 @@ export const Footer = () => {
                 </li>
                 <li>
                   <Link passHref href="/partnership">
-                    Paternership
+                  partnership
                   </Link>
                 </li>
               </ul>
