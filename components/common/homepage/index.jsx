@@ -640,7 +640,6 @@ const Partners = () => {
     autoplay: true,
     speed: 2000,
     autoplaySpeed: 1000,
-    // cssEase: 'linear',
     initialSlide: 0,
     arrows: false,
     responsive: [
