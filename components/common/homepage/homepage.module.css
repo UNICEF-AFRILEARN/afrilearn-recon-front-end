@@ -172,9 +172,9 @@
     font-weight: 600;
     padding-left: 5%;
   }
-  .crossPlatformTextPosition {
+  /* .crossPlatformTextPosition {
     background-color: red;
-  }
+  } */
   .crossPlatform .crossPlatformTextPosition h3 {
     font-size: 25px;
     font-weight: 500;
@@ -305,7 +305,7 @@
 }
 
 .backgroundColor {
-  background-color: red;
+  /* background-color: red; */
   width: 800px;
 }
 .explorePart2 img:hover {
