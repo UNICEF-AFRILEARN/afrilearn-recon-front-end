@@ -37,10 +37,6 @@ const HomePage = () => {
             <p className={styles.underHeadingP}>
              The personal teacher for secondary school children to learn anytime, pass exams in one sitting and succeed academically.
             </p>
-            <p className={styles.underHeadingP}>
-              We provide African primary and secondary school learners with
-              complete curriculum-relevant education anytime, anywhere
-            </p>
             <div className={`row ${styles.afterSubHeading}`}>
               <div className={`col-md-4 ${styles.afterSubHeading_button}`}>
                 <span className={styles.joinForFree}>
@@ -349,7 +345,7 @@ const Testimonials = () => {
                 />
               </Col> */}
               <Col md={12}>
-                <h3 className={styles.heroText}>{`"${data.description}"`}</h3>
+                <h3 className={styles.heroText}>{`${data.description}`}</h3>
               </Col>
             
             </Row>
