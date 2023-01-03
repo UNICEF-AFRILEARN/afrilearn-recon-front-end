@@ -152,7 +152,7 @@ export const fetchUnicefReconInitiate = (schoollevel, reco_subject, lessonId) =>
     return function (dispatch) {
         dispatch(fetchUnicefRecoStart())
         axios
-        .post('http://unicef-afrilearn-recon-api.herokuapp.com/recommend',
+        .post('https://unicef-afrilearn-recon-api.herokuapp.com/recommend',
         {   
             schoollevel: schoollevel,
             subject: reco_subject,
