@@ -152,9 +152,9 @@ const Dashboard = () => {
           classed={personData.personClass}
         />
       </div>
-      <div id="performance">
+      {/* <div id="performance">
         <PerfomanceSumm />
-      </div>
+      </div> */}
       <GetSolution />
       <div id="classroom">
         <ClassRoom data={subject?.classroom?.classMembership} />
